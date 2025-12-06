@@ -1,0 +1,18 @@
+# General
+node_modules/
+.DS_Store
+.env
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+
+# Resonance Protocol
+# We explicitly want to track the memory bank (The Brain)
+!.resonance/*.md
+
+# Security: Never commit secrets or temporary context dumps
+.resonance/secrets/
+.resonance/tmp/
