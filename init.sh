@@ -1,14 +1,20 @@
 #!/bin/bash
 # init.sh
-# Resonance Initialization Script
+# Resonance Initialization Script (v1.0)
 
-echo "Initializing Resonance Engine..."
+echo "Initializing Resonance Engine (v1.0)..."
 
-# Create the .resonance directory if it doesn't exist
+# 1. Create the .resonance directory if it doesn't exist
 mkdir -p .resonance
 
-# Copy templates to the .resonance directory
+# 2. Copy templates to the .resonance directory
 cp templates/*.md .resonance/
 
-echo "✅ Resonance initialized. Memory bank created at .resonance/"
-echo "Next step: Install the adapter for your IDE from the adapters/ folder."
+# 3. Install Pointers (Adapters)
+cp adapters/.cursorrules .
+cp adapters/.windsurfrules .
+
+echo "✅ Resonance initialized."
+echo " - Memory Bank: .resonance/ created"
+echo " - Brain: AGENT.md (Root)"
+echo " - Pointers: .cursorrules & .windsurfrules installed"
