@@ -89,7 +89,7 @@ cd my-project
 3. **The agent will automatically**:
    - Create `.resonance/` directory
    - Generate `00_soul.md`, `01_state.md`, `02_memory.md`, `03_tools.md`
-   - Set up the `roles/` directory with 10 specialist roles
+   - **Download 10 benchmark-quality specialist roles from GitHub** (not AI-generated)
    - Start operating with persistent memory
 
 4. **(Optional) Load a specialist**:
@@ -141,7 +141,7 @@ Your agent now has:
 - ✅ **Persistent memory** - Remembers context across sessions (`.resonance/01_state.md`)
 - ✅ **Self-healing** - Can run `./resonance.sh` to check system health
 - ✅ **Artifact sync** - UI task lists automatically sync to disk
-- ✅ **Specialist roles** - Switch between product, architect, qa, researcher, frontend modes
+- ✅ **Benchmark specialist roles** - Downloaded 10 curated roles from GitHub (not AI-generated)
 - ✅ **Research logging** - All web research saved to `.resonance/02_memory.md`
 
 ---
