@@ -62,6 +62,8 @@ Infinite extensibility. Zero maintenance.
 curl -o AGENT.md https://raw.githubusercontent.com/manusco/resonance/main/AGENT.md
 ```
 
+> **⚠️ Important**: This downloads **only the kernel file** (`AGENT.md`). You must then **initialize the framework** (see Quick Start below).
+
 ### Option 2: Clone Template
 ```bash
 npx degit manusco/resonance/template my-project
@@ -71,7 +73,7 @@ cd my-project
 ### Option 3: Manual
 1. Download [`AGENT.md`](https://github.com/manusco/resonance/blob/main/AGENT.md)
 2. Place it in your project root
-3. Done!
+3. **Next**: Initialize the framework (see Quick Start below)
 
 ---
 
@@ -79,15 +81,15 @@ cd my-project
 
 **In Google Antigravity:**
 
-1. **Install**: Copy `AGENT.md` to your project root
-2. **Initialize**: Say to your agent:
+1. **Install**: Copy `AGENT.md` to your project root (using curl or manual download)
+2. **Initialize**: Open your project in Antigravity and say to your agent:
    ```
    Resonance Init
    ```
-3. **The agent will**:
+3. **The agent will automatically**:
    - Create `.resonance/` directory
    - Generate `00_soul.md`, `01_state.md`, `02_memory.md`, `03_tools.md`
-   - Set up the `roles/` directory with 5 benchmark-quality specialists
+   - Set up the `roles/` directory with 10 specialist roles
    - Start operating with persistent memory
 
 4. **(Optional) Load a specialist**:
@@ -96,6 +98,40 @@ cd my-project
    ```
 
 **That's it.** No npm install. No configuration files. Just paste and go.
+
+### ✅ What You Should See
+
+After running `Resonance Init`, your project structure should look like:
+
+```
+project-root/
+├── AGENT.md                    # The kernel (you downloaded this)
+├── resonance.sh                # Self-healing script (auto-generated)
+└── .resonance/                 # Created by agent
+    ├── 00_soul.md
+    ├── 01_state.md
+    ├── 02_memory.md
+    ├── 03_tools.md
+    └── roles/                  # 10 specialist personas
+        ├── product.md
+        ├── architect.md
+        ├── qa.md
+        ├── researcher.md
+        ├── frontend.md
+        ├── security.md
+        ├── copywriter.md
+        ├── seo.md
+        ├── devops.md
+        └── database.md
+```
+
+### 🔧 Troubleshooting
+
+**Problem**: "I ran curl but nothing happened"
+- **Solution**: The curl command only downloads `AGENT.md`. You must tell the agent `Resonance Init` to create the folder structure.
+
+**Problem**: "The `.resonance/` folder is missing or incomplete"
+- **Solution**: Say to your agent: `Resonance Init` or `./resonance.sh` to regenerate missing files.
 
 ---
 

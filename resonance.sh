@@ -1,6 +1,49 @@
 #!/bin/bash
 # resonance.sh - The "Wake Up" Call for Antigravity Agents
 
+# Colors for output
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+# Check for update command
+if [ "$1" == "update" ]; then
+    echo -e "${YELLOW}📡 Checking for Resonance updates...${NC}"
+    echo ""
+    
+    # Get local version from AGENT.md
+    if [ -f "AGENT.md" ]; then
+        LOCAL_VERSION=$(grep -m 1 "# RESONANCE v" AGENT.md | sed 's/.*v\([0-9.]*\).*/\1/')
+        echo "   Local version: v$LOCAL_VERSION"
+        
+        # Fetch remote version
+        REMOTE_VERSION=$(curl -s https://raw.githubusercontent.com/manusco/resonance/main/AGENT.md | grep -m 1 "# RESONANCE v" | sed 's/.*v\([0-9.]*\).*/\1/')
+        
+        if [ -n "$REMOTE_VERSION" ]; then
+            echo "   Latest version: v$REMOTE_VERSION"
+            echo ""
+            
+            if [ "$LOCAL_VERSION" != "$REMOTE_VERSION" ]; then
+                echo -e "${YELLOW}✨ Update available!${NC}"
+                echo ""
+                echo "To update, run:"
+                echo "  curl -o AGENT.md https://raw.githubusercontent.com/manusco/resonance/main/AGENT.md"
+                echo ""
+                echo "Note: Your .resonance/ folder will not be affected."
+            else
+                echo -e "${GREEN}✅ You're running the latest version!${NC}"
+            fi
+        else
+            echo -e "${RED}❌ Unable to check for updates (network issue?)${NC}"
+        fi
+    else
+        echo -e "${RED}❌ AGENT.md not found${NC}"
+    fi
+    
+    exit 0
+fi
+
 echo "🔮 Resonance System Check:"
 echo "================================"
 
@@ -27,3 +70,5 @@ echo "✅ Resonance System Online"
 echo ""
 echo "Available specialist roles:"
 ls -1 .resonance/roles/ 2>/dev/null | sed 's/\.md$//' | sed 's/^/  - /' || echo "  (none found)"
+echo ""
+echo "💡 Tip: Run './resonance.sh update' to check for framework updates"
