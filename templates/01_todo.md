@@ -1,2 +1,0 @@
-# Active Sprint
-- [ ] Initialize Repository
