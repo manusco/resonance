@@ -48,6 +48,10 @@ Role Switch architect   # System design (no implementation)
 Role Switch qa          # Testing specialist (finds edge cases)
 Role Switch researcher  # Deep research (no coding, just insights)
 Role Switch frontend    # High-end UI/UX (prevents AI slop)
+Role Switch backend     # API & Logic implementation (no DB/Frontend)
+Role Switch growth      # Funnel optimization & AARRR metrics
+Role Switch debugger    # Root Cause Analysis & fixation
+Role Switch venture_validator # Business model validation
 ```
 
 Infinite extensibility. Zero maintenance.
@@ -112,7 +116,7 @@ project-root/
     ├── 01_state.md
     ├── 02_memory.md
     ├── 03_tools.md
-    └── roles/                  # 10 specialist personas
+    └── roles/                  # 14 specialist personas
         ├── product.md
         ├── architect.md
         ├── qa.md
@@ -122,7 +126,11 @@ project-root/
         ├── copywriter.md
         ├── seo.md
         ├── devops.md
-        └── database.md
+        ├── database.md
+        ├── backend.md
+        ├── growth.md
+        ├── debugger.md
+        └── venture_validator.md
 ```
 
 ### 🔧 Troubleshooting
@@ -141,7 +149,7 @@ Your agent now has:
 - ✅ **Persistent memory** - Remembers context across sessions (`.resonance/01_state.md`)
 - ✅ **Self-healing** - Can run `./resonance.sh` to check system health
 - ✅ **Artifact sync** - UI task lists automatically sync to disk
-- ✅ **Benchmark specialist roles** - Downloaded 10 curated roles from GitHub (not AI-generated)
+- ✅- **Benchmark specialist roles** - Downloaded 14 curated roles from GitHub (not AI-generated)
 - ✅ **Research logging** - All web research saved to `.resonance/02_memory.md`
 
 ---
@@ -168,9 +176,26 @@ Should I switch to product role to write requirements?"
 
 ---
 
+## Upgrading to v1.3
+Already using Resonance? Update your roles to get the new **Backend**, **Growth**, **Debugger**, and **Venture Validator** personas.
+
+Ask your agent to run this:
+```bash
+# Update existing roles
+curl -o .resonance/roles/frontend.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/frontend.md
+
+# Install new roles
+curl -o .resonance/roles/backend.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/backend.md
+curl -o .resonance/roles/growth.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/growth.md
+curl -o .resonance/roles/debugger.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/debugger.md
+curl -o .resonance/roles/venture_validator.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/venture_validator.md
+```
+
+---
+
 ## Advanced: Skills (The Game-Changer)
 
-Resonance v1.1 turns your agent into a **skill orchestrator**. Import personas from anywhere.
+Resonance v1.3 turns your agent into a **skill orchestrator**. Import personas from anywhere.
 
 ### How to Install Skills from External Libraries
 
@@ -188,13 +213,17 @@ Want to use a specific agent persona you found online?
 
 ### Stock Roles Included
 
-Resonance ships with 5 benchmark-quality specialist roles:
+Resonance ships with 14 benchmark-quality specialist roles:
 
 - **product**: Product Requirements Engineer - Write world-class PRDs, user stories, acceptance criteria
 - **architect**: System Architect - Design system architecture, ADRs, trade-off analysis  
 - **qa**: QA Engineer - Comprehensive testing strategy, edge case discovery, quality metrics
 - **researcher**: Research Engineer - Technical research, documentation, knowledge synthesis
 - **frontend**: Frontend/UX Engineer - High-end UI/UX, design systems, prevents AI slop
+- **backend**: Backend Engineer - API design, business logic, integrations
+- **growth**: Growth Strategist - AARRR metrics, funnel optimization
+- **debugger**: Elite Debugger - Root Cause Analysis, surgical fixes
+- **venture_validator**: Venture Validator - Business model stress-testing
 
 ### Future: Multi-Agent Orchestration
 
@@ -258,7 +287,9 @@ project-root/
         ├── architect.md        # System Architect
         ├── qa.md               # QA Engineer
         ├── researcher.md       # Research Engineer
-        └── frontend.md         # Frontend/UX Engineer
+        ├── frontend.md         # Frontend/UX Engineer
+        ├── backend.md          # Backend Engineer
+        └── ... (14 total)
 ```
 
 ---
