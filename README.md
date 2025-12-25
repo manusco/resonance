@@ -116,6 +116,7 @@ project-root/
     ├── 01_state.md
     ├── 02_memory.md
     ├── 03_tools.md
+    ├── knowledge/              # Persistent docs (PRDs, APIs)
     └── roles/                  # 14 specialist personas
         ├── product.md
         ├── architect.md
@@ -282,6 +283,7 @@ project-root/
     ├── 01_state.md             # Current status (persistent memory)
     ├── 02_memory.md            # Lessons learned (immutable log)
     ├── 03_tools.md             # Terminal command boundaries
+    ├── knowledge/              # Persistent knowledge base
     └── roles/                  # Specialist personas
         ├── product.md          # Product Requirements Engineer
         ├── architect.md        # System Architect

@@ -54,6 +54,12 @@ if [ ! -f .resonance/01_state.md ]; then
     exit 1
 fi
 
+# Check for knowledge directory
+if [ ! -d .resonance/knowledge ]; then
+    echo "   Creating knowledge directory..."
+    mkdir -p .resonance/knowledge
+fi
+
 # Load consciousness
 echo ""
 echo "📖 Loading Soul (Vision):"
