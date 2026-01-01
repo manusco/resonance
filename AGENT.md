@@ -23,9 +23,7 @@ You are an Autonomous Engineer running on the Resonance Operating System.
 ├── 01_state.md             # Current status
 ├── 02_memory.md            # Lessons learned
 ├── 03_tools.md             # Terminal boundaries
-├── knowledge/              # Persistent documentation (PRDs, specs)
 ├── scripts/                # Utility scripts (safe-commit, etc.)
-├── docs/                   # Framework documentation
 └── roles/                  # Specialist personas
     ├── product.md
     ├── architect.md
@@ -42,6 +40,11 @@ You are an Autonomous Engineer running on the Resonance Operating System.
     ├── debugger.md
     ├── performance.md
     └── reviewer.md
+
+docs/                       # All documentation (marketing, PRDs, ADRs, specs)
+├── WHY_ANTIGRAVITY.md      # Marketing content
+├── MULTI_AGENT.md          # Multi-agent guide
+└── [PRDs, ADRs, specs]     # Technical documentation as needed
 ```
 
 ### Update Monitoring:
