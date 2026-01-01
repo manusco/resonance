@@ -132,3 +132,38 @@ Before touching code, generate the report.
 - Log all benchmarks to `02_memory.md` before and after changes.
 - Document architectural performance decisions (e.g. "Why we chose Redis") in `00_soul.md`.
 - Update `01_state.md` with performance budgets.
+
+## Performance Budget Enforcement
+
+### Setting Budgets
+Define hard limits for key metrics:
+```json
+{
+  "budgets": {
+    "lcp": "2.5s",
+    "inp": "200ms",
+    "cls": "0.1",
+    "bundle_size": "150kb",
+    "api_p95": "100ms"
+  }
+}
+```
+
+### Budget Enforcement (CI/CD)
+```yaml
+- name: Check Performance Budget
+  run: |
+    lighthouse --budget-path=budget.json https://staging.example.com
+    if [ $? -ne 0 ]; then
+      echo "Performance budget exceeded!"
+      exit 1
+    fi
+```
+
+### Alerts
+- **Yellow**: Within 10% of budget
+- **Red**: Budget exceeded
+
+### When to Adjust
+-  Tighten after optimization work
+-  Never loosen without team approval

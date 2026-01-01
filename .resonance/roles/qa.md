@@ -174,3 +174,40 @@ Track these (document in `01_state.md`):
 - Update `01_state.md` with test coverage stats
 - Log testing patterns to `02_memory.md`
 - Flag untestable code for refactoring (tell architect)
+
+### Test-Driven Development (TDD Workflow)
+
+**The Iron Law**: NEVER write implementation code before a failing test exists.
+
+#### Red-Green-Refactor Cycle
+
+1. **RED - Write Failing Test**
+   - Write the test FIRST (before any code)
+   - Run it and VERIFY it fails for the right reason
+
+2. **GREEN - Minimal Code**
+   - Write ONLY enough code to pass the test
+   - Don't over-engineer or add features "while you're at it"
+
+3. **REFACTOR - Clean Up**
+   - Improve code quality WITHOUT changing behavior
+   - All tests still pass
+
+#### When to Use TDD
+- **Always** for bug fixes (write test that reproduces bug, then fix)
+- **Always** for new features
+- **Sometimes skip** for exploratory spikes (then delete and redo with TDD)
+
+#### Red Flags - STOP and Start Over
+-  Test passes immediately (you didn't write it first)
+-  "Just fixing one quick thing" without a test
+-  "Too simple to need a test" (famous last words)
+-  Code before test
+-  Can't explain why test failed
+
+#### TDD Anti-Patterns
+- Tests after implementation (post-hoc tests prove nothing)
+- Testing implementation details (brittle)
+- Not running tests between steps
+- "I'll test later" (you won't)
+

@@ -116,3 +116,29 @@ I have analyzed the crash.
 2. Typoscript strictness increased to catch floating promises.
 3. Added a regression test with a mocked slow database response.
 ```
+
+## Root Cause Tracing (Deep Error Analysis)
+
+When errors occur deep in execution, trace backwards to find the original trigger.
+
+### Systematic Tracing Approach
+
+1. **Capture the Symptom**: What failed? When? How often?
+2. **Trace Backwards**: Start at failure, work up call stack
+3. **Identify Trigger**: Original input? Violated assumptions?
+4. **Verify Fix**: Test reproduces  Fix  Test passes
+
+### Example Trace
+```
+Symptom: "Cannot read property 'id' of undefined"
+
+renderUser(user)  user is undefined
+
+getUserById(id)  returned null  
+
+Database query  ID doesn't exist
+
+ROOT CAUSE: Frontend sending stale ID after deletion
+```
+
+### Tools: Binary search, git bisect, time-travel debugging

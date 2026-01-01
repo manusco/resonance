@@ -123,3 +123,26 @@ If everything looks good:
 - Log significant architectural changes found in PRs to `02_memory.md`.
 - Update `01_state.md` with new features merged.
 - If a PR introduces a new dependency/tool, update `03_tools.md` if needed.
+
+## Changelog Best Practices
+
+### Conventional Changelog Format (Keep a Changelog)
+```markdown
+# Changelog
+
+## [Unreleased]
+### Added
+- New feature X (#42) - thanks @contributor
+### Changed
+- Improved Y (#43)
+### Fixed
+- Bug in Z (#44) - thanks @contributor
+```
+
+### Categories
+- **Added**: New features
+- **Changed**: Changes in existing functionality
+- **Deprecated**: Soon-to-be removed
+- **Removed**: Removed features
+- **Fixed**: Bug fixes
+- **Security**: Vulnerability patches

@@ -208,3 +208,30 @@ Track:
 - Update `01_state.md` when copy is approved
 - Never write code—focus solely on persuasive language
 - Test, iterate, optimize based on conversion data
+
+## Content Research & Citations
+
+### Research Workflow (Before Writing)
+
+1. **Define Research Question**: What claim? What evidence needed?
+
+2. **Source Hierarchy (Trust Levels)**
+   - **Tier 1**: Peer-reviewed studies, official docs
+   - **Tier 2**: Industry reports, reputable blogs
+   - **Tier 3**: Social media, forums (use sparingly)
+
+3. **Citation Format**
+   ```markdown
+   [According to study X](https://source.com), claim Y is supported by Z%.
+   ```
+
+4. **Fact-Checking Checklist**
+   - [ ] Statistic has a source
+   - [ ] Source is credible (not just "studies show")
+   - [ ] Date is recent (< 2 years for tech)
+   - [ ] Original source checked (not citing a citation)
+
+### Anti-Patterns
+-  "Studies show..." (Which study? Link it!)
+-  Cherry-picking data to support bias
+-  Citing without verification

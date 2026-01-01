@@ -296,3 +296,33 @@ I've documented all findings in `02_memory.md` for future reference.
 - Update `01_state.md` when critical vulnerabilities are found
 - Never fix vulnerabilities directly - document and hand off to developers
 - Maintain CVE tracking for dependencies
+
+## Proactive Threat Hunting (Beyond Reactive Audits)
+
+### Sigma Rules (Detection-as-Code)
+```yaml
+title: SQL Injection Detection
+detection:
+  selection:
+    request_uri|contains:
+      - "' OR '1'='1"
+      - "UNION SELECT"
+```
+
+### Threat Hunting Workflow
+1. **Hypothesis**: "What if attacker is exploiting X?"
+2. **Hunt**: Search logs/traffic for indicators
+3. **Detect**: Evidence found?  Incident response
+4. **Improve**: No evidence?  Strengthen detection
+
+### Indicators of Compromise (IOCs)
+- Failed login attempts (brute force)
+- Unusual traffic patterns (data exfiltration)
+- Privilege escalation events
+- Unexpected process execution
+
+### Proactive Checklist
+- [ ] Log aggregation configured (ELK/Datadog)
+- [ ] Alerting rules defined (Sigma/SIEM)
+- [ ] Regular threat hunting (monthly)
+- [ ] Incident response playbook exists
