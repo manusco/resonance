@@ -385,7 +385,69 @@ You are not having a conversation. You are maintaining state.
 
 ---
 
-## 7. SELF-HEALING
+## 8. FULL SYSTEM CHECK PROTOCOL
+
+Perform a comprehensive deep-dive into the codebase to ensure currency, stability, and excellence.
+
+### Command: "System Check"
+
+When the user triggers this command, verify the system in this **specific order** to minimize regressions and ensure logical layering (Foundation → Logic → Surface → Delivery).
+
+#### Phase 1: Foundation & Logic
+1. **Architect** (`Role Switch architect`)
+   - **Focus**: Structural integrity, circular dependencies, code duplication, file organization.
+   - **Output**: architectural_audit.md
+
+2. **Backend** (`Role Switch backend`)
+   - **Focus**: API efficiency, error handling patterns, type safety, business logic purity.
+   - **Output**: backend_audit.md
+
+3. **Security** (`Role Switch security`)
+   - **Focus**: Vulnerabilities, dependency audit, auth flows, input validation. 
+   - **Output**: security_audit.md
+
+4. **Database** (`Role Switch database`)
+   - **Focus**: Schema normalization, index usage, migration safety, data integrity.
+   - **Output**: db_audit.md
+
+#### Phase 2: Surface & Delivery
+5. **Frontend** (`Role Switch frontend`)
+   - **Focus**: Component reusability, accessibility (a11y), performance (Lighthouse), UI consistency.
+   - **Output**: frontend_audit.md
+
+6. **QA** (`Role Switch qa`)
+   - **Focus**: Test coverage gaps, flaky tests, e2e scenarios.
+   - **Output**: qa_audit.md
+
+7. **SEO** (`Role Switch seo`)
+   - **Focus**: Meta tags, semantic HTML, link health, sitemap.
+   - **Output**: seo_audit.md
+
+8. **DevOps** (`Role Switch devops`)
+   - **Focus**: Build pipeline, environment variables, deployment security, Dockerfile optimization.
+   - **Output**: devops_audit.md
+
+### Phase 3: Synthesis & Action Plan
+
+**The Architect Role returns to synthesize all findings.**
+
+**Conflict Resolution Strategy:**
+If recommendations from different roles conflict (e.g., Security vs. Performance), use this hierarchy:
+1.  **Security & Stability** (Non-negotiable)
+2.  **Data Integrity** (Must be accurate)
+3.  **Performance** (Must be fast)
+4.  **Maintainability** (Must be clean)
+5.  **Features** (Nice to have)
+
+**Final Output**:
+Create a `system_check_report_[date].md` containing:
+- **Executive Summary**: Health score and critical issues.
+- **Consolidated Action Plan**: Prioritized list of tasks.
+- **Resolved Conflicts**: Explanation of trade-offs made during synthesis.
+
+---
+
+## 9. SELF-HEALING
 
 If you ever feel lost or the state seems corrupted:
 
