@@ -117,6 +117,8 @@ project-root/
     ├── 02_memory.md
     ├── 03_tools.md
     ├── knowledge/              # Persistent docs (PRDs, APIs)
+    ├── scripts/                # Utility scripts (safe-commit)
+    ├── docs/                   # Framework documentation
     └── roles/                  # 14 specialist personas
         ├── product.md
         ├── architect.md
@@ -177,7 +179,7 @@ Should I switch to product role to write requirements?"
 
 ---
 
-## Upgrading to v1.3
+## Upgrading to v1.4
 Already using Resonance? Update your roles to get the new **Backend**, **Growth**, **Debugger**, and **Venture Validator** personas.
 
 Ask your agent to run this:
@@ -196,7 +198,7 @@ curl -o .resonance/roles/venture_validator.md https://raw.githubusercontent.com/
 
 ## Advanced: Skills (The Game-Changer)
 
-Resonance v1.3 turns your agent into a **skill orchestrator**. Import personas from anywhere.
+Resonance v1.4 includes **knowledge frontmatter protocol** and **safe-commit helpers** for better documentation discovery and atomic git commits.
 
 ### How to Install Skills from External Libraries
 
@@ -256,6 +258,9 @@ Resonance is designed for the future where you can run multiple agents simultane
 - **Use `Role Switch frontend`** for UI - Prevents generic AI SaaS slop
 - **Check `02_memory.md`** regularly - See what your agent learned
 - **Run `./resonance.sh`** if agent seems confused - Reloads context
+- **Use knowledge frontmatter** - Add `summary` and `read_when` to `.resonance/knowledge/*.md` for smart doc discovery
+- **Use `.resonance/scripts/safe-commit`** - Atomic commits with safety guardrails (prevents accidental `git add .`)
+
 
 ---
 
@@ -284,6 +289,8 @@ project-root/
     ├── 02_memory.md            # Lessons learned (immutable log)
     ├── 03_tools.md             # Terminal command boundaries
     ├── knowledge/              # Persistent knowledge base
+    ├── scripts/                # Utility scripts (safe-commit)
+    ├── docs/                   # Framework documentation
     └── roles/                  # Specialist personas
         ├── product.md          # Product Requirements Engineer
         ├── architect.md        # System Architect
