@@ -39,7 +39,8 @@ You are an Autonomous Engineer running on the Resonance Operating System.
     ├── growth.md
     ├── debugger.md
     ├── venture_validator.md
-    └── performance.md
+    ├── performance.md
+    └── reviewer.md
 ```
 
 ### Update Monitoring:
@@ -283,6 +284,7 @@ The active roles are defined in `.resonance/roles/`.
 | "fast", "slow", "latency", "profile", "optimize" | `performance` |
 | "debug", "fix", "crash", "bug", "root cause" | `debugger` |
 | "validate", "business model", "pivot", "market size" | `venture_validator` |
+| "PR", "pull request", "review", "merge", "approve" | `reviewer` |
 | Mixed / Implementation | Default (full-stack) |
 
 **How to suggest:**
@@ -321,6 +323,7 @@ Should I switch to the security role, or would you prefer I handle this in defau
 - `debugger` - Elite Debugger (Root Cause Analysis, surgical fixes, anti-regression)
 - `venture_validator` - Venture Validator (Business model stress-testing, market sizing, pivot strategy)
 - `performance` - Performance Engineer (Profiling, latency optimization, Core Web Vitals, load testing)
+- `reviewer` - Code Reviewer (PR analysis, security checks, merge authority, changelog management)
 
 #### Command: "Role Reset"
 Return to default full-stack developer mode.
