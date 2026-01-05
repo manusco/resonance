@@ -38,6 +38,7 @@ Other frameworks are static markdown files the agent *might* read. Resonance is 
 Leverages Antigravity's unique capabilities:
 - **Terminal access** → Self-healing via `resonance.sh`
 - **Artifact system** → UI task lists auto-sync to `.resonance/01_state.md`
+- **Active Workflows** → `.resonance/workflows/` scripts guide you through PRDs and Architecture
 - **Persistent sessions** → Agent maintains context across conversations
 
 ### Universal Socket for Agent Skills
@@ -107,34 +108,19 @@ cd my-project
 
 After running `Resonance Init`, your project structure should look like:
 
-```
-project-root/
 ├── AGENT.md                    # The kernel (you downloaded this)
 ├── resonance.sh                # Self-healing script (auto-generated)
+├── docs/                       # UNIFIED MEMORY (PRDs, Specs)
 └── .resonance/                 # Created by agent
     ├── 00_soul.md
     ├── 01_state.md
     ├── 02_memory.md
     ├── 03_tools.md
-    ├── knowledge/              # Persistent docs (PRDs, APIs)
+    ├── workflows/              # Active Protocols (Initiation, Scoping)
     ├── scripts/                # Utility scripts (safe-commit)
-    ├── docs/                   # Framework documentation
     └── roles/                  # 14 specialist personas
         ├── product.md
-        ├── architect.md
-        ├── qa.md
-        ├── researcher.md
-        ├── frontend.md
-        ├── security.md
-        ├── copywriter.md
-        ├── seo.md
-        ├── devops.md
-        ├── database.md
-        ├── backend.md
-        ├── growth.md
-        ├── debugger.md
-        └── venture_validator.md
-```
+        ├── ...
 
 ### 🔧 Troubleshooting
 
@@ -157,24 +143,43 @@ Your agent now has:
 
 ---
 
+## ⚡ Quick Command Cheatsheet
+
+### 🟢 Start
+*   **Init System**: `Resonance Init`
+*   **Start Project**: *"I want to build [idea]. Draft a PRD."*
+
+### 🟡 Plan
+*   **Draft Specs**: *"Start initiation protocol"* (Generates PRD)
+*   **Design System**: *"Run architecture protocol"* (Generates C4/ADR)
+*   **Scope Tasks**: *"Plan the work"* (Generates task list)
+
+### 🔵 Roles
+*   **Product Mode**: `Role Switch product`
+*   **Architecture Mode**: `Role Switch architect`
+*   **Implementation**: `Role Reset` (Default)
+*   **Testing**: `Role Switch qa`
+
+### 🟣 Utils
+*   **Check Health**: `./resonance.sh`
+*   **Safe Commit**: `.resonance/scripts/safe-commit.sh "msg" file`
+
+---
+
 ## Example: First Session
 
 ```
 You: "Resonance Init"
 
 Agent: "✅ Resonance System Online
-- Created .resonance/ directory
-- Generated soul.md (vision document)
-- Set up state tracking
-- Initialized 5 specialist roles
+...
+To get started, simply describe your idea."
 
-What are we building?"
+You: "A SaaS app for managing podcasts."
 
-You: "A SaaS app for managing podcasts"
-
-Agent: "I've updated 00_soul.md with our vision.
-Current state: Planning phase.
-Should I switch to product role to write requirements?"
+Agent: "**Understood. I have drafted a PRD for 'PodcastOS'.**
+It includes a Press Release, User Stories, and Non-Goals.
+Please review `docs/specs/PRD-PodcastOS.md`."
 ```
 
 ---
@@ -258,7 +263,9 @@ Resonance is designed for the future where you can run multiple agents simultane
 - **Use `Role Switch frontend`** for UI - Prevents generic AI SaaS slop
 - **Check `02_memory.md`** regularly - See what your agent learned
 - **Run `./resonance.sh`** if agent seems confused - Reloads context
-- **Use knowledge frontmatter** - Add `summary` and `read_when` to `.resonance/knowledge/*.md` for smart doc discovery
+- **Run `./resonance.sh`** if agent seems confused - Reloads context
+- **Trigger Workflows** - Say "Start new project" to run the Initiation Protocol
+- **Use knowledge frontmatter** - Add `summary` and `read_when` to `docs/*.md` for smart doc discovery
 - **Use `.resonance/scripts/safe-commit`** - Atomic commits with safety guardrails (prevents accidental `git add .`)
 
 
@@ -279,26 +286,20 @@ Each role has strict boundaries. Specialists can't code. Coders can't design arc
 
 ## Architecture
 
-```
-project-root/
 ├── AGENT.md                    # The kernel (default full-stack role)
 ├── resonance.sh                # Self-healing script
+├── docs/                       # UNIFIED MEMORY (Specs, PRDs)
 └── .resonance/
     ├── 00_soul.md              # Vision, principles, North Star
     ├── 01_state.md             # Current status (persistent memory)
     ├── 02_memory.md            # Lessons learned (immutable log)
     ├── 03_tools.md             # Terminal command boundaries
-    ├── knowledge/              # Persistent knowledge base
+    ├── workflows/              # Active Protocols (Initiation, Arch, Scoping)
     ├── scripts/                # Utility scripts (safe-commit)
-    ├── docs/                   # Framework documentation
     └── roles/                  # Specialist personas
         ├── product.md          # Product Requirements Engineer
         ├── architect.md        # System Architect
-        ├── qa.md               # QA Engineer
-        ├── researcher.md       # Research Engineer
-        ├── frontend.md         # Frontend/UX Engineer
-        ├── backend.md          # Backend Engineer
-        └── ... (14 total)
+        ├── ... (14 total)
 ```
 
 ---
