@@ -12,13 +12,13 @@ if [ "$1" == "update" ]; then
     echo -e "${YELLOW}📡 Checking for Resonance updates...${NC}"
     echo ""
     
-    # Get local version from AGENT.md
-    if [ -f "AGENT.md" ]; then
-        LOCAL_VERSION=$(grep -m 1 "# RESONANCE v" AGENT.md | sed 's/.*v\([0-9.]*\).*/\1/')
+    # Get local version from AGENTS.md
+    if [ -f "AGENTS.md" ]; then
+        LOCAL_VERSION=$(grep -m 1 "# RESONANCE v" AGENTS.md | sed 's/.*v\([0-9.]*\).*/\1/')
         echo "   Local version: v$LOCAL_VERSION"
         
         # Fetch remote version
-        REMOTE_VERSION=$(curl -s https://raw.githubusercontent.com/manusco/resonance/main/AGENT.md | grep -m 1 "# RESONANCE v" | sed 's/.*v\([0-9.]*\).*/\1/')
+        REMOTE_VERSION=$(curl -s https://raw.githubusercontent.com/manusco/resonance/main/AGENTS.md | grep -m 1 "# RESONANCE v" | sed 's/.*v\([0-9.]*\).*/\1/')
         
         if [ -n "$REMOTE_VERSION" ]; then
             echo "   Latest version: v$REMOTE_VERSION"
@@ -28,7 +28,7 @@ if [ "$1" == "update" ]; then
                 echo -e "${YELLOW}✨ Update available!${NC}"
                 echo ""
                 echo "To update, run:"
-                echo "  curl -o AGENT.md https://raw.githubusercontent.com/manusco/resonance/main/AGENT.md"
+                echo "  curl -o AGENTS.md https://raw.githubusercontent.com/manusco/resonance/main/AGENTS.md"
                 echo ""
                 echo "Note: Your .resonance/ folder will not be affected."
             else
@@ -38,7 +38,7 @@ if [ "$1" == "update" ]; then
             echo -e "${RED}❌ Unable to check for updates (network issue?)${NC}"
         fi
     else
-        echo -e "${RED}❌ AGENT.md not found${NC}"
+        echo -e "${RED}❌ AGENTS.md not found${NC}"
     fi
     
     exit 0

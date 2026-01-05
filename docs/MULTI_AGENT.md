@@ -267,7 +267,7 @@ All agents respect boundaries in their role files
 
 ## Get Started with Multi-Agent Orchestration
 
-1. Install Resonance: `curl -o AGENT.md https://raw.github.com/manusco/resonance/main/AGENT.md`
+1. Install Resonance: `curl -o AGENTS.md https://raw.github.com/manusco/resonance/main/AGENTS.md`
 2. Initialize: `Resonance Init` in Antigravity
 3. Switch roles: `Role Switch [product|architect|qa|researcher|frontend]`
 4. Coordinate through `01_state.md`

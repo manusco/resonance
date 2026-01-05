@@ -143,7 +143,7 @@ With memory, autonomy is powerful (agents remember, learn, and evolve).
 
 ## Get Started
 
-1. Copy `AGENT.md` to your project root
+1. Copy `AGENTS.md` to your project root
 2. In Antigravity, say: `Resonance Init`
 3. Your agent now has persistent memory and specialist roles
 

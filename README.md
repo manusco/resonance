@@ -64,10 +64,10 @@ Infinite extensibility. Zero maintenance.
 ### Option 1: Copy & Paste (Fastest)
 ```bash
 # In your project root
-curl -o AGENT.md https://raw.githubusercontent.com/manusco/resonance/main/AGENT.md
+curl -o AGENTS.md https://raw.githubusercontent.com/manusco/resonance/main/AGENTS.md
 ```
 
-> **⚠️ Important**: This downloads **only the kernel file** (`AGENT.md`). You must then **initialize the framework** (see Quick Start below).
+> **⚠️ Important**: This downloads **only the kernel file** (`AGENTS.md`). You must then **initialize the framework** (see Quick Start below).
 
 ### Option 2: Clone Template
 ```bash
@@ -76,7 +76,7 @@ cd my-project
 ```
 
 ### Option 3: Manual
-1. Download [`AGENT.md`](https://github.com/manusco/resonance/blob/main/AGENT.md)
+1. Download [`AGENTS.md`](https://github.com/manusco/resonance/blob/main/AGENTS.md)
 2. Place it in your project root
 3. **Next**: Initialize the framework (see Quick Start below)
 
@@ -86,7 +86,7 @@ cd my-project
 
 **In Google Antigravity:**
 
-1. **Install**: Copy `AGENT.md` to your project root (using curl or manual download)
+1. **Install**: Copy `AGENTS.md` to your project root (using curl or manual download)
 2. **Initialize**: Open your project in Antigravity and say to your agent:
    ```
    Resonance Init
@@ -108,7 +108,7 @@ cd my-project
 
 After running `Resonance Init`, your project structure should look like:
 
-├── AGENT.md                    # The kernel (you downloaded this)
+├── AGENTS.md                   # The kernel (you downloaded this)
 ├── resonance.sh                # Self-healing script (auto-generated)
 ├── docs/                       # UNIFIED MEMORY (PRDs, Specs)
 └── .resonance/                 # Created by agent
@@ -125,7 +125,7 @@ After running `Resonance Init`, your project structure should look like:
 ### 🔧 Troubleshooting
 
 **Problem**: "I ran curl but nothing happened"
-- **Solution**: The curl command only downloads `AGENT.md`. You must tell the agent `Resonance Init` to create the folder structure.
+- **Solution**: The curl command only downloads `AGENTS.md`. You must tell the agent `Resonance Init` to create the folder structure.
 
 **Problem**: "The `.resonance/` folder is missing or incomplete"
 - **Solution**: Say to your agent: `Resonance Init` or `./resonance.sh` to regenerate missing files.
@@ -184,7 +184,7 @@ Please review `docs/specs/PRD-PodcastOS.md`."
 
 ---
 
-## Upgrading to v1.4
+## Upgrading to v1.5
 Already using Resonance? Update your roles to get the new **Backend**, **Growth**, **Debugger**, and **Venture Validator** personas.
 
 Ask your agent to run this:
@@ -203,7 +203,7 @@ curl -o .resonance/roles/venture_validator.md https://raw.githubusercontent.com/
 
 ## Advanced: Skills (The Game-Changer)
 
-Resonance v1.4 includes **knowledge frontmatter protocol** and **safe-commit helpers** for better documentation discovery and atomic git commits.
+Resonance v1.5 includes **knowledge frontmatter protocol** and **safe-commit helpers** for better documentation discovery and atomic git commits.
 
 ### How to Install Skills from External Libraries
 
@@ -251,7 +251,7 @@ Resonance is designed for the future where you can run multiple agents simultane
 
 **For enterprise teams**: Stick with heavyweight frameworks built for governance and compliance.
 
-**For builders who ship fast**: Resonance is your AI agent's operating system. One file (`AGENT.md`) to start. The agent maintains the rest.
+**For builders who ship fast**: Resonance is your AI agent's operating system. One file (`AGENTS.md`) to start. The agent maintains the rest.
 
 ---
 
@@ -286,7 +286,7 @@ Each role has strict boundaries. Specialists can't code. Coders can't design arc
 
 ## Architecture
 
-├── AGENT.md                    # The kernel (default full-stack role)
+├── AGENTS.md                   # The kernel (default full-stack role)
 ├── resonance.sh                # Self-healing script
 ├── docs/                       # UNIFIED MEMORY (Specs, PRDs)
 └── .resonance/
