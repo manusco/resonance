@@ -108,6 +108,7 @@ cd my-project
 
 After running `Resonance Init`, your project structure should look like:
 
+```text
 ├── AGENTS.md                   # The kernel (you downloaded this)
 ├── resonance.sh                # Self-healing script (auto-generated)
 ├── docs/                       # UNIFIED MEMORY (PRDs, Specs)
@@ -118,9 +119,10 @@ After running `Resonance Init`, your project structure should look like:
     ├── 03_tools.md
     ├── workflows/              # Active Protocols (Initiation, Scoping)
     ├── scripts/                # Utility scripts (safe-commit)
-    └── roles/                  # 14 specialist personas
+    └── roles/                  # 16 specialist personas
         ├── product.md
         ├── ...
+```
 
 ### 🔧 Troubleshooting
 
@@ -228,7 +230,7 @@ Want to use a specific agent persona you found online?
 
 ### Stock Roles Included
 
-Resonance ships with 14 benchmark-quality specialist roles:
+Resonance ships with 16 benchmark-quality specialist roles:
 
 - **product**: Product Requirements Engineer - Write world-class PRDs, user stories, acceptance criteria
 - **architect**: System Architect - Design system architecture, ADRs, trade-off analysis  
@@ -237,6 +239,11 @@ Resonance ships with 14 benchmark-quality specialist roles:
 - **reviewer**: Code Reviewer - Static analysis, style enforcement, security checks ("The Gatekeeper")
 - **frontend**: Frontend/UX Engineer - High-end UI/UX, design systems, prevents AI slop
 - **backend**: Backend Engineer - API design, business logic, integrations
+- **database**: Database Architect - Schema design, query optimization, data modeling
+- **security**: Security Auditor - Vulnerability assessment, OWASP, threat modeling
+- **performance**: Performance Engineer - Profiling, latency optimization, Core Web Vitals
+- **devops**: DevOps Engineer - CI/CD, IaC, containers, observability
+- **seo**: SEO Strategist - Technical SEO, content strategy, keyword research
 - **growth**: Growth Strategist - AARRR metrics, funnel optimization
 - **conversion_engineer**: Conversion Engineer - Landing page architecture, CRO, persuasion psychology
 - **debugger**: Elite Debugger - Root Cause Analysis, surgical fixes
