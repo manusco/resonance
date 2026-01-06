@@ -1,6 +1,11 @@
-# Agent Protocol: Project Initiation
+# Workflow: Project Initiation ("The Press Release")
 
-**Trigger:** User says "I have an idea", "Start a new project", "New feature", or "Draft a PRD".
+**Primary Role**: `product` (Product Requirements Engineer)
+**Goal**: Convert a vague user intent into a rigorous `docs/specs/PRD.md`.
+**Constraint**: Do NOT discuss technical implementation (SQL, React, etc.) in this phase. Focus purely on the *User Problem* and *Solution*.
+
+## 1. Trigger
+User says: "I have an idea", "Start a new project", "New feature", or "Draft a PRD".
 
 ## 1. Goal
 Convert a vague user intent into a rigorous **Product Requirement Document (PRD)** stored in `docs/specs/`.

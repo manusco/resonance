@@ -1,6 +1,10 @@
-# Agent Protocol: Task Scoping (The Bridge to Code)
+# Workflow: Task Scoping ("The Vibe Coder's Map")
 
-**Trigger:** User says "Plan the work", "Scope this", "Create task list", or coming from `Architecture`.
+**Primary Role**: Default / Tech Lead
+**Goal**: Break architecture into atomic, verifyable steps.
+**Constraint**: Do not simply list "Build X". List "Build X, Verify with Y".
+
+## 1. Trigger
 
 ## 1. Goal
 Convert a PRD/Architecture Spec into a rigorous **Implementation Plan** (`implementation_plan.md` or **Task List**) that an AI Agent can execute reliably ("Vibe Coding").

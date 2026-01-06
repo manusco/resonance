@@ -159,9 +159,16 @@ Your agent now has:
 *   **Architecture Mode**: `Role Switch architect`
 *   **Implementation**: `Role Reset` (Default)
 *   **Testing**: `Role Switch qa`
+*   **Marketing**: `Role Switch conversion_engineer`
 
 ### 🟣 Utils
 *   **Check Health**: `./resonance.sh`
+*   **Update System**: *"Update Resonance"* (Runs Update Protocol)
+*   **Review PRs**: *"Review open pull requests"* (Runs PR Protocol)
+*   **Testing**: *"Test this module"* (Runs Testing Protocol)
+*   **Audit Security**: *"Start security audit"* (Runs Security Protocol)
+*   **System Check**: *"Run system check"* (Runs Health & Quality Protocol)
+*   **Debug**: *"Fix this bug"* (Runs Scientific Debugging Protocol)
 *   **Safe Commit**: `.resonance/scripts/safe-commit.sh "msg" file`
 
 ---
@@ -184,7 +191,7 @@ Please review `docs/specs/PRD-PodcastOS.md`."
 
 ---
 
-## Upgrading to v1.5
+## Upgrading to v1.6
 Already using Resonance? Update your roles to get the new **Backend**, **Growth**, **Debugger**, and **Venture Validator** personas.
 
 Ask your agent to run this:
@@ -203,7 +210,7 @@ curl -o .resonance/roles/venture_validator.md https://raw.githubusercontent.com/
 
 ## Advanced: Skills (The Game-Changer)
 
-Resonance v1.5 includes **knowledge frontmatter protocol** and **safe-commit helpers** for better documentation discovery and atomic git commits.
+Resonance v1.6 includes **knowledge frontmatter protocol** and **safe-commit helpers** for better documentation discovery and atomic git commits.
 
 ### How to Install Skills from External Libraries
 
@@ -227,9 +234,11 @@ Resonance ships with 14 benchmark-quality specialist roles:
 - **architect**: System Architect - Design system architecture, ADRs, trade-off analysis  
 - **qa**: QA Engineer - Comprehensive testing strategy, edge case discovery, quality metrics
 - **researcher**: Research Engineer - Technical research, documentation, knowledge synthesis
+- **reviewer**: Code Reviewer - Static analysis, style enforcement, security checks ("The Gatekeeper")
 - **frontend**: Frontend/UX Engineer - High-end UI/UX, design systems, prevents AI slop
 - **backend**: Backend Engineer - API design, business logic, integrations
 - **growth**: Growth Strategist - AARRR metrics, funnel optimization
+- **conversion_engineer**: Conversion Engineer - Landing page architecture, CRO, persuasion psychology
 - **debugger**: Elite Debugger - Root Cause Analysis, surgical fixes
 - **venture_validator**: Venture Validator - Business model stress-testing
 

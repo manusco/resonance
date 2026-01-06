@@ -2,7 +2,7 @@
 
 The future of AI-assisted development isn't a single omniscient agent. It's **specialized agents working together**.
 
-Resonance v1.1 is designed from the ground up for multi-agent orchestration.
+Resonance v1.6 is designed from the ground up for multi-agent orchestration.
 
 ---
 

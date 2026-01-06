@@ -1,6 +1,10 @@
-# Agent Protocol: Technical Architecture
+# Workflow: Technical Architecture ("The Blueprints")
 
-**Trigger:** User says "How should we build this?", "Design the system", "Architecture", or coming from `01_project_initiation.md`.
+**Primary Role**: `architect` (System Architect)
+**Goal**: Design the system structure before coding.
+**Constraint**: Do NOT write implementation code. Produce standard `docs/architecture/` artifacts.
+
+## 1. Trigger
 
 ## 1. Goal
 Convert a PRD into a concrete **Technical Specification** stored in `docs/specs/` or `docs/architecture/`.
