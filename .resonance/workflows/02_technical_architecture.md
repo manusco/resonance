@@ -1,68 +1,60 @@
-# Workflow: Technical Architecture ("The Blueprints")
+# Workflow: Technical Architecture ("The Blueprint")
 
-**Primary Role**: `architect` (System Architect)
-**Goal**: Design the system structure before coding.
-**Constraint**: Do NOT write implementation code. Produce standard `docs/architecture/` artifacts.
+**Primary Roles**: `architect`, `researcher`
+**Goal**: Convert a PRD into a **Technical Design** with known trade-offs.
+**Output**: `docs/architecture/ARCH-[name].md` containing C4 Diagrams and ADRs.
+
+---
 
 ## 1. Trigger
+User accepts the PRD from `01_project_initiation.md`.
 
-## 1. Goal
-Convert a PRD into a concrete **Technical Specification** stored in `docs/specs/` or `docs/architecture/`.
-We use the **C4 Model** and **Failure Mode Analysis**.
+## 2. Phase 1: The Research (Role: `researcher`)
+Before designing, identify the unknowns.
 
-## 2. The Design Process
-Do not just list libraries. Run this protocol:
+1.  **Identify "Magic"**: Is there a requirement ("Real-time sync") that we don't know how to build?
+2.  **Trade-off Matrix**: Compare solutions (e.g., WebSocket vs Polling).
+3.  **Output**: A brief "Research Note" used by the Architect.
+
+## 3. Phase 2: The Design (Role: `architect`)
+Define the system structure using **DDD** and **C4**.
 
 ### Step 1: System Context (C4 Level 1)
-*   **Big Picture:** How does this feature/system fit into the existing implementation?
-*   **Dependencies:** What external APIs, databases, or legacy systems does this touch?
+*   What external systems (Stripe, OpenAI) do we touch?
+*   Who are the users?
 
-### Step 2: Data First Principles
-*   **Schema Design:** Define the data model *before* the API.
-*   **Types:** TypeScript interfaces / Database schemas.
-*   **Migration Strategy:** If changing existing data, how do we migrate safely?
+### Step 2: Container/Component (C4 Level 2/3)
+*   Breakdown of services/modules.
+*   **Domain Model**: Define the Entities (User, Order) and Value Objects (Email, Money).
 
-### Step 3: Component Diagram (C4 Level 3)
-*   Break it down into major components (e.g., "Auth Service", "Payment Worker").
-*   Define the interfaces between them.
+### Step 3: Hard Decisions (ADRs)
+*   Write an **Architectural Decision Record** for each major choice.
+*   *Example*: "Decision: Use Postgres. Rationale: Need ACID compliance."
 
-### Step 4: Failure Mode Analysis (Pre-Mortem)
-*   **"How will this break?"** (Network partitions, API rate limits, invalid user input).
-*   **Resiliency:** How do we handle these failures? (Retries, Dead Letter Queues, Fallbacks).
-
-## 3. Artifact Generation
-Generate a file in `docs/specs/ARCH-[name].md` or `docs/architecture/[name].md`.
+## 4. Artifact Generation
+Create `docs/architecture/ARCH-[name].md`.
 
 **Template:**
 ```markdown
 # Architecture: [System Name]
 
-## 1. System Context
-[Diagram or Description of how this fits]
+## 1. System Context (C4)
+[User] -> [Web App] -> [API] -> [Database]
 
-## 2. Data Model
-```typescript
-interface User {
-  id: string;
-  // ...
-}
+## 2. Domain Model (DDD)
+*   **Aggregate**: Order (Root)
+    *   **Entity**: LineItem
+    *   **Value Object**: Money
+*   **Service**: PaymentService
+
+## 3. Key Decisions (ADRs)
+*   [ADR-001]: Use Supabase for Auth (Speed > Customization)
+*   [ADR-002]: Use Tailwind (Standardization > Uniqueness)
+
+## 4. Failure Modes
+*   **Risk**: OpenAI API down.
+*   **Mitigation**: Circuit Breaker + Queue.
 ```
 
-## 3. Component Design
-- **[Component A]**: Responsible for X.
-- **[Component B]**: Responsible for Y.
-
-## 4. API / Interfaces
-- `POST /api/v1/resource` -> Returns `201 Created`
-
-## 5. Security & Privacy
-- [Authentication/Authorization checks]
-- [Data protection]
-
-## 6. Failure Modes & Mitigation
-- **Risk:** [Describe risk]
-- **Mitigation:** [Describe strategy]
-```
-
-## 4. Next Step
-Ask the user: "Architecture defined. Ready to **Scope Tasks**?"
+## 5. Transition
+Ask: "Architecture defined. Move to **Implementation Scoping**?"

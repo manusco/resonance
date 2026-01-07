@@ -1,57 +1,53 @@
-# Workflow: Task Scoping ("The Vibe Coder's Map")
+# Workflow: Task Scoping ("The Execution Plan")
 
-**Primary Role**: Default / Tech Lead
-**Goal**: Break architecture into atomic, verifyable steps.
-**Constraint**: Do not simply list "Build X". List "Build X, Verify with Y".
+**Primary Roles**: `backend`, `frontend`, `database`
+**Goal**: Convert Architecture into **Atomic, Verifiable Steps**.
+**Output**: `implementation_plan.md` with "Ralph Loop" integration.
+
+---
 
 ## 1. Trigger
+User accepts the Architecture from `02_technical_architecture.md`.
 
-## 1. Goal
-Convert a PRD/Architecture Spec into a rigorous **Implementation Plan** (`implementation_plan.md` or **Task List**) that an AI Agent can execute reliably ("Vibe Coding").
+## 2. Phase 1: The Breakdown (Roles: `backend` / `frontend`)
+Decompose the work into vertical slices.
 
-## 2. The Scoping Process
-The enemy is ambiguity. Steps must be **Atomic** and **Verifiable**.
+1.  **Database First (Role: `database`)**:
+    *   Define the Schema (SQL) first.
+    *   Task: "Create migration X."
+2.  **API Second (Role: `backend`)**:
+    *   Define the Interface (OpenAPI/Types).
+    *   Task: "Implement Endpoint Y with Mock."
+3.  **UI Third (Role: `frontend`)**:
+    *   Define the Component Props.
+    *   Task: "Build Component Z connected to Mock Y."
 
-### Step 1: Decomposition
-*   Break features into chunks that take < 4 hours to implement.
-*   Separate **Refactoring** from **New Features**.
-*   Separate **Frontend** from **Backend** (unless vertical slice is cleaner).
+## 3. Phase 2: The Verification Protocol ("Ralph Loop")
+**Every step must be verifiable.**
+For each task, define *how* the Agent will prove it works without human success.
 
-### Step 2: Verification Definition
-*   For EACH step, define: **"How do we know it works?"**
-*   Bad: "Implement API."
-*   Good: "Implement API. Verify with `curl -X POST ...` returns 200."
+*   **Pattern**: `Repro` -> `Fix` -> `Verify`.
+*   **Constraint**: If you can't verify it with a script, break it down further.
 
-### Step 3: Complexity & Risk Assessment
-*   Flag steps that are "One-Way Doors" (hard to reverse).
-*   Flag steps that require manual user testing.
-
-## 3. Artifact Generation
-Create or Update `implementation_plan.md` (or the active Task List).
+## 4. Artifact Generation
+Update `implementation_plan.md`.
 
 **Template:**
 ```markdown
-# Implementation Plan - [Feature]
+# Implementation Plan
 
-## User Review Required
-[Critical interaction points]
+## Phase 1: Database & Core Logic
+- [ ] **DB Migration**: Add `orders` table.
+    - *Verification*: Run `_check_db_schema.ts` (Inspects information_schema).
+- [ ] **API Endpoint**: `POST /orders`
+    - *Loop Check*: `curl` returns 404.
+    - *Implementation*: NestJS Controller.
+    - *Verification*: `curl` returns 201 + DB row exists.
 
-## Proposed Changes
-### [Component]
-- [ ] **Step 1:** [Action]
-    - *Verification:* [Command/Check]
-- [ ] **Step 2:** [Action]
-    - *Verification:* [Command/Check]
-
-## Verification Plan
-### Automated Tests
-[Commands to run]
-
-### Manual Verification
-[User actions]
+## Phase 2: Frontend
+- [ ] **Order Component**
+    - *Verification*: `npm run test:component Order` (React Testing Library).
 ```
 
-## 4. State Update
-**CRITICAL:** Update `.resonance/01_state.md` to reflect that we are now in the **Execution Phase** for this feature.
-- Update `## Current Phase` to `Development`.
-- Add the high-level goal to `## Active Work`.
+## 5. Transition
+Ask: "Plan locked. **Execute**?" (Implicitly moving to specific Role modes).

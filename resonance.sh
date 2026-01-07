@@ -60,6 +60,11 @@ if [ ! -d .resonance/knowledge ]; then
     mkdir -p .resonance/knowledge
 fi
 
+# Create Documentation Structure (Unified Memory)
+mkdir -p docs/specs
+mkdir -p docs/architecture
+mkdir -p docs/reports
+
 # Load consciousness
 echo ""
 echo "📖 Loading Soul (Vision):"

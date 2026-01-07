@@ -1,64 +1,65 @@
-# Workflow: Project Initiation ("The Press Release")
+# Workflow: Project Initiation ("The Launchpad")
 
-**Primary Role**: `product` (Product Requirements Engineer)
-**Goal**: Convert a vague user intent into a rigorous `docs/specs/PRD.md`.
-**Constraint**: Do NOT discuss technical implementation (SQL, React, etc.) in this phase. Focus purely on the *User Problem* and *Solution*.
+**Primary Roles**: `product`, `venture_validator`
+**Goal**: Convert a vague intent into a **Validated Product Spec**.
+**Output**: `docs/specs/PRD-[name].md` containing a Press Release and Lean Canvas.
+
+---
 
 ## 1. Trigger
-User says: "I have an idea", "Start a new project", "New feature", or "Draft a PRD".
+User says: "I have an idea", "Start a new project", or "New feature".
 
-## 1. Goal
-Convert a vague user intent into a rigorous **Product Requirement Document (PRD)** stored in `docs/specs/`.
-We use the "Working Backwards" method (Amazon) combined with First-Principles thinking.
+## 2. Phase 1: The Validation Check (Role: `venture_validator`)
+Before describing *what* to build, ask *if* we should build it.
 
-## 2. The Process: Draft First, Ask Second
+1.  **Identify the Riskiest Assumption**:
+    *   *User*: "I want an AI cat namer."
+    *   *Assumption*: "People pay for cat names."
+2.  **Define Kill Criteria**:
+    *   "If we can't find 5 competitors making money, we kill it."
+3.  **Draft Lean Canvas (Mental or Scratchpad)**:
+    *   Problem? Segments? Unfair Advantage?
 
-**CRITICAL:** Do not interrogate the user with a list of 10 questions.
-**INSTEAD:** Take their initial input (even if it's just "I want a dark mode") and **IMMEDIATELY DRAFT** the entire Press Release and PRD sections using your best judgment.
+## 3. Phase 2: The Working Backwards Draft (Role: `product`)
+Do not interrogate the user. **Draft the Press Release** immediately based on the validation.
 
-### Step 1: Ingest & Hybrid Draft
-*   Read the user's input.
-*   **Confident?** Draft the sections you can reasonably infer (Headline, Solution path).
-*   **Unsure?** Leave placeholders or ask specific questions for *critical* missing info.
-*   **The Goal:** Show a 80% complete draft. It is easier for a user to correct a wrong guess than to answer a blank page.
+### Step 1: The Press Release
+Draft a specific, customer-centric announcement:
+*   **Headline**: The value prop.
+*   **Problem**: The current pain.
+*   **Solution**: The new reality.
+*   **Quote**: Fictional customer testimonial.
 
-### Step 2: The "Press Release" (Amazon Style)
-Draft this **FOR** the user, but highlight your assumptions.
-*   **Headline:** [Proposal]
-*   **The Problem:** [Inferred]
-*   **The Solution:** [Inferred]
-*   **MISSING:** "I wasn't sure about [X], so I guessed [Y]. Is that right?"
+### Step 2: The "Six-Pager" (Core Requirements)
+*   **User Persona**: "Solo Founder Sam".
+*   **Core Loop**: User does X -> System does Y -> User gets Z.
+*   **Non-Goals**: What are we NOT doing in V1? (Crucial for speed).
 
-### Step 3: First Principles & Scope
-Only ask clarifying questions if you are truly stuck.
-*   **Strip to Reality:** Check constraints.
-*   **Non-Goals:** Propose a list of things NOT to do (e.g., "I've excluded mobile support for V1, correct?").
-
-## 3. Artifact Generation
-Once the user affirms the direction, generate `docs/specs/PRD-[name].md`.
+## 4. Artifact Generation
+Create `docs/specs/PRD-[name].md`.
 
 **Template:**
 ```markdown
-# PRD: [Feature Name]
+# PRD: [Project Name]
 
-## 1. The Press Release
-> [Headline]
-> [Summary]
+## 1. The Validation (Lean Canvas)
+*   **Problem**: [Top 3 problems]
+*   **Unfair Advantage**: [Why us?]
+*   **Kill Criteria**: [When do we quit?]
 
-## 2. Problem Statement
-[First-principles analysis of the core user pain]
+## 2. The Press Release (Working Backwards)
+> **[Headline]**
+> [Summary of the future state]
+> "I used to [Problem], but now [Solution]." - [Customer]
 
-## 3. Solution (The "Happy Path")
-[Step-by-step user journey]
+## 3. Functional Requirements (The "What")
+*   **User Story 1**: As a [User], I want [Action], so that [Benefit].
+*   **User Story 2**: ...
 
-## 4. Non-Goals (Out of Scope)
-- [ ] [Feature X]
-- [ ] [Feature Y]
-
-## 5. Success Metrics
-- [Metric 1]
-- [Metric 2]
+## 4. Non-Goals (The "Anti-Scope")
+*   ❌ Mobile App (V1 is Web only)
+*   ❌ Multi-player (V1 is Single player)
 ```
 
-## 4. Next Step
-Ask the user: "PRD drafted. Should we move to **Architecture Design** or straight to **Scoping**?"
+## 5. Transition
+Ask: "PRD Invalidated/Validated. Move to **Architecture**?"
