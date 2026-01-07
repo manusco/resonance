@@ -133,7 +133,7 @@ curl -o .resonance/roles/qa.md https://raw.githubusercontent.com/manusco/resonan
 curl -o .resonance/roles/researcher.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/researcher.md
 curl -o .resonance/roles/frontend.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/frontend.md
 curl -o .resonance/roles/security.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/security.md
-curl -o .resonance/roles/copywriter.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/copywriter.md
+curl -o .resonance/roles/conversion_engineer.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/conversion_engineer.md
 curl -o .resonance/roles/seo.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/seo.md
 curl -o .resonance/roles/devops.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/devops.md
 curl -o .resonance/roles/database.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/database.md
@@ -141,6 +141,8 @@ curl -o .resonance/roles/backend.md https://raw.githubusercontent.com/manusco/re
 curl -o .resonance/roles/growth.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/growth.md
 curl -o .resonance/roles/debugger.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/debugger.md
 curl -o .resonance/roles/venture_validator.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/venture_validator.md
+curl -o .resonance/roles/reviewer.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/reviewer.md
+curl -o .resonance/roles/performance.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/performance.md
 ```
 
 ### Step 3b: Download Utility Scripts
@@ -150,6 +152,21 @@ Download the safe-commit helpers:
 curl -o .resonance/scripts/safe-commit.sh https://raw.githubusercontent.com/manusco/resonance/main/.resonance/scripts/safe-commit.sh
 curl -o .resonance/scripts/safe-commit.ps1 https://raw.githubusercontent.com/manusco/resonance/main/.resonance/scripts/safe-commit.ps1
 chmod +x .resonance/scripts/safe-commit.sh
+```
+
+### Step 3c: Download Active Workflows
+
+Download the operational protocols:
+```bash
+curl -o .resonance/workflows/01_project_initiation.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/01_project_initiation.md
+curl -o .resonance/workflows/02_technical_architecture.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/02_technical_architecture.md
+curl -o .resonance/workflows/03_task_scoping.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/03_task_scoping.md
+curl -o .resonance/workflows/04_pull_request.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/04_pull_request.md
+curl -o .resonance/workflows/05_testing_strategy.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/05_testing_strategy.md
+curl -o .resonance/workflows/06_security_audit.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/06_security_audit.md
+curl -o .resonance/workflows/07_system_check.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/07_system_check.md
+curl -o .resonance/workflows/08_scientific_debugging.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/08_scientific_debugging.md
+curl -o .resonance/workflows/99_framework_update.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/99_framework_update.md
 ```
 
 ### Step 4: Create Self-Healing Script
@@ -168,7 +185,8 @@ Report to user:
 
 Created:
 - Core framework files (00_soul.md, 01_state.md, 02_memory.md, 03_tools.md)
-- Downloaded 14 benchmark specialist roles from GitHub
+- Downloaded 16 benchmark specialist roles from GitHub
+- Downloaded 9 active workflow protocols
 - Downloaded utility scripts (safe-commit helpers)
 - Self-healing script (resonance.sh)
 
@@ -459,7 +477,7 @@ These are scripts YOU run to guide the user through complex phases.
 ### 4. Pull Request Review ("The Gatekeeper")
 **Trigger:** User wants to merge code or check PRs.
 **Action:** Read and Execute `.resonance/workflows/04_pull_request.md`.
-**Goal:** Verify code quality, run tests, and safely merge using `gh` CLI.
+
 
 **Goal:** Verify code quality, run tests, and safely merge using `gh` CLI.
 
@@ -467,11 +485,6 @@ These are scripts YOU run to guide the user through complex phases.
 **Trigger:** User says "Add tests" or "Test this".
 **Action:** Read and Execute `.resonance/workflows/05_testing_strategy.md`.
 **Goal:** Implement robust Unit/Integration/E2E testing.
-
-### 99. Framework Update ("The Immune System")
-**Trigger:** User says "Update Resonance".
-**Action:** Read and Execute `.resonance/workflows/99_framework_update.md`.
-**Goal:** Upgrade kernel/roles while preserving `00_soul.md` and user customizations.
 
 ### 6. Security Audit ("The White Hat")
 **Trigger:** User says "Audit security" or "Check for vulnerabilities".
@@ -487,6 +500,11 @@ These are scripts YOU run to guide the user through complex phases.
 **Trigger:** User says "Fix bug", "Debug this", or "Error".
 **Action:** Read and Execute `.resonance/workflows/08_scientific_debugging.md`.
 **Goal:** Fix bugs using reproduction scripts and root cause analysis.
+
+### 99. Framework Update ("The Immune System")
+**Trigger:** User says "Update Resonance".
+**Action:** Read and Execute `.resonance/workflows/99_framework_update.md`.
+**Goal:** Upgrade kernel/roles while preserving `00_soul.md` and user customizations.
 
 ---
 

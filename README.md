@@ -206,6 +206,8 @@ curl -o .resonance/roles/backend.md https://raw.githubusercontent.com/manusco/re
 curl -o .resonance/roles/growth.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/growth.md
 curl -o .resonance/roles/debugger.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/debugger.md
 curl -o .resonance/roles/venture_validator.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/venture_validator.md
+curl -o .resonance/roles/performance.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/performance.md
+curl -o .resonance/roles/conversion_engineer.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/conversion_engineer.md
 ```
 
 ---
