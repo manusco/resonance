@@ -32,6 +32,7 @@ We don't just give you "personas". We give you **Elite Roles** with specific fra
 *   **DevOps** → Uses *GitOps* and *SRE Principles* (SLOs/SLIs).
 *   **Growth** → Uses *Reforge Loops* and *AARRR Metrics*.
 *   **Researcher** → Uses *First Principles* and *Decision Matrices*.
+*   **Designer** → Uses *Visual Systems* and *Interaction Physics*.
 
 ### 3. Built for Google Antigravity
 Leverages Antigravity's unique capabilities:
@@ -57,7 +58,7 @@ Leverages Antigravity's unique capabilities:
 3. **The agent will automatically**:
    - Create `.resonance/` directory structure.
    - Generate `00_soul.md` (Vision) and `01_state.md` (Context).
-   - **Download 16 Elite Specialist Roles**.
+   - **Download 17 Elite Specialist Roles**.
    - Start operating with persistent memory.
 
 ---
@@ -132,7 +133,7 @@ Resonance v1.7 introduces a strict, high-quality pipeline for shipping software.
     ├── 01_state.md             # Macro-State Context
     ├── 02_memory.md            # Immutable Logs
     ├── workflows/              # The Pipeline (01-07)
-    └── roles/                  # 16 Elite Specialists
+    └── roles/                  # 17 Elite Specialists
 ```
 
 ---

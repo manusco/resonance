@@ -154,6 +154,8 @@ curl -o .resonance/roles/debugger.md https://raw.githubusercontent.com/manusco/r
 curl -o .resonance/roles/venture_validator.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/venture_validator.md
 curl -o .resonance/roles/reviewer.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/reviewer.md
 curl -o .resonance/roles/performance.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/performance.md
+curl -o .resonance/roles/designer.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/roles/designer.md
+
 ```
 
 ### Step 3b: Download Utility Scripts
@@ -215,6 +217,8 @@ Available roles:
   - growth (Growth Strategist)
   - debugger (Elite Debugger)
   - venture_validator (Venture Validator)
+  - designer (Creative Director & UI Specialist)
+
 
 System ready.
 **To get started, simply describe your idea.**
@@ -353,7 +357,8 @@ The active roles are defined in `.resonance/roles/`.
 | "design architecture", "system design", "ADR" | `architect` |
 | "write tests", "test coverage", "QA" | `qa` |
 | "research", "investigate", "compare options" | `researcher` |
-| "UI", "UX", "design system", "frontend" | `frontend` |
+| "frontend", "components", "implementation" | `frontend` |
+| "design", "ui", "ux", "aesthetics", "theme", "visual" | `designer` |
 | "security audit", "vulnerabilities", "OWASP" | `security` |
 | "write copy", "landing page", "marketing" | `conversion_engineer` |
 | "SEO", "keywords", "rankings", "search" | `seo` |
@@ -404,6 +409,8 @@ Should I switch to the security role, or would you prefer I handle this in defau
 - `venture_validator` - Venture Validator (Business model stress-testing, market sizing, pivot strategy)
 - `performance` - Performance Engineer (Profiling, latency optimization, Core Web Vitals, load testing)
 - `reviewer` - Code Reviewer (PR analysis, security checks, merge authority, changelog management)
+- `designer` - Creative Director (Visual systems, interaction physics, vibe coding, cognitive UX)
+
 
 #### Command: "Role Reset"
 Return to default full-stack developer mode.
@@ -430,7 +437,8 @@ Product Requirements → Architecture → Implementation → Frontend → QA →
 - **Planning a feature?** → Role Switch product
 - **Designing system architecture?** → Role Switch architect  
 - **Building the feature?** → Role Reset (or stay in default mode)
-- **Polishing UI/UX?** → Role Switch frontend
+- **Implementing UI components?** → Role Switch frontend
+- **Designing/Polishing aesthetics?** → Role Switch designer
 - **Testing?** → Role Switch qa
 - **Researching solutions?** → Role Switch researcher
 - **Security audit?** → Role Switch security

@@ -16,3 +16,6 @@ build/
 # Security: Never commit secrets or temporary context dumps
 .resonance/secrets/
 .resonance/tmp/
+
+# Local Guidelines
+RESONANCE_GUIDELINES.md
