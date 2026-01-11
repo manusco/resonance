@@ -24,7 +24,7 @@ curl -o resonance.sh https://raw.githubusercontent.com/manusco/resonance/main/re
 
 # Update Workflows (Standard Only)
 curl -o .resonance/workflows/01_project_initiation.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/01_project_initiation.md
-# ... (repeat for 02-07 & 99)
+# ... (repeat for 02-08 & 99)
 ```
 
 ## 3. The Role Update (Smart Merge)

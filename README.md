@@ -114,6 +114,7 @@ Resonance v1.7 introduces a strict, high-quality pipeline for shipping software.
 
 ### 🟣 Utils
 *   **Check Health**: *"Run system check"* (Scores your codebase 0-100)
+*   **Refactor Code**: *"Refactor this"* (Elite Structure & Code Clean-up)
 *   **Update System**: *"Update Resonance"* (Smart Update)
 *   **Safe Commit**: `.resonance/scripts/safe-commit.sh "msg" file`
 
@@ -132,7 +133,7 @@ Resonance v1.7 introduces a strict, high-quality pipeline for shipping software.
     ├── 00_soul.md              # Vision & Principles
     ├── 01_state.md             # Macro-State Context
     ├── 02_memory.md            # Immutable Logs
-    ├── workflows/              # The Pipeline (01-07)
+    ├── workflows/              # The Pipeline (01-08)
     └── roles/                  # 17 Elite Specialists
 ```
 

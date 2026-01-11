@@ -178,6 +178,7 @@ curl -o .resonance/workflows/04_review_and_merge.md https://raw.githubuserconten
 curl -o .resonance/workflows/05_quality_assurance.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/05_quality_assurance.md
 curl -o .resonance/workflows/06_system_health.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/06_system_health.md
 curl -o .resonance/workflows/07_debugging.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/07_debugging.md
+curl -o .resonance/workflows/08_refactoring.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/08_refactoring.md
 curl -o .resonance/workflows/99_framework_update.md https://raw.githubusercontent.com/manusco/resonance/main/.resonance/workflows/99_framework_update.md
 ```
 
@@ -198,7 +199,7 @@ Report to user:
 Created:
 - Core framework files (00_soul.md, 01_state.md, 02_memory.md, 03_tools.md)
 - Downloaded 16 benchmark specialist roles from GitHub
-- Downloaded 9 active workflow protocols
+- Downloaded 10 active workflow protocols
 - Downloaded utility scripts (safe-commit helpers)
 - Self-healing script (resonance.sh)
 
@@ -520,6 +521,11 @@ These are scripts YOU run to guide the user through complex phases.
 **Trigger:** User says "Fix bug", "Debug this", or "Error".
 **Action:** Read and Execute `.resonance/workflows/08_scientific_debugging.md`.
 **Goal:** Fix bugs using reproduction scripts and root cause analysis.
+
+### 9. Refactoring ("The Surgeon")
+**Trigger:** Member says "Refactor this", "Clean up", or "Organize".
+**Action:** Read and Execute `.resonance/workflows/08_refactoring.md`.
+**Goal:** Structural audit followed by code refinement.
 
 ### 99. Framework Update ("The Immune System")
 **Trigger:** User says "Update Resonance".
