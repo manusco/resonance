@@ -54,22 +54,26 @@ if [ ! -f .resonance/01_state.md ]; then
     exit 1
 fi
 
-# Check for knowledge directory
-if [ ! -d .resonance/knowledge ]; then
-    echo "   Creating knowledge directory..."
-    mkdir -p .resonance/knowledge
+# Check for docs directory (Unified Memory)
+if [ ! -d docs ]; then
+    echo "   Creating docs directory..."
+    mkdir -p docs
+    mkdir -p docs/specs
+    mkdir -p docs/architecture
+    mkdir -p docs/reports
 fi
-
-# Create Documentation Structure (Unified Memory)
-mkdir -p docs/specs
-mkdir -p docs/architecture
-mkdir -p docs/reports
 
 # Load consciousness
 echo ""
 echo "📖 Loading Soul (Vision):"
 cat .resonance/00_soul.md
 echo ""
+
+# Load Local Boot Hook (Private)
+if [ -f .resonance/scripts/boot.local ]; then
+    source .resonance/scripts/boot.local
+fi
+
 echo "================================"
 echo ""
 echo "📊 Loading State (Current Status):"

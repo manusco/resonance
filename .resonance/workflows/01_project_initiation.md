@@ -61,5 +61,15 @@ Create `docs/specs/PRD-[name].md`.
 *   ❌ Multi-player (V1 is Single player)
 ```
 
-## 5. Transition
-Ask: "PRD Invalidated/Validated. Move to **Architecture**?"
+## 5. Phase 3: The Critic Loop (Role: `reviewer`)
+**Self-Correction Protocol**:
+1.  **Switch Role**: `reviewer`.
+2.  **Read**: `00_soul.md` (Vision) and the new `PRD`.
+3.  **Critique**:
+    *   Is the "Press Release" exciting?
+    *   Are the "User Stories" in strict Gherkin?
+    *   Is the "Kill Criteria" specific?
+4.  **Action**: If score < 9/10, **Reject** and refine.
+
+## 6. Transition
+Ask: "PRD Validated by Reviewer. Move to **Architecture**?"

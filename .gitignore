@@ -16,6 +16,7 @@ build/
 # Security: Never commit secrets or temporary context dumps
 .resonance/secrets/
 .resonance/tmp/
+.resonance/scripts/boot.local
 
 # Local Guidelines
 RESONANCE_GUIDELINES.md

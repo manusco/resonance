@@ -1,53 +1,76 @@
-# Soul - The Vision
+# Soul - The Vision & Constitution
 
-## Project Vision
-[Define the high-level vision and "North Star" of this project in 1-2 sentences]
+## 1. Identity & North Star
+**Vision**: [One sentence describing the ultimate future state]
+**Mission**: [What we are doing every day to get there]
+**North Star Metric**: [The single metric that matters most]
 
-## Core Purpose
-**What**: [What is this project?]  
-**Why**: [Why does it exist? What problem does it solve?]  
-**Who**: [Who is this for?]
-
-## Intended Goals
-**Strategic**: [What we're trying to achieve long-term]  
-**Practical**: [Immediate, measurable objectives]  
-**Creative**: [The vibe, feeling, or experience we're creating]
-
-## Design Philosophy & Principles
-[The guiding principles and mental models behind this project]
-
-- Principle 1: [Core value - explain why this matters]
-- Principle 2: [Core value - explain why this matters]
-- Principle 3: [Core value - explain why this matters]
-
-## Brand Voice & Communication Style
-**Tone**: [Professional? Casual? Technical? Friendly?]  
-**Vocabulary**: [Specific words to use / avoid]  
-**Messaging Pillars**: [Key themes in all communication]
-
-## Technical Philosophy
-[How we think about technology choices, architecture decisions, and trade-offs]
-
-## Constraints & Non-Negotiables
-[Hard rules that cannot be broken]
-
-- Constraint 1: [e.g., "Must work offline"]
-- Constraint 2: [e.g., "No external dependencies over 50kb"]
-- Constraint 3: [e.g., "Mobile-first always"]
-
-## Success Definition
-What does success look like for this project?
-
-- Metric 1: [e.g., "1,000 active users"]
-- Metric 2: [e.g., "Sub-200ms page load"]
-- Metric 3: [e.g., "95% test coverage"]
-
-## Open Questions / Pending Decisions
-[Items that need decisions or clarification - move to 01_state.md when actioned]
-
-1. [ ] Question 1: [Decision needed]
-2. [ ] Question 2: [Decision needed]
+**Core Purpose**:
+*   **What**: [The Product]
+*   **Why**: [The Pain Point]
+*   **Who**: [The User Persona]
 
 ---
 
-**Note**: This file is maintained by the agent to capture the project's soul, guiding principles, and strategic direction. It informs all decision-making.
+## 2. The Constitution (Immutable Laws)
+> *These are hard constraints that cannot be broken without a formal Amendment.*
+
+**Technical Laws**:
+1.  [e.g. Zero external dependencies for UI components]
+2.  [e.g. Max bundle size < 100kb]
+3.  [e.g. 100% Type Safety (No `any`)]
+
+**UX Laws**:
+1.  [e.g. Mobile-first interaction model]
+2.  [e.g. < 100ms response to all inputs]
+
+**Business Laws**:
+1.  [e.g. Freemium model core]
+
+---
+
+## 3. Strategic Goals
+**Immediate Objectives (Next 3 Months)**:
+*   [ ] [Goal 1]
+*   [ ] [Goal 2]
+
+**Long-Term Strategy (1 Year)**:
+*   [Strategic Pillar 1]
+*   [Strategic Pillar 2]
+
+**Success Definitions**:
+*   **User Success**: [What does the user achieve?]
+*   **Technical Success**: [Stability/Perf metrics]
+*   **Business Success**: [Revenue/Growth metrics]
+
+---
+
+## 4. Design Philosophy & Vibe
+**The "Vibe"**: [Keywords: e.g. Minimalist, Cyberpunk, Friendly, Trustworthy]
+**Brand Voice**:
+*   **Tone**: [Professional vs Casual]
+*   **Terminology**: [Specific terms we use/avoid]
+
+**UX Principles**:
+1.  **[Principle Name]**: [Description]
+2.  **[Principle Name]**: [Description]
+
+---
+
+## 5. Technical Philosophy
+**Architecture Drivers**:
+*   [e.g. Simplicity over Scalability]
+*   [e.g. Buy vs Build strategy]
+
+**Decision Framework**:
+*   *When in doubt, choose...* [Guidance]
+
+---
+
+## 6. Open Questions & Pending Decisions
+*   [ ] [Question: e.g. Which auth provider?]
+*   [ ] [Question: e.g. Pricing model?]
+
+---
+
+**Note**: This file is the **Constitution**. It is the highest authority in the system. All Code, Specs, and Plans must align with The Laws defined here.

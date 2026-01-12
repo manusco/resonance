@@ -27,7 +27,17 @@ Run a STRIDE check.
 1.  **Core Web Vitals**: Run Lighthouse. LCP < 2.5s?
 2.  **Queries**: Check logs for N+1 queries.
 
-## 5. Artifact Generation
+2.  **Queries**: Check logs for N+1 queries.
+
+## 5. Phase 4: Definition of Done (DoD) Check
+Before passing, verify the **Elite Standard**:
+*   [ ] **Clean Console**: Zero warnings/errors in DevTools.
+*   [ ] **Zero Linter Output**: `npm run lint` is silent.
+*   [ ] **Type Safety**: No `any` types introduced.
+*   [ ] **Tests Passed**: All new logic has coverage.
+*   [ ] **Mobile Verified**: Checked on responsive view.
+
+## 6. Artifact Generation
 Create a report.
 
 **Template:**
