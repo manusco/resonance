@@ -17,7 +17,9 @@ description: Migrate a Resonance project from v1.8 to v1.9.
 - [ ] **Workflow Setup**: Copy standard Resonance v1.9 workflows into `.agent/workflows/`.
 
 ## 3. Cleanup
-- [ ] **Decommission**: Rename old folders to `[folder]_old` to avoid confusion.
+- [ ] **Archive**: Create a `_legacy_v1.8_backup/` folder at the root of the repo.
+- [ ] **Move**: Move all legacy items (`agents.md`, `roles/`, `.resonance/roles/`, `.resonance/workflows/`) into `_legacy_v1.8_backup/`.
+- [ ] **Purge**: Delete any remaining empty legacy directories in `.resonance/`.
 - [ ] **Redirect**: Ensure `AGENTS.md` is replaced with the v1.9 redirector.
 
 ## 4. Verification

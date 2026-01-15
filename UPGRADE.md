@@ -37,11 +37,12 @@ The new structure uses `.agent/` for instructions and `.resonance/` for project 
 *   If you had project goals, move them to `.resonance/00_soul.md`.
 *   If you had a "Todo" list, move it to `.resonance/01_state.md`.
 
-### 2. Rename Legacy Folders
-If you have these folders, they are now obsolete:
-*   `roles/` -> Replace with `.agent/skills/`
-*   `.resonance/roles/` -> Replace with `.agent/skills/`
-*   `.resonance/workflows/` -> Replace with `.agent/workflows/`
+### 2. Archive Obsolete Folders
+To keep your and `.resonance/` directory clean, move legacy items to a root-level backup:
+- Move `roles/` -> `_legacy_v1.8_backup/roles/`
+- Move `.resonance/roles/` -> `_legacy_v1.8_backup/.resonance/roles/`
+- Move `.resonance/workflows/` -> `_legacy_v1.8_backup/.resonance/workflows/`
+- Delete the originals once moved.
 
 ### 3. Initialize the States
 Create the "Brain" of your project if it doesn't exist:
