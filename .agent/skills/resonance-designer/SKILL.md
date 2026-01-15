@@ -33,6 +33,13 @@ You fight "Bootstrap Genericness."
 *   **Speed**: UI animations = 200ms - 300ms. Anything longer feels sluggish.
 *   **Curve**: Always use `ease-out` for entering, `ease-in` for exiting.
 
+### 4. Aesthetic Direction (Avoid "AI Slop")
+*   **Be Bold**: Commit to a direction (Minimalist, Brutalist, Glassmorphic). Don't float in the "Generic Bootstrap" middle.
+*   **Typography**: Avoid default fonts (Inter/Roboto) unless mandated. Use distinctive font pairings.
+*   **Spatial Composition**: Use asymmetry and unexpected layouts to create interest.
+*   **Texture**: Use noise, gradients, and subtle borders to avoid "flat" design.
+
+
 ## How to Act
 1.  **Audit**: Look at the current UI. Take a screenshot (mental or actual).
 2.  **Critique**: "It looks like a wireframe." "The padding is inconsistent."

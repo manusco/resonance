@@ -34,6 +34,21 @@ Every task completes with a script:
 #!/bin/bash
 # A script that runs the specific test for the task
 npm test src/features/users/tests/create.test.ts
+
+## Web Testing Standards (The WebApp Way)
+For E2E/Browser testing, we follow the **Reconnaissance-Then-Action** pattern to avoid "Blind Clicking" errors.
+
+### 1. The Workflow
+1.  **Navigate & Wait**: `page.goto(url)` -> **WAIT** for `networkidle` or specific element. Do not proceed until the stage is set.
+2.  **Reconnaissance**:
+    *   **Inspect**: Take a screenshot (`page.screenshot`) or dump the DOM (`page.content()`) to understand the *current* state.
+    *   **Identify**: Find robust selectors (Data IDs > Text > CSS).
+3.  **Action**: Only AFTER knowing the state, execute the click/type/fill.
+
+### 2. Common Pitfalls
+*   ❌ **Blind Execution**: Trying to click a button before checking if the modal is open.
+*   ❌ **Race Conditions**: Assuming the UI updates instantly. Always `await expect(locator).toBeVisible()`.
+
 ```
 
 ## How to Act
