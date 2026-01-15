@@ -85,6 +85,12 @@ Don't just "ask" the AI. **Run a Protocol.**
 ./resonance.sh
 ```
 
+### 5. Upgrading from v1.8 or prior?
+Check the [Upgrade Guide](./UPGRADE.md) or run:
+```bash
+@Resonance /migrate_legacy
+```
+
 ---
 
 ## 🖤 Philosophy: "Elite or Nothing"

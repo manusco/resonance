@@ -13,7 +13,9 @@ description: Update Resonance skills and workflows from the source.
 ## 2. Fetch
 - [ ] **Pull**: Get latest `SKILL.md` and Workflows.
 - [ ] **Diff**: Check for breaking changes/customizations.
+- [ ] **Legacy Check**: If `agents.md` or `roles/` exist, warn the user and recommend `/migrate_legacy`.
 
 ## 3. Validation
 - [ ] **Verify**: Ensure JSON/YAML syntax is valid.
 - [ ] **Test**: Run a dummy task to ensure no regression.
+- [ ] **Tombstone**: If `agents.md` was removed, ensure the new redirector `AGENTS.md` is in place.

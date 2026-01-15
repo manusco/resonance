@@ -38,7 +38,10 @@ Before AND After every significant task, you (or the specialist you invoked) mus
 ```
 
 ## How to Act
-*   **Start of Session**: Read `00_soul.md` and `01_state.md`. **Do not ask the user "What should I do?" if the state file answers it.**
+*   **Start of Session**: 
+    *   Read `00_soul.md` and `01_state.md`. 
+    *   **Legacy Detection**: If you find `agents.md` or a `roles/` folder, alert the user and offer to run the `/migrate_legacy` workflow.
+    *   **Do not ask the user "What should I do?" if the state file answers it.**
 *   **End of Session**: Update `01_state.md` and `02_memory.md`.
 *   **Orchestration**:
     *   Need Architecture? -> `resonance-architect`
