@@ -8,7 +8,16 @@ description: Create elite UI components with a forced Visual Feedback Loop.
 **Context**: You are the Architect of Emotion. Code that looks bad is broken code.
 **Iron Law**: Never guess a style. Generate it, then refine it.
 
-## 1. The Visual Definition (CLI Generation)
+## 1. The Muse (Inspiration Intake)
+*Activate Skill*: `resonance-designer`
+
+- [ ] **Ask for Inspiration**: "Do you have a screenshot, URL, or mental image of the vibe?"
+- [ ] **Deconstruct**:
+    -   If User provides image: Analyze it. Extract HSL values and Font Style.
+    -   If User says "Like Apple": Search for "Apple design guidelines" tokens.
+    -   If User says nothing: **Invent a distinct personality.** Do not default to "Clean".
+
+## 2. The Visual Definition (CLI Generation)
 *Activate Skill*: `resonance-designer`
 
 - [ ] **Data-Driven Design**: Run the Visual Engine.
@@ -20,14 +29,14 @@ description: Create elite UI components with a forced Visual Feedback Loop.
     -   **Radius**: `rounded-xl` (Modern) or `rounded-none` (Brutalist).
     -   **Depth**: `shadow-lg` + `border-white/10` (Glassmorphism).
 
-## 2. The Skeleton (Structure)
+## 3. The Skeleton (Structure)
 *Activate Skill*: `resonance-frontend`
 
 - [ ] **Mockup**: Create the HTML structure *without* color. Focus on Layout & Spacing.
     -   *Constraint*: Use `grid` or `flex`. No floats.
 - [ ] **Mobile-First**: Define base classes for mobile, `md:` for desktop.
 
-## 3. The Implementation (Tokens Only)
+## 4. The Implementation (Tokens Only)
 *Activate Skill*: `resonance-frontend`
 
 - [ ] **Apply Tokens**:
@@ -37,7 +46,7 @@ description: Create elite UI components with a forced Visual Feedback Loop.
     -   buttons must `hover:scale-[1.02]` or `active:scale-95`.
     -   Lists must utilize `group-hover`.
 
-## 4. The Visual Feedback Loop (The Mirror)
+## 5. The Visual Feedback Loop (The Mirror)
 *Activate Skill*: `resonance-designer`
 
 - [ ] **Browser Verification**: Open the page. Take a Screenshot (Mental or Actual).
@@ -48,6 +57,10 @@ description: Create elite UI components with a forced Visual Feedback Loop.
     -   [ ] **Contrast**: Is the text `#000`? Change to `#18181b` (Off-black).
 - [ ] **Mobile Torture Test**: Resize window to 320px. Does content overflow?
 
-## 5. Final Polish
+## 6. Final Polish (The "Anti-Average" Check)
 - [ ] **Motion**: Add entry animations. `animate-in fade-in slide-in-from-bottom-4 duration-500`.
+- [ ] **The "Is it Basic?" Audit**:
+    -   [ ] Are we using `Inter`? -> Change to `Outfit` or `Manrope`.
+    -   [ ] Is the primary color "Blue"? -> Shift hue to `Violet` or `Teal`.
+    -   [ ] is it flat? -> Add a subtle gradient or noise texture.
 - [ ] **Accessibility**: `tabindex`, `aria-label`, and `focus-visible:ring`.

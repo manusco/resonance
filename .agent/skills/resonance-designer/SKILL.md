@@ -37,6 +37,16 @@ python .agent/skills/resonance-designer/scripts/search.py "dashboard card" --dom
 python .agent/skills/resonance-designer/scripts/search.py "hero section conversion" --domain landing
 ```
 
+### 3. The Muse (Inspiration & Screenshot Analysis)
+**Got Inspiration?** If the user provides a screenshot or URL, you must First Principles Deconstruct it.
+
+1.  **Analyze**: "What makes this feel premium?" (Is it the font pairing? The specific blur radius? The noise texture?)
+2.  **Extract**:
+    *   **Palette**: Identify the exact HSL hues.
+    *   **Type**: Identify the font characteristics (Grotesque, Serif, Monospace).
+    *   **Spacing**: Is it tight (Information Density) or airy (Luxury)?
+3.  **Replicate**: Use the `search.py` tool to find matching tokens.
+
 ---
 
 ## Core Philosophy: "Vibe is Technical"
@@ -61,8 +71,17 @@ python .agent/skills/resonance-designer/scripts/search.py "hero section conversi
 *   **Speed**: UI animations = 200ms - 300ms. Anything longer feels sluggish.
 *   **Curve**: Always use `ease-out` for entering, `ease-in` for exiting.
 
-## Context Anchors (Constraints)
-*   ❌ **No Default Blue**: Use custom HSL values for brand colors.
-*   ❌ **No "Boxy" Layouts**: Use rounded corners (`rounded-lg`, `rounded-xl`) to soften the UI (unless Brutalist).
-*   ✅ **Glassmorphism**: Use `backdrop-blur` subtly to create depth.
-*   ✅ **Gradients**: Use subtle gradients to avoid "flatness".
+## Context Anchors (The "Anti-Average" Constraints)
+
+### 🚫 The Ban List (Automatic Rejection)
+*   ❌ **Default Blue**: `bg-blue-500` is forbidden. Use custom HSL hues (e.g., `indigo-500` mixed with `slate`).
+*   ❌ **Default Fonts**: `Inter`, `Roboto`, and `Open Sans` are banned unless explicitly requested. They scream "Template".
+*   ❌ **Dead Buttons**: Buttons must have a `:hover` and `:active` state.
+*   ❌ **Plain Cards**: Cards must have a subtle border or shadow. Flat white rectangles are not allowed.
+
+### ✅ The Elite Mandates
+*   ✅ **Exotic Typography**: Use characterful fonts (e.g., `Manrope`, `Outfit`, `Space Grotesk`, `Syne`, `DM Sans`).
+*   ✅ **Micro-Interactions**: "If it clicks, it sticks." Use `scale-95` on click.
+*   ✅ **Glassmorphism**: Use `backdrop-blur-md` + `bg-white/5` for depth.
+*   ✅ **Noise & Texture**: Add subtle bg-noise where appropriate to kill the "digital flatness".
+*   ✅ **Distinct Colors**: Use a "Vibrant Dark" or "Pastel Light" palette. Avoid "Office Grey".

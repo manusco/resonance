@@ -16,94 +16,75 @@ Most AI agents are brilliant but suffer from severe short-term memory loss.
 
 ## ⚡ The Solution: "Local-First God Mode"
 Resonance installs a brain into your project root (`.resonance/`). It remembers everything.
-*   **Soul (`00_soul.md`)**: Your Vision and Non-negotiables.
-*   **State (`01_state.md`)**: The current context of the project.
-*   **Memory (`02_memory.md`)**: A log of lessons learned (The "Black Box").
+1.  **Soul (`00_soul.md`)**: Your Vision and Non-negotiables.
+2.  **State (`01_state.md`)**: The current context of the project.
+3.  **Memory (`02_memory.md`)**: A log of lessons learned (The "Black Box").
 
 > *"Stop coding with a goldfish. Start coding with a Grandmaster."*
 
 ---
 
-## 🕶️ The Elite Specialists
-We don't settle for "average" assistance. Resonance brings Google-tier engineering roles to your local environment.
+## 🚀 GETTING STARTED (5 Seconds)
 
-| Specialist | Superpower | The Prompt Injection |
-| :--- | :--- | :--- |
-| **`resonance-product`** | **Working Backwards** | *"Write the Press Release before the code."* |
-| **`resonance-architect`** | **C4 & ADRs** | *"No magic. Hard decisions written down."* |
-| **`resonance-qa`** | **Destructive Inversion** | *"Break it before they do."* |
-| **`resonance-core`** | **State Management** | *"I am the consciousness of this project."* |
-| **`resonance-devops`** | **GitOps & IaC** | *"Git is Truth. Servers are Cattle."* |
-| ...and 12 more | (Security, Growth, etc.) | Fully loaded in `.agent/skills`. |
-
----
-
-## 🧪 The "Scientific" Workflows
-Don't just "ask" the AI. **Run a Protocol.**
-
-### 1. `/init_project` ("The Launchpad")
-> *From "I have an idea" to "Validated Spec"*
-*   Activates `resonance-venture` to kill bad ideas.
-*   Activates `resonance-product` to draft a Press Release.
-
-### 2. `/design_ui` ("The Visual Engine")
-> *From Tokens to Pixels*
-*   Forces **Visual Tokens** first (Colors, Type, Radius).
-*   Enforces the **Visual Feedback Loop** (Browser Verification).
-
-### 3. `/update_design_system` ("The Refiner")
-> *Refining the Primitives*
-*   Updates the core design language across the codebase.
-
-### 4. `/plan_execution` ("The Tactician")
-> *From Design to Tasks*
-*   Breaks down work into atomic, verifiable steps.
-*   Enforces the "Ralph Loop" (Repro -> Fix -> Verify).
-
-### 5. `/deploy_project` ("ShipIt")
-> *The Last Mile*
-*   Audits, builds, optimizes, and ships to production.
-
-### 6. `/system_audit` ("The Doctor")
-> *A full MRI for your code*
-*   Checks Security, Stability, and Freshness.
-
----
-
-## 🚀 Quick Start
-
-### 1. Initialize
+### Option A: The Fresh Start (New Project)
+Use this repo as a template to launch a new, elite project.
 ```bash
-@Resonance /init_project
-```
+# 1. Clone the Resonance OS
+git clone https://github.com/manusco/resonance my-new-app
 
-### 2. Check Status
-```bash
-@Resonance /status
-```
-
-### 3. Deploy a Specialist
-```bash
-@Resonance using resonance-security audit this file
-```
-
-### 4. Health Check
-```bash
+# 2. Wake up the system
+cd my-new-app
 ./resonance.sh
 ```
 
-### 5. Upgrading from v1.8 or prior?
-Check the [Upgrade Guide](./UPGRADE.md) or run:
+### Option B: The Brain Transplant (Existing Project)
+Inject Resonance into a repo you already have.
 ```bash
-@Resonance /migrate_legacy
+# 1. Copy the brain and skills to your root
+cp -r /path/to/resonance/.resonance ./
+cp -r /path/to/resonance/.agent ./
+cp resonance.sh ./
+
+# 2. Wake up the system
+./resonance.sh
 ```
 
 ---
 
-## 🖤 Philosophy: "Elite or Nothing"
+## 🛠️ WHAT ARE YOU BUILDING TODAY? (Jobs to be Done)
+Don't just "chat" with the AI. **Command it.** Use these Slash Commands to trigger elite workflows.
+
+| I want to... | The Command | The Outcome |
+| :--- | :--- | :--- |
+| **"Start a new feature/idea"** | `/init_project` | **The Launchpad.** Kills bad ideas. Validates specs. Drafts the PRD. |
+| **"Make it look world-class"** | `/design_ui` | **The Visual Engine.** Enforces design systems. "No ugly pixels allowed." |
+| **"Build the damn thing"** | `/plan_execution` | **The Tactician.** atomic steps. "Think before you code." |
+| **"Fix a weird bug"** | `/debug_issue` | **The Sherlock Protocol.** Scientific debugging. "No fix without root cause." |
+| **"Clean up my code"** | `/refactor_code` | **The Architect.** Structural refinement. "Make it readable." |
+| **"Ship to production"** | `/deploy_project` | **ShipIt.** Audits, builds, and optimizes. |
+
+---
+
+## 🕶️ MEET YOUR SQUAD (The Specialists)
+Resonance doesn't just "help." It assigns a **Google-tier Specialist** to every task.
+
+| Specialist | Role | The "Prompt Injection" |
+| :--- | :--- | :--- |
+| **`resonance-product`** | Product Manager | *"Write the Press Release before the code."* |
+| **`resonance-architect`** | System Architect | *"No magic. Hard decisions written down."* |
+| **`resonance-qa`** | QA Engineer | *"Break it before the user does."* |
+| **`resonance-frontend`** | UX Engineer | *"If it's not beautiful, it's a bug."* |
+| **`resonance-security`** | Security Auditor | *"Trust nothing. Verify everything."* |
+| ...and 15 more | full stack | Fully loaded in `.agent/skills`. |
+
+---
+
+## 🖤 PHILOSOPHY: "Elite or Nothing"
 We believe that AI should not just "generate code". It should **engineer systems**.
-**We believe in empowering everyone, not just those who can pay.**
-Resonance forces the AI to think before it acts, creating software that survives.
+
+*   **We believe in "Working Backwards":** Write the docs before the code.
+*   **We believe in "Visual Excellence":** "Good enough" is not enough.
+*   **We believe in empowering everyone:** You don't need a $500k team. You just need Resonance.
 
 **Welcome to the new standard.**
 
