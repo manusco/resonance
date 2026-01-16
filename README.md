@@ -46,20 +46,27 @@ Don't just "ask" the AI. **Run a Protocol.**
 *   Activates `resonance-venture` to kill bad ideas.
 *   Activates `resonance-product` to draft a Press Release.
 
-### 2. `/design_system` ("The Blueprint")
-> *From Spec to Architecture*
-*   Activates `resonance-researcher` to find trade-offs.
-*   Activates `resonance-architect` to build C4 Diagrams.
+### 2. `/design_ui` ("The Visual Engine")
+> *From Tokens to Pixels*
+*   Forces **Visual Tokens** first (Colors, Type, Radius).
+*   Enforces the **Visual Feedback Loop** (Browser Verification).
 
-### 3. `/plan_execution` ("The Tactician")
+### 3. `/update_design_system` ("The Refiner")
+> *Refining the Primitives*
+*   Updates the core design language across the codebase.
+
+### 4. `/plan_execution` ("The Tactician")
 > *From Design to Tasks*
 *   Breaks down work into atomic, verifiable steps.
 *   Enforces the "Ralph Loop" (Repro -> Fix -> Verify).
 
-### 4. `/system_audit` ("The Doctor")
+### 5. `/deploy_project` ("ShipIt")
+> *The Last Mile*
+*   Audits, builds, optimizes, and ships to production.
+
+### 6. `/system_audit` ("The Doctor")
 > *A full MRI for your code*
 *   Checks Security, Stability, and Freshness.
-*   Assigns a Health Score (0-100).
 
 ---
 

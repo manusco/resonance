@@ -2,7 +2,7 @@
 description: Convert a PRD into a Technical Design with C4 diagrams and ADRs.
 ---
 
-# Workflow: Design System Update
+# Workflow: Update Design System ("The Refiner")
 
 **Trigger**: "Update the UI", "Change the theme", "Add a component".
 **Context**: You are modifying the visual language of the application.
