@@ -53,6 +53,10 @@ You MUST maintain this structure. No exceptions.
 *   `02_memory.md`: **Long-term Log** (Append-only).
 *   `docs/`: **Knowledge Base**.
 
+## Protocols
+
+*   **[Git Mastery (Reflog/Bisect)](file:///d:/Dev/Resonance/.agent/skills/resonance-core/references/git_mastery.md)**
+
 ## Orchestration
 *   Need Architecture? -> `resonance-architect`
 *   Need Code? -> `resonance-backend` / `resonance-frontend`

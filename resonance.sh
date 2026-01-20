@@ -1,5 +1,5 @@
 #!/bin/bash
-# resonance.sh - The "Wake Up" Call for Resonance v1.9
+# resonance.sh - The "Wake Up" Call for Resonance v2.0
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -7,7 +7,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-echo "🔮 Resonance v1.9 (Local Native) System Check:"
+echo "🔮 Resonance v2.0 System Check:"
 echo "================================================"
 
 # 1. Check Memory (The Brain)

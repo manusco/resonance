@@ -1,0 +1,26 @@
+{
+  "name": "@manusco/resonance",
+  "version": "2.0.0",
+  "description": "The Operating System for Autonomous Engineering. Framework-Driven. References-Backed. Agent-Ready.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manusco/resonance.git"
+  },
+  "keywords": [
+    "resonance",
+    "ai",
+    "agents",
+    "autonomous-software-engineering",
+    "framework",
+    "llm-governance"
+  ],
+  "author": "Manusco",
+  "license": "MIT",
+  "scripts": {
+    "wake": "./resonance.sh"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "private": true
+}

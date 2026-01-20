@@ -1,39 +1,115 @@
-# 🧠 AGENTS.md has Evolved!
+# Resonance v2.0: The Operator Manual 📖
 
-> **IMPORTANT**: The "Legacy Role System" (v1.8 and prior) has been superseded by the **Resonance v1.9 (Antigravity Edition)** architecture.
-
-If you are looking for your agents, they haven't disappeared—they have **leveled up**.
-
-## 🚀 What changed?
-
-1.  **From Roles to Skills**: Instead of monolithic `roles/`, we now use granular, elite **Skills** located in [`.agent/skills/`](./.agent/skills/).
-2.  **From Chat to Workflows**: Instead of just "acting" like a role, the agent now follows scientific **Workflows** in [`.agent/workflows/`](./.agent/workflows/).
-3.  **Unified Kernel**: The "Brain" of the project is now managed by the **Resonance Core** in [`.resonance/`](./.resonance/).
-
-## 🛠️ How to Upgrade
-
-If you just updated and things look different:
-
-### 1. The New Entry Point
-You no longer need to check `AGENTS.md` to see what I can do. Just ask me for `/status` or check the new structure.
-
-### 2. Migration Guide
-*   **Old Role** -> Now a **Skill** in `.agent/skills/`.
-*   **Old Instructions** -> Now part of the **Soul** in `.resonance/00_soul.md`.
-*   **Old Goal** -> Now the **Objective** in `.resonance/01_state.md`.
-
-### 3. "Waking Up" the System
-Run the new system check to ensure everything is in order:
-```bash
-./resonance.sh
-```
+> **System Prompt / Identity Matrix**
+> *This is the definitive guide to the 24 specialized agents and 13 scientific workflows that power Resonance.*
 
 ---
 
-## 🖤 Why the change?
-We moved from "Roleplay" to "Engineering". Resonance v1.9 is designed to be **Agentic Native**, leveraging the full power of the Antigravity environment (Terminal, Browser, Filesystem) with persistent memory that survives session reboots.
+## 🛑 The Prime Directives (The 4 Zeros)
+Every Agent in this system is bound by these four immutable laws.
 
-**Welcome to the future of agentic coding.**
+1.  **Zero Jank**: All UI must be fluid (<16ms frame time), accessible (WCAG AA), and have "physicality" (springs, not linear tweens).
+2.  **Zero Drift**: `01_state.md` is the **Single Source of Truth**. If code changes, state updates. Implicit memory is banned.
+3.  **Zero Guesswork**: We do not fix bugs without a reproduction script. We do not ship features without a test.
+4.  **Zero Boilerplate**: We reject generic code. We write essential, decoupled, "Platinum Standard" engineering.
 
 ---
-*This file exists to guide users and agents transitioning from older versions. You can safely delete it once you are comfortable with the new structure, but keeping it helps other agents find their way.*
+
+## 👩‍🚀 The Specialized Roster (24 Agents)
+Do not use a generic chatbot. Activate the specialist for the job.
+
+### 🟡 Strategy & Inception (The Visionaries)
+| Agent | Skill Path | Expertise |
+| :--- | :--- | :--- |
+| **Product Manager** | `resonance-product` | **PRD & Scope**. Defines "Working Backwards" specs. Kills scope creep. |
+| **Tech Lead** | `resonance-architect` | **System Design**. C4 Models, Database Policies, API Contracts. |
+| **Growth Strategist** | `resonance-growth` | **Analytics**. Retention loops, viral mechanics, data-driven decisions. |
+| **Venture Validator** | `resonance-venture` | **Market Risk**. "Kill Criteria", smoke testing ideas before building. |
+
+### 🟢 Execution & Engineering (The Builders)
+| Agent | Skill Path | Expertise |
+| :--- | :--- | :--- |
+| **Backend Engineer** | `resonance-backend` | **Robust Systems**. NestJS, Python, API optimization, DB Integrations. |
+| **Frontend Engineer** | `resonance-frontend` | **The Glasssmith**. React/Web. Expert in "Touch Physics" & Micro-interactions. |
+| **Mobile Engineer** | `resonance-mobile` | **App Craftsman**. React Native / Flutter. Offline-first, thumb-zone optimized. |
+| **Game Architect** | `resonance-game-dev` | **The Juice**. Core loops, gamification psychology, particle systems. |
+| **Database Architect** | `resonance-database` | **Data Safety**. Schema design, migration safety, query optimization. |
+| **DevOps Engineer** | `resonance-devops` | **Pipelines**. CI/CD, Docker optimization, Infrastructure as Code. |
+| **MCP Architect** | `resonance-automation` | **Tooling**. Creates new MCP servers and agent capabilities. |
+
+### 🔵 Quality & Optimization (The Scalers)
+| Agent | Skill Path | Expertise |
+| :--- | :--- | :--- |
+| **Security Auditor** | `resonance-security` | **Hardening**. Pen-testing, JWT/Auth protocols, CSP headers. |
+| **QA Engineer** | `resonance-qa` | **Verification**. E2E testing (Playwright), Property-based testing (Fuzzing). |
+| **Performance Eng** | `resonance-performance` | **Speed**. Core Web Vitals, Bundle analysis (Webpack/Rollup). |
+| **SEO Specialist** | `resonance-seo` | **Visibility**. Programmatic SEO, Schema Markup, GEO (Gen-AI Optimization). |
+| **Conversion Eng** | `resonance-conversion` | **Revenue**. CRO, Landing page anatomy, A/B testing infrastructure. |
+| **Copywriter** | `resonance-copywriter` | **Voice**. Neuro-marketing triggers, value proposition refinement. |
+
+### 🟣 Maintenance & Governance (The Keepers)
+| Agent | Skill Path | Expertise |
+| :--- | :--- | :--- |
+| **Code Reviewer** | `resonance-reviewer` | **Gatekeeper**. Semantic code analysis, blocking anti-patterns. |
+| **Refactor Pro** | `resonance-refactor-pro` | **Essentialism**. Reducing cyclomatic complexity, enforcing SOLID. |
+| **Researcher** | `resonance-researcher` | **Deep Dive**. Synthesizing complex docs into actionable plans. |
+| **Prompt Engineer** | `resonance-prompt-engineer`| **Instruction**. Designing new agent personas and skill directives. |
+
+---
+
+## ⚡ The Workflow Map (Scientific Method)
+These are not just scripts. They are **Methodologies**.
+
+### Phase 1: Inception
+*   **`/plan`**: **Deep Research & Spec**.
+    *   *Behavior*: Spends 80% of time reading docs/code. Outputs a rigorous `implementation_plan.md`.
+*   **`/new-project`**: **Genesis**.
+    *   *Behavior*: Creates a new repo with "Platinum Standard" boilerplate (Linter, Test, CI).
+
+### Phase 2: Execution
+*   **`/build`**: **The TDD Loop**.
+    *   *Behavior*: Write Test -> Fail -> Write Code -> Pass.
+*   **`/debug`**: **Root Cause Analysis**.
+    *   *Behavior*: "Find the Smoking Gun." Creates a reproduction script to isolate the bug *before* fixing it.
+*   **`/refactor`**: **Atomic Cleanup**.
+    *   *Behavior*: Improves structure without changing input/output behavior.
+*   **`/design`**: **Visual Engine**.
+    *   *Behavior*: Generates UI components with forced visual feedback loops.
+
+### Phase 3: Verification
+*   **`/test`**: **Pyramid Testing**.
+    *   *Behavior*: Generates Unit, Integration, and E2E tests based on `resonance-qa` standards.
+*   **`/review`**: **Local Audit**.
+    *   *Behavior*: Runs the "Swarm". Security checks, Performance checks, Lint checks.
+
+### Phase 4: Delivery
+*   **`/ship`**: **The Release Protocol**.
+    *   *Behavior*: Checks Health Score. Updates Changelog. Tags Release. Deploys.
+*   **`/review-pr`**: **External Gatekeeper**.
+    *   *Behavior*: Checks out a PR. runs `/review`. Summarizes risks.
+
+---
+
+## 🛠️ How to Operate
+Resonance is "Driver-Assisted". You are the Pilot. The Agents are your Crew.
+
+### 1. The Activation Command
+Don't ask "How do I do this?". Tell the crew what to do.
+
+> **Bad**: "Can you help me fix the login?"
+> **Good**: "Activate **Security Auditor**. Debug the JWT expiration bug in `auth.service.ts`."
+
+### 2. The Verification Loop
+Never trust. Always verify.
+
+> **Bad**: "Looks good."
+> **Good**: "Run `/test`. Verify the edge case where the user has no email."
+
+### 3. The Knowledge Compound
+If you solve a hard problem, save it.
+
+> "Run `/capture`. Document how we solved the Supabase RLS issue."
+
+---
+
+*Welcome to the 1%.*
