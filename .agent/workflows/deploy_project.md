@@ -7,7 +7,12 @@ description: Deploy the project to production using the 'ShipIt' protocol.
 **Trigger**: "Deploy this", "Go live", "Production push".
 **Context**: "It works on my machine" is not a valid deployment strategy.
 
-## 1. The Deep Audit (Pre-Flight)
+# Workflow: Deploy Project ("The ShipIt Protocol")
+
+**Trigger**: "Deploy this", "Go live", "Production push".
+**Context**: "It works on my machine" is not a valid deployment strategy.
+
+## 1. PREPARE: The Deep Audit (Pre-Flight)
 *Activate Skill*: `resonance-devops`
 
 - [ ] **Type Safety**: `tsc --noEmit`. Zero errors allowed.
@@ -16,28 +21,33 @@ description: Deploy the project to production using the 'ShipIt' protocol.
     -   *Gate*: No single chunk > 250kb (Initial Load).
 - [ ] **Secrets**: Verify `.env` vs `.env.example`. Are all keys present in Vercel/AWS?
 
-## 2. Asset Optimization
+## 2. BACKUP: Asset Optimization & Safety
 *Activate Skill*: `resonance-performance`
 
+- [ ] **Snapshot**: Create a specific git tag for this release state.
 - [ ] **Images**: All static assets must be WebP/AVIF.
-- [ ] **Fonts**: Verify `font-display: swap` is used.
 - [ ] **Metadata**: Title, Description, and OG Image present for all public routes.
 
-## 3. The Push
+## 3. DEPLOY: The Push
 *Activate Skill*: `resonance-devops`
 
-- [ ] **Deploy**: `vercel deploy --prod` (or equivalent).
+- [ ] **Exec**: `vercel deploy --prod` (or equivalent).
 - [ ] **Smoke Test (Automated)**:
     ```bash
     curl -I https://project.com/health
     # Must return HTTP 200
     ```
 
-## 4. Post-Deploy Verification (The Lighthouse)
+## 4. VERIFY: Post-Deploy Verification
 *Activate Skill*: `resonance-qa`
 
-- [ ] **Performance**: Run Google Lighthouse (or PageSpeed).
-    -   *Target*: >90 Performance, >95 Accessibility.
-- [ ] **Console check**: Open DevTools on production.
-    -   *Gate*: Zero Red Errors.
-- [ ] **Tag**: `git tag -a v1.x.y -m "Release"`
+- [ ] **Performance**: Run Google Lighthouse. (Target: >90 Perf).
+- [ ] **Console check**: Open DevTools on production. (Gate: Zero Red Errors).
+- [ ] **Logs**: Check server logs for start-up crashes.
+
+## 5. CONFIRM or ROLLBACK
+*Activate Skill*: `resonance-devops`
+
+- [ ] **Decision Matrix**:
+    -   **Stable**: `git tag -a v1.x.y -m "Release"` -> **CONFIRM**
+    -   **Unstable (>1% Errors)**: Execute **Rollback Protocol** immediately.

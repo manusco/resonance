@@ -75,13 +75,15 @@ python .agent/skills/resonance-designer/scripts/search.py "hero section conversi
 
 ### 🚫 The Ban List (Automatic Rejection)
 *   ❌ **Default Blue**: `bg-blue-500` is forbidden. Use custom HSL hues (e.g., `indigo-500` mixed with `slate`).
+*   ❌ **The Purple Haze**: Avoid pure `#800080` or default purple/violet unless it's a specific brand requirement. It often looks dated.
 *   ❌ **Default Fonts**: `Inter`, `Roboto`, and `Open Sans` are banned unless explicitly requested. They scream "Template".
-*   ❌ **Dead Buttons**: Buttons must have a `:hover` and `:active` state.
-*   ❌ **Plain Cards**: Cards must have a subtle border or shadow. Flat white rectangles are not allowed.
+*   ❌ **Emoji Icons**: Never use 🚀, ⚙️, or 🎨 as UI icons. Use SVG (Lucide/Heroicons).
+*   ❌ **Dead Buttons**: Buttons must have a `:hover` (opacity/color shift) and `:active` (`scale-95`) state.
+*   ❌ **Plain Cards**: Cards must have a subtle border (`border-white/10`) or shadow. Flat white rectangles are not allowed.
 
 ### ✅ The Elite Mandates
-*   ✅ **Exotic Typography**: Use characterful fonts (e.g., `Manrope`, `Outfit`, `Space Grotesk`, `Syne`, `DM Sans`).
-*   ✅ **Micro-Interactions**: "If it clicks, it sticks." Use `scale-95` on click.
-*   ✅ **Glassmorphism**: Use `backdrop-blur-md` + `bg-white/5` for depth.
-*   ✅ **Noise & Texture**: Add subtle bg-noise where appropriate to kill the "digital flatness".
-*   ✅ **Distinct Colors**: Use a "Vibrant Dark" or "Pastel Light" palette. Avoid "Office Grey".
+*   ✅ **Exotic Typography**: Use characterful font pairings (e.g., `Syne` for headings + `Inter` for density, or `Outfit` + `DM Sans`).
+*   ✅ **Glassmorphism**: Use `backdrop-blur-md` + `bg-white/5` + `border border-white/10` for depth.
+*   ✅ **Micro-Interactions**: Use `transition-all duration-300 ease-out`.
+*   ✅ **Noise & Texture**: Add a subtle `bg-noise` overlay to create a premium tactile feel.
+*   ✅ **Content Density**: Use the 8pt grid system. Consistent whitespace is the hallmark of luxury.
