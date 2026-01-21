@@ -1,7 +1,7 @@
 # Resonance v2.0.0: The AI Engineering Operating System
 
 > **The Multi-Agent Framework for Autonomous Software Engineering.**
-> *Turn your LLM into a team of 24 specialized experts. Framework-Driven. References-Backed. Enterprise-Ready.*
+> *Turn your LLM into a team of 25 specialized experts. Framework-Driven. References-Backed. Enterprise-Ready.*
 
 **Resonance** is a local-first **AI Agent Framework** that bridges the gap between generic chatbots and elite engineering. It provides a structured governance layer (file-based memory) and specialized personas (Security, QA, SEO, DevOps) to enforce rigorous **TDD**, **Security Protocols**, and **Clean Code Standards**.
 
@@ -27,7 +27,7 @@ git clone https://github.com/manusco/resonance .resonance
 
 | Component | Count | Description |
 |-----------|-------|-------------|
-| **Agents** | 24 | Specialized roles (SEO, Growth, Security, Mobile, etc.) |
+| **Agents** | 25 | Specialized roles (SEO, Growth, Security, Mobile, etc.) |
 | **Skills** | 40+ | Codified engineering protocols (GEO, CSP, Property Testing) |
 | **Workflows** | 13 | Scientific slash commands for consistent execution |
 | **Memory** | 3 | Immutable State, Soul (Vision), and Knowledge Base |
@@ -41,7 +41,7 @@ git clone https://github.com/manusco/resonance .resonance
 └── memory.md            # The Audit Log
 
 .agent/                  # The Capability Matrix
-├── skills/              # 24 Specialized Skills (e.g. resonance-seo, resonance-qa)
+├── skills/              # 25 Specialized Skills (e.g. resonance-seo, resonance-qa)
 │   └── */references/    # 50+ Protocols (e.g. geo_protocol.md)
 └── workflows/           # 13 Slash Commands (e.g. /plan, /ship)
 

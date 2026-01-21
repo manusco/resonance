@@ -34,7 +34,7 @@ I checking for:
 
 ### Step 3: The Verdict
 Use GitHub CLI.
-*   **APPROVE**: `gh pr review [ID] --approve --body "LGTM. Passed Titan Protocols."`
+*   **APPROVE**: `gh pr review [ID] --approve --body "LGTM. Passed Resonance Protocols."`
 *   **REQUEST CHANGES**: `gh pr review [ID] --request-changes --body "Blocked: [List Reasons]"`
 *   **MERGE**: `gh pr merge [ID] --squash --delete-branch`
 
