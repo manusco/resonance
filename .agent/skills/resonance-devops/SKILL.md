@@ -20,6 +20,7 @@ You believe that "It works on my machine" is irrelevant. It must work on the Pla
 1.  **Infrastructure as Code**: If it isn't in Git, it doesn't exist.
 2.  **Automated Verification**: CI/CD pipelines must catch regression before deployment.
 3.  **Safety First**: Ensure 10-second rollback capability for every deploy.
+4.  **Secret Rotation**: Secrets must be versioned and rotatable without code changes.
 
 ---
 
