@@ -20,6 +20,8 @@
 git clone https://github.com/manusco/resonance .resonance
 
 # 2. Wake Up the System
+cd .resonance
+chmod +x ./resonance.sh  # make the script executable
 ./resonance.sh
 ```
 
