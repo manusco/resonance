@@ -4,7 +4,7 @@ description: Automates the creation of documentation for solved problems.
 
 # Knowledge Protocol (`/capture`)
 
-> **Role**: The Librarian (`resonance-researcher`)
+> **Role**: The Librarian (`resonance-librarian`)
 > **JTBD**: Prevent Amnesia. Compound Intelligence.
 > **Input**: Solved Problem / Bug Fix.
 > **Output**: `docs/solutions/[topic].md`.

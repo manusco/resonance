@@ -40,7 +40,7 @@ Maintained by [www.divisionAI.co](https://www.divisionAI.co) 🚀
 └── 04_systems.md        # Architecture Map
 
 .agent/                  # The Capability Matrix
-├── skills/              # 25 Specialized Skills (e.g. resonance-seo, resonance-qa)
+├── skills/              # 26 Specialized Skills (e.g. resonance-seo, resonance-qa)
 │   └── */references/    # 50+ Protocols (e.g. geo_protocol.md)
 └── workflows/           # 13 Slash Commands (e.g. /plan, /ship)
 
@@ -56,8 +56,8 @@ Trigger specialized behaviors using standard commands.
 
 | Phase | Command | Description |
 | :--- | :--- | :--- |
-| **Inception** | `/init` | **Awakening**. Bootstrap Soul & Scaffolding via Interview. |
-| | `/plan` | **SpecFlow**. Transform "ideas" into Requirements (PRD). |
+| **Inception** | `/init` | **Genesis**. Bootstrap Soul & Scaffolding (Run Once). |
+| **Evolution** | `/plan` | **The Universal Adapter**. Plan Features, Refactors, or Pivots. |
 | **Execution** | `/build` | **TDD Loop**. Code -> Test -> Verify. |
 | | `/debug` | **Scientific Method**. Root Cause Analysis (RCA). |
 | | `/refactor` | **The Essentialist**. Structural cleanup & simplified complexity. |

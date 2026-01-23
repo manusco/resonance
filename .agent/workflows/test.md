@@ -33,6 +33,9 @@ I will fuzz inputs.
 *   **Integration**: API Routes, Database Queries.
 *   **E2E**: Critical User Journeys (Login, checkout).
 *   **Property**: Complex algorithms (Fuzzing).
+    *   *Reference*: `resonance-qa/references/property_based_testing_protocol.md`.
+*   **Security (SAST)**: Static Analysis.
+    *   *Reference*: `resonance-security/references/static_analysis_strategy.md`.
 
 ### Step 3: Implementation (AAA)
 Write the test.

@@ -4,7 +4,7 @@ description: Structurally refine code for readability and maintainability.
 
 # Refactoring Protocol (`/refactor`)
 
-> **Role**: The Craftsman (`resonance-refactor-pro`)
+> **Role**: The Craftsman (`resonance-refactor`)
 > **JTBD**: Reduce technical debt, improve readability, enforce SOLID.
 > **Input**: "Messy" file or module.
 > **Output**: Clean Code (Zero Behavioral Change).

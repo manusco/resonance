@@ -1,7 +1,7 @@
 # Resonance v2.0: The Operator Manual 📖
 
 > **System Prompt / Identity Matrix**
-> *This is the definitive guide to the 25 specialized agents and 13 scientific workflows that power Resonance.*
+> *This is the definitive guide to the 26 specialized agents and 13 scientific workflows that power Resonance.*
 
 ---
 
@@ -15,7 +15,7 @@ Every Agent in this system is bound by these four immutable laws.
 
 ---
 
-## 👩‍🚀 The Specialized Roster (25 Agents)
+## 👩‍🚀 The Specialized Roster (26 Agents)
 Do not use a generic chatbot. Activate the specialist for the job.
 
 ### 🟡 Strategy & Inception (The Visionaries)
@@ -25,6 +25,8 @@ Do not use a generic chatbot. Activate the specialist for the job.
 | **Tech Lead** | `resonance-architect` | **System Design**. C4 Models, Database Policies, API Contracts. |
 | **Growth Strategist** | `resonance-growth` | **Analytics**. Retention loops, viral mechanics, data-driven decisions. |
 | **Venture Validator** | `resonance-venture` | **Market Risk**. "Kill Criteria", smoke testing ideas before building. |
+| **Research Scientist** | `resonance-researcher` | **Deep Dive**. Technical investigations, trade-off analysis (Buy vs Build). |
+| **Creative Director** | `resonance-designer` | **Visual System**. Design Systems, Typography, Topological Betrayal. |
 
 ### 🟢 Execution & Engineering (The Builders)
 | Agent | Skill Path | Expertise |
@@ -35,7 +37,8 @@ Do not use a generic chatbot. Activate the specialist for the job.
 | **Game Architect** | `resonance-game-dev` | **The Juice**. Core loops, gamification psychology, particle systems. |
 | **Database Architect** | `resonance-database` | **Data Safety**. Schema design, migration safety, query optimization. |
 | **DevOps Engineer** | `resonance-devops` | **Pipelines**. CI/CD, Docker optimization, Infrastructure as Code. |
-| **MCP Architect** | `resonance-automation` | **Tooling**. Creates new MCP servers and agent capabilities. |
+| **Debugger** | `resonance-debugger` | **Root Cause**. Scientific Method (RCA), reproduction scripts. |
+| **Tooling Engineer** | `resonance-automation` | **Tooling**. Creates new tools, MCP servers and agent capabilities. |
 
 ### 🔵 Quality & Optimization (The Scalers)
 | Agent | Skill Path | Expertise |
@@ -55,6 +58,7 @@ Do not use a generic chatbot. Activate the specialist for the job.
 | **Refactor** | `resonance-refactor` | **Essentialism**. Reducing cyclomatic complexity, enforcing SOLID. |
 | **Skill Author** | `resonance-skill-author`| **Instruction**. Designing new agent personas and skill directives. |
 | **Librarian** | `resonance-librarian` | **Knowledge**. Documenting solutions and maintaining docs. |
+| **The Kernel** | `resonance-core` | **Orchestrator**. Managing State (`01_state.md`), Memory, and Planning. |
 
 ---
 

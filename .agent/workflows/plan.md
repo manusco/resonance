@@ -15,10 +15,20 @@ description: Transform feature descriptions into well-structured project plans u
 
 ## 2. Context (The Vision)
 <thinking>
-I must transform a vague request into a rigorous engineering specification.
-I will assume nothing. I will verify everything.
-Is this a new feature or a modification?
-Do I understand the user's intent?
+I must transform the User's intent into the correct Engineering Specification.
+I need to determine the **Operation Mode**:
+
+*   **Mode A: NEW FEATURE** (e.g. "Add Dark Mode", "Create Invite System")
+    *   *Action*: I must create a **Specific Feature PRD** (`docs/features/[name].md`).
+    *   *Reason*: Do not clutter the Master Soul (`00_soul.md`) with implementation details.
+
+*   **Mode B: REFACTOR/FIX** (e.g. "Migrate to Tailwind", "Fix Auth Bug")
+    *   *Action*: I must create an **RFC** (`docs/rfcs/[name].md`).
+    *   *Reason*: These are technical changes that require a technical spec.
+
+*   **Mode C: PROJECT EVOLUTION** (e.g. "Pivot to AI", "Rebrand")
+    *   *Action*: I must update the **Master PRD** (`docs/prd/00_vision.md`) or **Soul** (`00_soul.md`).
+    *   *Reason*: This changes the fundamental nature of the project.
 </thinking>
 
 ## 3. The Algorithm (Execution)
@@ -27,15 +37,31 @@ Do I understand the user's intent?
 Spawn parallel researchers to map the territory.
 *   **Tool**: `grep_search`, `view_file`
 *   **Action**: Scan existing code patterns to ensure consistency.
+*   **Action**: Scan existing code patterns to ensure consistency.
     *   `Task(resonance-researcher, "Analyze existing patterns for [Feature]. Find similar implementations.")`
+*   `Task(resonance-venture, "Validate against Kill Criteria. Is this feature risky?")`
+    *   `Task(resonance-growth, "Analyze Virality/Retention loop. Does this drive growth?")`
     *   `Task(resonance-product, "Validate against Opportunity Tree.")`
 
 ### Step 2: Working Backwards (The Press Release)
-Write the vision first.
-*   **Action**: Create/Update `docs/prd/00_launch.md`.
+Write the spec based on the **Operation Mode**.
+
+#### IF FEATURE (Mode A):
+*   **Action**: Create `docs/features/YYYY-MM-DD_[feature_name].md`.
     *   **Headline**: Customer-centric title.
     *   **Problem**: Why does the ecosystem suffer?
     *   **Solution**: The "Plasma" fix.
+    *   **Scope**: What is IN and OUT.
+
+#### IF REFACTOR (Mode B):
+*   **Action**: Create `docs/rfcs/YYYY-MM-DD_[rfc_name].md`.
+    *   **Context**: Current technical debt.
+    *   **Proposal**: The new architecture.
+    *   **Trade-offs**: Cost vs. Benefit.
+
+#### IF EVOLUTION (Mode C):
+*   **Action**: Update `docs/prd/00_vision.md`.
+    *   **Pivot**: Rewrite the Problem/Solution/Scope.
 
 ### Step 3: SpecFlow Analysis (The Logic)
 Synthesize research into requirements.

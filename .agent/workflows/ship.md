@@ -27,6 +27,7 @@ I am the last line of defense.
 *   **Safety**: Run `npm test`.
 *   **Build**: Run `npm run build`.
 *   **Perf**: Run `npx bundle-visualizer` (Ensure no massive chunks).
+*   **SEO**: `Task(resonance-seo, "Verify Meta Tags, Sitemap, and Robots.txt.")`
 
 ### Step 2: Versioning
 *   **Action**: Determine Semantic Version (Major/Minor/Patch).

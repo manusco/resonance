@@ -42,6 +42,7 @@ For each logical component in the plan:
 Before finishing, self-correct.
 *   **Action**: Run `npm run lint` (or equivalent).
 *   **Action**: Run `tsc` (Type check).
+*   **Action**: `Task(resonance-security, "Quick Security Check (Sharp Edges).")`
 *   **Action**: Fix any new warnings.
 
 ## 4. Recovery

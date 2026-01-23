@@ -46,7 +46,9 @@ Did we break the world?
 *   **Action**: Run related test suites (`npm test`).
 
 ## 4. Recovery
-*   **Rabbit Hole**: If RCA takes > 5 steps without clarity, stop. Summarize findings and ask user for more context.
+*   **Rabbit Hole**: If RCA takes > 5 steps without clarity, stop.
+    *   **Escalate**: Activate `resonance-researcher` to trace dependency graph or read raw logs.
+    *   **Ask User**: Summarize findings and request inputs.
 *   **Fix Fails**: If the fix doesn't work, revert immediately. Do not stack hacks.
 
 ## 5. Governance (Definition of Done)

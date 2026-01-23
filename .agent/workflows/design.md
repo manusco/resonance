@@ -42,8 +42,10 @@ I will reuse existing tokens, not create magic values.
 ### Step 4: Verification (The Vibe Check)
 *   **Tool**: `browser_subagent`.
     *   Check 1: **Mobile View** (375px).
-    *   Check 2: **Dark Mode** (Toggle).
+    *   Check 2: **Dark Mode** (Toggle) - Validate Token Usage.
     *   Check 3: **Micro-interaction** (Hover/Focus).
+*   **Asset Check**: If images/icons needed?
+    *   *Action*: `Task(resonance-studio, "Generate consistent assets for [Component].")`
 
 ## 4. Recovery
 *   **Ugly Result**: If it looks generic, activate `resonance-designer` to inject "Soul" (Shadows, Gradients).

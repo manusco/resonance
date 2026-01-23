@@ -27,11 +27,13 @@ I will spawn specialists to look at the code from different angles:
 ### Step 1: Security Scan
 *   **Tool**: `grep_search`
 *   **Action**: Scan for secrets, `eval()`, weak crypto.
-*   **Task**: `Task(resonance-security, "Audit recent changes for vulnerabilities.")`
+    *   *Check*: `references/sharp_edges_protocol.md`.
+*   **Task**: `Task(resonance-security, "Audit recent changes for vulnerabilities (Sharp Edges).")`
 
 ### Step 2: Quality Scan
 *   **Tool**: `run_command("npm run lint")`
 *   **Action**: Check for structural issues.
+    *   *Check*: `references/risk_based_review_protocol.md` (Blast Radius).
 *   **Task**: `Task(resonance-reviewer, "Check for code smell and Cognitive Complexity.")`
 
 ### Step 3: Synthesis
