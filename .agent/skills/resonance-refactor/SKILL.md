@@ -67,6 +67,7 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[Mikado Method](references/mikado_method.md)**: Safe refactoring graph.
+*   **[Naming Protocol](references/naming_convention_protocol.md)**: The Decision Tree (Is it a boolean?).
 *   **[Boy Scout Protocol](references/boy_scout_protocol.md)**: Iterative cleanup.
 *   **[Code Smell Matrix](references/code_smell_matrix.md)**: Diagnosis tool.
 *   **[SOLID Principles](references/solid_principles.md)**: Design rules.

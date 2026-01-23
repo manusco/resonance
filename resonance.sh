@@ -12,9 +12,9 @@ echo "================================================"
 
 # 1. Check Memory (The Brain)
 if [ ! -f .resonance/01_state.md ]; then
-    echo -e "${RED}⚠️  CRITICAL: Memory corrupted. State file missing.${NC}"
-    echo "   Run '@Resonance /init_project' to bootstrap."
-    exit 1
+    echo "🧠 Resonance Core Loaded."
+    echo "👉 Action Required: Run '@Resonance /init' in your chat to configure this project."
+    exit 0
 fi
 echo -e "${GREEN}✅ Memory Active (.resonance/)${NC}"
 

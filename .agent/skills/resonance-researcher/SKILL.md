@@ -67,6 +67,7 @@ Apply these models to guide decision making:
 **Protocols & Standards:**
 *   **[Scientific Method](references/scientific_method.md)**: Investigation protocol.
 *   **[Synthesis Matrix](references/synthesis_matrix.md)**: Comparison tool.
+*   **[Research Synthesis](references/research_synthesis_protocol.md)**: Verification & Matrix.
 *   **[Diataxis Framework](references/diataxis_framework.md)**: Doc structure.
 *   **[LLMs.txt Protocol](references/llms_txt_protocol.md)**: AI-friendly docs.
 

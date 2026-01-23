@@ -28,3 +28,7 @@
 ---
 
 **Note**: This is an immutable log. Add entries, never delete. Future you will thank past you.
+
+---
+
+[→ View State (Active Context)](01_state.md) | [→ View Soul (Vision)](00_soul.md)

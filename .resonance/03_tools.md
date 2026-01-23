@@ -29,3 +29,7 @@ Resonance leverages Google Antigravity's terminal access responsibly. The agent 
 ---
 
 **Note**: This file defines what the agent can/cannot do with terminal access.
+
+---
+
+[→ Back to State (Active Context)](01_state.md)

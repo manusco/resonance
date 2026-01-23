@@ -28,10 +28,15 @@ I must back up before I touch anything.
 
 ### Step 2: Fetch
 *   **Action**: Clone/Pull latest Resonance definitions.
+*   **Note**: This updates `templates/`, `workflows/`, and `skills/`.
 
 ### Step 3: Merge (Smart)
 *   **Action**: Update `skills/` and `workflows/`.
-*   **Caution**: Do not overwrite `00_soul.md` or `memory.md`.
+*   **Memory Check**:
+    *   Resonance v2.0 stores memory in `.resonance/`.
+    *   Files are tracked in git.
+    *   **User Action**: Resolve any git conflicts in `00_soul.md` or `memory.md` manually to preserve your context.
+
 
 ### Step 4: Verification
 *   **Action**: Run `/system-health`.

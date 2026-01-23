@@ -37,3 +37,7 @@
 - **Build System**: [Vite / Webpack / TSC]
 - **Ports**: [Localhost:3000]
 - **Env Variables**: [Which .env files are required?]
+
+---
+
+[→ Back to State (Active Context)](01_state.md)

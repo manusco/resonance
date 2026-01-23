@@ -67,6 +67,7 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[Behavioral Psychology](references/behavioral_psychology_protocol.md)**: Cognitive bias cheatsheet.
+*   **[Conversion Patterns](references/conversion_psychology.md)**: Fogg Model & Friction Removal.
 *   **[Page Optimization](references/page_optimization_protocol.md)**: CRO guide.
 *   **[Form Engineering](references/form_engineering_protocol.md)**: Reducing form friction.
 *   **[Landing Page Anatomy](references/landing_page_anatomy.md)**: Standard layout.

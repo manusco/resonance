@@ -66,9 +66,11 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[Testing Pyramid](references/testing_pyramid.md)**: Strategy guide.
+*   **[E2E Strategy](references/e2e_testing_strategy.md)**: Critical path automation.
 *   **[Destructive Testing](references/destructive_testing.md)**: How to break things.
-*   **[Property Based Testing](references/property_based_testing.md)**: Fuzzing guide.
+*   **[Property Based Testing](references/property_based_testing_protocol.md)**: Fuzzing guide (Roundtrip/Invariants).
 *   **[Contract Testing](references/contract_testing.md)**: API verification.
+*   **[Design Validation](references/design_validation_protocol.md)**: Pixel-perfect Figma vs Code checklist.
 
 ---
 

@@ -1,28 +1,70 @@
 # JWT Hardening Protocol
 
-> "A token is a key. Treats it like one."
+> **Objective**: Secure JSON Web Token implementation against leakage, replay, and forgery.
 
-## 1. Storage (The Holy War)
+## 1. Core Implementation Rules
 
-**Where do I store the Access Token?**
+### ❌ NEVER
+- Store sensitive data (PII, passwords) in the JWT payload.
+- Use weak secrets or default keys.
+- Store JWTs in `localStorage` (XSS vulnerability).
+- Allow "none" algorithm.
 
-1.  **LocalStorage**: ❌ **BANNED**. (Vulnerable to XSS).
-2.  **Cookie (HttpOnly)**: ✅ **REQUIRED**. (Immune to XSS).
+### ✅ ALWAYS
+- Sign with strong secrets (min 256-bit).
+- Use `HttpOnly; Secure; SameSite=Strict` cookies.
+- Set short expiration for Access Tokens (e.g., 15-60 min).
+- Use Refresh Tokens for long-lived sessions.
 
-## 2. The Rotation Dance (Refresh Tokens)
+---
 
-Access Tokens should live for **15 minutes**.
-Refresh Tokens should live for **7 days**.
+## 2. Secure Implementation Pattern
 
-**The Flow:**
-1.  Client: "My Access Token expired (401)."
-2.  Client: "Here is my Refresh Token (Cookie)."
-3.  Server: "Verify Refresh Token. Is it revoked in Redis?"
-4.  Server: "Here is a new Access Token."
+### Generating Tokens
+```typescript
+const accessToken = jwt.sign(
+  { userId: user.id, role: user.role }, // Minimal payload
+  process.env.JWT_SECRET,
+  { 
+    expiresIn: '15m', 
+    algorithm: 'HS256',
+    issuer: 'resonance-auth',
+    audience: 'resonance-api'
+  }
+);
+```
 
-## 3. The Algorithm
+### Refresh Token Rotation
+1.  **Issue**: Generate random opaque string (or long-lived JWT) as Refresh Token.
+2.  **Store**: Hash it (bcrypt/argon2) and store in DB `refresh_tokens` table.
+3.  **Rotate**: On use, delete the old Refresh Token and issue a new one. This detects token theft (if potential thief tries to use old one, invalidate all).
 
-*   **HS256**: Symmetric. (Fast). Only if you control Auth + Resource Server.
-*   **RS256**: Asymmetric. (Robust). Use if Auth and API are separate.
+---
 
-> 🔴 **Rule**: Never allow `alg: "none"`.
+## 3. Storage Strategy
+
+| Storage | Security | Recommendation |
+| :--- | :--- | :--- |
+| **LocalStorage** | 🔴 Low (XSS) | **NEVER** for sensitive apps. |
+| **SessionStorage** | 🔴 Low (XSS) | **NEVER** for sensitive apps. |
+| **Cookie (HttpOnly)** | 🟢 High (CSRF needed) | **PREFERRED**. Immune to XSS. |
+
+**Cookie Configuration:**
+```javascript
+res.cookie('access_token', token, {
+  httpOnly: true,    // Prevent JS access
+  secure: true,      // HTTPS only
+  sameSite: 'strict',// CSRF protection
+  maxAge: 15 * 60 * 1000 // 15 mins
+});
+```
+
+---
+
+## 4. Verification Checklist
+
+- [ ] Secret is loaded from env var (not hardcoded).
+- [ ] Algorithm is explicitly set (no `none`).
+- [ ] Expiration (`exp`) is verified.
+- [ ] Issuer (`iss`) and Audience (`aud`) are verified.
+- [ ] Token is revoked/blacklisted on logout (requires stateful check or short expiry).

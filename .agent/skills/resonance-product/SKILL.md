@@ -67,6 +67,7 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[Working Backwards](references/working_backwards.md)**: PRD method.
+*   **[PRD Template](references/prd_template.md)**: Standard "Press Release" format.
 *   **[Opportunity Tree](references/opportunity_tree.md)**: Discovery method.
 *   **[Pricing Architecture](references/pricing_architecture_protocol.md)**: Monetization.
 *   **[Competitive Intelligence](references/competitive_intelligence_protocol.md)**: Analysis.

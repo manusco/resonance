@@ -67,8 +67,10 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[Code Review Manifesto](references/code_review_manifesto.md)**: Etiquette.
+*   **[Review Comment Templates](references/review_comment_templates.md)**: Copy-paste templates.
 *   **[Blocking Registry](references/blocking_pattern_registry.md)**: Veto list.
 *   **[Cognitive Complexity](references/cognitive_complexity_limits.md)**: Metrics.
+*   **[Risk-Based Review](references/risk_based_review_protocol.md)**: Differential analysis & Blast Radius.
 *   **[Automated Linting](references/automated_linting_protocol.md)**: Tooling.
 
 ---

@@ -66,7 +66,8 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[Growth Loop Engineering](references/growth_loop_protocol.md)**: Viral mechanics.
-*   **[Launch Velocity](references/launch_velocity_protocol.md)**: GTM strategy.
+*   **[Launch Day Protocol](references/launch_day_protocol.md)**: ORB Framework & Checklist.
+*   **[Referral Mechanics](references/referral_mechanics.md)**: Viral Coefficient (K) & Incentives.
 *   **[Paid Acquisition](references/paid_acquisition_protocol.md)**: Ad strategy.
 *   **[Pirate Metrics](references/aarrr_metrics.md)**: Measurement framework.
 

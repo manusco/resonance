@@ -67,6 +67,7 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
+*   **[Production Readiness](references/production_readiness_checklist.md)**: Go-live verification.
 *   **[Platform Decision Tree](references/platform_tree.md)**: Hosting selection guide.
 *   **[Rollback Matrix](references/rollback_matrix.md)**: Emergency response procedures.
 *   **[Docker Optimization](references/docker_optimization.md)**: Container best practices.

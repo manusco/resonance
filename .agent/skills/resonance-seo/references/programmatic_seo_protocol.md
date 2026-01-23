@@ -1,77 +1,91 @@
-# Protocol: Programmatic Content Architecture
-> **Focus**: Engineering Scalable Content Systems (Programmatic SEO)
-> **Resonance Phase**: Execution / Scale
+# Protocol: Programmatic Content Architecture (100k+ Scale)
+> **Objective**: Engineer a programmatic SEO system capable of scaling to 100,000+ unique, high-value pages without triggering "Thin Content" penalties.
 
-## 1. System Overview
-Programmatic SEO (pSEO) is **not** about "generating spam." It is the engineering practice of using **structured data** + **template engines** to solve long-tail search intent at scale.
+## 1. The Core Philosophy
+Scale is not about **copy-paste**. Scale is about **rendering**.
+We treat SEO pages as **application states**, not static markdown files.
 
-**The Core Equation**:
-`Unique Data Source` + `User Intent Template` + `Scalable Rendering` = `High-Value Page Instance`
+**The Equation:**
+`Structured Data` + `Intent-Matched Logic` + `Incremental Rendering` = `Platinum Scale`
 
-## 2. The Architecture (The 12 Patterns)
-Instead of "guessing" what to build, implement one of these proven architectural patterns.
+---
 
-### Type A: The Aggregators (Data-Heavy)
-1.  **The Directory Engine** (`/directory/[category]`)
-    *   *Input*: Structured database of tools, companies, or assets.
-    *   *Value*: Filtering, sorting, and comparison logic that a human user cannot perform manually.
-2.  **The Location Grid** (`/[service]/[city]`)
-    *   *Input*: Geo-data, local pricing, regional regulations.
-    *   *Value*: Hyper-local specificity. **Warning**: Do not just swap city names. Inject local data (weather, population, specific laws).
-3.  **The Comparison Matrix** (`/compare/[x]-vs-[y]`)
-    *   *Input*: Feature flags, pricing tiers, limiting specifications.
-    *   *Value*: Unbiased side-by-side analysis. "Decision Support System" for the user.
+## 2. Infrastructure & Scalability
+Running 100k pages requires engineering, not just content writing.
 
-### Type B: The Utilities (Function-Heavy)
-4.  **The Conversion Engine** (`/convert/[from]-to-[to]`)
-    *   *Input*: Mathematical formulas, exchange rates.
-    *   *Value*: Instant utility. Lowest friction possible (no sign-ups).
-5.  **The Template Factory** (`/templates/[type]`)
-    *   *Input*: Downloadable assets (PDF, notion, figma).
-    *   *Value*: "speed to zero-state" (solving the blank page problem).
-6.  **The Integration Hub** (`/connect/[app]-to-[app]`)
-    *   *Input*: API documentation, webhook triggers.
-    *   *Value*: Explaining the *possibility space* of two tools working together.
+### A. Rendering Strategy (ISR > SSR > Static)
+*   **Best Practice**: Use **Incremental Static Regeneration (ISR)**.
+    *   *Why*: Building 100k static pages takes hours. SSR is too slow (TTFB). ISR builds on demand and caches.
+*   **Stale-While-Revalidate**: Serve stale content while fetching dynamic updates in the background.
 
-### Type C: The Knowledge Graph (Information-Heavy)
-7.  **The Glossary Graph** (`/learn/[term]`)
-    *   *Input*: Definitions, related concepts, etymology.
-    *   *Value*: Conceptual clarity and internal linking density.
-8.  **The Curator** (`/best/[category]`)
-    *   *Input*: Scored lists, weighted rankings.
-    *   *Value*: Curation as a service. Saving the user research time.
+### B. Sitemap Partitioning (The 50k Rule)
+Google has a hard limit of 50,000 URLs per sitemap.
+*   **Pattern**: `sitemap-index.xml` pointing to:
+    *   `sitemap-products-001.xml` (Page 0-49,999)
+    *   `sitemap-products-002.xml` (Page 50,000+)
+    *   `sitemap-articles.xml`
 
-## 3. Data Pipeline & Integrity
-Garbage In, Garbage Out. Your pSEO system is only as good as your `Data Source`.
+### C. Performance (Core Web Vitals)
+*   **Image Optimization**: Programmatic images must be compressed at the source or via edge functions (Cloudinary/Next/Image).
+*   **Bundle Size**: Do NOT load heavy interactivity (React Hydration) on purely informational pSEO pages. Use "Islands Architecture" or plain HTML where possible.
 
-### Unacceptable Data Sources (The Spam Zone)
-*   [ ] Public, commoditized data everyone else uses.
-*   [ ] AI-hallucinated facts without verification.
-*   [ ] Shallow Variable Swapping (e.g., only changing "New York" to "Boston").
+---
 
-### Elite Data Sources (The Moat)
-*   [x] **Proprietary Telemetry**: Data your product generates (e.g., "Average typing speed of 1M users").
-*   [x] **Aggregated API Synthesis**: Combining Weather API + Traffic API to create unique insights.
-*   [x] **User Generated Graphs**: Reviews, comments, and community submissions.
+## 3. The "Anti-Thin" Content Layer
+To survive the "Helpful Content Update", pages must be >40% unique.
 
-## 4. Engineering Quality Assurance (QA)
-Treat pSEO pages like code. They need unit tests.
+### Variable Swapping vs. Logic Injection
+*   ❌ **Bad (Variable Swapping)**:
+    *   "Best Plumbers in **Austin**" -> "Best Plumbers in **Boston**"
+    *   *Result*: Deindexed (Duplicate Content).
+*   ✅ **Good (Logic Injection)**:
+    *   **Austin Page**: "Austin has **hard water**, so standard heaters fail faster. Here are 3 plumbers specializing in **water softening**."
+    *   **Boston Page**: "Boston has **older pipes** (pre-1950). Here are 3 plumbers specializing in **lead pipe replacement**."
+    *   *Mechanism*: `if (city.water_hardness > 7) { renderSoftenerAdvice() }`
 
-### Thin Content Detector
-Before deploying 1,000 pages, run this audit on a sample size (n=10):
-1.  **Uniqueness Ratio**: Is >40% of the DOM unique to this specific URL (vs the template)?
-2.  **Intent Match**: Does the page actually *solve* the `[query]`?
-    *   *Bad*: A page for "Plumbers in NYC" that lists no plumbers.
-    *   *Good*: A page with a verified list of 20 NYC plumbers with licenses.
+---
 
-## 5. URL & Routing Strategy
-*   **Subfolders > Subdomains**: Keep equity on the root domain (`example.com/templates/` not `templates.example.com`).
-*   **Clean Slugs**: `/compare/linear-vs-jira` (No query params for indexable pages).
-*   **Breadcrumb Logic**: Ensure the parent category is navigable.
+## 4. Metadata Engineering (The Head)
+Dynamic metadata must be programmatic, not static.
+
+### Dynamic Title Logic
+```typescript
+const generateTitle = (data: CityData) => {
+  if (data.population > 1000000) {
+     return `Top 10 Rated Plumbers in ${data.city} (24/7 Emergency Services)`;
+  }
+  return `Best Local Plumbers near ${data.city} | Verified Reviews`;
+}
+```
+
+### Canonical Strategy
+*   **Self-Referencing**: Every pSEO page must point to itself.
+*   **Consolidation**: If "New York" and "NYC" pages exist, choose ONE as canonical to prevent cannibalization.
+
+### Structured Data (Schema.org)
+Every page MUST have specific JSON-LD injection:
+1.  **BreadcrumbList**: Critical for structure. `Home > Services > [State] > [City]`.
+2.  **Dataset / Table**: If showing data rows.
+3.  **FAQPage**: Generated from unique data (e.g., "How much does a plumber cost in [City]?").
+4.  **LocalBusiness**: If displaying a specific entity.
+
+---
+
+## 5. Hub & Spoke Internal Linking
+Isolate authority flow to prevent "orphans".
+
+**The Topology:**
+*   **Hub (State Page)**: Links to top 20 Cities.
+*   **Spoke (City Page)**: Links back to State, and to "Nearby Cities" (neighbors).
+    *   *Algorithm*: `SELECT * FROM cities WHERE distance < 50km LIMIT 5`.
+*   **Cross-Link**: "Related Services in [City]" (e.g., Plumber links to Electrician in Austin).
+
+---
 
 ## 6. Implementation Checklist
-- [ ] **Data Model**: Defined schema for the entity (e.g., `City`, `Tool`, `Integration`).
-- [ ] **Template**: Built high-performance component (React/Astro/Liquid).
-- [ ] **Internal Linking**: "Hub and Spoke" connectivity established.
-- [ ] **Sitemap Partitioning**: Split XML sitemaps if >10k URLs (`sitemap-locations.xml`).
-- [ ] **Indexer Strategy**: Slow roll-out to prevent "Crawl Budget" exhaustion.
+- [ ] **Data Source**: Validated JSON/CSV with high uniqueness factors.
+- [ ] **Routing**: Clean slugs (`/service/city`) without query params.
+- [ ] **Templates**: specialized layouts for different data types.
+- [ ] **Metadata**: Dynamic factories for Titles and OG Images.
+- [ ] **Sitemaps**: Split logic implemented.
+- [ ] **Performance**: Lighthouse score > 90 on template sample.

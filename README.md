@@ -1,9 +1,11 @@
-# Resonance v2.0.0: The AI Engineering Operating System
+# Resonance v2.0: The Vibe Coding Operating System
+
+Maintained by [www.divisionAI.co](https://www.divisionAI.co) 🚀
 
 > **The Multi-Agent Framework for Autonomous Software Engineering.**
-> *Turn your LLM into a team of 25 specialized experts. Framework-Driven. References-Backed. Enterprise-Ready.*
+> *Turn your LLM into a team of 26 specialized experts. Framework-Driven. References-Backed. Enterprise-Ready.*
 
-**Resonance** is a local-first **AI Agent Framework** that bridges the gap between generic chatbots and elite engineering. It provides a structured governance layer (file-based memory) and specialized personas (Security, QA, SEO, DevOps) to enforce rigorous **TDD**, **Security Protocols**, and **Clean Code Standards**.
+**Resonance** is a local-first **AI Agent Framework** that bridges the gap between generic chatbots and solid engineering. It provides a structured governance layer (file-based memory) and specialized personas (Security, QA, SEO, DevOps) to enforce rigorous **TDD**, **Security Protocols**, and **Clean Code Standards**.
 
 <div align="center">
     <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.0-7025eb?style=for-the-badge&logo=github" alt="Resonance AI Framework" /></a>
@@ -12,24 +14,17 @@
 </div>
 
 ## 🚀 Quick Start
+1.  **Clone the Brain**: `git clone https://github.com/manusco/resonance .resonance`
+2.  **Wake Up**: Run `@Resonance /init`
+    *   *The system will interview you to set up your project's Soul and Goals.*
+    *   *Generates: `00_soul.md`, `docs/prd/00_vision.md`, `docs/architecture/system_overview.md`.*
 
-**In your existing project root:**
-
-```bash
-# 1. Clone the Brain (v2.0.0)
-git clone https://github.com/manusco/resonance .resonance
-
-# 2. Wake Up the System
-cd .resonance
-chmod +x ./resonance.sh  # make the script executable
-./resonance.sh
-```
 
 ## 📦 What's Included
 
 | Component | Count | Description |
 |-----------|-------|-------------|
-| **Agents** | 25 | Specialized roles (SEO, Growth, Security, Mobile, etc.) |
+| **Agents** | 26 | Specialized roles (SEO, Growth, Security, Mobile, etc.) |
 | **Skills** | 40+ | Codified engineering protocols (GEO, CSP, Property Testing) |
 | **Workflows** | 13 | Scientific slash commands for consistent execution |
 | **Memory** | 3 | Immutable State, Soul (Vision), and Knowledge Base |
@@ -40,7 +35,9 @@ chmod +x ./resonance.sh  # make the script executable
 .resonance/              # The Kernel
 ├── 00_soul.md           # The Constitution (Vision)
 ├── 01_state.md          # The Roadmap (Active Context)
-└── memory.md            # The Audit Log
+├── 02_memory.md         # The Audit Log
+├── 03_tools.md          # Tool Boundaries
+└── 04_systems.md        # Architecture Map
 
 .agent/                  # The Capability Matrix
 ├── skills/              # 25 Specialized Skills (e.g. resonance-seo, resonance-qa)
@@ -48,6 +45,8 @@ chmod +x ./resonance.sh  # make the script executable
 └── workflows/           # 13 Slash Commands (e.g. /plan, /ship)
 
 docs/                    # The Team Library (Compound Knowledge)
+│   └── FAQ.md           # Common Questions & Troubleshooting
+
 ```
 
 ## 🎮 Usage
@@ -57,8 +56,8 @@ Trigger specialized behaviors using standard commands.
 
 | Phase | Command | Description |
 | :--- | :--- | :--- |
-| **Inception** | `/plan` | **SpecFlow**. Transform "ideas" into Requirements (PRD). |
-| | `/new-project` | **Genesis**. Create a repo from absolute zero. |
+| **Inception** | `/init` | **Awakening**. Bootstrap Soul & Scaffolding via Interview. |
+| | `/plan` | **SpecFlow**. Transform "ideas" into Requirements (PRD). |
 | **Execution** | `/build` | **TDD Loop**. Code -> Test -> Verify. |
 | | `/debug` | **Scientific Method**. Root Cause Analysis (RCA). |
 | | `/refactor` | **The Essentialist**. Structural cleanup & simplified complexity. |
@@ -78,13 +77,14 @@ Address the agent directly to invoke deep expertise.
 > **User**: "Activate **SEO Specialist**. Optimize for Perplexity."
 > **System**: Loads `resonance-seo`, applies `citation_optimization.md`.
 
-## 💎 The Plasma Standard
-Resonance enforces a strict "No Compromise" engineering standard.
+## The Standard
+Resonance enforces a strict engineering standard.
 
 1.  **Framework-Driven**: We don't guess. We follow `references/*.md`.
-2.  **References-Backed**: Every decision cites a protocol (e.g., "Per `csp_headers_protocol.md`, we must...").
+2.  **References-Backed**: Every decision cites a protocol.
 3.  **Agent-Ready**: All knowledge is machine-readable and executable.
+
 
 ---
 
-**Built for the 1%.**
+Maintained by [www.divisionAI.co](https://www.divisionAI.co) 🚀

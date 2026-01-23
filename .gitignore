@@ -13,10 +13,8 @@ build/
 # We explicitly want to track the memory bank (The Brain)
 !.resonance/*.md
 
+
 # Security: Never commit secrets or temporary context dumps
 .resonance/secrets/
 .resonance/tmp/
 .resonance/scripts/boot.local
-
-# Local Guidelines
-RESONANCE_GUIDELINES.md

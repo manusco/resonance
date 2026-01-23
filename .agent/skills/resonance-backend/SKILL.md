@@ -70,6 +70,8 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[Framework Decisions](references/framework_decisions.md)**: Hono vs Fastify vs NestJS.
+*   **[API Handoff](references/api_handoff_protocol.md)**: Backend -> Frontend documentation standard.
+*   **[Backend Architecture Rules](references/backend_architecture_rules.md)**: The 7 Golden Rules (Routes, Controllers, Config).
 *   **[Database Decisions](references/db_decisions.md)**: SQL vs NoSQL selection guide.
 *   **[TypeScript Hard Mode](references/typescript_hard_mode.md)**: Advanced typing patterns.
 *   **[Zap API Patterns](references/zod_schema_patterns.md)**: Validation standards.

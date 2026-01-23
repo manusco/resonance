@@ -68,7 +68,10 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[Anti-Pattern Registry](references/anti_pattern_registry.md)**: The Top 10 Blocking Rules (Arcanum).
+*   **[Verified Security Checklist](references/security_checklist.md)**: Mandatory verification list (Secrets, Validation).
 *   **[Automated Scanning](references/automated_scanning_protocol.md)**: Dependency checks.
+*   **[Sharp Edges Protocol](references/sharp_edges_protocol.md)**: Footgun detection checklist.
+*   **[Static Analysis Strategy](references/static_analysis_strategy.md)**: CodeQL/Semgrep hierarchy.
 *   **[JWT Hardening](references/jwt_hardening.md)**: Auth best practices.
 *   **[CSP Headers](references/csp_headers_protocol.md)**: XSS defense.
 *   **[Encryption At Rest](references/encryption_at_rest.md)**: Data protection.

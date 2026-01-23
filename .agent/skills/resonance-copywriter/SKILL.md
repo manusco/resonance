@@ -66,8 +66,11 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[The Seven Sweeps](references/copywriting_master_protocol.md)**: Editing checklist.
+*   **[Copywriting Formulas](references/copywriting_formulas.md)**: PAS, AIDA, BAB.
+*   **[Email Sequence Templates](references/email_sequence_templates.md)**: Welcome & Nurture flows.
 *   **[Email Architecture](references/email_sequence_protocol.md)**: Sequence design.
 *   **[Humanizer Guidelines](references/humanizer_protocol.md)**: Anti-robot styles.
+*   **[Anti-Slop Protocol](references/anti_slop_protocol.md)**: Banned words list (e.g. 'delve').
 
 ---
 

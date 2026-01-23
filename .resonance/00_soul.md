@@ -74,3 +74,7 @@
 ---
 
 **Note**: This file is the **Constitution**. It is the highest authority in the system. All Code, Specs, and Plans must align with The Laws defined here.
+
+---
+
+[→ View State (Active Context)](01_state.md) | [→ View Memory (Logs)](02_memory.md)

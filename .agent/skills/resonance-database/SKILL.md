@@ -65,6 +65,7 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
+*   **[Postgres Performance Rules](references/postgres_performance_rules.md)**: Query & Indexing priorities.
 *   **[Migration Safety](references/migration_safety.md)**: Zero downtime guide.
 *   **[Schema Validation](references/schema_validation_protocol.md)**: Integrity checklist.
 

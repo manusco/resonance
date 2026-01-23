@@ -65,8 +65,9 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
-*   **[Programmatic SEO](references/programmatic_seo_protocol.md)**: Scale architecture.
+*   **[Programmatic SEO](references/programmatic_seo_protocol.md)**: 100k+ Page Architecture (ISR & Hub/Spoke).
 *   **[Semantic Schema](references/schema_markup_protocol.md)**: JSON-LD guide.
+*   **[Semantic HTML Templates](references/semantic_html_templates.md)**: Copy-paste JSON-LD.
 *   **[SEO Audit](references/seo_audit_protocol.md)**: Diagnostic checklist.
 *   **[GEO Protocol](references/geo_protocol.md)**: AI optimization.
 

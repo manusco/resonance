@@ -65,6 +65,7 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
+*   **[Mobile Anti-Patterns](references/mobile_anti_patterns.md)**: Performance & Security sins.
 *   **[Offline Strategy Guide](references/offline_architecture.md)**: Local-first implementation.
 *   **[Touch Physics Config](references/touch_physics.md)**: Animation constants.
 *   **[Mobile Audit](references/mobile_audit_protocol.md)**: Thumb zone and hit-target checks.

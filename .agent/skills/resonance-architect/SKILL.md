@@ -67,7 +67,9 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[C4 Model Protocol](references/c4_model.md)**: Standard for system visualization.
+*   **[C4 Templates](references/c4_diagram_templates.md)**: Standardized Context, Container, and Component diagrams.
 *   **[ADR Protocol](references/adr_protocol.md)**: Template for recording decisions.
+*   **[System Design Checklist](references/system_design_checklist.md)**: Validation & Simplicity check.
 *   **[Domain Driven Design](references/domain_driven_design.md)**: Guidelines for domain modeling.
 
 ---

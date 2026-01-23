@@ -46,6 +46,7 @@ Do not use a generic chatbot. Activate the specialist for the job.
 | **SEO Specialist** | `resonance-seo` | **Visibility**. Programmatic SEO, Schema Markup, GEO (Gen-AI Optimization). |
 | **Conversion Eng** | `resonance-conversion` | **Revenue**. CRO, Landing page anatomy, A/B testing infrastructure. |
 | **Copywriter** | `resonance-copywriter` | **Voice**. Neuro-marketing triggers, value proposition refinement. |
+| **Studio** | `resonance-studio` | **Visuals**. Asset generation (Midjourney/Flux), Style consistency. |
 
 ### 🟣 Maintenance & Governance (The Keepers)
 | Agent | Skill Path | Expertise |
@@ -61,10 +62,10 @@ Do not use a generic chatbot. Activate the specialist for the job.
 These are not just scripts. They are **Methodologies**.
 
 ### Phase 1: Inception
+*   **`/init`**: **Awakening**.
+    *   *Behavior*: Bootstraps the `.resonance` memory structure in *any* project.
 *   **`/plan`**: **Deep Research & Spec**.
     *   *Behavior*: Spends 80% of time reading docs/code. Outputs a rigorous `implementation_plan.md`.
-*   **`/new-project`**: **Genesis**.
-    *   *Behavior*: Creates a new repo with "Platinum Standard" boilerplate (Linter, Test, CI).
 
 ### Phase 2: Execution
 *   **`/build`**: **The TDD Loop**.
@@ -112,4 +113,6 @@ If you solve a hard problem, save it.
 
 ---
 
-*Welcome to the 1%.*
+---
+
+*Start building.*

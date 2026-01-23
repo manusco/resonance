@@ -67,6 +67,7 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[Lean Canvas](references/lean_canvas.md)**: Business Modeling.
+*   **[Pricing Psychology](references/pricing_psychology.md)**: Anchoring & Decoy Effect.
 *   **[The Mom Test](references/mom_test.md)**: Interview protocol.
 
 ---
