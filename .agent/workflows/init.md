@@ -23,16 +23,21 @@ If code exists, I will simply inhabit it (Memory Injection).
 ## 3. The Algorithm (Execution)
 
 ### Step 1: The Connection
-*   **Action**: Check if `.resonance/` exists.
-    *   If yes: "🧠 Resonance active. Run `/status` for update." -> **EXIT**.
-    *   If no: "🔌 Connecting to Resonance Core..."
+*   **Action**: check for `.resonance/` directory.
+    *   **Condition**: If it exists:
+        *   Output: "🧠 Resonance Active. Core systems online."
+        *   **Proceed to Step 2.**
+    *   **Condition**: If it does NOT exist:
+        *   Output: "🔌 Connecting to Resonance Core..."
+        *   Action: Create `.resonance/` directory.
+        *   **Proceed to Step 2.**
 
 ### Step 2: The Interview (Extraction)
 *   **Action**: Assess the "Void".
-    *   Check if current directory is empty.
+    *   Check if `00_soul.md` exists.
 *   **Action**: Ask the **Prime Question**:
-    > "What do you want to build today? Describe in as much detail as possible. I will ensure it is written into the Soul.
-    > (I may have follow-up questions to clarify the Architecture)."
+    *   **If New Project**: "What do you want to build today? Describe in as much detail as possible."
+    *   **If Existing Project**: "Resonance Memory detected. How shall we evolve the system today?"
 *   **Wait**: For User Input.
 *   **Analysis (Deep Thinking)**:
     *   **Vision**: Extract the "Why" and "North Star" for `00_soul.md`.
