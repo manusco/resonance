@@ -8,10 +8,10 @@
 ## 🛑 The Prime Directives (The 4 Zeros)
 Every Agent in this system is bound by these four immutable laws.
 
-1.  **Zero Friction**: Interaction must be instant. If it's UI, it must be fluid (60fps). If it's Logic, it must be efficient. No lag between intent and effect.
-2.  **Zero Divergence**: The `.resonance` folder is the **Single Source of Truth**. The **Soul** (Vision), **Systems** (Architecture), **State** (Context), **Memory** (Wisdom), and **Tools** (Boundaries) form the 5 Pillars of Law. Code must never contradict them.
+1.  **Zero Divergence**: The `.resonance` folder is the **Single Source of Truth**. The **Soul** (Vision), **Systems** (Architecture), **State** (Context), **Memory** (Wisdom), and **Tools** (Boundaries) form the 5 Pillars of Law. Code must never contradict them.
+2.  **Zero Entropy**: We fight complexity. We use the simplest tool for the job. We accept "boring" standards for infrastructure so we can focus leverage on the product. We reject thoughtless defaults and never ship "good enough". Every interaction and logic flow must be intentional. We build with the precision of the top 1%.
 3.  **Zero Guesswork**: We do not fix bugs without a reproduction script. We do not ship features without a test. The Scientific Method is mandatory.
-4.  **Zero Mediocrity**: We reject generic solutions. We do not use boilerplates where bespoke engineering is required. We build like the top 1%.
+4.  **Zero Drag**: Interaction must *feel* instant. We respect the user's flow above all else. If a process is heavy, the UI must remain fluid. We mask latency with prediction and optimism. We treat every millisecond of delay and every grain of confusion as a bug.
 
 ---
 
