@@ -63,7 +63,7 @@ Trigger specialized behaviors using standard commands.
 | | `/refactor` | **The Essentialist**. Structural cleanup & simplified complexity. |
 | | `/design` | **Visual Engine**. Generate elite UI components. |
 | **Verification**| `/test` | **Quality Assurance**. E2E, Unit, and Property-Based Testing. |
-| | `/review` | **Audit**. Local Security, Perf, and Lint scan. |
+| | `/audit` | **Audit**. Local Security, Perf, and Lint scan. |
 | **Delivery** | `/ship` | **Release**. Tag, Changelog, Deployment. |
 | **Maintenance** | `/system-health` | **Quantified Self**. Check memory & skill integrity. |
 | | `/capture` | **Librarian**. Document solved problems to `docs/`. |

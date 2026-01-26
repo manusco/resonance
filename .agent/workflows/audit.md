@@ -2,7 +2,7 @@
 description: Ensure code meets standards before merging (CI/CD, Linting, Security).
 ---
 
-# Audit Protocol (`/review`)
+# Audit Protocol (`/audit`)
 
 > **Role**: The Auditor (`resonance-security` + `resonance-reviewer`)
 > **JTBD**: Prevent Entropy. Detect Vulnerabilities.

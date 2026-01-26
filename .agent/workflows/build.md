@@ -53,4 +53,4 @@ Before finishing, self-correct.
 *   **Artifacts**: Code matches `implementation_plan.md`.
 *   **Verification**: All new tests pass. Project builds.
 *   **State Update**: Update `state.md` -> Task: "Build Complete".
-*   **Handoff**: "Code implemented. Run `/review` to audit."
+*   **Handoff**: "Code implemented. Run `/audit` to audit."

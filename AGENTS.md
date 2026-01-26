@@ -84,14 +84,14 @@ These are not just scripts. They are **Methodologies**.
 ### Phase 3: Verification
 *   **`/test`**: **Pyramid Testing**.
     *   *Behavior*: Generates Unit, Integration, and E2E tests based on `resonance-qa` standards.
-*   **`/review`**: **Local Audit**.
+*   **`/audit`**: **Local Audit**.
     *   *Behavior*: Runs the "Swarm". Security checks, Performance checks, Lint checks.
 
 ### Phase 4: Delivery
 *   **`/ship`**: **The Release Protocol**.
     *   *Behavior*: Checks Health Score. Updates Changelog. Tags Release. Deploys.
 *   **`/review-pr`**: **External Gatekeeper**.
-    *   *Behavior*: Checks out a PR. runs `/review`. Summarizes risks.
+    *   *Behavior*: Checks out a PR. runs `/audit`. Summarizes risks.
 
 ---
 

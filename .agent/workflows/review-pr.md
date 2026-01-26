@@ -29,7 +29,7 @@ I checking for:
 *   **Action**: `npm ci` (Install dependencies safely).
 
 ### Step 2: The Audit
-*   **Action**: Run `/review` workflow.
+*   **Action**: Run `/audit` workflow.
 *   **Check**: `gh pr checks [ID]` (CI Status).
 
 ### Step 3: The Verdict
