@@ -15,28 +15,36 @@ description: Transform feature descriptions into well-structured project plans u
 
 ## 2. Context (The Vision)
 <thinking>
-I must transform the User's intent into the correct Engineering Specification.
+**Ultrathink Directive**: "Plan Like Da Vinci".
+Before I write a single line, I must sketch the architecture in my mind.
+
 I need to determine the **Operation Mode**:
 
-*   **Mode A: NEW FEATURE** (e.g. "Add Dark Mode", "Create Invite System")
-    *   *Action*: I must create a **Specific Feature PRD** (`docs/features/[name].md`).
-    *   *Reason*: Do not clutter the Master Soul (`00_soul.md`) with implementation details.
+*   **Mode A: NEW FEATURE** (e.g. "Add Dark Mode")
+    *   *Mindset*: "What would the most elegant solution look like?"
+    *   *Action*: Create a **Feature PRD** that solves the *real* problem, not just the stated one.
 
-*   **Mode B: REFACTOR/FIX** (e.g. "Migrate to Tailwind", "Fix Auth Bug")
-    *   *Action*: I must create an **RFC** (`docs/rfcs/[name].md`).
-    *   *Reason*: These are technical changes that require a technical spec.
+*   **Mode B: REFACTOR/FIX** (e.g. "Migrate to Tailwind")
+    *   *Mindset*: "Simplify Ruthlessly."
+    *   *Action*: Create an **RFC** that removes complexity without losing power.
 
-*   **Mode C: PROJECT EVOLUTION** (e.g. "Pivot to AI", "Rebrand")
-    *   *Action*: I must update the **Master PRD** (`docs/prd/00_vision.md`) or **Soul** (`00_soul.md`).
-    *   *Reason*: This changes the fundamental nature of the project.
+*   **Mode C: PROJECT EVOLUTION**
+    *   *Mindset*: "Think Different."
+    *   *Action*: Update the **Soul** (`00_soul.md`) to reflect the new reality.
 </thinking>
 
 ## 3. The Algorithm (Execution)
 
+### Step 0: The Ambiguity Check (Zero Guesswork)
+*   **Decision**: Does the input provide enough context to write a "World Class" spec?
+    *   **YES**: Proceed to Step 1 (Zero Drag).
+    *   **NO**: Activate `resonance-product` -> [Socratic Interrogation](file:///d:/Dev/Resonance/.agent/skills/resonance-product/references/socratic_interrogation.md).
+        *   *Action*: Ask clarification questions using `notify_user`.
+        *   *Loop*: Continue until enough context is gathered.
+
 ### Step 1: Deep Research (The Swarm)
 Spawn parallel researchers to map the territory.
 *   **Tool**: `grep_search`, `view_file`
-*   **Action**: Scan existing code patterns to ensure consistency.
 *   **Action**: Scan existing code patterns to ensure consistency.
     *   `Task(resonance-researcher, "Analyze existing patterns for [Feature]. Find similar implementations.")`
 *   `Task(resonance-venture, "Validate against Kill Criteria. Is this feature risky?")`
@@ -70,12 +78,32 @@ Synthesize research into requirements.
     *   **Performance**: < 100ms or background job?
     *   **Security**: Public or Internal?
 
-### Step 4: Plan Generation
-Write the authoritative `implementation_plan.md`.
-*   **Structure**:
-    *   **Goal**: One-line summary.
-    *   **Modules**: `[NEW]`, `[MODIFY]`.
-    *   **Verification**: Exact commands to prove it works.
+### Step 4: Plan Generation (The 4-Pass Methodology)
+Write the authoritative `implementation_plan.md` using iterative refinement. **STOP and ask for user approval after each pass.**
+
+#### Pass 1: Skeleton (Structure & Compound Actions)
+*   **Goal**: Establish complete coverage without drowning in detail.
+*   **Action**: Identify all 9 mandatory phases. List objectives for each.
+*   **Check**: Does every doc section have a plan objective?
+*   **Visual Logic**: Include an **ASCII Architecture Diagram** showing the *Current* vs *Target* flow.
+
+#### Pass 2: Atomicity (The 5-Second Rule)
+*   **Goal**: Transform compound actions into single, executable steps.
+*   **Rule**: If a developer can't begin executing in 5 seconds, it's not atomic.
+*   **Action**: Ensure single verb per action. Reference single file:line locations.
+
+#### Pass 3: Detail Enrichment (Zero Ambiguity)
+*   **Goal**: Eliminate all remaining ambiguity with rationales and boilerplate.
+*   **Action**: Add **Rationales** for non-obvious choices. Provide **Boilerplate Stubs** for every new file (imports/signatures only).
+*   **Trade-offs**: Explain *Engineered Enough* vs *Speed* decisions.
+
+#### Pass 4: Verification (The Binary Proof)
+*   **Goal**: Make every action provably complete.
+*   **Action**: Add **Verification Commands** (e.g., `grep`, `test -f`, `curl`) for 50%+ of actions.
+*   **Final Output**: A verifiable, high-fidelity blueprint.
+
+### Step 5: Interactive Handshake
+*   **Action**: At the end of EACH pass, summarize progress and ask: "Does this [Pass Name] align with your vision? Approval required to proceed to the next pass."
 
 ## 4. Recovery
 *   **Ambiguity Error**: If research is inconclusive, ask the User clarifying questions (`notify_user`).

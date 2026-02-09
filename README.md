@@ -1,4 +1,4 @@
-# Resonance v2.0: The Vibe Coding Operating System
+# Resonance v2.0.1: The Vibe Coding Operating System
 
 Maintained by [www.divisionAI.co](https://www.divisionAI.co) 🚀
 
@@ -8,9 +8,9 @@ Maintained by [www.divisionAI.co](https://www.divisionAI.co) 🚀
 **Resonance** is a local-first **AI Agent Framework** that bridges the gap between generic chatbots and solid engineering. It provides a structured governance layer (file-based memory) and specialized personas (Security, QA, SEO, DevOps) to enforce rigorous **TDD**, **Security Protocols**, and **Clean Code Standards**.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.0-7025eb?style=for-the-badge&logo=github" alt="Resonance AI Framework" /></a>
+    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.0.1-7025eb?style=for-the-badge&logo=github" alt="Resonance AI Framework" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
-    <a href="AGENTS.md"><img src="https://img.shields.io/badge/Operators_Manual-v2.0-00f2ea?style=for-the-badge" alt="Operators Manual" /></a>
+    <a href="AGENTS.md"><img src="https://img.shields.io/badge/Operators_Manual-v2.0.1-00f2ea?style=for-the-badge" alt="Operators Manual" /></a>
 </div>
 
 ## 🚀 Quick Start
@@ -57,11 +57,13 @@ Trigger specialized behaviors using standard commands.
 | Phase | Command | Description |
 | :--- | :--- | :--- |
 | **Inception** | `/init` | **Genesis**. Bootstrap Soul & Scaffolding (Run Once). |
+| | `/venture-model` | **Venture**. Model the Business & Offer (Leverage Architect). |
 | **Evolution** | `/plan` | **The Universal Adapter**. Plan Features, Refactors, or Pivots. |
 | **Execution** | `/build` | **TDD Loop**. Code -> Test -> Verify. |
 | | `/debug` | **Scientific Method**. Root Cause Analysis (RCA). |
 | | `/refactor` | **The Essentialist**. Structural cleanup & simplified complexity. |
 | | `/design` | **Visual Engine**. Generate elite UI components. |
+| | `/friction` | **Collider**. Simulate User Friction & Drag. |
 | **Verification**| `/test` | **Quality Assurance**. E2E, Unit, and Property-Based Testing. |
 | | `/audit` | **Audit**. Local Security, Perf, and Lint scan. |
 | **Delivery** | `/ship` | **Release**. Tag, Changelog, Deployment. |

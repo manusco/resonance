@@ -67,8 +67,9 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
-*   **[Anti-Pattern Registry](references/anti_pattern_registry.md)**: The Top 10 Blocking Rules (Arcanum).
-*   **[Verified Security Checklist](references/security_checklist.md)**: Mandatory verification list (Secrets, Validation).
+*   [Anti-Pattern Registry](references/anti_pattern_registry.md): The Top 10 Blocking Rules (Arcanum).
+*   [Skill Security Protocol](references/skill_security_protocol.md): Prompt Injection & Safety.
+*   [Verified Security Checklist](references/security_checklist.md): Mandatory verification list.
 *   **[Automated Scanning](references/automated_scanning_protocol.md)**: Dependency checks.
 *   **[Sharp Edges Protocol](references/sharp_edges_protocol.md)**: Footgun detection checklist.
 *   **[Static Analysis Strategy](references/static_analysis_strategy.md)**: CodeQL/Semgrep hierarchy.

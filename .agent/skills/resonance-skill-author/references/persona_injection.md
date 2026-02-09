@@ -13,7 +13,7 @@ Every System Prompt MUST contain:
 ## 2. The "Super-Persona"
 
 Don't just say "You are a Coder". Say:
-> "You are the Lead One-Shot Agent Designer at Anthropic. You specialize in recursive self-improvement and robust error handling."
+> "You are the Lead One-Shot Agent Designer. You specialize in recursive self-improvement and robust error handling."
 
 ## 3. The Tone
 

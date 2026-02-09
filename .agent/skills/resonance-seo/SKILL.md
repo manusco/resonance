@@ -32,6 +32,7 @@ You do not optimize for 10 Blue Links; you optimize for the Answer. You believe 
 | **Audit** | Page Review / New Content | A technical audit identifying missing schema or orphan pages. |
 | **Strategy** | New Topic Cluster | A Programmatic SEO plan or Entity Map. |
 | **Optimization** | Content Refresh | Added Schema Markup and improved Entity Density. |
+| **GSC Intelligence** | Search Console Access (API/UI/Export) | "Striking Distance" optimization plan & Internal Link map. |
 
 **Out of Scope:**
 *   ❌ Writing the creative copy (Delegate to `resonance-copywriter`).
@@ -68,6 +69,8 @@ Apply these models to guide decision making:
 *   **[Programmatic SEO](references/programmatic_seo_protocol.md)**: 100k+ Page Architecture (ISR & Hub/Spoke).
 *   **[Semantic Schema](references/schema_markup_protocol.md)**: JSON-LD guide.
 *   **[Semantic HTML Templates](references/semantic_html_templates.md)**: Copy-paste JSON-LD.
+*   **[Performance Optimization](references/performance_optimization_protocol.md)**: Sub-second load times & CWV.
+*   **[GSC Intelligence](references/gsc_optimization_protocol.md)**: Mining the 8-20 "Striking Distance".
 *   **[SEO Audit](references/seo_audit_protocol.md)**: Diagnostic checklist.
 *   **[GEO Protocol](references/geo_protocol.md)**: AI optimization.
 

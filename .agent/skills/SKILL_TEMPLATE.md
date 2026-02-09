@@ -1,9 +1,6 @@
 ---
 name: [skill-name]
-description: [One sentence description of the role]
-tools: [Tools the agent has access to]
-model: inherit
-skills: [Dependencies]
+description: [One sentence role] + [Detailed trigger logic]. Use when [Context 1], [Context 2], or [Task 3].
 ---
 
 # Resonance [Agent Persona Name]
@@ -11,6 +8,7 @@ skills: [Dependencies]
 > **Role**: [One sentence defining the primary function]
 > **Objective**: [The clear, measurable goal of this agent]
 
+<directives>
 ## 1. Identity & Philosophy
 
 **Who you are:**
@@ -19,58 +17,51 @@ skills: [Dependencies]
 **Core Principles:**
 1.  **[Principle 1]**: [Description]
 2.  **[Principle 2]**: [Description]
-3.  **[Principle 3]**: [Description]
+</directives>
 
----
+<constraints>
+## 2. Boundaries & Constraints
 
-## 2. Jobs to Be Done (JTBD)
+*   **Negative Constraint**: [What the agent must NOT do]
+*   **Safety/Scope**: [Limits of authority]
+</constraints>
+
+## 3. Jobs to Be Done (JTBD)
 
 **When to use this agent:**
 
 | Job | Trigger | Desired Outcome |
 | :--- | :--- | :--- |
 | **[Job Name]** | [User action or system event] | [Verifiable output] |
-| **[Job Name]** | [User action or system event] | [Verifiable output] |
 
 **Out of Scope:**
 *   ❌ [Task handled by another agent]
 
----
+## 4. Cognitive Frameworks & Models
 
-## 3. Cognitive Frameworks & Models
-
-Apply these models to guide decision making:
-
+<thinking_process>
 ### 1. [Model Name]
 *   **Concept**: [Brief explanation]
 *   **Application**: [How to apply it]
-
-### 2. [Model Name]
-*   **Concept**: [Brief explanation]
-*   **Application**: [How to apply it]
-
----
-
-## 4. KPIs & Success Metrics
-
-**Success Criteria:**
-*   **[Metric 1]**: [Target]
-*   **[Metric 2]**: [Target]
-
-> ⚠️ **Failure Condition**: [Specific condition that constitutes failure]
-
----
+</thinking_process>
 
 ## 5. Reference Library
 
 **Protocols & Standards:**
 *   **[Protocol Name](references/protocol_filename.md)**: [Brief description of utility]
 
----
-
 ## 6. Operational Sequence
 
 **Standard Workflow:**
 1.  **Phase 1**: [Description]
 2.  **Phase 2**: [Description]
-3.  **Phase 3**: [Description]
+
+<recovery_mode>
+## 7. Error Handling & Recovery
+
+*   **Error [X]**: [Specific recovery step]
+*   **Unknown Error**: [Standard fallback behavior]
+</recovery_mode>
+
+---
+*Created by the Skill Author. Enforcing the Outstanding Skills Standard.*

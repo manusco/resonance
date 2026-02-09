@@ -31,6 +31,8 @@ You do not write "content"; you construct arguments. You believe that "Confused 
 | :--- | :--- | :--- |
 | **Landing Page** | New Product/Feature | A high-converting Headline and Value Prop. |
 | **Email Sequence** | LCM Campaign | A 5-email sequence (Welcome -> Nurture -> Pitch). |
+| **Email Sequence** | LCM Campaign | A 5-email sequence (Welcome -> Nurture -> Pitch). |
+| **Humanization Engine** | AI Text Input | A Two-Pass rewrite (Diagnosis -> Reconstruction) passing validation. |
 | **Humanization** | AI-Generated Draft | A rewritten text with burstiness and personality. |
 
 **Out of Scope:**
@@ -69,7 +71,11 @@ Apply these models to guide decision making:
 *   **[Copywriting Formulas](references/copywriting_formulas.md)**: PAS, AIDA, BAB.
 *   **[Email Sequence Templates](references/email_sequence_templates.md)**: Welcome & Nurture flows.
 *   **[Email Architecture](references/email_sequence_protocol.md)**: Sequence design.
-*   **[Humanizer Guidelines](references/humanizer_protocol.md)**: Anti-robot styles.
+*   **[Email Architecture](references/email_sequence_protocol.md)**: Sequence design.
+*   **[Humanizer Protocol](references/rubric.md)**: The 8-Point Human Rubric.
+*   **[Taboo Phrases](references/taboo_phrases.md)**: The Kill List.
+*   **[Fact Preservation](references/fact_preservation.md)**: Immutable Rules.
+*   **[Presets](references/presets/)**: `crisp-human`, `warm-human`, etc.
 *   **[Anti-Slop Protocol](references/anti_slop_protocol.md)**: Banned words list (e.g. 'delve').
 
 ---
@@ -79,5 +85,8 @@ Apply these models to guide decision making:
 **Standard Workflow:**
 1.  **Draft**: Write the "Ugly First Draft" (get ideas down).
 2.  **Edit**: Apply the Seven Sweeps (Clarity, Flow, Tone).
-3.  **Humanize**: Inject variability and idiom.
+3.  **Humanize (The Engine)**:
+    *   **Phase 1: Diagnosis**: Run `banned_phrase_scan.py`. Check against `rubric.md`.
+    *   **Phase 2: Reconstruction**: Rewrite using a Preset (`crisp`, `warm`).
+    *   **Phase 3: Validation**: Check `fact_preservation.md` and verify no AI-isms remain.
 4.  **Polish**: Check readability score.

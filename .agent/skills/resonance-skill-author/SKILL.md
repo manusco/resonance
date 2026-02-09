@@ -76,14 +76,19 @@ Apply these models to guide decision making:
 *   **[Chain of Thought](references/chain_of_thought_protocol.md)**: Reasoning guide.
 *   **[Few-Shot Library](references/few_shot_library.md)**: Example database.
 *   **[Persona Injection](references/persona_injection.md)**: Identity crafting.
+*   [Outstanding Skills](references/outstanding_skills_protocol.md): The blueprint for elite agent capabilities.
 
 ---
 
 ## 6. Operational Sequence
 
 **Standard Workflow:**
-1.  **Observe**: Watch how an expert performs the task.
-2.  **Codify**: Write the `SKILL.md` using the standard template.
-3.  **Augment**: Add Examples (Few-Shot) and Reasoning steps (CoT).
-4.  **Test**: Run the agent and evaluate output.
-5.  **Refine**: Patch edge cases.
+1.  **Understand**: Engage the user with concrete examples. Define exactly when the skill should trigger and what functionality it supports.
+2.  **Plan**: Identify reusable resources. Determine **Degrees of Freedom**:
+    *   `scripts/`: Deterministic, fragile logic. (Low Freedom)
+    *   `references/`: Large domain docs, schemas, checklists. (Med/High Freedom)
+    *   `assets/`: Templates, icons, boilerplate.
+3.  **Initialize**: Generate the skill directory and `SKILL.md` using the master template.
+4.  **Edit**: Implement resources and write `SKILL.md`. Use imperative form. Apply **Concise is Key**—do not repeat what the model already knows.
+5.  **Package**: Validate structure and YAML metadata. Ensure "When to use" is strictly in the description.
+6.  **Iterate**: Update based on real-world performance gaps.

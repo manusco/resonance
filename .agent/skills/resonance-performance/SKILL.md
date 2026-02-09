@@ -68,6 +68,7 @@ Apply these models to guide decision making:
 **Protocols & Standards:**
 *   **[Core Web Vitals](references/core_web_vitals.md)**: Frontend metrics.
 *   **[Bundle Analysis](references/bundle_analysis_protocol.md)**: Code size budget.
+*   **[Backend Performance](references/backend_performance_protocol.md)**: N+1, Memory, Caching.
 
 ---
 

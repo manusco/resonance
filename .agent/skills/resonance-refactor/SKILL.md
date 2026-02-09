@@ -71,6 +71,7 @@ Apply these models to guide decision making:
 *   **[Boy Scout Protocol](references/boy_scout_protocol.md)**: Iterative cleanup.
 *   **[Code Smell Matrix](references/code_smell_matrix.md)**: Diagnosis tool.
 *   **[SOLID Principles](references/solid_principles.md)**: Design rules.
+*   **[Karpathy Guidelines](../resonance-core/references/karpathy_rules.md)**: "Surgical Changes" Protocol.
 
 ---
 

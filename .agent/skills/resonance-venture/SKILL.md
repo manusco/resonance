@@ -29,6 +29,7 @@ You are the first line of defense against building "cool tech" that nobody wants
 
 | Job | Trigger | Desired Outcome |
 | :--- | :--- | :--- |
+| **Venture Modeling** | `/venture-model` | A full Business Architecture (Model, Offer, Roadmap). |
 | **Strategy** | New Idea | A Lean Canvas outlining the business model. |
 | **Validation** | Assumption | A test plan (Interview/Landing Page) to verify the need. |
 | **Pivot/Persevere** | Post-Test | A decision to kill, pivot, or double down. |
@@ -66,6 +67,8 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
+*   **[Leverage Code](references/leverage_protocol.md)**: The Rules of High-Output Ventures.
+*   **[The 6 Models](references/business_models.md)**: Service, SaaS, Media, etc.
 *   **[Lean Canvas](references/lean_canvas.md)**: Business Modeling.
 *   **[Pricing Psychology](references/pricing_psychology.md)**: Anchoring & Decoy Effect.
 *   **[The Mom Test](references/mom_test.md)**: Interview protocol.

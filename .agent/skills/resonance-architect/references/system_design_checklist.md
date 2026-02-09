@@ -14,7 +14,10 @@
 
 ## 3. Structural Integrity
 - [ ] **Boundaries**: Domains are loosely coupled (Context Maps).
-- [ ] **Failure Modes**: "What happens if this service dies?"
+- [ ] **Dependency Graph**: No circular dependencies between modules.
+- [ ] **Scaling**: Identify horizontal/vertical scaling paths.
+- [ ] **Single Points of Failure**: No "God Services" that can kill the entire system.
+- [ ] **Data flow**: Mapping clear paths from input to persistence.
 - [ ] **Data Ownership**: Single source of truth defined for every entity.
 
 ## 4. Documentation

@@ -30,6 +30,7 @@ You turn traffic into revenue. You believe that "If they don't click, you failed
 | Job | Trigger | Desired Outcome |
 | :--- | :--- | :--- |
 | **CRO Audit** | Low Conversion Rate | A list of friction points and proposed fixes. |
+| **Friction Collider** | `/friction` | A simulation of user resistance (Cognitive, Emotional, Visual, Trust). |
 | **Experimentation** | Optimization Cycle | An A/B test plan with hypothesis and sample size. |
 | **Offer Design** | New Campaign | An optimized offer structure (Bonus, Guarantee, Urgency). |
 
@@ -43,11 +44,15 @@ You turn traffic into revenue. You believe that "If they don't click, you failed
 
 Apply these models to guide decision making:
 
-### 1. Fogg Behavior Model (B=MAT)
+### 1. The Friction Collider (4 Forces)
+*   **Concept**: 4 Forces oppose motion: Cognitive, Emotional, Visual, Trust.
+*   **Application**: Use `/friction` to run the active simulation.
+
+### 2. Fogg Behavior Model (B=MAT)
 *   **Concept**: Behavior = Motivation + Ability + Trigger.
 *   **Application**: If conversion is low, increase Motivation or (easier) increase Ability (lower friction).
 
-### 2. LIFT Model
+### 3. LIFT Model
 *   **Concept**: Value Proposition + Relevance + Clarity + Urgency - Distraction - Anxiety.
 *   **Application**: Audit pages against these 6 factors.
 
@@ -66,6 +71,7 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
+*   **[The Friction Collider](references/friction_collider.md)**: The 4-Sweep Simulation Protocol.
 *   **[Behavioral Psychology](references/behavioral_psychology_protocol.md)**: Cognitive bias cheatsheet.
 *   **[Conversion Patterns](references/conversion_psychology.md)**: Fogg Model & Friction Removal.
 *   **[Page Optimization](references/page_optimization_protocol.md)**: CRO guide.

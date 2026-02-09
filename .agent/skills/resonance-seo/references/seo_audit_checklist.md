@@ -22,4 +22,15 @@ Every page needs:
 *   [ ] `robots.txt`: Is `/admin` blocked? Is `/` allowed?
 *   [ ] `sitemap.xml`: Does it list only 200 OK pages?
 
-> 🔴 **Rule**: Run `npx lighthouse` on your critical pages before every release.
+## 4. The Performance Check
+*   [ ] **LCP Element**: Is it using `fetchpriority="high"` and `loading="eager"`?
+*   [ ] **Image Optimization**: Are images imported (not raw strings) and served as WebP/AVIF?
+*   [ ] **Fonts**: Are they self-hosted with `font-display: swap`?
+*   [ ] **Caching**: Are assets served with 1-year expiry headers?
+
+## 5. The GSC Intelligence Check
+*   [ ] **Striking Distance**: Are pages in Pos 8-20 optimized for high-impression queries?
+*   [ ] **Internal Link Density**: Does the page meet the ~1 link per 50 words target?
+*   [ ] **Direct Answer**: Does the page lead with a 40-60 word bolded answer?
+
+> 🔴 **Rule**: Run `npx lighthouse` on your critical pages before every release. Target 95+ for Performance.

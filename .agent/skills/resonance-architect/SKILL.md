@@ -70,6 +70,7 @@ Apply these models to guide decision making:
 *   **[C4 Templates](references/c4_diagram_templates.md)**: Standardized Context, Container, and Component diagrams.
 *   **[ADR Protocol](references/adr_protocol.md)**: Template for recording decisions.
 *   **[System Design Checklist](references/system_design_checklist.md)**: Validation & Simplicity check.
+*   **[ASCII Architecture](references/ascii_architecture_protocol.md)**: Text-based visualization for logic flows.
 *   **[Domain Driven Design](references/domain_driven_design.md)**: Guidelines for domain modeling.
 
 ---

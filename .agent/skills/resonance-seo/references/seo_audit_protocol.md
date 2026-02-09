@@ -52,7 +52,19 @@ Identify "Zombie Pages" (0 traffic, 0 value) and apply the **R.I.P. Protocol**:
 2.  **Improve**: If the topic is valuable but executed poorly.
 3.  **Prune (410)**: If the page serves no purpose. Delete it to save Crawl Budget.
 
-## 5. Security & Trust
+## 5. Layer 4: Data-Driven Optimization (The GSC Lever)
+
+### The "Striking Distance" Protocol
+Mining GSC for Pos 8-20 queries is the highest-ROI activity an expert can perform.
+1.  **Extract**: Identify pages with high impressions but low CTR due to position.
+2.  **Align**: Update Title/H1 with latent queries Google already associates with the page.
+3.  **Harden**: Implement the **Direct Answer (GEO)** at the top of the content.
+
+### Semantic Network Integrity
+*   **Internal Link Ratios**: Aim for 1 link per 50 words to create a "Trust Skeleton."
+*   **Anchor Relevance**: Ensure anchor text matches the *Entity* of the target page exactly.
+
+## 6. Security & Trust
 *   **HTTPS**: Non-negotiable. Check for "Mixed Content" warnings.
 *   **HSTS**: Enforce strict transport security.
 

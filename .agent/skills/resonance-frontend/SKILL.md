@@ -68,7 +68,9 @@ Apply these models to guide decision making:
 **Protocols & Standards:**
 *   **[Atomic Design](references/atomic_design.md)**: Component structure guide.
 *   **[Design Tokens](references/design_tokens_protocol.md)**: Semantic token layering (Primitives -> Semantic).
-*   **[Modern Component Patterns](references/modern_component_patterns.md)**: Suspense, Lazy Loading, useSuspenseQuery.
+*   [Modern Component Patterns](references/modern_component_patterns.md): Props, Slots, and Logic.
+*   [Visual-to-Code Anchoring](references/visual_code_anchoring.md): Mapping screenshots to components.
+*   [React Composition Patterns](references/react_composition_patterns.md): Hooks & Context.
 *   **[i18n Protocol](references/i18n_protocol.md)**: Internationalization standards.
 *   **[UX Audit Protocol](references/ux_audit_protocol.md)**: Self-correction checklist.
 *   **[PWA Standards](references/pwa_service_workers.md)**: Offline capabilities.

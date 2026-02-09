@@ -70,6 +70,7 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[Git Mastery (Reflog/Bisect)](references/git_mastery.md)**: Recovery protocols for when things go wrong.
+*   **[Karpathy Guidelines](references/karpathy_rules.md)**: Universal Coding Standards (Simplicity, Surgical).
 
 ---
 
