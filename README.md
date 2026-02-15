@@ -49,25 +49,33 @@ From that moment on, it never forgets.
 
 ---
 
-## ⚡ The Superpower: Battle-Tested Protocols
-Most AI frameworks just give you "tools". We give you **Standards**.
-Resonance contains a library of rigorous protocols (in `.agent/skills`) that enforce quality automatically.
+## ⚡ The Workflow Library (Token-Efficient Intelligence)
+Resonance workflows are not just "prompts". They are structured algorithms designed to save tokens and time. 
+We stripped away the fluff. Each workflow is a **templatized, rigorous protocol** that gets straight to the point.
 
-### 🛡️ Security is not optional
-When you run `/audit`, you aren't just asking the AI to "look for bugs". You are triggering the **Security Auditor**, which runs a 50-point inspection based on OWASP standards. It checks for JWT vulnerabilities, injection risks, and header configurations.
-> *You don't have to remember to ask for security. The system remembers for you.*
+### 🟡 Strategy & Inception
+*   **`/venture-model`**: **Business Logic**. Validates the business model, offer, and revenue math before you build.
+*   **`/plan`**: **The Architect**. Reads 80% of the time. Writes 20%. Generates a detailed `implementation_plan.md` to prevent "hallucinated scope".
+*   **`/update-roadmap`**: **State Sync**. Keeps your `01_state.md` aligned with reality.
 
-### 🚢 Shipping is not a guess
-When you run `/ship`, you trigger the **Release Protocol**.
-It doesn't just push code. It:
-1.  Runs the health check.
-2.  Updates the `CHANGELOG.md`.
-3.  Bumps the version.
-4.  Tags the release.
-> *It turns a stressful deployment into a boring checklist.*
+### 🟢 Execution & Engineering
+*   **`/build`**: **The Builder**. Runs the TDD Loop (Red -> Green -> Refactor).
+*   **`/debug`**: **The Scientist**. Forces Root Cause Analysis (RCA) with reproduction scripts. No guessing allowed.
+*   **`/refactor`**: **The Essentialist**. Cleans up technical debt without changing behavior.
+*   **`/design`**: **The Glasssmith**. Generates premium, "Touch Physics" UI components.
 
-### 🏗️ Architecture is not a vibe
-When you run `/plan`, the **Architect** doesn't just guess. It references your `00_soul.md` (Vision) and `04_systems.md` (Architecture) to ensure every new feature aligns with the whole.
+### 🔵 Quality & Verification
+*   **`/audit`**: **The Swarm**. Runs a 50-point Security (OWASP), Performance, and Lint check.
+*   **`/test`**: **The Pyramid**. Generates Unit, Integration, and E2E tests.
+*   **`/friction`**: **The Collider**. Simulates a user journey to find and remove "Drag" (latency, confusion).
+*   **`/seo`**: **The Growth Engine**. Optimizes for Search and Answer Engines (GEO).
+
+### 🟣 Operations & Delivery
+*   **`/ship`**: **The Ritual**. Updates Changelog, bumps version, checks health, and deploys.
+*   **`/capture`**: **The Librarian**. Documents solved problems so you never solve them twice.
+*   **`/system-health`**: **Self-Repair**. Checks the integrity of the Resonance system itself.
+
+> **Why this matters**: You don't pay for the AI to "think" about how to be a security auditor. We already taught it. You only pay for the work.
 
 ---
 
