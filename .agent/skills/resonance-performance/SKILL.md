@@ -66,7 +66,8 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
-*   **[Core Web Vitals](references/core_web_vitals.md)**: Frontend metrics.
+*   **[Growth Loop Engineering](references/growth_loop_protocol.md)**: Viral mechanics.
+*   **[SLO Framework](references/slo_framework.md)**: User-centric performance targets.
 *   **[Bundle Analysis](references/bundle_analysis_protocol.md)**: Code size budget.
 *   **[Backend Performance](references/backend_performance_protocol.md)**: N+1, Memory, Caching.
 

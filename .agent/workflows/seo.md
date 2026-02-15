@@ -16,36 +16,47 @@ description: Analyze and optimize for findability, authority, and answer engine 
 
 ## 2. Context
 <thinking>
-Findability is not about keywords; it's about being the most helpful node in the knowledge graph.
-I will look for "Striking Distance" opportunities where we are almost winning and push them into the Top 3.
-I will ensure every page is technically sound for both crawlers (Google) and synthesizers (LLMs).
+Findability is about being the most helpful node in the knowledge graph.
+I will prioritize "NavBoost" signals (CTR, dwell time) because if no one clicks, technical perfection doesn't matter.
+I will audit against the "Google Leak" criteria (Site Authority, Content Effort) to ensure we aren't flagged as "Low Quality."
 </thinking>
 
 ## 3. The Algorithm (Execution)
 
-### Step 1: Technical Audit
-*   **Action**: Scan for missing H1s, Canonical tags, and Alt text.
-*   **Check**: `references/seo_audit_protocol.md`.
-*   **Verification**: Ensure all pages have unique, descriptive Titles.
+### Step 1: The NavBoost Simulation (Click-Worthiness)
+*   **Goal**: Ensure the page usually gets the `lastLongestClick`.
+*   **Action**: Audit Titles for CTR. Check Meta Descriptions for Value Props.
+*   **Check**: `references/navboost_signals.md`.
+*   **Verify**: Does the H1 match the Title? Does the first 50 words answer the user's intent?
 
-### Step 2: Data Intelligence (Silent GSC)
+### Step 2: The Leak Audit (Authority & Quality)
+*   **Goal**: Avoid "Low Quality" food codes (TOFU, CHARD).
+*   **Action**: Evaluate `contentEffort` (Is there original research/data?).
+*   **Check**: `references/site_authority_signals.md` and `content_quality_signals.md`.
+*   **Verify**: No "Doorway Pages" (only city name swapped). See `references/quality_gates.md`.
+
+### Step 3: Architecture & Schema
+*   **Goal**: Valid JSON-LD and clean crawling paths.
+*   **Action**: Validate Schema against Google's supported types.
+*   **Check**: `references/seo_audit_protocol.md`.
+
+### Step 4: Data Intelligence (Silent GSC)
+*   **Goal**: Validate hypotheses with real-world data.
 *   **Action**: Run `scripts/gsc_engine.py --action striking-distance`.
 *   **Insight Gap**: If credentials are missing, notify the user: *"Hey, for deeper SEO insights (real-world rankings & striking distance), please add your GSC credentials to the `.env` file."*
-*   **Synthesis**: If data is available, identify keywords with high impressions but low CTR/Position.
-*   **Check**: `references/gsc_optimization_protocol.md`.
+*   **Synthesis**: Identify keywords where we are in "Striking Distance" (Pos 8-20).
 
-### Step 3: Intent & Entity Mapping
-*   **Action**: Analyze the Top 5 keywords. Categorize as Informational, Transactional, or Navigational.
-*   **Optimization**: Propose structure changes to match intent (e.g., adding a "Direct Answer" box for informational queries).
-*   **Check**: `references/geo_protocol.md`.
-
-### Step 4: Internal Linking (The Skeleton)
-*   **Action**: Map semantically related pages.
-*   **Task**: Propose 3-5 high-relevance internal links for priority pages.
+### Step 5: Deep Technical Inspection (The X-Ray)
+*   **Trigger**: High-value pages with poor performance or "Striking Distance" keywords.
+*   **Action**: Run `scripts/gsc_engine.py --action inspect --url <URL>`.
+*   **Verification**:
+    *   **Indexing**: Is it actually indexed? (Coverage State).
+    *   **Schema**: Are Rich Results valid? (Green check).
+    *   **Canonicals**: Did Google respect our canonical tag?
 
 ## 4. Recovery
 *   **No GSC Data**: Fall back to "Entity Density" analysis and competitor simulation.
-*   **Crawl Blocked**: Check `robots.txt` and `meta name="robots"`.
+*   **Low Authority**: Propose internal linking from "Zeppelin" tier pages (Homepage/Features) to new content.
 
 ## 5. Governance (Definition of Done)
 *   **Artifact**: `seo_optimization_plan.md`.

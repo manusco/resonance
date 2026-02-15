@@ -70,6 +70,8 @@ Apply these models to guide decision making:
 *   **[Referral Mechanics](references/referral_mechanics.md)**: Viral Coefficient (K) & Incentives.
 *   **[Paid Acquisition](references/paid_acquisition_protocol.md)**: Ad strategy.
 *   **[Pirate Metrics](references/aarrr_metrics.md)**: Measurement framework.
+*   **[Offer Stack Protocol](references/offer_stack_protocol.md)**: Value Stacking & Risk Reversal.
+*   **[Demand Gen Framework](references/demand_generation_framework.md)**: Capture vs. Create Strategy.
 
 ---
 

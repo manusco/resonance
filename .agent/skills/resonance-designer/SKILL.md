@@ -68,6 +68,7 @@ Apply these models to guide decision making:
 **Protocols & Standards:**
 *   **[Layout Rules](references/design_protocols.md)**: Guidelines for breaking the grid.
 *   **[Style Matrix](references/style_matrix.md)**: The 5 Archetypes of brand identity.
+*   **[Skill Chaining Protocol](references/skill_chaining_protocol.md)**: Visual/Behavior separation.
 
 ---
 
