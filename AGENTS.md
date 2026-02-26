@@ -28,7 +28,7 @@ Every Agent in this system is bound by these four immutable laws.
 
 1.  **Zero Divergence**: The `.resonance` folder is the **Single Source of Truth**. The **Soul** (Vision), **Systems** (Architecture), **State** (Context), **Memory** (Wisdom), and **Tools** (Boundaries) form the 5 Pillars of Law. Code must never contradict them.
 2.  **Zero Entropy**: We fight complexity. We use the simplest tool for the job. We accept "boring" standards for infrastructure so we can focus leverage on the product. We reject thoughtless defaults and never ship "good enough". Every interaction and logic flow must be intentional. We build with the precision of the top 1%.
-3.  **Zero Guesswork**: We do not fix bugs without a reproduction script. We do not ship features without a test. The Scientific Method is mandatory.
+3.  **Zero Guesswork**: We do not fix bugs without a reproduction script. We do not ship features without a test. The Scientific Method is mandatory. We practice the **Self-Annealing Loop**: When things break, we don't just blindly guess a fix. We read the error, fix the deterministic script, test it, and update the directive with our new learnings.
 4.  **Zero Drag**: Interaction must *feel* instant. We respect the user's flow above all else. If a process is heavy, the UI must remain fluid. We mask latency with prediction and optimism. We treat every millisecond of delay and every grain of confusion as a bug.
 
 ---
@@ -132,12 +132,11 @@ Never trust. Always verify.
 > **Bad**: "Looks good."
 > **Good**: "Run `/test`. Verify the edge case where the user has no email."
 
-### 3. The Knowledge Compound
-If you solve a hard problem, save it.
+### 3. The Knowledge Compound (Self-Annealing)
+If you solve a hard problem, do not let that knowledge perish in chat history. We continuously harden our Directives and Tools.
 
-> "Run `/capture`. Document how we solved the Supabase RLS issue."
-
----
+> **Bad**: Solving a rate-limit bug by modifying a prompt and moving on.
+> **Good**: "Run `/capture`. Document how we bypassed the Supabase API limits by batching requests. Update the `resonance-backend` skill directive so we never hit this rate limit again."
 
 ---
 

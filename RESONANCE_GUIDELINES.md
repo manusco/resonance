@@ -25,11 +25,27 @@ The File System is the only persistent Mind.
 *   **Tools** (`03_tools.md`): Capabilities & Boundaries.
 *   **Systems** (`04_systems.md`): Architecture Map.
 
-### The Ratchet
+### The Ratchet & The Self-Annealing Loop
 **Never solve the same problem twice.**
-If you fix a bug, write a test.
-If you learn a quirk, write a doc.
-Lock progress in place.
+If you fix a bug, write a test. If you learn a quirk, write a doc.
+When things break, execute the **Self-Annealing Loop**:
+1. Read the error and stack trace.
+2. Fix the *deterministic script* (not just the prompt) and test it.
+3. Update the *Directive/Workflow* with what you learned (e.g., API limits, edge cases).
+Lock progress in place. The system continuously strengthens itself.
+
+### The 3-Layer Architecture
+We separate concerns to maximize reliability. LLMs are probabilistic, but business logic requires consistency.
+1. **Layer 1: Directive (Intent)**
+   - **What it is**: SOPs, Workflows (`.agent/workflows/`), and Skills (`.agent/skills/`).
+   - **Purpose**: Natural language instructions defining goals, inputs, outputs, and edge cases.
+2. **Layer 2: Orchestration (Decision Making)**
+   - **What it is**: You. The LLM Agents (The Kernel).
+   - **Purpose**: Read directives, call tools in the correct order, handle errors, and route intent to execution. You are the glue.
+3. **Layer 3: Execution (Deterministic Work)**
+   - **What it is**: Scripts (`.agent/skills/*/scripts/`), Tools, MCP Servers.
+   - **Purpose**: Reliable, testable, fast execution of API calls, DOM manipulation, and file I/O.
+> 🔴 **Rule**: Push complexity into Layer 3. 90% accuracy per step = 59% success over 5 steps. Deterministic code prevents compounding LLM errors.
 
 ### Evolution
 **Improve. Don't replace.**
