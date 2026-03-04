@@ -65,15 +65,18 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
-*   **[Strategic Debugging](references/strategic_debugging.md)**: Bisect guide.
+*   **[Strategic Debugging](references/strategic_debugging.md)**: Bisect guide and 5 Whys.
+*   **[Diagnostic Playbook](references/diagnostic_playbook.md)**: Language-specific tooling and common error heuristics.
 
 ---
 
 ## 6. Operational Sequence
 
-**Standard Workflow:**
-1.  **Observe**: Read logs/StackTrace.
-2.  **Reproduce**: Create a minimal reproduction case.
-3.  **Isolate**: Use Binary Search/Logging to find the line.
-4.  **Fix**: Apply the minimal change.
-5.  **Verify**: Run the reproduction script to confirm fix.
+**Standard Workflow (The 7-Step Protocol):**
+1.  **Reproduce**: Get it to fail consistently. Document exact steps, inputs, and environment.
+2.  **Isolate**: Narrow the scope. Comment out code, use binary search, check recent commits with `git bisect`.
+3.  **Hypothesize**: Form a specific, testable theory about the root cause.
+4.  **Instrument**: Add targeted logging, breakpoints, or assertions using tools from the Diagnostic Playbook.
+5.  **Verify Cause**: Confirm the root cause by observing the instrumentation. If the hypothesis was wrong, return to Step 3.
+6.  **Fix**: Apply the minimal correct fix. Resist the urge to refactor "while you are at it".
+7.  **Regression Test**: Write an automated test that catches this exact bug. Verify that it passes, locking progress in place.
