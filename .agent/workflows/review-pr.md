@@ -29,8 +29,11 @@ I checking for:
 *   **Action**: `npm ci` (Install dependencies safely).
 
 ### Step 2: The Audit
-*   **Action**: Run `/audit` workflow.
-*   **Check**: `gh pr checks [ID]` (CI Status).
+*   **Action**: Validate against `resonance-reviewer`.
+*   **Action**: Ensure automated checks pass (`gh pr checks [ID]`).
+*   **Two-Pass Review**:
+    1.  **Context Pass**: Scan the diff for Critical Security/Data issues (SQL injections, Trust Boundaries).
+    2.  **Attack Pass**: Adversarially look for race conditions and silent state failures.
 
 ### Step 3: The Verdict
 Use GitHub CLI.

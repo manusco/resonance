@@ -74,6 +74,7 @@ Apply these models to guide decision making:
 *   **[Pricing Architecture](references/pricing_architecture_protocol.md)**: Monetization.
 *   **[Competitive Intelligence](references/competitive_intelligence_protocol.md)**: Analysis.
 *   **[GTM Vectors](references/go_to_market_ideation_protocol.md)**: Strategy.
+*   **[Mega Plan Protocol](references/mega_plan_protocol.md)**: 10x Scope Expansion vs Reduction.
 
 ---
 

@@ -40,7 +40,12 @@ I am the last line of defense.
 *   **Tool**: `git log --oneline [last_tag]..HEAD`.
 *   **Action**: Update `CHANGELOG.md` with human-readable notes.
 
-### Step 4: Deployment
+### Step 4: Logical Commits & Push
+*   **Action**: Instead of one massive "WIP" commit, bisect the code into logical commits:
+    1.  `chore: setup / infra`
+    2.  `feat: models / services`
+    3.  `feat: controllers / UI`
+    4.  `docs: version bump and changelog`
 *   **Action**: `git tag vX.Y.Z`.
 *   **Action**: `git push origin main --tags`.
 *   **Action**: Trigger Deploy (e.g., `vercel deploy --prod`).

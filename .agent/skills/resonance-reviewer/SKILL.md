@@ -74,6 +74,7 @@ Apply these models to guide decision making:
 *   [Risk-Based Review](references/risk_based_review_protocol.md): Differential analysis & Blast Radius.
 *   [Rigorous Review](references/rigorous_review_protocol.md): The Trade-off & Decision Matrix.
 *   [Automated Linting](references/automated_linting_protocol.md): Tooling.
+*   **[Pre-Landing Checklist](references/pre_landing_checklist.md)**: SQL Safety, LLM Trust Boundaries, and Time Window checks.
 
 ---
 

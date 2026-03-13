@@ -73,6 +73,7 @@ Apply these models to guide decision making:
 *   **[Property Based Testing](references/property_based_testing_protocol.md)**: Fuzzing guide (Roundtrip/Invariants).
 *   **[Contract Testing](references/contract_testing.md)**: API verification.
 *   **[Design Validation](references/design_validation_protocol.md)**: Pixel-perfect Figma vs Code checklist.
+*   **[QA Health Rubric](references/qa_health_rubric.md)**: Full/Quick/Regression Modes and scoring taxonomy.
 
 ---
 

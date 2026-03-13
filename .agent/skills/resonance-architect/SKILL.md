@@ -72,6 +72,7 @@ Apply these models to guide decision making:
 *   **[System Design Checklist](references/system_design_checklist.md)**: Validation & Simplicity check.
 *   **[ASCII Architecture](references/ascii_architecture_protocol.md)**: Text-based visualization for logic flows.
 *   **[Domain Driven Design](references/domain_driven_design.md)**: Guidelines for domain modeling.
+*   **[Error & Data Flow Framework](references/error_rescue_framework.md)**: Eradicating silent failures and shadow paths.
 
 ---
 
