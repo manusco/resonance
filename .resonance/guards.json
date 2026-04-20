@@ -1,0 +1,11 @@
+{
+  "freeze": [
+    ".*/AGENTS.md",
+    ".*/.resonance/00_soul.md"
+  ],
+  "guard": [
+    ".*/package.json",
+    ".*/composer.json",
+    ".*/.env.*"
+  ]
+}

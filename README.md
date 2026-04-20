@@ -2,9 +2,9 @@
 > *Turn your LLM into a structured, memory-backed Headless Engineering Team.*
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.0.1-7025eb?style=for-the-badge&logo=github" alt="Resonance AI Framework" /></a>
+    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.1.0-7025eb?style=for-the-badge&logo=github" alt="Resonance AI Framework" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
-    <a href="AGENTS.md"><img src="https://img.shields.io/badge/Operators_Manual-v2.0.1-00f2ea?style=for-the-badge" alt="Operators Manual" /></a>
+    <a href="AGENTS.md"><img src="https://img.shields.io/badge/Operators_Manual-v2.1.0-00f2ea?style=for-the-badge" alt="Operators Manual" /></a>
 </div>
 
 ---
@@ -27,8 +27,10 @@ We took the best practices from elite engineering teams and baked them directly 
 
 ---
 
-## 🚀 How to try it (30 seconds)
-The best way to understand it is to see it work.
+## 🚀 Installation & Upgrading
+
+### Option A: Fresh Installation (New Project)
+If you are starting a new project with Resonance:
 
 **1. Clone the Brain**
 Pull the framework into your project root.
@@ -46,6 +48,24 @@ In your IDE (Cursor, Windsurf, Cline, etc.), just type:
 Resonance will ask you: *"What are we building?"*
 Be honest. Tell it your vision. It will listen, thinking about the architecture, and then write it down in `00_soul.md`. 
 From that moment on, it never forgets.
+
+### Option B: Upgrading an Existing Project
+If you are already using an older version of Resonance and want to upgrade to v2.1.0:
+
+When upgrading, you update the core system (agents, workflows, scripts) while **preserving your project-specific state** (like `00_soul.md`, `01_state.md`, `learnings.jsonl`, etc.).
+
+**1. Update the Core Files**
+Pull the latest core files into your existing `.resonance` directory. The safest way is to copy the `.agents` directory, `AGENTS.md`, and any core scripts from the latest release, overwriting the old ones.
+> **Note**: In v2.1.0, we migrated from the legacy `.agent/` (singular) to the modern `.agents/` (plural) structure. Make sure you delete your old `.agent/` folder after copying the new one.
+
+**2. Preserve Your Soul**
+Do **not** overwrite your user-generated files: `00_soul.md`, `01_state.md`, `02_memory.md`, `04_systems.md`, or `learnings.jsonl`. These contain your project's permanent identity and wisdom.
+
+**3. Verify System Health**
+Run the following command to let the system verify the upgrade:
+```bash
+@Resonance /system-health
+```
 
 ---
 

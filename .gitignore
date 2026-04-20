@@ -4,10 +4,12 @@ node_modules/
 .env
 dist/
 build/
+_input/
 
 # IDEs
 .vscode/
 .idea/
+.antigravity-images/
 
 # Resonance Protocol
 # We explicitly want to track the memory bank (The Brain)
