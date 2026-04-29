@@ -37,8 +37,14 @@ I will audit against the "Google Leak" criteria (Site Authority, Content Effort)
 
 ### Step 3: Architecture & Schema
 *   **Goal**: Valid JSON-LD and clean crawling paths.
-*   **Action**: Validate Schema against Google's supported types.
-*   **Check**: `references/seo_audit_protocol.md`.
+*   **Action**: Validate Schema against Google's supported types. Cross-check deprecated types.
+*   **Check**: `references/technical_seo_protocol.md` and `references/schema_types_current.md`.
+
+### Step 3.5: GEO Readiness (AI Citation)
+*   **Goal**: Ensure the page is citable by AI Answer Engines (Google AI Overviews, ChatGPT, Perplexity).
+*   **Action**: Check for self-contained answer blocks (134-167 words), question-based headings, AI crawler access in robots.txt, and server-rendered critical content.
+*   **Check**: `references/geo_protocol.md`.
+*   **Verify**: Does the page answer its target question in the first 50 words? Is GPTBot/PerplexityBot allowed?
 
 ### Step 4: Data Intelligence (Silent GSC)
 *   **Goal**: Validate hypotheses with real-world data.

@@ -30,6 +30,21 @@ You must engineer systems where $K > 1$.
 *   **Trigger**: "Give $10, Get $10".
 *   **Constraint**: Valid only if $CAC < LTV$.
 
+### Type D: The Community Loop
+*   **Mechanism**: "I belong here, and I want others to join."
+*   **Trigger**: User finds value in community → shares with peers who share the identity.
+*   **Key Dynamics**:
+    *   **Shared Identity**: Members join because they identify with the group, not just the product. ("I'm a founder" > "I use this tool.")
+    *   **Member-Generated Value**: The community creates content, answers questions, shares resources — value compounds with each member.
+    *   **Flywheel**: More members → more content → more value → attracts more members.
+*   **Engineering It**:
+    1.  Define the identity: Who is "in" and who is "out"? (Specificity attracts.)
+    2.  Seed with 10-20 active members who model behavior.
+    3.  Create rituals (weekly threads, monthly challenges, AMAs).
+    4.  Make sharing an identity act: "I'm part of [Community]" badges, member directories.
+*   **Platforms**: Discord (engagement), Slack (professional), Circle (branded).
+*   **Danger**: Communities without product integration become cost centers. Tie community value to product usage.
+
 ## 4. Engineering The "Share" Component
 1.  **The Contextual Prompt**: Don't ask "Invite a Friend" in the settings. Ask it *after* a "High-Dopamine Event" (e.g., File Uploaded, Purchase Complete).
 2.  **The Double-Sided Incentive**: Altruism is weak. Greed is reliable. Reward *both* parties.

@@ -2,9 +2,9 @@
 > *Turn your LLM into a structured, memory-backed Headless Engineering Team.*
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.1.0-7025eb?style=for-the-badge&logo=github" alt="Resonance AI Framework" /></a>
+    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.1.1-7025eb?style=for-the-badge&logo=github" alt="Resonance AI Framework" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
-    <a href="AGENTS.md"><img src="https://img.shields.io/badge/Operators_Manual-v2.1.0-00f2ea?style=for-the-badge" alt="Operators Manual" /></a>
+    <a href="AGENTS.md"><img src="https://img.shields.io/badge/Operators_Manual-v2.1.1-00f2ea?style=for-the-badge" alt="Operators Manual" /></a>
 </div>
 
 ---
@@ -50,13 +50,13 @@ Be honest. Tell it your vision. It will listen, thinking about the architecture,
 From that moment on, it never forgets.
 
 ### Option B: Upgrading an Existing Project
-If you are already using an older version of Resonance and want to upgrade to v2.1.0:
+If you are already using an older version of Resonance and want to upgrade to v2.1.1:
 
 When upgrading, you update the core system (agents, workflows, scripts) while **preserving your project-specific state** (like `00_soul.md`, `01_state.md`, `learnings.jsonl`, etc.).
 
 **1. Update the Core Files**
 Pull the latest core files into your existing `.resonance` directory. The safest way is to copy the `.agents` directory, `AGENTS.md`, and any core scripts from the latest release, overwriting the old ones.
-> **Note**: In v2.1.0, we migrated from the legacy `.agent/` (singular) to the modern `.agents/` (plural) structure. Make sure you delete your old `.agent/` folder after copying the new one.
+> **Note**: In v2.1.1, we migrated from the legacy `.agent/` (singular) to the modern `.agents/` (plural) structure. Make sure you delete your old `.agent/` folder after copying the new one.
 
 **2. Preserve Your Soul**
 Do **not** overwrite your user-generated files: `00_soul.md`, `01_state.md`, `02_memory.md`, `04_systems.md`, or `learnings.jsonl`. These contain your project's permanent identity and wisdom.
@@ -99,15 +99,25 @@ We stripped away the fluff. Each workflow is a **templatized, rigorous protocol*
 
 ---
 
-## 👩‍🚀 The Engineering Team (26 Specialists)
+## 👩‍🚀 The Engineering Team (26 Specialists, 203 Protocols)
 You wouldn't ask a backend engineer to design your logo. So why ask a generic chatbot to do everything?
-Resonance comes with **26 Specialized Personas**. These are deep, codified identities that know exactly how to do their specific job.
+Resonance comes with **26 Specialized Personas**, each backed by a deep library of reference protocols. These aren't thin wrappers around a system prompt — they're codified domain expertise with decision frameworks, checklists, and battle-tested playbooks.
 
-*   **The Venture Validator**: Before you build, it models the revenue math and checks for "Kill Criteria".
-*   **The Glasssmith**: Our Frontend expert. It interacts with "Touch Physics" and visual hierarchy, not just CSS classes.
-*   **The Friction Physicist**: A unique agent that simulates user "Drag" (latency, confusion) and eliminates it.
+**What "backed by protocols" actually means:**
 
-You don't have to teach them how to do their job. They already know.
+| Domain | What's Inside | Reference Count |
+| :--- | :--- | :--- |
+| **Security** | OWASP audits, STRIDE threat modeling, JWT hardening, CSP headers | 14 protocols |
+| **SEO & GEO** | Google ranking architecture (informed by the 2024 Systems Leak), AI citation optimization, programmatic SEO, schema markup | 22 protocols |
+| **Frontend** | Touch Physics, micro-interaction patterns, design system generation, accessibility | 12 protocols |
+| **Growth & Revenue** | AARRR metrics, viral loops, B2B sales pipeline (BANT/MEDDIC/MEDDPICC), CRM operations, launch strategy | 13 protocols |
+| **Conversion** | Friction Collider simulation, behavioral psychology, onboarding activation, churn prevention | 13 protocols |
+| **Quality** | E2E testing (Playwright), property-based fuzzing, destructive testing, test pyramid | 13 protocols |
+| **Copywriting** | Anti-slop filter, stylometric voice extraction, neuro-marketing triggers, email sequences | 16 protocols |
+
+Every protocol is a standalone reference document — not a prompt, but a playbook an agent reads before doing the work.
+
+> **Why this matters**: When your AI runs a security audit, it doesn't "try its best" — it follows a 14-point protocol based on OWASP Top 10. When it writes SEO content, it cross-references the 2024 Google ranking signals leak. The difference between a generic chatbot and Resonance is the difference between asking someone and asking an expert with a reference library.
 
 ---
 
@@ -120,6 +130,18 @@ This is the engine that makes it all possible. A structured "Second Brain" that 
 | **The State** | `01_state.md` | **The RAM**. What is the *active* task? What was the last decision? This prevents the "What was I doing?" loop. |
 | **The Memory** | `02_memory.md` | **The Hard Drive**. A permanent audit log of architectural decisions (ADRs). We never solve the same problem twice. |
 | **The Map** | `04_systems.md` | **The Blueprint**. Logic flows, database schemas, and API contracts. The LLM reads this *before* it writes a line of code. |
+
+---
+
+## 📋 What's New in v2.1.1
+
+**Gold-Standard Marketing & Revenue Intelligence** — Resonance now ships with deep B2B sales and CRM reference protocols alongside upgraded SEO, Growth, and Conversion skills.
+
+- **B2B Sales Pipeline**: 4 qualification frameworks (BANT → MEDDIC → MEDDPICC → SPICED) with selection guidance, 4 sales methodologies (Challenger, SPIN, Gap, Command of the Message), multi-threading strategy, mutual action plans, and a full objection playbook.
+- **CRM Operations**: Revenue stack architecture, CRM selection by GTM motion, lifecycle/deal/CS automation workflows, data hygiene protocols, three-audience dashboards with attribution models, and a 6-level RevOps maturity model.
+- **SEO & GEO**: Expanded to 22 protocols. New site architecture protocol, competitor page engineering, and AI citation optimization (GEO) now split into its own dedicated protocol.
+- **Conversion**: New onboarding activation protocol (time-to-value, first-run patterns, habit loops) and churn prevention protocol (cancel flows, dunning sequences, dynamic save offers, win-back campaigns).
+- **Growth**: Community-driven growth loop variant, directory distribution strategy, and content strategy protocol (Searchable vs Shareable framework).
 
 ---
 

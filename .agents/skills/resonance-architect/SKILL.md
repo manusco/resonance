@@ -34,6 +34,7 @@ You do not write "code" first. You define "boundaries" first. You believe that "
 | **System Design** | New Service / Feature | Level 1 & 2 C4 Diagrams + ASCII Flows. |
 | **Decision Recording** | Stack selection | An ADR file explaining the "Why". |
 | **Domain Modeling** | Complex Logic | Ubiquitous language dictionary & bounded context map. |
+| **Data-Flow Audit** | "Review data integrity" | Single-source-of-truth candidates, drift-risk ranking, safest extraction sequence. |
 
 **Out of Scope:**
 *   ❌ Implementing the Business Logic (Delegate to `resonance-backend`).
@@ -52,6 +53,10 @@ Apply these models to guide decision making:
 ### 2. Domain Driven Design (DDD)
 *   **Concept**: Matching technical structure to business reality.
 *   **Application**: Use "Ubiquitous Language". If the business expert doesn't recognize the term, rename the class.
+
+### 3. Single Source of Truth
+*   **Concept**: Every business rule, mapping, and transformation should exist in exactly one place. When the same rule is implemented in multiple layers (frontend + backend, ORM + raw SQL, policy + template), it creates silent drift risk.
+*   **Application**: When auditing data flow, trace each business rule across layers. Flag duplication. Name the duplicated rule and recommend which layer owns the truth. Produce a drift-risk ranking.
 
 ---
 
@@ -75,6 +80,8 @@ Apply these models to guide decision making:
 *   **[ASCII Architecture](references/ascii_architecture_protocol.md)**: Text-based visualization for logic flows.
 *   **[Domain Driven Design](references/domain_driven_design.md)**: Guidelines for domain modeling.
 *   **[Error & Data Flow Framework](references/error_rescue_framework.md)**: Eradicating silent failures and shadow paths.
+*   **[Audit Classification Taxonomy](../resonance-core/references/audit_classification_taxonomy.md)**: Finding categories and P0–P3 ranking.
+*   **[Universal Audit Directives](../resonance-core/references/universal_audit_directives.md)**: Authorization, refactor, and data integrity rules.
 
 ---
 
@@ -83,8 +90,9 @@ Apply these models to guide decision making:
 **Standard Workflow:**
 1.  **Search & Learn**: Check `learnings.jsonl` for prior architectural constraints.
 2.  **Surgical Audit**: Trace data through Happy/Nil/Empty/Error paths.
-3.  **Failure Map**: Create the [Failure Mode Registry](references/eng_manager_protocol.md).
-4.  **C4 Visualization**: Draw Context & Container diagrams.
-5.  **ADR**: Log technical choices and their impact on the blast radius.
-6.  **Self-Improvement**: Log architectural discoveries/gotchas to `learnings.jsonl`.
-7.  **Completion Report**: Final status (DONE, BLOCKED, etc.).
+3.  **Data-Truth Audit**: Trace business rules across layers. Flag any rule, mapping, or validation that exists in more than one place. Produce a drift-risk ranking.
+4.  **Failure Map**: Create the [Failure Mode Registry](references/eng_manager_protocol.md).
+5.  **C4 Visualization**: Draw Context & Container diagrams.
+6.  **ADR**: Log technical choices and their impact on the blast radius.
+7.  **Self-Improvement**: Log architectural discoveries/gotchas to `learnings.jsonl`.
+8.  **Completion**: Use the [Completion Attestation](../resonance-core/references/completion_attestation.md).

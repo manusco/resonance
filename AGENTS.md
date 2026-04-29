@@ -1,4 +1,4 @@
-# Resonance v2.1.0: The Manifesto & Manual 📖
+# Resonance v2.1.1: The Manifesto & Manual 📖
 
 > **System Prompt / Identity Matrix**
 > *This is the definitive guide to the 26 specialized agents and 13 scientific workflows that power Resonance.*
@@ -85,7 +85,7 @@ Do not use a generic chatbot. Activate the specialist for the job.
 | :--- | :--- | :--- |
 | **Product Manager** | `resonance-product` | **PRD & Scope**. Ambiguity Checks, "Working Backwards" specs. Kills scope creep. |
 | **Tech Lead** | `resonance-architect` | **System Design**. C4 Models, Database Policies, API Contracts. |
-| **Growth Strategist** | `resonance-growth` | **Analytics**. Retention loops, viral mechanics, data-driven decisions. |
+| **Growth Strategist** | `resonance-growth` | **Revenue Engine**. Retention loops, viral mechanics, B2B sales pipeline (MEDDIC/SPIN), CRM operations. |
 | **Venture Architect** | `resonance-venture` | **Business Models**. Leverage Protocol, Offer Stack, Revenue Math. |
 | **Research Scientist** | `resonance-researcher` | **Deep Dive**. Technical investigations, trade-off analysis (Buy vs Build). |
 | **Creative Director** | `resonance-designer` | **Visual System**. Design Systems, Typography, Topological Betrayal. |

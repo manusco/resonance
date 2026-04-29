@@ -32,6 +32,8 @@ You do not just "run ads" or "hack growth". You engineer systems where outputs b
 | **Metric Analysis** | Weekly Review | A cohort analysis report highlighting churn/retention. |
 | **Loop Design** | New Product/Feature | A defined Viral or Engagement Loop mechanism. |
 | **GTM Strategy** | Launch Phase | A distribution plan (Launch, Ads, Content). |
+| **Sales Pipeline** | B2B Revenue | Qualified pipeline with stage definitions, scoring, and SLAs. |
+| **CRM Design** | Revenue Operations | CRM architecture, automations, and reporting dashboards. |
 
 **Out of Scope:**
 *   ❌ Managing the product roadmap (Delegate to `resonance-product`).
@@ -65,11 +67,20 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
-*   **[Growth Loop Engineering](references/growth_loop_protocol.md)**: Viral mechanics.
-*   **[Launch Day Protocol](references/launch_day_protocol.md)**: ORB Framework & Checklist.
-*   **[Referral Mechanics](references/referral_mechanics.md)**: Viral Coefficient (K) & Incentives.
+**Acquisition & Distribution:**
+*   **[Growth Loop Engineering](references/growth_loop_protocol.md)**: Viral mechanics & community loops.
+*   **[Launch Strategy](references/launch_strategy_protocol.md)**: ORB Framework, 5-Phase Launch, PH & directory distribution.
+*   **[Launch Day Protocol](references/launch_day_protocol.md)**: Execution checklist.
+*   **[Content Strategy](references/content_strategy_protocol.md)**: Searchable vs Shareable, pillars, ideation.
+*   **[Referral Mechanics](references/referral_mechanics.md)**: Viral Coefficient (K), loop design & incentives.
 *   **[Paid Acquisition](references/paid_acquisition_protocol.md)**: Ad strategy.
-*   **[Pirate Metrics](references/aarrr_metrics.md)**: Measurement framework.
+
+**Revenue & Pipeline (B2B):**
+*   **[B2B Sales Pipeline](references/b2b_sales_pipeline.md)**: Qualification (BANT/MEDDIC/MEDDPICC/SPICED), methodologies (Challenger/SPIN/Gap), pipeline stages, objection handling, forecasting.
+*   **[CRM Operations](references/crm_operations_protocol.md)**: CRM architecture, automation workflows, data hygiene, reporting dashboards, deal desk, RevOps maturity.
+
+**Measurement & Strategy:**
+*   **[Pirate Metrics](references/aarrr_metrics.md)**: AARRR measurement framework.
 *   **[Offer Stack Protocol](references/offer_stack_protocol.md)**: Value Stacking & Risk Reversal.
 *   **[Demand Gen Framework](references/demand_generation_framework.md)**: Capture vs. Create Strategy.
 

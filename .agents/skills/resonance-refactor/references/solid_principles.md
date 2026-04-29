@@ -1,6 +1,6 @@
 # SOLID Principles Protocol
 
-> "Robust, maintainable, flexible."
+> "Strict, maintainable, flexible."
 
 ## 1. SRP (Single Responsibility)
 *   **A class should have one reason to change.**

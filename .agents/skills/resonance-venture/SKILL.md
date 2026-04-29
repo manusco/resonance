@@ -71,6 +71,7 @@ Apply these models to guide decision making:
 *   **[The 6 Models](references/business_models.md)**: Service, SaaS, Media, etc.
 *   **[Lean Canvas](references/lean_canvas.md)**: Business Modeling.
 *   **[Pricing Psychology](references/pricing_psychology.md)**: Anchoring & Decoy Effect.
+*   **[Pricing Strategy](references/pricing_strategy_protocol.md)**: Value metrics, tier structure, Van Westendorp, price increases.
 *   **[The Mom Test](references/mom_test.md)**: Interview protocol.
 
 ---

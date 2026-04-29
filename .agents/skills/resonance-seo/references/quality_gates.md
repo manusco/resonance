@@ -66,3 +66,30 @@ To prevent algorithmic flagging of AI content, all pages must demonstrate **Cont
 - Vary anchor text (don't always use exact match keywords)
 - Link to relevant, related content
 - Ensure no orphan pages (every page linked from at least one other page)
+
+## Scaled Content Abuse Enforcement
+
+Google escalated enforcement against scaled content abuse through 2024-2025:
+- **March 2024 Core Update**: First major enforcement wave
+- **June 2025**: Penalties expanded to include AI-assisted scaled content
+- **August 2025**: Further escalation with manual actions
+
+### Programmatic Content Quality Gates
+
+| Gate | Threshold | Consequence |
+|------|-----------|-------------|
+| Unique content ratio | ≥30-40% between any two pages | Below = doorway page risk |
+| Standalone value | Would this page be worth publishing alone? | Fail = don't publish |
+| Progressive rollout | 50-100 pages per batch | Mass publish = spam flag |
+| Location page warning | 30+ pages | ⚠️ Requires 60%+ unique per page |
+| Location page hard stop | 50+ pages | 🛑 Requires explicit justification |
+
+### The Swap Test
+If you can swap the city/keyword name and the content still reads identically, it's a doorway page. Every page must contain logic-injected content specific to its topic (local data, unique statistics, specific recommendations).
+
+### Progressive Rollout Strategy
+Do NOT dump 10,000 pages on Day 1:
+1. **Batch 1**: 50-100 pages → monitor for 2 weeks
+2. **Batch 2**: Scale if no indexing issues → 200-500 pages
+3. **Batch 3**: Continue scaling → monitor Search Console coverage
+4. **Ongoing**: Drip-feed at 50-100/day maximum

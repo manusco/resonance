@@ -61,3 +61,21 @@ If a user is not converting, debug the emotion using the **5 Whys**.
 We use psychology to help users make the decision *they already want to make*.
 *   **Dark Patterns**: Banned. (e.g., Hidden unsubscribe, forced continuity, fake scarcity).
 *   **Transparency**: Radical honesty builds higher LTV than trickery.
+
+## 7. Quick Reference (Challenge → Relevant Models)
+
+Use this table to rapidly identify which biases apply to a specific conversion problem.
+
+| Challenge | Relevant Models |
+|-----------|----------------|
+| Low conversions | Hick's Law, Activation Energy, BJ Fogg (B=MAT), Paradox of Choice |
+| Price objections | Anchoring, Framing, Mental Accounting, Loss Aversion, Rule of 100 |
+| Building trust | Authority Bias, Social Proof, Reciprocity, Pratfall Effect |
+| Increasing urgency | Scarcity, Loss Aversion, Zeigarnik Effect, Hyperbolic Discounting |
+| Retention / churn | Endowment Effect, Switching Costs, Status-Quo Bias, IKEA Effect |
+| Growth stalling | Theory of Constraints, Local vs Global Optima, Feedback Loops |
+| Decision paralysis | Paradox of Choice, Default Effect, Nudge Theory, Decoy Effect |
+| Onboarding drop-off | Goal-Gradient, IKEA Effect, Commitment & Consistency, Zero-Price |
+| Low engagement | Mere Exposure, Mimetic Desire, Peak-End Rule, Variable Reward |
+| Price positioning | Charm Pricing, Rounded-Price Effect, Good-Better-Best, Contrast |
+

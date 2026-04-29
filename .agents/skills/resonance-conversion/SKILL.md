@@ -56,6 +56,10 @@ Apply these models to guide decision making:
 *   **Concept**: Value Proposition + Relevance + Clarity + Urgency - Distraction - Anxiety.
 *   **Application**: Audit pages against these 6 factors.
 
+### 4. Trust Verification
+*   **Concept**: During CRO audits, verify that all social proof, testimonials, and metrics are attributable and accurate. Unsupported claims increase Anxiety friction (LIFT Model) — they don't reduce it.
+*   **Application**: Flag invented quotes, unverifiable metrics, testimonials without real names/affiliations, and screenshots that don't match the actual product. These are conversion risks, not just ethics issues — savvy users detect fabrication and it destroys trust.
+
 ---
 
 ## 4. KPIs & Success Metrics
@@ -72,18 +76,22 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[The Friction Collider](references/friction_collider.md)**: The 4-Sweep Simulation Protocol.
-*   **[Behavioral Psychology](references/behavioral_psychology_protocol.md)**: Cognitive bias cheatsheet.
+*   **[Behavioral Psychology](references/behavioral_psychology_protocol.md)**: Cognitive bias cheatsheet & challenge lookup table.
 *   **[Conversion Patterns](references/conversion_psychology.md)**: Fogg Model & Friction Removal.
 *   **[Page Optimization](references/page_optimization_protocol.md)**: CRO guide.
-*   **[Form Engineering](references/form_engineering_protocol.md)**: Reducing form friction.
+*   **[Form Engineering](references/form_engineering_protocol.md)**: Multi-step forms & friction reduction.
 *   **[Landing Page Anatomy](references/landing_page_anatomy.md)**: Standard layout.
+*   **[Onboarding Activation](references/onboarding_activation_protocol.md)**: Time-to-value, first-run patterns, habit loops.
+*   **[Churn Prevention](references/churn_prevention_protocol.md)**: Cancel flows, dunning, save offers, win-back.
 
 ---
 
 ## 6. Operational Sequence
 
 **Standard Workflow:**
+0.  **Product-Behavior Alignment**: Before auditing conversion, verify the page's claims match actual product behavior. Optimizing conversion for a false promise creates churn, not growth.
 1.  **Audit**: Analyze the current page/flow using LIFT/Heuristics.
-2.  **Hypothesize**: "If we change X, then Y will happen because Z."
-3.  **Design**: Create the variant (Wireframe/Copy).
-4.  **Test**: Run the experiment or implement the "No Brainer" fix.
+2.  **Trust Verification**: Check all social proof, testimonials, and metrics for attribution and accuracy.
+3.  **Hypothesize**: "If we change X, then Y will happen because Z."
+4.  **Design**: Create the variant (Wireframe/Copy).
+5.  **Test**: Run the experiment or implement the "No Brainer" fix.

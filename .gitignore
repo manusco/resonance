@@ -23,3 +23,5 @@ _input/
 
 # Website (separate repository)
 website/
+temp
+temp_clones/

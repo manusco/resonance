@@ -59,8 +59,9 @@ Apply these models to guide decision making:
 **Success Criteria:**
 *   **Resolution**: The bug is gone and test coverage prevents regression.
 *   **Understanding**: The RCA explains the logic gap.
+*   **Environment Context**: Note which environment the bug was reproduced in. If reproduction is only possible in a specific environment (staging, production, specific OS), flag the environment-specific assumptions that contribute to the bug.
 
-> ⚠️ **Failure Condition**: Applying a "Shotgun Fix" (changing 5 variables at once) without isolating the cause.
+> ⚠️ **Failure Condition**: Applying a "Shotgun Fix" (changing 5 variables at once) without isolating the cause. Fixing a bug in local dev without verifying the fix applies to the environment where the bug was reported.
 
 ---
 
@@ -84,4 +85,4 @@ Apply these models to guide decision making:
 6.  **Fix**: Apply the minimal surgical fix. Match existing style exactly.
     → verify: Run the reproduction script. It MUST now pass.
 7.  **Operational Self-Improvement**: Log the RCA and the Smoking Gun discovery to `learnings.jsonl` to prevent future re-discovery.
-8.  **Completion Report**: Final status (DONE, BLOCKED, etc.).
+8.  **Completion**: Use the [Completion Attestation](../resonance-core/references/completion_attestation.md). Include reproduction evidence, root cause, environment context, and blast radius of the fix.
