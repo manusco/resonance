@@ -148,7 +148,7 @@ Auto-detect from page signals:
 
 ---
 
-## 7 Highest-ROI Actions (Quick Wins)
+## 8 Highest-ROI Actions (Quick Wins)
 
 For any page, these deliver the most impact per effort:
 
@@ -159,6 +159,7 @@ For any page, these deliver the most impact per effort:
 5. **CWV fix** — Prioritize LCP image (fetchpriority="high", no lazy-load on hero)
 6. **AI crawler access** — Allow GPTBot, PerplexityBot, ClaudeBot in robots.txt
 7. **Date signal consistency** — Align publish date across URL, JSON-LD, byline, meta
+8. **Content Gap Analysis (Ahrefs model)** — Identify keywords where organic competitors rank but you do not; build targeted cluster pillars.
 
 ---
 
@@ -208,6 +209,9 @@ Load on demand as needed. Grouped by function:
 ### Templates & Checklists
 - `seo_audit_checklist.md` — Quick-reference audit checklist
 - `semantic_html_templates.md` — JSON-LD snippets and semantic HTML patterns
+
+### CLI Cheat Sheets (API Reference)
+- `references/ahrefs_cheatsheet.md` — Ahrefs keyword gaps, SERP trajectories, and link targets.
 
 ### Scripts
 - `scripts/gsc_engine.py` — Google Search Console data extraction

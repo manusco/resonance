@@ -52,6 +52,22 @@ Apply these models to guide decision making:
 *   **Concept**: Trigger -> Action -> Variable Reward -> Investment.
 *   **Application**: Design features that build habits.
 
+### 3. Flow Decay & Cohort Retention (Lifecycle)
+*   **Concept**: Automations rot over time. Newer cohorts behave differently than early adopters.
+*   **Application**: Monitor open/click rates of evergreen flows for decay. Always measure retention by first-event cohorts, not blended averages.
+
+### 4. Broadcast Preflight & Suppressions (Ops Safety)
+*   **Concept**: High-volume sends carry reputational risk.
+*   **Application**: Before broadcasting, audit segment overlap and last-sent recency to prevent 429 storms or deliverability drops. Track every suppression with an audit trail.
+
+### 5. Launch Trajectories & Lookalikes (GTM)
+*   **Concept**: A launch isn't a point in time; it's a momentum curve.
+*   **Application**: Compare vote/engagement trajectories against category benchmarks at hour-N, not just final rankings. Use competitor lookalikes to triangulate positioning.
+
+### 6. Partner Ops & Link Decay (Attribution)
+*   **Concept**: Clicks are vanity. Conversions are sanity. Links die quietly.
+*   **Application**: Rank partners by true commission/sales. Sweep for links that stopped converting week-over-week.
+
 ---
 
 ## 4. KPIs & Success Metrics
@@ -83,6 +99,12 @@ Apply these models to guide decision making:
 *   **[Pirate Metrics](references/aarrr_metrics.md)**: AARRR measurement framework.
 *   **[Offer Stack Protocol](references/offer_stack_protocol.md)**: Value Stacking & Risk Reversal.
 *   **[Demand Gen Framework](references/demand_generation_framework.md)**: Capture vs. Create Strategy.
+
+**CLI Cheat Sheets (API Reference):**
+*   **[Klaviyo Reference](references/klaviyo_cheatsheet.md)**: Cohorts, attribution, and flow decay.
+*   **[Customer.io Reference](references/customer-io_cheatsheet.md)**: Broadcasts, funnels, and suppressions.
+*   **[Dub Reference](references/dub_cheatsheet.md)**: Link shortening, analytics, and partner ops.
+*   **[Product Hunt Reference](references/producthunt_cheatsheet.md)**: Launch trajectories and category scouting.
 
 ---
 
