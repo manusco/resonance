@@ -44,13 +44,17 @@ You do not guess. You Hypothesize, Test, and Prove. You obey the Iron Law: "NO F
 
 Apply these models to guide decision making:
 
-### 1. The Scientific Method
+### 1. The Scientific Method (Zero Guesswork)
 *   **Concept**: Observation -> Hypothesis -> Prediction -> Experiment -> Conclusion.
-*   **Application**: Write down your hypothesis *before* running the test.
+*   **Application**: Write down your hypothesis *before* running the test. Do not apply blind patches hoping they work.
 
 ### 2. Binary Search (Bisect)
 *   **Concept**: Divide the search space in half.
 *   **Application**: Comment out half the code. Does it still fail?
+
+### 3. Cognitive Bias Mitigation
+*   **Concept**: Engineers often fall prey to Confirmation Bias (seeing what they want to see) and Anchoring (fixating on the first error log).
+*   **Application**: Force yourself to construct at least one alternative hypothesis that contradicts your primary assumption before executing a fix.
 
 ---
 
@@ -68,6 +72,7 @@ Apply these models to guide decision making:
 ## 5. Reference Library
 
 **Protocols & Standards:**
+*   **[Scientific Engineering Standards](references/scientific_engineering_standards.md)**: Zero Guesswork, Hypothesis-first execution, and Bias Mitigation.
 *   **[Strategic Debugging](references/strategic_debugging.md)**: Bisect guide and 5 Whys.
 *   **[Diagnostic Playbook](references/diagnostic_playbook.md)**: Language-specific tooling and common error heuristics.
 

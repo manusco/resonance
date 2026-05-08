@@ -68,6 +68,14 @@ Apply these models to guide decision making:
 *   **Concept**: Clicks are vanity. Conversions are sanity. Links die quietly.
 *   **Application**: Rank partners by true commission/sales. Sweep for links that stopped converting week-over-week.
 
+### 7. Churn Prevention (Dunning & Save Offers)
+*   **Concept**: Saving a customer is 5x cheaper than acquiring a new one.
+*   **Application**: Implement aggressive dunning sequences for failed payments and high-friction "Save Offers" (e.g., pause, downgrade, discount) before allowing cancellation.
+
+### 8. High-Signal Revenue Attribution
+*   **Concept**: First-touch and last-touch are flawed. Look at the entire journey.
+*   **Application**: Triangulate zero-party data (e.g., "How did you hear about us?" surveys) with software attribution to find the real acquisition driver.
+
 ---
 
 ## 4. KPIs & Success Metrics
@@ -99,6 +107,7 @@ Apply these models to guide decision making:
 *   **[Pirate Metrics](references/aarrr_metrics.md)**: AARRR measurement framework.
 *   **[Offer Stack Protocol](references/offer_stack_protocol.md)**: Value Stacking & Risk Reversal.
 *   **[Demand Gen Framework](references/demand_generation_framework.md)**: Capture vs. Create Strategy.
+*   **[Growth & Retention Models](references/growth_retention_mental_models.md)**: Churn prevention, dunning, revenue attribution, and expert panels.
 
 **CLI Cheat Sheets (API Reference):**
 *   **[Klaviyo Reference](references/klaviyo_cheatsheet.md)**: Cohorts, attribution, and flow decay.

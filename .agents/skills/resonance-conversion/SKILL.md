@@ -56,7 +56,11 @@ Apply these models to guide decision making:
 *   **Concept**: Value Proposition + Relevance + Clarity + Urgency - Distraction - Anxiety.
 *   **Application**: Audit pages against these 6 factors.
 
-### 4. Trust Verification
+### 4. The Expert Panel (Recursive Quality Gates)
+*   **Concept**: Before finalizing positioning or creative, it must pass a rigorous, simulated expert review.
+*   **Application**: Analyze creative/copy against three questions: 1. Is the value proposition immediately obvious? 2. Is the headline impactful and free of generic fluff? 3. Is the "Aha!" moment highlighted fast enough?
+
+### 5. Trust Verification
 *   **Concept**: During CRO audits, verify that all social proof, testimonials, and metrics are attributable and accurate. Unsupported claims increase Anxiety friction (LIFT Model) — they don't reduce it.
 *   **Application**: Flag invented quotes, unverifiable metrics, testimonials without real names/affiliations, and screenshots that don't match the actual product. These are conversion risks, not just ethics issues — savvy users detect fabrication and it destroys trust.
 

@@ -12,15 +12,15 @@ if (-not (Test-Path ".resonance\01_state.md")) {
 Write-Host "✅ Memory Active (.resonance\)" -ForegroundColor Green
 
 # 2. Check Skills (The Talent)
-$skillCount = (Get-ChildItem -Path ".agent\skills\resonance-*" -ErrorAction SilentlyContinue).Count
+$skillCount = (Get-ChildItem -Path ".agents\skills\resonance-*" -ErrorAction SilentlyContinue).Count
 if ($skillCount -eq 0) {
-    Write-Host "⚠️  CRITICAL: No Resonance Skills found in .agent\skills\." -ForegroundColor Red
+    Write-Host "⚠️  CRITICAL: No Resonance Skills found in .agents\skills\." -ForegroundColor Red
     exit 1
 }
 Write-Host "✅ Resonance Skills Loaded ($skillCount active)" -ForegroundColor Green
 
 # 3. Check Workflows (The Protocol)
-$workflowCount = (Get-ChildItem -Path ".agent\workflows\*.md" -ErrorAction SilentlyContinue).Count
+$workflowCount = (Get-ChildItem -Path ".agents\workflows\*.md" -ErrorAction SilentlyContinue).Count
 Write-Host "✅ Workflows Ready ($workflowCount protocols)" -ForegroundColor Green
 
 # 4. Ensure Docs Structure

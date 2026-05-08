@@ -44,13 +44,13 @@ Lock progress in place. The system continuously strengthens itself.
 We separate concerns to maximize reliability. LLMs are probabilistic, but business logic requires consistency.
 
 1. **Layer 1: Directive (Intent)**
-   * **What it is**: SOPs, Workflows (`.agent/workflows/`), and Skills (`.agent/skills/`).
+   * **What it is**: SOPs, Workflows (`.agents/workflows/`), and Skills (`.agents/skills/`).
    * **Purpose**: Natural language instructions defining goals, inputs, outputs, and edge cases.
 2. **Layer 2: Orchestration (Decision Making)**
    * **What it is**: You. The LLM Agents (The Kernel).
    * **Purpose**: Read directives, call tools in the correct order, handle errors, and route intent to execution. You are the glue.
 3. **Layer 3: Execution (Deterministic Work)**
-   * **What it is**: Scripts (`.agent/skills/*/scripts/`), Tools, MCP Servers.
+   * **What it is**: Scripts (`.agents/skills/*/scripts/`), Tools, MCP Servers.
    * **Purpose**: Reliable, testable, fast execution of API calls, DOM manipulation, and file I/O.
 
 > 🔴 **Rule**: Push complexity into Layer 3. 90% accuracy per step = 59% success over 5 steps. Deterministic code prevents compounding LLM errors.
@@ -64,7 +64,7 @@ If you see a new way, integrate it. Do not overwrite the old way without underst
 
 ## 3. Building Workflows
 
-A Workflow is a `markdown` file in `.agent/workflows/`.
+A Workflow is a `markdown` file in `.agents/workflows/`.
 It must follow this schema:
 
 1. **Identity**: Role + Job to be Done.
@@ -81,11 +81,24 @@ Use their answers to generate artifacts (`soul.md`, `PRDs`, `diagrams`).
 
 ## 4. Building Skills
 
-When adding external skills (from other frameworks):
+### What Resonance Is (Hard Rule)
 
-1. **The Expert Test**. Would a top 1% expert use this approach? If no, reject it.
-2. **Context First**. Understand how Resonance works.
-3. **Bridge**. Don't just copy. Adapt the skill to use Resonance's Memory and State.
+Resonance is a **Company OS** — a complete set of skills, frameworks, and mental models covering every essential function of a business. It is built for operators: founders, CEOs, COOs, CTOs, developers, and the teams around them. It is designed for small and medium-sized businesses that want to operate like the top 1%.
+
+**What a Resonance Skill IS:**
+- Mental models and thinking frameworks (e.g., SPIN Selling, Jobs-to-be-Done, OKRs)
+- Best practices and decision-making protocols (e.g., how to run a hiring process)
+- Workflows and operational sequences (e.g., how to structure a sprint, run a board meeting)
+- Domain expertise distilled to its essence (e.g., how a CFO thinks about cash flow)
+
+**What a Resonance Skill is NOT:**
+- A guide to using a specific tool (e.g., "How to configure Slack", "How to use HubSpot"). Tool-specific instructions belong in `references/` as cheat sheets — never in a `SKILL.md`.
+- A narrow, industry-specific niche play. Skills must work for most businesses, not just one vertical.
+- Anything below the 1% standard. If it reads like a blog post or a junior's playbook, reject it.
+
+> 🔴 **Rule**: If you're writing steps that involve clicking a button in a specific piece of software, stop. That's a reference doc. The skill is the strategy behind *why* you'd take that action and *when*.
+
+
 
 ## 5. Engineering Standards
 

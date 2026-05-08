@@ -52,9 +52,17 @@ Apply these models to guide decision making:
 *   **Concept**: Separation of concerns.
 *   **Application**: Request -> Controller (Validation) -> Service (Logic) -> Repository (Data) -> DB.
 
-### 2. TypeScript Hard Mode
+### 2. TypeScript Hard Mode (Pocock Mastery)
 *   **Concept**: Leveraging the type system to prevent runtime errors.
-*   **Application**: Use Branded Types for IDs. Use Zod for IO boundaries.
+*   **Application**: Use Branded Types for IDs. Use Zod for IO boundaries. Never use `any`. Define generic constraints explicitly.
+
+### 3. N+1 Query Elimination & Caching (Osmani Standard)
+*   **Concept**: The database is the bottleneck. ORMs lie to you about performance.
+*   **Application**: Audit all loops for N+1 queries. Implement Dataloader patterns for GraphQL/REST. Apply aggressive caching (Redis/Memcached) for read-heavy, low-mutation endpoints.
+
+### 4. The G-Stack Ref System (Persistent State)
+*   **Concept**: Backend state should persist predictably for complex agentic workflows.
+*   **Application**: Use persistent daemon architectures (like `Bun.serve`) for stateful interactions instead of spawning transient processes. Map UI elements to stable `@ref` identifiers rather than relying on fragile CSS/XPath selectors.
 
 ---
 

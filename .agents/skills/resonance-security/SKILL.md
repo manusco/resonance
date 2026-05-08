@@ -59,6 +59,10 @@ Apply these models to guide decision making:
 *   **Concept**: Authorization must be verified at 6 independent layers: Menu → Page → Route → Policy → Resource → Action.
 *   **Application**: When auditing access controls, check every layer separately. A hidden sidebar link (Layer 1) does not protect the route (Layer 3) or the resource (Layer 5). Produce a Capability Matrix showing which roles have which capabilities at which layers, and flag inconsistencies.
 
+### 4. The 6-Layer Security Ensemble (G-Stack Defense)
+*   **Concept**: AI-Agent systems are vulnerable to prompt injection and context poisoning. Relying on a single system prompt is insufficient.
+*   **Application**: Implement defense in depth for LLM applications: 1. Input Classifiers, 2. Canary Tokens, 3. Output Parsers, 4. Semantic Filtering, 5. ML Judges, 6. Sandboxing.
+
 ---
 
 ## 4. KPIs & Success Metrics

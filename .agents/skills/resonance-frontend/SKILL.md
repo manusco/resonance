@@ -51,9 +51,13 @@ Apply these models to guide decision making:
 *   **Concept**: Breaking interfaces into Atoms, Molecules, Organisms, Templates, and Pages.
 *   **Application**: Keep components small and focused. Compose complex UIs from simple blocks.
 
-### 2. The 100ms Rule
-*   **Concept**: Perceived latency threshold.
-*   **Application**: Interactions must provide feedback within 100ms. Use optimistic UI updates.
+### 2. The 100ms Rule & Core Web Vitals (Osmani Standard)
+*   **Concept**: Perceived latency threshold and Google's performance metrics.
+*   **Application**: Interactions must provide feedback within 100ms. Strictly enforce budgets for LCP (<2.5s), INP (<200ms), and CLS (<0.1). Master image optimization (AVIF/WebP, `fetchpriority="high"` for LCP images, lazy loading for off-screen).
+
+### 3. Advanced Component TypeScript (Pocock Mastery)
+*   **Concept**: Type safety at the component boundary.
+*   **Application**: Extract prop interfaces. Use discriminated unions for component variants (e.g., button states). Avoid `React.FC`. Use generic components for table/list renders to maintain type inference.
 
 ---
 

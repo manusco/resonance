@@ -19,15 +19,15 @@ fi
 echo -e "${GREEN}✅ Memory Active (.resonance/)${NC}"
 
 # 2. Check Skills (The Talent)
-SKILL_COUNT=$(ls -1 .agent/skills/resonance-* 2>/dev/null | wc -l)
+SKILL_COUNT=$(ls -1 .agents/skills/resonance-* 2>/dev/null | wc -l)
 if [ "$SKILL_COUNT" -eq "0" ]; then
-    echo -e "${RED}⚠️  CRITICAL: No Resonance Skills found in .agent/skills/.${NC}"
+    echo -e "${RED}⚠️  CRITICAL: No Resonance Skills found in .agents/skills/.${NC}"
     exit 1
 fi
 echo -e "${GREEN}✅ Elite Skills Loaded ($SKILL_COUNT active)${NC}"
 
 # 3. Check Workflows (The Protocol)
-WORKFLOW_COUNT=$(ls -1 .agent/workflows/*.md 2>/dev/null | wc -l)
+WORKFLOW_COUNT=$(ls -1 .agents/workflows/*.md 2>/dev/null | wc -l)
 echo -e "${GREEN}✅ Workflows Ready ($WORKFLOW_COUNT protocols)${NC}"
 
 # 4. Ensure Docs Structure

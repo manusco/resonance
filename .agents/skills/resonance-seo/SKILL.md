@@ -93,13 +93,14 @@ AI Answer Engines are a **separate visibility channel** from organic search. A p
 4. **Authority & Brand Signals** (20%): Entity presence across platforms, `sameAs` schema, expert authorship
 5. **Technical Accessibility** (20%): AI crawlers don't execute JS — SSR is critical
 
-### Quick GEO Check (Every Page)
+### Quick GEO/AEO Check (Every Page)
 - [ ] Does the page answer the target question in the first 50 words?
 - [ ] Is there a 134-167 word self-contained answer block?
-- [ ] Are key AI crawlers allowed in robots.txt?
+- [ ] Are key AI crawlers allowed in `robots.txt`?
+- [ ] Is there an `llms.txt` file at the root to provide clean context to AI agents?
 - [ ] Is critical content server-rendered (not client-only JS)?
 
-**Load `geo_protocol.md` for full analysis framework.**
+**Load `aeo_geo_protocol.md` for full analysis framework.**
 
 ---
 
@@ -187,7 +188,8 @@ Load on demand as needed. Grouped by function:
 - `ranking_architecture.md` — CompositeDoc, Ascorer, Twiddlers pipeline
 
 ### Optimization Protocols
-- `geo_protocol.md` — GEO/Answer Engine Optimization (comprehensive)
+- `aeo_geo_protocol.md` — GEO/Answer Engine Optimization & llms.txt (comprehensive)
+- `github_seo_guide.md` — GitHub repository discoverability and SEO
 - `content_eeat_protocol.md` — E-E-A-T framework, AI content assessment
 - `technical_seo_protocol.md` — 9-category technical audit
 - `schema_markup_protocol.md` — JSON-LD engineering and graph connectivity
