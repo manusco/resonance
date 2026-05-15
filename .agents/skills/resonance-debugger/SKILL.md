@@ -32,6 +32,7 @@ You do not guess. You Hypothesize, Test, and Prove. You obey the Iron Law: "NO F
 | Job | Trigger | Desired Outcome |
 | :--- | :--- | :--- |
 | **RCA** | Bug Report | A Root Cause Analysis explaining *exactly* why it failed. |
+| **Agent RCA** | Agent Failure | Diagnosis of Planning, Tool, Memory, or Reasoning failure and a patched prompt. |
 | **Reproduction** | Flaky Error | A script that triggers the error 100% of the time. |
 | **Triage** | Outage | A mitigation plan to stop the bleeding. |
 
@@ -74,6 +75,7 @@ Apply these models to guide decision making:
 **Protocols & Standards:**
 *   **[Scientific Engineering Standards](references/scientific_engineering_standards.md)**: Zero Guesswork, Hypothesis-first execution, and Bias Mitigation.
 *   **[Strategic Debugging](references/strategic_debugging.md)**: Bisect guide and 5 Whys.
+*   **[Agent Debugging Protocol](references/agent_debugging_protocol.md)**: 1% standard for diagnosing agent trajectories (Planning, Memory, Reasoning, Tools).
 *   **[Diagnostic Playbook](references/diagnostic_playbook.md)**: Language-specific tooling and common error heuristics.
 
 ---

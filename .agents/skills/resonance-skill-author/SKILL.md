@@ -31,6 +31,8 @@ You define *how* other agents act. You transform "vibes" into "protocols". You b
 | :--- | :--- | :--- |
 | **Skill Creation** | New Domain Needed | A new `.agent/skills/[name]` directory with `SKILL.md`. |
 | **Prompt Design** | New Agent/Tool | A robust System Prompt with CoT, Few-Shot examples. |
+| **Prompt Refactor** | "Improve this prompt" | A hardened, hallucination-resistant, production-ready prompt. |
+| **Tool-Calling Design** | Adding tools to agent | Explicit operation contracts (when to use/not use, fallbacks). |
 | **Response Tuning** | "Lazy" AI Output | Added constraints, examples, or reasoning steps. |
 | **Debugging** | Agent Failure | A patched `SKILL.md` that prevents the error. |
 
@@ -73,6 +75,7 @@ Apply these models to guide decision making:
 
 **Protocols & Standards:**
 *   **[SKILL_TEMPLATE.md](../SKILL_TEMPLATE.md)**: The Master Schema for skills.
+*   **[Advanced Prompting Protocol](references/advanced_prompting_protocol.md)**: 1% standard for Tool-Calling logic and Production Refactoring.
 *   **[Chain of Thought](references/chain_of_thought_protocol.md)**: Reasoning guide.
 *   **[Few-Shot Library](references/few_shot_library.md)**: Example database.
 *   **[Persona Injection](references/persona_injection.md)**: Identity crafting.

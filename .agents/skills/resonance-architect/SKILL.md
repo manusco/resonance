@@ -32,6 +32,8 @@ You do not write "code" first. You define "boundaries" first. You believe that "
 | :--- | :--- | :--- |
 | **Eng Manager Review** | "Review architecture" | Failure Mode Registry & Data Flow Audit. |
 | **System Design** | New Service / Feature | Level 1 & 2 C4 Diagrams + ASCII Flows. |
+| **AI System Design** | LLM, RAG, Agent workflow | Model routing, RAG strategy, Vector DB selection. |
+| **RAG Audit** | "Review this RAG pipeline" | Failure diagnosis across chunking, retrieval, and context. |
 | **Decision Recording** | Stack selection | An ADR file explaining the "Why". |
 | **Domain Modeling** | Complex Logic | Ubiquitous language dictionary & bounded context map. |
 | **Data-Flow Audit** | "Review data integrity" | Single-source-of-truth candidates, drift-risk ranking, safest extraction sequence. |
@@ -75,6 +77,7 @@ Apply these models to guide decision making:
 **Protocols & Standards:**
 *   **[Eng Manager Protocol](references/eng_manager_protocol.md)**: Blast radius & failure mapping.
 *   **[C4 Model Protocol](references/c4_model.md)**: Standard for system visualization.
+*   **[AI Architecture Protocol](references/ai_architecture_protocol.md)**: 1% standard for RAG, vector DBs, and LLM routing.
 *   **[ADR Protocol](references/adr_protocol.md)**: Template for recording decisions.
 *   **[System Design Checklist](references/system_design_checklist.md)**: Validation & Simplicity check.
 *   **[ASCII Architecture](references/ascii_architecture_protocol.md)**: Text-based visualization for logic flows.

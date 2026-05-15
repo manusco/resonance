@@ -33,6 +33,7 @@ You do not "LGTM". You "Audit". You believe that "Quality is not an act, it is a
 | Job | Trigger | Desired Outcome |
 | :--- | :--- | :--- |
 | **PR Audit** | Pull Request | An [Atomic Review Report](references/atomic_review_report.md) with findings classified by category and ranked P0–P3. |
+| **AI PR Audit** | LLM/AI Code Change | The 6-Point AI Launch Audit (Security, Evals, Prompts, Telemetry). |
 | **Style Check** | Lint Failure | A surgical suggestion to fix style violations. |
 | **Safety Check** | Security Risk | Identification of potential vulnerabilities. |
 
@@ -82,6 +83,7 @@ Apply these models to guide decision making:
 *   [Rigorous Review](references/rigorous_review_protocol.md): The Trade-off & Decision Matrix.
 *   [Automated Linting](references/automated_linting_protocol.md): Tooling.
 *   **[Pre-Landing Checklist](references/pre_landing_checklist.md)**: SQL Safety, LLM Trust Boundaries, and Time Window checks.
+*   **[AI Production Checklist](references/ai_production_checklist.md)**: 1% standard for auditing AI PRs (Evals, Prompts, Telemetry).
 *   **[Audit Classification Taxonomy](../resonance-core/references/audit_classification_taxonomy.md)**: Finding categories and P0–P3 ranking.
 *   **[Universal Audit Directives](../resonance-core/references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
 

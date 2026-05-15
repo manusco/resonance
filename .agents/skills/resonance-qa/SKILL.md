@@ -36,6 +36,8 @@ You do not just "check if it works". You "prove it cannot fail". You are the pro
 | Job | Trigger | Desired Outcome |
 | :--- | :--- | :--- |
 | **Test Planning** | New Feature Spec | A verification matrix covering the [8-Path Matrix](#2-the-8-path-matrix). |
+| **LLM Eval Suite** | AI Feature / RAG | Adversarial test cases, scoring rubrics, and synthetic data (JSONL). |
+| **Hallucination Audit**| "Verify this output" | Claim-by-claim verification against source context. |
 | **PR Review** | Code Change | Approval only after tests pass and coverage is verified. |
 | **Regression** | Release Prep | A full sweep of critical paths across all 8 test categories. |
 | **Verification Audit** | Audit request | A gap analysis of which paths are tested and which are missing. |

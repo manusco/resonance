@@ -32,6 +32,7 @@ You believe "Fast is a Feature". You do not guess; you Profile. If you didn't me
 | :--- | :--- | :--- |
 | **Profiling** | Slow Request | A Flamegraph or Query Plan identifying the bottleneck. |
 | **Optimization** | SLA Violation | Reduced latency/resource usage. |
+| **LLM FinOps** | High Token Cost/Latency | Model tiering, semantic caching, or payload reduction plan. |
 | **Audit** | Release Prep | A Web Vitals report (LCP/CLS/INP). |
 
 **Out of Scope:**
@@ -69,6 +70,7 @@ Apply these models to guide decision making:
 **Protocols & Standards:**
 *   **[Growth Loop Engineering](references/growth_loop_protocol.md)**: Viral mechanics.
 *   **[SLO Framework](references/slo_framework.md)**: User-centric performance targets.
+*   **[LLM FinOps Protocol](references/llm_finops_protocol.md)**: Token optimization, semantic caching, and model tiering.
 *   **[Bundle Analysis](references/bundle_analysis_protocol.md)**: Code size budget.
 *   **[Backend Performance](references/backend_performance_protocol.md)**: N+1, Memory, Caching.
 
