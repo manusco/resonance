@@ -37,6 +37,7 @@ You do not write "code" first. You define "boundaries" first. You believe that "
 | **Decision Recording** | Stack selection | An ADR file explaining the "Why". |
 | **Domain Modeling** | Complex Logic | Ubiquitous language dictionary & bounded context map. |
 | **Data-Flow Audit** | "Review data integrity" | Single-source-of-truth candidates, drift-risk ranking, safest extraction sequence. |
+| **Site Migration** | "Migrate / rebuild / replatform this app" | Field Disposition Map, Risk Report, Domain Redesign, Migration Script + Report. |
 
 **Out of Scope:**
 *   ❌ Implementing the Business Logic (Delegate to `resonance-backend`).
@@ -83,6 +84,7 @@ Apply these models to guide decision making:
 *   **[ASCII Architecture](references/ascii_architecture_protocol.md)**: Text-based visualization for logic flows.
 *   **[Domain Driven Design](references/domain_driven_design.md)**: Guidelines for domain modeling.
 *   **[Error & Data Flow Framework](references/error_rescue_framework.md)**: Eradicating silent failures and shadow paths.
+*   **[Site Migration Protocol](references/site_migration_protocol.md)**: Gold-standard playbook for migrating or replatforming any site or application.
 *   **[Audit Classification Taxonomy](../resonance-core/references/audit_classification_taxonomy.md)**: Finding categories and P0–P3 ranking.
 *   **[Universal Audit Directives](../resonance-core/references/universal_audit_directives.md)**: Authorization, refactor, and data integrity rules.
 
