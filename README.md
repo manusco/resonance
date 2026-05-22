@@ -14,7 +14,7 @@
 You know the feeling. You start a new chat. You paste your tech stack. You remind the AI to use TypeScript. You remind it to check for security vulnerabilities. You remind it to write tests.
 **And you do it again. And again. And again.**
 
-It’s exhausting. And frankly, it’s a waste of your time.
+It's exhausting. And frankly, it's a waste of your time.
 
 **Resonance is the cure for repetitive prompting.**
 
@@ -27,44 +27,110 @@ We took the best practices from elite engineering teams and baked them directly 
 
 ---
 
+## 🗂️ How Resonance Is Structured (Read This First)
+
+Resonance installs **three things** into your project root. Understanding this prevents every installation mistake.
+
+| Bucket | Location | What It Is |
+| :--- | :--- | :--- |
+| **Agent Identity** | `AGENTS.md` at root | Your IDE reads this automatically on every session. Loads the 26-agent roster, the 4 Behavioral Locks, and the Prime Directives into every chat. |
+| **Agent Capabilities** | `.agents/` at root | Skills and Workflows. The protocol library — what agents *know how to do*. Owned by Resonance. Safe to overwrite on upgrade. |
+| **Project Brain** | `.resonance/` at root | Soul, State, Memory. Project-specific. What agents *remember about your project*. Owned by you. Never overwrite. |
+
+After installation, your project looks like this:
+
+```
+your-project/
+├── AGENTS.md              ← IDE reads this automatically on every session
+├── .agents/               ← agent capabilities (from this repo, updated on upgrades)
+│   ├── skills/
+│   └── workflows/
+├── .resonance/            ← your project brain (YOU own this, never overwrite on upgrade)
+│   ├── 00_soul.md
+│   ├── 01_state.md
+│   ├── 02_memory.md
+│   └── ...
+└── src/  package.json  etc.
+```
+
+> **The upgrade rule in one sentence**: Update `.agents/` and `AGENTS.md` freely. Never touch `.resonance/` — that is your project's permanent memory.
+
+---
+
 ## 🚀 Installation & Upgrading
 
 ### Option A: Fresh Installation (New Project)
-If you are starting a new project with Resonance:
 
-**1. Clone the Brain**
-Pull the framework into your project root.
+**1. Clone the repo to a temporary location**
+
+Do **not** clone directly into your project. The repo *contains* the three buckets — it is not one of them.
+
 ```bash
-git clone https://github.com/manusco/resonance .resonance
+git clone https://github.com/manusco/resonance /tmp/resonance
 ```
 
-**2. Wake Up the System**
-In your IDE (Cursor, Windsurf, Cline, etc.), just type:
+**2. Copy the three buckets into your project root**
+
 ```bash
-@Resonance /init
+# From your project root:
+cp /tmp/resonance/AGENTS.md ./AGENTS.md
+cp -r /tmp/resonance/.agents ./.agents
 ```
 
-**3. Tell it what you're building**
-Resonance will ask you: *"What are we building?"*
-Be honest. Tell it your vision. It will listen, thinking about the architecture, and then write it down in `00_soul.md`. 
-From that moment on, it never forgets.
+> `.resonance/` is **not** copied from the repo. It gets scaffolded for your project in the next step.
+
+**3. Wake up the system**
+
+In your IDE (Cursor, Windsurf, Cline, etc.), type:
+
+```
+/init
+```
+
+Resonance will ask: *"What are we building?"*
+Tell it your vision. It writes it down in `.resonance/00_soul.md`. From that moment on, it never forgets.
+
+---
 
 ### Option B: Upgrading an Existing Project
-If you are already using an older version of Resonance and want to upgrade to v2.1.1:
 
-When upgrading, you update the core system (agents, workflows, scripts) while **preserving your project-specific state** (like `00_soul.md`, `01_state.md`, `learnings.jsonl`, etc.).
+When upgrading, you update the agent capabilities while **preserving your project brain**.
 
-**1. Update the Core Files**
-Pull the latest core files into your existing `.resonance` directory. The safest way is to copy the `.agents` directory, `AGENTS.md`, and any core scripts from the latest release, overwriting the old ones.
-> **Note**: In v2.1.1, we migrated from the legacy `.agent/` (singular) to the modern `.agents/` (plural) structure. Make sure you delete your old `.agent/` folder after copying the new one.
+**What to overwrite (safe):**
 
-**2. Preserve Your Soul**
-Do **not** overwrite your user-generated files: `00_soul.md`, `01_state.md`, `02_memory.md`, `04_systems.md`, or `learnings.jsonl`. These contain your project's permanent identity and wisdom.
+| File / Folder | Action |
+| :--- | :--- |
+| `AGENTS.md` | ✅ Overwrite |
+| `.agents/` | ✅ Overwrite entirely |
+| `resonance.sh` / `resonance.ps1` | ✅ Overwrite |
 
-**3. Verify System Health**
-Run the following command to let the system verify the upgrade:
+**What to never touch (yours):**
+
+| File | Why |
+| :--- | :--- |
+| `.resonance/00_soul.md` | Your project's vision and identity |
+| `.resonance/01_state.md` | Active task state |
+| `.resonance/02_memory.md` | Architectural decision log |
+| `.resonance/04_systems.md` | Logic flows, schemas, API contracts |
+| `.resonance/learnings.jsonl` | Hard-won project wisdom |
+
+**Steps:**
+
 ```bash
-@Resonance /system-health
+# Clone latest to a temp location
+git clone https://github.com/manusco/resonance /tmp/resonance
+
+# From your project root — overwrite capabilities, leave brain alone
+cp /tmp/resonance/AGENTS.md ./AGENTS.md
+cp -r /tmp/resonance/.agents ./.agents
+```
+
+> **v2.1.1 migration note**: We moved from `.agent/` (singular) to `.agents/` (plural). Delete your old `.agent/` folder after copying the new `.agents/`.
+
+**3. Verify the upgrade**
+
+```
+/system-health
 ```
 
 ---
