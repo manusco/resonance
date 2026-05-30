@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-performance",
+  "query": "Our checkout page takes 4.2 seconds to load. Make it faster.",
+  "files": [],
+  "expected_behavior": [
+    "Captures baseline metrics before recommending any optimization (LCP, TTFB, waterfall)",
+    "Classifies the problem type: structural (N+1 queries, blocking API calls) or syntax-level",
+    "Identifies the critical path: what is the longest sequential chain of work before LCP?",
+    "Does not recommend 'add lazy loading' as the first action without profiling",
+    "Produces a prioritized list of optimizations starting with the structural bottleneck"
+  ]
+}

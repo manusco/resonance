@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "Our shared <Button> component needs a new 'danger' variant. Update it.",
+  "files": [],
+  "expected_behavior": [
+    "Declares the blast radius before touching the component: lists all pages/flows that consume <Button>",
+    "Adds the 'danger' variant using a discriminated union or variant prop pattern, not a new class string",
+    "Does not change any existing variant behavior while adding the new one",
+    "Does not reformat unrelated code in the same file",
+    "Specifies the Hover and Click states for the new 'danger' variant"
+  ]
+}

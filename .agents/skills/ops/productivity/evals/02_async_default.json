@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-productivity",
+  "query": "The team doesn't seem aligned. People are asking the same questions in Slack repeatedly. Should we add a daily standup?",
+  "files": [],
+  "expected_behavior": [
+    "Does NOT recommend adding a standup meeting as the first action",
+    "Diagnoses the symptom: repeated questions in Slack indicate a documentation or clarity gap, not a sync frequency gap",
+    "Recommends an async protocol first: a shared FAQ or a clearer ticket spec template",
+    "Applies the Async Default: if First Response Time is already low, adding a meeting will not help",
+    "Provides a specific recommendation with A/B/C options, not a blank 'what do you think?'"
+  ]
+}

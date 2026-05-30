@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "I'm getting a CLS score of 0.42 on my homepage. The hero image is the problem.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies the CLS cause: hero image has no reserved dimensions, causing layout shift when it loads",
+    "Recommends adding explicit width and height attributes to the img element",
+    "Recommends adding fetchpriority='high' to the LCP image and removing lazy loading from the hero",
+    "Does not recommend a full page redesign — stays surgical on the specific CLS cause",
+    "Verifies the fix by measuring CLS after the change, not just assuming it worked"
+  ]
+}

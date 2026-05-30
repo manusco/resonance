@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-skill-author",
+  "query": "Turn our old /ship workflow file into a proper procedure skill.",
+  "files": [".agents/workflows/ship.md"],
+  "expected_behavior": [
+    "Chooses the 'procedure' archetype",
+    "Carries Input, Output, Definition of Done, and Recovery sections (validator requires them)",
+    "Marks the skill manual-only because deploy has side effects",
+    "Preserves the existing Definition-of-Done discipline rather than discarding it",
+    "Does not hand-copy voice/decision/completion boilerplate; relies on Forge resolvers"
+  ]
+}

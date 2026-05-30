@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-qa",
+  "query": "Our AI chatbot sometimes makes up product features that don't exist. Build an eval suite for it.",
+  "files": [],
+  "expected_behavior": [
+    "Designs adversarial test cases specifically targeting hallucination: prompts that invite the model to invent features",
+    "Designs a scoring rubric: how do we measure whether the output is a hallucination vs. a valid answer?",
+    "Includes a claim-by-claim verification step: each claim in the output is checked against the source context",
+    "Creates synthetic JSONL test data with known-good and known-bad outputs for the rubric",
+    "Does not mark the eval suite as complete with only happy-path test cases"
+  ]
+}

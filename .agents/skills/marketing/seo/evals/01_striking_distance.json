@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-seo",
+  "query": "Our SaaS blog posts rank at position 8-15 for several high-intent keywords but haven't moved in 3 months.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies NavBoost as the likely cause and requests click signal data (CTR, dwell time, pogo-stick rate)",
+    "Recommends a title/H1 rewrite to improve CTR from the SERP before any content changes",
+    "Checks date signal consistency: URL, JSON-LD, byline, and meta publish date must align",
+    "Proposes a 'Direct Answer block' within the first 50 words to target AI Overviews in parallel",
+    "Does not recommend a full content rewrite as the first action — starts with the highest-ROI items"
+  ]
+}

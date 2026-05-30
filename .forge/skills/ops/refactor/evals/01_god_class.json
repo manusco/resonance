@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-refactor",
+  "query": "The UserService class is 800 lines and handles authentication, profile updates, notification sending, and billing queries.",
+  "files": [],
+  "expected_behavior": [
+    "Names the business consequence of the God class: 'Any change to billing logic risks breaking authentication because they share the same class'",
+    "Does NOT just say 'it is a God class' as the reason for refactoring",
+    "Produces a Do Not Change Declaration listing user-facing behaviors that must be preserved",
+    "Uses the Mikado Method: identifies the leaf dependencies to extract first before touching the root",
+    "Applies the Safe Sequence: Lock (tests) → Extract → Split — not the reverse"
+  ]
+}

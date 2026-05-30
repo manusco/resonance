@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Design the Empty, Loading, Error, and Success states for a user's uploaded file list component.",
+  "files": [],
+  "expected_behavior": [
+    "Produces all four states explicitly: Empty, Loading, Error, and Success",
+    "Empty state includes an illustration concept or visual anchor — not just 'No files yet'",
+    "Loading state specifies a skeleton screen or animated placeholder, not a spinner alone",
+    "Error state specifies the recovery action the user can take",
+    "Success state includes a micro-animation trigger (Entrance state) for the completed file entry"
+  ]
+}

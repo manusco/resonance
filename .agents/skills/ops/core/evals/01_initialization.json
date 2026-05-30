@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-core",
+  "query": "We're starting a new project. Set up the Resonance state files.",
+  "files": [],
+  "expected_behavior": [
+    "Creates .resonance/00_soul.md, 01_state.md, and 02_memory.md",
+    "Creates task.md with an initial task structure",
+    "Verifies each file exists after creation before referencing it",
+    "Does not reference any file without confirming it exists first",
+    "Records the initialization event in 01_state.md"
+  ]
+}

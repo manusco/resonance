@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-market-research",
+  "query": "Analyze the logistics software market for enterprise transport fleets. Find key urgency triggers.",
+  "files": [],
+  "expected_behavior": [
+    "Translates traditional fleet pains into specific operational metrics (fuel waste, route delay times, driver turnover rates)",
+    "Calculates proxy bottom-up SAM indicators if global TAM figures are not available",
+    "Pinpoints regulatory pressures (e.g., carbon standards or driving hour constraints) as major compliance EDPs",
+    "Ensures all links and references are formatted with forward slashes",
+    "Bans any em dashes in the output report"
+  ]
+}

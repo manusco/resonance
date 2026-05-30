@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-copywriter",
+  "query": "Rewrite this AI-generated paragraph to sound human: 'Our platform delves into the nuanced landscape of project management, seamlessly integrating robust workflows that harness the power of collaboration.'",
+  "files": [],
+  "expected_behavior": [
+    "Runs Phase 1 Diagnosis: identifies at least 3 banned phrases from the input (delves, nuanced, landscape, seamlessly, robust, harness)",
+    "Runs Phase 2 Reconstruction: rewrites the paragraph with varied sentence length and concrete language",
+    "Output contains zero banned phrases",
+    "Output uses at least one very short sentence (under 6 words) to create rhythm variation",
+    "Every claim in the rewrite traces to a real product behavior described in the original (no new claims added)"
+  ]
+}

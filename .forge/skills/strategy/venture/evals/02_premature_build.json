@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-venture",
+  "query": "My friends all say my idea is great. I want to start building the MVP right away.",
+  "files": [],
+  "expected_behavior": [
+    "Explicitly rejects 'friends said it's a great idea' as validation",
+    "Halts the build recommendation and requires an assumption test first",
+    "Provides a concrete next step: 5 Mom Test interviews or a smoke test landing page",
+    "States the kill threshold that must be set before data collection begins",
+    "Does not generate code, wireframes, or a product spec at this stage"
+  ]
+}

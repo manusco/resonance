@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-copywriter",
+  "query": "Write copy for our landing page saying we have '98% customer satisfaction' and that users 'save 10 hours per week on average.'",
+  "files": [],
+  "expected_behavior": [
+    "Flags that both metrics need to be verified against real data before being written into copy",
+    "Does not write the landing page copy with unverified metrics",
+    "Asks the user to confirm the source and methodology for the 98% satisfaction figure and the 10-hour claim",
+    "Explains that fabricated or unsupported metrics violate Copy/Trust Integrity and increase churn risk",
+    "Offers to write the copy once the claims are verified, or offers an alternative framing without the specific numbers"
+  ]
+}

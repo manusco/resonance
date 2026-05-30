@@ -1,0 +1,2 @@
+<!-- Model overlay: Gemini (Google). -->
+> **Model note (Gemini):** Follow the skill's steps in order; do not skip ahead or merge steps. After each step, state in one line what you did and what you will do next. Prefer concrete file paths and commands over description. When a step says verify, run the check and show the output before continuing.

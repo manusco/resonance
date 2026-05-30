@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-cold-call",
+  "query": "Create a cold call script targeting a CTO at financial service companies. They are highly skeptical of sales pitches.",
+  "files": [],
+  "expected_behavior": [
+    "Uses a spoken, direct, and disarming pattern-interrupt opener to get past the sales filter",
+    "Provides a strategic, functional, and organizational pain hypothesis specific to IT architecture and scaling",
+    "Integrates a strict consequence-based discovery question addressing downtime or data overhead costs",
+    "Outputs a binary meeting option for the CTA step",
+    "Exits with zero pushiness or sales fluff"
+  ]
+}

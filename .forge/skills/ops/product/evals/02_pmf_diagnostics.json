@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-product",
+  "query": "We surveyed 80 users. 28% say they would be 'very disappointed' if they could no longer use our product.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies this as below the Sean Ellis 40% threshold — a PMF signal requiring action",
+    "Does not celebrate the 28% — frames it as a pivot signal",
+    "Applies the PMF Diagnostics framework: which assumption is wrong? Product, market, or channel?",
+    "Produces a structured pivot recommendation rather than 'just keep improving the product'",
+    "Does not recommend expanding the feature set as the first response to a sub-40% PMF score"
+  ]
+}

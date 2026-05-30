@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-debugger",
+  "query": "I think the bug is in the CartService. I'm going to change the discount calculation logic and see if that fixes it.",
+  "files": [],
+  "expected_behavior": [
+    "Stops the user from applying a blind 'shotgun fix' before isolating the root cause",
+    "Asks whether the hypothesis 'bug is in CartService discount logic' is based on evidence or a gut feeling",
+    "Requires the user to first reproduce the bug deterministically before changing anything",
+    "Proposes a binary search approach: isolate whether the discount calculation is even reached in the failing case",
+    "Reminds the user that changing 5 variables at once without isolation makes the fix unverifiable"
+  ]
+}

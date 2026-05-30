@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-productivity",
+  "query": "We have 140 open tickets in Linear. A lot of them haven't been touched in months. Help us groom.",
+  "files": [],
+  "expected_behavior": [
+    "Defines the purge criteria: stale (>30 days untouched), orphaned (unassigned with no owner), and duplicate",
+    "Produces a targeted purge plan — not 'review all 140 tickets one by one'",
+    "Asks for the ticket list or a filter view before making specific recommendations",
+    "Does not delete tickets without explicit user confirmation — flags for user approval",
+    "Calculates the cognitive load reduction: X tickets removed = Y fewer context switches per sprint"
+  ]
+}

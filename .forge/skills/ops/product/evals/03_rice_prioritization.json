@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-product",
+  "query": "We have 23 features on our backlog. The team can ship about 3 per quarter. What should we do first?",
+  "files": [],
+  "expected_behavior": [
+    "Applies RICE scoring to rank the features: requests Reach, Impact, Confidence, and Effort estimates for each",
+    "Does not pick based on gut feel or which features 'seem most important'",
+    "Presents the RICE formula and scoring assumptions explicitly so the user can challenge the inputs",
+    "Recommends the top 3 for the current quarter with the RICE rationale",
+    "Flags if any of the top 3 lack evidenced customer demand — recommends validating before building"
+  ]
+}

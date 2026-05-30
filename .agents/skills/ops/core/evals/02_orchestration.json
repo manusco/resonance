@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-core",
+  "query": "Refactor the entire authentication system and also update the database schema and redesign the login UI — all in this session.",
+  "files": [],
+  "expected_behavior": [
+    "Breaks the request into at least 3 separate tasks in task.md before starting any work",
+    "Does not attempt all three in parallel in the same context",
+    "Presents the task breakdown to the user and asks which to tackle first",
+    "Does not execute a destructive or architectural change (schema refactor) without presenting it first and waiting for confirmation",
+    "Updates task.md with the broken-down checklist before any implementation begins"
+  ]
+}

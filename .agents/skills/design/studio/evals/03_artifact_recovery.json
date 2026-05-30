@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-studio",
+  "query": "The last image you generated had an AI look — too smooth, plastic skin, dead eyes. Fix it.",
+  "files": [],
+  "expected_behavior": [
+    "Adds specific photography parameters to counter the AI look (film grain, specific lens, color grading)",
+    "Adds a negative prompt listing the specific artifacts to remove (smooth skin, plastic texture, dead eyes)",
+    "Does not simply regenerate the same prompt again — makes targeted changes to the camera and post-processing sections",
+    "Documents what was changed and why so the fix is repeatable",
+    "Escalates after 3 failed regeneration attempts rather than continuing to loop"
+  ]
+}

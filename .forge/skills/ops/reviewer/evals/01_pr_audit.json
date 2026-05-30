@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-reviewer",
+  "query": "Review this PR: it adds a new /api/users/:id/promote endpoint that promotes a user to admin.",
+  "files": [],
+  "expected_behavior": [
+    "Runs the Blocking Registry check first before any other analysis",
+    "Classifies the authorization concern as Auth Integrity (P0 or P1) and leads the report with it",
+    "Checks all 3 critical layers for the new endpoint: Route guard, Policy, and Resource-level enforcement",
+    "Does NOT lead with style or formatting feedback if an auth concern exists",
+    "Produces an Atomic Review Report with findings ranked by severity, not by file order"
+  ]
+}

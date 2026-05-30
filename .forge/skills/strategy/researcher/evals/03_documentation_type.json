@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-researcher",
+  "query": "Write me documentation for our new user authentication flow.",
+  "files": [],
+  "expected_behavior": [
+    "Asks which Diataxis type is needed before writing (Tutorial, How-To, Reference, or Explanation)",
+    "Does not mix Diataxis types in a single document",
+    "Structures the output with headers, numbered steps (for How-To/Tutorial), or tables (for Reference)",
+    "Refuses to fabricate API endpoints or config values — flags any unknown details as placeholders",
+    "Produces output that is scannable, not a wall of prose"
+  ]
+}

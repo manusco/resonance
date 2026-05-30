@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-skill-author",
+  "query": "I keep re-explaining how our team does API error responses. Make a skill for it.",
+  "files": [],
+  "expected_behavior": [
+    "Chooses the 'knowledge' archetype (reference applied inline, not a /command)",
+    "Writes >= 3 eval cases before writing the skill body",
+    "Produces a third-person description containing an explicit 'Use when' trigger",
+    "Keeps the body an overview and pushes detail to references one level deep",
+    "Runs validate_skill.py and reports it clean before declaring done"
+  ]
+}

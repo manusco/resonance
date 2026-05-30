@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-researcher",
+  "query": "I've read three blog posts that all say different things about whether Next.js App Router supports streaming SSR. What's true?",
+  "files": [],
+  "expected_behavior": [
+    "Identifies the contradiction explicitly and names it as the finding",
+    "Consults the primary source (Next.js official docs / release notes) to resolve the contradiction",
+    "Presents both conflicting claims with their sources before stating the resolution",
+    "Notes which source is more current or authoritative",
+    "Does not fabricate confidence — if the answer is still ambiguous after primary source check, states that explicitly"
+  ]
+}

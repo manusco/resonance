@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-voice",
+  "query": "The compiled voice file for our brand is 7,200 tokens. Our AI context window is limited.",
+  "files": [],
+  "expected_behavior": [
+    "Runs a second-pass audit targeting the longest sections first",
+    "Applies the Signal-to-Noise test to every remaining line: does this change how an AI writes the next sentence?",
+    "Cuts anything that passes the test with 'maybe' — only high-confidence lines survive",
+    "Does NOT summarize sections — compresses by removing low-signal lines entirely",
+    "Delivers a file under 5,000 tokens with the highest-signal content preserved"
+  ]
+}

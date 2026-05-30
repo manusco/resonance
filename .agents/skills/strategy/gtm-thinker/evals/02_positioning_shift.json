@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-gtm-thinker",
+  "query": "Help us think through this positioning shift: We want to pivot our product from a generic 'AI customer support chatbot' to a 'fully autonomous customer success agent for enterprise B2B SaaS.'",
+  "files": [],
+  "expected_behavior": [
+    "Categorizes the initiative as a positioning/messaging move",
+    "Performs an assumptions audit rating validation risk on technical and customer expectations",
+    "Highlights critical blind spots in enterprise integrations, security constraints, or liability questions",
+    "Documents a contrarian anti-conventional play and an execution blueprint",
+    "Specifies leading metrics and a clear kill criteria threshold based on reply or meeting interest"
+  ]
+}

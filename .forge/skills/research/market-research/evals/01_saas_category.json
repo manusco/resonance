@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-market-research",
+  "query": "Research the Sales Engagement Platform (SEP) market for Series A-C SaaS companies. We want to find EDPs to help sell our lead list building service.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies key SEP pain points such as CRM sync lags, rep data entry overhead, or stale contact data bounce rates",
+    "Formulates 5-7 actionable Existential Data Points with precise thresholds",
+    "Provides an outreach hook mapping each EDP to sales execution relevance",
+    "Presents 3 distinct pain-based segments with customized outbound opening lines",
+    "Cites verified sources for market size or CRM waste metrics"
+  ]
+}

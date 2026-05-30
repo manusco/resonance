@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-performance",
+  "query": "I memoized every function in the UserDashboard component and added useMemo to all computed values. The page is still slow.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies that useMemo micro-optimization is P3 and does not address structural problems",
+    "Asks whether the slowness is in rendering (INP) or data loading (LCP/TTFB)",
+    "Recommends profiling the React DevTools Profiler or Network waterfall before adding more memoization",
+    "Suspects a structural problem: N+1 API calls, large unoptimized images, or synchronous work on render",
+    "Does not recommend adding more memoization as the next step"
+  ]
+}

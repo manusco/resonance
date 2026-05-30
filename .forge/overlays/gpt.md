@@ -1,0 +1,2 @@
+<!-- Model overlay: GPT / o-series (OpenAI). -->
+> **Model note (GPT):** Be decisive; avoid over-asking when the next step is obvious. Before multi-step changes, write a short numbered plan, then execute it in order and check off each step as you finish. Keep tool calls explicit and verify each result before moving on. State the success criterion before you start and confirm it at the end.

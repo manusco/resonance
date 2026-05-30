@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-core",
+  "query": "What did we decide about the database last week? And what tasks are still pending?",
+  "files": [],
+  "expected_behavior": [
+    "Reads .resonance/01_state.md and 02_memory.md before answering",
+    "Reads task.md to identify pending tasks",
+    "Does not answer from memory alone — verifies from the written state files",
+    "If the information is not in the state files, says so explicitly rather than hallucinating",
+    "Points the user to the exact file and section where the decision was recorded"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-architect",
+  "query": "Our team keeps arguing about where to put the discount-calculation logic — it's currently in both the frontend and the order service. Can you audit the data flow?",
+  "files": [],
+  "expected_behavior": [
+    "Identifies the duplicated business rule as a drift risk and names it explicitly",
+    "Produces a drift-risk ranking for the duplicated rule",
+    "Recommends a single authoritative layer (e.g. order service) and explains why",
+    "Does not rewrite the code — stays at the audit and recommendation level",
+    "References the Single Source of Truth principle by name"
+  ]
+}

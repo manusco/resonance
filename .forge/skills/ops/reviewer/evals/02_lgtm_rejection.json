@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-reviewer",
+  "query": "LGTM, the code looks good. It works in my testing.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to issue an LGTM without running through the Blocking Registry",
+    "Refuses to approve based on 'it works in my testing' alone without checking test coverage",
+    "Checks that CI is green before proceeding with any review",
+    "Asks: has the 8-Path Matrix been verified? Are there tests covering the Unauthorized Path and the Sad Path?",
+    "Does not issue an approval until at minimum the Blocking Registry and CI status are verified"
+  ]
+}

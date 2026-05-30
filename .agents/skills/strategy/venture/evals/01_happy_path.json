@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-venture",
+  "query": "I want to build an AI-powered personal finance app for millennials. Is this a good idea?",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to answer 'is this a good idea' with an opinion — redirects to defining the testable hypothesis",
+    "Drafts or prompts for a Lean Canvas with all 9 boxes",
+    "Identifies the Riskiest Assumption as a single, testable statement",
+    "Produces at least 3 Mom Test interview questions (no 'would you' phrasing)",
+    "Sets a kill threshold before any data collection begins"
+  ]
+}

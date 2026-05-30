@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-automation",
+  "query": "I manually run the same 5-step report generation process every Monday. Automate it.",
+  "files": [],
+  "expected_behavior": [
+    "Defines the tool's input schema (Zod) before writing any implementation",
+    "Defines the tool's output format (JSON or structured file) before writing any implementation",
+    "Produces a CLI tool or script that takes parameters as flags, not interactive STDIN prompts",
+    "The tool is idempotent: running it twice produces the same output without side effects",
+    "Includes a --dry-run flag showing what would be generated without writing files"
+  ]
+}

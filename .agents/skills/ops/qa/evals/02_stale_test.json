@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-qa",
+  "query": "A test for the invoice generation feature is failing. The test expects 'Invoice #1234 created' but now we changed the message to 'Invoice created successfully.'",
+  "files": [],
+  "expected_behavior": [
+    "Flags this as a potential Stale Test — the test may be asserting on outdated product behavior",
+    "Does not automatically update the test to match the new message",
+    "Asks the user to confirm which is correct: the new message or the old one",
+    "Explains the risk of blindly updating the test: it could mask a real regression",
+    "Only updates the test after the user confirms the new message is the correct product behavior"
+  ]
+}

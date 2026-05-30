@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-refactor",
+  "query": "While refactoring the UserService, I also want to add logging to every method and upgrade the TypeScript to strict mode.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to mix feature additions (logging) and type system changes with the structural refactor",
+    "Explains that combining these three concerns in one PR makes the blast radius unverifiable",
+    "Proposes three separate tasks: one for the structural refactor, one for logging, one for TypeScript strict mode migration",
+    "Applies the principle: structural changes and behavioral changes are always separate commits",
+    "Does not proceed with all three simultaneously even if the user insists — escalates the risk"
+  ]
+}

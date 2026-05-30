@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-database",
+  "query": "Should we use Postgres or MongoDB for a product that stores user-generated JSON documents with complex nested queries?",
+  "files": [],
+  "expected_behavior": [
+    "Produces a comparison matrix: Postgres JSONB vs. MongoDB for the specific use case",
+    "Identifies that Postgres JSONB with GIN indexes can handle complex nested queries",
+    "Does not recommend MongoDB by default because the data is JSON",
+    "States a recommendation with a specific reason tied to the stated requirements",
+    "Recommends recording the decision in an ADR regardless of the choice"
+  ]
+}

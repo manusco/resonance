@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-backend",
+  "query": "While fixing the invoice endpoint, also refactor the old UserService to use the new patterns and add logging everywhere.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses the scope expansion: fixes only the invoice endpoint as requested",
+    "Does not touch UserService unless it is in the blast radius of the invoice change",
+    "Does not add unrequested logging to unrelated services",
+    "Names this as a Simplicity violation: adding unrequested abstractions is out of scope",
+    "Offers to create a separate task for the UserService refactor if the user wants"
+  ]
+}

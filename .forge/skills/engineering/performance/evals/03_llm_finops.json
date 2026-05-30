@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-performance",
+  "query": "Our LLM API calls are costing $8,000/month. We need to reduce token costs.",
+  "files": [],
+  "expected_behavior": [
+    "Profiles current token usage before recommending any change: input tokens vs. output tokens, which calls are most expensive",
+    "Recommends semantic caching as the first structural fix (cache similar queries, not just identical ones)",
+    "Recommends model tiering: use a smaller/cheaper model for low-stakes requests and the expensive model only for complex tasks",
+    "Recommends payload reduction: audit system prompts for unnecessary verbosity",
+    "Provides a before/after cost estimate framework based on projected cache hit rate and tier split"
+  ]
+}

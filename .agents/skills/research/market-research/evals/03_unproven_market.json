@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-market-research",
+  "query": "Research a highly emerging technology category like 'Decentralized Edge AI compute sharing networks'.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies that the category is unproven and lacks standardized industry sizing data",
+    "Uses proxy risk analysis (underlying infrastructure constraints, compute capacity shortages) to define 5 actionable EDPs",
+    "Provides a clear confidence assessment separating verified facts from reasonable inferences",
+    "Outputs a test checklist with DOD validation criteria"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-cold-call",
+  "query": "Write a cold call script for a VP of Sales at Series B SaaS companies. We sell an automated lead scoring tool that reduces manual qualification time for sales reps.",
+  "files": [],
+  "expected_behavior": [
+    "Produces a speakable opener that states name and company transparently without a generic 'how are you'",
+    "Utilizes a permission-based framing structure that explicitly offers the prospect a clean out",
+    "Presents 3 specific pain hypotheses covering functional, organizational, and strategic pain points",
+    "Asks a single, consequence-focused discovery question",
+    "Uses a brief mini-proof point and a meeting ask with two specific day/time options"
+  ]
+}

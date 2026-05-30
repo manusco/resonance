@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-devops",
+  "query": "Production is down. Our API is returning 503 errors. What do I do?",
+  "files": [],
+  "expected_behavior": [
+    "Provides an immediate mitigation action first (rollback to last known good deploy)",
+    "Asks for error logs and health check status before diagnosing the root cause",
+    "Does not attempt to fix the root cause in production without a rollback safety net in place",
+    "Produces a structured triage checklist: check container health, check DB connections, check downstream services",
+    "Separates the mitigation (stop the bleeding) from the RCA (find the cause) as two distinct phases"
+  ]
+}

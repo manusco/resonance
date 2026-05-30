@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-seo",
+  "query": "Our 200 location pages are all nearly identical with only the city name swapped. We think Google might be penalizing us.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies thin/templated content as a siteQualityStddev risk that drags down domain authority",
+    "Recommends either differentiating the pages with genuine local content or consolidating/removing the weakest ones",
+    "Does not recommend adding more location pages as a first action",
+    "References the Site Authority model: many mediocre pages cannot be overcome by a few excellent ones",
+    "Classifies this as a High or Critical priority issue, not Medium"
+  ]
+}

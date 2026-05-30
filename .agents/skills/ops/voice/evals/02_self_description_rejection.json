@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-voice",
+  "query": "We sound friendly, approachable, and expert. Can you just compile a voice profile based on that?",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to compile from self-description alone — 'friendly, approachable, expert' is noise without behavioral evidence",
+    "Requests a corpus of actual published writing before proceeding",
+    "Explains that self-description is aspirational, not behavioral — text does not lie, self-description does",
+    "If no corpus is available, offers to run the type-appropriate fallback interview from the Extraction Protocol",
+    "Does not produce a compiled voice file based on adjectives without corpus evidence"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-growth",
+  "query": "Our email open rates dropped from 42% to 18% in the last 6 weeks on our weekly newsletter flow.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies flow decay as the likely cause and references cohort vs. blended open rate analysis",
+    "Recommends a deliverability audit (segment overlap, suppression hygiene) before a content rewrite",
+    "Does not immediately recommend rewriting the email content as the first fix",
+    "Proposes a specific test: isolate the cohort that degraded and compare send behavior",
+    "Outputs an action plan with explicit steps and a verification threshold"
+  ]
+}

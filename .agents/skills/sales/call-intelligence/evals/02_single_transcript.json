@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-call-intelligence",
+  "query": "Review this single pasted call transcript between a rep and a customer success director.",
+  "files": [],
+  "expected_behavior": [
+    "Declares a LOW confidence level at the top of the report",
+    "Appends the standard directional hypothesis warning disclaimer",
+    "Extracts exact verbatims without paraphrasing",
+    "Uses only forward slashes in link references",
+    "Avoids the use of em dashes in the output body"
+  ]
+}

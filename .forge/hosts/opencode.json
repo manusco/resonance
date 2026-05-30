@@ -1,0 +1,18 @@
+{
+  "host": "opencode",
+  "label": "OpenCode (open-source, model-agnostic)",
+  "output_path": ".agents/skills/{name}/SKILL.md",
+  "default_model": "open-weights",
+  "tool_names": {
+    "read": "read",
+    "write": "write",
+    "edit": "edit",
+    "bash": "bash",
+    "grep": "grep",
+    "glob": "glob",
+    "ask": "ask",
+    "subagent": "task"
+  },
+  "invocation": "AGENTS.md routing",
+  "notes": "Runs any backing model including local open-weights (Llama, Qwen, DeepSeek). Defaults to the open-weights overlay, which lowers degrees of freedom and adds explicit guardrails for weaker models."
+}

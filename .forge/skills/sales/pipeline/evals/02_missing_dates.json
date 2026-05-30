@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-pipeline",
+  "query": "Review this pipeline dataset. All deals are missing close dates.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies that close dates are missing across the dataset",
+    "Skips the Forecast tab calculations cleanly without crashing or failing",
+    "Calculates sales velocity using creation-to-present metrics",
+    "Uses only forward slashes in link references",
+    "Declares a clear list of data validation warnings at the top of the dashboard"
+  ]
+}

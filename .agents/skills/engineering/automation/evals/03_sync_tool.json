@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-automation",
+  "query": "Build a tool that syncs our user data from Stripe to our Postgres database.",
+  "files": [],
+  "expected_behavior": [
+    "Runs check_guards.py on the target database tables before writing any sync logic",
+    "Implements idempotency: running the sync twice does not create duplicate records",
+    "Handles API pagination in the Stripe data fetch — does not silently truncate at the first page",
+    "Produces structured output (JSON) with a summary: records synced, records skipped, errors",
+    "Validates the Stripe API response schema before writing to Postgres — does not trust external APIs blindly"
+  ]
+}

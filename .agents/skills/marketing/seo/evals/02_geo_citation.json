@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-seo",
+  "query": "How do I get our product page cited by ChatGPT and Google AI Overviews?",
+  "files": [],
+  "expected_behavior": [
+    "Addresses GEO as a separate visibility channel from organic search rankings",
+    "Checks the 5 GEO dimensions: Citability, Structural Readability, Multi-Modal Content, Authority/Brand Signals, Technical Accessibility",
+    "Asks or confirms whether AI crawlers (GPTBot, PerplexityBot, ClaudeBot) are allowed in robots.txt",
+    "Recommends a 134-167 word self-contained answer block on the page",
+    "Recommends an llms.txt file at the root domain"
+  ]
+}

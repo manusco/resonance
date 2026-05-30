@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-call-intelligence",
+  "query": "Analyze these 5 discovery call transcripts for a CRM software product. Build us a persona report.",
+  "files": [],
+  "expected_behavior": [
+    "Groups prospects into distinct persona groups like Sales Leader or RevOps Manager",
+    "Extracts direct verbatim quotes for goals, pains, triggers, and objections",
+    "Rates objection handling efficiency as Effective, Neutral, or Missed",
+    "Provides a vocabulary library capturing customer jargon",
+    "Renders a filterable interactive React dashboard outline"
+  ]
+}

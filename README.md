@@ -1,229 +1,263 @@
-# Resonance: The Agentic Coding Operating System
-> *Turn your LLM into a structured, memory-backed Headless Engineering Team.*
+# Resonance
+
+> A builder's AI stack. Operator-grade skills for every business domain, shared project memory, and structured protocols that make your AI consistent by default.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.1.1-7025eb?style=for-the-badge&logo=github" alt="Resonance AI Framework" /></a>
+    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.2.0-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
-    <a href="AGENTS.md"><img src="https://img.shields.io/badge/Operators_Manual-v2.1.1-00f2ea?style=for-the-badge" alt="Operators Manual" /></a>
+    <a href="AGENTS.md"><img src="https://img.shields.io/badge/Operators_Manual-v2.2.0-00f2ea?style=for-the-badge" alt="Operators Manual" /></a>
 </div>
 
 ---
 
-## 👋 Hi. We built this to stop the "Groundhog Day" of prompting.
+## What it is
 
-You know the feeling. You start a new chat. You paste your tech stack. You remind the AI to use TypeScript. You remind it to check for security vulnerabilities. You remind it to write tests.
-**And you do it again. And again. And again.**
+Resonance is a collection of files you drop into any project. It gives your AI agent:
 
-It's exhausting. And frankly, it's a waste of your time.
+- **A skill library** — 42 domain-tested skills across strategy, engineering, design, marketing, sales, ops, and research. Each skill is a structured protocol with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done.
+- **A project memory** — a `.resonance/` folder that holds your project's soul, state, and decisions. The AI reads this before every task and writes to it after. It never forgets what you've told it.
+- **Slash commands** — `/plan`, `/build`, `/audit`, `/ship`, and 14 others. Each one triggers a specific skill. They are not prompts — they are procedures.
 
-**Resonance is the cure for repetitive prompting.**
-
-It is a comprehensive **Agentic Operating System** that comes pre-loaded with battle-tested engineering protocols.
-*   **Security?** Built-in.
-*   **Testing?** Standardized.
-*   **Deployment?** One command.
-
-We took the best practices from elite engineering teams and baked them directly into the file system. So you don't have to prompt for quality. You just get it.
+You get consistent, high-quality output because the agent follows the same protocol every time, not because you remembered to ask nicely.
 
 ---
 
-## 🗂️ How Resonance Is Structured (Read This First)
+## How it's structured
 
-Resonance installs **three things** into your project root. Understanding this prevents every installation mistake.
+Three things install into your project root.
 
-| Bucket | Location | What It Is |
+| Bucket | Location | What it is |
 | :--- | :--- | :--- |
-| **Agent Identity** | `AGENTS.md` at root | Your IDE reads this automatically on every session. Loads the 26-agent roster, the 4 Behavioral Locks, and the Prime Directives into every chat. |
-| **Agent Capabilities** | `.agents/` at root | Skills and Workflows. The protocol library — what agents *know how to do*. Owned by Resonance. Safe to overwrite on upgrade. |
-| **Project Brain** | `.resonance/` at root | Soul, State, Memory. Project-specific. What agents *remember about your project*. Owned by you. Never overwrite. |
-
-After installation, your project looks like this:
+| **Agent Identity** | `AGENTS.md` | Your IDE reads this on every session. Loads the agent roster, behavioral locks, and directives. |
+| **Skill Library** | `.agents/skills/` | 42 skills organized by domain. The agent's protocol library. Safe to overwrite on upgrade. |
+| **Project Memory** | `.resonance/` | Your project's soul, state, and decisions. You own this. Never overwrite on upgrade. |
 
 ```
 your-project/
-├── AGENTS.md              ← IDE reads this automatically on every session
-├── .agents/               ← agent capabilities (from this repo, updated on upgrades)
-│   ├── skills/
-│   └── workflows/
-├── .resonance/            ← your project brain (YOU own this, never overwrite on upgrade)
-│   ├── 00_soul.md
-│   ├── 01_state.md
-│   ├── 02_memory.md
-│   └── ...
-└── src/  package.json  etc.
+├── AGENTS.md                  ← loaded by your IDE every session
+├── .agents/
+│   └── skills/
+│       ├── strategy/          ← plan, architect, venture, growth, researcher
+│       ├── engineering/       ← backend, frontend, debugger, build, devops, ...
+│       ├── design/            ← designer, studio
+│       ├── marketing/         ← seo, conversion, copywriter
+│       ├── sales/             ← pipeline, cold-call, call-intelligence
+│       ├── ops/               ← audit, qa, security, reviewer, refactor, ship, ...
+│       └── research/          ← market-research
+├── .resonance/
+│   ├── 00_soul.md             ← your project's vision and laws
+│   ├── 01_state.md            ← active task and last decisions
+│   ├── 02_memory.md           ← architectural decision log
+│   └── learnings.jsonl        ← project-specific lessons
+└── src/  package.json  ...
 ```
 
-> **The upgrade rule in one sentence**: Update `.agents/` and `AGENTS.md` freely. Never touch `.resonance/` — that is your project's permanent memory.
+> **Upgrade rule**: Overwrite `AGENTS.md` and `.agents/` freely. Never touch `.resonance/` — that is your project's permanent memory.
 
 ---
 
-## 🚀 Installation & Upgrading
+## Installation
 
-### Option A: Fresh Installation (New Project)
-
-**1. Clone the repo to a temporary location**
-
-Do **not** clone directly into your project. The repo *contains* the three buckets — it is not one of them.
-
-```bash
-git clone https://github.com/manusco/resonance /tmp/resonance
-```
-
-**2. Copy the three buckets into your project root**
-
-```bash
-# From your project root:
-cp /tmp/resonance/AGENTS.md ./AGENTS.md
-cp -r /tmp/resonance/.agents ./.agents
-```
-
-> `.resonance/` is **not** copied from the repo. It gets scaffolded for your project in the next step.
-
-**3. Wake up the system**
-
-In your IDE (Cursor, Windsurf, Cline, etc.), type:
-
-```
-/init
-```
-
-Resonance will ask: *"What are we building?"*
-Tell it your vision. It writes it down in `.resonance/00_soul.md`. From that moment on, it never forgets.
+There are two scenarios. Pick the one that matches your situation.
 
 ---
 
-### Option B: Upgrading an Existing Project
+### Scenario A: You are pointing Claude Code (or similar) at this repo directly
 
-When upgrading, you update the agent capabilities while **preserving your project brain**.
+If you cloned Resonance and your AI tool is running inside this repo, you are already set up. `AGENTS.md` is at the root and your tool loads it automatically on every session.
 
-**What to overwrite (safe):**
+**What to do next:**
 
-| File / Folder | Action |
-| :--- | :--- |
-| `AGENTS.md` | ✅ Overwrite |
-| `.agents/` | ✅ Overwrite entirely |
-| `resonance.sh` / `resonance.ps1` | ✅ Overwrite |
+1. Open a chat in your AI tool.
+2. Type `/init`.
+3. The agent will ask what you are building. Tell it. It scaffolds `.resonance/` for your project inside this folder.
 
-**What to never touch (yours):**
+That is it. The skill library in `.agents/skills/` is already compiled and ready.
 
-| File | Why |
-| :--- | :--- |
-| `.resonance/00_soul.md` | Your project's vision and identity |
-| `.resonance/01_state.md` | Active task state |
-| `.resonance/02_memory.md` | Architectural decision log |
-| `.resonance/04_systems.md` | Logic flows, schemas, API contracts |
-| `.resonance/learnings.jsonl` | Hard-won project wisdom |
+---
 
-**Steps:**
+### Scenario B: You want to use Resonance inside your own project
 
+Copy two things into your project root, then run `/init`.
+
+**macOS / Linux:**
 ```bash
-# Clone latest to a temp location
-git clone https://github.com/manusco/resonance /tmp/resonance
+# Clone to a temp location (not into your project)
+git clone https://github.com/manusco/resonance ~/resonance-tmp
 
-# From your project root — overwrite capabilities, leave brain alone
-cp /tmp/resonance/AGENTS.md ./AGENTS.md
-cp -r /tmp/resonance/.agents ./.agents
+# From your project root
+cp ~/resonance-tmp/AGENTS.md ./AGENTS.md
+cp -r ~/resonance-tmp/.agents ./.agents
+
+# Clean up
+rm -rf ~/resonance-tmp
 ```
 
-> **v2.1.1 migration note**: We moved from `.agent/` (singular) to `.agents/` (plural). Delete your old `.agent/` folder after copying the new `.agents/`.
+**Windows (PowerShell):**
+```powershell
+# Clone to a temp location
+git clone https://github.com/manusco/resonance $env:TEMP\resonance-tmp
 
-**3. Verify the upgrade**
+# From your project root
+Copy-Item "$env:TEMP\resonance-tmp\AGENTS.md" -Destination ".\AGENTS.md"
+Copy-Item "$env:TEMP\resonance-tmp\.agents" -Destination ".\.agents" -Recurse
 
+# Clean up
+Remove-Item "$env:TEMP\resonance-tmp" -Recurse -Force
+```
+
+**Then open your AI tool and type `/init`.**
+
+The agent will ask: *"What are you building?"* Tell it. It writes your project's vision to `.resonance/00_soul.md` and sets up the rest of the memory structure.
+
+---
+
+### Upgrading
+
+**Why delete, not overwrite.** Resonance reorganises its skill library between versions. A plain copy (`cp -r`) leaves ghost files from the previous version alongside the new ones. Your AI reads everything in `.agents/`, so stale old skills sit there contradicting the new ones. The correct upgrade is: delete `.agents/` first, then copy the new version in.
+
+**Why no archive.** `.agents/` is entirely Resonance-owned. You do not write to it. If something breaks, the right restore is to clone the repo again — not to restore a stale backup from the last version. Keeping an archive creates clutter without benefit.
+
+**The one thing you never touch: `.resonance/`.** This is your project's brain. The upgrade does not go near it. Your soul, state, memory, and learnings are untouched.
+
+---
+
+**macOS / Linux:**
+```bash
+# 1. Clone the latest version
+git clone https://github.com/manusco/resonance ~/resonance-tmp
+
+# 2. Delete the old skill library (this is intentional — do not skip)
+rm -rf .agents/
+
+# 3. Copy in the new skill library and identity file
+cp -r ~/resonance-tmp/.agents ./.agents
+cp ~/resonance-tmp/AGENTS.md ./AGENTS.md
+cp ~/resonance-tmp/resonance.sh ./resonance.sh
+
+# 4. Clean up
+rm -rf ~/resonance-tmp
+```
+
+**Windows (PowerShell):**
+```powershell
+# 1. Clone the latest version
+git clone https://github.com/manusco/resonance $env:TEMP\resonance-tmp
+
+# 2. Delete the old skill library (this is intentional — do not skip)
+Remove-Item ".agents" -Recurse -Force
+
+# 3. Copy in the new skill library and identity file
+Copy-Item "$env:TEMP\resonance-tmp\.agents" -Destination ".\.agents" -Recurse
+Copy-Item "$env:TEMP\resonance-tmp\AGENTS.md" -Destination ".\AGENTS.md" -Force
+Copy-Item "$env:TEMP\resonance-tmp\resonance.ps1" -Destination ".\resonance.ps1" -Force
+
+# 4. Clean up
+Remove-Item "$env:TEMP\resonance-tmp" -Recurse -Force
+```
+
+**5. Verify the upgrade:**
 ```
 /system-health
 ```
 
----
+The health check confirms the correct number of skills loaded and flags any state drift between your project memory and git history.
 
-## ⚡ The Workflow Library (Token-Efficient Intelligence)
-Resonance workflows are not just "prompts". They are structured algorithms designed to save tokens and time. 
-We stripped away the fluff. Each workflow is a **templatized, rigorous protocol** that gets straight to the point.
-
-### 🟡 Strategy & Inception
-*   **`/venture-model`**: **Business Logic**. Validates the business model, offer, and revenue math before you build.
-*   **`/plan`**: **The Architect**. Reads 80% of the time. Writes 20%. Generates a detailed `implementation_plan.md` to prevent "hallucinated scope".
-*   **`/update-roadmap`**: **State Sync**. Keeps your `01_state.md` aligned with reality.
-
-### 🟢 Execution & Engineering
-*   **`/build`**: **The Builder**. Runs the TDD Loop (Red -> Green -> Refactor).
-*   **`/debug`**: **The Scientist**. Forces Root Cause Analysis (RCA) with reproduction scripts. No guessing allowed.
-*   **`/refactor`**: **The Essentialist**. Cleans up technical debt without changing behavior.
-*   **`/design`**: **The Glasssmith**. Generates premium, "Touch Physics" UI components.
-
-### 🔵 Quality & Verification
-*   **`/audit`**: **The Swarm**. Runs a 50-point Security (OWASP), Performance, and Lint check.
-*   **`/test`**: **The Pyramid**. Generates Unit, Integration, and E2E tests.
-*   **`/friction`**: **The Collider**. Simulates a user journey to find and remove "Drag" (latency, confusion).
-*   **`/seo`**: **The Growth Engine**. Optimizes for Search and Answer Engines (GEO).
-
-### 🟣 Operations & Delivery
-*   **`/ship`**: **The Ritual**. Updates Changelog, bumps version, checks health, and deploys.
-*   **`/capture`**: **The Librarian**. Documents solved problems so you never solve them twice.
-*   **`/system-health`**: **Self-Repair**. Checks the integrity of the Resonance system itself.
-
-> **Why this matters**: You don't pay for the AI to "think" about how to be a security auditor. We already taught it. You only pay for the work.
+> `.resonance/` is never part of this process. It stays exactly as you left it.
 
 ---
 
-## 👩‍🚀 The Engineering Team (26 Specialists, 203 Protocols)
-You wouldn't ask a backend engineer to design your logo. So why ask a generic chatbot to do everything?
-Resonance comes with **26 Specialized Personas**, each backed by a deep library of reference protocols. These aren't thin wrappers around a system prompt — they're codified domain expertise with decision frameworks, checklists, and battle-tested playbooks.
+## The skill domains
 
-**What "backed by protocols" actually means:**
+Resonance ships with skills across 7 domains. Each skill is a self-contained protocol backed by reference documents.
 
-| Domain | What's Inside | Reference Count |
-| :--- | :--- | :--- |
-| **Security** | OWASP audits, STRIDE threat modeling, JWT hardening, CSP headers | 14 protocols |
-| **SEO & GEO** | Google ranking architecture (informed by the 2024 Systems Leak), AI citation optimization, programmatic SEO, schema markup | 22 protocols |
-| **Frontend** | Touch Physics, micro-interaction patterns, design system generation, accessibility | 12 protocols |
-| **Growth & Revenue** | AARRR metrics, viral loops, B2B sales pipeline (BANT/MEDDIC/MEDDPICC), CRM operations, launch strategy | 13 protocols |
-| **Conversion** | Friction Collider simulation, behavioral psychology, onboarding activation, churn prevention | 13 protocols |
-| **Quality** | E2E testing (Playwright), property-based fuzzing, destructive testing, test pyramid | 13 protocols |
-| **Copywriting** | Anti-slop filter, stylometric voice extraction, neuro-marketing triggers, email sequences | 16 protocols |
+### Strategy
+Planning, architecture, and business modeling.
+- **`/plan`** — Deep research, ambiguity checks, 4-pass atomic implementation plan. User approves each pass.
+- **`/venture-model`** — Business model, offer stack, and revenue math before a single line of code.
+- **architect** — System design, C4 models, API contracts, database policies.
+- **researcher** — Technical investigations, trade-off analysis, Buy vs Build recommendations.
 
-Every protocol is a standalone reference document — not a prompt, but a playbook an agent reads before doing the work.
+### Engineering
+Building, debugging, and shipping code.
+- **`/build`** — Executes the implementation plan via TDD: Test → Code → Verify. Orchestrates backend and frontend specialists.
+- **`/debug`** — Root Cause Analysis. Reproduction script required. Hypothesis before fix. Scientific method, not guesswork.
+- **backend, frontend, mobile, database, devops, performance, automation, game-dev** — Domain specialists, each with a reference library.
 
-> **Why this matters**: When your AI runs a security audit, it doesn't "try its best" — it follows a 14-point protocol based on OWASP Top 10. When it writes SEO content, it cross-references the 2024 Google ranking signals leak. The difference between a generic chatbot and Resonance is the difference between asking someone and asking an expert with a reference library.
+### Design
+Visual systems and UI components.
+- **`/design`** — Generates components with Entrance, Hover, and Click states. Visual system specs: HSL palette, typographic scale, spacing scale.
+- **studio** — Asset generation and style consistency.
+
+### Marketing
+Search visibility, conversion, and copy.
+- **`/seo`** — Full SEO and GEO audit. Structured data, canonical, schema, AI citation optimization (22 protocols).
+- **`/friction`** — Friction Collider: simulates the "Anti-Persona" to find and remove drag from funnels.
+- **copywriter** — Anti-slop filter, stylometric voice extraction, neuro-marketing, email sequences.
+
+### Sales
+Pipeline management and outreach.
+- **pipeline** — B2B sales qualification (BANT, MEDDIC, MEDDPICC, SPICED), sales methodologies, objection playbooks.
+- **cold-call** — Opening frameworks, objection handling, follow-up cadences.
+- **call-intelligence** — Call analysis, talk-to-listen ratios, next-step extraction.
+
+### Ops
+Quality, security, delivery, and governance.
+- **`/audit`** — The Swarm: orchestrates Security + Reviewer + QA + Architect. P0–P3 classified findings. APPROVE or REJECT.
+- **`/test`** → qa — 8-Path Matrix: Happy, Sad, Unauthorized, Malformed, Missing Dependency, Legacy, UI, Redirect.
+- **`/review-pr`** → reviewer — PR gatekeeper. Blocking Registry check. Risk summary.
+- **`/refactor`** → refactor — Mikado Method, Safe Sequence (Lock → Extract → Centralize → Split → Cleanup). Zero behavioral change.
+- **`/ship`** — Pre-flight, changelog, semantic versioning, logical commits, tag, deploy.
+- **`/system-health`** — Health Score (0–100). Flags: `AUTH_INCONSISTENT`, `ENV_FRAGILE`, `TEST_SHALLOW`, `DRIFT_DETECTED`.
+- **`/capture`** → librarian — Documents solved problems in the correct Diataxis quadrant.
+- **`/retro`** — Git-driven retrospective: Shipping Streak, Focus Score, Complexity Delta.
+- **`/init`** → core — Bootstraps `.resonance/` structure. Writes soul, state, docs scaffold.
+
+### Research
+Market and competitive intelligence.
+- **market-research** — Market sizing, competitive landscape, ICP analysis, positioning.
+
+---
+
+## The project memory
+
+The `.resonance/` folder is the engine that makes everything persistent.
+
+| File | What it holds |
+| :--- | :--- |
+| `00_soul.md` | Your vision, mission, and the laws that govern the project. Written once during `/init`, referenced forever. |
+| `01_state.md` | The active task, the last decision, the current blocker. The AI updates this after every session. |
+| `02_memory.md` | Architectural decision log. Why we chose Postgres over SQLite. Why we didn't use Redux. Never solve the same problem twice. |
+| `learnings.jsonl` | Project-specific lessons learned from bugs, edge cases, and hard-won discoveries. |
 
 ---
 
-## 🧩 The Second Brain (`.resonance/`)
-This is the engine that makes it all possible. A structured "Second Brain" that lives in your repo.
+## What's new in v2.2.0
 
-| The Cortex | File | Function |
-| :--- | :--- | :--- |
-| **The Soul** | `00_soul.md` | **The Constitution**. Your Vision, Mission, and User Persona. Even if you change LLMs, the Soul remains. "Who are we building for?" |
-| **The State** | `01_state.md` | **The RAM**. What is the *active* task? What was the last decision? This prevents the "What was I doing?" loop. |
-| **The Memory** | `02_memory.md` | **The Hard Drive**. A permanent audit log of architectural decisions (ADRs). We never solve the same problem twice. |
-| **The Map** | `04_systems.md` | **The Blueprint**. Logic flows, database schemas, and API contracts. The LLM reads this *before* it writes a line of code. |
+**Unified skill library.** Skills are now organized by domain (`strategy/`, `engineering/`, `design/`, `marketing/`, `sales/`, `ops/`, `research/`) with a shared Forge compiler. Each skill has a template, evals, and compiled output.
+
+**Slash commands are skills.** Every slash command (`/plan`, `/build`, `/debug`, `/audit`, `/ship`, etc.) is now a first-class skill in the library with a Definition of Done, prerequisites, a step-by-step algorithm, and a Recovery path.
+
+**Skill Author.** A meta-skill for building new skills. Includes the Forge compiler, eval protocol, and validator. Use it when you need to extend the library for your specific domain.
 
 ---
 
-## 📋 What's New in v2.1.1
+## Why it works
 
-**Gold-Standard Marketing & Revenue Intelligence** — Resonance now ships with deep B2B sales and CRM reference protocols alongside upgraded SEO, Growth, and Conversion skills.
+The agent gets the same instruction every time. Not a rephrased version of it. Not an interpretation. The exact same protocol, with the exact same checklist.
 
-- **B2B Sales Pipeline**: 4 qualification frameworks (BANT → MEDDIC → MEDDPICC → SPICED) with selection guidance, 4 sales methodologies (Challenger, SPIN, Gap, Command of the Message), multi-threading strategy, mutual action plans, and a full objection playbook.
-- **CRM Operations**: Revenue stack architecture, CRM selection by GTM motion, lifecycle/deal/CS automation workflows, data hygiene protocols, three-audience dashboards with attribution models, and a 6-level RevOps maturity model.
-- **SEO & GEO**: Expanded to 22 protocols. New site architecture protocol, competitor page engineering, and AI citation optimization (GEO) now split into its own dedicated protocol.
-- **Conversion**: New onboarding activation protocol (time-to-value, first-run patterns, habit loops) and churn prevention protocol (cancel flows, dunning sequences, dynamic save offers, win-back campaigns).
-- **Growth**: Community-driven growth loop variant, directory distribution strategy, and content strategy protocol (Searchable vs Shareable framework).
+When it runs `/audit`, it doesn't decide what to check. It follows the 9-step Swarm protocol: security scan, quality scan, authorization model audit, data truth audit, environment check, verification gap analysis, product integrity check, performance scan, synthesis. In that order.
+
+When it runs `/debug`, it doesn't guess. It writes a reproduction script that fails 100% of the time before it writes a single line of fix.
+
+That's the difference.
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
-## 💙 Why we built this
-We believe that software engineering is a craft.
-It shouldn't be a slot machine where you pull the lever (prompt) and hope for a jackpot (working code).
-
-It should be:
-1.  **Intentional**: You define the Soul.
-2.  **Persistent**: The system remembers.
-3.  **Standardized**: The protocols protect you.
-
-Resonance is just a set of files in your folder. But it's also a collection of the best engineering practices, ready to work for you.
-We are proud of what we've built. We hope it helps you build something amazing.
-
-**Happy Building.**
-
----
-Maintained by [www.divisionAI.co](https://www.divisionAI.co) 🚀
+Maintained by [www.divisionAI.co](https://www.divisionAI.co)

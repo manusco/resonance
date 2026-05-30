@@ -1,0 +1,18 @@
+{
+  "host": "claude-code",
+  "label": "Claude Code (Anthropic)",
+  "output_path": ".agents/skills/{name}/SKILL.md",
+  "default_model": "claude",
+  "tool_names": {
+    "read": "Read",
+    "write": "Write",
+    "edit": "Edit",
+    "bash": "Bash",
+    "grep": "Grep",
+    "glob": "Glob",
+    "ask": "AskUserQuestion",
+    "subagent": "Task"
+  },
+  "invocation": "/<skill-name>",
+  "notes": "Native Agent Skills. Discovers .agents/skills and .claude/skills. AGENTS.md and CLAUDE.md are read automatically. Supports forked subagents and hooks (optional enforcement layer)."
+}

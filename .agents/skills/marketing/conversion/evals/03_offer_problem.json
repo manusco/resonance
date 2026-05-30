@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-conversion",
+  "query": "We've run 5 A/B tests in the last 3 months and none of them improved conversion. What's wrong?",
+  "files": [],
+  "expected_behavior": [
+    "Suspects a fundamental offer or positioning problem rather than a surface-level CRO issue",
+    "Recommends escalating to a venture or product-level review of the core offer",
+    "Does not suggest a 6th incremental A/B test as the next step",
+    "Asks whether the existing page claims match actual product behavior (Product-Behavior Alignment)",
+    "References the Fogg Behavior Model: suggests the bottleneck may be Motivation, not Ability or Trigger"
+  ]
+}

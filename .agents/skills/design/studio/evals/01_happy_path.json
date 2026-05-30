@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-studio",
+  "query": "Generate a hero image for a cybersecurity SaaS product. It should feel dark, premium, and technical.",
+  "files": [],
+  "expected_behavior": [
+    "Produces a structured prompt with Subject, Style, Lighting, Camera, and Post-processing sections",
+    "Specifies a camera and lens (e.g. 'Sony A7R IV, 50mm f/2.8') rather than just 'realistic'",
+    "Specifies the aspect ratio appropriate for a hero image (16:9)",
+    "Leaves a defined safe zone for overlay copy (e.g. lower-left quarter)",
+    "Does not use vague terms like 'futuristic' without concrete visual descriptors"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-mobile",
+  "query": "We're submitting our React Native app to the App Store for the first time. What do we need to check?",
+  "files": [],
+  "expected_behavior": [
+    "Produces a store compliance checklist with Apple-specific requirements (privacy manifest, NSUsageDescription keys, export compliance)",
+    "Checks that the app does not crash in Airplane Mode before submission",
+    "Checks that all primary actions are reachable with one thumb in the bottom 40% of the screen",
+    "Verifies the app launch time is under 200ms to interactive UI",
+    "Does not produce a generic 'test your app' checklist — produces specific, actionable items"
+  ]
+}

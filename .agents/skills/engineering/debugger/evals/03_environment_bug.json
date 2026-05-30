@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-debugger",
+  "query": "The bug only happens in production. It works fine in staging. I've been looking for 2 hours and can't figure it out.",
+  "files": [],
+  "expected_behavior": [
+    "Immediately flags environment divergence as the primary suspect: production vs. staging data shape, config, or schema",
+    "Asks for a diff of environment variables and schema between staging and production",
+    "Does not accept 'it works in staging' as evidence that the logic is correct",
+    "Proposes checking for: missing environment variables in production, different DB schema, different data edge cases that only exist in production",
+    "Suggests a structured escalation path after 3 failed hypotheses rather than continuing to guess"
+  ]
+}

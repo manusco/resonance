@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-librarian",
+  "query": "We removed the legacy CSV export feature last sprint. What should we do with its documentation?",
+  "files": [],
+  "expected_behavior": [
+    "Recommends moving the documentation to an archive/ directory, not deleting it",
+    "Adds a 'superseded' notice at the top of the archived doc with the date and reason for removal",
+    "Updates the relevant index files (README.md, llms.txt) to remove the reference to the feature",
+    "Does not leave the documentation in the main docs/ directory where it will confuse future readers",
+    "Does not silently delete the docs — archival preserves knowledge, deletion loses it"
+  ]
+}

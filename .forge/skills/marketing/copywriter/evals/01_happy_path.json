@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-copywriter",
+  "query": "Write a landing page headline and value proposition for a project management tool aimed at remote engineering teams.",
+  "files": [],
+  "expected_behavior": [
+    "Positions the customer (remote engineering team) as the Hero, not the product",
+    "Headline is under 10 words and avoids generic phrases like 'game-changing' or 'seamlessly'",
+    "Value proposition is at Grade 8 reading level or below",
+    "Uses 'You' more than 'We' — customer-centric framing",
+    "Contains no banned AI slop terms (delve, tapestry, nuanced, harness, landscape)"
+  ]
+}

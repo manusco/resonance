@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-database",
+  "query": "Our orders list query takes 2.3 seconds. It joins users, orders, and line_items and filters by status and date range.",
+  "files": [],
+  "expected_behavior": [
+    "Requests the EXPLAIN ANALYZE output before recommending any index change",
+    "Identifies that composite indexes on (status, created_at) are likely needed for the filter conditions",
+    "Checks whether the FK columns (user_id on orders, order_id on line_items) have indexes",
+    "Does not recommend denormalization without a benchmark proving it is necessary",
+    "Produces the specific CREATE INDEX statement with the correct column order"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-cold-call",
+  "query": "Draft a cold call script for an HR Director at logistics companies. We have no client case studies or proven proof points yet for this sector.",
+  "files": [],
+  "expected_behavior": [
+    "Chooses the referral or problem-first opener pattern based on context",
+    "Uses permission-based framing cleanly",
+    "Under Section 5 (Mini Proof), applies the default 'reasons people reach out' generalization without fabricating metrics",
+    "Avoids any em dashes in the script body",
+    "Capping the call next step invitation at 15 minutes"
+  ]
+}

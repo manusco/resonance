@@ -1,0 +1,2 @@
+<!-- Model overlay: open-weight / local models (Llama, Qwen, DeepSeek, Mistral). Lower capacity: raise structure, lower freedom. -->
+> **Model note (open-weights):** Work in small, explicit steps. Do exactly one action per step and report its result before the next. Do not invent file paths, function names, or command flags; if you are unsure, read the file or ask. Copy the skill's checklist into your reply and tick items as you complete them. When a step says verify, you must run the command and paste the output. If a step fails twice, stop and report rather than guessing.

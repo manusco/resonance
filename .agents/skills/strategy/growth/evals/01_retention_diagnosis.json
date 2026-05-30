@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-growth",
+  "query": "Our SaaS app has 10,000 signups but only 800 are active after 30 days. What should we focus on?",
+  "files": [],
+  "expected_behavior": [
+    "Identifies the retention bottleneck by AARRR stage (Retention/Activation) before recommending any acquisition spend",
+    "Names the D30 retention rate (8%) explicitly and compares it to a reference benchmark",
+    "Recommends a cohort analysis to find where users drop off (not a blended average)",
+    "Does not recommend increasing ad spend until retention is diagnosed",
+    "Proposes a specific retention experiment with a defined success threshold"
+  ]
+}

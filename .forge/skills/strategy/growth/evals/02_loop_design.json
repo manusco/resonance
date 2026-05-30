@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-growth",
+  "query": "We're launching our B2B product next month. Design a growth loop for us.",
+  "files": [],
+  "expected_behavior": [
+    "Distinguishes between a funnel (one-way) and a loop (compounding) and designs a loop explicitly",
+    "Names the loop type: viral (invite-based) or engagement (habit-based)",
+    "Defines the Input, Trigger, Action, Reward, and Output of the loop",
+    "Connects the loop design to the AARRR stage it addresses",
+    "Includes a launch trajectory plan tied to a measurable benchmark at day 7 and day 30"
+  ]
+}

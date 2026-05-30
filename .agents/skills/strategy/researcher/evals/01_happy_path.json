@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-researcher",
+  "query": "What is the best way to handle optimistic UI updates in a React app with server state?",
+  "files": [],
+  "expected_behavior": [
+    "Hypothesizes the question as a testable comparison (e.g. React Query vs SWR vs manual approach)",
+    "Produces a Synthesis Matrix comparing at least 2 approaches against defined criteria",
+    "Verifies code examples against the current library docs (not from memory)",
+    "States a recommendation with a clear rationale, then defers the decision to the user",
+    "Does not present a wall of text — uses tables, bullet points, and code blocks"
+  ]
+}

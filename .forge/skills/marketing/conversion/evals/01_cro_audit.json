@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-conversion",
+  "query": "Our SaaS pricing page has a 2.1% conversion rate. We want to improve it. Can you audit it?",
+  "files": [],
+  "expected_behavior": [
+    "Runs a LIFT audit with a pass/fail verdict for all 6 factors: Value Proposition, Relevance, Clarity, Urgency, Distraction, Anxiety",
+    "Requests a trust verification check: asks if all testimonials and metrics on the page are attributable",
+    "Identifies at least 3 friction points under the Friction Collider categories (Cognitive, Emotional, Visual, Trust)",
+    "Produces at least 1 A/B hypothesis in 'If we change X, then Y will happen because Z' format",
+    "Does not recommend simply rewriting the copy without first identifying the structural friction"
+  ]
+}

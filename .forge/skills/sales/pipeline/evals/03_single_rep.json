@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-pipeline",
+  "query": "Ingest this CSV dataset where only a single representative manages all 15 deals.",
+  "files": [],
+  "expected_behavior": [
+    "Skips the Rep Performance tab as unnecessary for a single-rep pipeline",
+    "Merges rep metrics into the main Overview dashboard statistics",
+    "Presents the standard Input, Output, DOD, and Recovery procedure contract",
+    "Passed structural validation cleanly"
+  ]
+}

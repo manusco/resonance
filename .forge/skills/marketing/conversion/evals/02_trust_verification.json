@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-conversion",
+  "query": "We have 3 testimonials on our homepage. One is from 'John D.' with no company, one is a made-up metric ('10x ROI'), and one is from a real named customer with a verified case study.",
+  "files": [],
+  "expected_behavior": [
+    "Flags 'John D.' without company attribution as a trust risk that increases Anxiety friction",
+    "Flags '10x ROI' without a source or methodology as an unsupported claim that must be removed or cited",
+    "Validates the third testimonial as acceptable social proof",
+    "Explains why fabricated social proof hurts conversion (savvy users detect it, trust is destroyed)",
+    "Does not proceed to optimize conversion elements until the trust risks are addressed"
+  ]
+}

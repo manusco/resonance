@@ -1,0 +1,18 @@
+{
+  "host": "antigravity",
+  "label": "Antigravity (Google)",
+  "output_path": ".agents/skills/{name}/SKILL.md",
+  "default_model": "gemini",
+  "tool_names": {
+    "read": "read_file",
+    "write": "write_file",
+    "edit": "edit_file",
+    "bash": "run_command",
+    "grep": "grep",
+    "glob": "glob",
+    "ask": "ask_user",
+    "subagent": "agent"
+  },
+  "invocation": "AGENTS.md routing",
+  "notes": "Google's agentic IDE, Gemini-backed by default. Reads AGENTS.md. Gemini overlay applies more explicit step structure (see overlays/gemini.md)."
+}

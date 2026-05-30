@@ -1,0 +1,18 @@
+{
+  "host": "cursor",
+  "label": "Cursor",
+  "output_path": ".agents/skills/{name}/SKILL.md",
+  "default_model": "claude",
+  "tool_names": {
+    "read": "Read",
+    "write": "Write",
+    "edit": "Edit",
+    "bash": "Terminal",
+    "grep": "Grep",
+    "glob": "Glob",
+    "ask": "ask",
+    "subagent": "Task"
+  },
+  "invocation": "@skill-name or AGENTS.md routing",
+  "notes": "Reads AGENTS.md and project rules. Model-agnostic (user picks the backing model), so default overlay is claude but cursor users on GPT/Gemini should build with --model accordingly."
+}

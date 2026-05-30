@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-refactor",
+  "query": "The discount calculation logic is duplicated in the CartService, the InvoiceService, and the ReportService. Each has slightly different implementations.",
+  "files": [],
+  "expected_behavior": [
+    "Names the business consequence: 'When the discount rules change (e.g. new promo type), 3 files must be updated and any divergence creates incorrect totals in at least one context'",
+    "Uses Truth Centralization as the job: extract into a single DiscountCalculator service",
+    "Checks whether the three implementations are actually identical or have intentional variations before extracting",
+    "Applies the Safe Sequence: Lock (write tests capturing current behavior of all 3) → Extract (build DiscountCalculator) → Replace (swap in the 3 call sites one at a time, verifying after each)",
+    "Does not refactor without green tests for all 3 current implementations first"
+  ]
+}

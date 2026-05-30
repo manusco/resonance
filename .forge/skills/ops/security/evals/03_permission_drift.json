@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-security",
+  "query": "Our codebase has isAdmin() checks scattered across 14 route files, 3 policy files, and 2 Blade templates.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies this as permission-model drift risk: role checks scattered across multiple layers",
+    "Names the exact business consequence: when a new admin role is added, 19 files must be updated and any miss creates a security hole",
+    "Recommends centralizing access decisions into a capability system as the architectural fix",
+    "Does not recommend simply adding more role checks in the existing pattern",
+    "Classifies this as a P1 Auth Integrity finding, not a P3 Maintainability finding"
+  ]
+}

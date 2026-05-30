@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-database",
+  "query": "We need to add a 'subscription_tier' column to the users table in production. How do we do this safely?",
+  "files": [],
+  "expected_behavior": [
+    "Provides the 4-step migration safety sequence: Add column (nullable) → Deploy → Backfill → Add constraint",
+    "Writes both up.sql and down.sql for the migration",
+    "Confirms the column is added as nullable first to avoid locking the table in production",
+    "Warns that renaming an existing column in a single deploy step would break the live app",
+    "Does not skip the down.sql — flags it as a failure condition"
+  ]
+}

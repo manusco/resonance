@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-game-dev",
+  "query": "Should we use Unity, Godot, or Phaser for our 2D mobile puzzle game with a target of 60fps and a small team of 2?",
+  "files": [],
+  "expected_behavior": [
+    "Produces a comparison matrix for at least 3 engines against defined criteria (team size, platform target, 2D focus, performance)",
+    "Does not pick silently — states a recommendation with a 'Why' for this specific use case",
+    "Considers team size (2 people) as a key constraint: avoids recommending engines with steep learning curves",
+    "Considers the 60fps target: evaluates which engines meet this on mid-range Android",
+    "Recommends writing an ADR to document the decision rationale"
+  ]
+}

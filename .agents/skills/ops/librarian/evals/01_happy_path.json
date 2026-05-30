@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-librarian",
+  "query": "Document how we implemented rate limiting on our API.",
+  "files": [],
+  "expected_behavior": [
+    "Classifies into the correct Diataxis quadrant before writing (this is a Guide — solving a specific problem — or a Reference — the specification of the rate limit rules)",
+    "Asks which quadrant is needed: 'How did we implement it?' (Explanation) or 'How do I add rate limiting to a new endpoint?' (Guide)",
+    "Does not mix both quadrants in one document",
+    "Produces a document with zero TBD, 'simply', or 'as needed' placeholders",
+    "Links the new document to at least one related document (e.g. the API reference or the security checklist)"
+  ]
+}

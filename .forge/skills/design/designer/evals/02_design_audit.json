@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Our app's data table component looks boring and generic. Can you audit it and suggest improvements?",
+  "files": [],
+  "expected_behavior": [
+    "Produces a critique that names specific generic patterns (e.g. 'standard Bootstrap border, no hover state, no Entrance animation')",
+    "Applies Topological Betrayal: suggests at least one layout disruption to break the generic pattern",
+    "Specifies the Motion Trinity for the table (Entrance, Hover, Click states)",
+    "Recommends specific HSL or mathematical adjustments, not vague 'make it darker' advice",
+    "Does not output implementation CSS — stays at the specification level"
+  ]
+}

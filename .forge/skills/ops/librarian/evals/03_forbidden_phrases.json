@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-librarian",
+  "query": "Review this documentation draft: 'To add a new integration, simply configure the settings as needed and it should work.'",
+  "files": [],
+  "expected_behavior": [
+    "Flags 'simply' and 'as needed' as forbidden phrases that must be removed",
+    "Applies the Clarifying Question Rule: a new developer reading this would ask 'How do I configure the settings?' — the doc has failed",
+    "Requests the specific configuration steps to replace the vague instruction",
+    "Does not rewrite the doc with more vague language — identifies the specific gaps",
+    "Produces a revised version with zero forbidden phrases and zero unanswered 'How?' questions"
+  ]
+}

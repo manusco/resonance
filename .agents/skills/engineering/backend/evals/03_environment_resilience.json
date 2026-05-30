@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-backend",
+  "query": "We're running this in production but in our preview environment the invoices table doesn't have the 'tax_rate' column yet. The code crashes.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies environment divergence (preview vs. production schema mismatch) as the root cause",
+    "Does not add a try/catch that silently ignores the missing column",
+    "Recommends an explicit migration for preview that adds the column, not a code-level null-coalesce workaround",
+    "Asks whether the migration can be run in preview or if preview must work without the column temporarily",
+    "If a graceful fallback is needed, logs the missing column explicitly rather than silently defaulting to 0"
+  ]
+}

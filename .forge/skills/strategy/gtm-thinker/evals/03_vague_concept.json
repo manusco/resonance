@@ -1,0 +1,10 @@
+{
+  "skill": "resonance-gtm-thinker",
+  "query": "I have an idea for a campaign targeting developers using Slack.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies that critical context is missing (developer persona specifics, goal, or product offer)",
+    "Hhalts analysis and asks ONE focused clarifying question",
+    "Does not output a generic yes-response or proceed silently on major guesses"
+  ]
+}

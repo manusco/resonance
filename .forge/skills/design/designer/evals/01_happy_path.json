@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Design a design system for a B2B SaaS dashboard product. The brand should feel premium and technical, not playful.",
+  "files": [],
+  "expected_behavior": [
+    "Produces HSL-based color variables, not hex codes",
+    "Defines a typographic scale using a mathematical ratio (1.618 or 1.414)",
+    "Specifies spacing in multiples of a base unit, not arbitrary pixel values",
+    "Identifies a brand archetype from the Style Matrix",
+    "Does not output plain Bootstrap-style colors or generic blue/grey palettes"
+  ]
+}

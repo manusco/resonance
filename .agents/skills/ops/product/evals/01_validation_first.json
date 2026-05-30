@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-product",
+  "query": "We should add dark mode to the app.",
+  "files": [],
+  "expected_behavior": [
+    "Does not immediately write a PRD for dark mode",
+    "Asks: what user problem does dark mode solve? Is there evidence users are requesting it?",
+    "Applies the Opportunity Solution Tree: maps dark mode (Solution) to an Opportunity before defining it as a feature",
+    "Asks for a RICE score estimate: what is the Reach, Impact, Confidence, and Effort?",
+    "Does not create a ticket 'Add dark mode' without explaining why it matters to the user"
+  ]
+}

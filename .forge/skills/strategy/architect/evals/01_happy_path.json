@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-architect",
+  "query": "We're building a multi-tenant SaaS app. Users, billing, and notifications are all in one service. Design the system architecture.",
+  "files": [],
+  "expected_behavior": [
+    "Produces a C4 Level 1 Context diagram showing external actors and system boundaries",
+    "Produces a C4 Level 2 Container diagram decomposing the monolith into bounded services",
+    "Recommends recording the decomposition decision in an ADR",
+    "Identifies the multi-tenancy concern as a blast-radius risk and proposes a containment strategy",
+    "Does not write implementation code — stays at the structural/boundary level"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-devops",
+  "query": "Our staging environment has a different Postgres version and is missing 3 tables that production has. We keep getting 'works in staging, breaks in prod' bugs.",
+  "files": [],
+  "expected_behavior": [
+    "Names this as an Environment Parity failure — a documented failure condition",
+    "Recommends documenting the exact parity gaps before writing any code workarounds",
+    "Recommends a migration that brings staging in sync with production schema",
+    "Does not recommend writing code that silently handles the missing tables",
+    "Proposes an automated parity check in the CI pipeline to catch future divergence"
+  ]
+}

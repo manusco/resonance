@@ -1,108 +1,138 @@
 # Builder Guidelines
 
-This document explains how to build and maintain Resonance.
-It is for **us** (the builders). It is not for the user.
+How to build and maintain Resonance. This is for **us**, the builders. It is not for the end user.
+
+Resonance is a cross-tool, cross-model operating system for AI agents. It runs on Claude Code, Codex, Cursor, Antigravity, and OpenCode, on Claude, GPT, Gemini, and open-weight models. We do not lock to one vendor. We author above the format and compile to the open `SKILL.md` / `AGENTS.md` shape that every major tool already reads.
 
 ## 1. How We Write
 
 We respect the reader's time.
 
-* **Prune**. If a word doesn't add meaning, kill it. No "very", "extremely", or "really".
-* **Hook**. Start in the middle. Make them curious.
-* **One Thought**. One idea per sentence. If you see a comma, ask if it should be a period.
-* **Active Voice**. Subject-Verb-Object. "The Agent writes the code," not "The code is written by the Agent."
-* **Be Human**. Admit what you don't know. Speak as a peer, not a god.
+- **Prune.** If a word does not add meaning, cut it. No "very", "extremely", "really".
+- **Hook.** Start in the middle. Make them curious.
+- **One thought.** One idea per sentence. If you see a comma, ask whether it should be a period.
+- **Active voice.** Subject, verb, object. "The agent writes the code", not "the code is written by the agent".
+- **Be human.** Admit what you do not know. Speak as a peer, not a god.
+- **No tells.** No em dashes. No AI vocabulary (delve, crucial, robust, comprehensive, nuanced, seamless, landscape, tapestry, leverage, elevate). Name the file, the function, the command. If you have not run it, do not vouch for it with empty superlatives.
+
+This voice lives in one place: `.forge/resolvers/voice.md`. It is injected into every skill at compile time. Fix it once, recompile, every skill updates.
 
 ## 2. Core Philosophy
 
 ### Externalized Cognition
 
 **If it is not in a file, it does not exist.**
-Agents die. Chat history fades.
-The File System is the only persistent Mind.
+Agents die. Chat history fades. The file system is the only persistent mind.
 
-* **Soul** (`00_soul.md`): Conscience.
-* **State** (`01_state.md`): Short-term memory.
-* **Memory** (`02_memory.md`): Long-term logs.
-* **Tools** (`03_tools.md`): Capabilities & Boundaries.
-* **Systems** (`04_systems.md`): Architecture Map.
+The `.resonance/` brain is the single source of truth for a project:
 
-### The Ratchet & The Self-Annealing Loop
+- **Soul** (`00_soul.md`): vision and user. Who we build for.
+- **State** (`01_state.md`): the active task. What we are doing now.
+- **Memory** (`02_memory.md`): the decision log. Why we chose what we chose.
+- **Systems** (`04_systems.md`): the map. Schemas, contracts, logic flows.
+- **Learnings** (`learnings.jsonl`): hard-won project quirks.
+
+Code must never contradict the brain. The brain is owned by the project and is never overwritten on upgrade.
+
+### The Ratchet (Self-Annealing)
 
 **Never solve the same problem twice.**
-If you fix a bug, write a test. If you learn a quirk, write a doc.
-When things break, or when the **user corrects your logic**, execute the **Self-Annealing Loop**:
+Fix a bug, write the test. Learn a quirk, write it down. When something breaks or the user corrects your logic:
 
-1. Read the error, stack trace, or user correction.
-2. Fix the *deterministic script* or logic (not just the prompt) and test it.
-3. Update the *Directive/Workflow* or your `lessons.md` with what you learned (e.g., API limits, user preferences, edge cases).
-4. Ruthlessly iterate on these lessons until the mistake rate drops to zero.
-Lock progress in place. The system continuously strengthens itself.
+1. Read the error, trace, or correction.
+2. Fix the **deterministic layer** (a script, a validator, a directive), not just the prompt, and prove the fix.
+3. Record the learning so the next session starts ahead.
+4. Iterate until the mistake rate hits zero.
+
+A correction that only changes one output is a missed ratchet. Push the fix down so the mistake cannot recur.
 
 ### The 3-Layer Architecture
 
-We separate concerns to maximize reliability. LLMs are probabilistic, but business logic requires consistency.
+We separate concerns to make a probabilistic system reliable.
 
-1. **Layer 1: Directive (Intent)**
-   * **What it is**: SOPs, Workflows (`.agents/workflows/`), and Skills (`.agents/skills/`).
-   * **Purpose**: Natural language instructions defining goals, inputs, outputs, and edge cases.
-2. **Layer 2: Orchestration (Decision Making)**
-   * **What it is**: You. The LLM Agents (The Kernel).
-   * **Purpose**: Read directives, call tools in the correct order, handle errors, and route intent to execution. You are the glue.
-3. **Layer 3: Execution (Deterministic Work)**
-   * **What it is**: Scripts (`.agents/skills/*/scripts/`), Tools, MCP Servers.
-   * **Purpose**: Reliable, testable, fast execution of API calls, DOM manipulation, and file I/O.
+1. **Directive (intent).** Skills in `.agents/skills/`, compiled by the Forge. Natural-language goals, inputs, outputs, edge cases.
+2. **Orchestration (decision).** The model. Reads directives, calls tools in order, handles errors, routes intent to execution.
+3. **Execution (deterministic).** Scripts, validators, evals, MCP servers. Reliable, testable, fast.
 
-> 🔴 **Rule**: Push complexity into Layer 3. 90% accuracy per step = 59% success over 5 steps. Deterministic code prevents compounding LLM errors.
+> **Rule:** push fragility into Layer 3. A step that is 90% reliable becomes 59% over five hops. The validator, the Forge, and the eval harness are Layer 3. So is every script a skill runs. If a step is order-sensitive or destructive, it is code, not prose.
 
 ### Evolution
 
-**Improve. Don't replace.**
-Resonance is mature. Users rely on it.
-Do not delete functionality unless it is broken.
-If you see a new way, integrate it. Do not overwrite the old way without understanding why it was there.
+**Improve, do not replace.**
+Resonance is mature. Do not delete working functionality. If you see a better way, integrate it; understand why the old way existed before you overwrite it. It is fine to remove what is genuinely outdated. It is not fine to burn the cathedral.
 
-## 3. Building Workflows
+## 3. What Resonance Is (Hard Rule)
 
-A Workflow is a `markdown` file in `.agents/workflows/`.
-It must follow this schema:
+Resonance is a **Company OS**: a complete set of skills, frameworks, and mental models covering every essential function of a business. It is built for operators (founders, CEOs, CTOs, the teams around them) and for small and medium businesses that want to operate like the top 1%.
 
-1. **Identity**: Role + Job to be Done.
-2. **Prerequisites**: Fail fast if input is wrong.
-3. **Context**: `<thinking>` block. Align strategy.
-4. **Algorithm**: Step-by-step logic.
-5. **Recovery**: What to do if it fails.
-6. **Governance**: Verify and update State.
+**A Resonance skill IS:**
+- A mental model or thinking framework (Jobs-to-be-Done, SPIN, OKRs).
+- A best practice or decision protocol (how to run a hiring process, a board meeting).
+- An operational sequence (how to structure a sprint, ship a release).
+- Domain expertise distilled to its essence (how a CFO thinks about cash).
 
-**The Interview Rule**:
-Never dump templates on a user.
-Ask them questions.
-Use their answers to generate artifacts (`soul.md`, `PRDs`, `diagrams`).
+**A Resonance skill is NOT:**
+- A guide to one piece of software ("how to configure Slack"). Tool-specific steps belong in `references/` as cheat sheets, never in a `SKILL.md`.
+- A narrow vertical play. Skills must work for most businesses.
+- Anything below the 1% standard. If it reads like a blog post, reject it.
 
-## 4. Building Skills
+> If you are writing steps that click a button in a named app, stop. That is a reference doc. The skill is the strategy: why you would take the action, and when.
 
-### What Resonance Is (Hard Rule)
+## 4. Skills Are the Only Primitive
 
-Resonance is a **Company OS** — a complete set of skills, frameworks, and mental models covering every essential function of a business. It is built for operators: founders, CEOs, COOs, CTOs, developers, and the teams around them. It is designed for small and medium-sized businesses that want to operate like the top 1%.
+We used to split "skills" (roles) from "workflows" (procedures) into two folders with two formats. We do not anymore. A workflow is not a separate thing. It is a kind of skill. There is one primitive and three archetypes:
 
-**What a Resonance Skill IS:**
-- Mental models and thinking frameworks (e.g., SPIN Selling, Jobs-to-be-Done, OKRs)
-- Best practices and decision-making protocols (e.g., how to run a hiring process)
-- Workflows and operational sequences (e.g., how to structure a sprint, run a board meeting)
-- Domain expertise distilled to its essence (e.g., how a CFO thinks about cash flow)
+- **knowledge**: a domain expert applied inline (resonance-copywriter, resonance-architect). Auto-loaded when relevant.
+- **procedure**: a gated, multi-step job with a Definition of Done (build, ship). Invoked as `/name`. Marked manual-only when it has side effects.
+- **orchestration**: a procedure that drives other skills or subagents (an audit swarm, a review pipeline).
 
-**What a Resonance Skill is NOT:**
-- A guide to using a specific tool (e.g., "How to configure Slack", "How to use HubSpot"). Tool-specific instructions belong in `references/` as cheat sheets — never in a `SKILL.md`.
-- A narrow, industry-specific niche play. Skills must work for most businesses, not just one vertical.
-- Anything below the 1% standard. If it reads like a blog post or a junior's playbook, reject it.
+Workflows hold most of the value, because a knowledge skill alone is inert until a procedure drives it. So the procedure and orchestration archetypes are first-class. What made our old workflows good, the **Input / Output / Definition of Done / Recovery** contract, is now required on every procedure skill and checked by the validator.
 
-> 🔴 **Rule**: If you're writing steps that involve clicking a button in a specific piece of software, stop. That's a reference doc. The skill is the strategy behind *why* you'd take that action and *when*.
+Each skill declares its `archetype` in frontmatter. The `description` declares what it does and when to fire; it is the only text loaded at startup and the single highest-leverage line in the file.
 
+## 5. The Forge (How We Build Skills)
 
+We do not hand-write skills and hope. We compile them. The Forge lives in `.forge/`.
 
-## 5. Engineering Standards
+```
+skill.tmpl.md   x   host (tool)   x   overlay (model)   ->   SKILL.md
+```
 
-* **Docs over Chat**. Complex logic belongs in `docs/`.
-* **No Black Boxes**. Explain *why*.
-* **Aesthetics**. If we generate UI, it must be beautiful. No generic defaults.
-* **Verification**. "No Commit Without Evidence". Verify every change.
+- **Author once.** A template with placeholders, plus `references/`, `scripts/`, `evals/`.
+- **Compile per tool.** `hosts/*.json` map logical tools to each tool's real names and output paths. One config per tool, not per skill.
+- **Compile per model.** `overlays/*.md` patch behavior per model family. Strong models get terse prompts; open-weight models get explicit guardrails and lower freedom.
+- **Share once.** `resolvers/*.md` inject voice, decisions, completion, the locks, and the Ratchet into every skill. No copy-paste.
+
+Generated `SKILL.md` files are build output. Do not edit them. Edit the template and recompile.
+
+```bash
+py .forge/forge.py build <name>            # compile
+py .forge/forge.py build <name> --host all # every tool
+py .forge/forge.py build --all --dry-run   # CI freshness: exit 1 on drift
+```
+
+## 6. The Eval-First Mandate
+
+**Build evals before you build the skill.** This is the rule the craft turns on.
+
+1. **Prove the gap.** Run the task with no skill. Write down the exact failure. No gap, no skill.
+2. **Write `>= 3` golden cases** in `evals/` (`query` + `expected_behavior` rubric). Cover the happy path, an edge case, and a failure the skill must prevent.
+3. **Baseline, then write the minimum** skill that beats it.
+4. **Validate.** `py .forge/validate_skill.py <path>` must be clean. This is the Definition of Done check.
+5. **Iterate** with a fresh agent on real tasks. Bring failures back to the template, recompile.
+
+A skill that ships unmeasured is a liability, not an asset. The validator (Layer 3, free, deterministic) and the golden cases are how we know a skill is real.
+
+## 7. The Iron Contract
+
+A broken skill on disk makes agents reach for the wrong tool. So we write through a gate, never directly:
+
+> stage the work, run the validator and the evals, commit only on green and on explicit approval. On any failure, discard and report. There is no "almost shipped" state.
+
+## 8. Engineering Standards
+
+- **No commit without evidence.** Verify every change with output, a passing test, or a diff.
+- **Docs over chat.** Complex logic belongs in `docs/` and the brain, not in a chat that fades.
+- **No black boxes.** Explain why. Justify every magic constant.
+- **Aesthetics.** Generated UI must be beautiful. No thoughtless defaults.
+- **User sovereignty.** Models recommend; the user decides. Never run a destructive or architectural change without presenting the recommendation and waiting.

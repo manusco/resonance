@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-productivity",
+  "query": "Our sprint ends in 3 days and we have 47 story points remaining. We completed 18 points in the first 7 days.",
+  "files": [],
+  "expected_behavior": [
+    "Calculates daily velocity from the data: 18 points / 7 days = ~2.57 points/day",
+    "Projects remaining time needed: 47 points / 2.57 = ~18 days remaining at current velocity",
+    "Flags immediately that the sprint will not complete on time",
+    "Recommends specific scope to cut — does not say 'work harder'",
+    "Does not suggest adding a meeting to discuss the situation — presents the data and asks which items to cut"
+  ]
+}

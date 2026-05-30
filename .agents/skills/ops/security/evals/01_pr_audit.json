@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-security",
+  "query": "Review this PR. It adds a new admin endpoint that deletes user accounts.",
+  "files": [],
+  "expected_behavior": [
+    "Checks the Blocking Registry first (any, console.log, secrets) before anything else",
+    "Performs a 6-Layer Authorization audit on the new endpoint: Menu, Page, Route, Policy, Resource, Action",
+    "Flags if the authorization is only checked at one layer (e.g. only a route guard) without policy and resource-level enforcement",
+    "Checks for STRIDE: is Elevation of Privilege possible on this endpoint?",
+    "Classifies the finding as P0 if authorization is missing at any critical layer"
+  ]
+}

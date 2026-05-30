@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-reviewer",
+  "query": "Review this AI feature PR. It adds a GPT-4o call that takes user input and returns a recommended product from our catalog.",
+  "files": [],
+  "expected_behavior": [
+    "Applies the AI Production Checklist: Evals, Prompts, Telemetry, Security",
+    "Checks whether the system prompt is version-controlled (not hardcoded in the function)",
+    "Checks whether there are evals covering at least the hallucination and prompt injection cases",
+    "Checks whether the LLM output is validated before being used as data (output parser)",
+    "Classifies any missing eval coverage as Verification Quality (P1) and any missing prompt injection defense as Runtime Safety (P0 or P1)"
+  ]
+}

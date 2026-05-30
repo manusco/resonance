@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-devops",
+  "query": "Set up a CI/CD pipeline for our Next.js app that runs tests, checks types, and deploys to Vercel on merge to main.",
+  "files": [],
+  "expected_behavior": [
+    "Produces a GitHub Actions workflow YAML with separate jobs for: lint, typecheck, test, and deploy",
+    "Ensures the deploy job only runs after all test jobs pass (needs: dependency)",
+    "Does not commit any environment secrets in the workflow file — uses GitHub Secrets references",
+    "Verifies rollback capability: Vercel instant rollback is available, and this is noted in the output",
+    "The workflow file is complete and runnable, not pseudocode"
+  ]
+}

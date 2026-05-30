@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-gtm-thinker",
+  "query": "Review this campaign idea: We want to send a printed postcard with a QR code to VP HRs at mid-market retail companies, offering a free audit of their employee turnover risk.",
+  "files": [],
+  "expected_behavior": [
+    "Deconstructs the printed postcard idea into a clean core hypothesis format",
+    "Provides a strong, damaging counterargument focusing on direct-mail friction or QR-code security fears",
+    "Audits unproven assumptions such as VP HR physical address accuracy or QR code scanning permissions",
+    "Expands the concept into adjacent digital channels and a contrarian 'anti-postcard' strategy",
+    "Establishes a lean execution plan with an explicit week-by-week sequencing and a hard kill threshold"
+  ]
+}

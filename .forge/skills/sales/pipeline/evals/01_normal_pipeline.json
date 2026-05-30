@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-pipeline",
+  "query": "Analyze this CSV pipeline data: Deal Name, Stage, Amount, Close Date, Owner, Created Date. There are 10 deals across 3 reps.",
+  "files": [],
+  "expected_behavior": [
+    "Computes total pipeline value, weighted pipeline value, and average deal sizes",
+    "Categorizes stuck deals based on overdue close dates and assigns stage-specific actions",
+    "Generates a multi-period forecast (this month, next month, quarterly)",
+    "Renders an interactive React-based dashboard outline with Overview, Stages, At-Risk, Forecast, Reps, and Velocity tabs",
+    "Bans the use of em dashes in the output report"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-backend",
+  "query": "Add a POST /api/invoices endpoint that creates an invoice and sends a webhook to the customer's configured URL.",
+  "files": [],
+  "expected_behavior": [
+    "Declares the blast radius before writing any code (what could break from this change)",
+    "Defines the API contract (request/response schema) before implementing",
+    "Validates all incoming request fields with Zod at the controller boundary",
+    "Places the webhook-sending logic in a Service layer, not in the controller",
+    "Maps the Nil/Empty/Error paths: what happens if the webhook URL is missing, the webhook call fails, or the DB write fails"
+  ]
+}

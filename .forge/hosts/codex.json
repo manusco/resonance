@@ -1,0 +1,18 @@
+{
+  "host": "codex",
+  "label": "Codex (OpenAI)",
+  "output_path": ".agents/skills/{name}/SKILL.md",
+  "default_model": "gpt",
+  "tool_names": {
+    "read": "read_file",
+    "write": "create_file",
+    "edit": "apply_patch",
+    "bash": "shell",
+    "grep": "search",
+    "glob": "search",
+    "ask": "ask_user",
+    "subagent": "spawn"
+  },
+  "invocation": "reference the skill by name in AGENTS.md",
+  "notes": "Reads AGENTS.md at repo root. No native slash-command skill runtime, so procedure skills are surfaced via AGENTS.md routing. Tool names differ from Claude; mapped above."
+}

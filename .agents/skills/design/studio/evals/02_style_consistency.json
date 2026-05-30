@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-studio",
+  "query": "We need 5 social media images for our product launch. They all need to look like they came from the same brand.",
+  "files": [],
+  "expected_behavior": [
+    "Asks for or proposes a consistent seed, style token, or reference image to lock visual consistency",
+    "Produces 5 structured prompts — one per image — each referencing the same style anchors",
+    "Specifies the aspect ratio appropriate for each social platform (e.g. 1:1 for Instagram, 16:9 for Twitter)",
+    "Documents the shared style parameters so the series can be extended later",
+    "Does not produce 5 independent prompts with no cross-referencing"
+  ]
+}

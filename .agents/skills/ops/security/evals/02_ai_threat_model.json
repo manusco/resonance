@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-security",
+  "query": "We're building a new AI chatbot feature that processes user-submitted text and calls our internal APIs based on the content.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies prompt injection as the primary attack vector for this architecture",
+    "Applies the 6-Layer Security Ensemble: Input Classifiers, Canary Tokens, Output Parsers, Semantic Filtering, ML Judges, Sandboxing",
+    "Flags that relying on a single system prompt is insufficient defense for agentic systems",
+    "Recommends sandboxing the AI's ability to call internal APIs (allowlist of permitted actions)",
+    "Produces a STRIDE analysis for the AI component specifically, not just the surrounding infrastructure"
+  ]
+}

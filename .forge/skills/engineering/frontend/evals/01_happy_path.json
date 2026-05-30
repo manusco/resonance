@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "Build a data table component that shows a list of invoices with sorting and pagination.",
+  "files": [],
+  "expected_behavior": [
+    "Defines all four shadow states before writing the happy-path UI: Loading, Empty, Error, and Success",
+    "Specifies the Motion Trinity for the table rows: Entrance animation, Hover state, and Click state",
+    "Validates props with TypeScript: discriminated union or strict prop interface, no 'any'",
+    "Declares the blast radius: which pages or layouts consume this component",
+    "Ensures the layout works at 320px width (Mobile-First)"
+  ]
+}

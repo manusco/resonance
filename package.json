@@ -1,7 +1,7 @@
 {
   "name": "@manusco/resonance",
-  "version": "2.1.1",
-  "description": "The Operating System for Autonomous Engineering. Framework-Driven. References-Backed. Agent-Ready.",
+  "version": "2.2.0",
+  "description": "An operator-grade AI skill stack for builders. Domain-tested skills, shared memory, and structured protocols for every stage of the product lifecycle.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/manusco/resonance.git"
@@ -10,6 +10,7 @@
     "resonance",
     "ai",
     "agents",
+    "skills",
     "autonomous-software-engineering",
     "framework",
     "llm-governance"
@@ -23,4 +24,4 @@
     "node": ">=18.0.0"
   },
   "private": true
-}
+}

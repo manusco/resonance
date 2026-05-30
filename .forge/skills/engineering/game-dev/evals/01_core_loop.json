@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-game-dev",
+  "query": "Design the core loop for a mobile idle clicker game where players collect resources to build a city.",
+  "files": [],
+  "expected_behavior": [
+    "Defines the loop with all four components: Trigger, Action, Variable Reward, and Investment",
+    "Specifies the 30-second loop explicitly: what happens in the first 30 seconds of play",
+    "Identifies the Variable Reward mechanism (not a fixed reward per tap)",
+    "Applies the Psychology principle: what does the player Learn and Master in this loop?",
+    "Names the first 'Aha! moment' the player should experience"
+  ]
+}

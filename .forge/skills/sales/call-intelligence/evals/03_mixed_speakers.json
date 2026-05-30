@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-call-intelligence",
+  "query": "Ingest this raw CSV file containing mixed speaker rows. The speaker roles are not labeled.",
+  "files": [],
+  "expected_behavior": [
+    "Applies speaker role auto-inference logic based on conversational patterns",
+    "Separates sales rep talk tracks from prospect statements",
+    "Formats core output containing Input, Output, DOD, and Recovery sections",
+    "Includes a checklist for testing after deploying the skill"
+  ]
+}

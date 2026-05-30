@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-venture",
+  "query": "We ran 8 customer interviews. 6 said they'd pay, 2 said not now. Should we pivot or build?",
+  "files": [],
+  "expected_behavior": [
+    "Flags that 'would pay' in interviews is weak evidence — asks if there are pre-orders or concrete commitments",
+    "Applies the pre-defined kill threshold if one was set, or asks what the threshold was",
+    "Produces a clear Pivot / Persevere decision framework with the evidence cited",
+    "If recommending to build, names the next Riskiest Assumption to test during build",
+    "Does not manufacture optimism — presents the ambiguity honestly"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-debugger",
+  "query": "Users are reporting that their cart total shows the wrong price intermittently. It only happens sometimes.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to apply a fix before building a reproduction case",
+    "Lists at least 3 hypotheses for the intermittent failure (race condition, caching bug, floating-point arithmetic)",
+    "Designs a reproduction script that triggers the failure deterministically (e.g. rapid add-to-cart, specific item combination)",
+    "Does not add console.log statements to production before reproducing the bug in a controlled environment",
+    "Checks learnings.jsonl for prior cart-related bugs before starting investigation"
+  ]
+}

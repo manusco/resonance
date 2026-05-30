@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-qa",
+  "query": "Write tests for our new checkout feature. It should allow authenticated users to add items to a cart and complete a purchase.",
+  "files": [],
+  "expected_behavior": [
+    "Walks the 8-Path Matrix and produces a verdict (Covered, N/A, or Gap) for all 8 categories",
+    "Identifies the Unauthorized Path: what happens if an unauthenticated user attempts checkout?",
+    "Identifies the Malformed Data Path: what if the cart contains an item with a null price?",
+    "Requires tests to fail first (Red) before passing (Green) — not just 'write tests that pass'",
+    "Does not approve any path as Covered without a specific assertion, not just 'status(200)'"
+  ]
+}
