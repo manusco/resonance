@@ -81,6 +81,8 @@ A launch is a momentum curve, not a point in time. Compare engagement trajectori
 **Revenue + Pipeline (B2B):**
 - **[B2B Sales Pipeline](references/b2b_sales_pipeline.md)**: Qualification (BANT/MEDDIC/SPICED), pipeline stages, objection handling, forecasting.
 - **[CRM Operations](references/crm_operations_protocol.md)**: CRM architecture, automation workflows, data hygiene, reporting dashboards.
+- **[Cross-CRM Sync](references/cross_crm_sync_protocol.md)**: Multi-CRM coordination, field ownership maps, conflict resolution, sync patterns, governance gates.
+- **[Customer Proof](references/customer_proof_protocol.md)**: Proof sourcing, credibility tiers, relevance ranking, story drafting, approval chains.
 
 **Measurement + Strategy:**
 - **[Pirate Metrics](references/aarrr_metrics.md)**: AARRR measurement framework.
