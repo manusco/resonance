@@ -2,6 +2,15 @@
 
 > For businesses with physical locations or service areas.
 
+## Contents
+
+- [1. Key Statistics (2026)](#1-key-statistics-2026)
+- [2. Business Type Detection](#2-business-type-detection)
+- [3. Industry Vertical Detection](#3-industry-vertical-detection)
+- [4. Analysis Dimensions (6 Pillars)](#4-analysis-dimensions-6-pillars)
+- [5. AI Impact on Local](#5-ai-impact-on-local)
+- [6. Action Tiers](#6-action-tiers)
+
 ## 1. Key Statistics (2026)
 
 | Metric | Value | Source |

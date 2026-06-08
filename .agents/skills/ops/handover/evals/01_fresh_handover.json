@@ -1,0 +1,16 @@
+{
+  "query": "Run /handover. We just finished implementing the JWT auth flow in auth.service.ts. We chose Supabase over Auth0 because of cost — Auth0 would add $200/month at our user volume. Two tests are still failing in auth.test.ts at lines 47 and 112. Next step is the password reset email flow.",
+  "expected_behavior": [
+    "Reads .resonance/01_state.md and task.md before writing",
+    "Runs git log to check recent commits",
+    "Checks whether a handover file for today already exists before deciding to create or append",
+    "Creates docs/handovers/ directory if it does not exist",
+    "Creates a new handover file (not appending) since none exists for today",
+    "Status Snapshot section reflects current project phase",
+    "What Was Done lists 'JWT auth flow in auth.service.ts' specifically — not vague",
+    "Decisions Made table records Supabase vs Auth0 with the cost rationale",
+    "Open TODOs lists the two failing tests in auth.test.ts as P0 or P1 with line numbers",
+    "Password reset email appears in Open TODOs or Backlog",
+    "Updates .resonance/01_state.md Next Session section to reference the handover path"
+  ]
+}

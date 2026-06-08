@@ -44,7 +44,7 @@ Every interaction needs three simultaneous responses:
 3. **Haptic**: On mobile, a light impact tap for normal actions, a medium impact for rewards.
 
 ### Fun = Learning + Mastery
-Players enjoy the progression from incompetence to competence. Design challenges that can be solved with the mechanics the player has already learned. Introduce one new concept at a time. The "Aha!" moment — when a player figures out a mechanic — is the peak engagement point.
+Players enjoy the progression from incompetence to competence. Design challenges that can be solved with the mechanics the player has already learned. Introduce one new concept at a time. The "Aha!" moment, when a player figures out a mechanic, is the peak engagement point.
 
 ## Operational Sequence
 

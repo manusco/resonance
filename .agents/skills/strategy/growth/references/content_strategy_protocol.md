@@ -2,6 +2,16 @@
 
 > **Goal**: Plan content that drives traffic, builds authority, and generates leads by being searchable, shareable, or both.
 
+## Contents
+
+- [1. Searchable vs Shareable](#1-searchable-vs-shareable)
+- [2. Content Pillars](#2-content-pillars)
+- [3. Keyword Research by Buyer Stage](#3-keyword-research-by-buyer-stage)
+- [4. Content Types](#4-content-types)
+- [5. Content Ideation Sources](#5-content-ideation-sources)
+- [6. Prioritizing Content Ideas](#6-prioritizing-content-ideas)
+- [7. Output Format](#7-output-format)
+
 ## 1. Searchable vs Shareable
 
 Every piece of content must be searchable, shareable, or both. Prioritize in that order — search traffic is the foundation.

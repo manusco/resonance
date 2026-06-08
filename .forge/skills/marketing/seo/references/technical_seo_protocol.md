@@ -2,6 +2,19 @@
 
 > The infrastructure layer. If the foundation is broken, nothing else matters.
 
+## Contents
+
+- [1. Crawlability](#1-crawlability)
+- [2. Indexability](#2-indexability)
+- [3. Security](#3-security)
+- [4. URL Structure](#4-url-structure)
+- [5. Mobile Optimization](#5-mobile-optimization)
+- [6. Core Web Vitals](#6-core-web-vitals)
+- [7. Structured Data](#7-structured-data)
+- [8. JavaScript Rendering](#8-javascript-rendering)
+- [9. IndexNow Protocol](#9-indexnow-protocol)
+- [Audit Output](#audit-output)
+
 ## 1. Crawlability
 
 - **robots.txt**: Exists, valid, not blocking critical resources or API endpoints that render content

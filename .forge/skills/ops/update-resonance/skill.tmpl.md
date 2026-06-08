@@ -25,7 +25,7 @@ Copy this checklist and tick items as you go.
 
 1. **Verify ownership boundary**: Confirm `.resonance/` will not be touched. It holds the user's soul, state, and memory. The upgrade only touches `.agents/` and `AGENTS.md`. → verify: `.resonance/` is not in scope.
 2. **Clone latest**: Fetch the new version to a temp location outside the project root. → verify: temp directory exists and is not inside the project.
-3. **Delete `.agents/`**: Remove the entire old skill library. Do not overwrite — delete. Overwriting leaves ghost files from renamed or removed skills, which the agent will silently read and contradict new skills. → verify: `.agents/` no longer exists.
+3. **Delete `.agents/`**: Remove the entire old skill library. Do not overwrite. Delete. Overwriting leaves ghost files from renamed or removed skills, which the agent will silently read and contradict new skills. → verify: `.agents/` no longer exists.
 4. **Copy new `.agents/`**: Copy the compiled skill library from the temp location. → verify: `.agents/skills/` contains the new domain structure.
 5. **Copy `AGENTS.md`** and the `resonance.sh` / `resonance.ps1` scripts. → verify: files exist.
 6. **Verify the upgrade**: Run `/system-health`. It must report the correct skill count. Flag if score < 80. → verify: health check passes.

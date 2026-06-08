@@ -1,5 +1,14 @@
 # Extraction Protocol — Observe, Confirm, Fill
 
+## Contents
+
+- [The Method](#the-method)
+- [Stage 0 — Identify Subject Type](#stage-0--identify-subject-type)
+- [Stage 1 — Corpus Intake & Analysis](#stage-1--corpus-intake--analysis)
+- [Stage 2 — Gap Interview](#stage-2--gap-interview)
+- [No-Corpus Fallback](#no-corpus-fallback)
+- [What to Track Throughout](#what-to-track-throughout)
+
 ## The Method
 
 Text is ground truth. What someone says about how they sound is opinion. Start with the text.
@@ -47,7 +56,9 @@ If there is nothing to share, go to the **No-Corpus Fallback** at the bottom of 
 
 ### Step 2: Read Everything
 
-Read all pieces silently using the **[Text Analysis Dimensions](text_analysis_dimensions.md)** as your lens. Scan all 12 dimensions. Do not ask questions yet.
+Read all pieces silently using the **Text Analysis Dimensions** as your lens. Scan all 12 dimensions. Do not ask questions yet.
+
+> See also: `ops/voice/references/text_analysis_dimensions.md` for all 12 dimensions with examples.
 
 For **Brand** corpora: pay extra attention to pronoun stance (we/you/they), formality register across contexts, and vocabulary the brand appears to own vs. avoid.
 

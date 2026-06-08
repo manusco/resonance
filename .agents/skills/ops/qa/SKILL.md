@@ -1,6 +1,6 @@
 ---
 name: resonance-ops-qa
-description: Quality Assurance Specialist. Proves that the system works — or breaks it trying. Use when writing a test plan, auditing test coverage against the 8-Path Matrix, writing destructive test cases, building an LLM eval suite, or performing a verification audit before a release.
+description: Quality Assurance Specialist. Proves that the system works, or breaks it trying. Use when writing a test plan, auditing test coverage against the 8-Path Matrix, writing destructive test cases, building an LLM eval suite, or performing a verification audit before a release.
 archetype: procedure
 ---
 
@@ -29,7 +29,7 @@ Copy this checklist and tick items as you go.
 4. **8-Path Walk**: For each feature, walk the matrix and mark Covered, N/A, or Gap for all 8 categories. Write tests for every "Gap". Do not skip silently. → verify: every user-facing flow has a category verdict.
 5. **Strategy Selection**: Pick Unit (pure logic), Integration (routes/DB), E2E (user journeys), Property (fuzzing), or SAST (static analysis).
 6. **Automate (AAA)**: Write tests using Arrange/Act/Assert. Use the correct Assertion Layer (Source vs. Rendered vs. Visible-Text vs. Behavior). → verify: tests fail first, then pass (Red-Green).
-7. **Break (The Stress)**: Run the test. Does it fail if you break the code? (Mutation Testing). Fuzz inputs. Test offline. Test with corrupt data. → verify: system handles bad input with a specific, expected error — not a crash or a generic message.
+7. **Break (The Stress)**: Run the test. Does it fail if you break the code? (Mutation Testing). Fuzz inputs. Test offline. Test with corrupt data. → verify: system handles bad input with a specific, expected error, not a crash or a generic message.
 8. **Stale Test Check**: If any test fails, check whether the test or the product is wrong. A stale test that contradicts current product intent must be flagged, not silently updated. → verify: divergences are explicit.
 7. **Self-Improvement**: Log any discovered flakiness or "trick" to get tests passing to `learnings.jsonl`.
 8. **Completion**: Use the Completion Attestation. List verification evidence, not just DONE/BLOCKED.

@@ -12,7 +12,7 @@ archetype: procedure
 > **Output:** An Atomic Review Report with findings classified by category and ranked P0-P3.
 > **Definition of Done:** Every finding is classified (Product Correctness, Runtime Safety, Auth Integrity, Data Integrity, Env Robustness, Verification Quality, Maintainability). Findings are ranked by user harm, not by impressiveness. P0/P1 issues block the merge. The Blocking Registry has been checked.
 
-You do not "LGTM." You Audit. Quality is not an act — it is a habit. You are the last line of defense. You criticize the code, never the coder.
+You do not "LGTM." You Audit. Quality is not an act. It is a habit. You are the last line of defense. You criticize the code, never the coder.
 
 ## Prerequisites (fail fast)
 
@@ -81,7 +81,6 @@ If `if` statements are nested 3 levels deep, the next engineer cannot safely mod
 - **[Automated Linting](references/automated_linting_protocol.md)**: Tooling.
 - **[Pre-Landing Checklist](references/pre_landing_checklist.md)**: SQL Safety, LLM Trust Boundaries, and Time Window checks.
 - **[AI Production Checklist](references/ai_production_checklist.md)**: Evals, Prompts, Telemetry audit.
-- **[Multi-Model Review Contract](references/multi_model_review_contract.md)**: Structured closeout review discipline for second-model review passes.
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](../core/references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
 

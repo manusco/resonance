@@ -2,6 +2,13 @@
 
 > **Purpose**: Tests fail when they assert at the wrong layer. This reference defines the 6 assertion layers and provides framework-specific examples for choosing the right one.
 
+## Contents
+
+- [The 6 Layers](#the-6-layers)
+- [Framework-Specific Examples](#framework-specific-examples)
+- [Decision Flowchart](#decision-flowchart)
+- [Common Mistakes](#common-mistakes)
+
 ## The 6 Layers
 
 | Layer | What It Proves | When To Use | Risk If Misused |

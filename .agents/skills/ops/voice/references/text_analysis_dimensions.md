@@ -1,5 +1,11 @@
 # Text Analysis Dimensions — The Sherlock Toolkit
 
+## Contents
+
+- [Purpose](#purpose)
+- [The 12 Dimensions](#the-12-dimensions)
+- [Observation Report Format](#observation-report-format)
+
 ## Purpose
 
 This is the analytical lens used during Phase A (Corpus Intake). For each piece of writing the subject provides, scan it against these 12 dimensions. Every observation you surface must:

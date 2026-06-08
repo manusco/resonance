@@ -2,6 +2,16 @@
 
 > **Goal**: Prevent voluntary and involuntary churn through systematic intervention at every exit point.
 
+## Contents
+
+- [1. Churn Classification](#1-churn-classification)
+- [2. Cancel Flow Design](#2-cancel-flow-design)
+- [3. Dunning Sequences (Involuntary Churn)](#3-dunning-sequences-involuntary-churn)
+- [4. Re-Engagement Sequences (Ghost Users)](#4-re-engagement-sequences-ghost-users)
+- [5. Proactive Churn Signals](#5-proactive-churn-signals)
+- [6. Win-Back Campaigns](#6-win-back-campaigns)
+- [7. Metrics](#7-metrics)
+
 ## 1. Churn Classification
 
 | Type | Cause | Intervention Point |

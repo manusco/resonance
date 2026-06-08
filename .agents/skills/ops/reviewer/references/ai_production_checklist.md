@@ -39,7 +39,7 @@ When reviewing a PR that introduces or modifies an LLM integration, evaluate the
 
 ### 6. Scaling & Cost
 *   **The Risk**: A feature is launched on GPT-4o, user adoption explodes, and the monthly bill 100x's.
-*   **The Check**: Is the payload optimized? Has semantic caching been considered? Is the model tier appropriate for the task? (See [LLM FinOps Protocol](../resonance-performance/references/llm_finops_protocol.md)).
+*   **The Check**: Is the payload optimized? Has semantic caching been considered? Is the model tier appropriate for the task? Consult the LLM FinOps Protocol for cost controls.
 
 ---
 

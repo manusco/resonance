@@ -48,10 +48,10 @@ Copy this checklist and tick items as you go.
 
    | Severity | Criteria |
    |:---|:---|
-   | **P0 — Critical** | High-intent lead (demo request, pricing visit) with zero human outreach within SLA |
-   | **P1 — High** | MQL with delayed outreach (>24h for high-intent, >48h for standard) |
-   | **P2 — Medium** | Lead received outreach but follow-up sequence stalled before resolution |
-   | **P3 — Low** | Low-intent lead with adequate automation coverage |
+   | **P0 Critical** | High-intent lead (demo request, pricing visit) with zero human outreach within SLA |
+   | **P1 High** | MQL with delayed outreach (>24h for high-intent, >48h for standard) |
+   | **P2 Medium** | Lead received outreach but follow-up sequence stalled before resolution |
+   | **P3 Low** | Low-intent lead with adequate automation coverage |
 
    → verify: severity correlates with intent signal strength, not just volume.
 

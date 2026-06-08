@@ -88,6 +88,8 @@ Do not use a generic chatbot. Activate the specialist for the job.
 | **Growth Strategist** | `strategy/growth` | **Revenue Engine**. Retention loops, viral mechanics, B2B sales pipeline (MEDDIC/SPIN), CRM operations. |
 | **Venture Architect** | `strategy/venture` | **Business Models**. Leverage Protocol, Offer Stack, Revenue Math. Invoked via `/venture-model`. |
 | **Research Scientist** | `strategy/researcher` | **Deep Dive**. Technical investigations, trade-off analysis (Buy vs Build). |
+| **Market Researcher** | `research/market-research` | **EDPs**. Discovers Existential Data Points in B2B SaaS verticals. Invoked via `/market-research`. |
+| **GTM Thinker** | `strategy/gtm-thinker` | **Campaigns**. Stress-tests and expands GTM concepts into executable blueprints. Invoked via `/gtm-thinker`. |
 | **Planner** | `strategy/plan` | **Inception Orchestrator**. Converts ambiguity into an atomic implementation plan. Invoked via `/plan`. |
 
 ### 🟢 Execution & Engineering (The Builders)
@@ -110,7 +112,7 @@ Do not use a generic chatbot. Activate the specialist for the job.
 | Agent | Skill Path | Expertise |
 | :--- | :--- | :--- |
 | **Creative Director** | `design/designer` | **Visual System**. Design Systems, Typography, emotional UI. Invoked via `/design`. |
-| **Studio** | `design/studio` | **Visuals**. Asset generation and style consistency. |
+| **Studio** | `design/studio` | **Visuals**. Production-ready image and asset generation with structured prompt engineering. Invoked via `/studio`. |
 
 ### 📣 Marketing & Revenue (The Growth Engine)
 
@@ -119,6 +121,14 @@ Do not use a generic chatbot. Activate the specialist for the job.
 | **SEO Specialist** | `marketing/seo` | **Visibility**. Programmatic SEO, Schema Markup, GEO (Gen-AI Optimization). Invoked via `/seo`. |
 | **Conversion Eng** | `marketing/conversion` | **Revenue**. CRO, Friction Collider, Landing page optimization. Invoked via `/friction`. |
 | **Copywriter** | `marketing/copywriter` | **Voice**. Anti-slop filter, Neuro-marketing triggers, stylometric extraction. |
+
+### 💼 Sales (The Revenue Closers)
+
+| Agent | Skill Path | Expertise |
+| :--- | :--- | :--- |
+| **Call Intelligence** | `sales/call-intelligence` | **Transcript Analysis**. Extracts persona insights, objections, and feature gaps from call recordings. Invoked via `/call-intelligence`. |
+| **Cold Caller** | `sales/cold-call` | **Cold Outreach**. Generates B2B cold call scripts using a 6-part permission-based framework. Invoked via `/cold-call`. |
+| **Pipeline Analyst** | `sales/pipeline` | **Pipeline Analytics**. Visual dashboard with velocity and forecasting from CRM data. Invoked via `/sales-pipeline`. |
 
 ### 🔵 Quality & Governance (The Keepers)
 
@@ -130,19 +140,24 @@ Do not use a generic chatbot. Activate the specialist for the job.
 | **Refactor** | `ops/refactor` | **Essentialism**. Mikado Method, Safe Sequence, SOLID. Invoked via `/refactor`. |
 | **Librarian** | `ops/librarian` | **Knowledge**. Diataxis docs, indexing, archival. Invoked via `/capture`. |
 | **The Kernel** | `ops/core` | **Orchestrator**. State, Memory, Planning. Invoked via `/init`. |
+| **Handover** | `ops/handover` | **Continuity**. Session-end doc for colleagues. Invoked via `/handover`. |
+| **Voice Extractor** | `ops/voice` | **Voice DNA**. Extracts behavioral voice fingerprint from corpus and builds portable voice profiles. Invoked via `/voice-profile`. |
+| **Productivity** | `ops/productivity` | **Ops & Velocity**. Eliminates bottlenecks, projects sprint velocity, audits async health. Auto-fires when relevant. |
 | **Skill Author** | `ops/skill-author` | **Instruction**. Builds, validates, and evals new Resonance skills. |
 
 ---
 
 ## ⚡ The Skill Command Map
 
-Every skill command is a structured procedure — not a prompt, but a protocol with a Definition of Done, prerequisites, and a Recovery path.
+Every skill command is a structured procedure, not a prompt, but a protocol with a Definition of Done, prerequisites, and a Recovery path.
 
 ### Phase 1: Inception
 
 - **`/init`** → `ops/core` — Bootstraps `.resonance/` memory structure. Writes `00_soul.md`, `01_state.md`, docs scaffold.
 - **`/venture-model`** → `strategy/venture` — Models the business, offer stack, and revenue math before you plan.
 - **`/plan`** → `strategy/plan` — Deep research. Atomic 4-pass implementation plan. Requires user approval at each pass.
+- **`/gtm-thinker`** → `strategy/gtm-thinker` — Stress-tests a GTM campaign concept, challenges assumptions, expands into a strategic blueprint with kill criteria.
+- **`/market-research`** → `research/market-research` — Discovers Existential Data Points in a B2B SaaS vertical. Transforms solution positioning from nice-to-have to must-have.
 - **`/update-roadmap`** → `ops/update-roadmap` — Syncs `01_state.md` with `git log`. Map must match territory.
 
 ### Phase 2: Execution
@@ -151,6 +166,7 @@ Every skill command is a structured procedure — not a prompt, but a protocol w
 - **`/debug`** → `engineering/debugger` — Root Cause Analysis. Reproduction script required. No fix without a proven cause.
 - **`/refactor`** → `ops/refactor` — Atomic cleanup. Safe Sequence (Lock → Extract → Centralize → Split → Cleanup). Zero behavioral change.
 - **`/design`** → `design/designer` — Generates premium UI components with Entrance, Hover, and Click states defined.
+- **`/studio`** → `design/studio` — Produces production-ready visual assets (hero images, social graphics, UI mockups) with structured prompt engineering.
 - **`/friction`** → `marketing/conversion` — Friction Collider: simulates the "Anti-Persona" to find and remove drag.
 
 ### Phase 3: Verification
@@ -163,7 +179,12 @@ Every skill command is a structured procedure — not a prompt, but a protocol w
 ### Phase 4: Delivery & Maintenance
 
 - **`/ship`** → `ops/ship` — Release protocol. Pre-flight checks, changelog, semantic versioning, tag, deploy.
+- **`/voice-profile`** → `ops/voice` — Extracts behavioral voice DNA from a corpus (person, brand, or character) and compiles a portable voice profile.
+- **`/call-intelligence`** → `sales/call-intelligence` — Analyzes a call transcript to extract persona insights, objection patterns, and feature requests.
+- **`/cold-call`** → `sales/cold-call` — Generates a B2B cold call script using the 6-part permission-based framework.
+- **`/sales-pipeline`** → `sales/pipeline` — Renders a visual pipeline analytics dashboard with velocity and forecasting from CRM data.
 - **`/capture`** → `ops/librarian` — Documents solved problems in the correct Diataxis quadrant. Prevents re-discovery.
+- **`/handover`** → `ops/handover` — Writes `docs/handovers/YYMMDD_handover.md`. Run at the end of a session to capture what was done, decisions made, open TODOs, and backlog for a colleague. Appends if a file for today already exists.
 - **`/retro`** → `ops/retro` — Git-driven retrospective. Shipping Streak, Focus Score, Complexity Delta.
 - **`/seo`** → `marketing/seo` — SEO + GEO audit. Structured data, canonical, schema, AI citation optimization.
 - **`/update-resonance`** → `ops/update-resonance` — Framework upgrade with backup/restore safety. Preserves `.resonance/`.

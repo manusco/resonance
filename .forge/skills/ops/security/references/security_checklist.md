@@ -3,6 +3,16 @@
 > **Purpose**: A mandatory verification list for all code reviews and architectural decisions.
 > **Philosophy**: "Safe by Default". If it's not explicitly verified, it's insecure.
 
+## Contents
+
+- [1. Secrets Management](#1-secrets-management)
+- [2. Input Validation (Zero Trust)](#2-input-validation-zero-trust)
+- [3. SQL Injection Prevention](#3-sql-injection-prevention)
+- [4. Authentication & Authorization](#4-authentication--authorization)
+- [5. XSS & CSRF Prevention](#5-xss--csrf-prevention)
+- [6. Rate Limiting](#6-rate-limiting)
+- [7. Dependencies](#7-dependencies)
+
 ## 1. Secrets Management
 
 ### ❌ NEVER Do This

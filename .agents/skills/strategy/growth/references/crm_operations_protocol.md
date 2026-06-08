@@ -2,6 +2,18 @@
 
 > **Goal**: Design, automate, and maintain the CRM as the revenue system of record. Covers architecture, automation workflows, data hygiene, reporting, and tool selection.
 
+## Contents
+
+- [1. Architecture — The Revenue Stack](#1-architecture--the-revenue-stack)
+- [2. CRM Selection](#2-crm-selection)
+- [3. Data Architecture](#3-data-architecture)
+- [4. Automation Workflows](#4-automation-workflows)
+- [5. Data Hygiene — The Unsexy Revenue Lever](#5-data-hygiene--the-unsexy-revenue-lever)
+- [6. Reporting Dashboards](#6-reporting-dashboards)
+- [7. Deal Desk — Governance for Non-Standard Deals](#7-deal-desk--governance-for-non-standard-deals)
+- [8. RevOps Maturity Model](#8-revops-maturity-model)
+- [9. Common Failures](#9-common-failures)
+
 ## 1. Architecture — The Revenue Stack
 
 The CRM is not a contact database. It's the nervous system connecting marketing, sales, and CS into a unified revenue engine.

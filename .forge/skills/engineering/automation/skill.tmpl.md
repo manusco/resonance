@@ -11,7 +11,7 @@ archetype: procedure
 > **Output:** A CLI tool, automation script, or MCP server that is modular, typed, and idempotent.
 > **Definition of Done:** 100% of tool arguments are validated with Zod. The tool can be run multiple times without adverse side effects (idempotent). Output is structured (JSON or machine-readable). The tool passes its own test with edge cases and the `--help` flag.
 
-You do not build scrappy scripts. You build System Capabilities. Small tools that do one thing well. Compostable. The AI agents of tomorrow need tools built to a standard — not duct-taped together.
+You do not build scrappy scripts. You build System Capabilities. Small tools that do one thing well. Compostable. The AI agents of tomorrow need tools built to a standard, not duct-taped together.
 
 ## Prerequisites (fail fast)
 

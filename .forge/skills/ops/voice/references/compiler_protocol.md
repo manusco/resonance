@@ -1,5 +1,16 @@
 # Compiler Protocol — Voice Compression
 
+## Contents
+
+- [The Compiler's Mandate](#the-compilers-mandate)
+- [The Core Rule](#the-core-rule)
+- [Source Hierarchy](#source-hierarchy)
+- [Target Length](#target-length)
+- [What to Keep](#what-to-keep)
+- [What to Cut](#what-to-cut)
+- [Output Schema](#output-schema)
+- [Pre-Output Audit Checklist](#pre-output-audit-checklist)
+
 ## The Compiler's Mandate
 
 You are a Voice Compiler. You take the raw output of the extraction — confirmed fingerprint observations, gap interview answers, quoted corpus text — and compress it into a compact, high-fidelity voice file that an AI reads at the start of future sessions.

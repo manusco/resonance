@@ -1,0 +1,13 @@
+{
+  "query": "Run /handover. There is no task.md. The .resonance/01_state.md is the blank template with no filled-in content. There are no commits in the last 24 hours.",
+  "expected_behavior": [
+    "Does not crash or return an error",
+    "Writes a valid handover file with all 7 sections present even with minimal input",
+    "Adds a note at the top: 'Synthesized from files. No live session context available.' or equivalent",
+    "What Was Done section writes 'No commits this session' — does not fabricate commits",
+    "Open TODOs section does not fabricate specific file names or function names not mentioned",
+    "Gotchas section writes 'None identified this session' rather than inventing warnings",
+    "Does not skip sections — every section is present even if its content is minimal",
+    "Does not error on missing task.md — handles it with a skip and a note"
+  ]
+}

@@ -2,6 +2,16 @@
 > **Focus**: Graph Implementation & Structured Data
 > **Resonance Phase**: Optimization
 
+## Contents
+
+- [1. The Semantic Web Philosophy](#1-the-semantic-web-philosophy)
+- [2. The Core Entity Graph](#2-the-core-entity-graph)
+- [3. Engineering Implementation (JSON-LD)](#3-engineering-implementation-json-ld)
+- [4. The Graph Connectivity](#4-the-graph-connectivity)
+- [5. Verification Pipeline](#5-verification-pipeline)
+- [6. Deprecation Awareness](#6-deprecation-awareness)
+- [7. Advanced Playbooks](#7-advanced-playbooks)
+
 ## 1. The Semantic Web Philosophy
 Schema Markup (JSON-LD) is not just "SEO sprinkles." It is **Semantic Engineering**. It translates your messy HTML DOM into a rigorous **Knowledge Graph** that machines (Google, LLMs, Agents) can understand deterministically.
 

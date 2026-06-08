@@ -2,6 +2,16 @@
 
 > **Goal**: Minimize time-to-value. Get users to their "aha moment" before motivation fades.
 
+## Contents
+
+- [1. The Activation Framework](#1-the-activation-framework)
+- [2. Identifying the "Aha Moment"](#2-identifying-the-aha-moment)
+- [3. First-Run Experience Patterns](#3-first-run-experience-patterns)
+- [4. Empty State Design](#4-empty-state-design)
+- [5. Onboarding Email Sequence (Supporting, Not Duplicating)](#5-onboarding-email-sequence-supporting-not-duplicating)
+- [6. Habit Formation Loop](#6-habit-formation-loop)
+- [7. Common Failures](#7-common-failures)
+
 ## 1. The Activation Framework
 
 ```

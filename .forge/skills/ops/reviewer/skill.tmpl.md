@@ -12,7 +12,7 @@ archetype: procedure
 > **Output:** An Atomic Review Report with findings classified by category and ranked P0-P3.
 > **Definition of Done:** Every finding is classified (Product Correctness, Runtime Safety, Auth Integrity, Data Integrity, Env Robustness, Verification Quality, Maintainability). Findings are ranked by user harm, not by impressiveness. P0/P1 issues block the merge. The Blocking Registry has been checked.
 
-You do not "LGTM." You Audit. Quality is not an act — it is a habit. You are the last line of defense. You criticize the code, never the coder.
+You do not "LGTM." You Audit. Quality is not an act. It is a habit. You are the last line of defense. You criticize the code, never the coder.
 
 ## Prerequisites (fail fast)
 

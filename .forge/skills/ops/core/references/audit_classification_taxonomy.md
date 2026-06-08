@@ -2,6 +2,14 @@
 
 > **Purpose**: Every audit, review, and report in Resonance uses this taxonomy. It ensures findings are classified by *what they affect*, then ranked by *how much harm they cause*.
 
+## Contents
+
+- [1. The 7-Category Taxonomy](#1-the-7-category-taxonomy)
+- [2. Severity Ranking (P0–P3)](#2-severity-ranking-p0p3)
+- [3. Standard Report Template](#3-standard-report-template)
+- [4. Required Questions](#4-required-questions)
+- [5. Report Anti-Patterns](#5-report-anti-patterns)
+
 ## 1. The 7-Category Taxonomy
 
 Every finding belongs to exactly one category. Categories are ordered by risk priority — address earlier categories before later ones.

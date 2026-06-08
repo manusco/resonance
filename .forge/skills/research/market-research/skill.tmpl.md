@@ -22,7 +22,7 @@ Copy this checklist and tick items as you go.
 
 1. **Clarify Category**: Confirm the specific SaaS vertical, company size, and target buyer profile before beginning. → verify: category boundaries are set.
 2. **Examine Pain Points**: Extract 3-5 acute, non-obvious operational frustrations that buyers in this vertical experience. → verify: each pain is backed by industry data or practitioner quote.
-3. **Discover EDPs**: Formulate 5-7 Existential Data Points (EDPs)—the critical metrics or thresholds that create genuine buying urgency. → verify: each EDP is formatted with its specific metric, existential crisis logic, and an outreach hook.
+3. **Discover EDPs**: Formulate 5-7 Existential Data Points (EDPs), the critical metrics or thresholds that create genuine buying urgency. → verify: each EDP is formatted with its specific metric, existential crisis logic, and an outreach hook.
 4. **Segment Pains**: Map these EDPs to 3 distinct pain-based target segments. → verify: each segment card has an outbound opening line hook.
 5. **Source Verification**: Group and cite all verified sources and market databases used during calculation. → verify: no statistics are fabricated.
 

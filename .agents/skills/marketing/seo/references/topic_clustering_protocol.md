@@ -2,6 +2,16 @@
 
 > Group keywords by how Google actually ranks them, not by text similarity.
 
+## Contents
+
+- [1. Core Principle](#1-core-principle)
+- [2. Seed Keyword Expansion](#2-seed-keyword-expansion)
+- [3. SERP Overlap Clustering](#3-serp-overlap-clustering)
+- [4. Intent Classification](#4-intent-classification)
+- [5. Hub-and-Spoke Architecture](#5-hub-and-spoke-architecture)
+- [6. Internal Link Matrix](#6-internal-link-matrix)
+- [7. Cluster Scorecard](#7-cluster-scorecard)
+
 ## 1. Core Principle
 
 SERP-overlap clustering groups keywords by shared top-10 results. If two keywords return the same URLs in Google's top 10, they belong on the same page. Text similarity is a weak proxy — SERP overlap is the ground truth.

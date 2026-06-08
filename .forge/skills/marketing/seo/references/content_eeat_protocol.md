@@ -2,6 +2,15 @@
 
 > Updated for September 2025 Quality Rater Guidelines.
 
+## Contents
+
+- [1. E-E-A-T Framework](#1-e-e-a-t-framework)
+- [2. Content Metrics](#2-content-metrics)
+- [3. AI Content Assessment (Sept 2025 QRG)](#3-ai-content-assessment-sept-2025-qrg)
+- [4. AI Citation Readiness (GEO Signals)](#4-ai-citation-readiness-geo-signals)
+- [5. Content Freshness](#5-content-freshness)
+- [6. E-E-A-T Scoring Output](#6-e-e-a-t-scoring-output)
+
 ## 1. E-E-A-T Framework
 
 ### Experience (First-Hand Signals)

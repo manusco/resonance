@@ -2,6 +2,17 @@
 
 > **Purpose**: These 8 directives are constitutional rules for every Resonance agent that produces reports, writes tests, or modifies code. They override stylistic preference whenever there is a conflict.
 
+## Contents
+
+- [1. Authorization Directive](#1-authorization-directive)
+- [2. Verification Directive](#2-verification-directive)
+- [3. Product Integrity Directive](#3-product-integrity-directive)
+- [4. Environment Robustness Directive](#4-environment-robustness-directive)
+- [5. Report Prioritization Directive](#5-report-prioritization-directive)
+- [6. Copy/Trust Directive](#6-copytrust-directive)
+- [7. Refactor Directive](#7-refactor-directive)
+- [8. Test Quality Directive](#8-test-quality-directive)
+
 ---
 
 ## 1. Authorization Directive
@@ -125,4 +136,4 @@
 5. **Rendered Output**: "Page contains text 'Welcome back'" (acceptable for content verification)
 6. **Source Template**: Raw HTML/template assertions (use only when template structure itself is the invariant)
 
-> See [Assertion Layers Reference](../resonance-qa/references/assertion_layers.md) for framework-specific examples.
+> See also: `ops/qa/references/assertion_layers.md` for framework-specific assertion examples.

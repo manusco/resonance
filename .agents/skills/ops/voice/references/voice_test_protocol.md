@@ -1,5 +1,12 @@
 # Voice Test Protocol — Validating the Compiled Profile
 
+## Contents
+
+- [Purpose](#purpose)
+- [The Test](#the-test)
+- [Common Failure Modes](#common-failure-modes)
+- [Delivery Checklist](#delivery-checklist)
+
 ## Purpose
 
 After the voice file is compiled, validate it before declaring done. A file that "looks right" is not verified. A file that produces output the subject recognizes as their own — that's verified.

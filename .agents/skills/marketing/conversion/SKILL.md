@@ -25,7 +25,7 @@ Copy this checklist and tick items as you go.
 
 1. **Product-Behavior Alignment**: Verify the page's claims match actual product behavior before touching conversion elements. Optimizing conversion for a false promise creates churn, not growth. → verify: every above-the-fold claim is traceable to a real feature.
 2. **LIFT Audit**: Score the page against Value Proposition, Relevance, Clarity, Urgency, Distraction, and Anxiety. Flag each factor as passing or failing. → verify: all 6 LIFT factors have a pass/fail verdict with a note.
-3. **Trust Verification**: Check all social proof, testimonials, and metrics for attribution and accuracy. Fabricated social proof increases Anxiety friction — it does not reduce it. → verify: every quote has a real name, every metric has a source.
+3. **Trust Verification**: Check all social proof, testimonials, and metrics for attribution and accuracy. Fabricated social proof increases Anxiety friction. It does not reduce it. → verify: every quote has a real name, every metric has a source.
 4. **Friction Collider**: Run the 4-Force simulation (Cognitive, Emotional, Visual, Trust). List every friction point found under its category. → verify: at least 3 specific friction points named.
 5. **Hypothesize**: For the top 3 friction points, write a hypothesis: "If we change X, then Y will happen because Z." → verify: each hypothesis has a single, measurable outcome.
 6. **Design + Test**: Create the variant (wireframe or copy draft) and define the sample size and run duration for the A/B test. → verify: sample size is calculated, not guessed.

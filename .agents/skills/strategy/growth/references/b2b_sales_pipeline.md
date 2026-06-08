@@ -2,6 +2,18 @@
 
 > **Goal**: Engineer a B2B sales pipeline from first principles — qualification, pipeline mechanics, deal strategy, and objection handling. Dense reference for agents building or auditing sales systems.
 
+## Contents
+
+- [1. The Revenue Equation](#1-the-revenue-equation)
+- [2. Lead Lifecycle — The Handoff Chain](#2-lead-lifecycle--the-handoff-chain)
+- [3. Lead Scoring — Quantifying Intent](#3-lead-scoring--quantifying-intent)
+- [4. Qualification Frameworks — When to Use Which](#4-qualification-frameworks--when-to-use-which)
+- [5. Sales Methodologies — How to Sell](#5-sales-methodologies--how-to-sell)
+- [6. Pipeline Stages & Deal Mechanics](#6-pipeline-stages--deal-mechanics)
+- [7. Objection Handling — The Framework](#7-objection-handling--the-framework)
+- [8. Forecasting](#8-forecasting)
+- [9. Post-Close — The Revenue Doesn't Stop](#9-post-close--the-revenue-doesnt-stop)
+
 ## 1. The Revenue Equation
 
 Everything in B2B sales reduces to one equation:

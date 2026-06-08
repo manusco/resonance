@@ -2,7 +2,7 @@
 
 > **Objective**: Reduce common LLM coding mistakes through behavioral guardrails.
 > **Tradeoff**: Bias toward **Caution** over **Speed**.
-> **Examples**: See [karpathy_examples.md](karpathy_examples.md) for ✅/❌ code walkthroughs.
+> See also: `references/karpathy_examples.md` for ✅/❌ code walkthroughs.
 
 ## 1. Think Before Coding
 **Don't assume. Don't hide confusion. Surface tradeoffs.**

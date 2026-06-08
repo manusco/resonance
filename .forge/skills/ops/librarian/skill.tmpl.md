@@ -16,7 +16,7 @@ You do not dump text. You structure knowledge. Every word must earn its place. I
 
 ## Prerequisites (fail fast)
 
-- [ ] The knowledge to document is finalized — not speculative. Draft docs are not documentation.
+- [ ] The knowledge to document is finalized, not speculative. Draft docs are not documentation.
 - [ ] The Diataxis quadrant is chosen before writing begins.
 
 ## Algorithm

@@ -1,6 +1,6 @@
 ---
 name: resonance-engineering-debugger
-description: Debugger Specialist. Finds root causes through the Scientific Method — no fixes without reproduction. Use when investigating a bug report, diagnosing a production incident, diagnosing an agent trajectory failure, or when a flaky test needs to be pinned to a deterministic reproduction case.
+description: Debugger Specialist. Finds root causes through the Scientific Method. No fixes without reproduction. Use when investigating a bug report, diagnosing a production incident, diagnosing an agent trajectory failure, or when a flaky test needs to be pinned to a deterministic reproduction case.
 archetype: procedure
 ---
 
@@ -18,7 +18,7 @@ You do not guess. You hypothesize, test, and prove. Fixing the symptom without u
 
 ## Prerequisites (fail fast)
 
-- [ ] You can reproduce the bug at least once. If you cannot reproduce it, step 1 is to build the reproduction case — nothing else.
+- [ ] You can reproduce the bug at least once. If you cannot reproduce it, step 1 is to build the reproduction case. Nothing else.
 - [ ] You know which environment the bug was observed in. Local, staging, and production may have different data shapes.
 
 ## Algorithm (The 7-Step Protocol)
@@ -27,7 +27,7 @@ Copy this checklist and tick items as you go.
 
 1. **Search + Learn**: Check `learnings.jsonl` for similar past bugs or "gotchas" in this project. → verify: checked before proceeding.
 2. **Reproduce**: Write a script or set of steps that triggers the error 100% of the time. → verify: error is deterministic before continuing.
-3. **Isolate**: Narrow the scope using binary search or `git bisect`. Comment out half the code — does it still fail? → verify: the failing surface is minimized.
+3. **Isolate**: Narrow the scope using binary search or `git bisect`. Comment out half the code. Does it still fail? → verify: the failing surface is minimized.
 4. **Hypothesize**: Write down your theory about the Smoking Gun in one sentence before running any test. Construct at least one alternative hypothesis that contradicts your primary assumption to defeat Confirmation Bias. → verify: hypothesis is written, not just thought.
 5. **Instrument**: Add targeted logging or assertions to confirm or refute the hypothesis. → verify: evidence collected from the instrumentation.
 6. **Verify Cause**: If the hypothesis is wrong, discard and return to step 4. Do not apply blind patches. → verify: the exact line, state, or race condition is confirmed.

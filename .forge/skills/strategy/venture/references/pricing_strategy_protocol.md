@@ -2,6 +2,17 @@
 
 > Structure pricing that captures value, drives growth, and aligns with willingness to pay.
 
+## Contents
+
+- [1. The Three Pricing Axes](#1-the-three-pricing-axes)
+- [2. Value-Based Pricing](#2-value-based-pricing)
+- [3. Value Metrics](#3-value-metrics)
+- [4. Good-Better-Best Tier Structure](#4-good-better-best-tier-structure)
+- [5. Pricing Psychology](#5-pricing-psychology)
+- [6. Pricing Research: Van Westendorp](#6-pricing-research-van-westendorp)
+- [7. When to Raise Prices](#7-when-to-raise-prices)
+- [8. Pricing Page Best Practices](#8-pricing-page-best-practices)
+
 ## 1. The Three Pricing Axes
 
 Every pricing decision involves three independent variables:

@@ -28,7 +28,7 @@ Copy this checklist and tick items as you go.
 3. **Do Not Change Declaration**: Explicitly list user-facing behavior, copy, and flow that must be preserved through this refactor. This step is required, not optional. → verify: list written.
 4. **Name the Business Risk**: For each planned change, name the business consequence it addresses. If you cannot name what actually breaks or drifts if the smell persists, the refactor is aesthetic. Deprioritize it. → verify: business consequence named for each change.
 5. **Plan (Mikado)**: Identify the dependency graph. Fix the leaves first. Name only the files and functions that will change. → verify: scope is specific.
-6. **Apply the Safe Sequence**: Lock (ensure behavior is captured by tests) → Extract (pull duplicated truth into one source) → Centralize (consolidate scattered access or permission rules) → Split (separate overloaded responsibilities) → Cleanup (formatting, naming, dead code — always last). → verify: only one concern per commit.
+6. **Apply the Safe Sequence**: Lock (ensure behavior is captured by tests) → Extract (pull duplicated truth into one source) → Centralize (consolidate scattered access or permission rules) → Split (separate overloaded responsibilities) → Cleanup (formatting, naming, dead code, always last). → verify: only one concern per commit.
 7. **Verify (After)**: Run the test suite. Verify every item on the Do Not Change list. → verify: same suite green. Diff shows only expected files.
 8. **Commit**: Atomic commit "refactor: ..." → verify: `git diff --stat` shows only expected files.
 9. **Completion**: Use the Completion Attestation. Include blast radius, preserved behavior list, and verification evidence.
@@ -62,7 +62,7 @@ Visualize the dependency graph. Fix the leaves first. Never try to fix the root 
 SRP, OCP, LSP, ISP, DIP. If a class does two things, split it. Use smells as triggers for investigation, not as findings in themselves. Always follow up with the business consequence.
 
 ### The Safe Sequence
-Risk-ordered refactoring steps: Lock → Extract → Centralize → Split → Cleanup. The sequence matters — cleanup last, always. Mikado handles dependency order. Safe Sequence handles risk order.
+Risk-ordered refactoring steps: Lock → Extract → Centralize → Split → Cleanup. The sequence matters, cleanup last, always. Mikado handles dependency order. Safe Sequence handles risk order.
 
 ### Boy Scout Rule (Reconciled)
 Leave the file cleaner than you found it. Limited to the file already being touched for the current task. Never crosses file boundaries. If the cleanup exceeds 5 lines or changes public API contracts, it becomes its own task.
@@ -73,7 +73,7 @@ Leave the file cleaner than you found it. Limited to the file already being touc
 - **Surgical**: Every changed line traces directly to the stated refactor goal.
 - **Smallest Safe Improvement**: One mapper, one capability model, one service split. No broad abstractions.
 
-> ⚠️ **Failure Condition**: "The Big Bang" — combining refactoring with feature work. Using a Strategy pattern for single-use code. Claiming "God class" without naming what actually breaks or drifts.
+> ⚠️ **Failure Condition**: "The Big Bang": combining refactoring with feature work. Using a Strategy pattern for single-use code. Claiming "God class" without naming what actually breaks or drifts.
 
 ## Reference Library
 

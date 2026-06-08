@@ -2,6 +2,20 @@
 
 > The discipline of optimizing content for AI-generated answers — Google AI Overviews, ChatGPT, Perplexity, Bing Copilot.
 
+## Contents
+
+- [1. The Landscape (April 2026)](#1-the-landscape-april-2026)
+- [2. The Core Finding: Brand Mentions > Backlinks](#2-the-core-finding-brand-mentions--backlinks)
+- [3. The GEO Scoring Framework (5 Dimensions)](#3-the-geo-scoring-framework-5-dimensions)
+- [4. AI Crawler Management](#4-ai-crawler-management)
+- [5. llms.txt Standard](#5-llmstxt-standard)
+- [6. RSL 1.0 (Really Simple Licensing)](#6-rsl-10-really-simple-licensing)
+- [7. Platform-Specific Optimization](#7-platform-specific-optimization)
+- [8. The "Statistics" Hook](#8-the-statistics-hook)
+- [9. The "Unique Data" Strategy (Citation Optimization)](#9-the-unique-data-strategy-citation-optimization)
+- [10. Action Tiers](#10-action-tiers)
+- [11. Audit Output](#11-audit-output)
+
 ## 1. The Landscape (April 2026)
 
 | Metric | Value | Source |

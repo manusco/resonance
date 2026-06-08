@@ -4,6 +4,23 @@
 > **Philosophy**: We do not port blindly. We audit first, design deliberately, migrate surgically, and verify obsessively.
 > **Prime Directive**: Nothing is deleted or replaced without a documented justification. Preserving business value is always the priority.
 
+## Contents
+
+- [0. The Migrator's Mindset](#0-the-migrators-mindset)
+- [Phase 0: Discovery & Audit](#phase-0-discovery--audit)
+- [Phase 1: Domain Model Design](#phase-1-domain-model-design)
+- [Phase 2: Architecture Design](#phase-2-architecture-design)
+- [Phase 3: Data Migration Strategy](#phase-3-data-migration-strategy)
+- [Phase 4: Testing Requirements](#phase-4-testing-requirements)
+- [Phase 5: UX Migration Rules](#phase-5-ux-migration-rules)
+- [Phase 6: Implementation Sequence](#phase-6-implementation-sequence)
+- [Phase 7: Quality Gates](#phase-7-quality-gates)
+- [Phase 8: Agent Behavior Rules](#phase-8-agent-behavior-rules)
+- [Phase 9: Documentation Deliverables](#phase-9-documentation-deliverables)
+- [Appendix A: Common Migration Anti-Patterns](#appendix-a-common-migration-anti-patterns)
+- [Appendix B: Pre-Migration Checklist](#appendix-b-pre-migration-checklist)
+- [Appendix C: Pre-Launch Checklist](#appendix-c-pre-launch-checklist)
+
 ---
 
 ## 0. The Migrator's Mindset
@@ -185,7 +202,7 @@ Write an ADR for every significant choice:
 - **Deployment target**: Why this infra (Docker, serverless, VPS)?
 - **Testing approach**: Why this test runner / E2E tool?
 
-Reference: [ADR Protocol](adr_protocol.md)
+> See also: `strategy/architect/references/adr_protocol.md` for a full ADR template.
 
 ---
 

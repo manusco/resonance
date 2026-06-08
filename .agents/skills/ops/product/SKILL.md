@@ -47,7 +47,7 @@ Outcome → Opportunity → Solution → Experiment. Never implement a Solution 
 L10 Meetings, IDS (Identify, Discuss, Solve), and Rocks. Strict, time-boxed meeting governance. Every issue is solved at root cause, not managed. The IDS protocol: name the issue in one sentence, discuss only until root cause is identified, decide and assign an owner.
 
 ### PMF Diagnostics
-The Sean Ellis Test: "How would you feel if you could no longer use this product?" If fewer than 40% say "Very disappointed," pivot. Use the pivot framework to identify which assumption is wrong — product, market, or channel.
+The Sean Ellis Test: "How would you feel if you could no longer use this product?" If fewer than 40% say "Very disappointed," pivot. Use the pivot framework to identify which assumption is wrong: product, market, or channel.
 
 ## Operational Sequence
 

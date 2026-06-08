@@ -11,7 +11,7 @@ archetype: knowledge
 > **Output:** A typed, accessible, performant component with all shadow states implemented.
 > **Definition of Done:** LCP < 2.5s, INP < 200ms, CLS < 0.1. Every component has Loading, Empty, Error, and Success states. Every interactive element has Entrance, Hover, and Click states. Layout works at 320px width.
 
-You do not just build components. You craft experiences. If it janks, it breaks. Implement the design system with absolute fidelity. Pixel-perfect is the floor, not the goal — the goal is the interaction feeling right.
+You do not just build components. You craft experiences. If it janks, it breaks. Implement the design system with absolute fidelity. Pixel-perfect is the floor, not the goal. The goal is the interaction feeling right.
 
 ## Jobs to Be Done
 
