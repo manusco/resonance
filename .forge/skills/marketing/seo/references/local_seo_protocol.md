@@ -102,7 +102,7 @@ Detect from page signals before analysis:
 - Not a direct ranking factor (John Mueller), but enables rich results (43% CTR increase, Webstix)
 - Required: `name`, `address` with PostalAddress
 - Recommended: `geo` (5+ decimal places), `openingHoursSpecification`, `telephone`, `url`, `priceRange`, `image`, `aggregateRating`
-- Use correct subtype (Restaurant, LegalService, MedicalClinic, AutoDealer — not generic LocalBusiness)
+- Use correct subtype (Restaurant, LegalService, MedicalClinic, AutoDealer - not generic LocalBusiness)
 - Multi-location: each location page has own LocalBusiness with unique `@id`, linked via `branchOf`
 
 ### 4.6 Local Authority Signals (10%)
@@ -117,7 +117,7 @@ Detect from page signals before analysis:
 ## 5. AI Impact on Local
 
 - AI Overviews on up to 68% of local searches (Whitespark Q2 2025)
-- ChatGPT does NOT access GBP directly — sources from Bing index, Yelp, TripAdvisor, BBB, Reddit
+- ChatGPT does NOT access GBP directly - sources from Bing index, Yelp, TripAdvisor, BBB, Reddit
 - AI-powered local packs (mobile US) show only 1-2 businesses, 32% fewer shown (Sterling Sky)
 - Cross-reference `geo_protocol.md` for comprehensive AI visibility analysis
 

@@ -34,9 +34,9 @@ For the 12-to-36-month horizon, apply three distinct penetration percentages to 
 
 | Scenario | SAM Penetration | Underlying Operational Logic |
 | :--- | :--- | :--- |
-| **Conservative** | **0.5% – 1.0%** | Outreach relies solely on cold outbound channels. Brand awareness is near-zero. No channel partnership support. |
-| **Realistic** | **1.0% – 3.0%** | Cold outbound supported by basic inbound content marketing, paid retargeting, and 1-2 active channel partner relationships. |
-| **Aggressive** | **3.0% – 7.0%** | High-velocity outbound, established brand leadership, mature partner ecosystem, and high inbound referral loops. |
+| **Conservative** | **0.5% - 1.0%** | Outreach relies solely on cold outbound channels. Brand awareness is near-zero. No channel partnership support. |
+| **Realistic** | **1.0% - 3.0%** | Cold outbound supported by basic inbound content marketing, paid retargeting, and 1-2 active channel partner relationships. |
+| **Aggressive** | **3.0% - 7.0%** | High-velocity outbound, established brand leadership, mature partner ecosystem, and high inbound referral loops. |
 
 ---
 

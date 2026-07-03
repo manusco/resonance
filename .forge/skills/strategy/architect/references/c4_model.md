@@ -1,7 +1,7 @@
 # C4 Model Protocol (Visualization Standard)
 
 > "A common set of abstractions involves creating a static model of your software system at different levels of abstraction."
-> — Simon Brown
+> - Simon Brown
 
 ## 1. The 4 Levels
 

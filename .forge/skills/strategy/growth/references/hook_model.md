@@ -1,7 +1,7 @@
 # The Hook Model (Habit Formation)
 
 > "To change behavior, you must create a habit."
-> — Nir Eyal
+> - Nir Eyal
 
 ## 1. The 4-Step Cycle
 

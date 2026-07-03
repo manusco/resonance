@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-paid-acquisition",
+  "query": "I've got $300 total to spend on ads for my product this month. Should I split it across Google, Meta, TikTok, and LinkedIn to see what works?",
+  "files": [],
+  "expected_behavior": [
+    "Warns that splitting a tiny budget across four channels starves each below the conversion volume needed to exit the learning phase and produces no readable signal",
+    "Recommends concentrating the budget on a single channel chosen by where the buyer's demand actually is (capture vs create)",
+    "Prioritizes the cheapest, highest-intent conversions first (for example brand or high-intent search, or warm retargeting) when budget is severely constrained",
+    "Sets realistic expectations that $300 is a directional probe, not a statistically valid test, and frames learning goals accordingly",
+    "Does not recommend spreading the spend thin across all platforms simultaneously"
+  ]
+}

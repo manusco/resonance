@@ -1,4 +1,5 @@
 {
+  "skill": "resonance-ops-handover",
   "query": "Run /handover. There is no task.md. The .resonance/01_state.md is the blank template with no filled-in content. There are no commits in the last 24 hours.",
   "expected_behavior": [
     "Does not crash or return an error",

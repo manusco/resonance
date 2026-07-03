@@ -1,7 +1,7 @@
 # Unix Philosophy Protocol
 
 > "Write programs that do one thing and do it well."
-> — Doug McIlroy
+> - Doug McIlroy
 
 ## 1. The 3 Tenets
 

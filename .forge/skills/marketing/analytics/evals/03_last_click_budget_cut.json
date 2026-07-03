@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-marketing-analytics",
+  "query": "Our GA4 last-click report shows our YouTube awareness campaign drives almost no conversions while brand search converts great. I'm going to cut the entire YouTube budget and move it to brand search. Sound good?",
+  "files": [],
+  "expected_behavior": [
+    "Pushes back on cutting the awareness budget based on a last-click report alone",
+    "Explains that last-click systematically overcredits closing channels like brand search and starves upper-funnel channels that create the demand",
+    "Warns that brand search is often harvesting demand other channels (like the YouTube campaign) generated, so it may look incremental while being merely present",
+    "Recommends validating with a second lens before reallocating: an incrementality holdout, a marketing-mix model, a different attribution model, or zero-party 'how did you hear about us' data",
+    "Distinguishes 'present on the path' from 'incremental' and identifies a geo or audience holdout as the way to measure the true causal effect",
+    "Predicts that a naive cut could reduce overall conversions a quarter later with no obvious cause in the last-click view"
+  ]
+}

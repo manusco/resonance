@@ -1,6 +1,9 @@
 {
+  "skill": "resonance-ops-handover",
   "query": "Run /handover again. We just fixed the two failing tests in auth.test.ts. We also discovered that the JWT_SECRET env var is not set in the staging .env file — this must be fixed before the next deploy.",
-  "files": ["docs/handovers/<today>_handover.md"],
+  "files": [
+    "docs/handovers/<today>_handover.md"
+  ],
   "expected_behavior": [
     "Detects that a handover file for today already exists",
     "Appends to the existing file — does not create a new file or overwrite",

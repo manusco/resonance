@@ -1,16 +1,16 @@
 # Completion Attestation
 
-> **Purpose**: Replace vague "DONE" status with structured evidence. A staff engineer wouldn't accept "Looks good" — they'd ask "Show me the test output."
+> **Purpose**: Replace vague "DONE" status with structured evidence. A staff engineer wouldn't accept "Looks good" - they'd ask "Show me the test output."
 
 ## When to Use
 
 | Context | Required? |
 |:---|:---|
-| `/refactor` | ✅ **Required** — Refactors have the highest regression risk |
-| `/audit` | ✅ **Required** — Audits must prove coverage, not just list findings |
-| `/debug` | ✅ **Required** — Must prove root cause and fix |
-| `/test` | ✅ **Required** — Must show what was verified |
-| `/build` (feature work) | 📋 Recommended — Helps catch scope drift |
+| `/refactor` | ✅ **Required** - Refactors have the highest regression risk |
+| `/audit` | ✅ **Required** - Audits must prove coverage, not just list findings |
+| `/debug` | ✅ **Required** - Must prove root cause and fix |
+| `/test` | ✅ **Required** - Must show what was verified |
+| `/build` (feature work) | 📋 Recommended - Helps catch scope drift |
 | `/design` | 📋 Recommended |
 
 ## The Template

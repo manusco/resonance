@@ -140,6 +140,8 @@ The done-condition must be a real check (tests pass, validator clean, audit APPR
 
 Ranked by leverage. The top three are prerequisites for elite; the rest are hygiene and depth.
 
+> **Shipped in v2.3.0 (2026-07-03):** R1 (the eval runner, `.forge/run_evals.py`), R2 (the cross-skill validator, `.forge/validate_library.py`), R3 (the live-execution surface in `ops/qa`), R4 (the full hygiene pass), and five of the gap skills from R7 (observability, incident, paid-acquisition, analytics, lifecycle). Remaining: R5 (multi-model second opinion), R6 (semantic memory), and the rest of R7 depth (per-version overlays, deploy verification, hooks).
+
 **R1. Build the eval runner (`run_evals.py`).** Close the biggest hole. Feed each golden case to a model with and without the skill, grade against `expected_behavior` (LLM-as-judge for subjective, executed checks where possible). This finishes eval-first, makes skill quality measurable, and is the grounded verifier a `/goal` loop needs. Steal GStack's tiering (free static, then LLM-judge, then E2E) with diff-based selection to stay cheap.
 
 **R2. Make the validator cross-skill aware.** Add checks for the exact drift this audit found: orphan reference files (exists but unlinked), duplicate reference files across skills (identical or diverged), and near-duplicate names. One pass would have caught the skill-author duplication, the `style_matrix` divergence, and 45 orphans. This is the deterministic Layer-3 fix that keeps the library clean automatically.

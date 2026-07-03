@@ -21,7 +21,7 @@
 
 **Example**: Instead of `if (user.role === 'editor')` scattered across routes, policies, and templates, define a capability like `can('publish-articles')` and check it once per layer.
 
-**Anti-Pattern**: Role checks (`isAdmin()`, `hasRole('manager')`) used directly as permission logic in 30+ locations. This is permission-model drift — when you add a new role, you must find and update every check.
+**Anti-Pattern**: Role checks (`isAdmin()`, `hasRole('manager')`) used directly as permission logic in 30+ locations. This is permission-model drift - when you add a new role, you must find and update every check.
 
 **Deliverable**: When auditing authorization, produce a **Capability Matrix**:
 
@@ -37,7 +37,7 @@
 
 **Rule**: Do not accept "tests pass" as sufficient verification. Check whether critical success paths, failure paths, unauthorized paths, malformed-data paths, and environment-sensitive paths are all covered.
 
-**Example**: A checkout flow has 15 tests — all for happy path. Zero tests for: expired card, network timeout, duplicate submission, unauthorized user accessing another user's cart. The suite is green. The system is unsafe.
+**Example**: A checkout flow has 15 tests - all for happy path. Zero tests for: expired card, network timeout, duplicate submission, unauthorized user accessing another user's cart. The suite is green. The system is unsafe.
 
 **Anti-Pattern**: Treating test coverage percentage as proof of safety. 95% coverage can still miss the one path that handles payment failure.
 
@@ -85,10 +85,10 @@
 **Rule**: Reject fabricated quotes, unsupported testimonials, invented metrics, and promises not backed by actual product behavior. Prefer concrete, verifiable statements over persuasive filler.
 
 **Example**:
-- ❌ `"This changed my life" — Sarah K., CEO` (unverifiable, possibly fabricated)
-- ✅ `"Reduced our deploy time from 45 minutes to 3 minutes" — Sarah Kim, CTO at Acme (case study link)`
+- ❌ `"This changed my life" - Sarah K., CEO` (unverifiable, possibly fabricated)
+- ✅ `"Reduced our deploy time from 45 minutes to 3 minutes" - Sarah Kim, CTO at Acme (case study link)`
 
-**Anti-Pattern**: Generating social proof to fill a template. If the proof doesn't exist, leave the section empty and note it as a gap — don't invent it.
+**Anti-Pattern**: Generating social proof to fill a template. If the proof doesn't exist, leave the section empty and note it as a gap - don't invent it.
 
 **What To Flag**:
 - Fabricated testimonial quotes with generic names
@@ -123,8 +123,8 @@
 **Rule**: Prefer assertions against visible behavior, state transitions, session/auth state, and persisted data. Avoid overfitting tests to implementation details or raw template output unless the source itself is the invariant being guarded.
 
 **Example**:
-- ❌ `expect(wrapper.html()).toContain('<div class="btn-primary">')` — Breaks on any CSS change
-- ✅ `expect(screen.getByRole('button', { name: 'Submit' })).toBeEnabled()` — Tests user-visible behavior
+- ❌ `expect(wrapper.html()).toContain('<div class="btn-primary">')` - Breaks on any CSS change
+- ✅ `expect(screen.getByRole('button', { name: 'Submit' })).toBeEnabled()` - Tests user-visible behavior
 
 **Anti-Pattern**: Snapshot tests on entire rendered components. They break on every visual change and train developers to blindly update snapshots.
 

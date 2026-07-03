@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-incident",
+  "query": "One enterprise customer says exports are failing for them, but our dashboards look basically fine and nobody else has complained. Is this a SEV1 or a SEV2 or not even an incident? I do not want to overreact.",
+  "files": [],
+  "expected_behavior": [
+    "Resolves the ambiguity by rounding up rather than down: when it sits between two levels, declares the higher severity and downgrades later once impact is clear",
+    "First confirms the actual blast radius (is it only this customer, is data being lost, is it spreading) before locking the severity, instead of guessing from the dashboard",
+    "Explains that under-declaring is more expensive than over-declaring because the cost is asymmetric, so bias upward",
+    "States that severity can be downgraded explicitly and logged once impact is proven smaller, so calling it high now is safe and reversible",
+    "Does not dismiss it as a non-incident purely because dashboards look healthy, since a single customer with active data loss can still be high severity"
+  ]
+}

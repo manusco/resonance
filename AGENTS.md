@@ -94,9 +94,10 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/retro** -> `ops/retro` - Git-driven retrospective: shipping streak, focus score, complexity delta.
 - **/update-resonance** -> `ops/update-resonance` - Framework upgrade with backup and restore safety.
 - **/skill-author** -> `ops/skill-author/resonance-skill-author` - Author, validate, and eval a new Resonance skill.
+- **/incident** -> `ops/incident` - Drive a live production incident: triage, severity, mitigate, comms, blameless postmortem.
 
 ### Always-on specialists (auto-fire, no command)
-Knowledge skills apply themselves when relevant: `engineering/backend`, `engineering/frontend`, `engineering/mobile`, `engineering/game-dev`, `engineering/database`, `engineering/devops`, `engineering/automation`, `engineering/performance`, `strategy/architect`, `strategy/growth`, `strategy/researcher`, `marketing/copywriter`, `sales/account-intelligence`, `sales/lead-ops`, `sales/outbound-sequence`, `ops/security`, `ops/product`, `ops/productivity`.
+Knowledge skills apply themselves when relevant: `engineering/backend`, `engineering/frontend`, `engineering/mobile`, `engineering/game-dev`, `engineering/database`, `engineering/devops`, `engineering/automation`, `engineering/performance`, `strategy/architect`, `strategy/growth`, `strategy/researcher`, `marketing/copywriter`, `sales/account-intelligence`, `sales/lead-ops`, `sales/outbound-sequence`, `ops/security`, `ops/product`, `ops/productivity`, `ops/observability`, `marketing/paid-acquisition`, `marketing/analytics`, `marketing/lifecycle`.
 
 ---
 

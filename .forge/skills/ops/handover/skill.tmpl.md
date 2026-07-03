@@ -1,5 +1,5 @@
 ---
-name: handover
+name: resonance-ops-handover
 description: Writes a handover document for a colleague after a coding session or sprint. Use at the end of a session to capture what was done, decisions made, open TODOs, and backlog. Produces docs/handovers/YYMMDD_handover.md. If a handover file already exists for today, appends to it. Run before closing the conversation. Session context is the richest input.
 archetype: procedure
 ---

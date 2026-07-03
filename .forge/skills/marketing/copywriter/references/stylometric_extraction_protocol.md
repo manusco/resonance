@@ -26,7 +26,7 @@ To ensure the profile is deterministic and usable by generation agents, output t
 *   **surface_heuristics**:
     *   `vocabulary_complexity` (e.g., Flesch-Kincaid read level).
     *   `formatting_rules` (e.g., "one-sentence paragraphs for emphasis").
-    *   `punctuation_quirks` (e.g., heavy use of em-dashes `—` instead of commas).
+    *   `punctuation_quirks` (e.g., heavy use of em-dashes `-` instead of commas).
 *   **rhythm_and_flow**:
     *   `sentence_length_variance` (Burstiness - mix of short punchy sentences vs long explanatory ones).
     *   `paragraph_density` (Average words per visual block).
@@ -37,7 +37,7 @@ To ensure the profile is deterministic and usable by generation agents, output t
 *   **voice_personality**: `character_archetype`, `core_values`, `tone_descriptors`.
 *   **replication_blueprint**:
     *   `do_always` (Mandatory stylistic rules and structural habits).
-    *   `do_never` (The author's implicit Taboo list—the exact terms and habits they actively avoid).
+    *   `do_never` (The author's implicit Taboo list-the exact terms and habits they actively avoid).
 
 ## 4. Quality Standards (The Linting)
 Every extracted pattern must pass the **Evidence Test**. If you claim a pattern exists, you must prove it.

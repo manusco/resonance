@@ -134,7 +134,7 @@ Optimize for AI search engines (ChatGPT, Perplexity, Google AI Overviews):
 - Publication date visible
 - Last updated date if content has been revised
 - Flag content older than 12 months without update for fast-changing topics
-- Date signals must be consistent across URL, Schema, meta, and byline (inconsistency breaks `trustSyntacticDateInRanking` — see `content_quality_signals.md`)
+- Date signals must be consistent across URL, Schema, meta, and byline (inconsistency breaks `trustSyntacticDateInRanking` - see `content_quality_signals.md`)
 
 ---
 

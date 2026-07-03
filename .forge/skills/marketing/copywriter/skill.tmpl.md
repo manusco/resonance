@@ -80,6 +80,7 @@ Reciprocity, Commitment, Social Proof, Authority, Liking, Scarcity. Every CTA us
 - **[German Anti-Slop](references/german_anti_slop.md)**: Writing German copy that reads human. The DACH Kill List, Sie/Du, rhythm.
 - **[Entropy Protocol](references/entropy_protocol.md)**: Chaos tactics for defeating pattern detection.
 - **[Market Sophistication](references/market_sophistication.md)**: E5 CAMP Levels (Promise vs. Mechanism).
+- **[Social Content](references/social_content_protocol.md)**: Platform-native social copy patterns.
 
 {{RESOLVER:operating_standard}}
 

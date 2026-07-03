@@ -49,6 +49,7 @@ Copy this checklist and tick items as you go.
 | **Hallucination Audit** | "Verify this output" | Claim-by-claim verification against source context |
 | **Regression** | Release prep | Full sweep of critical paths across all 8 test categories |
 | **Verification Audit** | Audit request | Gap analysis: which paths are tested, which are missing |
+| **Live Verification** | A change or bug to prove | Executed proof (green tests, live browser check) plus a regression test |
 
 ## Out of Scope
 
@@ -76,6 +77,9 @@ Assert against visible behavior, exact redirect destinations, exact error messag
 ### Goal-Driven Verification
 Transform vague tasks into verifiable goals before running any test. "Make sure it works" requires constant clarification. "Assert X is visible after Y" lets you loop autonomously.
 
+### Execute, Then Believe
+A plan for tests is not a test. Do not claim a change works until you have run the actual thing (the project's test command, or the real page in a browser) and read the full output. The done-condition is an executed check passing, never the model's own assertion. See live_execution.
+
 ### Deterministic Async
 A flaky test is an unnamed race, not bad luck. Never `sleep(n)` and hope the work finished; wait for the actual condition (element visible, response arrived, row exists) with a generous timeout ceiling. Freeze time, seed randomness, isolate shared state. A bare `sleep` before an assertion is a latent flake even when it is green today.
 
@@ -98,6 +102,12 @@ A flaky test is an unnamed race, not bad luck. Never `sleep(n)` and hope the wor
 - **[QA Health Rubric](references/qa_health_rubric.md)**: Full, Quick, and Regression modes.
 - **[Assertion Layers](references/assertion_layers.md)**: Source vs. Rendered decision flowchart.
 - **[Async Test Stability](references/async_test_stability.md)**: Kill flakiness by waiting on conditions, not the clock.
+- **[Live Execution](references/live_execution.md)**: Run tests and drive a browser to verify against reality, not vibes.
+- **[CI Test Runner](references/ci_test_runner_protocol.md)**: Running the suite in CI, flake control.
+- **[LLM Eval Protocol](references/llm_eval_protocol.md)**: Adversarial cases and scoring for AI features.
+- **[Load Testing (k6)](references/load_testing_k6.md)**: Throughput and latency under load.
+- **[Screenshot Diffing](references/screenshot_diffing.md)**: Visual regression checks.
+- **[Verification Matrix](references/verification_matrix.md)**: Mapping features to test coverage.
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 
 {{RESOLVER:operating_standard}}

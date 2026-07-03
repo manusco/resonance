@@ -76,6 +76,7 @@ O(n^2) loops masquerading as O(n). An ORM that issues one query per item in a li
 - **[LLM FinOps Protocol](references/llm_finops_protocol.md)**: Token optimization, semantic caching, and model tiering.
 - **[Bundle Analysis](references/bundle_analysis_protocol.md)**: Code size budget.
 - **[Backend Performance](references/backend_performance_protocol.md)**: N+1, Memory, Caching.
+- **[Core Web Vitals](references/core_web_vitals.md)**: LCP, INP, CLS targets and fixes.
 
 {{RESOLVER:operating_standard}}
 

@@ -63,6 +63,7 @@ Never patch a running server. Replace it. Deploy a new container image, drain th
 - **[Platform Decision Tree](references/platform_tree.md)**: Hosting selection guide.
 - **[Rollback Matrix](references/rollback_matrix.md)**: Emergency response procedures.
 - **[Docker Optimization](references/docker_optimization.md)**: Container best practices.
+- **[PowerShell Automation](references/powershell_automation.md)**: Windows automation patterns.
 
 {{RESOLVER:operating_standard}}
 

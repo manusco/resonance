@@ -31,7 +31,7 @@ Before writing a single file, internalize these rules:
 | :--- | :--- |
 | **Understand Before You Rewrite** | The old system is a behavioral reference, not a target. It encodes years of business decisions. Read it like archaeology. |
 | **No Blind Ports** | Do not translate old files 1:1 into the new stack. Understand what each piece *does*, then design it correctly for the new context. |
-| **No Accidental Deletions** | A field, route, or behavior is only removed after it is confirmed dead — via business review, not by assumption. |
+| **No Accidental Deletions** | A field, route, or behavior is only removed after it is confirmed dead - via business review, not by assumption. |
 | **New Architecture, Preserved Intent** | The data model changes. The business rules do not. Separate the two. |
 | **Migrate in Slices, Not in One Shot** | Break the migration into independently shippable phases. Each phase must be verifiable on its own. |
 | **Dry Run is Mandatory** | Any data transformation runs in dry-run mode first. No production data is mutated until the report is reviewed. |
@@ -88,7 +88,7 @@ Before designing anything, identify and classify risk:
 | **Fragile Code** | What is held together with duct tape? What breaks if touched? |
 | **Unclear Logic** | What parts have no tests, no comments, and no obvious owner? |
 | **Duplicated Rules** | Where is the same validation or permission check in multiple places? |
-| **Dead Code** | What routes, models, or features appear unused? Flag — do not delete yet. |
+| **Dead Code** | What routes, models, or features appear unused? Flag - do not delete yet. |
 | **Manual Product Decisions** | Which behaviors require a product decision before redesigning? |
 | **Data Quality** | Are there orphaned records, inconsistent states, or nulls in required fields? |
 | **Hidden Dependencies** | What external systems does the old app touch that the new one must replicate or replace? |
@@ -107,7 +107,7 @@ For each entity in the new system, define:
 
 ```
 Entity: [Name]
-Purpose: [One sentence — what does this record represent?]
+Purpose: [One sentence - what does this record represent?]
 Fields:
   - name: [field_name]
     type: [String | Integer | Boolean | Date | Enum | Relation]
@@ -145,7 +145,7 @@ For every field in the old system, make an explicit decision:
 | :--- | :--- | :--- | :--- |
 | `user_name` | `name` | Rename | Cleaner language |
 | `application_type` | `type` | Preserve | Same semantics |
-| `old_flag` | — | **Delete** | Confirmed unused by [person] on [date] |
+| `old_flag` | - | **Delete** | Confirmed unused by [person] on [date] |
 | `status` | `status` | Redesign | New enum with explicit state machine |
 | `created_at` | `createdAt` | Rename | Convention change |
 
@@ -157,7 +157,7 @@ Define all roles and their permissions before writing any code:
 
 | Role | Resource | Create | Read | Update | Delete | Condition |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Public | Application | ✅ | Own only | Draft only | ❌ | — |
+| Public | Application | ✅ | Own only | Draft only | ❌ | - |
 | Admin | Application | ✅ | All | All | Soft only | Authenticated |
 
 ---
@@ -186,7 +186,7 @@ Use a clear, separated layer structure. The exact directory names adapt to the t
 1. Business logic lives in the **domain layer**, not in UI components or route handlers.
 2. Route/API handlers are thin wrappers around domain functions.
 3. Validation schemas are defined once and reused across domain and API layers.
-4. Access control functions are **named**, **tested**, and **reused** — never inlined.
+4. Access control functions are **named**, **tested**, and **reused** - never inlined.
 5. Status transitions go through **explicit named functions**. No direct field assignments from arbitrary locations.
 6. Do not mix unrelated business concerns into lifecycle hooks (e.g., ORM hooks).
 7. All important status transitions must be tested.
@@ -228,7 +228,7 @@ Every migration script must:
 After every run (dry or live), produce:
 
 ```
-Migration Report — [timestamp]
+Migration Report - [timestamp]
 Source: [old system name / export file]
 Target: [new system name / collection]
 Mode: [DRY RUN | LIVE]
@@ -241,9 +241,9 @@ Summary:
   Warnings:                 [n]  ← suspicious but not blocking
 
 Detail:
-  [record_id]: ERROR — field [x] failed validation: [reason]
-  [record_id]: SKIPPED — reason: [deleted/duplicate/out_of_scope]
-  [record_id]: WARNING — field [x] is null; defaulted to [y]
+  [record_id]: ERROR - field [x] failed validation: [reason]
+  [record_id]: SKIPPED - reason: [deleted/duplicate/out_of_scope]
+  [record_id]: WARNING - field [x] is null; defaulted to [y]
 
 Missing Relationships:
   [n] records reference [entity_id] that does not exist in new system
@@ -321,17 +321,17 @@ For each user type, define:
 ### 5.2 UX Quality Gates
 
 **Applicant/Public-facing UI:**
-- [ ] Clear entry point — user knows immediately what to do
+- [ ] Clear entry point - user knows immediately what to do
 - [ ] Multi-step forms show progress
 - [ ] Draft save where the form is long or the session could be lost
 - [ ] Review step before final submission
 - [ ] Confirmation screen after submission
-- [ ] Status visibility — user can check where their submission stands
-- [ ] Friendly, specific error messages — not generic "Invalid input"
+- [ ] Status visibility - user can check where their submission stands
+- [ ] Friendly, specific error messages - not generic "Invalid input"
 - [ ] Mobile-first or at minimum mobile-tested
 
 **Admin/Internal-facing UI:**
-- [ ] Dense, efficient — admin users value speed over beauty
+- [ ] Dense, efficient - admin users value speed over beauty
 - [ ] Filterable lists (by status, date, assignee, score)
 - [ ] Inline status badges that match the domain status enum exactly
 - [ ] Bulk actions where appropriate

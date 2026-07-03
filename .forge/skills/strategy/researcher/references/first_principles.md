@@ -1,7 +1,7 @@
 # First Principles Protocol
 
 > "Boil things down to the most fundamental truths and say, 'What are we sure is true?' ... and then reason up from there."
-> — Elon Musk
+> - Elon Musk
 
 ## 1. The Deconstruction (Step 1)
 

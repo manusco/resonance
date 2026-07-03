@@ -71,6 +71,7 @@ Every business rule, mapping, and transformation exists in exactly one place. Wh
 - **[Domain Driven Design](references/domain_driven_design.md)**: Guidelines for domain modeling.
 - **[Error + Data Flow Framework](references/error_rescue_framework.md)**: Eradicating silent failures.
 - **[Site Migration Protocol](references/site_migration_protocol.md)**: Playbook for migrating or replatforming any site.
+- **[C4 Diagram Templates](references/c4_diagram_templates.md)**: Ready C4 diagrams for context, container, component.
 
 {{RESOLVER:operating_standard}}
 

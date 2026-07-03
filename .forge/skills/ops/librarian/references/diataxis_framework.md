@@ -1,7 +1,7 @@
 # Diataxis Framework Protocol
 
 > "Documentation is not one thing. It is four things."
-> — Daniele Procida
+> - Daniele Procida
 
 ## 1. The 4 Quadrants
 

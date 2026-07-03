@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-observability",
+  "query": "We just launched a new payments API in production and we're flying blind. What should we instrument first?",
+  "files": [],
+  "expected_behavior": [
+    "Starts with the Four Golden Signals or RED (Rate, Errors, Duration) as the default first instrumentation for a request-driven service",
+    "Splits latency into success vs error latency and uses a histogram for percentiles, not an average",
+    "Recommends structured logs carrying trace_id/span_id and OpenTelemetry tracing so a slow or failed request can be localized in the call graph",
+    "Warns against putting unbounded-cardinality labels (raw user_id, full URL) on metrics and puts that detail on traces/logs instead",
+    "Frames the goal as explaining the running system, distinct from pre-release testing (qa) or codebase health scoring (system-health)"
+  ]
+}

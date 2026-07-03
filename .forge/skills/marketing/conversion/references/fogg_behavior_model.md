@@ -1,7 +1,7 @@
 # Fogg Behavior Model (B=MAT) Protocol
 
 > "Behavior happens when Motivation, Ability, and a Trigger come together at the same moment."
-> — Dr. BJ Fogg
+> - Dr. BJ Fogg
 
 ## 1. The Formula
 

@@ -22,7 +22,7 @@
     *   ✅ We do this fast, so you save time.
     *   *Rule*: Never use Bold Header + Colon. Write sentences.
 2.  **The "Em Dash" Overload**:
-    *   ❌ It is fast—really fast—and cool.
+    *   ❌ It is fast-really fast-and cool.
     *   ✅ It is fast. It is also cool.
     *   *Rule*: Max 1 em-dash per 500 words.
 3.  **The "Title Case" Header**:

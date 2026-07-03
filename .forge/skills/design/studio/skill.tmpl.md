@@ -68,7 +68,7 @@ Separate Subject from Style from Parameters. Each is a concern. Mixing them prod
 ## Reference Library
 
 - **[Visual Prompting Protocol](references/visual_prompting_protocol.md)**: Physics of the prompt.
-- **[Style Matrix](references/style_matrix.md)**: Curated high-end aesthetics.
+- **[Visual Style Library](references/visual_style_library.md)**: Curated high-end aesthetics.
 - **[Asset Pipeline](references/asset_generation_pipeline.md)**: From concept to final asset.
 
 {{RESOLVER:operating_standard}}

@@ -4,7 +4,7 @@
 > **Objective**: Catch silent failures in the planning phase before they become production incidents.
 
 ## 1. Zero Silent Failures
-Every failure mode must be visible—to the system (logs), to the team (alerts), and to the user (UI). A failure that happens silently is a critical architectural defect.
+Every failure mode must be visible-to the system (logs), to the team (alerts), and to the user (UI). A failure that happens silently is a critical architectural defect.
 
 ## 2. The Error & Rescue Map
 For every new service, API call, database mutation, or complex method, you MUST define the following table in your design:

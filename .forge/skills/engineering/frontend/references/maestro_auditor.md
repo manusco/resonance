@@ -8,7 +8,7 @@
 
 | Trigger | Description | Corrective Action |
 | :--- | :--- | :--- |
-| **The "Safe Split"** | Using `grid-cols-2` or 50/50, 60/40 layouts. | **Switch to** `90/10` or `100% Stacked`. (See Design Protocols). |
+| **The "Safe Split"** | Using `grid-cols-2` or 50/50, 60/40 layouts. | **Switch to** `90/10` or `100% Stacked`. |
 | **The "Glass Trap"** | Using `backdrop-blur` without raw borders. | **Add** a 1px solid border (alpha 0.5) to define edges. |
 | **The "Static Hover"** | Hovering creates no movement. | **Add** `scale(1.02)` or `y-translate(-2px)`. |
 | **The "Div Soup"** | Nesting > 4 divs deep. | **Refactor** into a sub-component. |

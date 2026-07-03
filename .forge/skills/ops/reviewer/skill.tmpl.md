@@ -86,6 +86,8 @@ When the code under review is yours, reflexive agreement is the failure mode, no
 - **[Automated Linting](references/automated_linting_protocol.md)**: Tooling.
 - **[Pre-Landing Checklist](references/pre_landing_checklist.md)**: SQL Safety, LLM Trust Boundaries, and Time Window checks.
 - **[AI Production Checklist](references/ai_production_checklist.md)**: Evals, Prompts, Telemetry audit.
+- **[Atomic Review Report](references/atomic_review_report.md)**: The report format.
+- **[Pull Request Template](references/pull_request_template.md)**: PR description standard.
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](../core/references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
 

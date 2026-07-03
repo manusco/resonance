@@ -34,7 +34,7 @@ Copy this checklist and tick items as you go.
 ## Recovery
 
 - Something went wrong after deleting `.agents/` → clone the repo and copy `.agents/` back in. This is faster and cleaner than restoring a backup of an old version.
-- `/system-health` fails (score < 50) → do not use the system. Re-run steps 3–5 from a fresh clone. The issue is almost always a partial copy.
+- `/system-health` fails (score < 50) → do not use the system. Re-run steps 3-5 from a fresh clone. The issue is almost always a partial copy.
 - Conflict in `00_soul.md` → this should not happen because `.resonance/` is never touched. If it does happen, the user has accidentally run the wrong command. Stop and confirm scope before proceeding.
 
 ## Out of Scope

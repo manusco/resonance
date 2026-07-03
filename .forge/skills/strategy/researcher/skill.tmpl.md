@@ -70,6 +70,7 @@ When research surfaces multiple valid approaches, present them with tradeoffs. S
 - **[Research Synthesis Protocol](references/research_synthesis_protocol.md)**: Verification + matrix building.
 - **[Diataxis Framework](references/diataxis_framework.md)**: Documentation structure.
 - **[LLMs.txt Protocol](references/llms_txt_protocol.md)**: AI-friendly documentation format.
+- **[First Principles](references/first_principles.md)**: Reasoning from fundamentals.
 
 {{RESOLVER:operating_standard}}
 

@@ -1,7 +1,7 @@
 # Scientific Method Protocol
 
 > "Nullius in verba" (Take nobody's word for it).
-> — Royal Society Motto
+> - Royal Society Motto
 
 ## 1. The Cycle
 

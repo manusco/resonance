@@ -1,12 +1,12 @@
 #!/bin/bash
-# resonance.sh - System check for Resonance v2.2.0
+# resonance.sh - System check for Resonance v2.3.0
 
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo "🔮 Resonance v2.2.0 — System Check"
+echo "🔮 Resonance v2.3.0 - System Check"
 echo "========================================"
 
 # 1. Check Memory (project brain)

@@ -59,9 +59,13 @@ py .forge/forge.py build <name> --model open-weights     # target a model family
 py .forge/forge.py build --all                           # every skill
 py .forge/forge.py build <name> --dry-run                # CI freshness: exit 1 on drift
 
-py .forge/validate_skill.py <path-to-SKILL.md>           # one skill
+py .forge/validate_skill.py <path-to-SKILL.md>           # one skill (Tier 1, structural)
 py .forge/validate_skill.py --all .agents/skills         # all skills
 py .forge/validate_skill.py --all .agents/skills --strict  # warnings fail too
+
+py .forge/validate_library.py                            # Tier 1.5: cross-skill (orphans, dup/diverged refs, eval-name drift, two-level links, leaks, dashes)
+py .forge/run_evals.py --all --check                     # eval structure gate (free)
+py .forge/run_evals.py marketing/seo --model-cmd "claude -p"  # live with/without run, LLM-judged
 ```
 
 (`py` on Windows; `python3` on macOS/Linux. Pure stdlib, no install.)

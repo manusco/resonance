@@ -1,4 +1,4 @@
-# Engine Decision Matrix (2025 Edition)
+# Engine Decision Matrix
 
 > Do not choose an engine based on what you know. Choose based on what the *game* needs.
 

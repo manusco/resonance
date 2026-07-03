@@ -69,6 +69,7 @@ The standard interface for exposing capabilities to AI agents. All external reso
 - **[Unix Philosophy](references/unix_philosophy.md)**: Guide to modular tool design.
 - **[MCP Standards](references/mcp_standards.md)**: Implementation guide for Model Context Protocol.
 - **[Regex Wizardry](references/regex_wizardry.md)**: Optimization patterns for text processing.
+- **[n8n Production Patterns](references/n8n-production-patterns.md)**: Idempotent, resilient workflow automation.
 
 {{RESOLVER:operating_standard}}
 

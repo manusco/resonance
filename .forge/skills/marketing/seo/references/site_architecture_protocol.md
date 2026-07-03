@@ -1,6 +1,11 @@
 # Site Architecture Protocol
 
-> **Goal**: Design website structure — page hierarchy, URL patterns, navigation, and internal linking — for user clarity and search engine optimization.
+## Contents
+- Hierarchy design
+- URL structure rules
+- Navigation design
+
+> **Goal**: Design website structure - page hierarchy, URL patterns, navigation, and internal linking - for user clarity and search engine optimization.
 
 ## 1. Hierarchy Design
 
@@ -28,12 +33,12 @@ Users should reach any important page within 3 clicks from the homepage. Not abs
 
 ## 2. URL Structure Rules
 
-1. **Readable by humans** — `/features/analytics` not `/f/a123`
-2. **Hyphens, not underscores** — `/blog/seo-guide` not `/blog/seo_guide`
-3. **Reflect the hierarchy** — URL path matches site structure
-4. **Consistent trailing slash policy** — pick one (with or without) and enforce
-5. **Lowercase always** — `/About` should 301 → `/about`
-6. **Short but descriptive** — `/blog/landing-page-conversions` > `/blog/how-to-improve-landing-page-conversion-rates`
+1. **Readable by humans** - `/features/analytics` not `/f/a123`
+2. **Hyphens, not underscores** - `/blog/seo-guide` not `/blog/seo_guide`
+3. **Reflect the hierarchy** - URL path matches site structure
+4. **Consistent trailing slash policy** - pick one (with or without) and enforce
+5. **Lowercase always** - `/About` should 301 → `/about`
+6. **Short but descriptive** - `/blog/landing-page-conversions` > `/blog/how-to-improve-landing-page-conversion-rates`
 
 ### URL Patterns by Page Type
 
@@ -50,9 +55,9 @@ Users should reach any important page within 3 clicks from the homepage. Not abs
 
 ### Common Mistakes
 - **Dates in blog URLs**: `/blog/2024/01/post` adds no value. Use `/blog/post`.
-- **Over-nesting**: `/products/category/subcategory/item/detail` — flatten.
+- **Over-nesting**: `/products/category/subcategory/item/detail` - flatten.
 - **Changing URLs without redirects**: Every old URL needs a 301. Lost backlink equity is lost authority.
-- **IDs in URLs**: `/product/12345` — use slugs.
+- **IDs in URLs**: `/product/12345` - use slugs.
 - **Inconsistent parents**: Don't mix `/features/analytics` and `/product/automation`.
 
 ## 3. Navigation Design
@@ -89,12 +94,12 @@ Group into columns:
 | Cross-section | Connect across sections | Feature page → related case study |
 
 ### Rules
-1. **No orphan pages** — every page must have ≥1 internal link pointing to it.
-2. **Descriptive anchor text** — "our analytics features" not "click here."
+1. **No orphan pages** - every page must have ≥1 internal link pointing to it.
+2. **Descriptive anchor text** - "our analytics features" not "click here."
 3. **5-10 internal links per 1000 words** (approximate guideline).
-4. **Link to important pages more often** — homepage, features, pricing.
-5. **Use breadcrumbs** — free internal links on every page.
-6. **Related content sections** — "You might also like" at page bottom.
+4. **Link to important pages more often** - homepage, features, pricing.
+5. **Use breadcrumbs** - free internal links on every page.
+6. **Related content sections** - "You might also like" at page bottom.
 
 ### Hub-and-Spoke Model
 ```

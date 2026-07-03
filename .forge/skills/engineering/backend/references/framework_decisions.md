@@ -1,4 +1,4 @@
-# Framework Selection (2025 Edition)
+# Framework Selection
 
 > "Do not use Express just because you know it. Fit the tool to the constraint."
 
@@ -21,5 +21,5 @@
 
 ## 3. The "Express Ban"
 
-**If you are building a new project in 2025, default to Hono or Fastify.**
+**For a new project, default to Hono or Fastify.**
 *   *Why?* Express does not support `async/await` error handling natively without patches, and it is bloated.

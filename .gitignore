@@ -26,3 +26,4 @@ website/
 temp
 temp_clones/
 .antigravity-images
+__pycache__/

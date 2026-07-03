@@ -14,9 +14,9 @@ The single source of truth for what a Resonance skill must be. The validator
 ## Frontmatter
 
 Required:
-- `name` — `^[a-z0-9-]{1,64}$`. Lowercase, digits, hyphens. Avoid the words "claude"/"anthropic" in the name; they hurt cross-tool namespacing.
-- `description` — third person, <= 1024 chars. States what the skill does AND when to use it. This is the only text loaded at startup; it is what makes the skill trigger. Lead with the use case.
-- `archetype` — `knowledge | procedure | orchestration`.
+- `name` - `^[a-z0-9-]{1,64}$`. Lowercase, digits, hyphens. Avoid the words "claude"/"anthropic" in the name; they hurt cross-tool namespacing.
+- `description` - third person, <= 1024 chars. States what the skill does AND when to use it. This is the only text loaded at startup; it is what makes the skill trigger. Lead with the use case.
+- `archetype` - `knowledge | procedure | orchestration`.
 
 Optional, host-dependent (the Forge emits these where the host supports them; do not hand-author tool-specific fields in the template):
 - manual-only flag for side-effecting procedures (so the model does not auto-fire a deploy).
@@ -57,12 +57,12 @@ Procedure and orchestration skills MUST carry the operating contract sections
 ## What the Forge injects (never hand-copy these)
 
 Templates use placeholders; the compiler fills them from `.forge/resolvers/`:
-- `{{RESOLVER:voice}}` — anti-slop voice
-- `{{RESOLVER:decision_brief}}` — recommendation-first decisions
-- `{{RESOLVER:completion}}` — status protocol
-- `{{RESOLVER:locks}}` — the four operating locks
-- `{{RESOLVER:learnings}}` — the Ratchet
-- `{{OVERLAY}}` — the per-model behavioral patch
-- `{{TOOL:logical}}` — maps a logical tool name to the host's real tool name
+- `{{RESOLVER:voice}}` - anti-slop voice
+- `{{RESOLVER:decision_brief}}` - recommendation-first decisions
+- `{{RESOLVER:completion}}` - status protocol
+- `{{RESOLVER:locks}}` - the four operating locks
+- `{{RESOLVER:learnings}}` - the Ratchet
+- `{{OVERLAY}}` - the per-model behavioral patch
+- `{{TOOL:logical}}` - maps a logical tool name to the host's real tool name
 
 Edit the template, run `forge.py build`, never the generated `SKILL.md`.

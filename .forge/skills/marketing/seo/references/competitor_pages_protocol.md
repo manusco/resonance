@@ -4,7 +4,7 @@
 
 ## 1. Core Principles
 
-- **Honesty builds trust**: Acknowledge competitor strengths. Be accurate about your limitations. Readers are comparing — they'll verify claims.
+- **Honesty builds trust**: Acknowledge competitor strengths. Be accurate about your limitations. Readers are comparing - they'll verify claims.
 - **Depth over surface**: Go beyond feature checklists. Explain *why* differences matter.
 - **Help them decide**: Be clear about who you're best for AND who the competitor is best for.
 
@@ -44,7 +44,7 @@
 | Section | Purpose |
 |---------|---------|
 | TL;DR Summary | 2-3 sentence key differences for scanners |
-| Paragraph Comparisons | Beyond tables — explain when each difference matters |
+| Paragraph Comparisons | Beyond tables - explain when each difference matters |
 | Feature Comparison | How each handles it, strengths/limitations, bottom line |
 | Pricing Comparison | Tier-by-tier, hidden costs, total cost for sample team size |
 | Who It's For | Explicit ideal customer for each option |
@@ -63,17 +63,17 @@
 
 **Internal linking**: Link between related competitor pages. Link from feature pages to relevant comparisons. Create hub page linking to all competitor content.
 
-**Schema**: Consider FAQ schema for questions like "What is the best alternative to [Competitor]?" (Note: FAQPage rich results now restricted to gov/health — but still useful for AI citation.)
+**Schema**: Consider FAQ schema for questions like "What is the best alternative to [Competitor]?" (Note: FAQPage rich results now restricted to gov/health - but still useful for AI citation.)
 
 ---
 
 ## 5. Research Checklist
 
 For each competitor:
-1. Sign up and use the product — document features, UX, limitations
-2. Current pricing — all tiers, what's included, hidden costs
-3. Review mining — G2, Capterra, TrustRadius for praise/complaint themes
-4. Customer feedback — talk to customers who switched (both directions)
-5. Content research — their positioning, their comparison pages, their changelog
+1. Sign up and use the product - document features, UX, limitations
+2. Current pricing - all tiers, what's included, hidden costs
+3. Review mining - G2, Capterra, TrustRadius for praise/complaint themes
+4. Customer feedback - talk to customers who switched (both directions)
+5. Content research - their positioning, their comparison pages, their changelog
 
 **Update cadence**: Quarterly pricing/feature check. Annual full refresh.

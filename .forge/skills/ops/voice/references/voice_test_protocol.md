@@ -1,4 +1,4 @@
-# Voice Test Protocol — Validating the Compiled Profile
+# Voice Test Protocol - Validating the Compiled Profile
 
 ## Contents
 
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-After the voice file is compiled, validate it before declaring done. A file that "looks right" is not verified. A file that produces output the subject recognizes as their own — that's verified.
+After the voice file is compiled, validate it before declaring done. A file that "looks right" is not verified. A file that produces output the subject recognizes as their own - that's verified.
 
 The test prompts, evaluation criteria, and common failure modes differ by subject type.
 
@@ -17,7 +17,7 @@ The test prompts, evaluation criteria, and common failure modes differ by subjec
 
 ## The Test
 
-### Step 1 — Pick a Reference Prompt
+### Step 1 - Pick a Reference Prompt
 
 Choose a prompt the subject has already answered in their own words. Use a type-appropriate prompt:
 
@@ -36,15 +36,15 @@ Choose a prompt the subject has already answered in their own words. Use a type-
 - A pressure test: "Write how [character] responds to being told they're wrong about something."
 - A consistency check: "Write [character] in a formal situation vs. a casual one."
 
-### Step 2 — Run Two Sessions
+### Step 2 - Run Two Sessions
 
-**Session A — No profile:**
+**Session A - No profile:**
 Open a blank session. Run the prompt with no context file. Save the output.
 
-**Session B — With profile:**
+**Session B - With profile:**
 Open a blank session. Paste the `<voice_profile>` as context. Run the exact same prompt. Save the output.
 
-### Step 3 — Show Both to the Subject
+### Step 3 - Show Both to the Subject
 
 Present Session A and Session B side by side. Ask:
 
@@ -52,7 +52,7 @@ Present Session A and Session B side by side. Ask:
 2. "Point at the specific line in the wrong version that's most wrong."
 3. "Is there anything in the right version that still doesn't sound right?"
 
-### Step 4 — Evaluate
+### Step 4 - Evaluate
 
 | Result | Action |
 | :--- | :--- |

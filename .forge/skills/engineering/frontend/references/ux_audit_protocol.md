@@ -1,6 +1,6 @@
 # UX Audit Protocol (Heuristics)
 
-> "Don't make me think." — Steve Krug
+> "Don't make me think." - Steve Krug
 
 ## 1. The Interaction Cost
 

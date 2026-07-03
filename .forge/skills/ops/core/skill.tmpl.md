@@ -80,6 +80,7 @@ Stop and search before building anything involving unfamiliar patterns. Evaluate
 
 - **[Git Mastery](references/git_mastery.md)**: Reflog and bisect recovery protocols.
 - **[Karpathy Rules](references/karpathy_rules.md)**: Universal coding standards (Simplicity, Surgical).
+- **[Karpathy Examples](references/karpathy_examples.md)**: Worked before/after examples of the rules.
 - **[Completion Attestation](references/completion_attestation.md)**: Required evidence format for task completion.
 - **[Audit Classification Taxonomy](references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.

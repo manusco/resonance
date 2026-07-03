@@ -38,7 +38,7 @@ Launch is not an event; it is a sequence. Never deploy from 0 to 100. Follow the
 
 ### Phase 3: Beta (The Waitlist)
 *   **Goal**: Build the scarcity engine and refine messaging.
-*   **Action**: Launch the landing page without the product. Collect emails. Use the *Mimetic Desire* cognitive bias—people want what is exclusive.
+*   **Action**: Launch the landing page without the product. Collect emails. Use the *Mimetic Desire* cognitive bias-people want what is exclusive.
 
 ### Phase 4: Early Access (The Gradient)
 *   **Goal**: Controlled scale and data capture.
@@ -46,7 +46,7 @@ Launch is not an event; it is a sequence. Never deploy from 0 to 100. Follow the
 
 ### Phase 5: General Availability (The Spike)
 *   **Goal**: Maximum visibility and conversion.
-*   **Action**: Open self-serve. Deploy the full O.R.B. stack. Product Hunt, Hacker News, Email Blasts. Treat this as an all-day event—respond to every single comment within 5 minutes.
+*   **Action**: Open self-serve. Deploy the full O.R.B. stack. Product Hunt, Hacker News, Email Blasts. Treat this as an all-day event-respond to every single comment within 5 minutes.
 
 ## 4. Post-Launch Momentum (The Long Tail)
 A launch fails if day 2 traffic is zero.

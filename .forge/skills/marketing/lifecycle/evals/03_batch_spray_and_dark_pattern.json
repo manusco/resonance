@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-marketing-lifecycle",
+  "query": "Retention is dropping. Plan: blast our whole user list the same 5-email sequence every user gets on days 1 through 5 regardless of what they do, and to cut cancellations, hide the cancel button behind a support ticket and pre-check 'keep my subscription' on the confirm screen. Does this work?",
+  "files": [],
+  "expected_behavior": [
+    "Rejects the batch blast and prescribes triggered lifecycle messaging that fires off user behavior and state, with sends suppressed once their goal is met",
+    "Warns that blasting the whole list, including unengaged addresses, damages deliverability and sending reputation, and recommends suppression of the long-unengaged",
+    "Refuses the hidden cancel button and the pre-checked 'keep my subscription' as dark patterns that cost trust, chargebacks, and word of mouth, and insists the exit stays as easy as signup",
+    "Replaces the dark-pattern cancel flow with a reason-aware save flow (exit reason, then pause or downgrade before discount) that keeps the exit reachable",
+    "Distinguishes voluntary churn (needs the save flow) from involuntary churn (needs a dunning sequence), and notes involuntary churn is often 20 to 40% of the total",
+    "Does not endorse the proposed plan as written"
+  ]
+}

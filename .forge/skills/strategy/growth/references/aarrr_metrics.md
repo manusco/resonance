@@ -1,7 +1,7 @@
 # Pirate Metrics (AARRR) Protocol
 
 > "Vanity metrics make you feel good. Pirate metrics make you rich."
-> — Dave McClure
+> - Dave McClure
 
 ## 1. The Funnel
 

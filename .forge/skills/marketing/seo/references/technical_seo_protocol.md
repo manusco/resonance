@@ -1,4 +1,4 @@
-# Technical SEO Protocol — 9-Category Audit Framework
+# Technical SEO Protocol - 9-Category Audit Framework
 
 > The infrastructure layer. If the foundation is broken, nothing else matters.
 
@@ -22,7 +22,7 @@
 - **Noindex tags**: Verify intentional vs accidental
 - **Crawl depth**: Important pages within 3 clicks of homepage
 - **JavaScript rendering**: Check if critical content requires JS execution
-- **Crawl budget**: For large sites (>10k pages), efficiency matters — eliminate index bloat
+- **Crawl budget**: For large sites (>10k pages), efficiency matters - eliminate index bloat
 - **Orphan nodes**: Pages with 0 internal inbound links (the bot cannot find them)
 
 ### AI Crawler Management
@@ -107,9 +107,9 @@ Allow: /
 
 | Metric | Target | Replaced |
 |--------|--------|----------|
-| **LCP** (Largest Contentful Paint) | < 2.5s | — |
+| **LCP** (Largest Contentful Paint) | < 2.5s | - |
 | **INP** (Interaction to Next Paint) | < 200ms | FID (March 12, 2024) |
-| **CLS** (Cumulative Layout Shift) | < 0.1 | — |
+| **CLS** (Cumulative Layout Shift) | < 0.1 | - |
 
 - Evaluation uses 75th percentile of real user data
 - FID was fully removed from all Chrome tools on September 9, 2024. Do NOT reference FID anywhere.

@@ -63,14 +63,14 @@
 | Download the Guide | Content offer |
 | See Pricing for My Team | Pricing page |
 | Book a Demo | Sales-assisted |
-| Try It Free — No Card Needed | Trust-building |
+| Try It Free - No Card Needed | Trust-building |
 
 ### Weak CTAs (Avoid)
 - Submit
 - Sign Up
 - Learn More
 - Click Here
-- Get Started (too vague — get started doing *what*?)
+- Get Started (too vague - get started doing *what*?)
 
 ### Supporting CTA Text
 Place below the button to reduce anxiety:

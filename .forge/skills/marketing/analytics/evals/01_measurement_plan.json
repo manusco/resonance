@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-marketing-analytics",
+  "query": "We're launching a new B2B SaaS onboarding flow and my boss says 'just track everything so we can find insights later.' What events should we add?",
+  "files": [],
+  "expected_behavior": [
+    "Refuses the bottom-up 'track everything' approach and works top-down instead: decision, then metric, then event",
+    "Asks what decision the data must inform before proposing any events",
+    "Proposes a measurement plan table with the business question, a single primary metric, its definition (numerator, denominator, window), and the events that compute it",
+    "Recommends a naming convention (object_action, past tense, snake_case) and putting variation in properties rather than new event names",
+    "Names a north-star metric tied to delivered value (e.g. activation reached) rather than a vanity metric like total signups",
+    "Mentions a tracking plan as the single source of truth and warns against orphan events that feed no metric"
+  ]
+}
