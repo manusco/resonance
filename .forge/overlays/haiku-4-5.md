@@ -1,0 +1,1 @@
+> **Model note (Claude Haiku 4.5):** Fast and capable. Keep the explicit step structure of each procedure and verify after every step; do not collapse multi-step jobs into one leap. Follow the checklist literally, run the stated verification, and do not claim done without the evidence. Prefer the dedicated file and search tools over shell.

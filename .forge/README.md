@@ -12,7 +12,7 @@ template.skill.md   x   host (tool)   x   overlay (model)   ->   SKILL.md
 ## Why a compiler, not hand-written skills
 
 - **Cross-tool.** Antigravity (Google), Codex (OpenAI), Cursor, OpenCode, and Claude Code all read `AGENTS.md` + `.agents/skills`. Tool differences (tool names, paths) live in one host config, not in every skill.
-- **Cross-model.** Strong models get terse prompts; weaker and open-weight models get more explicit guardrails. One overlay file per model family, injected at compile time.
+- **Cross-model.** Strong models get terse prompts; weaker and open-weight models get more explicit guardrails. One overlay file per model family (`claude`, `gpt`, `gemini`, `open-weights`) and per version (`opus-4-8`, `sonnet-5`, `haiku-4-5`, `gpt-5`, `o-series`), injected at compile time. The committed build uses the family default; target a version with `--model opus-4-8`.
 - **DRY.** Shared sections (voice, decision format, completion protocol, the operating locks, the Ratchet) live once in `resolvers/` and are injected into every skill. Fix the voice in one place, recompile, every skill updates.
 - **Verifiable.** Every skill is checked by `validate_skill.py` (free, deterministic) and backed by `>= 3` golden evals before it ships.
 
@@ -26,7 +26,7 @@ template.skill.md   x   host (tool)   x   overlay (model)   ->   SKILL.md
 │   ├── voice.md  decision_brief.md  completion.md  locks.md  learnings.md
 ├── hosts/                   # one config per TOOL (tool-name map + output path)
 │   ├── claude-code.json  codex.json  cursor.json  antigravity.json  opencode.json
-├── overlays/                # one behavioral patch per MODEL family
+├── overlays/                # one behavioral patch per MODEL family, plus per-version
 │   ├── claude.md  gpt.md  gemini.md  open-weights.md
 ├── templates/               # the three archetype starting points
 │   ├── knowledge.skill.md  procedure.skill.md  orchestration.skill.md

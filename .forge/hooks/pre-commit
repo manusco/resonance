@@ -1,0 +1,14 @@
+#!/bin/sh
+# Resonance pre-commit guard (opt-in). Enable with: py .forge/hooks/install.py
+# Blocks a commit on em/en dashes, Soul edits, or committed secrets, and runs the
+# library validator when skills change. Bypass once with: git commit --no-verify
+PY=$(command -v py 2>/dev/null || command -v python3 2>/dev/null || command -v python 2>/dev/null)
+if [ -z "$PY" ]; then
+  echo "Resonance guard: no python found on PATH; skipping." >&2
+  exit 0
+fi
+"$PY" .forge/hooks/guard.py --staged || exit 1
+if git diff --cached --name-only | grep -q '^\.agents/skills/\|^\.forge/skills/'; then
+  "$PY" .forge/validate_library.py || exit 1
+fi
+exit 0

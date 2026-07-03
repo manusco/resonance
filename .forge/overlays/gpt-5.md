@@ -1,0 +1,1 @@
+> **Model note (GPT-5):** Strong native reasoning and tool use. Do not add "think step by step" scaffolding; reason, then act. Use structured tool calls and prefer the host's file and search tools over raw shell. State assumptions in one line before a heavy or irreversible action, then proceed.

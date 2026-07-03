@@ -1,0 +1,1 @@
+> **Model note (o-series reasoning models):** These models reason internally, so do not inject chain-of-thought or "think step by step" instructions; they are wasted or counterproductive. Give the task, the constraints, and the Definition of Done, then let it reason and act. Keep the prompt about what and why, not the thinking steps. Prefer structured tool calls.

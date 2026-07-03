@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.4.1
+
+Release safety and enforcement. Per-version model overlays, a real deploy story in `/ship`, and an opt-in deterministic guard.
+
+### Added
+- **Per-version model overlays.** Alongside the family overlays (`claude`, `gpt`, `gemini`, `open-weights`), per-version patches: `opus-4-8`, `sonnet-5`, `haiku-4-5`, `gpt-5`, `o-series`. Stronger models get terser prompts; smaller models get more explicit step structure; reasoning models get no chain-of-thought scaffolding. The committed build stays on the family default; target a version with `--model opus-4-8`.
+- **Deploy verification and canary in `/ship`.** Ship now confirms a rollback path before deploying, rolls out canary-first where supported, runs a post-deploy smoke test against production (health, a critical path, error rate), and rolls back on any trigger. Green CI is not done; verified production is. New `canary_and_rollback.md` reference and eval.
+- **The hooks layer (opt-in).** `py .forge/hooks/install.py` installs a git pre-commit guard that blocks em/en dashes, edits to the Soul, and committed secrets, and runs the library validator when skills change. Cross-tool (git hooks), with a documented Claude Code option. Deterministic Layer-3 enforcement you turn on when you want it.
+
+### Removed
+- The stray untracked `VERSION` file at the repo root (Resonance versions via `package.json`).
+
 ## v2.4.0
 
 The autonomous, memory-backed, cross-model-checked release. Resonance can now carry a goal to a verified finish, remember by meaning, and pressure a change with a second model. 53 skills, 31 commands, both validators clean, 163 eval cases.
