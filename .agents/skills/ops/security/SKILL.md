@@ -88,6 +88,11 @@ LLM applications need defense in depth: (1) Input Classifiers, (2) Canary Tokens
 - **[JWT Hardening](references/jwt_hardening.md)**: Auth best practices.
 - **[CSP Headers](references/csp_headers_protocol.md)**: XSS defense.
 - **[Encryption At Rest](references/encryption_at_rest.md)**: Data protection.
+- **[Audit Logging](references/audit_logging_compliance.md)**: Tamper-evident logs and compliance trails.
+- **[CORS Policy](references/cors_policy.md)**: Cross-origin rules done safely.
+- **[EPSS Risk](references/epss_risk.md)**: Exploit-probability-based vuln prioritization.
+- **[Rate Limiting](references/rate_limiting_strategy.md)**: Throttling and abuse protection.
+- **[Supply Chain](references/supply_chain.md)**: Dependency and build-chain integrity.
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](../core/references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
 

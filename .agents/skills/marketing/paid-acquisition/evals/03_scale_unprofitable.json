@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-paid-acquisition",
+  "query": "Our Meta campaign has been live 4 days. One ad set is crushing it, so I want to 5x its budget tomorrow and pour more in. Our CAC is $180 and our customers are worth about $150 in margin over their lifetime. Let's scale hard.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to scale because the unit economics do not clear: CAC of $180 exceeds LTV of $150, so more spend loses money faster",
+    "Directs attention upstream to fix the offer, price, funnel, or product economics before adding budget, since paid amplifies an offer but cannot rescue a losing one",
+    "Flags that 4 days and one lucky ad set is not a valid basis for a winner call: the result likely has not reached significance and early leads reverse",
+    "Warns that a 5x budget jump throws the campaign back into the learning phase and spikes cost, recommending stepped increases instead once economics justify scaling",
+    "Distinguishes revenue-based vanity signals from contribution-margin reality and does not endorse scaling on ROAS or CTR alone"
+  ]
+}

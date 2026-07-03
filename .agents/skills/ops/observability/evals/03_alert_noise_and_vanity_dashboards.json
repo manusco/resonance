@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-observability",
+  "query": "Our on-call rotation is drowning. We get ~200 alerts a night for things like pod restarts, disk-usage trends, and memory warnings, and nobody trusts the pager anymore. Also our main dashboard is 40 green tiles that look great but didn't catch last week's outage. Help.",
+  "files": [],
+  "expected_behavior": [
+    "Diagnoses the root cause as alerting on causes (pod restarts, disk trend, memory) instead of user-facing symptoms, which trains people to ignore the pager",
+    "Applies the actionable-alert test: no user impact, no required human action, not urgent, or no clear first step means it should not page",
+    "Recommends deleting or downgrading alerts that never lead to action, grouping/deduplicating, and moving non-urgent items to a ticket queue",
+    "Names the 40-green-tile dashboard as a vanity dashboard and requires every chart to state the question it answers and the action a bad reading triggers, else delete it",
+    "Does NOT respond by adding more alerts or more tiles; reduces noise and ties paging to SLO burn rate and the Golden Signals"
+  ]
+}

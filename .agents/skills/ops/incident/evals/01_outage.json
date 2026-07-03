@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-ops-incident",
+  "query": "We just got paged: checkout is throwing 500s for most users and error rate is climbing. The last deploy went out 10 minutes ago. Run the incident.",
+  "files": [],
+  "expected_behavior": [
+    "Confirms the impact with a signal (error-rate graph or a reproduced 500) and writes down surface, start time, and rough user count before acting",
+    "Declares a severity (SEV1) and names the criterion that set it (core flow down for most users)",
+    "Assigns a single named Incident Commander before diving into fixes",
+    "Mitigates first by the fastest reversible path (rolls back the 10-minute-old deploy or flips the feature flag) instead of root-causing the code live",
+    "Posts a first communication with impact, IC name, and a committed next-update time, keeping the internal channel separate from the external status page",
+    "Verifies recovery against the real signal over a hold window before declaring resolved, then drafts a blameless postmortem with a timeline and owned action items"
+  ]
+}

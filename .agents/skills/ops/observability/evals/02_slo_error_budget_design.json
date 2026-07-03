@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-observability",
+  "query": "Leadership wants 100% uptime on our checkout service and asked us to alert the on-call engineer the moment any server CPU goes above 80%. Set that up.",
+  "files": [],
+  "expected_behavior": [
+    "Pushes back on 100% as an SLO target: it forbids all deploys and is unachievable given dependencies, and proposes a realistic target (e.g. 99.9%) derived from user tolerance",
+    "Defines an SLI as a ratio of good to valid events measured close to the user, and derives the error budget as 100% minus the SLO",
+    "Refuses to page on CPU (a cause, not a user symptom): a service can run hot and still serve every request, so CPU is a diagnostic dashboard, not a page",
+    "Proposes symptom-based, multiwindow burn-rate alerting on the SLO instead, with fast burn paging and slow burn opening a ticket",
+    "Explains the error-budget policy: budget remaining means ship, budget exhausted means freeze features and fix reliability"
+  ]
+}

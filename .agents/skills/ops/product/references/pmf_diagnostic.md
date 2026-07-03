@@ -1,6 +1,6 @@
 # Product-Market Fit (PMF) Diagnostics
 
-This protocol provides the framework to determine whether a product has achieved Product-Market Fit (PMF) and, if not, what strategic pivot is required. PMF is not binary—it is a spectrum, and it can be lost.
+This protocol provides the framework to determine whether a product has achieved Product-Market Fit (PMF) and, if not, what strategic pivot is required. PMF is not binary-it is a spectrum, and it can be lost.
 
 ## 1. The Sean Ellis Test (The 40% Rule)
 The most objective measure of PMF is the Sean Ellis survey.
@@ -10,7 +10,7 @@ The most objective measure of PMF is the Sean Ellis survey.
 - Very disappointed
 - Somewhat disappointed
 - Not disappointed
-- N/A — I no longer use it
+- N/A - I no longer use it
 
 **The Benchmark:**
 If **40% or more** of respondents answer "Very disappointed", you have strong signal for Product-Market Fit. If it is below 40%, you do not have PMF and should focus on product iterations before scaling acquisition.

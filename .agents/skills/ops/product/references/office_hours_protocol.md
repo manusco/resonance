@@ -7,10 +7,10 @@
 
 Ask these ONE AT A TIME. Push for "Desperate Specificity".
 
-1.  **Demand Reality**: What's the strongest evidence you have that someone actually wants this — not "is interested," but would be genuinely upset if it disappeared?
-2.  **Status Quo**: What are your users doing right now to solve this — even badly? What does that workaround cost them?
+1.  **Demand Reality**: What's the strongest evidence you have that someone actually wants this - not "is interested," but would be genuinely upset if it disappeared?
+2.  **Status Quo**: What are your users doing right now to solve this - even badly? What does that workaround cost them?
 3.  **Desperate Specificity**: Name the actual human who needs this most. What's their title? What gets them fired? What keeps them up at night?
-4.  **Narrowest Wedge**: What's the smallest possible version of this that someone would pay real money for — this week?
+4.  **Narrowest Wedge**: What's the smallest possible version of this that someone would pay real money for - this week?
 5.  **Observation & Surprise**: Have you sat down and watched someone use this without helping? What did they do that surprised you?
 6.  **Future-Fit**: If the world looks meaningfully different in 3 years, does your product become more essential or less?
 

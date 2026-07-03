@@ -1,4 +1,4 @@
-# Schema Types — Current Status (April 2026)
+# Schema Types - Current Status (April 2026)
 
 > Which Schema.org types to use, which are restricted, which are deprecated.
 
@@ -37,7 +37,7 @@
 **Guidance for FAQPage:**
 - Existing FAQPage on commercial sites → Flag as Info priority (not Critical), noting AI/LLM citation benefit still exists
 - Adding new FAQPage to commercial sites → Not recommended for Google benefit
-- FAQ content itself is still valuable for AI citability — just don't expect Google rich results
+- FAQ content itself is still valuable for AI citability - just don't expect Google rich results
 
 ---
 

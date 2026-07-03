@@ -1,7 +1,7 @@
 # StoryBrand Framework (The SB7 Protocol)
 
 > "The customer is the Hero, not your brand."
-> — Donald Miller
+> - Donald Miller
 
 ## 1. The 7-Part Script
 

@@ -30,7 +30,7 @@ List all issues and force the team to pick the **top 3** most important ones. Th
 
 ### Step 3: Execute IDS (For each of the Top 3)
 1. **Identify**: What is the real issue? Dig past symptoms. Use the "5 Whys" if the root cause isn't obvious. The stated problem is rarely the root problem.
-2. **Discuss**: Each person shares their perspective. Stay focused — no tangents, no solving yet. Ensure everyone is heard.
+2. **Discuss**: Each person shares their perspective. Stay focused - no tangents, no solving yet. Ensure everyone is heard.
 3. **Solve**: What is the definitive action? Create at least one To-Do with a clear **Owner** and **Due Date**. Cross-reference the Accountability Chart to validate that the To-Do owner matches the seat responsible for that area.
 
 ## 3. Core Guardrails

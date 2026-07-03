@@ -14,7 +14,7 @@
 
 ## 1. Core Insight
 
-A page can score 95/100 on technical SEO and still fail to rank because it is the **wrong page type** for the keyword. If Google shows 8 product pages and 2 comparison pages for your keyword, your blog post will never break through — regardless of optimization.
+A page can score 95/100 on technical SEO and still fail to rank because it is the **wrong page type** for the keyword. If Google shows 8 product pages and 2 comparison pages for your keyword, your blog post will never break through - regardless of optimization.
 
 SXO bridges SEO (what Google rewards) and UX (what users need).
 
@@ -43,7 +43,7 @@ Read the SERP *before* optimizing. For the target keyword:
 | Product | Informational | HIGH | Add educational content layer |
 | Landing Page | Tool/Calculator | HIGH | Build interactive component |
 | Service Page | Local Results | MEDIUM | Add location signals + local schema |
-| Type match | — | ALIGNED | Focus on depth and UX |
+| Type match | - | ALIGNED | Focus on depth and UX |
 
 ---
 

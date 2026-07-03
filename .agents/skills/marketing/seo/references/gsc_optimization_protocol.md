@@ -1,7 +1,7 @@
 # Protocol: GSC Intelligence & Search Intent Optimization
 
 > **Status**: Core Implementation Standard
-> **Objective**: Harness Google Search Console (GSC) data—via direct API access, UI analysis, or export—to move "Striking Distance" pages into Top 3 positions and secure AI citations.
+> **Objective**: Harness Google Search Console (GSC) data-via direct API access, UI analysis, or export-to move "Striking Distance" pages into Top 3 positions and secure AI citations.
 
 ## 1. The "Striking Distance" Mine (Positions 8-20)
 

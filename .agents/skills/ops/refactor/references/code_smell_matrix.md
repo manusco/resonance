@@ -16,4 +16,4 @@
 ## The Mandate
 
 *   **Zero Tolerance**: If you spot a God Class, you must at least *plan* its destruction (Mikado Method).
-*   **Always Name the Risk**: Never report a smell without stating the concrete business consequence. "Feature envy" alone is not a finding. "Feature envy: `OrderController.calculateTax()` uses 6 fields from `TaxService` — when tax rules change, this method will break silently" is a finding.
+*   **Always Name the Risk**: Never report a smell without stating the concrete business consequence. "Feature envy" alone is not a finding. "Feature envy: `OrderController.calculateTax()` uses 6 fields from `TaxService` - when tax rules change, this method will break silently" is a finding.

@@ -14,7 +14,7 @@
 
 ## 1. Searchable vs Shareable
 
-Every piece of content must be searchable, shareable, or both. Prioritize in that order — search traffic is the foundation.
+Every piece of content must be searchable, shareable, or both. Prioritize in that order - search traffic is the foundation.
 
 | Type | Purpose | Optimized For | Examples |
 |------|---------|--------------|---------|
@@ -24,7 +24,7 @@ Every piece of content must be searchable, shareable, or both. Prioritize in tha
 
 ### When Writing Searchable Content
 - Target a specific keyword or question.
-- Match search intent exactly — answer what the searcher wants.
+- Match search intent exactly - answer what the searcher wants.
 - Structure with headings that mirror search patterns.
 - Provide comprehensive coverage (don't leave questions unanswered).
 - Optimize for AI/LLM discovery: clear positioning, structured content, self-contained answer blocks.

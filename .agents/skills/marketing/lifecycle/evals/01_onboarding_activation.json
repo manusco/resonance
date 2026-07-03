@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-marketing-lifecycle",
+  "query": "We just launched a B2B SaaS project-management tool. Signups are decent but most people never come back after day one. Design an onboarding and activation flow for us.",
+  "files": [],
+  "expected_behavior": [
+    "Defines the aha moment as a specific measurable action (for example, created the first project or invited a teammate) and explains finding it via cohort analysis comparing retained vs churned users",
+    "Prioritizes cutting time-to-value: removing signup fields and steps before adding tutorials or encouragement",
+    "Proposes a concrete first-run pattern (setup wizard, interactive walkthrough, template/quick-start, or checklist) with empty-state design that shows a single clear CTA",
+    "Designs a triggered onboarding email sequence that supports in-app activation and branches on behavior, not a fixed batch drip that ignores whether the user already activated",
+    "Names activation and retention metrics measured by cohort (time-to-first-value, activation rate, day-1 and day-7 retention) rather than blended averages",
+    "Does not treat a feature tour as activation"
+  ]
+}

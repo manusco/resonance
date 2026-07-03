@@ -43,7 +43,7 @@ Your cost to serve           ← baseline only
 
 ## 3. Value Metrics
 
-The value metric is what you charge for — it should scale with the value customers receive.
+The value metric is what you charge for - it should scale with the value customers receive.
 
 | Metric | Best For | Example |
 |--------|----------|---------|
@@ -63,7 +63,7 @@ The value metric is what you charge for — it should scale with the value custo
 | Tier | Role | Price Signal |
 |------|------|-------------|
 | **Good** (Entry) | Core features, limited usage, low price | Anchor / foot-in-door |
-| **Better** (Recommended) | Full features, reasonable limits | Target tier — best value |
+| **Better** (Recommended) | Full features, reasonable limits | Target tier - best value |
 | **Best** (Premium) | Everything, advanced features | 2-3x Better price |
 
 **Differentiation levers**: Feature gating, usage limits, support level (Email → Priority → Dedicated), access controls (API, SSO, custom branding).
@@ -109,10 +109,10 @@ Plot the four curves. The intersections define:
 | **Product** | Significant value added since last pricing, product more mature |
 
 ### Execution Strategies
-1. **Grandfather existing** — New price for new customers only
-2. **Delayed increase** — Announce 3-6 months out
-3. **Tied to value** — Raise price but add features
-4. **Plan restructure** — Change plans entirely
+1. **Grandfather existing** - New price for new customers only
+2. **Delayed increase** - Announce 3-6 months out
+3. **Tied to value** - Raise price but add features
+4. **Plan restructure** - Change plans entirely
 
 ---
 

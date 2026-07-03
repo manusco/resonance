@@ -1,7 +1,7 @@
 # The Hemingway Protocol (Readability Law)
 
 > "All you have to do is write one true sentence."
-> — Ernest Hemingway
+> - Ernest Hemingway
 
 ## 1. The Rules
 

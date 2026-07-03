@@ -5,14 +5,14 @@
 ## Contents
 
 - [1. The 7-Category Taxonomy](#1-the-7-category-taxonomy)
-- [2. Severity Ranking (P0–P3)](#2-severity-ranking-p0p3)
+- [2. Severity Ranking (P0-P3)](#2-severity-ranking-p0p3)
 - [3. Standard Report Template](#3-standard-report-template)
 - [4. Required Questions](#4-required-questions)
 - [5. Report Anti-Patterns](#5-report-anti-patterns)
 
 ## 1. The 7-Category Taxonomy
 
-Every finding belongs to exactly one category. Categories are ordered by risk priority — address earlier categories before later ones.
+Every finding belongs to exactly one category. Categories are ordered by risk priority - address earlier categories before later ones.
 
 ### A. Product Correctness
 
@@ -54,12 +54,12 @@ Are identity and permissions modeled clearly and enforced consistently across al
 
 Every authorization finding must specify *which layer* is affected:
 
-1. **Menu/Navigation Visibility** — Can the user *see* the link?
-2. **Page/View Access** — Can the user *load* the page?
-3. **Route Access** — Does the HTTP route allow the request?
-4. **Policy Enforcement** — Does the domain policy authorize the action?
-5. **Resource Access** — Can the user read/write this specific record?
-6. **Action/Button Availability** — Can the user *trigger* this specific operation?
+1. **Menu/Navigation Visibility** - Can the user *see* the link?
+2. **Page/View Access** - Can the user *load* the page?
+3. **Route Access** - Does the HTTP route allow the request?
+4. **Policy Enforcement** - Does the domain policy authorize the action?
+5. **Resource Access** - Can the user read/write this specific record?
+6. **Action/Button Availability** - Can the user *trigger* this specific operation?
 
 > 🔴 **Rule**: A finding at one layer does NOT imply coverage at other layers. Audit each independently.
 
@@ -100,7 +100,7 @@ Do tests actually cover critical behavior and failure modes?
 
 ### G. Maintainability
 
-Structural quality that affects the team's ability to change the code safely. **Address only after A–F are clear.**
+Structural quality that affects the team's ability to change the code safely. **Address only after A-F are clear.**
 
 | Signal | Example |
 |:---|:---|
@@ -112,11 +112,11 @@ Structural quality that affects the team's ability to change the code safely. **
 
 ---
 
-## 2. Severity Ranking (P0–P3)
+## 2. Severity Ranking (P0-P3)
 
 Within each category, rank findings by harm potential:
 
-### P0 — Critical (Stop-Ship)
+### P0 - Critical (Stop-Ship)
 
 The system is actively broken, insecure, or corrupting data.
 
@@ -126,7 +126,7 @@ The system is actively broken, insecure, or corrupting data.
 - Crash on critical path (login, checkout, signup)
 - Broken deployment safety (no rollback possible)
 
-### P1 — High (Fix Before Next Release)
+### P1 - High (Fix Before Next Release)
 
 The system works but has dangerous ambiguity or missing safety nets.
 
@@ -136,7 +136,7 @@ The system works but has dangerous ambiguity or missing safety nets.
 - Unsupported product claims with business/legal risk
 - Environment-sensitive crash (works locally, fails on staging)
 
-### P2 — Medium (Fix Within Sprint)
+### P2 - Medium (Fix Within Sprint)
 
 The system is safe but harder to maintain or slower than it should be.
 
@@ -145,7 +145,7 @@ The system is safe but harder to maintain or slower than it should be.
 - Heavy coupling between unrelated modules
 - Avoidable performance overhead (N+1 queries, full table scans)
 
-### P3 — Low (Backlog)
+### P3 - Low (Backlog)
 
 Quality issues that don't affect users or safety.
 
@@ -182,7 +182,7 @@ What critical paths or failure paths are currently untested.
 What structurally slows down the user experience.
 
 ## 7. Maintainability Risks
-What complexity or coupling should be simplified — after behavior is safe.
+What complexity or coupling should be simplified - after behavior is safe.
 
 ## 8. Do Not Change
 Explicit list of user-facing behavior, copy, and flow that must not be altered
@@ -202,7 +202,7 @@ A safe order of operations:
 
 ## 4. Required Questions
 
-Every report must answer these questions. If the answer is "Not applicable," say so explicitly — do not skip silently.
+Every report must answer these questions. If the answer is "Not applicable," say so explicitly - do not skip silently.
 
 ### Product
 - What intended behavior must not change?

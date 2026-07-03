@@ -1,7 +1,7 @@
 # The Lean Canvas Protocol
 
 > "Business Plans are dead. Models are alive."
-> — Ash Maurya
+> - Ash Maurya
 
 ## 1. The 9 Blocks (Order matters)
 

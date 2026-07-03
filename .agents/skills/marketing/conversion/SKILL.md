@@ -83,10 +83,11 @@ Before finalizing creative: Is the value proposition immediately obvious? Is the
 - **[Page Optimization](references/page_optimization_protocol.md)**: CRO guide.
 - **[Form Engineering](references/form_engineering_protocol.md)**: Multi-step forms and friction reduction.
 - **[Landing Page Anatomy](references/landing_page_anatomy.md)**: Standard layout.
-- **[Onboarding Activation](references/onboarding_activation_protocol.md)**: Time-to-value, first-run patterns, habit loops.
-- **[Churn Prevention](references/churn_prevention_protocol.md)**: Cancel flows, dunning, save offers, win-back.
 - **[DACH Conversion](references/dach_conversion_protocol.md)**: German-speaking market: pay-on-invoice, trust seals, DSGVO, Sie, CH/AT differences.
 - **[A/B Testing Rigor](references/ab_testing_rigor.md)**: Sample size, significance, and stopping rules for honest experiments.
+- **[Fogg Behavior Model](references/fogg_behavior_model.md)**: Motivation, ability, trigger.
+- **[LIFT Model](references/lift_model.md)**: The six conversion factors.
+- **[Offer Creation](references/offer_creation_protocol.md)**: Building an offer worth converting on.
 
 ## Operating Standard
 

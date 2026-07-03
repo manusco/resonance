@@ -1,18 +1,18 @@
 # B2B Sales Pipeline Protocol
 
-> **Goal**: Engineer a B2B sales pipeline from first principles — qualification, pipeline mechanics, deal strategy, and objection handling. Dense reference for agents building or auditing sales systems.
+> **Goal**: Engineer a B2B sales pipeline from first principles - qualification, pipeline mechanics, deal strategy, and objection handling. Dense reference for agents building or auditing sales systems.
 
 ## Contents
 
 - [1. The Revenue Equation](#1-the-revenue-equation)
-- [2. Lead Lifecycle — The Handoff Chain](#2-lead-lifecycle--the-handoff-chain)
-- [3. Lead Scoring — Quantifying Intent](#3-lead-scoring--quantifying-intent)
-- [4. Qualification Frameworks — When to Use Which](#4-qualification-frameworks--when-to-use-which)
-- [5. Sales Methodologies — How to Sell](#5-sales-methodologies--how-to-sell)
+- [2. Lead Lifecycle - The Handoff Chain](#2-lead-lifecycle--the-handoff-chain)
+- [3. Lead Scoring - Quantifying Intent](#3-lead-scoring--quantifying-intent)
+- [4. Qualification Frameworks - When to Use Which](#4-qualification-frameworks--when-to-use-which)
+- [5. Sales Methodologies - How to Sell](#5-sales-methodologies--how-to-sell)
 - [6. Pipeline Stages & Deal Mechanics](#6-pipeline-stages--deal-mechanics)
-- [7. Objection Handling — The Framework](#7-objection-handling--the-framework)
+- [7. Objection Handling - The Framework](#7-objection-handling--the-framework)
 - [8. Forecasting](#8-forecasting)
-- [9. Post-Close — The Revenue Doesn't Stop](#9-post-close--the-revenue-doesnt-stop)
+- [9. Post-Close - The Revenue Doesn't Stop](#9-post-close--the-revenue-doesnt-stop)
 
 ## 1. The Revenue Equation
 
@@ -29,17 +29,17 @@ Improving any variable improves revenue. The highest-leverage variable depends o
 
 ---
 
-## 2. Lead Lifecycle — The Handoff Chain
+## 2. Lead Lifecycle - The Handoff Chain
 
 Every handoff is a potential leak. Define stages, owners, and SLAs with zero ambiguity.
 
 | Stage | Entry Criteria | Owner | SLA | Exit |
 |-------|---------------|-------|-----|------|
-| **Subscriber** | Opted into content | Marketing | — | Engagement threshold met |
-| **Lead** | Identified + basic info | Marketing | — | Fit criteria met |
-| **MQL** | Fit + engagement score | Marketing | — | Sales accepts/rejects in 48h |
+| **Subscriber** | Opted into content | Marketing | - | Engagement threshold met |
+| **Lead** | Identified + basic info | Marketing | - | Fit criteria met |
+| **MQL** | Fit + engagement score | Marketing | - | Sales accepts/rejects in 48h |
 | **SQL** | Sales qualifies via call | Sales (SDR) | Contact in ≤4h | Opportunity created or recycled |
-| **Opportunity** | BANT/MEDDIC confirmed | Sales (AE) | — | Closed-won or closed-lost |
+| **Opportunity** | BANT/MEDDIC confirmed | Sales (AE) | - | Closed-won or closed-lost |
 | **Customer** | Contract signed | CS | Onboard in ≤7 days | Retained or churned |
 
 ### MQL Definition (The Gate That Matters Most)
@@ -63,7 +63,7 @@ A Fortune 500 CTO who never visits your site isn't an MQL. A college student who
 
 ---
 
-## 3. Lead Scoring — Quantifying Intent
+## 3. Lead Scoring - Quantifying Intent
 
 ### Two-Axis Model (Fit × Engagement)
 
@@ -114,7 +114,7 @@ A Fortune 500 CTO who never visits your site isn't an MQL. A college student who
 
 ---
 
-## 4. Qualification Frameworks — When to Use Which
+## 4. Qualification Frameworks - When to Use Which
 
 This is the most important decision in your sales process. The wrong framework for your deal complexity wastes time or loses deals.
 
@@ -142,7 +142,7 @@ This is the most important decision in your sales process. The wrong framework f
 | Champion | "Who internally is advocating for this?" |
 
 **Use when**: ACV $10K-$100K+, multiple stakeholders, 30-90 day cycle. The enterprise default.
-**Why it wins**: Forces you to identify the Champion and Economic Buyer — the two people who actually decide.
+**Why it wins**: Forces you to identify the Champion and Economic Buyer - the two people who actually decide.
 
 ### MEDDPICC (MEDDIC + Paper Process + Competition)
 
@@ -177,7 +177,7 @@ Adds:
 
 ---
 
-## 5. Sales Methodologies — How to Sell
+## 5. Sales Methodologies - How to Sell
 
 Qualification tells you IF a deal is real. Methodology tells you HOW to win it.
 
@@ -190,7 +190,7 @@ Qualification tells you IF a deal is real. Methodology tells you HOW to win it.
 ### SPIN Selling (Situation, Problem, Implication, Need-Payoff)
 **Core idea**: Ask questions in a specific sequence to lead the buyer to their own conclusion.
 - **When**: The buyer needs to "discover" the pain themselves (especially when they think things are fine).
-- **How**: Don't pitch — ask. "What happens when [problem] occurs?" → "How does that affect [business metric]?" → "If you could [outcome], what would that be worth?"
+- **How**: Don't pitch - ask. "What happens when [problem] occurs?" → "How does that affect [business metric]?" → "If you could [outcome], what would that be worth?"
 - **Risk**: Slow. Doesn't work when the buyer already knows what they want.
 
 ### Gap Selling
@@ -212,7 +212,7 @@ Qualification tells you IF a deal is real. Methodology tells you HOW to win it.
 | Buyer knows the problem, doesn't know the solution | Challenger Sale |
 | Buyer is comparing solutions | Command of the Message |
 | Buyer needs ROI justification | Gap Selling |
-| Quick transactional deal | None needed — just qualify and close |
+| Quick transactional deal | None needed - just qualify and close |
 
 ---
 
@@ -227,7 +227,7 @@ Qualification tells you IF a deal is real. Methodology tells you HOW to win it.
 | **Proposal** | Proposal requested | Pricing, terms, decision criteria | 50% |
 | **Negotiation** | Proposal reviewed, terms discussed | Redlines, approval chain, close date | 75% |
 | **Verbal Commit** | Verbal yes, contract in review | Signed budget approval | 90% |
-| **Closed Won** | Signature received | — | 100% |
+| **Closed Won** | Signature received | - | 100% |
 | **Closed Lost** | Deal dead | Loss reason, competitor | 0% |
 
 ### Multi-Threading (The #1 Deal Strategy)
@@ -256,13 +256,13 @@ For deals > $25K, create a shared document with the buyer:
 
 ---
 
-## 7. Objection Handling — The Framework
+## 7. Objection Handling - The Framework
 
 ### The 4-Step Response Pattern
-1. **Acknowledge** — "I hear you. That's a fair concern."
-2. **Diagnose** — "Help me understand — is it [specific fear]?"
-3. **Reframe** — Address the real concern with evidence.
-4. **Advance** — "If we can solve that, what would the next step be?"
+1. **Acknowledge** - "I hear you. That's a fair concern."
+2. **Diagnose** - "Help me understand - is it [specific fear]?"
+3. **Reframe** - Address the real concern with evidence.
+4. **Advance** - "If we can solve that, what would the next step be?"
 
 ### B2B Objection Playbook
 
@@ -278,7 +278,7 @@ For deals > $25K, create a shared document with the buyer:
 | "Let me think about it" | Unclear next step | "Of course. What specifically would you want to think through?" Surface the real blocker. |
 
 ### The "No Decision" Problem
-40-60% of qualified pipelines end in "no decision" — the buyer does nothing. This is the biggest competitor, not another vendor.
+40-60% of qualified pipelines end in "no decision" - the buyer does nothing. This is the biggest competitor, not another vendor.
 
 **Counter-strategies**:
 - Quantify the cost of delay: "Every month you wait costs $X."
@@ -313,7 +313,7 @@ Track forecast vs. actual monthly. If accuracy is consistently below 80%, the pr
 
 ---
 
-## 9. Post-Close — The Revenue Doesn't Stop
+## 9. Post-Close - The Revenue Doesn't Stop
 
 ### Handoff to Customer Success
 - Structured handoff document: what was sold, why they bought, key stakeholders, success criteria.

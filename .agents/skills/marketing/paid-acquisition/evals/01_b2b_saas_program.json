@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-marketing-paid-acquisition",
+  "query": "We're a B2B SaaS with a $200/month plan. We want to start paid acquisition from scratch and have about $10k/month to test. How should we plan this?",
+  "files": [],
+  "expected_behavior": [
+    "Asks for or establishes the unit economics first: contribution margin, target CAC ceiling, and expected payback period before recommending spend",
+    "Selects channels by demand state, distinguishing intent capture (search on category and problem terms, plus brand) from intent creation (paid social or LinkedIn by role), rather than defaulting to one platform as law",
+    "Recommends an account structure that feeds the algorithm and separates brand vs non-brand search, avoiding over-segmentation into starved ad sets",
+    "Treats creative angle and hook as the primary test variable, not targeting or button-level tweaks",
+    "Protects ad-to-landing-page message match and hands landing-page CRO to marketing/conversion",
+    "Sets a success threshold (CAC or payback target) for the test before spending, and does not promise results without economics clearing the ceiling"
+  ]
+}

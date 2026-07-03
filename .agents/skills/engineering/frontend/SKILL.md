@@ -77,6 +77,7 @@ Extract prop interfaces. Use discriminated unions for component variants (e.g. b
 - **[UI/UX Anti-Patterns](references/ui_ux_anti_patterns.md)**: Rules against amateur visual and interaction mistakes.
 - **[Accessibility (a11y)](references/accessibility_a11y.md)**: WCAG, focus order, keyboard nav, screen-reader semantics.
 - **[Tailwind Elite Patterns](references/tailwind_elite_patterns.md)**: Utility-first patterns that stay maintainable at scale.
+- **[Maestro Auditor](references/maestro_auditor.md)**: Layout and hierarchy audit heuristics.
 
 ## Operating Standard
 

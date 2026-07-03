@@ -1,7 +1,7 @@
 # Boy Scout Protocol (Elite Standard)
 
 > "Always leave the campground cleaner than you found it."
-> — Robert Baden-Powell
+> - Robert Baden-Powell
 
 ## 1. The Protocol
 
@@ -21,7 +21,7 @@ When you touch a file to add a feature:
     *   Changing public API contracts.
     *   Crossing file boundaries (cleanup in file A while working on file B).
 
-> 🔴 **Reconciliation with Karpathy Surgical Lock**: Boy Scout cleanup applies ONLY within files already touched by the current task. If the cleanup exceeds 5 lines or changes behavior, it becomes its own task — tracked separately.
+> 🔴 **Reconciliation with Karpathy Surgical Lock**: Boy Scout cleanup applies ONLY within files already touched by the current task. If the cleanup exceeds 5 lines or changes behavior, it becomes its own task - tracked separately.
 
 ## 3. The Ratio
 

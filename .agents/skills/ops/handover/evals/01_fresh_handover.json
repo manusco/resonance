@@ -1,4 +1,5 @@
 {
+  "skill": "resonance-ops-handover",
   "query": "Run /handover. We just finished implementing the JWT auth flow in auth.service.ts. We chose Supabase over Auth0 because of cost — Auth0 would add $200/month at our user volume. Two tests are still failing in auth.test.ts at lines 47 and 112. Next step is the password reset email flow.",
   "expected_behavior": [
     "Reads .resonance/01_state.md and task.md before writing",

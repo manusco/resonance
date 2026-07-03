@@ -1,0 +1,11 @@
+---
+name: incident
+description: Drive a live production incident: triage, severity, mitigate, comms, blameless postmortem.
+disable-model-invocation: true
+---
+
+# /incident
+
+Run the Resonance **incident** procedure.
+
+Read `.agents/skills/ops/incident/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /incident command to it.

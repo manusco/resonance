@@ -19,7 +19,7 @@ Structure launch marketing across three channel types. Everything leads back to 
 You control the channel (though not the audience). No algorithm or platform risk.
 
 - Email list, blog, podcast, branded community (Slack/Discord), product itself
-- Get more effective over time — direct relationship, compound value
+- Get more effective over time - direct relationship, compound value
 - **Start with 1-2**: Lacks quality content → blog. Wants updates → email. Engagement matters → community.
 
 ### Rented Channels
@@ -84,7 +84,7 @@ Launching isn't a one-day event. It's a phased process that builds momentum.
 ### Preparation
 1. Build relationships with influential supporters and communities
 2. Optimize listing: compelling tagline, polished visuals, short demo video
-3. Study successful launches — identify what worked
+3. Study successful launches - identify what worked
 4. Engage in relevant communities (provide value before pitching)
 5. Prepare team for all-day engagement
 
@@ -112,7 +112,7 @@ Don't rely on a single launch event. Every update is a launch moment.
 | Minor (bug fixes, small tweaks) | Changelog only | Signal active development |
 
 **Rules:**
-- Space out releases — stagger announcements for sustained momentum
+- Space out releases - stagger announcements for sustained momentum
 - Reuse high-performing tactics from previous launches
 - Even small changelog updates remind customers you're building
 

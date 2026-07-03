@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-marketing-analytics",
+  "query": "Our landing page gets about 300 visitors a week and converts at 2%. We want to A/B test a new headline and know within a week if it's a winner. How do we run it?",
+  "files": [],
+  "expected_behavior": [
+    "Recognizes this is a low-traffic situation and computes (or reasons about) the sample size needed from the 2% baseline and a stated minimum detectable effect",
+    "Concludes that detecting a realistic lift at 300 visitors/week would take many weeks, so a one-week conclusive test is not feasible",
+    "Does not claim a week of data can produce a statistically significant verdict at this traffic level",
+    "Offers honest alternatives: accept a larger MDE, test a higher-traffic surface, use a more sensitive upstream metric, or treat the result as directional rather than conclusive",
+    "Warns explicitly against stopping the test early the moment it looks significant (peeking)",
+    "Notes that a flat or non-significant result on an underpowered test does not mean no effect"
+  ]
+}

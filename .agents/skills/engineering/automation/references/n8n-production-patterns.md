@@ -1,5 +1,11 @@
 # n8n Production Integration Patterns
 
+## Contents
+- Node organization and naming
+- Resilient error handling
+- Observability and logging schema
+- Core integration flow charts
+
 Production-quality automation workflows must be stable, observable, and resilient. This playbook outlines standard structural design patterns, error-handling conventions, and integration strategies in n8n.
 
 ---

@@ -13,7 +13,7 @@
 *   **Stop Condition**: If confused, stop. Name the confusion. Ask.
 
 > ❌ **Anti-Pattern**: "Add a feature to export user data" → assumes ALL users, assumes format, assumes file location.
-> ✅ **Pattern**: "Before implementing, I need to clarify: (1) Scope — all users or filtered? (2) Format — file download or API? (3) Fields — which are sensitive?"
+> ✅ **Pattern**: "Before implementing, I need to clarify: (1) Scope - all users or filtered? (2) Format - file download or API? (3) Fields - which are sensitive?"
 
 ## 2. Simplicity First
 **Minimum code that solves the problem. Nothing speculative.**
@@ -64,6 +64,6 @@
 
 ## ⚠️ Key Insight on Complexity
 
-The overcomplicated examples are not obviously wrong — they follow design patterns and best practices. The problem is **timing**: they add complexity **before it is needed**, which makes code harder to understand, introduces more bugs, takes longer to implement, and is harder to test.
+The overcomplicated examples are not obviously wrong - they follow design patterns and best practices. The problem is **timing**: they add complexity **before it is needed**, which makes code harder to understand, introduces more bugs, takes longer to implement, and is harder to test.
 
 > **Good code solves today's problem simply, not tomorrow's problem prematurely.**

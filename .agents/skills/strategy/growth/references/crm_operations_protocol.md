@@ -4,17 +4,17 @@
 
 ## Contents
 
-- [1. Architecture — The Revenue Stack](#1-architecture--the-revenue-stack)
+- [1. Architecture - The Revenue Stack](#1-architecture--the-revenue-stack)
 - [2. CRM Selection](#2-crm-selection)
 - [3. Data Architecture](#3-data-architecture)
 - [4. Automation Workflows](#4-automation-workflows)
-- [5. Data Hygiene — The Unsexy Revenue Lever](#5-data-hygiene--the-unsexy-revenue-lever)
+- [5. Data Hygiene - The Unsexy Revenue Lever](#5-data-hygiene--the-unsexy-revenue-lever)
 - [6. Reporting Dashboards](#6-reporting-dashboards)
-- [7. Deal Desk — Governance for Non-Standard Deals](#7-deal-desk--governance-for-non-standard-deals)
+- [7. Deal Desk - Governance for Non-Standard Deals](#7-deal-desk--governance-for-non-standard-deals)
 - [8. RevOps Maturity Model](#8-revops-maturity-model)
 - [9. Common Failures](#9-common-failures)
 
-## 1. Architecture — The Revenue Stack
+## 1. Architecture - The Revenue Stack
 
 The CRM is not a contact database. It's the nervous system connecting marketing, sales, and CS into a unified revenue engine.
 
@@ -55,16 +55,16 @@ The CRM is not a contact database. It's the nervous system connecting marketing,
 | GTM Motion | Best Fit | Why | When to Outgrow |
 |------------|----------|-----|-----------------|
 | Founder-led (0-10 deals/mo) | **Attio, Folk, Notion CRM** | Low overhead, fast setup | When you need automation + scoring |
-| PLG + sales-assisted | **HubSpot** | Strong product analytics integration, free tier, good automation | Rarely — scales well to enterprise |
+| PLG + sales-assisted | **HubSpot** | Strong product analytics integration, free tier, good automation | Rarely - scales well to enterprise |
 | SMB sales-led | **HubSpot, Pipedrive** | Workflow automation, affordable, fast to implement | Pipedrive: when you need marketing automation. HubSpot: rarely. |
 | Mid-market | **HubSpot Professional, Salesforce Essentials** | Multi-team support, reporting depth | When you need CPQ or advanced approvals |
-| Enterprise | **Salesforce** | Deep customization, CPQ, approval chains, ecosystem | You don't outgrow Salesforce — you outgrow your implementation |
+| Enterprise | **Salesforce** | Deep customization, CPQ, approval chains, ecosystem | You don't outgrow Salesforce - you outgrow your implementation |
 
 ### Migration Principles
-1. **Clean before you move** — Dedupe and purge before migration, not after.
-2. **Map fields first** — Document every field mapping before touching data.
-3. **Run parallel** — Operate both systems for 2-4 weeks. Validate data integrity.
-4. **Automation last** — Migrate data first, rebuild automations in the new system second.
+1. **Clean before you move** - Dedupe and purge before migration, not after.
+2. **Map fields first** - Document every field mapping before touching data.
+3. **Run parallel** - Operate both systems for 2-4 weeks. Validate data integrity.
+4. **Automation last** - Migrate data first, rebuild automations in the new system second.
 
 ---
 
@@ -127,7 +127,7 @@ Deal (1) ──────── (Many) Line Items / Products
 
 | Trigger | Action |
 |---------|--------|
-| Deal in stage > 2x average days | Alert rep + manager: "Stale deal — update or close" |
+| Deal in stage > 2x average days | Alert rep + manager: "Stale deal - update or close" |
 | Deal stage advanced | Update forecast, create follow-up task for next milestone |
 | Close date pushed | Require reason field, notify manager, log push count |
 | Contract sent | Create "Follow up in 3 days if no response" task |
@@ -145,7 +145,7 @@ Deal (1) ──────── (Many) Line Items / Products
 
 ---
 
-## 5. Data Hygiene — The Unsexy Revenue Lever
+## 5. Data Hygiene - The Unsexy Revenue Lever
 
 Bad data costs enterprises $12.9M/year (Gartner). For startups, it silently kills pipeline.
 
@@ -160,7 +160,7 @@ Bad data costs enterprises $12.9M/year (Gartner). For startups, it silently kill
 
 ### Required Fields Enforcement
 - Block stage advancement if required fields are empty.
-- Use progressive profiling — collect different fields at each interaction.
+- Use progressive profiling - collect different fields at each interaction.
 - Auto-fill where possible (enrichment APIs on lead creation).
 
 ### Enrichment Strategy
@@ -179,7 +179,7 @@ Bad data costs enterprises $12.9M/year (Gartner). For startups, it silently kill
 - [ ] Merge all duplicates (automated + manual edge cases)
 - [ ] Validate email deliverability on contacts inactive >6 months
 - [ ] Archive contacts with zero activity in 12+ months
-- [ ] Audit lifecycle stage distribution — identify bottleneck stages
+- [ ] Audit lifecycle stage distribution - identify bottleneck stages
 - [ ] Verify enrichment accuracy on 50-contact sample
 - [ ] Check for contacts missing required fields at their stage
 - [ ] Review and clean custom property usage (delete unused properties)
@@ -191,7 +191,7 @@ Bad data costs enterprises $12.9M/year (Gartner). For startups, it silently kill
 
 ### Three Audiences, Three Dashboards
 
-**Marketing Dashboard** — "Are we generating qualified pipeline?"
+**Marketing Dashboard** - "Are we generating qualified pipeline?"
 
 | Metric | Formula | Why It Matters |
 |--------|---------|---------------|
@@ -201,7 +201,7 @@ Bad data costs enterprises $12.9M/year (Gartner). For startups, it silently kill
 | MQL-to-SQL conversion | SQLs / MQLs (target: 30-50%) | Handoff quality |
 | Source-to-revenue attribution | Revenue by first-touch source | True channel ROI |
 
-**Sales Dashboard** — "Are we converting pipeline to revenue?"
+**Sales Dashboard** - "Are we converting pipeline to revenue?"
 
 | Metric | Formula | Why It Matters |
 |--------|---------|---------------|
@@ -212,11 +212,11 @@ Bad data costs enterprises $12.9M/year (Gartner). For startups, it silently kill
 | Pipeline velocity | (Deals × Size × Win Rate) / Cycle Days | Revenue per day |
 | Forecast accuracy | Forecast / Actual (trailing 3 months, target: >80%) | Process maturity |
 
-**Executive Dashboard** — "Is the business healthy?"
+**Executive Dashboard** - "Is the business healthy?"
 
 | Metric | Formula | Target |
 |--------|---------|--------|
-| CAC | Total S&M spend / new customers | — |
+| CAC | Total S&M spend / new customers | - |
 | LTV:CAC | Customer lifetime value / CAC | 3:1 to 5:1 |
 | Revenue vs. target | Actual / Plan | >90% |
 | Pipeline coverage | Pipeline / Quota | 3-4x |
@@ -237,7 +237,7 @@ Bad data costs enterprises $12.9M/year (Gartner). For startups, it silently kill
 
 ---
 
-## 7. Deal Desk — Governance for Non-Standard Deals
+## 7. Deal Desk - Governance for Non-Standard Deals
 
 ### When to Engage Deal Desk
 - ACV > $25K (or your threshold for non-standard)
@@ -275,7 +275,7 @@ Bad data costs enterprises $12.9M/year (Gartner). For startups, it silently kill
 | **4** | Intelligence | Dashboards drive decisions, attribution works | Forecast accuracy, attribution |
 | **5** | Optimization | Continuous testing, predictive analytics | Pipeline prediction, churn models |
 
-**Assessment**: Identify your current level. Invest in reaching the next level — skipping levels creates fragile systems.
+**Assessment**: Identify your current level. Invest in reaching the next level - skipping levels creates fragile systems.
 
 ---
 

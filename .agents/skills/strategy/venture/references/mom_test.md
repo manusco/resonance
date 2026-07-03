@@ -1,7 +1,7 @@
 # The Mom Test Protocol
 
 > "It's not their responsibility to tell you the truth. It's your responsibility to find it."
-> — Rob Fitzpatrick
+> - Rob Fitzpatrick
 
 ## 1. The 3 Rules
 

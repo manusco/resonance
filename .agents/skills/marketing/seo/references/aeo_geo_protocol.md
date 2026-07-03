@@ -1,6 +1,6 @@
 # Generative Engine Optimization (GEO) Protocol
 
-> The discipline of optimizing content for AI-generated answers — Google AI Overviews, ChatGPT, Perplexity, Bing Copilot.
+> The discipline of optimizing content for AI-generated answers - Google AI Overviews, ChatGPT, Perplexity, Bing Copilot.
 
 ## Contents
 
@@ -43,7 +43,7 @@
 | LinkedIn presence | Moderate |
 | Domain Rating (backlinks) | ~0.266 (weak) |
 
-**Only 11% of domains** are cited by both ChatGPT and Google AI Overviews for the same query. Platform-specific optimization is not optional — it's required.
+**Only 11% of domains** are cited by both ChatGPT and Google AI Overviews for the same query. Platform-specific optimization is not optional - it's required.
 
 ---
 
@@ -75,7 +75,7 @@ Place the direct answer in the first `<p>` after the `<h1>` or relevant `<h2>`. 
 
 ### 3.2 Structural Readability (20%)
 
-**92% of AI Overview citations come from top-10 ranking pages**, but 47% come from pages ranking below position 5 — proving AI uses different selection logic than organic ranking.
+**92% of AI Overview citations come from top-10 ranking pages**, but 47% come from pages ranking below position 5 - proving AI uses different selection logic than organic ranking.
 
 **Strong signals:**
 - Clean H1→H2→H3 heading hierarchy
@@ -99,7 +99,7 @@ Content with multi-modal elements sees **156% higher selection rates**.
 - Video content (embedded or linked)
 - Infographics and charts
 - Interactive elements (calculators, tools)
-- Data tables (`<table>`) — LLMs parse tables for comparisons
+- Data tables (`<table>`) - LLMs parse tables for comparisons
 
 ### 3.4 Authority & Brand Signals (20%)
 

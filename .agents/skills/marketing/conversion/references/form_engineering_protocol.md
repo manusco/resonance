@@ -28,9 +28,9 @@ Break complex forms into steps. Each step deepens commitment.
 - **Don't use**: Simple signup (email + password), newsletter subscribe, contact forms.
 
 ### Progress Indicators
-- Show step count: "Step 2 of 3" — Zeigarnik Effect pulls completion.
-- Use progress bar, not dots — bars show momentum.
-- **Never lie about step count** — trust destruction if "Step 3 of 3" reveals Step 4.
+- Show step count: "Step 2 of 3" - Zeigarnik Effect pulls completion.
+- Use progress bar, not dots - bars show momentum.
+- **Never lie about step count** - trust destruction if "Step 3 of 3" reveals Step 4.
 
 ## 3. Conditional Logic
 Show fields only when relevant. Every hidden field is friction removed.

@@ -93,6 +93,7 @@ A launch is a momentum curve, not a point in time. Compare engagement trajectori
 - **[Customer.io Reference](references/customer-io_cheatsheet.md)**: Broadcasts, funnels, and suppressions.
 - **[Dub Reference](references/dub_cheatsheet.md)**: Link shortening, analytics, and partner ops.
 - **[Product Hunt Reference](references/producthunt_cheatsheet.md)**: Launch trajectories and category scouting.
+- **[The Hook Model](references/hook_model.md)**: Trigger, action, reward, investment.
 
 ## Operating Standard
 

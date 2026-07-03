@@ -1,7 +1,7 @@
 # Atomic Design Protocol
 
 > "We're not designing pages, we're designing systems of components."
-> — Brad Frost
+> - Brad Frost
 
 ## 1. The Hierarchy
 

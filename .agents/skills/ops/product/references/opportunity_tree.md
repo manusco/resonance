@@ -1,7 +1,7 @@
 # Opportunity Solution Tree (The Discovery Protocol)
 
 > "Don't fall in love with the solution. Fall in love with the problem."
-> — Teresa Torres
+> - Teresa Torres
 
 ## 1. The Structure
 

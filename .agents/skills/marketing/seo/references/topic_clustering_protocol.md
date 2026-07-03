@@ -1,4 +1,4 @@
-# Topic Clustering Protocol — SERP-Overlap Methodology
+# Topic Clustering Protocol - SERP-Overlap Methodology
 
 > Group keywords by how Google actually ranks them, not by text similarity.
 
@@ -14,7 +14,7 @@
 
 ## 1. Core Principle
 
-SERP-overlap clustering groups keywords by shared top-10 results. If two keywords return the same URLs in Google's top 10, they belong on the same page. Text similarity is a weak proxy — SERP overlap is the ground truth.
+SERP-overlap clustering groups keywords by shared top-10 results. If two keywords return the same URLs in Google's top 10, they belong on the same page. Text similarity is a weak proxy - SERP overlap is the ground truth.
 
 ---
 
@@ -22,11 +22,11 @@ SERP-overlap clustering groups keywords by shared top-10 results. If two keyword
 
 Expand the seed keyword into 30-50 variants:
 
-1. **Related searches** — Extract from SERP
-2. **People Also Ask (PAA)** — Extract all visible questions
-3. **Long-tail modifiers** — "best", "how to", "vs", "for beginners", "tools", "examples", "guide", "template", "mistakes", "checklist"
-4. **Question mining** — who/what/when/where/why/how variants
-5. **Intent modifiers** — "pricing", "review", "alternative", "comparison", "free", "top"
+1. **Related searches** - Extract from SERP
+2. **People Also Ask (PAA)** - Extract all visible questions
+3. **Long-tail modifiers** - "best", "how to", "vs", "for beginners", "tools", "examples", "guide", "template", "mistakes", "checklist"
+4. **Question mining** - who/what/when/where/why/how variants
+5. **Intent modifiers** - "pricing", "review", "alternative", "comparison", "free", "top"
 
 **Deduplication**: Normalize (lowercase, strip articles), remove exact duplicates.
 Target: 30-50 unique variants. Under 30 → run second pass with top PAA as seeds.
@@ -57,7 +57,7 @@ For each candidate pair, search both keywords and count shared URLs in top 10 or
 | Transactional | buy, price, discount, sign up | Yes |
 | Navigational | brand names, login, specific products | No (exclude) |
 
-Keywords can have mixed intent — classify by dominant intent.
+Keywords can have mixed intent - classify by dominant intent.
 
 ---
 

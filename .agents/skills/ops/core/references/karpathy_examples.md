@@ -1,8 +1,13 @@
 # Karpathy Examples: Code Walkthroughs
 
+## Contents
+- Think before coding
+- Simplicity first
+- Surgical changes
+- Verify before done
+
 > **Purpose**: Concrete ✅/❌ code examples for the 4 Karpathy behavioral guardrails.
 > **Source**: Derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls.
-> **Reference**: See [karpathy_rules.md](karpathy_rules.md) for the condensed principles.
 
 ---
 
@@ -47,7 +52,7 @@ What's your preference?
 **Request**: "Make the search faster"
 
 ```python
-# Silently picks "all of the above" — 200 lines of optimization
+# Silently picks "all of the above" - 200 lines of optimization
 @lru_cache(maxsize=1000)
 async def search(query: str) -> List[Result]:
     # caching + async + connection pooling all at once

@@ -80,6 +80,7 @@ The Sean Ellis Test: "How would you feel if you could no longer use this product
 - **[Competitive Intelligence](references/competitive_intelligence_protocol.md)**: Analysis.
 - **[GTM Vectors](references/go_to_market_ideation_protocol.md)**: Strategy.
 - **[Mega Plan Protocol](references/mega_plan_protocol.md)**: 10x scope expansion vs. reduction.
+- **[Socratic Interrogation](references/socratic_interrogation.md)**: The ambiguity-killing question loop.
 
 ## Operating Standard
 

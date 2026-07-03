@@ -1,4 +1,11 @@
 # Protocol: Social Distribution Engineering
+
+## Contents
+- The distribution engine
+- Reverse engineering patterns
+- Platform architecture
+- The repurposing pipeline
+- Short-form video
 > **Focus**: Algorithmic Reach, Content Repurposing & Short-Form Video
 > **Resonance Phase**: Growth / Awareness
 
@@ -109,12 +116,12 @@ Captions increase watch time by 25-40%. Most video is watched without sound.
 - Match timing to speech exactly
 
 ### Common Mistakes
-1. **Slow hooks** — don't build up to the point
-2. **No text overlay** — many watch without sound
-3. **Poor audio** — bad audio kills retention instantly
-4. **Too long** — if it can be shorter, make it shorter
-5. **No CTA** — tell viewers what to do
-6. **Ignoring comments** — engagement in first hour matters
+1. **Slow hooks** - don't build up to the point
+2. **No text overlay** - many watch without sound
+3. **Poor audio** - bad audio kills retention instantly
+4. **Too long** - if it can be shorter, make it shorter
+5. **No CTA** - tell viewers what to do
+6. **Ignoring comments** - engagement in first hour matters
 
 ## 6. Engagement Protocol
 Distribution is bi-directional.

@@ -28,7 +28,7 @@
 
 ### React (Testing Library + Vitest/Jest)
 
-**Layer 2 — Visible State (Preferred)**
+**Layer 2 - Visible State (Preferred)**
 ```jsx
 // ✅ Tests what the user sees
 import { render, screen } from '@testing-library/react';
@@ -41,7 +41,7 @@ test('shows error when email is invalid', async () => {
 });
 ```
 
-**Layer 6 — Source Template (Avoid)**
+**Layer 6 - Source Template (Avoid)**
 ```jsx
 // ❌ Breaks on any class name, wrapper, or markup change
 test('renders login form', () => {
@@ -51,7 +51,7 @@ test('renders login form', () => {
 });
 ```
 
-**Layer 3 — Data State (When UI isn't the point)**
+**Layer 3 - Data State (When UI isn't the point)**
 ```jsx
 // ✅ Correct use: testing a hook/store, not a component
 test('addToCart updates cart state', () => {
@@ -66,7 +66,7 @@ test('addToCart updates cart state', () => {
 
 ### Laravel / PHP (Pest/PHPUnit)
 
-**Layer 1 — Behavior (E2E)**
+**Layer 1 - Behavior (E2E)**
 ```php
 // ✅ Full user journey: login → redirect → see dashboard
 test('authenticated user can access dashboard', function () {
@@ -79,7 +79,7 @@ test('authenticated user can access dashboard', function () {
 });
 ```
 
-**Layer 4 — Redirect Contract**
+**Layer 4 - Redirect Contract**
 ```php
 // ✅ Tests auth redirect precisely
 test('guests are redirected to login', function () {
@@ -88,7 +88,7 @@ test('guests are redirected to login', function () {
 });
 ```
 
-**Layer 3 — Data State**
+**Layer 3 - Data State**
 ```php
 // ✅ Tests that the mutation actually persisted
 test('creating an application stores the record', function () {
@@ -105,7 +105,7 @@ test('creating an application stores the record', function () {
 });
 ```
 
-**Layer 2 — Visible State (Blade assertions)**
+**Layer 2 - Visible State (Blade assertions)**
 ```php
 // ✅ Asserts what the user sees, not raw Blade syntax
 test('error message appears for invalid input', function () {
@@ -120,9 +120,9 @@ test('error message appears for invalid input', function () {
 });
 ```
 
-**Layer 6 — Source Template (Avoid)**
+**Layer 6 - Source Template (Avoid)**
 ```php
-// ❌ Asserts raw Blade template output — breaks on any markup change
+// ❌ Asserts raw Blade template output - breaks on any markup change
 test('form has company field', function () {
     $response = $this->get('/applications/create');
     $this->assertStringContainsString(
@@ -136,7 +136,7 @@ test('form has company field', function () {
 
 ### Astro / Static Site
 
-**Layer 2 — Visible State (via Playwright)**
+**Layer 2 - Visible State (via Playwright)**
 ```typescript
 // ✅ Tests what the visitor sees in the browser
 test('homepage shows event date', async ({ page }) => {
@@ -146,7 +146,7 @@ test('homepage shows event date', async ({ page }) => {
 });
 ```
 
-**Layer 5 — Rendered Output (Acceptable for SEO/content)**
+**Layer 5 - Rendered Output (Acceptable for SEO/content)**
 ```typescript
 // ✅ Acceptable: verifying SEO-critical content exists in rendered HTML
 test('meta description exists', async ({ page }) => {
@@ -156,7 +156,7 @@ test('meta description exists', async ({ page }) => {
 });
 ```
 
-**Layer 5 — Rendered Output (For build-time checks)**
+**Layer 5 - Rendered Output (For build-time checks)**
 ```typescript
 // ✅ Acceptable: checking build output for critical content
 import { readFile } from 'fs/promises';
@@ -172,7 +172,7 @@ test('sitemap includes all pages', async () => {
 
 ### Vue (Testing Library + Vitest)
 
-**Layer 2 — Visible State (Preferred)**
+**Layer 2 - Visible State (Preferred)**
 ```typescript
 // ✅ Tests what user sees
 import { render, screen } from '@testing-library/vue';
@@ -184,7 +184,7 @@ test('counter increments on click', async () => {
 });
 ```
 
-**Layer 6 — Source Template (Avoid)**
+**Layer 6 - Source Template (Avoid)**
 ```typescript
 // ❌ Asserts internal component structure
 import { mount } from '@vue/test-utils';
@@ -206,23 +206,23 @@ Is this a critical user journey (login, checkout, signup)?
   → NO: ↓
 
 Does the test verify what the user *sees* or *experiences*?
-  → YES: Layer 2 (Visible State — getByRole, assertSee, getByText)
+  → YES: Layer 2 (Visible State - getByRole, assertSee, getByText)
   → NO: ↓
 
 Does the test verify data was correctly persisted or session state changed?
-  → YES: Layer 3 (Data State — assertDatabaseHas, expect(store))
+  → YES: Layer 3 (Data State - assertDatabaseHas, expect(store))
   → NO: ↓
 
 Does the test verify the user lands on the right page/URL?
-  → YES: Layer 4 (Redirect Contract — assertRedirect, expect(location))
+  → YES: Layer 4 (Redirect Contract - assertRedirect, expect(location))
   → NO: ↓
 
 Does the test verify content exists in rendered HTML (SEO, accessibility)?
-  → YES: Layer 5 (Rendered Output — toContain, meta tags, sitemap)
+  → YES: Layer 5 (Rendered Output - toContain, meta tags, sitemap)
   → NO: ↓
 
 Is the template structure itself the invariant you're guarding?
-  → YES: Layer 6 (Source Template — only for design system enforcement)
+  → YES: Layer 6 (Source Template - only for design system enforcement)
   → NO: You probably don't need this test.
 ```
 

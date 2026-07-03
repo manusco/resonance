@@ -62,4 +62,4 @@ When QAing an agent that uses tools (function calling), assert against the **tra
 *   **Did it handle the tool failure gracefully?** (e.g., API timeout → does it retry or hallucinate a success message?)
 *   **Did it call a tool unnecessarily?** (Efficiency check).
 
-If an agent fails, categorize the failure using the [Agent Debugging Protocol](../resonance-debugger/references/agent_debugging_protocol.md).
+If an agent fails, categorize the failure using the the Agent Debugging Protocol in the debugger skill.

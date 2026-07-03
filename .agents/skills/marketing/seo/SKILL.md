@@ -154,6 +154,9 @@ Operational Playbooks:
 - **[Ahrefs Reference](references/ahrefs_cheatsheet.md)**: Keyword gaps, SERP trajectories, link targets.
 - **[DACH SEO](references/dach_seo_protocol.md)**: German-speaking market: Komposita, umlauts, hreflang de-DE/AT/CH, Impressum E-E-A-T.
 - **[SXO Protocol](references/sxo_protocol.md)**: Search-experience optimization, matching page type to SERP intent.
+- **[Competitor Pages](references/competitor_pages_protocol.md)**: Reverse-engineering ranking pages.
+- **[GitHub SEO](references/github_seo_guide.md)**: Optimizing repos and docs for search.
+- **[Site Architecture](references/site_architecture_protocol.md)**: Hub-and-spoke and internal linking.
 
 ## Operating Standard
 
