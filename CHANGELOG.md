@@ -1,8 +1,8 @@
 # Changelog
 
-## v2.5.0
+## Unreleased
 
-The proof-and-eyes release (Track 1 of the "make it measurably the best" plan). Resonance can now run the project's real tests and a real browser, and it measures whether each skill actually helps instead of asserting it.
+Track 1 of the "make it measurably the best" plan (not yet released; version pending your call). Resonance can now run the project's real tests and a real browser, and it measures whether each skill actually helps instead of asserting it.
 
 ### Added
 - **The execution surface (`.forge/exec/`): the agent's eyes.** `run_checks.py` detects the project's toolchain (Node with the right package manager, Python, Go, Rust, Make) and runs its real tests, returning structured pass or fail. `browser_check.mjs` opens a real headless browser and reports the title, console and page errors, whether required elements exist, and a screenshot. Both proven end to end (a real failing test caught, a broken page's console error and missing element caught). `/test` and `/goal` now ground on these, not on the model's own read of its work. New npm scripts `exec:test` and `exec:browser`.
