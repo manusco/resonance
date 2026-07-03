@@ -16,8 +16,8 @@ Before claiming a change works, run it and read the full output. "It should pass
 
 ## The test-execution loop
 
-1. **Find the command.** Detect the project's runner (`package.json` scripts, `pytest`, `go test`, `cargo test`, a Makefile). Do not assume npm.
-2. **Run it and read all of it.** Run the suite (or the focused test). Read the entire output, not just the exit code. A failing test IS the reproduction case.
+1. **Find the command.** `py .forge/exec/run_checks.py [dir] --json` detects the project's runner (npm/pnpm/yarn/bun, `pytest`, `go test`, `cargo test`, a Makefile) and runs it. Do not assume npm. Run the command yourself instead if you already know it.
+2. **Run it and read all of it.** Read the entire output, not just the exit code (`run_checks.py` returns the pass/fail and the output tail). A failing test IS the reproduction case.
 3. **Fix, then re-run.** Apply the minimal fix, run again. Loop until green. Never mark done on a red or unrun suite.
 4. **Lock it in.** For a bug, add the regression test that failed before the fix and passes after. If you did not watch it fail, you do not know it tests the right thing.
 
@@ -26,7 +26,7 @@ Before claiming a change works, run it and read the full output. "It should pass
 For UI and end-to-end behavior, running unit tests is not enough. Drive the real thing.
 
 1. **Launch the app.** Start the dev server or preview (use the project's run/preview capability).
-2. **Drive a headless browser.** Use the available browser tool (a preview/browser control surface, or `npx playwright`). Navigate to the page, perform the user action, and observe.
+2. **Drive a headless browser.** `node .forge/exec/browser_check.mjs <url> --assert "<css>" --shot out.png --json` opens a real browser and returns the title, console errors, whether required elements exist, and a screenshot. Use the project's own preview or browser control surface instead when you need richer interaction.
 3. **Look with real signals.** Read the rendered DOM and the exact text, the console for errors, the network for failed requests, and take a screenshot. Inspect computed styles for visual claims rather than trusting a screenshot's colors.
 4. **Reproduce, fix, reload, re-verify.** Confirm the bug live, apply the fix, reload, and confirm it is gone with the same steps. Capture before and after.
 5. **Write the end-to-end test** that encodes the flow so the regression cannot silently return. Wait on real conditions, never a fixed sleep (see async_test_stability).
