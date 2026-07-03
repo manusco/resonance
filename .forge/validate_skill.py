@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Resonance Forge — Skill Validator (Tier 1, deterministic, free, <1s).
+Resonance Forge - Skill Validator (Tier 1, deterministic, free, <1s).
 
 Static structural checks for any SKILL.md against the Resonance skill spec.
 Pure stdlib. Cross-platform (Windows/macOS/Linux). No external deps.
@@ -122,20 +122,20 @@ def check_frontmatter(fm: dict, r: Report) -> str:
     if isinstance(name, str):
         for bad in PORTABILITY_RESERVED:
             if bad in name:
-                r.warn(f"frontmatter: `name` contains '{bad}' — fine for Claude, "
+                r.warn(f"frontmatter: `name` contains '{bad}' - fine for Claude, "
                        f"but hurts portability/namespacing across tools")
 
     desc = fm.get("description", "")
     if not desc:
         r.err("frontmatter: missing required `description` (this is what makes the "
-              "skill trigger — never ship without it)")
+              "skill trigger - never ship without it)")
     else:
         if len(desc) > MAX_DESC:
             r.err(f"frontmatter: `description` is {len(desc)} chars; max {MAX_DESC}")
         low = desc.lower()
         if desc.lstrip().lower().startswith(("i ", "i'", "you can", "you will", "we ")):
             r.warn("description: write in third person ('Creates…', not 'I can…' / "
-                   "'You can…') — first/second person degrades discovery")
+                   "'You can…') - first/second person degrades discovery")
         if not any(cue in low for cue in TRIGGER_CUES):
             r.warn("description: add an explicit trigger ('Use when…', 'Triggers:…') so "
                    "the model knows WHEN to fire the skill, not just what it does")
@@ -143,7 +143,7 @@ def check_frontmatter(fm: dict, r: Report) -> str:
     archetype = fm.get("archetype", "")
     if not archetype:
         r.warn("frontmatter: missing `archetype` (knowledge | procedure | orchestration)"
-               " — Resonance skills declare their kind")
+               " - Resonance skills declare their kind")
     elif archetype not in ARCHETYPES:
         r.err(f"frontmatter: `archetype` must be one of {sorted(ARCHETYPES)} "
               f"(got '{archetype}')")
@@ -164,8 +164,8 @@ def check_body(body: str, archetype: str, r: Report) -> None:
     if hits:
         r.warn(f"voice: banned/slop terms in body: {', '.join(hits)}")
 
-    if "—" in body:  # em dash
-        r.warn("voice: em dashes present — Resonance voice uses commas/periods")
+    if "\u2014" in body:  # em dash
+        r.warn("voice: em dashes present - Resonance voice uses commas/periods")
 
     if archetype in ("procedure", "orchestration"):
         missing = [s for s in CONTRACT_SECTIONS

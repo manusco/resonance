@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Resonance Forge — Legacy Scaffolder.
+Resonance Forge - Legacy Scaffolder.
 
 Mechanical port of an existing .agents/skills/<name>/ (or .agents/workflows/<f>.md)
 into .forge/skills/<name>/ so the rebuild can focus on the template body, not on

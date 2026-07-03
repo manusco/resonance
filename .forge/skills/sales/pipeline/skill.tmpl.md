@@ -32,6 +32,10 @@ Copy this checklist and tick items as you go.
 - Probability values are missing → apply standard defaults (Prospecting 10%, Demo 30%, Proposal 50%, negotiation 70%, won 100%) and note it in the overview.
 - Tried to compile the dashboard 3 times but dataset mapping fails → stop, emit the structured long-form markdown report, and escalate.
 
+## Reference Library
+
+- **[B2B Sales Pipeline](references/b2b_sales_pipeline.md)**: Qualification frameworks (BANT, MEDDIC, SPICED), pipeline stage definitions, objection handling, and forecasting methodology.
+
 {{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

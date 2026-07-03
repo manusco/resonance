@@ -3,7 +3,7 @@
 ## 🎯 Onboarding
 
 ### Why do I need `.resonance`? Can't I just chat?
-Most AI chats are "amnesiac"—they forget your project context after a session.
+Most AI chats are "amnesiac"-they forget your project context after a session.
 Resonance gives your agent a **Hard Drive**. The `.resonance/` folder stores your "Soul" (Vision) and "Memory" (Decisions) so the Agent gets smarter over time, instead of rebooting every day.
 
 ### Why do I have to run `/init`?

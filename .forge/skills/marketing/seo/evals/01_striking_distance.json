@@ -7,6 +7,6 @@
     "Recommends a title/H1 rewrite to improve CTR from the SERP before any content changes",
     "Checks date signal consistency: URL, JSON-LD, byline, and meta publish date must align",
     "Proposes a 'Direct Answer block' within the first 50 words to target AI Overviews in parallel",
-    "Does not recommend a full content rewrite as the first action — starts with the highest-ROI items"
+    "Does not recommend a full content rewrite as the first action - starts with the highest-ROI items"
   ]
 }

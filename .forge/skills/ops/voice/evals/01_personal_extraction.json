@@ -6,7 +6,7 @@
     "Identifies the subject type as 'Person' before doing anything else",
     "Analyzes the corpus silently before asking any questions",
     "Produces at least 8 specific, falsifiable hypotheses with quoted evidence from the emails",
-    "Does NOT ask 'How would you describe your tone?' — deduces from text and presents hypotheses instead",
+    "Does NOT ask 'How would you describe your tone?' - deduces from text and presents hypotheses instead",
     "Asks only one question at a time during hypothesis validation"
   ]
 }

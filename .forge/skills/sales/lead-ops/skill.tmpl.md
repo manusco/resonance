@@ -112,6 +112,10 @@ Lead ops recommendations (owner reassignment, escalation, process changes) are r
 3. Ops lead approves owner changes, escalations, or process updates.
 4. Changes are logged with attribution and timestamp.
 
+## Reference Library
+
+- **[CRM Operations](references/crm_operations_protocol.md)**: CRM architecture, automation workflows, data hygiene, and reporting dashboards.
+
 {{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

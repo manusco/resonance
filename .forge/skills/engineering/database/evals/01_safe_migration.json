@@ -7,6 +7,6 @@
     "Writes both up.sql and down.sql for the migration",
     "Confirms the column is added as nullable first to avoid locking the table in production",
     "Warns that renaming an existing column in a single deploy step would break the live app",
-    "Does not skip the down.sql — flags it as a failure condition"
+    "Does not skip the down.sql - flags it as a failure condition"
   ]
 }

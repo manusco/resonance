@@ -7,6 +7,6 @@
     "Applies Topological Betrayal: suggests at least one layout disruption to break the generic pattern",
     "Specifies the Motion Trinity for the table (Entrance, Hover, Click states)",
     "Recommends specific HSL or mathematical adjustments, not vague 'make it darker' advice",
-    "Does not output implementation CSS — stays at the specification level"
+    "Does not output implementation CSS - stays at the specification level"
   ]
 }

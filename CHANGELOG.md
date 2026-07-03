@@ -1,5 +1,22 @@
 # Changelog
 
+## v2.5.0
+
+The hygiene-and-craft release. The deterministic enforcement layer is now complete, the studio no longer contradicts the designer, and the last open items from the State of Resonance audit are shipped. 53 skills, 31 commands, both validators clean, 164 eval cases, and the whole repository is dash-clean including the tooling itself.
+
+### Added
+- **The hooks layer is complete.** The pre-push **ship-gate** blocks pushing a release tag or `main` when the gate is not green (skill validator, library validator, eval check, doc-drift): the deterministic form of "do not ship without a passing test." A **banned-vocabulary scan** for generated copy (`guard.py --copy`, or fold it into the pre-commit with `RESONANCE_STRICT_VOCAB=1`). And a **shipped Claude Code hook config** in `.claude/hooks/`, enabled with `py .forge/hooks/install.py --claude`, so the guard runs at edit time and hands any violation back to fix.
+- **Designer depth.** Two new first-principles references: `data_visualization.md` (the perceptual encoding hierarchy, truthful axes, perceptual color for data, decluttering) and `iconography_system.md` (keyline grids, optical weight and correction, metaphor clarity, accessible hit targets).
+
+### Changed
+- **`design/studio` rebuilt.** De-tool-locked (model-agnostic prompting, no Midjourney-only flags) and de-slopped (no glassmorphism or bento grids as promoted styles). Studio now owns asset craft and defers all interface taste and the timeless-versus-slop call to `resonance-design-designer`, instead of contradicting it.
+- **Cleaner domain boundaries.** The heavy B2B pipeline and CRM references moved from `strategy/growth` to `sales/pipeline` and `sales/lead-ops`, where the execution belongs. Growth stays focused on loops, retention, and GTM; the two sales procedures gain the reference libraries they lacked.
+- **Consolidations.** `pricing_psychology` folded into `pricing_strategy_protocol` (with MaxDiff added); `launch_day_protocol` folded into `launch_strategy_protocol`; the audit taxonomy de-duplicated so `audit_classification_taxonomy` is the single canonical severity-and-category source and `universal_audit_directives` points to it.
+
+### Fixed
+- **The validator's blind spot.** `validate_library.py` now scans eval fixtures for em and en dashes, not only references and skill bodies. Fifty-nine dashes were stripped from 42 eval files, and the whole repository (skills, docs, and the Python tooling) is now dash-clean, so the guard passes its own source.
+- Drift: `docker_optimization` pinned to a current Node LTS, the C4 model "System Context" typo, the thin `engineering/build` evals enriched to the full behavior set, and a perceptual-contrast (APCA) note added to the design-system contrast directive.
+
 ## v2.4.2
 
 Close the remaining lifecycle gaps. The five domain-gap skills (observability, incident, paid-acquisition, analytics, lifecycle) and the test-execution surface shipped in v2.3.0; per-version overlays and deploy verification in v2.4.1. This release finishes the depth.

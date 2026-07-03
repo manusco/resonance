@@ -7,6 +7,6 @@
     "Consults the primary source (Next.js official docs / release notes) to resolve the contradiction",
     "Presents both conflicting claims with their sources before stating the resolution",
     "Notes which source is more current or authoritative",
-    "Does not fabricate confidence — if the answer is still ambiguous after primary source check, states that explicitly"
+    "Does not fabricate confidence - if the answer is still ambiguous after primary source check, states that explicitly"
   ]
 }

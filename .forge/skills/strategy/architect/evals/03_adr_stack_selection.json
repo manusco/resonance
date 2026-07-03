@@ -6,7 +6,7 @@
     "Presents the tradeoffs of both options in a comparison format (not just a preference)",
     "Recommends writing an ADR regardless of the final choice",
     "Factors in the aggregation query requirement as a concrete tradeoff criterion",
-    "Does not pick silently — states a recommendation and explains the 'Why'",
+    "Does not pick silently - states a recommendation and explains the 'Why'",
     "Does not generate application code to implement the choice"
   ]
 }

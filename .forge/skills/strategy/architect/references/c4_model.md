@@ -5,7 +5,7 @@
 
 ## 1. The 4 Levels
 
-1.  **Level 1: System Context Context**
+1.  **Level 1: System Context**
     *   **Goal**: The Big Picture.
     *   **Audience**: Everyone (Non-technical).
     *   **Shows**: Users <-> System <-> External Systems (e.g., Stripe, SendGrid).

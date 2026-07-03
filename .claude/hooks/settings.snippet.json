@@ -1,0 +1,12 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "py .forge/hooks/guard.py --hook" }
+        ]
+      }
+    ]
+  }
+}

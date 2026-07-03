@@ -5,8 +5,8 @@ Resonance Forge - Library Validator (Tier 1.5, cross-skill, deterministic, free)
 `validate_skill.py` checks one skill in isolation. This checks the WHOLE library
 for the defects that only show up across files: orphan references, duplicated or
 diverged reference files, eval `skill` fields that do not match the skill name,
-two-level-deep reference links, attribution/provenance leaks, em/en dashes, and
-time-bound claims. Pure stdlib, cross-platform.
+two-level-deep reference links, attribution/provenance leaks, em/en dashes (in
+references, skill bodies, and eval fixtures), and time-bound claims. Pure stdlib.
 
 Usage:
     python .forge/validate_library.py                      # scans .agents/skills
@@ -33,7 +33,7 @@ PROVENANCE = re.compile(
     re.I,
 )
 TIME_BOUND = re.compile(r"\b(20\d\d Edition|as of 20\d\d|in 20\d\d\b|\(20\d\d\))")
-DASH = re.compile(r"[—–]")  # em, en
+DASH = re.compile(r"[\u2014\u2013]")  # em, en
 
 
 def frontmatter_name(text: str) -> str:
@@ -91,15 +91,19 @@ def main(argv: list[str]) -> int:
                 # provenance / dashes / time-bound inside references
                 _scan(rtext, rf, root, errors, warnings)
 
-        # eval skill-name integrity
+        # eval skill-name integrity + the house dash rule (evals are text too)
         evdir = sdir / "evals"
         if evdir.is_dir() and name:
             for ev in sorted(evdir.glob("*.json")):
-                m = DESC_SKILL.search(ev.read_text(encoding="utf-8", errors="replace"))
+                evtext = ev.read_text(encoding="utf-8", errors="replace")
+                m = DESC_SKILL.search(evtext)
                 if m and m.group(1) != name:
                     errors.append(
                         f"eval skill mismatch: {rel(ev, root)} says '{m.group(1)}', "
                         f"skill is '{name}'")
+                for ln_no, line in enumerate(evtext.splitlines(), 1):
+                    if DASH.search(line):
+                        errors.append(f"em/en dash: {rel(ev, root)}:{ln_no}")
 
         _scan(body, sk, root, errors, warnings)
 

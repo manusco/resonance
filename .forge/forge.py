@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Resonance Forge — Skill Compiler.
+Resonance Forge - Skill Compiler.
 
 One source -> many targets. Author a skill once as a template with placeholders;
 compile it per tool (host) and per model (overlay) into a ready SKILL.md.
@@ -203,7 +203,7 @@ def build_commands(host_name: str, dry_run: bool) -> int:
 
 
 def main(argv: list[str]) -> int:
-    ap = argparse.ArgumentParser(description="Resonance Forge — compile skills from templates.")
+    ap = argparse.ArgumentParser(description="Resonance Forge - compile skills from templates.")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     b = sub.add_parser("build", help="Compile one or all skill templates")

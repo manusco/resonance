@@ -2,6 +2,8 @@
 
 > **Purpose**: Every audit, review, and report in Resonance uses this taxonomy. It ensures findings are classified by *what they affect*, then ranked by *how much harm they cause*.
 
+This file is the single source of truth for the finding categories and the severity ladder. Anyone who needs to know "what are the severities and categories" reads this file and only this file. For how to *run* an audit (evidence standards, reporting format, scope discipline, the per-directive rules), see `universal_audit_directives.md`.
+
 ## Contents
 
 - [1. The 7-Category Taxonomy](#1-the-7-category-taxonomy)

@@ -26,6 +26,6 @@ When building a specific page (e.g., the Checkout page), create a local override
 When generating the Design System, enforce these constraints:
 1.  **Stop Emoji Architecture**: Never use emojis (🎨, 🚀) as structural icons. Use proper vector SVG libraries (Lucide, Heroicons).
 2.  **No Pure Flat or Pure Skeuomorphism**: Use subtle depth, distinct layering, and "Soft UI Evolution" unless Brutalism or a specific artistic direction is requested.
-3.  **Accessibility is Default**: All text must pass WCAG 4.5:1 contrast. Focus states must be visible.
+3.  **Accessibility is Default**: All text must pass WCAG 4.5:1 contrast as the floor. Treat that ratio as the legal minimum, not the goal: the real target is perceptual contrast (APCA, or even OKLCH lightness deltas per `color_and_contrast.md`), because WCAG 2's ratio math misjudges some pairs, light text on saturated mid-tones especially, passing the number while reading as hard to see. Tune for what the eye reads, then confirm the floor. Focus states must be visible.
 4.  **Motion has Meaning**: Animations should explain state changes, not just act as decoration. Target 150-300ms duration.
 5.  **Touch Target Supremacy**: Minimum 44x44px for all interactive elements on mobile views.

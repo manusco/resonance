@@ -7,6 +7,6 @@
     "Does NOT just say 'it is a God class' as the reason for refactoring",
     "Produces a Do Not Change Declaration listing user-facing behaviors that must be preserved",
     "Uses the Mikado Method: identifies the leaf dependencies to extract first before touching the root",
-    "Applies the Safe Sequence: Lock (tests) → Extract → Split — not the reverse"
+    "Applies the Safe Sequence: Lock (tests) → Extract → Split - not the reverse"
   ]
 }
