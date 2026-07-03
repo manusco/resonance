@@ -9,7 +9,7 @@ Use one of the three archetype templates in [`.forge/templates/`](../../.forge/t
 - `procedure.skill.md`: a gated workflow with a Definition of Done.
 - `orchestration.skill.md`: a procedure that drives other skills.
 
-To author a skill, drive `resonance-skill-author`, or by hand:
+To author a skill, drive `resonance-ops-skill-author`, or by hand:
 
 1. Copy the matching archetype to `.forge/skills/<name>/skill.tmpl.md`.
 2. Add `>= 3` golden cases in `.forge/skills/<name>/evals/`.

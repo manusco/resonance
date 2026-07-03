@@ -1,5 +1,5 @@
 {
-  "skill": "resonance-skill-author",
+  "skill": "resonance-ops-skill-author",
   "query": "I keep re-explaining how our team does API error responses. Make a skill for it.",
   "files": [],
   "expected_behavior": [

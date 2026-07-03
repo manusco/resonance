@@ -88,4 +88,4 @@ archetype. One format, three kinds, one compiler.
 5. Eval against the golden cases; beat the baseline.
 6. Commit only when validate + eval pass.
 
-The `resonance-skill-author` skill walks an agent through exactly this.
+The `resonance-ops-skill-author` skill walks an agent through exactly this.

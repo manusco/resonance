@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.5.0
+## v2.4.3
 
 The hygiene-and-craft release. The deterministic enforcement layer is now complete, the studio no longer contradicts the designer, and the last open items from the State of Resonance audit are shipped. 53 skills, 31 commands, both validators clean, 164 eval cases, and the whole repository is dash-clean including the tooling itself.
 

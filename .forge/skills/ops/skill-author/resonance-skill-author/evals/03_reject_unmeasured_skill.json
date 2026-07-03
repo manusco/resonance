@@ -1,5 +1,5 @@
 {
-  "skill": "resonance-skill-author",
+  "skill": "resonance-ops-skill-author",
   "query": "Just write me a skill that makes code 'more elegant'. Skip the tests, I trust you.",
   "files": [],
   "expected_behavior": [

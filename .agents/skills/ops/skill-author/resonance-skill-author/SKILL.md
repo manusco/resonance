@@ -1,10 +1,10 @@
 ---
-name: resonance-skill-author
+name: resonance-ops-skill-author
 description: Authors, audits, and hardens Resonance skills with the Forge compiler. Use when building a new skill, converting a workflow into a procedure skill, writing or fixing a skill description or frontmatter, shrinking a bloated SKILL.md, adding evals, or running the skill validator. Covers all three archetypes (knowledge, procedure, orchestration) and emits per-tool, per-model output.
 archetype: procedure
 ---
 
-# /resonance-skill-author: forge a skill to the gold standard
+# /resonance-ops-skill-author: forge a skill to the gold standard
 
 > **Role:** the meta-skill. It builds the other skills.
 > **Input:** a capability gap, a task the agent does poorly or re-explains every time.
