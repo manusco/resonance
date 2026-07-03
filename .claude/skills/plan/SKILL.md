@@ -1,0 +1,10 @@
+---
+name: plan
+description: Turn a feature or idea into an atomic, approved implementation plan. Deep research, 4-pass spec.
+---
+
+# /plan
+
+Run the Resonance **plan** procedure.
+
+Read `.agents/skills/strategy/plan/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /plan command to it.

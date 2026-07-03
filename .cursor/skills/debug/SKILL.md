@@ -1,0 +1,10 @@
+---
+name: debug
+description: Root-cause a bug via the Scientific Method. Reproduction script required, no fix without a proven cause.
+---
+
+# /debug
+
+Run the Resonance **debug** procedure.
+
+Read `.agents/skills/engineering/debugger/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /debug command to it.

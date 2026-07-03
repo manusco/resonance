@@ -1,0 +1,11 @@
+---
+name: capture
+description: Document a solved problem in the correct Diataxis quadrant so it is never re-discovered.
+disable-model-invocation: true
+---
+
+# /capture
+
+Run the Resonance **capture** procedure.
+
+Read `.agents/skills/ops/librarian/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /capture command to it.

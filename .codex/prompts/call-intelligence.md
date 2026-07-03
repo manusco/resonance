@@ -1,0 +1,5 @@
+---
+description: Analyze a call transcript for persona insights, objection patterns, and feature requests.
+---
+
+Run the Resonance call-intelligence procedure. Read `.agents/skills/sales/call-intelligence/SKILL.md` in full and execute it, following its Definition of Done.

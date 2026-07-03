@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-account-intelligence",
+  "query": "This is our biggest account by revenue but there has been no activity or signal in months. Build the case for why we should reach out now.",
+  "files": [],
+  "expected_behavior": [
+    "Applies the Why-Now test and does not manufacture a signal where none exists",
+    "Labels the account 'no current signal' and deprioritizes it rather than inventing urgency",
+    "Does not treat account size alone as a reason to act now",
+    "If it recommends contact, it proposes a genuine multi-threading or discovery step, not a fabricated trigger"
+  ]
+}

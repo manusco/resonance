@@ -1,0 +1,10 @@
+---
+name: test
+description: Write or audit tests against the 8-Path Matrix. Destructive and property-based coverage.
+---
+
+# /test
+
+Run the Resonance **test** procedure.
+
+Read `.agents/skills/ops/qa/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /test command to it.

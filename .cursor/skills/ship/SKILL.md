@@ -1,0 +1,11 @@
+---
+name: ship
+description: Release protocol: pre-flight checks, changelog, semantic version, tag, deploy.
+disable-model-invocation: true
+---
+
+# /ship
+
+Run the Resonance **ship** procedure.
+
+Read `.agents/skills/ops/ship/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /ship command to it.

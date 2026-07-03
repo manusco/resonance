@@ -1,0 +1,10 @@
+---
+name: friction
+description: Friction Collider: simulate the anti-persona to find and remove conversion drag.
+---
+
+# /friction
+
+Run the Resonance **friction** procedure.
+
+Read `.agents/skills/marketing/conversion/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /friction command to it.

@@ -1,0 +1,10 @@
+---
+name: review-pr
+description: Audit a PR or diff against the Blocking Registry. Findings ranked by user harm, not by file order.
+---
+
+# /review-pr
+
+Run the Resonance **review-pr** procedure.
+
+Read `.agents/skills/ops/reviewer/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /review-pr command to it.

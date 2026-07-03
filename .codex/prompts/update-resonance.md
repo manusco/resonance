@@ -1,0 +1,5 @@
+---
+description: Upgrade the Resonance framework with backup and restore safety. Preserves .resonance/.
+---
+
+Run the Resonance update-resonance procedure. Read `.agents/skills/ops/update-resonance/SKILL.md` in full and execute it, following its Definition of Done.

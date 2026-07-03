@@ -1,0 +1,10 @@
+---
+name: cold-call
+description: Generate a B2B cold-call script using the 6-part permission-based framework.
+---
+
+# /cold-call
+
+Run the Resonance **cold-call** procedure.
+
+Read `.agents/skills/sales/cold-call/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /cold-call command to it.

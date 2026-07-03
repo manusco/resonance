@@ -1,0 +1,5 @@
+---
+description: Extract a portable behavioral voice profile from a corpus (person, brand, or character).
+---
+
+Run the Resonance voice-profile procedure. Read `.agents/skills/ops/voice/SKILL.md` in full and execute it, following its Definition of Done.

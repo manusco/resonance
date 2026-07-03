@@ -1,0 +1,10 @@
+---
+name: refactor
+description: Atomic, behavior-preserving cleanup. Mikado method, safe sequence, SOLID.
+---
+
+# /refactor
+
+Run the Resonance **refactor** procedure.
+
+Read `.agents/skills/ops/refactor/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /refactor command to it.

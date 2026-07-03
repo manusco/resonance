@@ -1,0 +1,5 @@
+---
+description: Git-driven retrospective: shipping streak, focus score, complexity delta.
+---
+
+Run the Resonance retro procedure. Read `.agents/skills/ops/retro/SKILL.md` in full and execute it, following its Definition of Done.

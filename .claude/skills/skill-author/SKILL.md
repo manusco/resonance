@@ -1,0 +1,10 @@
+---
+name: skill-author
+description: Author, validate, and eval a new Resonance skill with the Forge.
+---
+
+# /skill-author
+
+Run the Resonance **skill-author** procedure.
+
+Read `.agents/skills/ops/skill-author/resonance-skill-author/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /skill-author command to it.

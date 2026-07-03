@@ -1,0 +1,10 @@
+---
+name: seo
+description: SEO and GEO audit: structured data, canonical, schema, AI-citation optimization.
+---
+
+# /seo
+
+Run the Resonance **seo** procedure.
+
+Read `.agents/skills/marketing/seo/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /seo command to it.

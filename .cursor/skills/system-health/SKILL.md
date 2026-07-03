@@ -1,0 +1,10 @@
+---
+name: system-health
+description: Score system health 0-100 with qualitative flags (auth, env, test depth).
+---
+
+# /system-health
+
+Run the Resonance **system-health** procedure.
+
+Read `.agents/skills/ops/system-health/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /system-health command to it.

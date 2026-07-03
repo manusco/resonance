@@ -1,0 +1,11 @@
+---
+name: update-resonance
+description: Upgrade the Resonance framework with backup and restore safety. Preserves .resonance/.
+disable-model-invocation: true
+---
+
+# /update-resonance
+
+Run the Resonance **update-resonance** procedure.
+
+Read `.agents/skills/ops/update-resonance/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /update-resonance command to it.

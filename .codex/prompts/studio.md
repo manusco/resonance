@@ -1,0 +1,5 @@
+---
+description: Produce production-ready visual assets with structured prompt engineering.
+---
+
+Run the Resonance studio procedure. Read `.agents/skills/design/studio/SKILL.md` in full and execute it, following its Definition of Done.

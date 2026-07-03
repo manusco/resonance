@@ -1,0 +1,10 @@
+---
+name: market-research
+description: Discover Existential Data Points in a B2B SaaS vertical. Positioning from nice-to-have to must-have.
+---
+
+# /market-research
+
+Run the Resonance **market-research** procedure.
+
+Read `.agents/skills/research/market-research/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /market-research command to it.

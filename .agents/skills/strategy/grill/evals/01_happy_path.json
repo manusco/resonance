@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-grill",
+  "query": "Grill me on this before I build it: I want to add a feature where users can export their dashboard data to CSV.",
+  "files": [],
+  "expected_behavior": [
+    "Asks exactly one question at a time and waits, rather than dumping a list of questions",
+    "Attaches a recommended answer and a concrete reason to each question",
+    "Surfaces failure and edge cases (large exports, empty data, permissions on which rows a user may export)",
+    "Does not write code or scaffold the feature before shared understanding is confirmed",
+    "Ends by summarizing resolved decisions and asking the user to confirm before implementation"
+  ]
+}

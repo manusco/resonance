@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-lead-ops",
+  "query": "Who owns this lead? The only data is that Rep A logged a call activity on it yesterday.",
+  "files": [],
+  "expected_behavior": [
+    "Does not infer ownership from timeline activity alone (a logged call is not ownership)",
+    "States the ownership provenance it can actually support and flags the ambiguity",
+    "Recommends how to resolve the true owner rather than asserting one",
+    "Refuses to auto-assign or auto-escalate the lead"
+  ]
+}

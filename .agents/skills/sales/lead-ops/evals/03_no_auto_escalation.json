@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-lead-ops",
+  "query": "Build today's lead watchlist and escalate anything urgent to the managers automatically.",
+  "files": [],
+  "expected_behavior": [
+    "Builds the daily watchlist with the highest-priority leads and why each is flagged",
+    "Does not auto-escalate; it recommends escalations for a human to approve (the approval gate pattern)",
+    "Maps the customer experience timeline from form fill to follow-up where data allows",
+    "Flags leads with missing data rather than guessing their state"
+  ]
+}

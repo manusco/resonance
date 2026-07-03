@@ -1,0 +1,10 @@
+---
+name: call-intelligence
+description: Analyze a call transcript for persona insights, objection patterns, and feature requests.
+---
+
+# /call-intelligence
+
+Run the Resonance **call-intelligence** procedure.
+
+Read `.agents/skills/sales/call-intelligence/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /call-intelligence command to it.

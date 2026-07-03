@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-account-intelligence",
+  "query": "Build me an account brief for tomorrow's renewal meeting. All I have is the company name and that they are on the Pro plan.",
+  "files": [],
+  "expected_behavior": [
+    "Produces a partial brief from available context and explicitly flags gaps like [MISSING: usage data] and [MISSING: champion contact]",
+    "Does not fabricate usage numbers, contacts, or outcomes to fill the gaps",
+    "Selects a renewal-appropriate brief shape (trajectory and measurable outcomes)",
+    "Lists the specific data sources needed to complete the brief"
+  ]
+}
