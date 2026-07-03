@@ -30,7 +30,7 @@ Copy this checklist and tick items as you go.
 4. **Loop over slices, autonomously and bounded.** For each slice:
    - **Recall** relevant memory and settled decisions (`py .forge/recall.py`, `py .forge/decisions.py list`) so you do not re-solve or re-litigate.
    - **Build** the slice (`/build`).
-   - **Verify with grounded signals only** (`/test` live execution runs the real tests; run the validators; `/audit` the diff). The done-signal is executed, never "this should work". See done_conditions.
+   - **Verify with grounded signals only**: `/test` runs the real tests (`.forge/exec/run_checks.py`) and a real browser (`.forge/exec/browser_check.mjs`); run the validators; `/audit` the diff. The done-signal is executed, never "this should work". See done_conditions.
    - **Check the bound:** `loop_state.py check <slice> advanced|progress|failed`. Obey the directive: CONTINUE, or STOP_SLICE / STOP_STUCK / STOP_CAP (then re-plan the slice once, or stop and escalate). Never override a STOP.
    - **Record** any real decision (`py .forge/decisions.py add`).
    Run multiple slices without pausing. Pause only at the checkpoints below. → verify: each slice ends verified or the loop stopped on a bound.

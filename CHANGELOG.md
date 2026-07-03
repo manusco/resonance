@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.5.0
+
+The proof-and-eyes release (Track 1 of the "make it measurably the best" plan). Resonance can now run the project's real tests and a real browser, and it measures whether each skill actually helps instead of asserting it.
+
+### Added
+- **The execution surface (`.forge/exec/`): the agent's eyes.** `run_checks.py` detects the project's toolchain (Node with the right package manager, Python, Go, Rust, Make) and runs its real tests, returning structured pass or fail. `browser_check.mjs` opens a real headless browser and reports the title, console and page errors, whether required elements exist, and a screenshot. Both proven end to end (a real failing test caught, a broken page's console error and missing element caught). `/test` and `/goal` now ground on these, not on the model's own read of its work. New npm scripts `exec:test` and `exec:browser`.
+- **The eval scorecard.** `run_evals.py --score` runs every golden case with and without its skill, grades both against the rubric, and writes a per-skill lift table to `docs/EVAL_SCORECARD.md` (with `--changed`, `--limit`, and parallelism). A live 4-skill sample is included: the rigor skills (debugger, plan) show large measured lift (+0.60 and +0.67); two came out flat and correctly flag their eval rubrics as too coarse (the /improve work-list). New npm script `eval:score`.
+
+### Fixed
+- **A silent Windows bug the scorecard caught.** The eval runner wrote prompts to the model subprocess with the OS locale (cp1252), which cannot encode the arrows and quotes in skill bodies, so every such skill failed silently. Forced UTF-8 on the subprocess I/O in the runner and the check runner. Measurement found a bug inspection missed.
+
 ## v2.4.3
 
 The hygiene-and-craft release. The deterministic enforcement layer is now complete, the studio no longer contradicts the designer, and the last open items from the State of Resonance audit are shipped. 53 skills, 31 commands, both validators clean, 164 eval cases, and the whole repository is dash-clean including the tooling itself.

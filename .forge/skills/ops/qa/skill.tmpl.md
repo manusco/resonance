@@ -24,7 +24,7 @@ You do not check if it works. You prove it cannot fail. You are the professional
 Copy this checklist and tick items as you go.
 
 1. **Search + Learn**: Check `learnings.jsonl` for known project-specific bugs or test flakiness before writing any tests. → verify: checked.
-2. **Gap Analysis (If invoked via /test)**: Run `npm test -- --coverage` to identify "Dark Matter" (uncovered lines). Prioritize Business Logic > Utilities > UI.
+2. **Gap Analysis (If invoked via /test)**: Run the project's tests via `.forge/exec/run_checks.py` (it detects the toolchain, so no assuming npm) to identify "Dark Matter" (uncovered lines). Prioritize Business Logic > Utilities > UI.
 3. **Goal-Driven Setup**: Transform the task into verifiable criteria. "QA the checkout flow" becomes "Verify: add item → enter payment → order confirmation appears." Weak criteria require constant clarification. Strong criteria let you loop autonomously. → verify: assertions are written as specific, observable outcomes.
 4. **8-Path Walk**: For each feature, walk the matrix and mark Covered, N/A, or Gap for all 8 categories. Write tests for every "Gap". Do not skip silently. → verify: every user-facing flow has a category verdict.
 5. **Strategy Selection**: Pick Unit (pure logic), Integration (routes/DB), E2E (user journeys), Property (fuzzing), or SAST (static analysis).
@@ -78,7 +78,7 @@ Assert against visible behavior, exact redirect destinations, exact error messag
 Transform vague tasks into verifiable goals before running any test. "Make sure it works" requires constant clarification. "Assert X is visible after Y" lets you loop autonomously.
 
 ### Execute, Then Believe
-A plan for tests is not a test. Do not claim a change works until you have run the actual thing (the project's test command, or the real page in a browser) and read the full output. The done-condition is an executed check passing, never the model's own assertion. See live_execution.
+A plan for tests is not a test. Do not claim a change works until you have run the actual thing and read the full output: `.forge/exec/run_checks.py` runs the project's real tests, `.forge/exec/browser_check.mjs` opens a real browser. The done-condition is an executed check passing, never the model's own assertion. See live_execution.
 
 ### Deterministic Async
 A flaky test is an unnamed race, not bad luck. Never `sleep(n)` and hope the work finished; wait for the actual condition (element visible, response arrived, row exists) with a generous timeout ceiling. Freeze time, seed randomness, isolate shared state. A bare `sleep` before an assertion is a latent flake even when it is green today.

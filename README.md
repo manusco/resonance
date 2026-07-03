@@ -3,7 +3,7 @@
 > Operator-grade AI agent skills for builders. A cross-tool skill library and slash-command system for Claude Code, Cursor, Codex, and opencode, covering strategy, design, engineering, marketing, sales, and ops.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.3-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
+    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.5.0-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
     <img src="https://img.shields.io/badge/Skills-50+-00f2ea?style=for-the-badge" alt="45+ skills" />
     <img src="https://img.shields.io/badge/Commands-31-7025eb?style=for-the-badge" alt="28 commands" />
@@ -117,6 +117,10 @@ py .forge/validate_skill.py --all .agents/skills
 ```
 
 **Enforce the rules (optional):** `py .forge/hooks/install.py` installs a git guard that blocks em/en dashes, Soul edits, and committed secrets, and runs the library validator when skills change. Deterministic, cross-tool, opt-in. See `.forge/hooks/README.md`.
+
+**Give the agent eyes (grounded verification):** `.forge/exec/run_checks.py` runs the project's real tests on any toolchain (Node, Python, Go, Rust, Make); `.forge/exec/browser_check.mjs` opens a real headless browser and reports the title, console errors, missing elements, and a screenshot. `/test` and `/goal` ground on these, not on the model's own read of its work. See `.forge/exec/README.md`.
+
+**Prove the skills work, do not just assert it:** `npm run eval:score` runs every golden case with and without its skill and grades the lift, writing [`docs/EVAL_SCORECARD.md`](docs/EVAL_SCORECARD.md). Skills with no measured lift become the work-list, not a mystery.
 
 ---
 

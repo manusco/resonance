@@ -1,6 +1,6 @@
-# resonance.ps1 - System check for Resonance v2.4.3 (Windows)
+# resonance.ps1 - System check for Resonance v2.5.0 (Windows)
 
-Write-Host "🔮 Resonance v2.4.3 - System Check"
+Write-Host "🔮 Resonance v2.5.0 - System Check"
 Write-Host "========================================"
 
 # 1. Check Memory (project brain)
