@@ -1,0 +1,10 @@
+---
+name: second-opinion
+description: Independent second-model review of a diff, reconciled with the primary review.
+---
+
+# /second-opinion
+
+Run the Resonance **second-opinion** procedure.
+
+Read `.agents/skills/ops/second-opinion/SKILL.md` in full and execute it exactly, following its Definition of Done. That skill is the procedure; this file only routes the /second-opinion command to it.

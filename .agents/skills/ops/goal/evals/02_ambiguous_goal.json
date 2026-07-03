@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-ops-goal",
+  "query": "/goal make the app better for enterprise customers.",
+  "files": [],
+  "expected_behavior": [
+    "Recognizes the goal is too vague to have a checkable Definition of Done and does not start building",
+    "Returns to /grill to pin down what 'better for enterprise' means and a DoD a machine can verify",
+    "Gets the framed plan and DoD approved before decomposing or building anything",
+    "Does not guess a scope and run autonomously on it"
+  ]
+}

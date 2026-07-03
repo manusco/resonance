@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-ops-second-opinion",
+  "query": "The second model returned five findings including a claimed SQL injection on line 40 and three style nits. Reconcile them.",
+  "files": [],
+  "expected_behavior": [
+    "Verifies each finding against the actual code rather than accepting the second model on its word",
+    "Drops the style nits and any finding that does not trace to a real line (guards against hallucination and noise)",
+    "Treats a claimed P0 like the SQL injection as a candidate to confirm at the code path, not an established fact",
+    "Does not average or defer to the second model; the code decides"
+  ]
+}

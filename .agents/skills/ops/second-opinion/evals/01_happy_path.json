@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-ops-second-opinion",
+  "query": "Get a second opinion on this auth refactor before I merge it. It adds JWT refresh-token rotation.",
+  "files": [],
+  "expected_behavior": [
+    "Establishes a primary review baseline (from /review-pr or a direct read) before dispatching",
+    "Dispatches the diff to a second model via .forge/second_opinion.py with context about what the change does",
+    "Reconciles the two reviews into agreements (high-confidence) and disagreements (investigate)",
+    "Ranks the surviving findings P0-P3 by user harm and leads with the agreements"
+  ]
+}

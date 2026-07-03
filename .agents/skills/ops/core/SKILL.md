@@ -51,7 +51,7 @@ Stop and search before building anything involving unfamiliar patterns. Evaluate
 
 ## Operational Sequence
 
-1. **Search + Learn**: Search `.resonance/learnings.jsonl` for keywords related to the task. Read `02_memory.md` for project-wide history.
+1. **Search + Learn**: Run `py .forge/decisions.py list` to resurface settled decisions, then `py .forge/recall.py "<task topic>"` to pull the relevant memory instead of reading the whole brain. See Memory Recall.
 2. **Pre-Flight**: State assumptions explicitly. Name what is unclear before proceeding.
 3. **If Triggered via `/init`**:
    - **Connection**: Check if `.resonance/` exists. If not, create it.
@@ -84,6 +84,7 @@ Stop and search before building anything involving unfamiliar patterns. Evaluate
 - **[Completion Attestation](references/completion_attestation.md)**: Required evidence format for task completion.
 - **[Audit Classification Taxonomy](references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
+- **[Memory Recall](references/memory_recall.md)**: Retrieve by meaning; the queryable, append-only decision log.
 
 ## Operating Standard
 
