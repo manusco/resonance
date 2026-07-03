@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-improve",
+  "query": "ops/ship is flat at 1.0 with and without the skill, but the with-skill answer clearly includes canary, rollback, and verify-after-deploy that the baseline did not. Improve it.",
+  "files": [],
+  "expected_behavior": [
+    "Diagnoses the cause as a coarse rubric (the skill's answer was better but the two-item rubric could not see it), not a weak body",
+    "Adds rubric items that capture the skill's real added value (rollback path confirmed, production verified after deploy)",
+    "Makes the rubric a harder and more discriminating test, never an easier one, and confirms a mediocre answer would still fail it",
+    "Rebuilds, validates, then re-measures to confirm the skill now wins on the sharpened rubric",
+    "Does not touch the skill body when the diagnosis is that the eval, not the skill, was the weak link"
+  ]
+}

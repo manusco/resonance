@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-legal",
+  "query": "A vendor sent us their SaaS agreement to sign. One clause says: 'Customer shall indemnify and hold Provider harmless from any and all claims, and Provider's liability under this agreement is excluded to the fullest extent, and this agreement is governed by the laws of Delaware.' We're a GmbH in Munich. Safe to sign?",
+  "files": [],
+  "expected_behavior": [
+    "Identifies the three risk-transfer clauses concretely: a one-sided/broad indemnity running from customer to provider, a near-total exclusion of the provider's liability, and a foreign (Delaware) governing-law choice",
+    "Explains that a blanket 'liability excluded to the fullest extent' clause is void under German AGB law for intent, gross negligence, and injury to life/body/health, so the clause may not hold as written",
+    "Proposes specific redlines rather than only flagging problems: make the indemnity mutual or scope it to the customer's own misuse, cap liability (e.g. to fees paid in the prior 12 months) with only the legally required carve-outs, and question the Delaware governing law for a Munich GmbH",
+    "Does not simply answer 'yes it is safe' or 'no do not sign'; frames it as negotiate-these-clauses with the risk of each stated in plain language",
+    "Explicitly recommends escalating to counsel before signing given the uncapped indemnity and foreign governing law, and states this is not legal advice"
+  ]
+}

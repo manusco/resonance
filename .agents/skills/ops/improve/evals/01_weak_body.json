@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-improve",
+  "query": "The scorecard shows engineering/build is flat: with-skill and without-skill answers scored the same, and reading them, the two answers really are similar. Improve it.",
+  "files": [],
+  "expected_behavior": [
+    "Diagnoses the cause as a weak body (the two outputs are similar, so the skill is not changing behavior), not a coarse rubric",
+    "Adds a concrete, non-obvious step or refusal the base model skips, rather than padding with hedging prose",
+    "Makes one targeted change in .forge source, then rebuilds and validates before measuring",
+    "Re-measures with improve.py remeasure and keeps the change only if it reports IMPROVED",
+    "Records the decision with the measured before-and-after lift"
+  ]
+}

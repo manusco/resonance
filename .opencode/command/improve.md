@@ -1,0 +1,5 @@
+---
+description: Work the eval scorecard: sharpen the weakest skills or their rubrics and keep only changes that raise the measured lift.
+---
+
+Run the Resonance improve procedure. Read `.agents/skills/ops/improve/SKILL.md` in full and execute it, following its Definition of Done.

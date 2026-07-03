@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-finance",
+  "query": "We have 400K in the bank and spend about 55K a month. I want to build a revenue forecast for the next 18 months so I know if we survive. We charge 200/month per customer and add roughly 15 new customers a month.",
+  "files": [],
+  "expected_behavior": [
+    "Computes runway explicitly (400K / 55K net burn is about 7 months) and frames it as a date the cash runs out, not just a metric",
+    "Builds the revenue line from drivers (new customers x price, accumulating MRR) rather than a typed-in top-line number, and asks for or applies a churn assumption so the recurring model leaks",
+    "Flags that current burn exceeds current revenue and warns the company must raise, cut, or reach profitability before the cash date, ideally with 6+ months of runway to spare",
+    "Separates assumptions from calculations and recommends at least a base and a downside scenario instead of a single point forecast",
+    "Does not present a hockey-stick curve without a named driver behind it, and surfaces net burn and the survival question as the headline"
+  ]
+}

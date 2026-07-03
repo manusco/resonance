@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-legal",
+  "query": "Quick GDPR question: our customers upload their end-users' personal data into our product. We now want to use that data to train our own ML models to improve the product. Are we allowed to, and do we need anything special?",
+  "files": [],
+  "expected_behavior": [
+    "Correctly identifies that for the uploaded end-user data the company is a processor and the customer is the controller, so the company may only process on the customer's documented instructions",
+    "Explains that using that data to train the company's own models is a new purpose that likely makes the company a controller for that use, requiring its own lawful basis and transparency, which it almost certainly does not currently have",
+    "References the DPA / Article 28 constraint: the existing processor agreement and purpose limitation would need to permit this, and repurposing without permission breaches it",
+    "Does not give a blanket 'yes you can' answer; identifies this as a high-risk repurposing that needs the controller's authorization and possibly the end-users' rights addressed",
+    "Flags that this is a high-risk data-protection question that should be reviewed by a qualified lawyer before proceeding, and states it is not a substitute for legal advice"
+  ]
+}
