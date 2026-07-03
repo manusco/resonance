@@ -22,10 +22,10 @@ You need to measure the system's pulse. A "Healthy" system has high confidence (
 
 Copy this checklist and tick items as you go.
 
-1. **Automated Vitals**:
-   - **Tests**: Run `npm test -- --coverage`. (Weight: 40%)
-   - **Lint**: Run `npm run lint`. (Weight: 30%)
-   - **Build**: Run `npm run build`. (Weight: 30%)
+1. **Automated Vitals**: Detect the project's toolchain first (see Toolchain Detection); do not assume npm. Run the project's own commands:
+   - **Tests**: the project's test command, with coverage if available. (Weight: 40%)
+   - **Lint**: the project's lint command. (Weight: 30%)
+   - **Build**: the project's build command. (Weight: 30%)
 2. **Manual Vitals (The Qualitative Flags)**:
    - **Drift Check**: Read `01_state.md`. Does it match `git log -10`? (Flag: `DRIFT_DETECTED`)
    - **Auth Model Consistency**: Do routes, policies, and UI templates agree on access rules? Delegate to `resonance-ops-security`. (Flag: `AUTH_INCONSISTENT`)
@@ -59,6 +59,7 @@ A 100/100 score is useless if the tests only check the happy path (`TEST_SHALLOW
 ## Reference Library
 
 - **[QA Health Rubric](../qa/references/qa_health_rubric.md)**: Full, Quick, and Regression modes.
+- **[Toolchain Detection](../core/references/toolchain_detection.md)**: Detect and run the project's test/lint/build, not npm by reflex.
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 
 ## Operating Standard

@@ -85,6 +85,7 @@ Stop and search before building anything involving unfamiliar patterns. Evaluate
 - **[Audit Classification Taxonomy](references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
 - **[Memory Recall](references/memory_recall.md)**: Retrieve by meaning; the queryable, append-only decision log.
+- **[Toolchain Detection](references/toolchain_detection.md)**: Detect and run the project's test/build/lint, shared by ship and system-health.
 
 ## Operating Standard
 
