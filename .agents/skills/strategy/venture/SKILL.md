@@ -72,8 +72,7 @@ One-page business model. Forces clarity by putting constraints on every section.
 - **[Leverage Protocol](references/leverage_protocol.md)**: Rules of high-output ventures.
 - **[The 6 Business Models](references/business_models.md)**: Service, SaaS, Media, etc.
 - **[Lean Canvas](references/lean_canvas.md)**: Business modeling template.
-- **[Pricing Psychology](references/pricing_psychology.md)**: Anchoring and the Decoy Effect.
-- **[Pricing Strategy Protocol](references/pricing_strategy_protocol.md)**: Value metrics, tier structure, Van Westendorp, price increases.
+- **[Pricing Strategy Protocol](references/pricing_strategy_protocol.md)**: Value metrics, tier structure, pricing psychology (anchoring, decoy, charm), Van Westendorp, MaxDiff, and price increases.
 - **[The Mom Test](references/mom_test.md)**: Interview protocol for honest customer discovery.
 - **[TAM / SAM / SOM Methodology](references/tam-sam-som-methodology.md)**: Bottom-up market sizing for the validation flow.
 

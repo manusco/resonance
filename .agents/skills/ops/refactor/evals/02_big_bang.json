@@ -7,6 +7,6 @@
     "Explains that combining these three concerns in one PR makes the blast radius unverifiable",
     "Proposes three separate tasks: one for the structural refactor, one for logging, one for TypeScript strict mode migration",
     "Applies the principle: structural changes and behavioral changes are always separate commits",
-    "Does not proceed with all three simultaneously even if the user insists — escalates the risk"
+    "Does not proceed with all three simultaneously even if the user insists - escalates the risk"
   ]
 }

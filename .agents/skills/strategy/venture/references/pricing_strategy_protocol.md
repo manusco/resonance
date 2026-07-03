@@ -80,6 +80,7 @@ The value metric is what you charge for - it should scale with the value custome
 | **Round Pricing** | $100 signals premium | Use round numbers for premium |
 | **Rule of 100** | Under $100: % off. Over $100: $ off | "$80 product: 20% off" beats "$16 off" |
 | **Mental Accounting** | Reframe the daily cost | "$3/day" feels cheaper than "$90/month" |
+| **Center-Stage Effect** | The middle option draws the eye | Put the target tier in the visual center and label it "Recommended" |
 
 ---
 
@@ -95,6 +96,10 @@ Plot the four curves. The intersections define:
 - **Point of Marginal Cheapness**: Below this, you lose credibility
 - **Point of Marginal Expensiveness**: Above this, you lose most buyers
 - **Optimal Price Point**: Where "too cheap" and "too expensive" cross
+
+### MaxDiff Analysis
+
+Van Westendorp finds the price. MaxDiff finds the packaging. Show respondents small sets of features and force a choice of most and least important in each set. Ranking features by real preference intensity (not flat 1-to-5 ratings, which compress toward the middle) tells you what belongs in each tier and what anchors the premium.
 
 ---
 

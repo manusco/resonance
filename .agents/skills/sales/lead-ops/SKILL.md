@@ -112,6 +112,10 @@ Lead ops recommendations (owner reassignment, escalation, process changes) are r
 3. Ops lead approves owner changes, escalations, or process updates.
 4. Changes are logged with attribution and timestamp.
 
+## Reference Library
+
+- **[CRM Operations](references/crm_operations_protocol.md)**: CRM architecture, automation workflows, data hygiene, and reporting dashboards.
+
 ## Operating Standard
 
 Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (log durable learnings to `.resonance/learnings.jsonl`).

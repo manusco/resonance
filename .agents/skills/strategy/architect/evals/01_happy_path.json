@@ -7,6 +7,6 @@
     "Produces a C4 Level 2 Container diagram decomposing the monolith into bounded services",
     "Recommends recording the decomposition decision in an ADR",
     "Identifies the multi-tenancy concern as a blast-radius risk and proposes a containment strategy",
-    "Does not write implementation code — stays at the structural/boundary level"
+    "Does not write implementation code - stays at the structural/boundary level"
   ]
 }

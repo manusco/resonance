@@ -5,9 +5,9 @@ are now compiled from archetype templates by the Resonance Forge.
 
 Use one of the three archetype templates in [`.forge/templates/`](../../.forge/templates/):
 
-- `knowledge.skill.md` — a domain expert applied inline.
-- `procedure.skill.md` — a gated workflow with a Definition of Done.
-- `orchestration.skill.md` — a procedure that drives other skills.
+- `knowledge.skill.md`: a domain expert applied inline.
+- `procedure.skill.md`: a gated workflow with a Definition of Done.
+- `orchestration.skill.md`: a procedure that drives other skills.
 
 To author a skill, drive `resonance-skill-author`, or by hand:
 

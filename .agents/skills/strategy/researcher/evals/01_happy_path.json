@@ -7,6 +7,6 @@
     "Produces a Synthesis Matrix comparing at least 2 approaches against defined criteria",
     "Verifies code examples against the current library docs (not from memory)",
     "States a recommendation with a clear rationale, then defers the decision to the user",
-    "Does not present a wall of text — uses tables, bullet points, and code blocks"
+    "Does not present a wall of text - uses tables, bullet points, and code blocks"
   ]
 }

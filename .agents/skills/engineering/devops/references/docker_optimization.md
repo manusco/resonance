@@ -8,7 +8,7 @@ Never ship the SDK.
 
 **Bad:**
 ```dockerfile
-FROM node:18
+FROM node:22
 COPY . .
 RUN npm install
 CMD ["npm", "start"]
@@ -17,13 +17,13 @@ CMD ["npm", "start"]
 **Elite:**
 ```dockerfile
 # Build Stage
-FROM node:18-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 COPY . .
 RUN npm ci && npm run build
 
 # Run Stage
-FROM node:18-alpine-slim
+FROM node:22-alpine
 WORKDIR /app
 COPY --from=builder /app/dist ./dist
 # No devDependencies!

@@ -128,6 +128,8 @@ Don't rely on a single launch event. Every update is a launch moment.
 - [ ] Launch assets created (screenshots, demo video, GIFs)
 - [ ] Onboarding flow ready
 - [ ] Analytics/tracking in place
+- [ ] Landing page passes the 5-Second Test (a new visitor can say what it does and who it is for)
+- [ ] Top 3 Borrowed channels identified for launch day
 
 ### Launch Day
 - [ ] Announcement email to list

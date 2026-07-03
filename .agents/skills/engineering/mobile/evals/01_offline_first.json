@@ -6,7 +6,7 @@
     "Defines the local DB schema (SQLite/WatermelonDB) for notes before writing any UI",
     "Implements write-to-local-first: the UI saves to local DB and returns immediately without waiting for the network",
     "Queues the sync operation in the background and resolves conflicts with a named strategy",
-    "The app does not show a loading spinner when saving a note — it optimistically updates the UI",
+    "The app does not show a loading spinner when saving a note - it optimistically updates the UI",
     "Handles the 'back online' event to trigger the pending sync queue"
   ]
 }

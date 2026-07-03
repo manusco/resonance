@@ -91,6 +91,8 @@ Standing out does not mean a different topology every section. It means one stro
 - **[Spatial System](references/spatial_system.md)**: Spacing scale, rhythm, proximity, negative space, grid, composition.
 - **[Motion and Feel](references/motion_and_feel.md)**: Easing and spring, duration budgets, hover/focus/press craft, feedback timing, haptics, states.
 - **[Depth and Materials](references/depth_and_materials.md)**: One light source, layered shadows, elevation, hairlines, texture, glass when justified.
+- **[Data Visualization](references/data_visualization.md)**: The perceptual encoding hierarchy, the question that picks the chart, truthful axes, perceptual color for data, decluttering, direct labeling, small multiples, chart accessibility.
+- **[Iconography System](references/iconography_system.md)**: The icon grid and keylines, one stroke and optical weight, optical size correction and overshoot, pixel-snapping, metaphor clarity, filled-versus-outlined state, accessible names and hit targets.
 
 **The Canvas**
 - **[Responsive Canvas](references/responsive_canvas.md)**: Input-appropriate design across phone, tablet, laptop, TV. Fluid type, container queries, safe areas, zoom.

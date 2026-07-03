@@ -4,9 +4,9 @@
   "files": [],
   "expected_behavior": [
     "Replaces the linear ease with a spring configuration (tension + friction values specified)",
-    "Does not use a cubic-bezier easing curve as the replacement — requires springs",
+    "Does not use a cubic-bezier easing curve as the replacement - requires springs",
     "Provides specific spring constants for a 'modal slide-in' feel (e.g. tension: 200, friction: 22)",
     "Applies the principle: digital objects have mass and friction, not just duration",
-    "Does not redesign the onboarding flow — stays surgical on replacing the easing type"
+    "Does not redesign the onboarding flow - stays surgical on replacing the easing type"
   ]
 }

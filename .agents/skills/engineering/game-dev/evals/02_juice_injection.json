@@ -7,6 +7,6 @@
     "Specifies the Visual feedback: squash on press, particle burst on release, enemy entrance animation",
     "Specifies the Audio feedback: a specific sound event tied to the button press",
     "Specifies the Haptic feedback: a light impact tap on press",
-    "Does not recommend a UI redesign — stays surgical on adding juice to the existing button"
+    "Does not recommend a UI redesign - stays surgical on adding juice to the existing button"
   ]
 }
