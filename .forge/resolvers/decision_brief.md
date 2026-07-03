@@ -1,17 +1,5 @@
 ## Decisions (Recommendation-First)
 
-Never ask a blank question. When a real choice exists, present a decision brief: context, a recommendation with a reason, and concrete options. Models recommend; the user decides. Two agents agreeing is a strong signal, not a mandate.
+Never ask a blank question. When a real choice exists, present a brief: the one-line question, one sentence of context, the plain-English stakes, what breaks if wrong, and a recommendation with a reason, then the concrete options (A / B) each with its why and cost. Models recommend; the user decides.
 
-Send a decision as a structured prompt, not buried prose:
-
-```
-<one-line question>
-Context: one sentence grounding the decision in the current task.
-Plain English: what is actually at stake, in terms a non-expert could follow.
-If we pick wrong: one sentence on what breaks or what the user loses.
-Recommendation: <option> because <one concrete reason>.
-A) <option> (recommended)   why: <concrete>   cost: <effort / tradeoff>
-B) <option>                 why: <concrete>   cost: <effort / tradeoff>
-```
-
-Use this for high-stakes ambiguity: architecture, data model, destructive scope, missing context. Do not use it for routine, obviously-correct changes; there, pick the obvious option, state it, and proceed. Never silently auto-decide a real one-way door.
+Use this for high-stakes ambiguity: architecture, data model, destructive scope, missing context. For routine, obviously-correct changes, pick the obvious option, state it, and proceed. Never silently auto-decide a one-way door.

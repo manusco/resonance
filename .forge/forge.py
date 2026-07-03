@@ -142,6 +142,66 @@ def build_one(name: str, host_name: str, model: str | None, dry_run: bool) -> in
     return 0
 
 
+def load_commands() -> list[dict]:
+    """Read the slash-command alias map (.forge/commands.json)."""
+    p = FORGE / "commands.json"
+    if not p.exists():
+        return []
+    return json.loads(p.read_text(encoding="utf-8")).get("commands", [])
+
+
+def render_command(alias: str, spec: dict, host: dict) -> str:
+    """A thin command shim that routes to the canonical skill. The heavy body lives
+    once under .agents/skills; the shim only registers the /alias per tool."""
+    skill = spec["skill"]
+    desc = spec.get("desc", f"Run the Resonance {alias} procedure.")
+    manual = spec.get("manual", False)
+    canonical = f".agents/skills/{skill}/SKILL.md"
+    if host.get("command_style", "skill") == "skill":
+        fm = [f"name: {alias}", f"description: {desc}"]
+        if manual:
+            fm.append("disable-model-invocation: true")
+        front = "---\n" + "\n".join(fm) + "\n---\n"
+        body = (f"\n# /{alias}\n\n"
+                f"Run the Resonance **{alias}** procedure.\n\n"
+                f"Read `{canonical}` in full and execute it exactly, following its Definition "
+                f"of Done. That skill is the procedure; this file only routes the /{alias} "
+                f"command to it.\n")
+        return front + body
+    # prompt style (codex, opencode): a plain prompt with a description
+    front = "---\n" + f"description: {desc}\n" + "---\n"
+    body = (f"\nRun the Resonance {alias} procedure. Read `{canonical}` in full and execute "
+            f"it, following its Definition of Done.\n")
+    return front + body
+
+
+def build_commands(host_name: str, dry_run: bool) -> int:
+    """Generate per-tool /command shims for hosts that declare a command_path.
+    Hosts without one surface commands via AGENTS.md routing instead."""
+    host = load_host(host_name)
+    tmpl = host.get("command_path")
+    if not tmpl:
+        return 0
+    rc, n = 0, 0
+    for spec in load_commands():
+        alias = spec["alias"]
+        out = REPO / tmpl.format(alias=alias)
+        rendered = render_command(alias, spec, host).rstrip() + "\n"
+        if dry_run:
+            current = out.read_text(encoding="utf-8") if out.exists() else ""
+            if current != rendered:
+                print(f"DRIFT  {out}")
+                rc = 1
+            continue
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(rendered, encoding="utf-8")
+        n += 1
+    if not dry_run:
+        root = tmpl.split("{")[0]
+        print(f"commands  {host_name}: {n} shims -> {root}")
+    return rc
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description="Resonance Forge — compile skills from templates.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -153,6 +213,10 @@ def main(argv: list[str]) -> int:
     b.add_argument("--model", default=None, help="Model overlay (default: host default)")
     b.add_argument("--dry-run", action="store_true", help="Compare only; exit 1 on drift")
 
+    c = sub.add_parser("commands", help="Generate slash-command shims from commands.json")
+    c.add_argument("--host", default="all", help="Host name or 'all'")
+    c.add_argument("--dry-run", action="store_true", help="Compare only; exit 1 on drift")
+
     sub.add_parser("list", help="List available skills, hosts, overlays")
 
     args = ap.parse_args(argv)
@@ -161,7 +225,15 @@ def main(argv: list[str]) -> int:
         print("skills:  ", ", ".join(available_skills()) or "(none)")
         print("hosts:   ", ", ".join(available_hosts()) or "(none)")
         print("overlays:", ", ".join(sorted(p.stem for p in OVERLAYS.glob("*.md"))) or "(none)")
+        print("commands:", ", ".join(c["alias"] for c in load_commands()) or "(none)")
         return 0
+
+    if args.cmd == "commands":
+        hosts = available_hosts() if args.host == "all" else [args.host]
+        rc = 0
+        for h in hosts:
+            rc |= build_commands(h, args.dry_run)
+        return rc
 
     names = available_skills() if args.all else ([args.name] if args.name else [])
     if not names:
@@ -172,6 +244,10 @@ def main(argv: list[str]) -> int:
     for n in names:
         for h in hosts:
             rc |= build_one(n, h, args.model, args.dry_run)
+    # A full build also refreshes the slash-command shims so a clone is ready to use.
+    if args.all:
+        for h in hosts:
+            rc |= build_commands(h, args.dry_run)
     return rc
 
 

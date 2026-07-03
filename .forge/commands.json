@@ -1,0 +1,33 @@
+{
+  "_comment": "Single source of truth for Resonance slash commands. The Forge generates per-tool command shims from this map (see forge.py commands). alias = the slash command the user types; skill = the canonical skill path under .agents/skills; manual = side-effecting, so the model must not auto-fire it.",
+  "commands": [
+    { "alias": "init",            "skill": "ops/core",                 "manual": true,  "desc": "Bootstrap the .resonance/ project memory (soul, state, docs scaffold). Run once per new project." },
+    { "alias": "venture-model",   "skill": "strategy/venture",         "desc": "Model the business, offer stack, and revenue math before planning." },
+    { "alias": "plan",            "skill": "strategy/plan",            "desc": "Turn a feature or idea into an atomic, approved implementation plan. Deep research, 4-pass spec." },
+    { "alias": "grill",           "skill": "strategy/grill",           "desc": "Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding." },
+    { "alias": "gtm-thinker",     "skill": "strategy/gtm-thinker",     "desc": "Stress-test and expand a go-to-market campaign concept into a strategic blueprint with kill criteria." },
+    { "alias": "market-research", "skill": "research/market-research", "desc": "Discover Existential Data Points in a B2B SaaS vertical. Positioning from nice-to-have to must-have." },
+    { "alias": "build",           "skill": "engineering/build",        "desc": "Execute the implementation plan with a TDD loop (test, code, verify)." },
+    { "alias": "debug",           "skill": "engineering/debugger",     "desc": "Root-cause a bug via the Scientific Method. Reproduction script required, no fix without a proven cause." },
+    { "alias": "refactor",        "skill": "ops/refactor",             "desc": "Atomic, behavior-preserving cleanup. Mikado method, safe sequence, SOLID." },
+    { "alias": "design",          "skill": "design/designer",          "desc": "Design or audit UI with elite craft: hierarchy, perceptual color, motion, and the subconscious detail layer." },
+    { "alias": "studio",          "skill": "design/studio",            "desc": "Produce production-ready visual assets with structured prompt engineering." },
+    { "alias": "friction",        "skill": "marketing/conversion",     "desc": "Friction Collider: simulate the anti-persona to find and remove conversion drag." },
+    { "alias": "test",            "skill": "ops/qa",                   "desc": "Write or audit tests against the 8-Path Matrix. Destructive and property-based coverage." },
+    { "alias": "audit",           "skill": "ops/audit",                "desc": "Run the audit swarm (security, review, QA, architect) and output P0-P3 classified findings." },
+    { "alias": "review-pr",       "skill": "ops/reviewer",             "desc": "Audit a PR or diff against the Blocking Registry. Findings ranked by user harm, not by file order." },
+    { "alias": "system-health",   "skill": "ops/system-health",        "desc": "Score system health 0-100 with qualitative flags (auth, env, test depth)." },
+    { "alias": "ship",            "skill": "ops/ship",                 "manual": true,  "desc": "Release protocol: pre-flight checks, changelog, semantic version, tag, deploy." },
+    { "alias": "voice-profile",   "skill": "ops/voice",                "desc": "Extract a portable behavioral voice profile from a corpus (person, brand, or character)." },
+    { "alias": "call-intelligence","skill": "sales/call-intelligence", "desc": "Analyze a call transcript for persona insights, objection patterns, and feature requests." },
+    { "alias": "cold-call",       "skill": "sales/cold-call",          "desc": "Generate a B2B cold-call script using the 6-part permission-based framework." },
+    { "alias": "sales-pipeline",  "skill": "sales/pipeline",           "desc": "Render a pipeline analytics dashboard with velocity and forecasting from CRM data." },
+    { "alias": "capture",         "skill": "ops/librarian",            "manual": true,  "desc": "Document a solved problem in the correct Diataxis quadrant so it is never re-discovered." },
+    { "alias": "handover",        "skill": "ops/handover",             "manual": true,  "desc": "Write an end-of-session handover doc: what was done, decisions, open TODOs, backlog." },
+    { "alias": "retro",           "skill": "ops/retro",                "desc": "Git-driven retrospective: shipping streak, focus score, complexity delta." },
+    { "alias": "seo",             "skill": "marketing/seo",            "desc": "SEO and GEO audit: structured data, canonical, schema, AI-citation optimization." },
+    { "alias": "update-roadmap",  "skill": "ops/update-roadmap",       "manual": true,  "desc": "Sync .resonance/01_state.md with the git log so the map matches the territory." },
+    { "alias": "update-resonance","skill": "ops/update-resonance",     "manual": true,  "desc": "Upgrade the Resonance framework with backup and restore safety. Preserves .resonance/." },
+    { "alias": "skill-author",    "skill": "ops/skill-author/resonance-skill-author", "desc": "Author, validate, and eval a new Resonance skill with the Forge." }
+  ]
+}

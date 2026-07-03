@@ -13,6 +13,8 @@
     "ask": "ask",
     "subagent": "task"
   },
-  "invocation": "AGENTS.md routing",
-  "notes": "Runs any backing model including local open-weights (Llama, Qwen, DeepSeek). Defaults to the open-weights overlay, which lowers degrees of freedom and adds explicit guardrails for weaker models."
+  "invocation": "/<alias> (command) or AGENTS.md routing",
+  "command_path": ".opencode/command/{alias}.md",
+  "command_style": "prompt",
+  "notes": "Runs any backing model including local open-weights (Llama, Qwen, DeepSeek). Reads AGENTS.md and custom commands from .opencode/command (invoked as /alias). Defaults to the open-weights overlay, which lowers degrees of freedom and adds explicit guardrails for weaker models."
 }
