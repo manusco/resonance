@@ -5,8 +5,8 @@
 <div align="center">
     <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.3-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
-    <img src="https://img.shields.io/badge/Skills-50+-00f2ea?style=for-the-badge" alt="45+ skills" />
-    <img src="https://img.shields.io/badge/Commands-31-7025eb?style=for-the-badge" alt="28 commands" />
+    <img src="https://img.shields.io/badge/Skills-50+-00f2ea?style=for-the-badge" alt="57 skills" />
+    <img src="https://img.shields.io/badge/Commands-32-7025eb?style=for-the-badge" alt="32 commands" />
 </div>
 
 <div align="center">
@@ -20,7 +20,7 @@
 Resonance is an AI agent skill library you drop into any project. It turns a general coding agent into a roster of specialists that follow the same expert protocol every time, on whatever tool you use.
 
 - **50+ domain-tested skills** across strategy, engineering, design, marketing, sales, ops, and research. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
-- **31 slash commands** like `/plan`, `/grill`, `/build`, `/debug`, `/design`, `/test`, `/review-pr`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
+- **32 slash commands** like `/plan`, `/grill`, `/build`, `/debug`, `/design`, `/test`, `/improve`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
 - **Cross-tool by design.** One source compiles to the native format of every major agent tool. The `SKILL.md` / `AGENTS.md` open standard is the shared content; the Forge emits the per-tool command shims so `/ship` works after a clone in Claude Code, Cursor, Codex, and opencode.
 - **A project memory** (`.resonance/`) the agent reads before every task and writes to after. It does not forget your architecture, your decisions, or your voice.
 - **Token-efficient.** The shared operating standard is stated once in `AGENTS.md`, not repeated in every skill. Compiled skills are lean, so per-session context stays cheap.

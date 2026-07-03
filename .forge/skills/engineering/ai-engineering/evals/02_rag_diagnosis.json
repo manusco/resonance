@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-engineering-ai-engineering",
+  "query": "Our RAG chatbot over the company handbook keeps giving wrong answers. It confidently states policies that don't exist. The model is clearly too dumb, should we upgrade to a bigger model?",
+  "files": [],
+  "expected_behavior": [
+    "Rejects the premise that a bigger model is the fix before the failure is isolated",
+    "Splits the diagnosis into retrieval vs. generation: first inspect whether the correct chunk was even retrieved for a failing query",
+    "If the right chunk was not retrieved, points at retrieval causes (chunking, embedding/hybrid search, top-k too low, missing reranking) rather than the model",
+    "If the right chunk was retrieved but ignored, points at generation causes (weak grounding instruction, lost-in-the-middle, model overriding context)",
+    "Recommends measuring retrieval recall and answer faithfulness separately instead of eyeballing final answers",
+    "Adds a grounding requirement (answer only from context, cite the source, say 'I don't know' when the handbook lacks it) to stop invented policies"
+  ]
+}

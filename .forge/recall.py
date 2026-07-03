@@ -4,8 +4,10 @@ Resonance - Memory Recall (R6).
 
 Retrieve the most relevant slices of project memory by meaning, instead of
 loading whole files. Sources: .resonance/*.md, .resonance/learnings.jsonl, and
-active entries in .resonance/decisions.jsonl. The agent should recall before a
-task instead of reading the entire brain.
+active entries in .resonance/decisions.jsonl, PLUS a cross-project brain
+(~/.resonance, or $RESONANCE_GLOBAL_BRAIN) so a learning earned in one repo
+raises the floor in the next. The agent should recall before a task instead of
+reading the entire brain. Use --local-only to skip the global brain.
 
 Default retriever is a pure-stdlib BM25 (works offline, no dependency, no key).
 It is pluggable: set RESONANCE_EMBED_CMD to a command that reads text on stdin
@@ -41,10 +43,12 @@ def tok(s: str) -> list[str]:
     return TOKEN.findall(s.lower())
 
 
-def chunks() -> list[tuple[str, str]]:
-    """Return (source_label, text) chunks from the memory bank."""
+def _scan(base: Path, prefix: str) -> list[tuple[str, str]]:
+    """Return (source_label, text) chunks from one memory bank."""
     out: list[tuple[str, str]] = []
-    for md in sorted(RES.glob("*.md")):
+    if not base.exists():
+        return out
+    for md in sorted(base.glob("*.md")):
         text = md.read_text(encoding="utf-8", errors="replace")
         # split on level-2/3 headings; keep the heading with its body
         parts = re.split(r"\n(?=#{2,3}\s)", text)
@@ -52,18 +56,18 @@ def chunks() -> list[tuple[str, str]]:
             p = p.strip()
             if len(p) > 30:
                 head = p.splitlines()[0].lstrip("# ").strip()[:60]
-                out.append((f"{md.name}:{head}", p))
-    lj = RES / "learnings.jsonl"
+                out.append((f"{prefix}{md.name}:{head}", p))
+    lj = base / "learnings.jsonl"
     if lj.exists():
         for line in lj.read_text(encoding="utf-8", errors="replace").splitlines():
             line = line.strip()
             if line:
                 try:
                     d = json.loads(line)
-                    out.append(("learnings.jsonl", json.dumps(d, ensure_ascii=False)))
+                    out.append((f"{prefix}learnings.jsonl", json.dumps(d, ensure_ascii=False)))
                 except json.JSONDecodeError:
-                    out.append(("learnings.jsonl", line))
-    dj = RES / "decisions.jsonl"
+                    out.append((f"{prefix}learnings.jsonl", line))
+    dj = base / "decisions.jsonl"
     if dj.exists():
         for line in dj.read_text(encoding="utf-8", errors="replace").splitlines():
             line = line.strip()
@@ -72,10 +76,30 @@ def chunks() -> list[tuple[str, str]]:
             try:
                 d = json.loads(line)
                 if d.get("status") == "active":
-                    out.append((f"decisions.jsonl:{d.get('id','')}",
+                    out.append((f"{prefix}decisions.jsonl:{d.get('id','')}",
                                 d.get("decision", "") + " " + d.get("why", "")))
             except json.JSONDecodeError:
                 pass
+    return out
+
+
+def global_brain() -> Path:
+    return Path(os.environ.get("RESONANCE_GLOBAL_BRAIN", str(Path.home() / ".resonance")))
+
+
+def chunks(include_global: bool = True) -> list[tuple[str, str]]:
+    """Local project memory, plus the cross-project brain so a learning from
+    another repo raises the floor here. Global brain is ~/.resonance (or
+    $RESONANCE_GLOBAL_BRAIN); local entries appear first, so they rank first on ties."""
+    out = _scan(RES, "")
+    if include_global:
+        g = global_brain()
+        try:
+            same = g.resolve() == RES.resolve()
+        except Exception:
+            same = False
+        if not same:
+            out += _scan(g, "global:")
     return out
 
 

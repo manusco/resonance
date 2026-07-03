@@ -2,11 +2,14 @@
 
 ## Unreleased
 
-Track 1 of the "make it measurably the best" plan (not yet released; version pending your call). Resonance can now run the project's real tests and a real browser, and it measures whether each skill actually helps instead of asserting it.
+The "make it measurably the best" plan, Tracks 1 through 3 (not yet released; version pending your call). Resonance can now run the project's real tests and a real browser, measure whether each skill actually helps, improve the weak ones by evidence, and it covers three new domains an AI-era founder needs.
 
 ### Added
 - **The execution surface (`.forge/exec/`): the agent's eyes.** `run_checks.py` detects the project's toolchain (Node with the right package manager, Python, Go, Rust, Make) and runs its real tests, returning structured pass or fail. `browser_check.mjs` opens a real headless browser and reports the title, console and page errors, whether required elements exist, and a screenshot. Both proven end to end (a real failing test caught, a broken page's console error and missing element caught). `/test` and `/goal` now ground on these, not on the model's own read of its work. New npm scripts `exec:test` and `exec:browser`.
 - **The eval scorecard.** `run_evals.py --score` runs every golden case with and without its skill, grades both against the rubric, and writes a per-skill lift table to `docs/EVAL_SCORECARD.md` (with `--changed`, `--limit`, and parallelism). A live 4-skill sample is included: the rigor skills (debugger, plan) show large measured lift (+0.60 and +0.67); two came out flat and correctly flag their eval rubrics as too coarse (the /improve work-list). New npm script `eval:score`.
+- **Three new domains (Track 2).** `engineering/ai-engineering`: build AI products the right way (eval-driven development, context engineering, RAG, agent design, guardrails, cost and latency), the glaring gap for an AI framework. `strategy/finance`: the money the venture skill leaves out (driver-based model, unit economics, runway, the raise, investor updates, cap table). `ops/legal`: a GDPR and DACH-native first pass on privacy, terms, DPAs, and contract review, with a clear line on where a lawyer must take over. 57 skills now.
+- **The self-improving loop `/improve` (Track 3).** Reads the eval scorecard, works the skills with no measured lift, sharpens the body or the rubric, rebuilds, and keeps a change only when `improve.py remeasure` shows the lift actually rose. Its one hard rule: never weaken a rubric to pass it. New tool `.forge/improve.py`.
+- **A cross-project brain.** `recall.py` now also reads `~/.resonance` (or `$RESONANCE_GLOBAL_BRAIN`), so a learning earned in one repo raises the floor in the next; `--local-only` opts out.
 
 ### Fixed
 - **A silent Windows bug the scorecard caught.** The eval runner wrote prompts to the model subprocess with the OS locale (cp1252), which cannot encode the arrows and quotes in skill bodies, so every such skill failed silently. Forced UTF-8 on the subprocess I/O in the runner and the check runner. Measurement found a bug inspection missed.

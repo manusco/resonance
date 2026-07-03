@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-finance",
+  "query": "Our LTV:CAC is 4:1 so the economics look great and I want to pour money into paid ads to grow faster. CAC is 1200, customers pay 100/month, and gross margin is around 75%. Should we scale spend?",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to bless scaling on the 4:1 ratio alone and computes CAC payback in months (1200 / (100 x 0.75) = 16 months), calling out that a long payback is a cash-flow risk even with a healthy ratio",
+    "Insists LTV:CAC be reported as a triplet with payback and the churn assumption behind LTV, and notes the ratio is meaningless without the churn rate that drives LTV",
+    "Checks that LTV and contribution margin are computed on gross margin, not revenue, so the unit is not secretly negative",
+    "Recommends measuring retention and CAC by cohort rather than a blended average before increasing spend",
+    "Warns that scaling spend on a 16-month payback will starve cash and suggests levers (faster payback, annual prepay, cheaper channels) instead of an immediate budget increase"
+  ]
+}

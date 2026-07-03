@@ -82,6 +82,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/audit** -> `ops/audit` - The audit swarm (security, review, QA, architect). P0-P3 findings.
 - **/review-pr** -> `ops/reviewer` - PR gatekeeper. Blocking Registry, findings ranked by user harm.
 - **/second-opinion** -> `ops/second-opinion` - Independent second-model review of a diff, reconciled with the primary review.
+- **/improve** -> `ops/improve` - Self-improving loop: sharpen the weakest skills or rubrics, keep only changes that raise measured lift.
 - **/system-health** -> `ops/system-health` - Health score 0-100 with qualitative flags.
 
 ### Delivery & Maintenance
@@ -99,7 +100,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/incident** -> `ops/incident` - Drive a live production incident: triage, severity, mitigate, comms, blameless postmortem.
 
 ### Always-on specialists (auto-fire, no command)
-Knowledge skills apply themselves when relevant: `engineering/backend`, `engineering/frontend`, `engineering/mobile`, `engineering/game-dev`, `engineering/database`, `engineering/devops`, `engineering/automation`, `engineering/performance`, `strategy/architect`, `strategy/growth`, `strategy/researcher`, `marketing/copywriter`, `sales/account-intelligence`, `sales/lead-ops`, `sales/outbound-sequence`, `ops/security`, `ops/product`, `ops/productivity`, `ops/observability`, `marketing/paid-acquisition`, `marketing/analytics`, `marketing/lifecycle`.
+Knowledge skills apply themselves when relevant: `engineering/backend`, `engineering/frontend`, `engineering/mobile`, `engineering/game-dev`, `engineering/database`, `engineering/devops`, `engineering/automation`, `engineering/performance`, `strategy/architect`, `strategy/growth`, `strategy/researcher`, `marketing/copywriter`, `sales/account-intelligence`, `sales/lead-ops`, `sales/outbound-sequence`, `ops/security`, `ops/product`, `ops/productivity`, `ops/observability`, `marketing/paid-acquisition`, `marketing/analytics`, `marketing/lifecycle`, `engineering/ai-engineering`, `strategy/finance`, `ops/legal`.
 
 ---
 

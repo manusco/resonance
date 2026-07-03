@@ -18,6 +18,7 @@
     { "alias": "audit",           "skill": "ops/audit",                "desc": "Run the audit swarm (security, review, QA, architect) and output P0-P3 classified findings." },
     { "alias": "review-pr",       "skill": "ops/reviewer",             "desc": "Audit a PR or diff against the Blocking Registry. Findings ranked by user harm, not by file order." },
     { "alias": "second-opinion",  "skill": "ops/second-opinion",       "desc": "Independent second-model review of a diff, reconciled with the primary review." },
+    { "alias": "improve",         "skill": "ops/improve",              "manual": true,  "desc": "Work the eval scorecard: sharpen the weakest skills or their rubrics and keep only changes that raise the measured lift." },
     { "alias": "system-health",   "skill": "ops/system-health",        "desc": "Score system health 0-100 with qualitative flags (auth, env, test depth)." },
     { "alias": "ship",            "skill": "ops/ship",                 "manual": true,  "desc": "Release protocol: pre-flight checks, changelog, semantic version, tag, deploy." },
     { "alias": "incident",        "skill": "ops/incident",             "manual": true,  "desc": "Drive a live production incident: triage, severity, mitigate, comms, blameless postmortem." },

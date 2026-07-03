@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-engineering-ai-engineering",
+  "query": "Our AI product advisor sometimes invents product specs that are wrong, and our monthly model bill just tripled. We're using the largest model for every request to be safe. Fix both.",
+  "files": [],
+  "expected_behavior": [
+    "Attacks hallucination by grounding answers in retrieved product data and requiring the model to cite the source for each spec, rejecting untraceable claims",
+    "Gives the model an explicit exit to say it does not know rather than fabricating, and suggests lower temperature for factual specs",
+    "Challenges 'largest model for everything': recommends the smallest model that passes the eval and routing easy requests to a cheaper model with fallback up on low confidence",
+    "Recommends caching (exact and/or semantic) for repeated product questions to cut redundant calls",
+    "Calls for measuring cost-per-request and P95 latency in production and trimming input tokens (context and prompt), not only output",
+    "Insists any cost cut is validated against the eval set so cheaper does not silently regress answer quality"
+  ]
+}
