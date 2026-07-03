@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-ops-second-opinion",
+  "query": "/second-opinion on the current diff, but I have no other model CLI set up.",
+  "files": [],
+  "expected_behavior": [
+    "Recognizes no second-model command is configured and uses the manual fallback (produces the review prompt to run in another model)",
+    "Still reconciles whatever second-model findings are provided against the primary review",
+    "Notes the manual step and the setup (RESONANCE_REVIEW_CMD or --model-cmd) in the report",
+    "Does not silently skip the second opinion or pretend it ran"
+  ]
+}

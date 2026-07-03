@@ -3,10 +3,10 @@
 > Operator-grade AI agent skills for builders. A cross-tool skill library and slash-command system for Claude Code, Cursor, Codex, and opencode, covering strategy, design, engineering, marketing, sales, and ops.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.3.0-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
+    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.0-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
     <img src="https://img.shields.io/badge/Skills-50+-00f2ea?style=for-the-badge" alt="45+ skills" />
-    <img src="https://img.shields.io/badge/Commands-29-7025eb?style=for-the-badge" alt="28 commands" />
+    <img src="https://img.shields.io/badge/Commands-31-7025eb?style=for-the-badge" alt="28 commands" />
 </div>
 
 <div align="center">
@@ -20,7 +20,7 @@
 Resonance is an AI agent skill library you drop into any project. It turns a general coding agent into a roster of specialists that follow the same expert protocol every time, on whatever tool you use.
 
 - **50+ domain-tested skills** across strategy, engineering, design, marketing, sales, ops, and research. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
-- **29 slash commands** like `/plan`, `/grill`, `/build`, `/debug`, `/design`, `/test`, `/review-pr`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
+- **31 slash commands** like `/plan`, `/grill`, `/build`, `/debug`, `/design`, `/test`, `/review-pr`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
 - **Cross-tool by design.** One source compiles to the native format of every major agent tool. The `SKILL.md` / `AGENTS.md` open standard is the shared content; the Forge emits the per-tool command shims so `/ship` works after a clone in Claude Code, Cursor, Codex, and opencode.
 - **A project memory** (`.resonance/`) the agent reads before every task and writes to after. It does not forget your architecture, your decisions, or your voice.
 - **Token-efficient.** The shared operating standard is stated once in `AGENTS.md`, not repeated in every skill. Compiled skills are lean, so per-session context stays cheap.
@@ -68,6 +68,9 @@ That is the whole setup. No install step, no plugin required.
 
 Every command is a structured procedure with a Definition of Done, not a loose prompt. Full map in [AGENTS.md](AGENTS.md).
 
+**The autonomous loop**
+`/goal "<outcome>"` frames the goal, decomposes it, then builds and verifies each slice against real checks (tests, validators, audit), bounded and never auto-shipping. The conductor for the skills below.
+
 **Inception**
 `/init` bootstrap project memory · `/venture-model` business and revenue math · `/plan` atomic implementation plan · `/grill` stress-test a plan before code · `/gtm-thinker` go-to-market blueprint · `/market-research` B2B vertical intelligence · `/update-roadmap` sync state with git
 
@@ -75,7 +78,7 @@ Every command is a structured procedure with a Definition of Done, not a loose p
 `/build` TDD build loop · `/debug` root-cause analysis · `/refactor` behavior-preserving cleanup · `/design` elite UI craft and audit · `/studio` production visual assets · `/friction` conversion friction removal
 
 **Verification**
-`/test` 8-Path test matrix · `/audit` security + review + QA + architect swarm · `/review-pr` PR gatekeeper · `/system-health` health score 0-100
+`/test` 8-Path test matrix · `/audit` security + review + QA + architect swarm · `/review-pr` PR gatekeeper · `/second-opinion` independent second-model review · `/system-health` health score 0-100
 
 **Delivery & maintenance**
 `/ship` release protocol · `/incident` production incident response · `/seo` SEO and GEO audit · `/voice-profile` extract a voice profile · `/call-intelligence` analyze a sales call · `/cold-call` cold-call script · `/sales-pipeline` pipeline analytics · `/capture` document a solved problem · `/handover` end-of-session handover · `/retro` git-driven retrospective · `/update-resonance` safe framework upgrade · `/skill-author` build a new skill
@@ -91,7 +94,7 @@ Every command is a structured procedure with a Definition of Done, not a loose p
 - **Design**: `designer`, `studio`. First-principles UI craft: optical precision, perceptual color (OKLCH), typographic hierarchy, motion with physics, the subconscious detail layer, and cross-canvas design from phone to TV.
 - **Marketing**: `seo`, `conversion`, `copywriter`, `paid-acquisition`, `analytics`, `lifecycle`. Search and GEO, conversion, paid media, measurement and attribution, and the full lifecycle from activation to win-back.
 - **Sales**: `pipeline`, `cold-call`, `call-intelligence`, `account-intelligence`, `lead-ops`, `outbound-sequence`. Qualification, outreach, and call analysis.
-- **Ops**: `audit`, `qa`, `security`, `reviewer`, `refactor`, `ship`, `incident`, `observability`, `librarian`, `handover`, `retro`, `product`, `productivity`, `voice`, `core`, `skill-author`. Quality, security, delivery, reliability, incident response, and governance.
+- **Ops**: `goal`, `audit`, `qa`, `security`, `reviewer`, `second-opinion`, `refactor`, `ship`, `incident`, `observability`, `librarian`, `handover`, `retro`, `product`, `productivity`, `voice`, `core`, `skill-author`. Quality, security, delivery, reliability, incident response, and governance.
 - **Research**: `market-research`. Market sizing, competitive intelligence, and positioning.
 
 ---
@@ -153,6 +156,9 @@ The `.resonance/` folder is what makes the agent persistent across sessions. You
 | `01_state.md` | Active task, last decision, current blocker. Updated after every session. |
 | `02_memory.md` | Architectural decision log. Why Postgres over SQLite. Never solve the same problem twice. |
 | `learnings.jsonl` | Project-specific lessons from bugs, edge cases, and hard-won discoveries. |
+| `decisions.jsonl` | Append-only, event-sourced decision log. Query with `.forge/decisions.py`; recall by meaning with `.forge/recall.py`. |
+| `03_tools.md`, `04_systems.md` | Tool boundaries and the system architecture map. |
+| `guards.json` | Project-specific guardrails and constraints. |
 
 ---
 

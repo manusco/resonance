@@ -1,5 +1,23 @@
 # Changelog
 
+## v2.4.0
+
+The autonomous, memory-backed, cross-model-checked release. Resonance can now carry a goal to a verified finish, remember by meaning, and pressure a change with a second model. 53 skills, 31 commands, both validators clean, 163 eval cases.
+
+### Added
+- **`/goal`** (`ops/goal`): the autonomous goal loop. Frames the goal (via `/grill` into a checkable Definition of Done, human-approved), decomposes it into slices, then builds and verifies each against grounded checks (real tests via live execution, validators, `/audit`), bounded by `loop_state.py`, gated at one-way doors, and never auto-shipping. Defaults to running multiple slices between check-ins. The conductor over the existing skills.
+- **`/second-opinion`** (`ops/second-opinion`): independent second-model review. Dispatches a diff to a different model via `.forge/second_opinion.py` (pluggable, graceful fallback), then reconciles the two reviews so agreements are high-confidence and disagreements get investigated, every finding verified against the code.
+- **Memory recall (R6).** `.forge/recall.py` retrieves project memory by meaning (pure-Python BM25 by default, embeddings opt-in via `RESONANCE_EMBED_CMD`), and `.forge/decisions.py` is an append-only, event-sourced decision log (add, list, search, supersede, redact). Wired into `ops/core` so settled decisions resurface at session start and skills recall relevant memory instead of loading the whole brain.
+- The bound enforcer `loop_state.py`, the review harness `second_opinion.py`, and the `memory_recall` reference.
+
+### Changed
+- `/test` now the grounded verifier the goal loop leans on (the R3 live-execution surface from v2.3.0).
+- Moved lifecycle references fully out of `marketing/conversion` (superseded by `marketing/lifecycle` in v2.3.0).
+- README memory table now documents `decisions.jsonl`, `03_tools`, `04_systems`, and `guards.json`.
+
+### Tooling
+- New npm-runnable tools alongside the compiler: `decisions.py`, `recall.py`, `second_opinion.py`, and `loop_state.py`, all pure stdlib and cross-platform.
+
 ## v2.3.0
 
 The elevation release. A first-principles design rebuild, cross-tool slash commands that work on clone, a 34% token diet, a real eval runner and a cross-skill validator, an execution surface, five new skills, and a full hygiene pass. 51 skills, 0 errors, 0 warnings, 157 eval cases.
