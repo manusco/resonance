@@ -1,5 +1,5 @@
 {
-  "skill": "resonance-pipeline",
+  "skill": "resonance-sales-pipeline",
   "query": "Ingest this CSV dataset where only a single representative manages all 15 deals.",
   "files": [],
   "expected_behavior": [

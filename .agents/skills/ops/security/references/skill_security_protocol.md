@@ -41,6 +41,3 @@ Before a skill is added to Resonance:
 - [ ] No arbitrary code execution sinks.
 - [ ] All external URLs are allowlisted or configurable.
 - [ ] All LLM-facing inputs are type-validated (Zod/Pydantic).
-
----
-*Created by the Sentinel. Enforcing Zero-Trust Agent Architecture.*

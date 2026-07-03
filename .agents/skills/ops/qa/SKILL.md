@@ -31,8 +31,8 @@ Copy this checklist and tick items as you go.
 6. **Automate (AAA)**: Write tests using Arrange/Act/Assert. Use the correct Assertion Layer (Source vs. Rendered vs. Visible-Text vs. Behavior). → verify: tests fail first, then pass (Red-Green).
 7. **Break (The Stress)**: Run the test. Does it fail if you break the code? (Mutation Testing). Fuzz inputs. Test offline. Test with corrupt data. → verify: system handles bad input with a specific, expected error, not a crash or a generic message.
 8. **Stale Test Check**: If any test fails, check whether the test or the product is wrong. A stale test that contradicts current product intent must be flagged, not silently updated. → verify: divergences are explicit.
-7. **Self-Improvement**: Log any discovered flakiness or "trick" to get tests passing to `learnings.jsonl`.
-8. **Completion**: Use the Completion Attestation. List verification evidence, not just DONE/BLOCKED.
+9. **Self-Improvement**: Log any discovered flakiness or "trick" to get tests passing to `learnings.jsonl`.
+10. **Completion**: Use the Completion Attestation. List verification evidence, not just DONE/BLOCKED.
 
 ## Recovery
 

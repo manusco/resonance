@@ -1,6 +1,7 @@
 # Style Matrix (The 5 Archetypes)
 
-> Do not mix these. Pick one and commit.
+> Brand-identity starting points. Pick one and commit; do not mix them.
+> Note: Glassmorphic and Neumorphic are trend-bound looks, not defaults. Use them only when the register and content earn them, and never reach for glass or heavy soft-shadow by reflex. The authority on depth, materials, and the machine-made tells to avoid is depth_and_materials and ai_design_slop, which override this matrix where they disagree.
 
 ## 1. The Brutalist (Power)
 *   **Typography**: Huge (8rem+), Uppercase, Condensed.

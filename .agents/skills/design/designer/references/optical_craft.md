@@ -64,7 +64,7 @@ Run this list on anything meant to feel high-class. Each is invisible alone. Tog
 - Consistent light source, so every shadow falls the same way.
 - Concentric radii on every nested corner.
 - Hairline separators, not hard gray lines.
-- Real punctuation: curly quotes, proper apostrophes, an en dash in ranges, an ellipsis character.
+- Real punctuation: curly quotes, proper apostrophes, a real ellipsis, and a clear range separator (the word "to", or an en dash only where the brand's house style permits it).
 - No orphans or widows in headlines; balanced multi-line titles.
 - Tabular numerals in tables and anywhere numbers change in place.
 - Easing on every state change, nothing snaps.

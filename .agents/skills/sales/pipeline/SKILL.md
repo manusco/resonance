@@ -6,7 +6,7 @@ archetype: procedure
 
 # /resonance-sales-pipeline: analyze sales pipelines
 
-> **Role:** resonance-frontend
+> **Role:** resonance-sales
 > **Input:** Deal data via CSV paste, HubSpot API records, or Salesforce Opportunity queries.
 > **Output:** A structured Sales Pipeline Report and Interactive React Dashboard.
 > **Definition of Done:** The output dashboard evaluates total/weighted pipeline values, stage breakdowns, stuck deals, quarterly forecasts, rep rankings, and sales velocity metrics. Free of AI slop and em dashes. Passed the validator.

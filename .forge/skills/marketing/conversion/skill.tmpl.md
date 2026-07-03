@@ -86,6 +86,7 @@ Before finalizing creative: Is the value proposition immediately obvious? Is the
 - **[Onboarding Activation](references/onboarding_activation_protocol.md)**: Time-to-value, first-run patterns, habit loops.
 - **[Churn Prevention](references/churn_prevention_protocol.md)**: Cancel flows, dunning, save offers, win-back.
 - **[DACH Conversion](references/dach_conversion_protocol.md)**: German-speaking market: pay-on-invoice, trust seals, DSGVO, Sie, CH/AT differences.
+- **[A/B Testing Rigor](references/ab_testing_rigor.md)**: Sample size, significance, and stopping rules for honest experiments.
 
 {{RESOLVER:operating_standard}}
 

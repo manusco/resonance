@@ -66,6 +66,3 @@ While these principles are universal, the implementation varies by environment:
 ### General Node/Vite Frameworks
 *   **Vite**: Use the `?url` or direct import syntax for assets to ensure they are tracked by the graph.
 *   **Next.js**: Utilize the `next/image` component for similar managed optimization.
-
----
-*Created by the Performance Engineer & Librarian agents. Enforcing the Universal 1% Standard.*

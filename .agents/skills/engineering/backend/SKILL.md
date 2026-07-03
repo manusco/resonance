@@ -78,6 +78,8 @@ Backend state for complex workflows must persist predictably. Use persistent dae
 - **[Database Decisions](references/db_decisions.md)**: SQL vs. NoSQL selection guide.
 - **[TypeScript Hard Mode](references/typescript_hard_mode.md)**: Advanced typing patterns.
 - **[Zod Schema Patterns](references/zod_schema_patterns.md)**: Validation standards.
+- **[NestJS Module Pattern](references/nestjs_module_pattern.md)**: Module boundaries and dependency structure for NestJS.
+- **[Python / Django Patterns](references/python_django_patterns.md)**: Idiomatic service and model patterns for Django.
 
 ## Operating Standard
 

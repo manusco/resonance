@@ -1,5 +1,5 @@
 {
-  "skill": "resonance-gtm-thinker",
+  "skill": "resonance-strategy-gtm-thinker",
   "query": "Help us think through this positioning shift: We want to pivot our product from a generic 'AI customer support chatbot' to a 'fully autonomous customer success agent for enterprise B2B SaaS.'",
   "files": [],
   "expected_behavior": [

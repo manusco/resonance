@@ -1,5 +1,5 @@
 {
-  "skill": "resonance-call-intelligence",
+  "skill": "resonance-sales-call-intelligence",
   "query": "Analyze these 5 discovery call transcripts for a CRM software product. Build us a persona report.",
   "files": [],
   "expected_behavior": [

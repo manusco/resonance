@@ -40,6 +40,3 @@ Input -> [Validation Gate] -> [Sanitization] -> [Persistence]
 2.  **Naming Consistency**: Labels in the diagram must match the `class` or `function` names used in the code.
 3.  **Horizontal for Flow**: Read left-to-right for sequential logic.
 4.  **Vertical for Stack**: Read top-to-bottom for layering.
-
----
-*Created by the Architect. Part of the Outstanding Skills Standard.*

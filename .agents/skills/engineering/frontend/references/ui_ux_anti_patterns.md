@@ -1,6 +1,5 @@
 # UI/UX Anti-Patterns & Strict Guidelines
 
-> **Source**: Integration of `ui-ux-pro-max-skill`.
 > **Objective**: Professionalize UI implementation by strictly avoiding amateur visual and interaction mistakes.
 
 ## 1. Interaction & State Anti-Patterns

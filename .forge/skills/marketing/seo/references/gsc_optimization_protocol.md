@@ -59,6 +59,3 @@ If impressions are high but CTR is < 2% in the Top 5:
 ### The Link-to-Value Ratio
 *   **Internal**: 1 per 50 words (Distribute authority).
 *   **External**: 1 per 150 words (Contextual citations to high-authority nodes).
-
----
-*Created by the SEO & Research agents. Enforcing the Outstanding Skills Standard.*

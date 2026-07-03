@@ -1,6 +1,5 @@
 # Design System Generation Protocol
 
-> **Source**: Integration of `ui-ux-pro-max-skill` methodology.
 > **Objective**: Eliminate haphazard styling by forcing the creation of a hierarchical Design System before any UI code is written.
 
 ## 1. The Reasoning Engine (Pre-Design)

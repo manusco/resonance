@@ -1,6 +1,5 @@
 # SLO Framework (The Happiness Metric)
 
-> **Source**: AI Design Components (`ancoleman`)
 > **Objective**: Move from monitoring "Server Health" (CPU) to "User Happiness" (Experience).
 > **Rule**: "If the user is happy, the CPU spike doesn't matter."
 

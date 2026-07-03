@@ -1,6 +1,5 @@
 # Skill Chaining Protocol (The Visual/Behavior Split)
 
-> **Source**: AI Design Components (`ancoleman`)
 > **Objective**: Decouple logic from visuals to enable infinite theming.
 > **Rule**: "Components must never hardcode styles. They must emit Token Variables."
 

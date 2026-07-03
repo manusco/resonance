@@ -12,7 +12,7 @@
 - [ ] Body text sits at a comfortable measure (around 45 to 75 characters), never full-width on a wide screen.
 - [ ] Type sizes come from one scale. No off-scale one-offs.
 - [ ] Leading fits the size: tight on headlines, open on body.
-- [ ] Real punctuation: curly quotes, proper apostrophes, a real ellipsis, an en dash in ranges.
+- [ ] Real punctuation: curly quotes, proper apostrophes, a real ellipsis, and a clear range separator ("to", or an en dash only where house style permits).
 - [ ] No orphans or widows in headlines. Multi-line titles are balanced.
 - [ ] Tabular numerals anywhere numbers align or change in place.
 

@@ -2,6 +2,16 @@
 
 > Why well-optimized pages still fail to rank: the page-type mismatch problem.
 
+## Contents
+- Core insight
+- SERP backwards analysis
+- Page-type mismatch detection
+- User story derivation
+- Gap analysis (7 dimensions)
+- Persona-based scoring
+- SXO vs SEO health score
+- Cross-skill references
+
 ## 1. Core Insight
 
 A page can score 95/100 on technical SEO and still fail to rank because it is the **wrong page type** for the keyword. If Google shows 8 product pages and 2 comparison pages for your keyword, your blog post will never break through — regardless of optimization.

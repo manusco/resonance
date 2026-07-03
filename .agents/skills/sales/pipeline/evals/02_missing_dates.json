@@ -1,5 +1,5 @@
 {
-  "skill": "resonance-pipeline",
+  "skill": "resonance-sales-pipeline",
   "query": "Review this pipeline dataset. All deals are missing close dates.",
   "files": [],
   "expected_behavior": [

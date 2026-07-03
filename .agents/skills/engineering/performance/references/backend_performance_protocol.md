@@ -20,6 +20,3 @@
 *   **Caching Strategy**: Identify expensive, idempotent computations that can be cached (in-memory, Redis).
 *   **Cache Invalidation**: Every cached item must have a clear TTL or invalidation trigger.
 *   **Throttling/Rate Limiting**: Protect the system from resource depletion.
-
----
-*Created by the Performance agent. Enforcing the Outstanding Skills Standard.*

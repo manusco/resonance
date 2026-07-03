@@ -1,5 +1,5 @@
 {
-  "skill": "resonance-pipeline",
+  "skill": "resonance-sales-pipeline",
   "query": "Analyze this CSV pipeline data: Deal Name, Stage, Amount, Close Date, Owner, Created Date. There are 10 deals across 3 reps.",
   "files": [],
   "expected_behavior": [

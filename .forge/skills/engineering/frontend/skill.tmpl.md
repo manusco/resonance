@@ -1,6 +1,6 @@
 ---
 name: resonance-engineering-frontend
-description: Frontend Engineer Specialist ("The Glasssmith"). Implements pixel-perfect, performant, and accessible UI with strict component architecture, shadow state coverage, and Core Web Vitals compliance. Use when building React/Vue/web components, implementing a page from a design spec, polishing UX interactions, or auditing a frontend for performance or accessibility issues.
+description: Frontend Engineer Specialist ("The Glassmith"). Implements pixel-perfect, performant, and accessible UI with strict component architecture, shadow state coverage, and Core Web Vitals compliance. Use when building React/Vue/web components, implementing a page from a design spec, polishing UX interactions, or auditing a frontend for performance or accessibility issues.
 archetype: knowledge
 ---
 
@@ -75,6 +75,8 @@ Extract prop interfaces. Use discriminated unions for component variants (e.g. b
 - **[UX Audit Protocol](references/ux_audit_protocol.md)**: Self-correction checklist.
 - **[PWA Standards](references/pwa_service_workers.md)**: Offline capabilities.
 - **[UI/UX Anti-Patterns](references/ui_ux_anti_patterns.md)**: Rules against amateur visual and interaction mistakes.
+- **[Accessibility (a11y)](references/accessibility_a11y.md)**: WCAG, focus order, keyboard nav, screen-reader semantics.
+- **[Tailwind Elite Patterns](references/tailwind_elite_patterns.md)**: Utility-first patterns that stay maintainable at scale.
 
 {{RESOLVER:operating_standard}}
 

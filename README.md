@@ -182,7 +182,7 @@ Add your own skill with the meta-skill:
 /skill-author
 ```
 
-It walks the eval-first loop: prove the gap, write the golden evals, author the template, compile with the Forge, pass the validator, and only then ship. See `.forge/README.md` for the compiler and `.agents/skills/resonance-skill-author/` for the spec.
+It walks the eval-first loop: prove the gap, write the golden evals, author the template, compile with the Forge, pass the validator, and only then ship. See `.forge/README.md` for the compiler and `.agents/skills/ops/skill-author/resonance-skill-author/` for the spec.
 
 ---
 

@@ -153,6 +153,7 @@ Operational Playbooks:
 - **[SEO Audit Checklist](references/seo_audit_checklist.md)**: Quick-reference checklist.
 - **[Ahrefs Reference](references/ahrefs_cheatsheet.md)**: Keyword gaps, SERP trajectories, link targets.
 - **[DACH SEO](references/dach_seo_protocol.md)**: German-speaking market: Komposita, umlauts, hreflang de-DE/AT/CH, Impressum E-E-A-T.
+- **[SXO Protocol](references/sxo_protocol.md)**: Search-experience optimization, matching page type to SERP intent.
 
 ## Operating Standard
 

@@ -6,7 +6,7 @@ Static structural checks for any SKILL.md against the Resonance skill spec.
 Pure stdlib. Cross-platform (Windows/macOS/Linux). No external deps.
 
 Usage:
-    python .forge/validate_skill.py .agents/skills/resonance-skill-author/SKILL.md
+    python .forge/validate_skill.py .agents/skills/ops/skill-author/resonance-skill-author/SKILL.md
     python .forge/validate_skill.py --all .agents/skills
     python .forge/validate_skill.py --all .agents/skills --strict   # warnings fail too
 

@@ -64,7 +64,7 @@ Hierarchy is built from contrast, and type gives you two axes before color: size
 
 The finishing that separates typeset from typed:
 
-- Curly quotes and apostrophes, never straight ones. An en dash for ranges, an em dash used sparingly or replaced with a comma or colon, a real ellipsis character.
+- Curly quotes and apostrophes, never straight ones. For ranges use the word "to", or an en dash only where the brand's house style allows it. Replace the em dash with a comma or colon. Use a real ellipsis character. (Resonance's own prose uses no en or em dashes; this guidance is for the typeset UI you design.)
 - No orphans (a single word alone on the last line) and no widows (a short last line at the top of a column) in headlines. Use `text-wrap: balance` on headings and `text-wrap: pretty` on body to let the browser fix these.
 - Hanging punctuation so quotes and bullets sit in the margin and the text edge stays clean.
 - Ligatures on for display, kerning enabled (`font-kerning: normal`).

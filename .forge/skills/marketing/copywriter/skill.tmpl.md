@@ -19,7 +19,7 @@ You do not write "content." You construct arguments. Confused buyers do not buy.
 | :--- | :--- | :--- |
 | **Landing Page** | New product or feature | High-converting headline + value prop |
 | **Email Sequence** | LCM campaign | 5-email sequence (Welcome, Nurture, Pitch) |
-| **Humanization** | AI-generated draft | Two-Pass rewrite: Diagnosis then Reconstruction |
+| **Humanization** | AI-generated draft | Three-pass rewrite: Diagnosis, Reconstruction, Validation |
 | **Voice Extraction** | Reference text input | Stylometric profile and Replication Blueprint |
 
 ## Out of Scope
@@ -42,16 +42,16 @@ Hero (User) has a Problem, meets a Guide (Brand) who gives a Plan and calls them
 ### Cialdini's Principles
 Reciprocity, Commitment, Social Proof, Authority, Liking, Scarcity. Every CTA uses at least one of these triggers.
 
-### The Humanization Engine (Two-Pass)
+### The Humanization Engine (Three-Pass)
 - **Phase 1 (Diagnosis)**: Run the banned phrase scan. Check against the 8-Point Human Rubric.
-- **Phase 2 (Reconstruction)**: Rewrite using a preset (crisp, warm). Vary sentence length: short. Then a bit longer. Then very short. Break the pattern.
+- **Phase 2 (Reconstruction)**: Rewrite using a preset (crisp or warm). Vary sentence length: short. Then a bit longer. Then very short. Break the pattern.
 - **Phase 3 (Validation)**: Check fact preservation and verify no AI-isms remain.
 
 ## Operational Sequence
 
 1. **Draft**: Write the Ugly First Draft. Get ideas down without editing.
-2. **Edit**: Apply the Seven Sweeps (Clarity, Flow, Tone, Readability, Trust, Rhythm, Brevity).
-3. **Humanize**: Run the Two-Pass Humanization Engine.
+2. **Edit**: Apply the Seven Sweeps defined in the master protocol.
+3. **Humanize**: Run the Three-Pass Humanization Engine.
 4. **Polish**: Check the readability score. Confirm "You" > "We".
 
 ## KPIs
@@ -67,7 +67,11 @@ Reciprocity, Commitment, Social Proof, Authority, Liking, Scarcity. Every CTA us
 - **[Copywriting Formulas](references/copywriting_formulas.md)**: PAS, AIDA, BAB.
 - **[Email Sequence Templates](references/email_sequence_templates.md)**: Welcome and nurture flows.
 - **[Email Architecture](references/email_sequence_protocol.md)**: Sequence design.
-- **[Humanizer Protocol](references/rubric.md)**: The 8-Point Human Rubric.
+- **[Human Rubric](references/rubric.md)**: The 8-Point Human Rubric.
+- **[Humanizer Protocol](references/humanizer_protocol.md)**: The prescriptive de-slopping how-to.
+- **[StoryBrand Framework](references/storybrand_framework.md)**: The Hero/Guide narrative arc.
+- **[Hemingway Protocol](references/hemingway_protocol.md)**: Readability and plain-language rules.
+- **[Neuromarketing Triggers](references/neuromarketing_triggers.md)**: Cialdini and persuasion cues.
 - **[Taboo Phrases](references/taboo_phrases.md)**: The Kill List.
 - **[Fact Preservation](references/fact_preservation.md)**: Immutable rules for claim integrity.
 - **[Stylometric Extraction](references/stylometric_extraction_protocol.md)**: Voice cloning and psychological deconstruction.

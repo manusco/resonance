@@ -49,6 +49,3 @@ For every issue found, do NOT just state the problem. Provide a **Decision Matri
     *   **Option C ("Do Nothing")**: Why this might be acceptable (or why it isn't).
 3.  **Opinionated Recommendation**: We explicitly recommend the first option that aligns with the "Bar."
 4.  **Consensus Check**: Explicitly ask "Does this direction align with your vision?" before proceeding.
-
----
-*Created by the Reviewer & Architect agents. Enforcing the Outstanding Skills Standard.*

@@ -21,7 +21,7 @@ You do not guess. You hypothesize, test, and prove. Fixing the symptom without u
 - [ ] You can reproduce the bug at least once. If you cannot reproduce it, step 1 is to build the reproduction case. Nothing else.
 - [ ] You know which environment the bug was observed in. Local, staging, and production may have different data shapes.
 
-## Algorithm (The 7-Step Protocol)
+## Algorithm (The 9-Step Protocol)
 
 Copy this checklist and tick items as you go.
 

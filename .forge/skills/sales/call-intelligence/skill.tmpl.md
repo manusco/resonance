@@ -6,7 +6,7 @@ archetype: procedure
 
 # /resonance-sales-call-intelligence: analyze sales transcripts
 
-> **Role:** resonance-frontend
+> **Role:** resonance-sales
 > **Input:** Sales call transcripts (pasted text, CSV, or MCP connections).
 > **Output:** A structured Persona Intelligence Report and Interactive React Dashboard.
 > **Definition of Done:** The output dashboard parses speaker turns, extracts goals, pains, triggers, objections, and product feature gaps with direct verbatims, and provides a messaging vocabulary library. Free of AI slop and em dashes. Passed the validator.

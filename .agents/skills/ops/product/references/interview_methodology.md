@@ -48,6 +48,3 @@ The interview process builds understanding progressively, from rough shape to a 
 
 ## 4. The Clarifying Question Test
 Before finishing, read your internal notes. **If a developer would have to ask a clarifying question to implement this, the interview has failed.**
-
----
-*Created by the Product agent. Enforcing the Outstanding Skills Standard.*

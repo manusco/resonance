@@ -1,5 +1,5 @@
 {
-  "skill": "resonance-call-intelligence",
+  "skill": "resonance-sales-call-intelligence",
   "query": "Ingest this raw CSV file containing mixed speaker rows. The speaker roles are not labeled.",
   "files": [],
   "expected_behavior": [

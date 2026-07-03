@@ -31,6 +31,3 @@ Before finalizing, perform these tests:
 1.  **The New Developer Test**: Can a stranger follow this without talking to you?
 2.  **The Execution Test**: Copy-paste the commands. Do they work exactly as written?
 3.  **The Link Test**: Do all internal/external links resolve?
-
----
-*Created by the Librarian. Enforcing the Outstanding Skills Standard.*

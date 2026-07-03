@@ -33,6 +33,3 @@ When a project is complex, verbal descriptions of UI elements (e.g., "the blue b
 *   **Shared Vocabulary**: The Agent and User now speak the same language. "Moving [B] into [C]" has a deterministic meaning.
 *   **Topological Integrity**: Ensures that the agent doesn't accidentally move a component to a parent it shouldn't belong to.
 *   **Refactor Speed**: Greatly reduces the "Discovery" phase when performing visual redesigns or migrations.
-
----
-*Created by the Frontend Specialist. Part of the Outstanding Skills Standard.*
