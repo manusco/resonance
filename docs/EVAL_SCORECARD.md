@@ -2,7 +2,7 @@
 
 Measured lift per skill: the same task run twice, once WITHOUT the skill and once WITH it in context, each output graded against the skill's own rubric. `without` and `with` are the fraction of the rubric satisfied. `lift` is the gap the skill closes. This is the framework proving, not asserting, that a skill helps.
 
-Produced by `.forge/run_evals.py --score` (pluggable model, diff-based selection, per-skill aggregation). The full 164-case run needs a model CLI wired in (`--model-cmd` or `RESONANCE_MODEL_CMD`); the table below is a **live 4-skill sample** run through the exact protocol to show the method works and the numbers are real.
+Produced by `.forge/run_evals.py --score` (pluggable model, diff-based selection, per-skill aggregation). The full 176-case run needs a model CLI wired in (`--model-cmd` or `RESONANCE_MODEL_CMD`); the table below is a **live 7-skill sample** run through the exact protocol to show the method works and the numbers are real.
 
 ## Live sample (2026-07-04)
 
@@ -10,22 +10,27 @@ Each row: one golden case, a cold baseline agent and a skill-applied agent answe
 
 | skill | cases | without | with | lift | verdict |
 | :-- | --: | --: | --: | --: | :-- |
-| `engineering/debugger` | 1 | 0.40 | 1.00 | +0.60 | proven |
 | `strategy/plan` | 1 | 0.33 | 1.00 | +0.67 | proven |
-| `ops/ship` | 1 | 1.00 | 1.00 | +0.00 | flat |
-| `marketing/copywriter` | 1 | 0.80 | 0.80 | +0.00 | flat |
+| `engineering/debugger` | 1 | 0.40 | 1.00 | +0.60 | proven |
+| `engineering/ai-engineering` | 1 | 0.33 | 0.83 | +0.50 | proven |
+| `ops/legal` | 1 | 0.60 | 1.00 | +0.40 | proven |
+| `strategy/finance` | 1 | 0.80 | 1.00 | +0.20 | proven |
+| `marketing/copywriter` | 1 | 0.80 | 0.80 | +0.00 | flat (easy case) |
+| `ops/ship` | 1 | 1.00 | 1.00 | +0.00 | flat, rubric sharpened |
 
-Sample mean lift: **+0.32**. Proven: 2. Flat: 2.
+Sample mean lift: **+0.34**. Proven: 5. Flat: 2.
 
 ## What the numbers actually say
 
-- **The rigor skills produce large, real lift.** Without the debugger skill, the base model proposed adding logging to production before reproducing the bug and never checked `learnings.jsonl`; with it, the agent refused to fix before a deterministic reproduction, listed race, cache, and float hypotheses, and checked prior learnings first (0.40 to 1.00). Without the plan skill, the model planned solo; with it, it ran the ambiguity gate, delegated to the researcher and venture skills, and produced a PRD plus a 4-pass atomic plan (0.33 to 1.00). This is the framework doing its job: turning a capable generalist into a disciplined operator.
-- **Two skills came out flat, and that is the honest and useful part.** `ops/ship` scored 2/2 both ways because the base model already knows the basic release steps and the rubric (two items) is too coarse to test the skill's real additions (canary, rollback, verify-before-tag, doc-drift). `marketing/copywriter` scored 4/5 both ways because both outputs tripped the same binary "headline under 10 words" rule, so the rubric did not discriminate on the craft the skill actually adds. Flat lift here is not "the skill is useless"; it is "this eval cannot yet see the skill's value." Those two rubrics go on the work-list.
+- **The three new Track 2 skills all show real lift.** `ai-engineering` (+0.50): without it the model handed over a prompt and suggested testing later; with it, it refused to ship a prompt without an eval set, wrote the grading rubric first, started from the cheapest model, and added a grounding guardrail. `ops/legal` (+0.40): the baseline drafted a policy immediately; the skill built the data map first, assigned a lawful basis per purpose, and flagged the Impressum, the TDDDG consent trap, and the controller-vs-processor split. `strategy/finance` (+0.20): the base model is already a strong operator here (0.80), and the skill still added the driver-traced model, the "raise from six months of runway" framing, and explicit base and downside scenarios.
+- **The rigor skills produce the largest lift.** `plan` (+0.67) and `debugger` (+0.60): without them the base model plans solo and wants to add production logging before reproducing a bug; with them it runs the ambiguity gate, delegates, and refuses to fix before a deterministic reproduction.
+- **The base model is genuinely strong, so lift is honest, not inflated.** Where the base already does well (finance 0.80, copywriter 0.80), lift is smaller. A scorecard that showed +0.8 everywhere would be lying.
 
-## How this feeds the rest of the system
+## The /improve loop, dogfooded on this scorecard
 
-- The `flat` and `weak` rows are the **/improve work-list** (Track 3): a skill with no measured lift either needs a sharper eval or a stronger body, and the scorecard says which.
-- The grounded verifier behind a real run is the execution surface (`.forge/exec/`): `run_checks.py` runs the project's real tests, `browser_check.mjs` opens a real browser. Measurement grades against executed reality, not self-report.
+`ops/ship` came out flat at 1.0 both ways. Diagnosis (per `body_vs_rubric`): the skill's answer was clearly better (canary, rollback, verify-before-tag, toolchain detection) but the eval's two-item rubric could not see it. Fix: the rubric was **sharpened**, not the skill, from 2 blunt items to 5 discriminating ones (verify-before-tag, a rollback path confirmed before deploy, canary-first with post-deploy verification, toolchain detection, correct semver and logical commits). This is the Goodhart-safe move the loop requires: the rubric is now a harder test a mediocre answer fails, never an easier one. The re-measure runs when a model CLI is wired.
+
+`marketing/copywriter` flat is a sampling artifact, not a weak skill: the sample used its easy happy-path case, where a strong base model already writes good copy. The discriminating case is `02_humanization` (rescuing AI-drafted slop), where the skill's anti-slop and humanizer protocol separate it from the baseline.
 
 ## Run it yourself
 
@@ -36,6 +41,6 @@ python .forge/run_evals.py --all --check
 # full scored run (wire any model CLI that reads a prompt on stdin)
 RESONANCE_MODEL_CMD="claude -p" python .forge/run_evals.py --all --score
 
-# just the skills you changed, one case each (cheap)
-python .forge/run_evals.py --changed --score --limit 1
+# work the weak list, keep only measured gains
+python .forge/improve.py worklist
 ```

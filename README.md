@@ -89,12 +89,12 @@ Every command is a structured procedure with a Definition of Done, not a loose p
 
 50+ skills across 7 domains, each a self-contained protocol backed by reference docs.
 
-- **Strategy**: `plan`, `grill`, `architect`, `venture`, `growth`, `researcher`, `gtm-thinker`. Planning, system design, business modeling, and pre-build interrogation.
-- **Engineering**: `backend`, `frontend`, `mobile`, `database`, `devops`, `debugger`, `build`, `automation`, `performance`, `game-dev`. Build, debug, and ship, with defense-in-depth and deterministic tests.
+- **Strategy**: `plan`, `grill`, `architect`, `venture`, `finance`, `growth`, `researcher`, `gtm-thinker`. Planning, system design, business and financial modeling, fundraising, and pre-build interrogation.
+- **Engineering**: `backend`, `frontend`, `mobile`, `database`, `devops`, `debugger`, `build`, `automation`, `performance`, `game-dev`, `ai-engineering`. Build, debug, and ship, including AI and LLM products built eval-first, with defense-in-depth and deterministic tests.
 - **Design**: `designer`, `studio`. First-principles UI craft: optical precision, perceptual color (OKLCH), typographic hierarchy, motion with physics, the subconscious detail layer, and cross-canvas design from phone to TV.
 - **Marketing**: `seo`, `conversion`, `copywriter`, `paid-acquisition`, `analytics`, `lifecycle`. Search and GEO, conversion, paid media, measurement and attribution, and the full lifecycle from activation to win-back.
 - **Sales**: `pipeline`, `cold-call`, `call-intelligence`, `account-intelligence`, `lead-ops`, `outbound-sequence`. Qualification, outreach, and call analysis.
-- **Ops**: `goal`, `audit`, `qa`, `security`, `reviewer`, `second-opinion`, `refactor`, `ship`, `incident`, `observability`, `librarian`, `handover`, `retro`, `product`, `productivity`, `voice`, `core`, `skill-author`. Quality, security, delivery, reliability, incident response, and governance.
+- **Ops**: `goal`, `improve`, `audit`, `qa`, `security`, `reviewer`, `second-opinion`, `refactor`, `ship`, `incident`, `observability`, `legal`, `librarian`, `handover`, `retro`, `product`, `productivity`, `voice`, `core`, `skill-author`. Quality, security, delivery, reliability, incident response, legal and GDPR compliance, evidence-based self-improvement, and governance.
 - **Research**: `market-research`. Market sizing, competitive intelligence, and positioning.
 
 ---
