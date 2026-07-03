@@ -64,12 +64,6 @@ Never patch a running server. Replace it. Deploy a new container image, drain th
 - **[Rollback Matrix](references/rollback_matrix.md)**: Emergency response procedures.
 - **[Docker Optimization](references/docker_optimization.md)**: Container best practices.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

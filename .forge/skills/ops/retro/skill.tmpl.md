@@ -53,10 +53,6 @@ Balance mathematical truths with human empathy (Constructive Praise + Growth Opp
 
 - **[Karpathy Rules](../core/references/karpathy_rules.md)**: Universal coding standards (Simplicity, Surgical).
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

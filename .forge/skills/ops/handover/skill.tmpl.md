@@ -55,12 +55,6 @@ If a source is missing, skip it silently. Do not fabricate.
 
 - **[Handover Structure](references/handover_structure.md)**: Document template with section guidance and examples.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

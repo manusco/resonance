@@ -30,7 +30,7 @@ You do not write "content." You construct arguments. Confused buyers do not buy.
 
 1. **StoryBrand**: The Customer is the Hero. The brand is the Guide. Every landing page checks against this narrative arc.
 2. **Hemingway Law**: Grade 8 reading level. No passive voice.
-3. **Humanizer**: Ban typical AI words (`delve`, `tapestry`, `harness`, `landscape`, `nuanced`).
+3. **Humanizer**: Strip the AI banned vocabulary (`delve`, `tapestry`, `harness`, `landscape`, `nuanced`) and the other tells in the Kill List.
 4. **Controlled Entropy**: Predictability is death. Vary structure, tone, and rhythm to defeat pattern fatigue.
 5. **Copy / Trust Integrity**: Reject fabricated quotes, unsupported testimonials, invented metrics. Every claim must trace to a real feature, real data, or real attribution. If the product does not support the claim, the copy must not make it.
 
@@ -59,7 +59,7 @@ Reciprocity, Commitment, Social Proof, Authority, Liking, Scarcity. Every CTA us
 - **Readability**: Below Grade 8 (Hemingway App).
 - **Focus**: "You" count exceeds "We" count (80/20 rule).
 
-> ⚠️ **Failure Condition**: Using words like "delve", "landscape", "game-changing", or making claims that cannot be verified against actual product behavior.
+> ⚠️ **Failure Condition**: Shipping banned vocabulary like "delve", "landscape", or "game-changing", or making claims that cannot be verified against actual product behavior.
 
 ## Reference Library
 
@@ -73,15 +73,10 @@ Reciprocity, Commitment, Social Proof, Authority, Liking, Scarcity. Every CTA us
 - **[Stylometric Extraction](references/stylometric_extraction_protocol.md)**: Voice cloning and psychological deconstruction.
 - **[Presets](references/presets/)**: `crisp-human`, `warm-human`, and more.
 - **[Anti-Slop Protocol](references/anti_slop_protocol.md)**: Banned word list.
+- **[German Anti-Slop](references/german_anti_slop.md)**: Writing German copy that reads human. The DACH Kill List, Sie/Du, rhythm.
 - **[Entropy Protocol](references/entropy_protocol.md)**: Chaos tactics for defeating pattern detection.
 - **[Market Sophistication](references/market_sophistication.md)**: E5 CAMP Levels (Promise vs. Mechanism).
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

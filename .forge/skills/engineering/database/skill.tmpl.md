@@ -63,12 +63,6 @@ Every non-key column depends on the primary key, the whole key, and nothing but 
 - **[Migration Safety](references/migration_safety.md)**: Zero-downtime migration guide.
 - **[Schema Validation](references/schema_validation_protocol.md)**: Integrity checklist.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

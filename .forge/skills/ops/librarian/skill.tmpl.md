@@ -73,10 +73,6 @@ If a reader asks "How?" after reading the document, it has failed. If they ask "
 - **[Documentation Quality Gate](references/doc_quality_gate.md)**: The Clarifying Question Rule.
 - **[LLMs.txt Protocol](references/llms_txt_protocol.md)**: Agent documentation standard.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

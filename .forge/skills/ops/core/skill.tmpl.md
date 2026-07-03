@@ -84,12 +84,6 @@ Stop and search before building anything involving unfamiliar patterns. Evaluate
 - **[Audit Classification Taxonomy](references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

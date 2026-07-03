@@ -61,10 +61,6 @@ A 100/100 score is useless if the tests only check the happy path (`TEST_SHALLOW
 - **[QA Health Rubric](../qa/references/qa_health_rubric.md)**: Full, Quick, and Regression modes.
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

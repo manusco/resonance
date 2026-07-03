@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Design the hero section for our new product's marketing landing page.",
+  "files": [],
+  "expected_behavior": [
+    "Names the register first and identifies this as a Brand-register surface where distinctiveness matters",
+    "Refuses the AI default reflexes: does not propose a purple-to-blue gradient, gradient text, default sans for everything, or an identical three-card grid",
+    "Justifies typography and color as deliberate choices tied to the brand, not model defaults",
+    "Runs the design against the AI slop test before presenting it"
+  ]
+}

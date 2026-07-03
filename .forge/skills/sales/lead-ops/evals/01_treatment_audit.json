@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-lead-ops",
+  "query": "Audit last week's inbound leads and tell me what fell through the cracks.",
+  "files": [],
+  "expected_behavior": [
+    "Classifies each lead by treatment against the treatment spectrum and speed-to-lead",
+    "Surfaces missed or late follow-ups with the specific lead and the gap",
+    "Gives each audited lead an owner resolution with provenance and a recommended next action",
+    "Produces an actionable watchlist, not a generic summary"
+  ]
+}

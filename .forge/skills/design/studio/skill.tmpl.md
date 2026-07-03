@@ -71,10 +71,6 @@ Separate Subject from Style from Parameters. Each is a concern. Mixing them prod
 - **[Style Matrix](references/style_matrix.md)**: Curated high-end aesthetics.
 - **[Asset Pipeline](references/asset_generation_pipeline.md)**: From concept to final asset.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

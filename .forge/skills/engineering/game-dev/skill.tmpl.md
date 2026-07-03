@@ -66,12 +66,6 @@ Players enjoy the progression from incompetence to competence. Design challenges
 - **[Engine Matrix](references/engine_matrix.md)**: Game engine selection guide.
 - **[Psychology Triggers](references/psychology.md)**: Motivational design and player psychology.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

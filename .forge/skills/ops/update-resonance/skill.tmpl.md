@@ -31,13 +31,11 @@ Copy this checklist and tick items as you go.
 6. **Verify the upgrade**: Run `/system-health`. It must report the correct skill count. Flag if score < 80. → verify: health check passes.
 7. **Clean up**: Remove the temp directory.
 
-
 ## Recovery
 
 - Something went wrong after deleting `.agents/` → clone the repo and copy `.agents/` back in. This is faster and cleaner than restoring a backup of an old version.
 - `/system-health` fails (score < 50) → do not use the system. Re-run steps 3–5 from a fresh clone. The issue is almost always a partial copy.
 - Conflict in `00_soul.md` → this should not happen because `.resonance/` is never touched. If it does happen, the user has accidentally run the wrong command. Stop and confirm scope before proceeding.
-
 
 ## Out of Scope
 
@@ -52,10 +50,6 @@ Upgrading a framework while preserving the user's project memory is like a trans
 
 - **[Completion Attestation](../core/references/completion_attestation.md)**: Required sign-off format.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

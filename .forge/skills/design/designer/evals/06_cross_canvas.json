@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Design a media player UI that has to work on a phone, a laptop, and a TV.",
+  "files": [],
+  "expected_behavior": [
+    "Designs for input, not just width: touch with large targets and gestures on the phone, hover and precision on the laptop, explicit focus navigation for the TV remote",
+    "Never makes essential actions hover-only, since the same design meets touch and remote",
+    "Uses fluid type (clamp) and content-driven breakpoints rather than fixed device widths",
+    "Addresses the 10-foot canvas specifics: larger type and spacing, a strong visible focus treatment, and overscan-safe margins",
+    "Respects safe areas and touch target minimums (at least 44px)"
+  ]
+}

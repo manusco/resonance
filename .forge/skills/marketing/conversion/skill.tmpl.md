@@ -85,11 +85,8 @@ Before finalizing creative: Is the value proposition immediately obvious? Is the
 - **[Landing Page Anatomy](references/landing_page_anatomy.md)**: Standard layout.
 - **[Onboarding Activation](references/onboarding_activation_protocol.md)**: Time-to-value, first-run patterns, habit loops.
 - **[Churn Prevention](references/churn_prevention_protocol.md)**: Cancel flows, dunning, save offers, win-back.
+- **[DACH Conversion](references/dach_conversion_protocol.md)**: German-speaking market: pay-on-invoice, trust seals, DSGVO, Sie, CH/AT differences.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

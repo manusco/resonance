@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-strategy-grill",
+  "query": "This is trivial, just add a Delete button to the settings page and wire it up.",
+  "files": [],
+  "expected_behavior": [
+    "Does not skip the gate because the task looks simple; runs it at proportional depth (a few questions, not thirty)",
+    "Probes the high-risk assumptions hiding in a 'trivial' delete: what exactly is deleted, is it reversible, is there a confirmation, what are the permission and cascade effects",
+    "Treats the destructive, one-way-door nature of delete as a reason to ask more, not fewer, questions",
+    "Gates implementation until the user confirms the deletion scope and recovery behavior"
+  ]
+}

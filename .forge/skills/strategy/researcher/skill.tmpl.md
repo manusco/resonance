@@ -71,12 +71,6 @@ When research surfaces multiple valid approaches, present them with tradeoffs. S
 - **[Diataxis Framework](references/diataxis_framework.md)**: Documentation structure.
 - **[LLMs.txt Protocol](references/llms_txt_protocol.md)**: AI-friendly documentation format.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

@@ -32,10 +32,6 @@ Copy this checklist and tick items as you go.
 - Core GTM hypothesis lacks an execution mechanism → halt analysis, reconstruct the "how" of the execution loop, and present it back to the user for validation.
 - Tried to build a blueprint 3 times without a viable week 1 launch step → stop, reduce scope to a micro-test cohort (e.g., 20 leads), and escalate.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

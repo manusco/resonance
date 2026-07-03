@@ -91,12 +91,6 @@ LLM applications need defense in depth: (1) Input Classifiers, (2) Canary Tokens
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](../core/references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

@@ -76,10 +76,6 @@ One-page business model. Forces clarity by putting constraints on every section.
 - **[Pricing Strategy Protocol](references/pricing_strategy_protocol.md)**: Value metrics, tier structure, Van Westendorp, price increases.
 - **[The Mom Test](references/mom_test.md)**: Interview protocol for honest customer discovery.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

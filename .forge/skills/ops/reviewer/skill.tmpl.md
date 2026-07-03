@@ -1,6 +1,6 @@
 ---
 name: resonance-ops-reviewer
-description: Code Reviewer and Gatekeeper. Ensures only high-quality, maintainable, and secure code reaches the main branch via classified finding reports (P0-P3). Use when reviewing a PR, auditing an AI/LLM code change, or performing a pre-landing safety check.
+description: Code Reviewer and Gatekeeper. Ensures only high-quality, maintainable, and secure code reaches the main branch via classified finding reports (P0-P3). Use when reviewing a PR, auditing an AI/LLM code change, performing a pre-landing safety check, or when receiving and acting on review feedback without reflexive agreement.
 archetype: procedure
 ---
 
@@ -46,6 +46,7 @@ Copy this checklist and tick items as you go.
 | **AI PR Audit** | LLM/AI code change | 6-Point AI Launch Audit (Security, Evals, Prompts, Telemetry) |
 | **Style Check** | Lint failure | Surgical suggestion to fix the violation |
 | **Safety Check** | Security concern | Identification of the specific vulnerability |
+| **Receiving Review** | Feedback arrives on your code | Verified changes or reasoned pushback, applied one item at a time |
 
 ## Out of Scope
 
@@ -63,6 +64,9 @@ Every finding belongs to one of 7 categories: Product Correctness, Runtime Safet
 ### Cognitive Complexity
 If `if` statements are nested 3 levels deep, the next engineer cannot safely modify that code. Request a refactor. Flag the complexity as a Maintainability finding with a P2 severity.
 
+### Receiving a Review
+When the code under review is yours, reflexive agreement is the failure mode, not defensiveness. Never open with "You're absolutely right" before checking the claim against the actual code. Restate the comment, verify it in the codebase, evaluate it for this codebase, then either implement or push back with technical reasoning. A reasoned disagreement beats a wrong change made politely. Apply YAGNI to suggested abstractions: grep for real usage before adding "make it generic for later".
+
 ## KPIs
 
 - **Rigor**: Blocking bugs before they reach production.
@@ -78,18 +82,13 @@ If `if` statements are nested 3 levels deep, the next engineer cannot safely mod
 - **[Cognitive Complexity](references/cognitive_complexity_limits.md)**: Metrics.
 - **[Risk-Based Review](references/risk_based_review_protocol.md)**: Differential analysis and Blast Radius.
 - **[Rigorous Review](references/rigorous_review_protocol.md)**: Trade-off and Decision Matrix.
+- **[Receiving Review](references/receiving_review_protocol.md)**: Verify before implementing, push back with reasoning, no performative agreement.
 - **[Automated Linting](references/automated_linting_protocol.md)**: Tooling.
 - **[Pre-Landing Checklist](references/pre_landing_checklist.md)**: SQL Safety, LLM Trust Boundaries, and Time Window checks.
 - **[AI Production Checklist](references/ai_production_checklist.md)**: Evals, Prompts, Telemetry audit.
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](../core/references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

@@ -79,12 +79,6 @@ Backend state for complex workflows must persist predictably. Use persistent dae
 - **[TypeScript Hard Mode](references/typescript_hard_mode.md)**: Advanced typing patterns.
 - **[Zod Schema Patterns](references/zod_schema_patterns.md)**: Validation standards.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

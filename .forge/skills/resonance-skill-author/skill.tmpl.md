@@ -57,12 +57,6 @@ Copy this checklist and tick items as you go.
 - Writing marketing copy (delegate to resonance-copywriter).
 - Inventing a new file format. The output is a SKILL.md; the Forge owns how it is generated.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

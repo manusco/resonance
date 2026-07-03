@@ -76,12 +76,6 @@ Extract prop interfaces. Use discriminated unions for component variants (e.g. b
 - **[PWA Standards](references/pwa_service_workers.md)**: Offline capabilities.
 - **[UI/UX Anti-Patterns](references/ui_ux_anti_patterns.md)**: Rules against amateur visual and interaction mistakes.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

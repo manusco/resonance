@@ -59,10 +59,6 @@ You do not do the work yourself. You spawn specialists (`resonance-ops-security`
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: The standard report template.
 - **[Completion Attestation](../core/references/completion_attestation.md)**: Final sign-off.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

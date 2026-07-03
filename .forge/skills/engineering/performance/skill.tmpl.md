@@ -77,12 +77,6 @@ O(n^2) loops masquerading as O(n). An ORM that issues one query per item in a li
 - **[Bundle Analysis](references/bundle_analysis_protocol.md)**: Code size budget.
 - **[Backend Performance](references/backend_performance_protocol.md)**: N+1, Memory, Caching.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

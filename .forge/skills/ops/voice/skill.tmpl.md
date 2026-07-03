@@ -99,10 +99,6 @@ What a person writes reveals more than what they say about how they write. When 
 - **[Compiler Protocol](references/compiler_protocol.md)**: Source hierarchy, output schema, compression rules, pre-output audit checklist.
 - **[Voice Test Protocol](references/voice_test_protocol.md)**: Type-specific test prompts and evaluation criteria.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

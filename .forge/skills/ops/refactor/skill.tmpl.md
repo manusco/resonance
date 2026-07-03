@@ -83,12 +83,6 @@ Leave the file cleaner than you found it. Limited to the file already being touc
 - **[Code Smell Matrix](references/code_smell_matrix.md)**: Diagnosis tool with business consequences.
 - **[SOLID Principles](references/solid_principles.md)**: Design rules.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

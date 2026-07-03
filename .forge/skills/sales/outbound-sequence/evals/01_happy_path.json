@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-outbound-sequence",
+  "query": "Draft an outbound sequence for these 20 accounts that just raised a Series A, using our CRM notes.",
+  "files": [],
+  "expected_behavior": [
+    "Builds a 3-5 step sequence with subject lines, body copy, CTAs, personalization markers, and operator notes",
+    "Anchors the outreach to the funding trigger and other real signals from the provided data",
+    "Traces every claim to a source and flags assumptions explicitly",
+    "Climbs the personalization ladder rather than sending one generic template"
+  ]
+}

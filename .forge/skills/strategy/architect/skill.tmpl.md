@@ -72,12 +72,6 @@ Every business rule, mapping, and transformation exists in exactly one place. Wh
 - **[Error + Data Flow Framework](references/error_rescue_framework.md)**: Eradicating silent failures.
 - **[Site Migration Protocol](references/site_migration_protocol.md)**: Playbook for migrating or replatforming any site.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

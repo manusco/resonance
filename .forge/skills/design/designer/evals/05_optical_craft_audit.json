@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "This card component is technically fine but it looks cheap and AI-made. Audit it and tell me exactly what to fix.",
+  "files": [],
+  "expected_behavior": [
+    "Audits the subconscious detail layer, not just surface style: optical alignment, concentric border radius (inner = outer minus padding), and optical centering of icons",
+    "Flags single flat default shadows and hard gray borders; prescribes layered tinted shadows and hairline separators with one consistent light source",
+    "Checks that state changes are eased and that focus states are designed, not the raw browser outline",
+    "Runs the design against the AI slop catalog and names specific tells rather than giving vague 'make it cleaner' advice",
+    "Gives concrete values or rules, not generic praise"
+  ]
+}

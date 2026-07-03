@@ -57,10 +57,6 @@ Do not dump 50 files into a single commit. Organize them chronologically by laye
 - **[Completion Attestation](../core/references/completion_attestation.md)**: Required sign-off format.
 - **[Git Mastery](../core/references/git_mastery.md)**: Tagging, branching, and release protocols.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

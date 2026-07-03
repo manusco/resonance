@@ -32,10 +32,6 @@ Copy this checklist and tick items as you go.
 - Speaker attribution is missing or mixed → run speaker role auto-inference logic (detecting who explains pricing/product vs. who highlights constraints) before continuing.
 - Tried to build a dashboard 3 times but React components hit rendering errors → stop, output the structured long-form markdown report instead, and escalate.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

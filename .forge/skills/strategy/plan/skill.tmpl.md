@@ -57,10 +57,6 @@ If a developer reading the plan cannot begin executing an item in 5 seconds, it 
 
 - **[Completion Attestation](../../ops/core/references/completion_attestation.md)**: Required evidence format.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

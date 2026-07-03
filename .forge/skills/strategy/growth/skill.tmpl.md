@@ -94,12 +94,6 @@ A launch is a momentum curve, not a point in time. Compare engagement trajectori
 - **[Dub Reference](references/dub_cheatsheet.md)**: Link shortening, analytics, and partner ops.
 - **[Product Hunt Reference](references/producthunt_cheatsheet.md)**: Launch trajectories and category scouting.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

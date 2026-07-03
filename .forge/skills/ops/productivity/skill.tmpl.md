@@ -64,12 +64,6 @@ Always present: (1) Context, (2) a specific recommendation with a reason, (3) A/
 - **[Slack CLI Reference](references/slack_cheatsheet.md)**: Tool-specific commands.
 - **[Linear CLI Reference](references/linear_cheatsheet.md)**: Tool-specific commands.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

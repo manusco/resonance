@@ -70,12 +70,6 @@ The standard interface for exposing capabilities to AI agents. All external reso
 - **[MCP Standards](references/mcp_standards.md)**: Implementation guide for Model Context Protocol.
 - **[Regex Wizardry](references/regex_wizardry.md)**: Optimization patterns for text processing.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-account-intelligence",
+  "query": "Here is our named-account list with CRM notes and product usage data. Which accounts should the team focus on this week and why?",
+  "files": [],
+  "expected_behavior": [
+    "Returns a short ranked list (not a market summary), each account with a named signal, an absolute recency date, and a concrete next step",
+    "Classifies each account into one motion (new-logo, recovery, or expansion)",
+    "Prioritizes internal evidence (CRM, usage) and treats public triggers as supplementary",
+    "Does not recommend an account solely because it is large"
+  ]
+}

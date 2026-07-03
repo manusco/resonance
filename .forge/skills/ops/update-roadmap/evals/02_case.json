@@ -1,0 +1,8 @@
+{
+  "skill": "resonance-ops-update-roadmap",
+  "query": "Run /update-roadmap, but state.md doesn't exist",
+  "files": [],
+  "expected_behavior": [
+    "The agent stops immediately at the Prerequisites check and aborts, potentially suggesting to run /init"
+  ]
+}

@@ -32,6 +32,7 @@ Copy this checklist and tick items as you go.
 5. **Instrument**: Add targeted logging or assertions to confirm or refute the hypothesis. → verify: evidence collected from the instrumentation.
 6. **Verify Cause**: If the hypothesis is wrong, discard and return to step 4. Do not apply blind patches. → verify: the exact line, state, or race condition is confirmed.
 7. **Fix**: Apply the minimal surgical fix. Match existing style exactly. → verify: run the reproduction script. It must now pass.
+   - **Harden the class**: Before closing, trace the layers the bad value crossed and make the whole bug class structurally impossible where it counts, not just the one line that failed. See Defense in Depth. → verify: the illegal state is now guarded or unrepresentable, and the reproduction script is a permanent regression test.
 8. **Self-Improvement**: Log the RCA and the Smoking Gun to `learnings.jsonl` to prevent future re-discovery.
 9. **Completion**: Use the Completion Attestation. Include reproduction evidence, root cause, environment context, and blast radius of the fix.
 
@@ -65,6 +66,9 @@ Divide the search space in half at each step. Comment out half the code. Does it
 ### Cognitive Bias Mitigation
 Confirmation Bias: seeing only evidence that confirms your theory. Anchoring: fixating on the first error log. Force yourself to construct one alternative hypothesis that contradicts your primary assumption before executing a fix.
 
+### Fix the Class, Not the Instance
+A patch that only stops today's input lets the same bug class return with a different one. After the root cause is proven, harden every layer the bad data crossed and make the illegal state unrepresentable at the boundary that matters. Calibrate: guard a layer only where a wrong value would cause real harm, not everywhere.
+
 ## KPIs
 
 - **Resolution**: The bug is gone and a test prevents regression.
@@ -77,15 +81,10 @@ Confirmation Bias: seeing only evidence that confirms your theory. Anchoring: fi
 
 - **[Scientific Engineering Standards](references/scientific_engineering_standards.md)**: Zero Guesswork, Hypothesis-first execution, and Bias Mitigation.
 - **[Strategic Debugging](references/strategic_debugging.md)**: Bisect guide and 5 Whys.
+- **[Defense in Depth](references/defense_in_depth.md)**: Harden every layer the bad data crossed so the bug class cannot recur.
 - **[Agent Debugging Protocol](references/agent_debugging_protocol.md)**: Diagnosing agent trajectories (Planning, Memory, Reasoning, Tools).
 - **[Diagnostic Playbook](references/diagnostic_playbook.md)**: Language-specific tooling and common error heuristics.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

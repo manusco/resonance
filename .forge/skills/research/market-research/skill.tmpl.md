@@ -32,10 +32,6 @@ Copy this checklist and tick items as you go.
 - Identified pains are too generic (e.g., "saves time") → halt analysis, perform deep practitioner review (e.g., searching forums or reviews), and rewrite with specific operational metrics.
 - Tried to identify 5 EDPs but metrics feel weak → stop, pivot to evaluating the primary business risks of non-adoption (regulatory, cost-overhead, or competitor expansion), and escalate.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

@@ -33,10 +33,6 @@ Copy this checklist and tick items as you go.
 - Prospect asks to "send an email" → redirect to value check: "happy to, but to keep it relevant, which of those three issues I mentioned is closest to what you're dealing with?"
 - Tried to customize the script 3 times without a speakable flow → stop, run the 15-second read-aloud test, simplify vocabulary, escalate.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

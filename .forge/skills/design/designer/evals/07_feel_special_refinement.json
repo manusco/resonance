@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "This dashboard works but feels flat and generic. Make it feel premium and human without a redesign.",
+  "files": [],
+  "expected_behavior": [
+    "Improves feel through the subconscious craft layer (tuned shadows, hairlines, easing, optical tuning, micro-typography) rather than adding decoration",
+    "Sharpens hierarchy with contrast in size, weight, color, and space; applies the squint test",
+    "Proposes one committed idea (a type pairing, an accent, a motion signature) instead of many competing flourishes",
+    "Explicitly refuses to add AI-slop tells (gradient text, glassmorphism, grid backgrounds, an eyebrow on every section) in the name of looking premium",
+    "Names refinement moves and applies them one at a time so each change is legible"
+  ]
+}

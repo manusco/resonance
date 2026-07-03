@@ -65,12 +65,6 @@ Springs, not tweens. A spring has tension, friction, and mass. The interaction f
 - **[Mobile Audit](references/mobile_audit_protocol.md)**: Thumb zone and hit-target checks.
 - **[Store Compliance](references/store_compliance.md)**: Submission checklist.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

@@ -48,10 +48,6 @@ Most plans fail because the map becomes outdated. Code is the only objective tru
 
 - **[Karpathy Rules](../core/references/karpathy_rules.md)**: Universal coding standards (Simplicity, Surgical).
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

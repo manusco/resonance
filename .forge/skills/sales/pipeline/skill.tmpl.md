@@ -32,10 +32,6 @@ Copy this checklist and tick items as you go.
 - Probability values are missing → apply standard defaults (Prospecting 10%, Demo 30%, Proposal 50%, negotiation 70%, won 100%) and note it in the overview.
 - Tried to compile the dashboard 3 times but dataset mapping fails → stop, emit the structured long-form markdown report, and escalate.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}

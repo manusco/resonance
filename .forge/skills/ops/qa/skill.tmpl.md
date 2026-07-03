@@ -76,6 +76,9 @@ Assert against visible behavior, exact redirect destinations, exact error messag
 ### Goal-Driven Verification
 Transform vague tasks into verifiable goals before running any test. "Make sure it works" requires constant clarification. "Assert X is visible after Y" lets you loop autonomously.
 
+### Deterministic Async
+A flaky test is an unnamed race, not bad luck. Never `sleep(n)` and hope the work finished; wait for the actual condition (element visible, response arrived, row exists) with a generous timeout ceiling. Freeze time, seed randomness, isolate shared state. A bare `sleep` before an assertion is a latent flake even when it is green today.
+
 ## KPIs
 
 - **Confidence**: 100% of critical paths are covered by automation.
@@ -94,14 +97,9 @@ Transform vague tasks into verifiable goals before running any test. "Make sure 
 - **[Design Validation](references/design_validation_protocol.md)**: Pixel-perfect Figma vs. Code checklist.
 - **[QA Health Rubric](references/qa_health_rubric.md)**: Full, Quick, and Regression modes.
 - **[Assertion Layers](references/assertion_layers.md)**: Source vs. Rendered decision flowchart.
+- **[Async Test Stability](references/async_test_stability.md)**: Kill flakiness by waiting on conditions, not the clock.
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 
-{{RESOLVER:decision_brief}}
-
-{{RESOLVER:completion}}
-
-{{RESOLVER:learnings}}
-
-{{RESOLVER:voice}}
+{{RESOLVER:operating_standard}}
 
 {{OVERLAY}}
