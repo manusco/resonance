@@ -1,0 +1,21 @@
+{
+  "name": "resonance",
+  "owner": {
+    "name": "Manusco",
+    "url": "https://github.com/manusco"
+  },
+  "metadata": {
+    "description": "Resonance: an operator-grade AI skill stack for builders.",
+    "version": "2.2.0"
+  },
+  "plugins": [
+    {
+      "name": "resonance",
+      "source": "./",
+      "description": "The full Resonance skill library: elite strategy, design, engineering, marketing, sales, and ops skills with structured /commands. Installs the skills namespaced as /resonance:<skill>.",
+      "version": "2.2.0",
+      "category": "workflow",
+      "keywords": ["agent-skills", "claude-code", "skills", "ai-agents", "framework"]
+    }
+  ]
+}

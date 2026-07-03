@@ -10,15 +10,27 @@
     "resonance",
     "ai",
     "agents",
+    "agent-skills",
     "skills",
+    "claude-code",
+    "claude",
+    "cursor",
+    "codex",
+    "opencode",
+    "slash-commands",
+    "ai-agents",
     "autonomous-software-engineering",
+    "prompt-engineering",
     "framework",
     "llm-governance"
   ],
   "author": "Manusco",
   "license": "MIT",
   "scripts": {
-    "wake": "./resonance.sh"
+    "wake": "./resonance.sh",
+    "build": "py .forge/forge.py build --all",
+    "commands": "py .forge/forge.py commands --host all",
+    "validate": "py .forge/validate_skill.py --all .agents/skills"
   },
   "engines": {
     "node": ">=18.0.0"

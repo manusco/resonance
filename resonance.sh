@@ -47,4 +47,13 @@ echo ""
 echo "========================================"
 echo -e "${GREEN}System online. Ready.${NC}"
 echo ""
-echo "Slash commands: /plan  /build  /debug  /audit  /ship"
+
+# 4. Verify slash commands are generated for this clone
+CMD_COUNT=$(find .claude/skills -name "SKILL.md" 2>/dev/null | wc -l)
+if [ "$CMD_COUNT" -eq "0" ]; then
+    echo "⚙️  Generating slash commands (first run)..."
+    py .forge/forge.py commands --host all >/dev/null 2>&1 || python3 .forge/forge.py commands --host all >/dev/null 2>&1
+fi
+echo "Slash commands ready in Claude Code, Cursor, Codex, and opencode."
+echo "Try: /plan  /grill  /build  /debug  /design  /test  /review-pr  /ship"
+echo "Full command map: AGENTS.md"

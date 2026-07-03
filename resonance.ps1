@@ -42,4 +42,13 @@ Write-Host ""
 Write-Host "========================================"
 Write-Host "System online. Ready." -ForegroundColor Green
 Write-Host ""
-Write-Host "Slash commands: /plan  /build  /debug  /audit  /ship"
+
+# 4. Verify slash commands are generated for this clone
+$cmdFiles = Get-ChildItem -Path ".claude\skills" -Filter "SKILL.md" -Recurse -ErrorAction SilentlyContinue
+if ($cmdFiles.Count -eq 0) {
+    Write-Host "⚙️  Generating slash commands (first run)..."
+    py .forge\forge.py commands --host all 2>&1 | Out-Null
+}
+Write-Host "Slash commands ready in Claude Code, Cursor, Codex, and opencode."
+Write-Host "Try: /plan  /grill  /build  /debug  /design  /test  /review-pr  /ship"
+Write-Host "Full command map: AGENTS.md"
