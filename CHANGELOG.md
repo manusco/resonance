@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.4.2
+
+Close the remaining lifecycle gaps. The five domain-gap skills (observability, incident, paid-acquisition, analytics, lifecycle) and the test-execution surface shipped in v2.3.0; per-version overlays and deploy verification in v2.4.1. This release finishes the depth.
+
+### Added
+- **Auto-doc-drift.** `.forge/doc_drift.py` checks that the version matches across every manifest, README badge, and installer; that the AGENTS command map matches `commands.json`; and that the README counts and CHANGELOG are not stale. Wired into `/ship` as a pre-release gate, and run as the gate for this very release.
+- **Activation reference in `strategy/growth`** (`activation_loops.md`): the aha moment and time-to-value as the top of every retention and growth loop, distinct from the lifecycle skill's execution view.
+- **Toolchain Detection** (`ops/core/references/toolchain_detection.md`): a shared protocol to detect and run a project's real test, build, and lint commands.
+
+### Changed
+- **`/ship` and `/system-health` are toolchain-agnostic.** They detect the project's ecosystem (Node with the right package manager, Python, Go, Rust, Make, or CI) and run its commands, instead of hardcoding `npm test`. No more silent failure on a non-Node project.
+
 ## v2.4.1
 
 Release safety and enforcement. Per-version model overlays, a real deploy story in `/ship`, and an opt-in deterministic guard.

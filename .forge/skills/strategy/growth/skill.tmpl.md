@@ -94,6 +94,7 @@ A launch is a momentum curve, not a point in time. Compare engagement trajectori
 - **[Dub Reference](references/dub_cheatsheet.md)**: Link shortening, analytics, and partner ops.
 - **[Product Hunt Reference](references/producthunt_cheatsheet.md)**: Launch trajectories and category scouting.
 - **[The Hook Model](references/hook_model.md)**: Trigger, action, reward, investment.
+- **[Activation Loops](references/activation_loops.md)**: The aha moment and time-to-value as the top of every retention and growth loop.
 
 {{RESOLVER:operating_standard}}
 

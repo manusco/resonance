@@ -1,6 +1,6 @@
 {
   "name": "@manusco/resonance",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "An operator-grade AI skill stack for builders. Domain-tested skills, shared memory, and structured protocols for every stage of the product lifecycle.",
   "repository": {
     "type": "git",
@@ -33,7 +33,8 @@
     "validate": "py .forge/validate_skill.py --all .agents/skills",
     "check": "py .forge/validate_library.py",
     "eval": "py .forge/run_evals.py --all --check",
-    "hooks:install": "py .forge/hooks/install.py"
+    "hooks:install": "py .forge/hooks/install.py",
+    "doc-drift": "py .forge/doc_drift.py"
   },
   "engines": {
     "node": ">=18.0.0"
