@@ -1,7 +1,7 @@
 {
   "name": "resonance",
   "displayName": "Resonance",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "An operator-grade AI skill stack for builders. Elite, domain-tested skills and structured /commands for every stage of the product lifecycle: strategy, design, engineering, marketing, sales, and ops. Cross-tool: Claude Code, Cursor, Codex, opencode.",
   "author": "Manusco",
   "homepage": "https://github.com/manusco/resonance",
