@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- **Grounded orchestration evals (`.forge/orch_eval.py`, `.forge/orch_evals/`).** The completion scorecard cannot measure the skills whose value is a runtime (`/goal`, `/audit`, `/reviewer`): a single chat turn can only describe spawning agents or driving a repo, so they score near zero even when excellent. This harness measures them by grounded outcome instead. It stands up a fixture with planted ground truth, runs a real tools-capable agent against the task, then checks the world. Three cases ship: `/goal` must make a failing `node --test` pass (proven end to end, an agent fixed the planted bug and the executed suite went green), `/audit` must name a planted SQL-injection-and-missing-auth vulnerability, and `/reviewer` must flag a promote-to-admin endpoint with no authorization check. New npm script `orch-eval`.
+- **A turnkey model adapter (`.forge/exec/model_cli.py`).** Turns any OpenAI-compatible endpoint into the stdin-prompt, stdout-completion contract the eval tools expect, with every lesson that cost real debugging time baked in: forced UTF-8 on stdin and stdout (the cp1252 default silently corrupts skill bodies into false zeros), a browser User-Agent (Cloudflare-fronted gateways 403 a bare urllib), bare `{model, messages}` by default (some gateways 500 on `temperature`), and retry with backoff. The key comes only from the environment, never a tracked file. Wire it with `RESONANCE_MODEL_CMD="python .forge/exec/model_cli.py"` and three env vars.
+
 ## v2.4.4
 
 The "make it measurably the best" plan, Tracks 1 through 3, plus the full live eval scorecard. Resonance can now run the project's real tests and a real browser, measure whether each skill actually helps, improve the weak ones by evidence, and it covers three new domains an AI-era founder needs.

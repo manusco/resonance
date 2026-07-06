@@ -87,12 +87,18 @@ This is the conservative, reproducible number. GLM-5 is a deliberately weaker, i
 
 - **Lift is model-dependent.** GLM-5 executes the elaborate skills less fully than a top model and grades more strictly, so its numbers are lower than Claude's +0.68. Both are real; the truth is a band, from large under a strong model to solid under a weak one.
 - **One case per skill.** A weaker judge adds variance; a couple of knowledge skills read slightly negative on their single case. A multi-case run smooths that.
-- **Orchestration skills need the runtime, not a chat turn.** Skills that spawn subagents, dispatch a second model, or drive git cannot show their value in one completion. That is a property of the test, not the skill.
+- **Orchestration skills need the runtime, not a chat turn.** Skills that spawn subagents, dispatch a second model, or drive git cannot show their value in one completion. That is a property of the test, not the skill. The grounded orchestration evals (`.forge/orch_evals/`, run with `python .forge/orch_eval.py`) close that gap by judging outcomes instead of prose: did `/goal` make a failing test pass, did `/audit` name the planted vulnerability.
 - **Reproducible.** Swap `RESONANCE_MODEL_CMD` for any model CLI and re-run. This table was produced against the opencode.ai GLM-5 gateway at `--parallel 6`.
 
 ## Run it yourself
 ```
 python .forge/run_evals.py --all --check                      # structure gate, free
-RESONANCE_MODEL_CMD="<your-model-cli>" python .forge/run_evals.py --all --score
+
+# score against any OpenAI-compatible model; the adapter bakes in the UTF-8, browser
+# User-Agent and bare-params lessons, so you only supply the endpoint via env:
+MODEL_BASE_URL=... MODEL_NAME=... MODEL_API_KEY=... \
+  RESONANCE_MODEL_CMD="python .forge/exec/model_cli.py" python .forge/run_evals.py --all --score
+
 python .forge/improve.py worklist                             # work the weak list
+RESONANCE_AGENT_CMD="<agent-cli>" python .forge/orch_eval.py  # grounded orchestration evals
 ```

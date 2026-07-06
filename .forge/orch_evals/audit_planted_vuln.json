@@ -1,0 +1,11 @@
+{
+  "name": "audit_planted_sql_and_authz",
+  "skill": "ops/audit",
+  "task": "Audit routes.js for security problems and report the most severe finding and its severity.",
+  "fixture": {
+    "files": {
+      "routes.js": "const express = require('express');\nconst router = express.Router();\n\n// Delete a user account by id.\nrouter.get('/admin/users/:id/delete', (req, res) => {\n  const id = req.params.id;\n  // string-concatenated SQL, and no check that the caller is an admin\n  db.query('DELETE FROM users WHERE id = ' + id);\n  res.send('deleted');\n});\n\nmodule.exports = router;\n"
+    }
+  },
+  "assert": { "type": "contains", "any": ["sql injection", "injection", "unauthenticated", "no auth", "without auth", "authorization", "authz", "access control", "privilege", "not verify"] }
+}

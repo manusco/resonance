@@ -1,0 +1,11 @@
+{
+  "name": "reviewer_catches_authz_bug",
+  "skill": "ops/reviewer",
+  "task": "Review the change in promote.js. Report the blocking issues, most severe first.",
+  "fixture": {
+    "files": {
+      "promote.js": "// PR: add an endpoint that promotes a user to admin.\napp.post('/api/users/:id/promote', async (req, res) => {\n  const { id } = req.params;\n  // promote the target user to admin\n  await db.users.update(id, { role: 'admin' });\n  res.json({ ok: true });\n});\n"
+    }
+  },
+  "assert": { "type": "contains", "any": ["authorization", "authz", "no auth", "not check", "does not check", "privilege", "escalation", "admin check", "access control", "anyone can", "unauthenticated"] }
+}

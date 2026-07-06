@@ -36,6 +36,7 @@
     "eval:score": "py .forge/run_evals.py --all --score",
     "exec:test": "py .forge/exec/run_checks.py",
     "exec:browser": "node .forge/exec/browser_check.mjs",
+    "orch-eval": "py .forge/orch_eval.py",
     "hooks:install": "py .forge/hooks/install.py",
     "doc-drift": "py .forge/doc_drift.py"
   },

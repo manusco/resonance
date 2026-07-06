@@ -1,0 +1,13 @@
+{
+  "name": "goal_fix_failing_test",
+  "skill": "ops/goal",
+  "task": "The test suite is failing. Make it pass by fixing the implementation in sum.mjs. Do not edit the test file. When you are done, the tests must pass.",
+  "fixture": {
+    "files": {
+      "package.json": "{ \"name\": \"fx\", \"version\": \"1.0.0\", \"scripts\": { \"test\": \"node --test\" } }\n",
+      "sum.mjs": "export function sum(a, b) {\n  return a - b; // bug: should add\n}\n",
+      "sum.test.mjs": "import { test } from 'node:test';\nimport assert from 'node:assert';\nimport { sum } from './sum.mjs';\ntest('adds', () => { assert.equal(sum(2, 3), 5); });\ntest('zero', () => { assert.equal(sum(0, 0), 0); });\n"
+    }
+  },
+  "assert": { "type": "command", "cmd": "node --test", "expect_exit": 0 }
+}
