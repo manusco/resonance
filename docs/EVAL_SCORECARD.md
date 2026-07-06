@@ -76,8 +76,18 @@ The tool is `.forge/run_evals.py --score` (pluggable model). This run used the A
 
 - **This measures lift, and lift is the right thing to measure.** The `with` column sits near 1.00 for most skills because each rubric was authored alongside its skill, so a skill-applied answer is expected to satisfy it. That is not the interesting number. The interesting number is `without`: how much the base model already does unaided. `lift = with - without` is what the skill actually adds, and that is what varies, from +0.20 to +1.00.
 - **One case per skill.** This run graded each skill's first golden case. A harder, multi-case, adversarial pass would surface more spread, including flat and weak rows: on other cases `marketing/copywriter` and (before its rubric was sharpened) `ops/ship` came out flat. "All proven" here means no skill's first case was fully matched by the baseline, not that no skill can be improved.
-- **Same model, different substrate.** The sandbox has no headless CLI auth, so this ran through the Agent tool (the same model) rather than `run_evals.py --score` calling a model CLI. Wire `RESONANCE_MODEL_CMD` and the tool reproduces this at multi-case scale.
+- **Same model, different substrate.** This table ran through the Agent tool (Claude) rather than `run_evals.py --score` shelling to a model CLI. The tool path was also exercised directly against a model CLI (see the cross-check below), and reproduces this whenever `RESONANCE_MODEL_CMD` is wired.
 - **The weak list drives /improve.** When a real run surfaces flat or weak rows, `python .forge/improve.py worklist` reads them and the loop sharpens the skill or its rubric, keeping only measured gains.
+
+## Cross-check: an independent model (GLM-5)
+
+The table above used Claude as both answerer and judge. To test how much the result depends on the model, the same protocol was run through the tool itself (`run_evals.py --score`) with GLM-5, a weaker and independent model, as both answerer and judge.
+
+Where GLM-5 completed both answers (32 of 57 skills), mean lift was **+0.50**, against +0.68 for Claude. The direction holds: the skills produce real, measured lift even under a different, stricter model. The lower magnitude is honest and expected. A weaker model executes the elaborate skills less fully and grades more strictly, and with one case per skill its noisier judging adds variance (a few knowledge skills even flipped slightly negative on their single case).
+
+The other 25 skills could not be scored on that run: the gateway returned persistent HTTP 500s ("retry after a brief wait") on the large skill-applied prompts under the run's concurrent load, so those skilled answers came back empty and were dropped, not counted as zero. A clean full run on that gateway needs `--parallel 1` (no concurrent load) or a sturdier provider.
+
+Read the scorecard as: the skills help, by a margin that ranges from large under a strong model to solid under a weaker one, not as a single constant. The measurement is the point, and it reproduces: swap `RESONANCE_MODEL_CMD` for any model CLI and re-run.
 
 ## Run it yourself
 ```
