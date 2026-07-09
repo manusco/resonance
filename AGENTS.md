@@ -80,6 +80,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 ### Verification
 - **/test** -> `ops/qa` - 8-Path Matrix coverage, destructive and property-based testing.
 - **/audit** -> `ops/audit` - The audit swarm (security, review, QA, architect). P0-P3 findings.
+- **/page-audit** -> `ops/page-audit` - First-principles experience audit of a page or site: job, value, clarity, CTA, craft, function, trust, plus a forward backlog.
 - **/review-pr** -> `ops/reviewer` - PR gatekeeper. Blocking Registry, findings ranked by user harm.
 - **/second-opinion** -> `ops/second-opinion` - Independent second-model review of a diff, reconciled with the primary review.
 - **/improve** -> `ops/improve` - Self-improving loop: sharpen the weakest skills or rubrics, keep only changes that raise measured lift.

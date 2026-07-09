@@ -1,6 +1,6 @@
 {
   "name": "@manusco/resonance",
-  "version": "2.4.4",
+  "version": "2.4.5",
   "description": "An operator-grade AI skill stack for builders. Domain-tested skills, shared memory, and structured protocols for every stage of the product lifecycle.",
   "repository": {
     "type": "git",

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-page-audit",
+  "query": "Audit the home page of my SaaS site (a running local build at http://localhost:3000). Do a first-principles review and tell me where it can be improved.",
+  "files": [],
+  "expected_behavior": [
+    "States the single job the page exists to do in one sentence, and treats the current page as evidence rather than the target",
+    "Identifies the value promise above the fold and whether it is delivered, naming the promise-vs-delivery gap as the most important fix",
+    "Delegates each lens to the skill that owns it (copy to /copywriter, conversion and CTA to /friction, craft to /design, function to /audit and /test, SEO to /seo) instead of re-teaching them",
+    "Names the single change that would matter most to a real user (the anti-theater rule), not just a list of cosmetic tweaks",
+    "Produces a ranked findings sheet using add / change / rearrange / remove, and does not declare the page done on a renamed button"
+  ]
+}

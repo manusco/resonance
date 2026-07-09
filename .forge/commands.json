@@ -16,6 +16,7 @@
     { "alias": "friction",        "skill": "marketing/conversion",     "desc": "Friction Collider: simulate the anti-persona to find and remove conversion drag." },
     { "alias": "test",            "skill": "ops/qa",                   "desc": "Write or audit tests against the 8-Path Matrix. Destructive and property-based coverage." },
     { "alias": "audit",           "skill": "ops/audit",                "desc": "Run the audit swarm (security, review, QA, architect) and output P0-P3 classified findings." },
+    { "alias": "page-audit",      "skill": "ops/page-audit",           "desc": "First-principles experience audit of a page or whole site: job, value promise, clarity, CTA, craft, function, trust, plus a forward backlog." },
     { "alias": "review-pr",       "skill": "ops/reviewer",             "desc": "Audit a PR or diff against the Blocking Registry. Findings ranked by user harm, not by file order." },
     { "alias": "second-opinion",  "skill": "ops/second-opinion",       "desc": "Independent second-model review of a diff, reconciled with the primary review." },
     { "alias": "improve",         "skill": "ops/improve",              "manual": true,  "desc": "Work the eval scorecard: sharpen the weakest skills or their rubrics and keep only changes that raise the measured lift." },

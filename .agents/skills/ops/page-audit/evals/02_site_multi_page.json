@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-page-audit",
+  "query": "Run a full first-principles experience audit across my whole marketing site in this repo, then give me a forward-looking backlog.",
+  "files": [],
+  "expected_behavior": [
+    "Grounds first in .resonance/ (or asks for audience and business goal via /grill if the repo does not state them) before auditing",
+    "Inventories every page and meaningful state from the routes and rendered output, and audits each without skipping",
+    "Runs /system-health and /audit as the baseline safety net alongside the per-page battery",
+    "Writes a FUTURE_IMPROVEMENTS.md that is forward-looking (opportunity, why it matters, effort, impact, priority), grouped by theme and ranked, not a changelog of what was done",
+    "Hands implementation to /goal and shipping to /ship rather than implementing or deploying inside the audit"
+  ]
+}

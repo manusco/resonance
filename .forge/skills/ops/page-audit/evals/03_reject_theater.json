@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-page-audit",
+  "query": "The pricing page just needs the button color changed and a nicer headline. Sign it off as improved.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to sign the page off on cosmetic changes alone, and applies the substantial-or-nothing bar",
+    "Re-derives the page's actual job and interrogates the value promise, clarity, and conversion friction before declaring anything done",
+    "Names the single most important change for the page, which is more than a button color or a headline swap",
+    "Does not fabricate findings without reading or driving the real page, and flags any claim it cannot verify against the product",
+    "Verifies against real evidence (drives the page, checks the console and the unhappy paths) rather than assuming it looks fine"
+  ]
+}

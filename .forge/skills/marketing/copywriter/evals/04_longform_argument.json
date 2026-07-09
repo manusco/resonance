@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-marketing-copywriter",
+  "query": "Write the opening and the section outline for a long-form sales page for a $4,000/mo B2B onboarding-automation platform, aimed at RevOps leads who do not yet realize that their manual customer onboarding is the reason accounts churn in month two.",
+  "files": [],
+  "expected_behavior": [
+    "Reads the reader as Unaware or Problem-Aware and opens by surfacing the hidden problem (the month-two churn cause), not with a discount, a feature list, or a 'Buy now' CTA",
+    "Builds a real mechanism of the problem (why manual onboarding drives early churn) before pitching the product, and does not invent a fake syndrome or a fabricated statistic to do it",
+    "Justifies the long format by the high price and low awareness, and structures the page to answer objections rather than padding word count",
+    "Names the product's mechanism of the solution and ties each claim to a plausible real feature, with precise numbers only where they would be true",
+    "Writes the lead last in its process (mechanism and body before headline) and keeps eye-relief formatting: short paragraphs and subheads that carry the argument on their own",
+    "Contains no banned AI slop terms (delve, tapestry, nuanced, harness, landscape) and uses 'you' more than 'we'"
+  ]
+}
