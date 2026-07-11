@@ -19,6 +19,7 @@
 
 ## 4. The Narrowest Wedge (The Surgical Implementation)
 *The minimum version we can ship THIS week that solves the core problem.*
+*   **Objects and vocabulary**: name every user-facing object this touches, its states, and its verbs, one name each, before design. Hand the model to `/design` (see conceptual_model).
 *   [Feature A]
 *   [Feature B]
 

@@ -16,6 +16,7 @@ Run this as a checklist against any generated UI. Each item is a concrete patter
 - **Gradient text**: headline text filled with a color gradient. Almost always a tell, rarely legible, never necessary.
 - **Rainbow of accent colors**: five unrelated bright colors because each felt nice alone. Pick one accent and earn any second.
 - **Pure black on pure white, or pure black in dark mode**: `#000` on `#fff` strains the eye; `#000` dark-mode surfaces crush depth. Use near-black and layered near-dark surfaces.
+- **The premium-consumer default palette**: reaching for beige and cream with a brass, clay, or oxblood accent and espresso text the moment a brief says wellness, artisan, or cookware. It is a real and tasteful palette, which is exactly why the model overuses it. Earn it, or rotate off it.
 
 ## Layout and surface tells
 
@@ -24,8 +25,12 @@ Run this as a checklist against any generated UI. Each item is a concrete patter
 - **The side-stripe accent border**: a colored left border glued onto every callout and card. A dated template signature.
 - **Over-rounded corners**: pill-shaped everything, giant radii on containers that should feel structural. Match radius to the surface's job.
 - **Decorative grid or dot backgrounds**: faint graph-paper or dotted textures behind hero sections as filler. Usually noise pretending to be design.
-- **The eyebrow on every section**: a tiny uppercase label above every single heading. Once is a pattern, everywhere is a tic.
+- **The eyebrow on every section**: a tiny uppercase label above every single heading, often numbered (`001 - Capabilities`, `02 / Features`). Once is a pattern, everywhere is a tic.
 - **The hero-metric template**: the same three big stat numbers in a row ("10k+ users, 99.9% uptime, 24/7"). Reads as filler when unearned.
+- **Fake product UI as decoration**: a fabricated dashboard, chart, or app screenshot built from divs purely to fill the hero, showing nothing real. Decoration pretending to be product, and a quiet honesty violation the moment a user notices it does nothing.
+- **Version labels and status theater in the hero**: `V0.6`, `BETA`, a green `Online` dot, a live-looking counter, none of it wired to anything. Borrowed signals of a real product, faked.
+- **The weather-and-locale strip**: a header decoration showing a city, a time, a temperature, or coordinates for texture, on a page that has nothing to do with any of them.
+- **The hero-bottom decoration bar**: a row of spaced uppercase words across the bottom of the hero (`BRAND. MOTION. SPATIAL.`), or a fake scroll cue, added because the space felt empty. Filler in a typographic costume.
 
 ## Interaction tells
 

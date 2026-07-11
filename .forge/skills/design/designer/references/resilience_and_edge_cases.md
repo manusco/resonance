@@ -32,7 +32,7 @@ Every interactive element and every data view has states. Name each one on purpo
 
 ## Data: none, one, and far too much
 
-- **None.** The empty state does onboarding work: what goes here, why, and the action to fill it. See copy_as_interface.
+- **None.** The empty state does onboarding work: what goes here, why, and the action to fill it. See copy_as_interface. Hide the controls that cannot do anything yet: filters, sort, tabs, and bulk actions are noise on an empty list. Show them once there is content to act on.
 - **One.** A list designed only for many looks wrong with a single item. Check the one-item case.
 - **Too much.** A table with 100,000 rows, a chat with 10,000 messages, a select with 5,000 options. Design for scale: virtualize long lists, paginate or lazy-load, make search and filter first-class, and keep performance smooth. A layout that is elegant at ten items and unusable at ten thousand is unfinished.
 

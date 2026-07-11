@@ -74,6 +74,7 @@ The finishing that separates typeset from typed:
 ## Font selection without the default reflex
 
 - The neutral system sans on everything is the loudest AI tell. A typeface is a voice; silence is a choice you probably did not mean to make.
+- The inverse reflex is just as common: a creative or editorial brief triggers the same display serif every time (Fraunces, Instrument Serif). A serif can be the right, characterful choice, but the reflexive one is as generic as the reflexive sans. If you reach for a display serif, rotate the pool and pick the face that fits the voice, not the one the model reaches for first.
 - One strong pairing is enough: a characterful display or heading face and a legible workhorse for body. Or one good family used across weights, which is often the more disciplined choice.
 - Judge a face by its numerals, its punctuation, its bold, and how it looks at small sizes, not by its marketing specimen.
 - In the product register, legibility and a full weight range beat personality. In the brand register, a face with a point of view is the fastest way to not look generic.

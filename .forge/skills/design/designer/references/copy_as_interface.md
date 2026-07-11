@@ -28,7 +28,7 @@
 
 - A button describes its outcome, not a generic verb. "Save changes", "Send invite", "Delete project", not "OK" or "Submit". The user should know what happens before they click.
 - Labels name the thing in the user's language, not the system's. "Members", not "User entities". Match the words your user already uses.
-- One primary action per view, worded as the outcome the user wants. Secondary and destructive actions are worded and weighted to match their risk.
+- One primary action per view, worded as the outcome the user wants. Secondary and destructive actions are worded and weighted to match their risk. Watch two failure modes: a secondary button styled too light-grey reads as disabled, and a filled-red destructive button competes with the primary. Give the secondary real but quieter weight, and prefer a text-weighted destructive action over a loud filled one.
 
 ## Error messages help, they do not scold
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- **`design/designer` gained a conceptual-model reference (OOUX).** The user-facing object, vocabulary, and state model that sits between `/product` (what to build) and `/design` (the surface), the one genuine gap a six-library design intake surfaced. Object inventory, lifecycle states, verb precision, and one name per concept, wired into the designer sequence and the PRD template.
+
+### Changed
+- **A design-craft intake that mostly confirmed Resonance is already ahead.** Every skill across `emilkowalski/skills`, `refactoring-ui-plugin`, `layers-skills`, `taste-skill`, and `impeccable` was read and compared to `design/designer`. The result was zero new skills and a set of targeted elevations. Gesture physics into `motion_and_feel.md` (velocity handoff, momentum projection, interruption from the live value, and a "should this animate at all?" frequency gate) plus a rule correction to ease-out on exits. An empirical, field-tested AI-tell catalog into `ai_design_slop.md` (fake product UI, hero version labels, status theater, weather strips). A serif-reflex ban in `typographic_system.md`. Button and empty-state micro-tactics, and object and emotional-job disciplines in `ops/product`.
+- **The operating standard gained a scope-fidelity rule.** Verify and Completion now forbid placeholder stubs and silent truncation and require the delivered count to match the request, reconciled with the Simplicity lock (Simplicity governs the how, never the how-much). No fifth lock.
+
 ## v2.4.5
 
 The grounded orchestration evals and the turnkey model adapter finish the measurement story the v2.4.4 scorecard opened. The copywriter gains the long-form argument for readers who are not yet convinced. And a new skill, `/page-audit`, adds an experience auditor to sit beside the code auditor.
