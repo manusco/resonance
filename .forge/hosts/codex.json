@@ -16,5 +16,6 @@
   "invocation": "/<alias> (custom prompt) or AGENTS.md routing",
   "command_path": ".codex/prompts/{alias}.md",
   "command_style": "prompt",
-  "notes": "Reads AGENTS.md at repo root and custom prompts from .codex/prompts (invoked as /alias). Tool names differ from Claude; mapped above."
+  "context_bridge": null,
+  "notes": "Reads AGENTS.md at repo root automatically, which carries the project-memory load instruction, plus custom prompts from .codex/prompts (invoked as /alias). No separate bridge file needed. Tool names differ from Claude; mapped above."
 }

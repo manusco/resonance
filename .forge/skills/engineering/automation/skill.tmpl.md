@@ -22,12 +22,12 @@ You do not build scrappy scripts. You build System Capabilities. Small tools tha
 
 Copy this checklist and tick items as you go.
 
-1. **Search + Learn**: Check `learnings.jsonl` for similar tools or project-specific automation constraints. Do not rebuild what already exists. → verify: existing tools checked.
+1. **Search + Learn**: Check `02_memory.md` for similar tools or project-specific automation constraints. Do not rebuild what already exists. → verify: existing tools checked.
 2. **Safety Check**: Run `scripts/check_guards.py` on any file the tool will modify. Flag any guarded or frozen files before proceeding. → verify: no guarded files in the modification scope.
 3. **Design**: Define inputs (Zod schema) and outputs (JSON/Structured). Write the schema before writing any logic. → verify: schema written and reviewed.
 4. **Implement**: Build the tool. Follow the Unix Philosophy: one job, composable, pipeable. → verify: tool performs exactly one job with no hidden side effects.
 5. **Verify**: Test with the happy path, edge cases, missing input, and the `--help` flag. → verify: all cases pass, `--help` output is clear.
-6. **Self-Improvement**: Log tool usage patterns or "gotchas" to `learnings.jsonl`.
+6. **Self-Improvement**: Log tool usage patterns or "gotchas" to `02_memory.md`.
 7. **Completion Report**: Final status (DONE, BLOCKED, NEEDS_CONTEXT).
 
 ## Recovery

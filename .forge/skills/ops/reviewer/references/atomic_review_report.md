@@ -19,11 +19,11 @@ For any non-obvious issue, present:
 3.  **Options**:
     *   **A)** Surgical Fix (Matches existing style, minimal change).
     *   **B)** Ideal Refactor (Cleaner but more files/effort).
-    *   **C)** Deferred (Add TODO and log to `learnings.jsonl`).
+    *   **C)** Deferred (Add TODO and log to `02_memory.md`).
 
 ## 3. Operational Sign-off
 
 *   [ ] CI passed (Lint, Test).
 *   [ ] Blocking patterns checked.
 *   [ ] 100% of new logic has test coverage.
-*   [ ] Learnings logged to `learnings.jsonl`.
+*   [ ] Learnings logged to `02_memory.md`.

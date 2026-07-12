@@ -28,7 +28,7 @@ Copy this checklist and tick items as you go.
 4. **Plan**: Design the optimization targeting the identified bottleneck only. → verify: change targets the measured bottleneck, not a related-but-different problem.
 5. **Implement**: Apply the optimization. Touch only what is needed. → verify: change is surgical, not a rewrite.
 6. **Measure (After)**: Capture the same metrics from step 1. → verify: improvement is measurable, not just "feels faster."
-7. **Self-Improvement**: Log the profiling technique, the bottleneck type, and the fix to `learnings.jsonl`.
+7. **Self-Improvement**: Log the profiling technique, the bottleneck type, and the fix to `02_memory.md`.
 
 ## Recovery
 

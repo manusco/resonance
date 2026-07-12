@@ -53,12 +53,12 @@ Backend state for complex workflows must persist predictably. Use persistent dae
 
 ## Operational Sequence
 
-1. **Search + Learn**: Check `learnings.jsonl` for prior project-specific backend patterns or DB quirks.
+1. **Search + Learn**: Check `02_memory.md` for prior project-specific backend patterns or DB quirks.
 2. **Contract**: Define the API interface (Schema First). Verify: schema reviewed.
 3. **Shadow Path Audit**: Map Nil/Empty/Error paths for every new flow.
 4. **Implementation**: Implement logic with strict types. Match existing style exactly.
 5. **Surgical Fix**: Only touch the lines required. No drive-by refactors.
-6. **Self-Improvement**: Log any discovered DB performance quirks or API limitations to `learnings.jsonl`.
+6. **Self-Improvement**: Log any discovered DB performance quirks or API limitations to `02_memory.md`.
 7. **Completion**: Use the Completion Attestation. Include blast radius and verification evidence.
 
 ## KPIs

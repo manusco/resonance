@@ -44,7 +44,7 @@ Use specific markdown files to track state, not just in-context memory:
 - `.resonance/01_state.md`: The session log (actions, results, current blockers).
 
 ### The State Protocol
-Maintain `.resonance/00_soul.md` (Identity), `01_state.md` (Context), `02_memory.md` (History). These three files are the project's long-term memory.
+Maintain `.resonance/00_soul.md` (Identity), `01_state.md` (Context), and `02_memory.md` (the accumulated-lessons index, loaded every session). These are the project's long-term memory. Deposit durable lessons into `02_memory.md` and `memory/` leaf files; because it loads at session start, it is read next time, not just written.
 
 ### Search Before Building
 Stop and search before building anything involving unfamiliar patterns. Evaluate across three layers: (1) Tried and true standard patterns, (2) New and popular patterns, (3) First principles. Look for the moment where conventional wisdom is wrong for this specific case.
@@ -56,11 +56,11 @@ Stop and search before building anything involving unfamiliar patterns. Evaluate
 3. **If Triggered via `/init`**:
    - **Connection**: Check if `.resonance/` exists. If not, create it.
    - **Extraction**: Ask the Prime Question: "What do you want to build?" (new project) or "How shall we evolve?" (existing).
-   - **Synthesis**: Write `00_soul.md` (Vision, Laws), `docs/prd/00_vision.md`, `docs/architecture/system_overview.md`. Create `.resonance/01_state.md`, `02_memory.md`, `03_tools.md`, and `04_systems.md`.
+   - **Synthesis**: Write `00_soul.md` (Vision, Laws), `docs/prd/00_vision.md`, `docs/architecture/system_overview.md`. Create `.resonance/01_state.md`, `02_memory.md` (the loaded lessons index), `03_tools.md`, and `04_systems.md`. Ensure the per-host context bridge exists so the standard and memory actually load: on Claude Code a root `CLAUDE.md` that imports `@AGENTS.md` and the `.resonance` memory, emitted by the Forge (`py .forge/forge.py commands`).
    - **Genesis**: If the directory is empty, propose scaffolding for the requested stack (e.g., `npm run...`, git init).
 4. **Plan**: Draft the implementation plan into `task.md`.
 5. **Execute**: Delegate to specific specialists or execute steps directly → verify: check results.
-6. **Self-Improvement**: Log any project-specific discoveries to `.resonance/learnings.jsonl`.
+6. **Self-Improvement**: Record any project-specific discoveries in `.resonance/02_memory.md` (the loaded lessons index), one line each.
 7. **Completion Report**: Final status (DONE, BLOCKED, NEEDS_CONTEXT). Update `task.md`.
 
 ## Recovery

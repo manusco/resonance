@@ -3,7 +3,7 @@
 > Operator-grade AI agent skills for builders. A cross-tool skill library and slash-command system for Claude Code, Cursor, Codex, and opencode, covering strategy, design, engineering, marketing, sales, and ops.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.5-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
+    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.6-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
     <img src="https://img.shields.io/badge/Skills-50+-00f2ea?style=for-the-badge" alt="58 skills" />
     <img src="https://img.shields.io/badge/Commands-33-7025eb?style=for-the-badge" alt="33 commands" />
@@ -21,8 +21,8 @@ Resonance is an AI agent skill library you drop into any project. It turns a gen
 
 - **50+ domain-tested skills** across strategy, engineering, design, marketing, sales, ops, and research. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
 - **32 slash commands** like `/plan`, `/grill`, `/build`, `/debug`, `/design`, `/test`, `/improve`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
-- **Cross-tool by design.** One source compiles to the native format of every major agent tool. The `SKILL.md` / `AGENTS.md` open standard is the shared content; the Forge emits the per-tool command shims so `/ship` works after a clone in Claude Code, Cursor, Codex, and opencode.
-- **A project memory** (`.resonance/`) the agent reads before every task and writes to after. It does not forget your architecture, your decisions, or your voice.
+- **Cross-tool by design.** One source compiles to the native format of every major agent tool. The `SKILL.md` / `AGENTS.md` open standard is the shared content; the Forge emits the per-tool command shims and the per-tool context bridge, so the operating standard, the commands, and the project memory all load after a clone in Claude Code, Cursor, Codex, opencode, and Antigravity.
+- **A project memory** (`.resonance/`) that loads at the start of every session and the agent writes back to. It does not forget your architecture, your decisions, or your voice.
 - **Token-efficient.** The shared operating standard is stated once in `AGENTS.md`, not repeated in every skill. Compiled skills are lean, so per-session context stays cheap.
 
 You get consistent, high-quality output because the agent runs the same protocol every time, not because you remembered to ask nicely.
@@ -39,7 +39,7 @@ You get consistent, high-quality output because the agent runs the same protocol
 | **opencode** | Commands in `.opencode/command/<cmd>` plus `AGENTS.md` routing | `/plan`, `/ship`, ... |
 | **Antigravity** and other AGENTS.md tools | `AGENTS.md` command map | describe the job |
 
-The command shims are generated from one source (`.forge/commands.json`) by the Forge. Adding a new tool is one host-config line.
+The command shims are generated from one source (`.forge/commands.json`) by the Forge, which also emits the per-tool **context bridge**: the file each tool loads at session start, pointing it at `AGENTS.md` and the `.resonance/` memory. Claude Code loads `CLAUDE.md`, not `AGENTS.md`, so the Forge writes a root `CLAUDE.md` that imports both; Cursor gets an always-applied `.cursor/rules/resonance.mdc`; Codex, opencode, and Antigravity read `AGENTS.md` natively. Without the bridge the operating standard and memory never reach the model. Adding a new tool is one host-config line.
 
 ---
 
@@ -134,7 +134,7 @@ git clone https://github.com/manusco/resonance ~/resonance-tmp
 cp ~/resonance-tmp/AGENTS.md ./AGENTS.md
 cp -r ~/resonance-tmp/.agents ./.agents
 cp -r ~/resonance-tmp/.forge ./.forge
-py ./.forge/forge.py commands --host all   # writes .claude/skills, .cursor/skills, .codex/prompts, .opencode/command
+py ./.forge/forge.py commands --host all   # writes the per-tool command shims and the CLAUDE.md / .cursor/rules context bridges
 rm -rf ~/resonance-tmp
 ```
 
@@ -154,14 +154,14 @@ Then open your AI tool and type `/init`. It writes your project's vision to `.re
 
 ## Project memory
 
-The `.resonance/` folder is what makes the agent persistent across sessions. You own it; upgrades never touch it.
+The `.resonance/` folder is what makes the agent persistent across sessions. Its state and memory load at the start of every session through the per-tool context bridge, so the agent begins each session already knowing your project. You own it; upgrades never touch it.
 
 | File | What it holds |
 | :--- | :--- |
 | `00_soul.md` | Vision, mission, and the laws that govern the project. Written once, referenced forever. |
 | `01_state.md` | Active task, last decision, current blocker. Updated after every session. |
-| `02_memory.md` | Architectural decision log. Why Postgres over SQLite. Never solve the same problem twice. |
-| `learnings.jsonl` | Project-specific lessons from bugs, edge cases, and hard-won discoveries. |
+| `02_memory.md` | The lessons index, loaded every session so a lesson written once is read every time after. One line per lesson; detail in `memory/` leaf files. Never solve the same problem twice. |
+| `learnings.jsonl` | Legacy lessons store. Still read by recall so nothing captured is lost; new lessons go to `02_memory.md`, which actually loads. |
 | `decisions.jsonl` | Append-only, event-sourced decision log. Query with `.forge/decisions.py`; recall by meaning with `.forge/recall.py`. |
 | `03_tools.md`, `04_systems.md` | Tool boundaries and the system architecture map. |
 | `guards.json` | Project-specific guardrails and constraints. |

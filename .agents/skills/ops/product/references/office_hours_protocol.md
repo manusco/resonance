@@ -31,4 +31,4 @@ During the session, track these signals. Do not mention them yet.
 *   **Domain Expertise**: Knows the space from the inside.
 
 ## 4. Operational Learnings
-Reflect on the session. Log project-specific quirks or user-specific "Taste" preferences to `learnings.jsonl`.
+Reflect on the session. Log project-specific quirks or user-specific "Taste" preferences to `02_memory.md`.

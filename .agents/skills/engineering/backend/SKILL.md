@@ -53,12 +53,12 @@ Backend state for complex workflows must persist predictably. Use persistent dae
 
 ## Operational Sequence
 
-1. **Search + Learn**: Check `learnings.jsonl` for prior project-specific backend patterns or DB quirks.
+1. **Search + Learn**: Check `02_memory.md` for prior project-specific backend patterns or DB quirks.
 2. **Contract**: Define the API interface (Schema First). Verify: schema reviewed.
 3. **Shadow Path Audit**: Map Nil/Empty/Error paths for every new flow.
 4. **Implementation**: Implement logic with strict types. Match existing style exactly.
 5. **Surgical Fix**: Only touch the lines required. No drive-by refactors.
-6. **Self-Improvement**: Log any discovered DB performance quirks or API limitations to `learnings.jsonl`.
+6. **Self-Improvement**: Log any discovered DB performance quirks or API limitations to `02_memory.md`.
 7. **Completion**: Use the Completion Attestation. Include blast radius and verification evidence.
 
 ## KPIs
@@ -83,6 +83,6 @@ Backend state for complex workflows must persist predictably. Use persistent dae
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (log durable learnings to `.resonance/learnings.jsonl`).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
 > **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.

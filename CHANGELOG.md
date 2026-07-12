@@ -1,13 +1,19 @@
 # Changelog
 
-## Unreleased
+## v2.4.6
+
+The compound-loop release. Two hard Fable grills turned "add a learning system" into the real fix: Resonance already had the pieces (the Ratchet, recall, `/improve`), but the carrier was broken, so nothing ever loaded. Plus a six-library design-craft intake that mostly confirmed the design domain is already ahead.
+
+### Fixed
+- **The dead loop: Claude Code loads `CLAUDE.md`, not `AGENTS.md`.** The operating standard and the Ratchet live in `AGENTS.md`, which Claude Code does not auto-load, so the whole compound loop was dark. The flagship repo had logged zero learnings, ever, and the explanation had sat unread in a downstream repo for five weeks. The Forge now emits a per-host **context bridge** so the standard and the `.resonance/` memory reach the model on every tool: a root `CLAUDE.md` that imports `@AGENTS.md` for Claude Code, an always-applied `.cursor/rules/resonance.mdc` for Cursor, and native `AGENTS.md` reading for Codex, opencode, and Antigravity. The Forge refuses to clobber a hand-authored bridge.
+
+### Changed
+- **The Ratchet deposits where it will be read.** Durable lessons now go to `.resonance/02_memory.md`, a curated index loaded at session start, plus `memory/` leaf files, instead of `learnings.jsonl`, which no host ever loaded. `AGENTS.md` gained a Project Memory section so the standard itself tells every tool to load the memory; `recall.py` still reads legacy `learnings.jsonl` so nothing captured is lost, and now also scans `memory/`. Twenty-six references across fifteen skills repointed. This came from two Fable grills that killed the wrong answers first: the loop is not weak, and a new `learn.py` primitive would have repeated `decisions.py`'s zero-uptake fate.
+- **A design-craft intake that mostly confirmed Resonance is already ahead.** Every skill across `emilkowalski/skills`, `refactoring-ui-plugin`, `layers-skills`, `taste-skill`, and `impeccable` was read and compared to `design/designer`. The result was zero new skills and a set of targeted elevations. Gesture physics into `motion_and_feel.md` (velocity handoff, momentum projection, interruption from the live value, and a "should this animate at all?" frequency gate) plus a rule correction to ease-out on exits. An empirical, field-tested AI-tell catalog into `ai_design_slop.md` (fake product UI, hero version labels, status theater, weather strips). A serif-reflex ban in `typographic_system.md`. Button and empty-state micro-tactics, and object and emotional-job disciplines in `ops/product`.
+- **The operating standard gained a scope-fidelity rule.** Verify and Completion now forbid placeholder stubs and silent truncation and require the delivered count to match the request, reconciled with the Simplicity lock (Simplicity governs the how, never the how-much). No fifth lock.
 
 ### Added
 - **`design/designer` gained a conceptual-model reference (OOUX).** The user-facing object, vocabulary, and state model that sits between `/product` (what to build) and `/design` (the surface), the one genuine gap a six-library design intake surfaced. Object inventory, lifecycle states, verb precision, and one name per concept, wired into the designer sequence and the PRD template.
-
-### Changed
-- **A design-craft intake that mostly confirmed Resonance is already ahead.** Every skill across `emilkowalski/skills`, `refactoring-ui-plugin`, `layers-skills`, `taste-skill`, and `impeccable` was read and compared to `design/designer`. The result was zero new skills and a set of targeted elevations. Gesture physics into `motion_and_feel.md` (velocity handoff, momentum projection, interruption from the live value, and a "should this animate at all?" frequency gate) plus a rule correction to ease-out on exits. An empirical, field-tested AI-tell catalog into `ai_design_slop.md` (fake product UI, hero version labels, status theater, weather strips). A serif-reflex ban in `typographic_system.md`. Button and empty-state micro-tactics, and object and emotional-job disciplines in `ops/product`.
-- **The operating standard gained a scope-fidelity rule.** Verify and Completion now forbid placeholder stubs and silent truncation and require the delivered count to match the request, reconciled with the Simplicity lock (Simplicity governs the how, never the how-much). No fifth lock.
 
 ## v2.4.5
 

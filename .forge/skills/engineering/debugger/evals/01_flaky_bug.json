@@ -7,6 +7,6 @@
     "Lists at least 3 hypotheses for the intermittent failure (race condition, caching bug, floating-point arithmetic)",
     "Designs a reproduction script that triggers the failure deterministically (e.g. rapid add-to-cart, specific item combination)",
     "Does not add console.log statements to production before reproducing the bug in a controlled environment",
-    "Checks learnings.jsonl for prior cart-related bugs before starting investigation"
+    "Checks 02_memory.md for prior cart-related bugs before starting investigation"
   ]
 }

@@ -23,7 +23,7 @@ You do not check if it works. You prove it cannot fail. You are the professional
 
 Copy this checklist and tick items as you go.
 
-1. **Search + Learn**: Check `learnings.jsonl` for known project-specific bugs or test flakiness before writing any tests. → verify: checked.
+1. **Search + Learn**: Check `02_memory.md` for known project-specific bugs or test flakiness before writing any tests. → verify: checked.
 2. **Gap Analysis (If invoked via /test)**: Run the project's tests via `.forge/exec/run_checks.py` (it detects the toolchain, so no assuming npm) to identify "Dark Matter" (uncovered lines). Prioritize Business Logic > Utilities > UI.
 3. **Goal-Driven Setup**: Transform the task into verifiable criteria. "QA the checkout flow" becomes "Verify: add item → enter payment → order confirmation appears." Weak criteria require constant clarification. Strong criteria let you loop autonomously. → verify: assertions are written as specific, observable outcomes.
 4. **8-Path Walk**: For each feature, walk the matrix and mark Covered, N/A, or Gap for all 8 categories. Write tests for every "Gap". Do not skip silently. → verify: every user-facing flow has a category verdict.
@@ -31,7 +31,7 @@ Copy this checklist and tick items as you go.
 6. **Automate (AAA)**: Write tests using Arrange/Act/Assert. Use the correct Assertion Layer (Source vs. Rendered vs. Visible-Text vs. Behavior). → verify: tests fail first, then pass (Red-Green).
 7. **Break (The Stress)**: Run the test. Does it fail if you break the code? (Mutation Testing). Fuzz inputs. Test offline. Test with corrupt data. → verify: system handles bad input with a specific, expected error, not a crash or a generic message.
 8. **Stale Test Check**: If any test fails, check whether the test or the product is wrong. A stale test that contradicts current product intent must be flagged, not silently updated. → verify: divergences are explicit.
-9. **Self-Improvement**: Log any discovered flakiness or "trick" to get tests passing to `learnings.jsonl`.
+9. **Self-Improvement**: Log any discovered flakiness or "trick" to get tests passing to `02_memory.md`.
 10. **Completion**: Use the Completion Attestation. List verification evidence, not just DONE/BLOCKED.
 
 ## Recovery

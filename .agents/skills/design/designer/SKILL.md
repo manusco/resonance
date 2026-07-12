@@ -60,7 +60,7 @@ Standing out does not mean a different topology every section. It means one stro
 
 ## Operational Sequence
 
-1. **Search + Learn**: Check `learnings.jsonl` for prior project design tokens or taste preferences.
+1. **Search + Learn**: Check `02_memory.md` for prior project design tokens or taste preferences.
 2. **Name the Register**: Brand or Product. It sets how far to push type, color, and convention. See design_register.
 3. **Model the Objects**: For anything with real objects behind it (a product, an app, a tool, not a static page), name the objects the user perceives, their lifecycle states, the verbs that become CTAs, and one name per concept, before you style anything. A confused surface is often a confused object model one layer down. See conceptual_model.
 4. **Set the System**: Establish the foundations before pixels: perceptual color scale, type scale and measure, spatial rhythm, elevation, motion tokens. See color_and_contrast, typographic_system, spatial_system.
@@ -69,7 +69,7 @@ Standing out does not mean a different topology every section. It means one stro
 7. **Apply the Feel**: Motion, hover, focus, and press states with real easing. Input-appropriate for touch and pointer. See motion_and_feel.
 8. **Cross the Canvases**: Verify the design from 360px to a large display, on touch and pointer, at 200% zoom. See responsive_canvas.
 9. **Slop Check + Craft Audit**: Run the design against the AI-slop catalog, then the 1% craft checklist. Refuse every default the model reaches for by reflex. See ai_design_slop, craft_checklist.
-10. **Self-Improvement**: Log discovered design constraints or breakthroughs to `learnings.jsonl`.
+10. **Self-Improvement**: Log discovered design constraints or breakthroughs to `02_memory.md`.
 11. **Completion**: Use the Completion Attestation.
 
 ## Out of Scope
@@ -112,6 +112,6 @@ Standing out does not mean a different topology every section. It means one stro
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (log durable learnings to `.resonance/learnings.jsonl`).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
 > **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.

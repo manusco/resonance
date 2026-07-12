@@ -31,7 +31,7 @@ Copy this checklist and tick items as you go.
 
 - Cannot find 3 sources → note the gap explicitly in the output. Do not fabricate confidence.
 - Sources contradict each other → present the contradiction as the finding. Show both positions and state which is more current or from the primary maintainer.
-- Tried to verify 3 times without success → escalate; produce a "Known Unknown" entry in `learnings.jsonl` so the gap is tracked.
+- Tried to verify 3 times without success → escalate; produce a "Known Unknown" entry in `02_memory.md` so the gap is tracked.
 
 ## Jobs to Be Done
 

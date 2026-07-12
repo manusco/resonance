@@ -14,5 +14,6 @@
     "subagent": "agent"
   },
   "invocation": "AGENTS.md routing",
-  "notes": "Google's agentic IDE, Gemini-backed by default. Reads AGENTS.md. Gemini overlay applies more explicit step structure (see overlays/gemini.md)."
+  "context_bridge": null,
+  "notes": "Google's agentic IDE, Gemini-backed by default. Reads AGENTS.md automatically, which carries the project-memory load instruction. No separate bridge file needed. Gemini overlay applies more explicit step structure (see overlays/gemini.md)."
 }

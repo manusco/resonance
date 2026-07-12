@@ -28,7 +28,7 @@ Copy this checklist and tick items as you go.
 4. **Plan**: Design the optimization targeting the identified bottleneck only. → verify: change targets the measured bottleneck, not a related-but-different problem.
 5. **Implement**: Apply the optimization. Touch only what is needed. → verify: change is surgical, not a rewrite.
 6. **Measure (After)**: Capture the same metrics from step 1. → verify: improvement is measurable, not just "feels faster."
-7. **Self-Improvement**: Log the profiling technique, the bottleneck type, and the fix to `learnings.jsonl`.
+7. **Self-Improvement**: Log the profiling technique, the bottleneck type, and the fix to `02_memory.md`.
 
 ## Recovery
 
@@ -80,6 +80,6 @@ O(n^2) loops masquerading as O(n). An ORM that issues one query per item in a li
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (log durable learnings to `.resonance/learnings.jsonl`).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
 > **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.

@@ -49,12 +49,12 @@ Extract prop interfaces. Use discriminated unions for component variants (e.g. b
 
 ## Operational Sequence
 
-1. **Search + Learn**: Check `learnings.jsonl` for prior project-specific frontend patterns or design system tokens.
+1. **Search + Learn**: Check `02_memory.md` for prior project-specific frontend patterns or design system tokens.
 2. **State Assumptions**: Name the component, framework, and design spec being implemented.
 3. **Shadow State Audit**: Map Loading / Empty / Error / Offline states for the component before writing any UI.
 4. **Structure + Style**: Apply semantics and styling Mobile-First.
 5. **Surgical Implementation**: Only touch the lines required. Match existing style exactly.
-6. **Self-Improvement**: Log any discovered browser quirks or design system inconsistencies to `learnings.jsonl`.
+6. **Self-Improvement**: Log any discovered browser quirks or design system inconsistencies to `02_memory.md`.
 7. **Completion**: Use the Completion Attestation. Include blast radius and verification evidence.
 
 ## KPIs
@@ -81,6 +81,6 @@ Extract prop interfaces. Use discriminated unions for component variants (e.g. b
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (log durable learnings to `.resonance/learnings.jsonl`).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
 > **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.

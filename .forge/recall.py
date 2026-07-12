@@ -3,7 +3,7 @@
 Resonance - Memory Recall (R6).
 
 Retrieve the most relevant slices of project memory by meaning, instead of
-loading whole files. Sources: .resonance/*.md, .resonance/learnings.jsonl, and
+loading whole files. Sources: .resonance/*.md and .resonance/memory/*.md, legacy .resonance/learnings.jsonl, and
 active entries in .resonance/decisions.jsonl, PLUS a cross-project brain
 (~/.resonance, or $RESONANCE_GLOBAL_BRAIN) so a learning earned in one repo
 raises the floor in the next. The agent should recall before a task instead of
@@ -48,7 +48,9 @@ def _scan(base: Path, prefix: str) -> list[tuple[str, str]]:
     out: list[tuple[str, str]] = []
     if not base.exists():
         return out
-    for md in sorted(base.glob("*.md")):
+    mem = base / "memory"
+    md_files = sorted(base.glob("*.md")) + (sorted(mem.glob("*.md")) if mem.is_dir() else [])
+    for md in md_files:
         text = md.read_text(encoding="utf-8", errors="replace")
         # split on level-2/3 headings; keep the heading with its body
         parts = re.split(r"\n(?=#{2,3}\s)", text)

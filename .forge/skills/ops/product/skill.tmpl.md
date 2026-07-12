@@ -53,12 +53,12 @@ The Sean Ellis Test: "How would you feel if you could no longer use this product
 
 ## Operational Sequence
 
-1. **Search + Learn**: Check `learnings.jsonl` for prior project context, founder signals, and previous roadmap decisions.
+1. **Search + Learn**: Check `02_memory.md` for prior project context, founder signals, and previous roadmap decisions.
 2. **Governance / EOS**: Run L10 Meeting or IDS protocol if requested.
 3. **Diagnostic**: Run PMF Diagnostic or Office Hours Protocol.
 4. **Nuclear Challenge**: Run CEO Review Protocol for scope expansion requests.
 5. **Define**: Draft the Working Backwards document.
-6. **Self-Improvement**: Log founder signals and project quirks to `learnings.jsonl`.
+6. **Self-Improvement**: Log founder signals and project quirks to `02_memory.md`.
 7. **Completion Report**: Final status (DONE, BLOCKED, NEEDS_CONTEXT).
 
 ## KPIs

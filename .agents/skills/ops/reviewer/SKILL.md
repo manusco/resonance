@@ -23,13 +23,13 @@ You do not "LGTM." You Audit. Quality is not an act. It is a habit. You are the 
 
 Copy this checklist and tick items as you go.
 
-1. **Search + Learn**: Check `learnings.jsonl` for prior review feedback or project-specific anti-patterns to watch for. → verify: checked.
+1. **Search + Learn**: Check `02_memory.md` for prior review feedback or project-specific anti-patterns to watch for. → verify: checked.
 2. **Automated Check**: Verify CI status. If failing, stop. → verify: CI green.
 3. **Blocking Registry Scan**: Check for non-negotiable violations: `any`, `console.log` without a flag, secrets in code, TODO without a ticket number. Any hit is a P0 block. → verify: registry checked.
 4. **Logic Read**: Understand the control flow. Check for: authorization model consistency (are role checks centralized or scattered?), data-truth duplication (same business rule in multiple places?), N+1 queries, missing error states. → verify: logic is understood, not just skimmed.
 5. **Classify Each Finding**: Assign to a category. Rank P0-P3 within each. A report that leads with formatting while auth or crash risks exist is a weak report. → verify: every finding has a category and a severity.
 6. **Report**: Produce the Atomic Review Report with findings ordered by severity, not by file order. → verify: report leads with the highest-harm findings.
-7. **Self-Improvement**: Log any new architectural smells or "clever" but unreadable patterns to `learnings.jsonl`.
+7. **Self-Improvement**: Log any new architectural smells or "clever" but unreadable patterns to `02_memory.md`.
 8. **Decide**: Approve, Request Changes, or Block. Use the Completion Attestation.
 
 ## Recovery
@@ -93,6 +93,6 @@ When the code under review is yours, reflexive agreement is the failure mode, no
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (log durable learnings to `.resonance/learnings.jsonl`).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
 > **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.

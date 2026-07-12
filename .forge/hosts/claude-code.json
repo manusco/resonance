@@ -16,5 +16,6 @@
   "invocation": "/<alias>",
   "command_path": ".claude/skills/{alias}/SKILL.md",
   "command_style": "skill",
-  "notes": "Native Agent Skills discovered from .claude/skills (the command name is the folder name, so /ship comes from .claude/skills/ship). AGENTS.md and CLAUDE.md are read automatically. The Forge writes short command shims into .claude/skills that route to the canonical procedure under .agents/skills."
+  "context_bridge": { "path": "CLAUDE.md", "style": "at-import", "imports": ["AGENTS.md", ".resonance/01_state.md", ".resonance/02_memory.md"] },
+  "notes": "Native Agent Skills discovered from .claude/skills (the command name is the folder name, so /ship comes from .claude/skills/ship). Claude Code reads CLAUDE.md automatically at session start but does NOT auto-load AGENTS.md, so the Forge emits a root CLAUDE.md bridge that imports AGENTS.md and the .resonance project memory. Without it the operating standard and memory never reach the model. The Forge also writes short command shims into .claude/skills that route to the canonical procedure under .agents/skills."
 }

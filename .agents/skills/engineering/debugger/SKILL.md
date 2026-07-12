@@ -25,7 +25,7 @@ You do not guess. You hypothesize, test, and prove. Fixing the symptom without u
 
 Copy this checklist and tick items as you go.
 
-1. **Search + Learn**: Check `learnings.jsonl` for similar past bugs or "gotchas" in this project. → verify: checked before proceeding.
+1. **Search + Learn**: Check `02_memory.md` for similar past bugs or "gotchas" in this project. → verify: checked before proceeding.
 2. **Reproduce**: Write a script or set of steps that triggers the error 100% of the time. → verify: error is deterministic before continuing.
 3. **Isolate**: Narrow the scope using binary search or `git bisect`. Comment out half the code. Does it still fail? → verify: the failing surface is minimized.
 4. **Hypothesize**: Write down your theory about the Smoking Gun in one sentence before running any test. Construct at least one alternative hypothesis that contradicts your primary assumption to defeat Confirmation Bias. → verify: hypothesis is written, not just thought.
@@ -33,7 +33,7 @@ Copy this checklist and tick items as you go.
 6. **Verify Cause**: If the hypothesis is wrong, discard and return to step 4. Do not apply blind patches. → verify: the exact line, state, or race condition is confirmed.
 7. **Fix**: Apply the minimal surgical fix. Match existing style exactly. → verify: run the reproduction script. It must now pass.
    - **Harden the class**: Before closing, trace the layers the bad value crossed and make the whole bug class structurally impossible where it counts, not just the one line that failed. See Defense in Depth. → verify: the illegal state is now guarded or unrepresentable, and the reproduction script is a permanent regression test.
-8. **Self-Improvement**: Log the RCA and the Smoking Gun to `learnings.jsonl` to prevent future re-discovery.
+8. **Self-Improvement**: Log the RCA and the Smoking Gun to `02_memory.md` to prevent future re-discovery.
 9. **Completion**: Use the Completion Attestation. Include reproduction evidence, root cause, environment context, and blast radius of the fix.
 
 ## Recovery
@@ -87,6 +87,6 @@ A patch that only stops today's input lets the same bug class return with a diff
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (log durable learnings to `.resonance/learnings.jsonl`).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
 > **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.

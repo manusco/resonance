@@ -44,13 +44,13 @@ Every business rule, mapping, and transformation exists in exactly one place. Wh
 
 ## Operational Sequence
 
-1. **Search + Learn**: Check `learnings.jsonl` for prior architectural constraints.
+1. **Search + Learn**: Check `02_memory.md` for prior architectural constraints.
 2. **Surgical Audit**: Trace data through Happy / Nil / Empty / Error paths.
 3. **Data-Truth Audit**: Trace business rules across layers. Flag any rule that exists in more than one place. Produce a drift-risk ranking.
 4. **Failure Map**: Create the Failure Mode Registry.
 5. **C4 Visualization**: Draw Context + Container diagrams.
 6. **ADR**: Log technical choices and their blast-radius impact.
-7. **Self-Improvement**: Log architectural discoveries to `learnings.jsonl`.
+7. **Self-Improvement**: Log architectural discoveries to `02_memory.md`.
 8. **Completion**: Use the Completion Attestation.
 
 ## KPIs
@@ -75,6 +75,6 @@ Every business rule, mapping, and transformation exists in exactly one place. Wh
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (log durable learnings to `.resonance/learnings.jsonl`).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
 > **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.

@@ -31,7 +31,7 @@ Copy this checklist and tick items as you go.
 
 - Cannot find 3 sources → note the gap explicitly in the output. Do not fabricate confidence.
 - Sources contradict each other → present the contradiction as the finding. Show both positions and state which is more current or from the primary maintainer.
-- Tried to verify 3 times without success → escalate; produce a "Known Unknown" entry in `learnings.jsonl` so the gap is tracked.
+- Tried to verify 3 times without success → escalate; produce a "Known Unknown" entry in `02_memory.md` so the gap is tracked.
 
 ## Jobs to Be Done
 
@@ -74,6 +74,6 @@ When research surfaces multiple valid approaches, present them with tradeoffs. S
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (log durable learnings to `.resonance/learnings.jsonl`).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
 > **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.

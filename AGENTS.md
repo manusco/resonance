@@ -40,9 +40,13 @@ End every run with a status backed by evidence (output, a passing test, a diff),
 
 Escalate (STOP) if a fix failed 3 times, the change is security-sensitive and you are not certain, or scope exceeds what you can verify.
 
+### Project Memory (load at session start)
+
+Before acting, read `.resonance/01_state.md` (what this project is and where it stands) and `.resonance/02_memory.md` (the accumulated-lessons index), plus any leaf file under `.resonance/memory/` relevant to the task. This is the project's compound memory: a lesson written once is meant to be read every time after. On Claude Code it loads through the root `CLAUDE.md` bridge that imports this file; other tools read this file directly, so this instruction reaches them.
+
 ### The Ratchet (Self-Improvement)
 
-Never solve the same problem twice. When you fix a bug, write the test. Before finishing, if you learned something durable (an API limit, a project convention, a user preference), log one line to `.resonance/learnings.jsonl`: what you learned, why it matters, which files it touches. When the user corrects your logic or style, fix the deterministic layer (script, validator, directive) so it cannot recur.
+Never solve the same problem twice. When you fix a bug, write the test. When you learn something durable (an API limit, a project convention, a user preference, or a correction the user just gave you), record it in the project memory: a one-line entry in `.resonance/02_memory.md`, plus a short leaf file under `.resonance/memory/` if it needs detail. That memory loads at session start, so the lesson is read next time instead of lost. When the user corrects your logic or style, also fix the deterministic layer (script, validator, directive) so the class cannot recur, not just the instance.
 
 ---
 

@@ -16,5 +16,6 @@
   "invocation": "/<alias> or AGENTS.md routing",
   "command_path": ".cursor/skills/{alias}/SKILL.md",
   "command_style": "skill",
-  "notes": "Reads AGENTS.md and .cursor/skills (command name = folder name). Model-agnostic (user picks the backing model), so default overlay is claude but cursor users on GPT/Gemini should build with --model accordingly."
+  "context_bridge": { "path": ".cursor/rules/resonance.mdc", "style": "mdc-always", "imports": ["AGENTS.md", ".resonance/01_state.md", ".resonance/02_memory.md"] },
+  "notes": "Reads AGENTS.md and .cursor/skills (command name = folder name). The Forge also emits an always-applied .cursor/rules/resonance.mdc that points at AGENTS.md and loads the .resonance project memory, so the carrier holds even where AGENTS.md auto-load is unreliable. Model-agnostic (user picks the backing model), so default overlay is claude but cursor users on GPT/Gemini should build with --model accordingly."
 }

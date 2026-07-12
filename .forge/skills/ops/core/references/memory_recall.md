@@ -1,10 +1,10 @@
 # Memory Recall: retrieve by meaning, do not load the whole brain
 
-> As `.resonance/` and `learnings.jsonl` grow, reading whole files is wasteful and blunt. Retrieve the slices that matter for the task, and keep settled decisions in a log you can query, so you never re-litigate a call you already made.
+> As `.resonance/` and its memory grow, reading whole files is wasteful and blunt. Retrieve the slices that matter for the task, and keep settled decisions in a log you can query, so you never re-litigate a call you already made. The `02_memory.md` index loads at session start; recall pulls the deeper slices on demand.
 
 ## The two tools
 
-- **Recall relevant memory:** `py .forge/recall.py "<what you need to know>"` returns the top matching chunks from `.resonance/*.md`, `learnings.jsonl`, and the active decisions, ranked by relevance. Use it before a task instead of opening every file. Default retrieval is pure-Python BM25 (offline, no dependency); set `RESONANCE_EMBED_CMD` to an embedding command to rank by meaning instead. Recall also reads a **cross-project brain** (`~/.resonance`, or `$RESONANCE_GLOBAL_BRAIN`) so a learning earned in one repo raises the floor in the next; local memory ranks first, and `--local-only` skips the global brain.
+- **Recall relevant memory:** `py .forge/recall.py "<what you need to know>"` returns the top matching chunks from `.resonance/*.md` (including the loaded `02_memory.md` index and `memory/` leaf files), legacy `learnings.jsonl`, and the active decisions, ranked by relevance. Use it before a task instead of opening every file. Default retrieval is pure-Python BM25 (offline, no dependency); set `RESONANCE_EMBED_CMD` to an embedding command to rank by meaning instead. Recall also reads a **cross-project brain** (`~/.resonance`, or `$RESONANCE_GLOBAL_BRAIN`) so a learning earned in one repo raises the floor in the next; local memory ranks first, and `--local-only` skips the global brain.
 - **The decision log:** `py .forge/decisions.py` records settled decisions append-only.
   - `add "<decision>" --why "<reason>" --files a,b` when a real decision is made.
   - `list` at session start to resurface active decisions.

@@ -67,14 +67,14 @@ Cost and latency are design decisions, not surprises on the invoice. The levers:
 
 ## Operational Sequence
 
-1. **Search + Learn**: Check `learnings.jsonl` for prior model quirks, prompt patterns, or retrieval settings that worked on this codebase.
+1. **Search + Learn**: Check `02_memory.md` for prior model quirks, prompt patterns, or retrieval settings that worked on this codebase.
 2. **Define Success**: Write the eval set and the grading rubric before the prompt. If you cannot state what "good" means, stop and get it.
 3. **Decide Agent vs. Workflow**: Is the path known? Build a workflow. Does it depend on runtime results? Justify the agent.
 4. **Design Context**: Assemble the prompt as instructions + examples + retrieved facts + tools, in order. State the token budget.
 5. **Pick The Model**: Start with the cheapest plausible model. Run the eval. Move up only if it fails.
 6. **Add Guardrails**: Grounding checks, output schema validation, refusal paths, human gates on consequential actions.
 7. **Budget**: State cost-per-request and P95 latency targets. Add caching and routing to hit them.
-8. **Self-Improvement**: Log durable findings (a model's refusal pattern, a chunk size that worked, a judge-prompt that graded well) to `learnings.jsonl`.
+8. **Self-Improvement**: Log durable findings (a model's refusal pattern, a chunk size that worked, a judge-prompt that graded well) to `02_memory.md`.
 9. **Completion**: Report with evidence: eval pass rate, cost/latency numbers, and the named failure mode for each component.
 
 > ⚠️ **Failure Condition**: Shipping a prompt with no eval set. Letting the model state facts it cannot ground. Reaching for an agent when a fixed pipeline would do. Ignoring cost and latency until the bill or the P95 arrives. Blaming "the model" for a wrong RAG answer without isolating retrieval from generation.

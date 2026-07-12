@@ -53,12 +53,12 @@ The Sean Ellis Test: "How would you feel if you could no longer use this product
 
 ## Operational Sequence
 
-1. **Search + Learn**: Check `learnings.jsonl` for prior project context, founder signals, and previous roadmap decisions.
+1. **Search + Learn**: Check `02_memory.md` for prior project context, founder signals, and previous roadmap decisions.
 2. **Governance / EOS**: Run L10 Meeting or IDS protocol if requested.
 3. **Diagnostic**: Run PMF Diagnostic or Office Hours Protocol.
 4. **Nuclear Challenge**: Run CEO Review Protocol for scope expansion requests.
 5. **Define**: Draft the Working Backwards document.
-6. **Self-Improvement**: Log founder signals and project quirks to `learnings.jsonl`.
+6. **Self-Improvement**: Log founder signals and project quirks to `02_memory.md`.
 7. **Completion Report**: Final status (DONE, BLOCKED, NEEDS_CONTEXT).
 
 ## KPIs
@@ -86,6 +86,6 @@ The Sean Ellis Test: "How would you feel if you could no longer use this product
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (log durable learnings to `.resonance/learnings.jsonl`).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
 > **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.
