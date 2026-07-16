@@ -1,15 +1,5 @@
-# Resonance Knowledge Base (`docs/`)
+# Knowledge Base (`docs/`)
 
-**Proprietary Knowledge Base**
+Durable, human-facing documentation lives here: architecture, PRDs, feature specs, guides.
 
-This directory contains the "Compound Knowledge" of the team.
-Every time an agent solves a non-trivial problem, a solution file MUST be written here.
-
-## File Naming
-`category-problem-slug.md`
-
-## Structure
-1.  **Problem**: What went wrong?
-2.  **Root Cause**: Why did it happen?
-3.  **Solution**: The exact fix (with code).
-4.  **Prevention**: How do we stop it from happening again?
+Lessons and conventions the agent must re-read belong in `.resonance/02_memory.md` (the index that loads at session start) and `.resonance/memory/` leaf files, not here: this directory does not load automatically, so anything the next session must know does not stick if it only lives in `docs/`.

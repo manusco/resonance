@@ -32,5 +32,12 @@ fail() { echo "Resonance ship-gate: $1 Push blocked. Fix it, or bypass once with
 "$PY" .forge/validate_library.py >/dev/null 2>&1 || fail "library validator failed."
 "$PY" .forge/run_evals.py --all --check >/dev/null 2>&1 || fail "eval structure check failed."
 "$PY" .forge/doc_drift.py >/dev/null 2>&1 || fail "docs are out of sync (doc_drift)."
+# Template purity: the shipped memory file must stay the pristine template.
+# Instance lessons belong in the private memory the context bridge loads,
+# never in the tracked file. This makes the 2026-07 memory wipe unrepeatable
+# in both directions.
+if [ -f .forge/templates/02_memory.md ] && [ -f .resonance/02_memory.md ]; then
+  cmp -s .forge/templates/02_memory.md .resonance/02_memory.md || fail "tracked .resonance/02_memory.md diverged from the canonical template (.forge/templates/02_memory.md). Instance lessons belong in the private memory."
+fi
 echo "Resonance ship-gate: green." >&2
 exit 0

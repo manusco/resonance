@@ -160,9 +160,7 @@ The `.resonance/` folder is what makes the agent persistent across sessions. Its
 | :--- | :--- |
 | `00_soul.md` | Vision, mission, and the laws that govern the project. Written once, referenced forever. |
 | `01_state.md` | Active task, last decision, current blocker. Updated after every session. |
-| `02_memory.md` | The lessons index, loaded every session so a lesson written once is read every time after. One line per lesson; detail in `memory/` leaf files. Never solve the same problem twice. |
-| `learnings.jsonl` | Legacy lessons store. Still read by recall so nothing captured is lost; new lessons go to `02_memory.md`, which actually loads. |
-| `decisions.jsonl` | Append-only, event-sourced decision log. Query with `.forge/decisions.py`; recall by meaning with `.forge/recall.py`. |
+| `02_memory.md` | The lessons index, loaded every session so a lesson written once is read every time after. One line per lesson; detail in `memory/` leaf files. Settled decisions live under `## Decisions` in the same file. Recall deeper slices by meaning with `.forge/recall.py`. Never solve the same problem twice. |
 | `03_tools.md`, `04_systems.md` | Tool boundaries and the system architecture map. |
 | `guards.json` | Project-specific guardrails and constraints. |
 

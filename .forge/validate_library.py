@@ -18,7 +18,10 @@ Exit codes: 0 clean (warnings allowed unless --strict), 1 issues found, 2 bad ar
 from __future__ import annotations
 
 import argparse
+import datetime as _dt
 import hashlib
+import json
+import os
 import re
 import sys
 from collections import defaultdict
@@ -127,6 +130,8 @@ def main(argv: list[str]) -> int:
         if len(names) > 1:
             warnings.append(f"near-duplicate reference names: {sorted(names)}")
 
+    _flagship_memory_checks(errors, warnings)
+
     print(f"Resonance library scan: {len(skills)} skills under {root}\n")
     for e in errors:
         print(f"  ERROR  {e}")
@@ -134,6 +139,51 @@ def main(argv: list[str]) -> int:
         print(f"  warn   {w}")
     print(f"\n{len(errors)} error(s) | {len(warnings)} warning(s)")
     return 1 if (errors or (args.strict and warnings)) else 0
+
+
+def _flagship_memory_checks(errors: list[str], warnings: list[str]) -> None:
+    """Instance-memory checks, active only on a machine where
+    ~/.resonance/machine.json wires this repo to a private memory overlay.
+    Everywhere else this is silent, so cloners never see it. Two checks:
+    the overlay must be reachable (a loop that dies silently stays dead),
+    and lessons older than 30 days must carry a hardening pointer
+    ('=> hardened: <id>') or an explicit '[soft]' marker."""
+    gb = Path(os.environ.get("RESONANCE_GLOBAL_BRAIN", str(Path.home() / ".resonance")))
+    try:
+        cfg = json.loads((gb / "machine.json").read_text(encoding="utf-8-sig"))
+    except Exception:
+        return
+    pm, fm = cfg.get("publicMirror", ""), cfg.get("flagshipMemory", "")
+    if not pm or not fm:
+        return
+    try:
+        if Path(pm).resolve() != Path.cwd().resolve():
+            return
+    except Exception:
+        return
+    idx = Path(fm) / "02_memory.local.md"
+    if not idx.is_file():
+        warnings.append(f"flagship memory unreachable: {idx} (machine.json flagshipMemory)")
+        return
+    lesson_rx = re.compile(r"^- (\d{4}-\d{2}-\d{2}) \*\*")
+    today = _dt.date.today()
+    section = ""
+    for ln_no, line in enumerate(idx.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
+        if line.startswith("## "):
+            section = line[3:].strip().lower()
+            continue
+        if section != "lessons":
+            continue
+        m = lesson_rx.match(line.strip())
+        if not m or "=> hardened:" in line or "[soft]" in line:
+            continue
+        try:
+            d = _dt.date.fromisoformat(m.group(1))
+        except ValueError:
+            continue
+        if (today - d).days > 30:
+            warnings.append(f"unhardened lesson older than 30 days: {idx.name}:{ln_no} "
+                            f"(add '=> hardened: <id>' or '[soft]')")
 
 
 def _scan(text: str, path: Path, root: Path, errors: list[str], warnings: list[str]) -> None:

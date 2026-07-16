@@ -9,7 +9,7 @@ For each slice, one turn of the loop is:
 1. **Reason:** decide the smallest next action that moves the slice toward its Definition of Done. Recall memory and settled decisions first so you do not re-solve solved problems.
 2. **Act:** build that action (`/build`).
 3. **Observe (grounded):** run the real check. Tests via `/test` live execution, the validators, `/audit` on the diff. Read the actual output. See done_conditions for what qualifies.
-4. **Record and decide:** call `loop_state.py check <slice> advanced|progress|failed`. Obey the directive. Record any real decision with `decisions.py add`.
+4. **Record and decide:** call `loop_state.py check <slice> advanced|progress|failed`. Obey the directive. Record any real decision under `## Decisions` in `.resonance/02_memory.md`.
 
 Repeat until the slice DoD is met, then move to the next slice. Repeat across slices until the goal DoD is met.
 

@@ -24,12 +24,12 @@ You do not "polish" skills by feel. A skill improves only when the number moves,
 Copy this checklist and tick items as you go.
 
 1. **Get the work-list.** `python .forge/improve.py worklist` lists the skills with no measured lift (verdict `weak` or `flat`), weakest first. Take the weakest. → verify: a target skill is chosen.
-2. **Recall.** `python .forge/decisions.py search "<skill>"` and `python .forge/recall.py "<skill topic>"` so you do not repeat a change that already failed. → verify: prior attempts checked.
+2. **Recall.** Skim `## Decisions` in `.resonance/02_memory.md` (already loaded) and run `python .forge/recall.py "<skill topic>"` so you do not repeat a change that already failed. → verify: prior attempts checked.
 3. **Diagnose body vs rubric.** Read the skill and its evals. Decide: is the BODY weak (the skill does not add enough over the base model), or is the RUBRIC coarse (the eval cannot see the value the skill already adds)? See body_vs_rubric. → verify: the cause is named, not guessed.
 4. **Make one targeted change in `.forge` SOURCE.** Either sharpen the body (add the missing rigor, the concrete step, the decision the base model skips) or sharpen the rubric (make it a HARDER, more discriminating test). One change, one hypothesis. → verify: exactly one skill or rubric was edited.
 5. **Rebuild and validate.** `python .forge/forge.py build <skill>`, then `validate_skill.py` and `validate_library.py`. → verify: clean.
 6. **Re-measure (the gate).** `python .forge/improve.py remeasure <skill-path>`. Keep the change ONLY if it reports IMPROVED. If REGRESSED or no change, revert it. → verify: kept changes measured higher; the rest reverted.
-7. **Record.** `python .forge/decisions.py add "improved <skill>: <what and the lift delta>"`. → verify: logged.
+7. **Record.** Add one line under `## Decisions` in `.resonance/02_memory.md`: improved <skill>, what changed, and the lift delta. → verify: logged.
 8. **Bound the pass.** Improve a few skills (roughly 3 to 5), then stop and report the deltas. Do not grind the whole library in one run. → verify: stopped and summarized.
 
 ## The one rule that keeps this honest

@@ -75,6 +75,27 @@ VOCAB_EXEMPT = ("taboo_phrases", "humanizer", "anti_slop", "anti-slop",
                 "changelog.md", "contributing.md", "agents.md")
 
 
+def private_terms() -> list[str]:
+    """Machine-local brand/client blocklist, active only in the public mirror.
+    Configured via ~/.resonance/machine.json (publicMirror + privateTerms);
+    silent everywhere else, so cloners never hit it. The blocklist file itself
+    lives outside the repo and never ships."""
+    try:
+        gb = Path(os.environ.get("RESONANCE_GLOBAL_BRAIN", str(Path.home() / ".resonance")))
+        cfg = json.loads((gb / "machine.json").read_text(encoding="utf-8-sig"))
+        pm, tp = cfg.get("publicMirror", ""), cfg.get("privateTerms", "")
+        if not pm or not tp or Path(pm).resolve() != Path.cwd().resolve():
+            return []
+        p = Path(tp)
+        if not p.is_file():
+            return []
+        return [ln.strip().lower()
+                for ln in p.read_text(encoding="utf-8", errors="replace").splitlines()
+                if ln.strip() and not ln.strip().startswith("#")]
+    except Exception:
+        return []
+
+
 def staged_files() -> list[str]:
     try:
         r = subprocess.run(["git", "diff", "--cached", "--name-only", "--diff-filter=ACM"],
@@ -89,7 +110,8 @@ def _vocab_exempt(norm: str) -> bool:
     return any(s in low for s in VOCAB_EXEMPT)
 
 
-def check(path: str, problems: list[str], vocab: bool = False) -> None:
+def check(path: str, problems: list[str], vocab: bool = False,
+          terms: list[str] | None = None) -> None:
     p = Path(path)
     if not p.is_file():
         return
@@ -120,6 +142,51 @@ def check(path: str, problems: list[str], vocab: bool = False) -> None:
             mp = VOCAB_PHRASE_RX.search(line)
             if mp:
                 problems.append(f"{norm}:{i}: slop phrase '{mp.group(1)}' (cut it).")
+        if terms:
+            low = line.lower()
+            for t in terms:
+                if t in low:
+                    problems.append(f"{norm}:{i}: private term '{t}' (this repo is public; "
+                                    f"generalize the content or move it to the private pack).")
+                    break
+
+
+def check_version_bump(problems: list[str], files: list[str]) -> None:
+    """Block a package.json version change outside a release-shaped commit.
+    Release-shaped: CHANGELOG.md is staged in the same commit and contains the
+    new version string. Deliberate override: RESONANCE_ALLOW_RELEASE=1.
+    (Lesson: never bump the version without approval.)"""
+    if "package.json" not in files or os.environ.get("RESONANCE_ALLOW_RELEASE") == "1":
+        return
+
+    def _version(text: str) -> str:
+        try:
+            return json.loads(text).get("version", "")
+        except Exception:
+            return ""
+
+    try:
+        old_raw = subprocess.run(["git", "show", "HEAD:package.json"],
+                                 capture_output=True, text=True, timeout=20).stdout
+        new_raw = subprocess.run(["git", "show", ":package.json"],
+                                 capture_output=True, text=True, timeout=20).stdout
+    except Exception:
+        return
+    old, new = _version(old_raw), _version(new_raw)
+    if not old or not new or old == new:
+        return
+    if "CHANGELOG.md" in files:
+        try:
+            staged_log = subprocess.run(["git", "show", ":CHANGELOG.md"],
+                                        capture_output=True, text=True, timeout=20).stdout
+        except Exception:
+            staged_log = ""
+        if new in staged_log:
+            return
+    problems.append(
+        f"package.json version changed {old} -> {new} outside a release-shaped commit "
+        f"(stage CHANGELOG.md containing {new}, or set RESONANCE_ALLOW_RELEASE=1 if deliberate). "
+        f"Never bump the version without approval.")
 
 
 def hook_mode() -> int:
@@ -134,7 +201,7 @@ def hook_mode() -> int:
         return 0
     vocab = os.environ.get("RESONANCE_STRICT_VOCAB") == "1"
     problems: list[str] = []
-    check(fp, problems, vocab=vocab)
+    check(fp, problems, vocab=vocab, terms=private_terms())
     if problems:
         print("Resonance guard flagged this edit:", file=sys.stderr)
         for p in problems:
@@ -158,9 +225,12 @@ def main(argv: list[str]) -> int:
     if not files:
         return 0
     vocab = a.copy or os.environ.get("RESONANCE_STRICT_VOCAB") == "1"
+    terms = private_terms() if a.staged else []
     problems: list[str] = []
+    if a.staged:
+        check_version_bump(problems, files)
     for f in files:
-        check(f, problems, vocab=vocab)
+        check(f, problems, vocab=vocab, terms=terms)
     if problems:
         print("Resonance guard blocked the commit:\n")
         for p in problems:

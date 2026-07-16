@@ -3,11 +3,10 @@
 Resonance - Memory Recall (R6).
 
 Retrieve the most relevant slices of project memory by meaning, instead of
-loading whole files. Sources: .resonance/*.md and .resonance/memory/*.md, legacy .resonance/learnings.jsonl, and
-active entries in .resonance/decisions.jsonl, PLUS a cross-project brain
-(~/.resonance, or $RESONANCE_GLOBAL_BRAIN) so a learning earned in one repo
-raises the floor in the next. The agent should recall before a task instead of
-reading the entire brain. Use --local-only to skip the global brain.
+loading whole files. Sources: .resonance/*.md and .resonance/memory/*.md
+(including the loaded 02_memory.md index with its Lessons and Decisions
+sections), plus legacy .resonance/learnings.jsonl. The agent should recall
+before a task instead of reading the entire brain.
 
 Default retriever is a pure-stdlib BM25 (works offline, no dependency, no key).
 It is pluggable: set RESONANCE_EMBED_CMD to a command that reads text on stdin
@@ -69,40 +68,14 @@ def _scan(base: Path, prefix: str) -> list[tuple[str, str]]:
                     out.append((f"{prefix}learnings.jsonl", json.dumps(d, ensure_ascii=False)))
                 except json.JSONDecodeError:
                     out.append((f"{prefix}learnings.jsonl", line))
-    dj = base / "decisions.jsonl"
-    if dj.exists():
-        for line in dj.read_text(encoding="utf-8", errors="replace").splitlines():
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                d = json.loads(line)
-                if d.get("status") == "active":
-                    out.append((f"{prefix}decisions.jsonl:{d.get('id','')}",
-                                d.get("decision", "") + " " + d.get("why", "")))
-            except json.JSONDecodeError:
-                pass
     return out
 
 
-def global_brain() -> Path:
-    return Path(os.environ.get("RESONANCE_GLOBAL_BRAIN", str(Path.home() / ".resonance")))
-
-
-def chunks(include_global: bool = True) -> list[tuple[str, str]]:
-    """Local project memory, plus the cross-project brain so a learning from
-    another repo raises the floor here. Global brain is ~/.resonance (or
-    $RESONANCE_GLOBAL_BRAIN); local entries appear first, so they rank first on ties."""
-    out = _scan(RES, "")
-    if include_global:
-        g = global_brain()
-        try:
-            same = g.resolve() == RES.resolve()
-        except Exception:
-            same = False
-        if not same:
-            out += _scan(g, "global:")
-    return out
+def chunks() -> list[tuple[str, str]]:
+    """The local project memory. Cross-project learning travels through the
+    library itself ([lib]-tagged lessons harvested into skill and doctrine
+    changes), not through a second store that nothing writes to."""
+    return _scan(RES, "")
 
 
 def bm25(query: str, docs: list[str], k1: float = 1.5, b: float = 0.75) -> list[float]:

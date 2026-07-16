@@ -28,11 +28,11 @@ Copy this checklist and tick items as you go.
 2. **Start the bound.** `py .forge/skills/ops/goal/scripts/loop_state.py start "<goal>" --dod "<checkable DoD>"`. → verify: state initialized.
 3. **Decompose.** `/plan` produces atomic slices, each with its own DoD. → verify: an ordered slice list exists.
 4. **Loop over slices, autonomously and bounded.** For each slice:
-   - **Recall** relevant memory and settled decisions (`py .forge/recall.py`, `py .forge/decisions.py list`) so you do not re-solve or re-litigate.
+   - **Recall** relevant memory and settled decisions (the loaded `02_memory.md` index carries both; `py .forge/recall.py "<topic>"` for deeper slices) so you do not re-solve or re-litigate.
    - **Build** the slice (`/build`).
    - **Verify with grounded signals only**: `/test` runs the real tests (`.forge/exec/run_checks.py`) and a real browser (`.forge/exec/browser_check.mjs`); run the validators; `/audit` the diff. The done-signal is executed, never "this should work". See done_conditions.
    - **Check the bound:** `loop_state.py check <slice> advanced|progress|failed`. Obey the directive: CONTINUE, or STOP_SLICE / STOP_STUCK / STOP_CAP (then re-plan the slice once, or stop and escalate). Never override a STOP.
-   - **Record** any real decision (`py .forge/decisions.py add`).
+   - **Record** any real decision as a one-line entry under `## Decisions` in `.resonance/02_memory.md`.
    Run multiple slices without pausing. Pause only at the checkpoints below. → verify: each slice ends verified or the loop stopped on a bound.
 5. **Final gate.** When the goal DoD verifies, run `/second-opinion` on the whole change. → verify: a second-model review was reconciled.
 6. **Propose ship, never auto-ship.** Present the result and the evidence and ask for approval to `/ship`. Clear the loop (`loop_state.py done`). → verify: shipped only after explicit approval.

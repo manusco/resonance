@@ -46,7 +46,7 @@ Before acting, read `.resonance/01_state.md` (what this project is and where it 
 
 ### The Ratchet (Self-Improvement)
 
-Never solve the same problem twice. When you fix a bug, write the test. When you learn something durable (an API limit, a project convention, a user preference, or a correction the user just gave you), record it in the project memory: a one-line entry in `.resonance/02_memory.md`, and a short leaf file under `.resonance/memory/` if it needs detail. When the user corrects your logic or style, also fix the deterministic layer (script, validator, directive) so the class cannot recur, not just the instance.
+Never solve the same problem twice. When you fix a bug, write the test. When you learn something durable (an API limit, a project convention, a user preference, or a correction the user just gave you), record it in the project memory: a one-line entry in `.resonance/02_memory.md`, and a short leaf file under `.resonance/memory/` if it needs detail. Settled decisions go under `## Decisions` in the same file, one line each, so they resurface every session and never get re-litigated. When the user corrects your logic or style, also fix the deterministic layer (script, validator, directive) so the class cannot recur, not just the instance. If a lesson is about a skill or the framework itself rather than this project, prefix the line with `[lib]` so library maintainers can harvest it. Brand or client material never goes into a public file; it belongs in your private pack.
 
 ---
 
