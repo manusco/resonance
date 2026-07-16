@@ -5,8 +5,8 @@ Resonance - Memory Recall (R6).
 Retrieve the most relevant slices of project memory by meaning, instead of
 loading whole files. Sources: .resonance/*.md and .resonance/memory/*.md
 (including the loaded 02_memory.md index with its Lessons and Decisions
-sections), plus legacy .resonance/learnings.jsonl. The agent should recall
-before a task instead of reading the entire brain.
+sections). The agent should recall before a task instead of reading the
+entire brain.
 
 Default retriever is a pure-stdlib BM25 (works offline, no dependency, no key).
 It is pluggable: set RESONANCE_EMBED_CMD to a command that reads text on stdin
@@ -58,16 +58,6 @@ def _scan(base: Path, prefix: str) -> list[tuple[str, str]]:
             if len(p) > 30:
                 head = p.splitlines()[0].lstrip("# ").strip()[:60]
                 out.append((f"{prefix}{md.name}:{head}", p))
-    lj = base / "learnings.jsonl"
-    if lj.exists():
-        for line in lj.read_text(encoding="utf-8", errors="replace").splitlines():
-            line = line.strip()
-            if line:
-                try:
-                    d = json.loads(line)
-                    out.append((f"{prefix}learnings.jsonl", json.dumps(d, ensure_ascii=False)))
-                except json.JSONDecodeError:
-                    out.append((f"{prefix}learnings.jsonl", line))
     return out
 
 

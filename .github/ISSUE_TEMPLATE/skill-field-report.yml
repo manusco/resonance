@@ -1,0 +1,32 @@
+name: Skill field report
+description: A Resonance skill behaved differently than its doctrine promises
+labels: ["field-report"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      description: Which skill or command (e.g. strategy/grill, /plan)
+    validations:
+      required: true
+  - type: input
+    id: host
+    attributes:
+      label: Tool and model
+      description: e.g. Claude Code + Opus, Cursor + GPT
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: What the skill promises
+      description: The behavior its SKILL.md or description led you to expect
+    validations:
+      required: true
+  - type: textarea
+    id: got
+    attributes:
+      label: What actually happened
+      description: Paste the relevant output or describe the gap
+    validations:
+      required: true

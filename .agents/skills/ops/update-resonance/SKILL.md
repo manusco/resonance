@@ -23,17 +23,19 @@ You are upgrading the OS. You must not overwrite user customizations. You must b
 
 Copy this checklist and tick items as you go.
 
-1. **Verify ownership boundary**: Confirm `.resonance/` will not be touched. It holds the user's soul, state, and memory. The upgrade only touches `.agents/` and `AGENTS.md`. → verify: `.resonance/` is not in scope.
+1. **Verify ownership boundary**: The upgrade replaces `.agents/` and `AGENTS.md` and never edits the user's soul, state, or lessons. Single exception: step 6 MOVES legacy lessons into the user's loaded index (content preserved, dead container removed). → verify: nothing else under `.resonance/` is in scope.
 2. **Clone latest**: Fetch the new version to a temp location outside the project root. → verify: temp directory exists and is not inside the project.
 3. **Delete `.agents/`**: Remove the entire old skill library. Do not overwrite. Delete. Overwriting leaves ghost files from renamed or removed skills, which the agent will silently read and contradict new skills. → verify: `.agents/` no longer exists.
 4. **Copy new `.agents/`**: Copy the compiled skill library from the temp location. → verify: `.agents/skills/` contains the new domain structure.
 5. **Copy `AGENTS.md`** and the `resonance.sh` / `resonance.ps1` scripts. → verify: files exist.
-6. **Verify the upgrade**: Run `/system-health`. It must report the correct skill count. Flag if score < 80. → verify: health check passes.
-7. **Clean up**: Remove the temp directory.
+6. **Migrate legacy memory**: If `.resonance/learnings.jsonl` exists, append each entry as a dated one-line lesson under `## Lessons` in `.resonance/02_memory.md`, then delete the file. Lessons in a store no host loads are lessons lost; fleet repos kept writing there for months while nothing read them. → verify: `learnings.jsonl` is gone and its lessons appear in the loaded index.
+7. **Verify the upgrade**: Run `/system-health`. It must report the correct skill count. Flag if score < 80. → verify: health check passes.
+8. **Clean up**: Remove the temp directory.
 
 ## Recovery
 
 - Something went wrong after deleting `.agents/` → clone the repo and copy `.agents/` back in. This is faster and cleaner than restoring a backup of an old version.
+- `.agents/skills` is empty after the copy → the copy failed silently and every specialist is disabled. Re-copy from the temp clone before anything else, then verify the skill count via the wake script or `/system-health`.
 - `/system-health` fails (score < 50) → do not use the system. Re-run steps 3-5 from a fresh clone. The issue is almost always a partial copy.
 - Conflict in `00_soul.md` → this should not happen because `.resonance/` is never touched. If it does happen, the user has accidentally run the wrong command. Stop and confirm scope before proceeding.
 

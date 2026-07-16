@@ -199,6 +199,12 @@ def build_commands(host_name: str, dry_run: bool) -> int:
     if not dry_run:
         root = tmpl.split("{")[0]
         print(f"commands  {host_name}: {n} shims -> {root}")
+        try:
+            if Path.cwd().resolve() != REPO.resolve():
+                print(f"note: shims land relative to the parent of .forge/ ({REPO}), "
+                      f"not the current directory. Install .forge/ at the project root.")
+        except Exception:
+            pass
     return rc
 
 

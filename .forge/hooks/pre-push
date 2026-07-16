@@ -32,6 +32,8 @@ fail() { echo "Resonance ship-gate: $1 Push blocked. Fix it, or bypass once with
 "$PY" .forge/validate_library.py >/dev/null 2>&1 || fail "library validator failed."
 "$PY" .forge/run_evals.py --all --check >/dev/null 2>&1 || fail "eval structure check failed."
 "$PY" .forge/doc_drift.py >/dev/null 2>&1 || fail "docs are out of sync (doc_drift)."
+# Field-inbox age (machine-local, warn-only; silent when not configured).
+"$PY" .forge/hooks/inbox_age.py 2>/dev/null
 # Template purity: the shipped memory file must stay the pristine template.
 # Instance lessons belong in the private memory the context bridge loads,
 # never in the tracked file. This makes the 2026-07 memory wipe unrepeatable

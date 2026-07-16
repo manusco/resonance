@@ -19,6 +19,9 @@ Yes, but you will lobotomize the project. The Agent will forget everything it le
 ### How do I update the rules?
 Edit `.resonance/00_soul.md`. This is the "Constitution". Whatever you write there is Law for every Agent that touches this project.
 
+### I ran `forge.py commands` and the shims landed in the wrong folder?
+The Forge writes shims relative to the PARENT of the `.forge/` directory, not your current working directory. Put `.forge/` at the project root and the shims land at the root, wherever you run the command from.
+
 ### Can I run a system check manually?
 Yes. You can verify your skills, workflows, and memory structure without invoking an LLM.
 

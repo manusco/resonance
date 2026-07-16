@@ -28,9 +28,8 @@ The `.resonance/` brain is the single source of truth for a project:
 
 - **Soul** (`00_soul.md`): vision and user. Who we build for.
 - **State** (`01_state.md`): the active task. What we are doing now.
-- **Memory** (`02_memory.md`): the decision log. Why we chose what we chose.
+- **Memory** (`02_memory.md`): the loaded lessons index, with settled decisions under `## Decisions`. Written once, read every session after.
 - **Systems** (`04_systems.md`): the map. Schemas, contracts, logic flows.
-- **Learnings** (`learnings.jsonl`): hard-won project quirks.
 
 Code must never contradict the brain. The brain is owned by the project and is never overwritten on upgrade.
 
