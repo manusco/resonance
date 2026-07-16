@@ -101,10 +101,20 @@ def session_start() -> int:
             f"FLAGSHIP MEMORY UNREACHABLE: machine.json points flagshipMemory at "
             f"'{cfg.get('flagshipMemory')}' but {idx.name} is not there. The private "
             f"memory is NOT loading this session. Fix the path or run the bootstrap script.")
-    if not Path(".git/hooks/pre-commit").is_file():
-        alarms.append(
-            "GIT GUARDS NOT INSTALLED: .git/hooks/pre-commit is missing. "
-            "Run `npm run hooks:install` (dash guard, version guard, ship-gate).")
+    for hook in ("pre-commit", "pre-push"):
+        installed = Path(".git/hooks") / hook
+        source = Path(".forge/hooks") / hook
+        if not installed.is_file():
+            alarms.append(
+                f"GIT GUARDS NOT INSTALLED: .git/hooks/{hook} is missing. "
+                f"Run `npm run hooks:install` (dash guard, version guard, ship-gate).")
+        elif source.is_file():
+            a = installed.read_bytes().replace(b"\r\n", b"\n")
+            b = source.read_bytes().replace(b"\r\n", b"\n")
+            if a != b:
+                alarms.append(
+                    f"GIT GUARD STALE: .git/hooks/{hook} differs from .forge/hooks/{hook}. "
+                    f"Re-run `npm run hooks:install` so the installed guard matches the source.")
     if alarms:
         print("Resonance canary:")
         for a in alarms:

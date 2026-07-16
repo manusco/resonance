@@ -17,7 +17,8 @@ You do not "polish" skills by feel. A skill improves only when the number moves,
 ## Prerequisites (fail fast)
 
 - [ ] A scorecard exists (`.forge/eval_results.json`). If not, run `python .forge/run_evals.py --all --score` first (needs a model command).
-- [ ] A model command is configured for re-measurement (`--model-cmd` or `RESONANCE_MODEL_CMD`). Without it you can propose changes but cannot prove them, so stop and say so.
+- [ ] Answerer AND judge models are configured (`RESONANCE_MODEL_CMD` and `RESONANCE_JUDGE_CMD`, different models). Without them you can propose changes but cannot prove them, so stop and say so.
+- [ ] Calibration exists (`python .forge/improve.py calibrate`, a one-time A/A noise-floor run). Without it remeasure prints numbers but refuses verdicts.
 
 ## Algorithm
 
@@ -28,7 +29,7 @@ Copy this checklist and tick items as you go.
 3. **Diagnose body vs rubric.** Read the skill and its evals. Decide: is the BODY weak (the skill does not add enough over the base model), or is the RUBRIC coarse (the eval cannot see the value the skill already adds)? See body_vs_rubric. → verify: the cause is named, not guessed.
 4. **Make one targeted change in `.forge` SOURCE.** Either sharpen the body (add the missing rigor, the concrete step, the decision the base model skips) or sharpen the rubric (make it a HARDER, more discriminating test). One change, one hypothesis. → verify: exactly one skill or rubric was edited.
 5. **Rebuild and validate.** `python .forge/forge.py build <skill>`, then `validate_skill.py` and `validate_library.py`. → verify: clean.
-6. **Re-measure (the gate).** `python .forge/improve.py remeasure <skill-path>`. Keep the change ONLY if it reports IMPROVED. If REGRESSED or no change, revert it. → verify: kept changes measured higher; the rest reverted.
+6. **Re-measure (the gate).** `python .forge/improve.py remeasure <skill-path>`. Keep the change ONLY on a KEEP verdict. REVERT means revert now. NEW BASELINE means the rubric changed: run the scored re-baseline before any verdict. UNCALIBRATED means run `calibrate` once first. → verify: kept changes carry a KEEP verdict; the rest reverted.
 7. **Record.** Add one line under `## Decisions` in `.resonance/02_memory.md`: improved <skill>, what changed, and the lift delta. → verify: logged.
 8. **Bound the pass.** Improve a few skills (roughly 3 to 5), then stop and report the deltas. Do not grind the whole library in one run. → verify: stopped and summarized.
 
@@ -44,7 +45,8 @@ Copy this checklist and tick items as you go.
 
 ## Recovery
 
-- Re-measure says REGRESSED → revert immediately. Do not keep a change that made it worse to "clean up later".
+- Re-measure says REVERT → revert immediately. Do not keep a change that made it worse to "clean up later".
+- Re-measure says NEW BASELINE or UNCALIBRATED → no verdict exists. Re-baseline with a scored run (rubric changed) or run `calibrate` once, then remeasure again. Never keep a change on raw numbers alone.
 - The model command is missing → stop. You can draft changes but you cannot keep any without the grounded re-measure. Say the loop is blind and hand back.
 - Every change is flat → the eval may be genuinely coarse, or the base model is already at the ceiling for this case. Record that and move to the next skill.
 - A change passes re-measure but feels like gaming → it is. Revert it and fix the rubric to be harder.

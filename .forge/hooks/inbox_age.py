@@ -63,6 +63,9 @@ def main() -> int:
         if oldest and (today - oldest).days > MAX_LESSON_AGE_DAYS:
             print(f"Resonance inbox: {count} unrouted field lesson(s); the oldest is from "
                   f"{oldest} (> {MAX_LESSON_AGE_DAYS} days). Route or discard them.")
+        elif count and oldest is None:
+            print(f"Resonance inbox: {count} unrouted field lesson(s) with unparseable "
+                  f"dates; check the inbox format.")
 
     stamp = inbox / ".last_harvest"
     if stamp.is_file():

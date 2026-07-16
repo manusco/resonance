@@ -11,6 +11,6 @@
   ],
   "checks": [
     {"kind": "contains_any", "value": ["ai slop", "ai-slop", "slop"]},
-    {"kind": "regex_absent", "value": "(?i)(looks good as[- ]is|ready to ship|no changes needed|approved as[- ]is)"}
+    {"kind": "contains_any", "value": ["hover", "focus"]}
   ]
 }

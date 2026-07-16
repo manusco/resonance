@@ -130,6 +130,7 @@ def main(argv: list[str]) -> int:
         if len(names) > 1:
             warnings.append(f"near-duplicate reference names: {sorted(names)}")
 
+    _evals_sync_check(errors)
     _flagship_memory_checks(errors, warnings)
 
     print(f"Resonance library scan: {len(skills)} skills under {root}\n")
@@ -139,6 +140,27 @@ def main(argv: list[str]) -> int:
         print(f"  warn   {w}")
     print(f"\n{len(errors)} error(s) | {len(warnings)} warning(s)")
     return 1 if (errors or (args.strict and warnings)) else 0
+
+
+def _evals_sync_check(errors: list[str]) -> None:
+    """The runner reads COMPILED evals (.agents); the improvement baseline hashes
+    SOURCE evals (.forge/skills). A hand-edit to a compiled case would change what
+    gets measured without tripping the rubric-change gate, so the two trees must
+    stay identical (newline-normalized; git may translate line endings)."""
+    src_root = Path(".forge/skills")
+    out_root = Path(".agents/skills")
+    if not src_root.is_dir() or not out_root.is_dir():
+        return
+    for src in sorted(src_root.glob("**/evals/*.json")):
+        rel = src.relative_to(src_root)
+        out = out_root / rel
+        if not out.is_file():
+            errors.append(f"eval not compiled: {rel.as_posix()} (run forge.py build)")
+            continue
+        a = src.read_bytes().replace(b"\r\n", b"\n")
+        b = out.read_bytes().replace(b"\r\n", b"\n")
+        if a != b:
+            errors.append(f"eval diverged from source: {rel.as_posix()} (run forge.py build)")
 
 
 def _flagship_memory_checks(errors: list[str], warnings: list[str]) -> None:

@@ -226,19 +226,15 @@ def remeasure(path: str, model_cmd: str, judge_cmd: str, baseline_ref: str, reps
     base = run_evals.load_baseline(out_dir) if out_dir else {}
     cal = _floors(base)
 
-    # rubric-change gate: a changed evals dir resets the baseline, no verdict
+    # rubric-change gate: a changed evals dir blocks verdicts until a scored
+    # re-baseline. remeasure NEVER writes the hash itself; only --score does,
+    # so running remeasure twice cannot talk itself past this gate.
     cur_hash = run_evals.evals_dir_hash(path)
     entry = base.get("skills", {}).get(path)
     if entry and entry.get("evals_hash") and entry["evals_hash"] != cur_hash:
         print(f"NEW BASELINE: the evals for {path} changed since the recorded baseline "
-              f"(rubric edits never count as lift). No keep verdict. "
-              f"Re-run `run_evals.py {path} --score` to re-baseline, then remeasure.")
-        if out_dir:
-            entry["evals_hash"] = cur_hash
-            entry["lift"] = None
-            entry["note"] = "rubric changed; re-baseline required"
-            entry["date"] = _dt.date.today().isoformat()
-            run_evals.save_baseline(out_dir, base)
+              f"(rubric edits never count as lift). No keep verdict, now or on re-run. "
+              f"Run `run_evals.py {path} --score` to re-baseline, then remeasure.")
         return 3
 
     old_body = body_at_ref(path, baseline_ref)

@@ -41,4 +41,4 @@ RESONANCE_AGENT_CMD="<a tools-capable agent CLI>"        # orchestration evals
 
 ## Cost, so nobody skips measurement out of fear
 
-A full-library scored run at 3 reps is roughly 180 cases x 3 reps x 2 arms plus judging: low single-digit dollars on a budget model. A per-skill remeasure is cents. Calibration is a few hundred calls, once.
+A full-library scored run at 3 reps is roughly 240 cases x 3 reps x 2 arms plus judging: low single-digit dollars on a budget model. A per-skill remeasure is cents. Calibration is a few hundred calls, once.

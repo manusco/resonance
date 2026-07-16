@@ -11,6 +11,6 @@
   ],
   "checks": [
     {"kind": "regex_absent", "value": "[\u2014\u2013]"},
-    {"kind": "regex_absent", "value": "(?i)(seamless|game-changing|paradigm shift|leverages?|elevate|empowers?|unlock|cutting-edge|transformative|fast-paced)"}
+    {"kind": "contains_any", "value": ["kill list", "banned", "ai-ism", "slop"]}
   ]
 }

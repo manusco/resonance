@@ -11,6 +11,6 @@
   ],
   "checks": [
     {"kind": "contains_any", "value": ["eval set", "golden set", "eval suite"]},
-    {"kind": "regex_absent", "value": "(?i)(ready to ship|sounds good|approved|good to go|ship it as[- ]is)"}
+    {"kind": "contains_any", "value": ["grounding", "cite", "retrieved", "hallucinat"]}
   ]
 }

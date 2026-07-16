@@ -9,5 +9,5 @@
       "slug.test.mjs": "import { test } from 'node:test';\nimport assert from 'node:assert';\nimport { slugify } from './slug.mjs';\ntest('spaces become hyphens', () => { assert.equal(slugify('Hello World'), 'hello-world'); });\ntest('punctuation is stripped', () => { assert.equal(slugify('Ship it, now!'), 'ship-it-now'); });\n"
     }
   },
-  "assert": { "type": "command", "cmd": "node --test", "expect_exit": 0 }
+  "assert": { "type": "command", "cmd": "node -e \"const t=require('fs').readFileSync('./slug.test.mjs','utf8');if(!t.includes('hello-world')||!t.includes('ship-it-now'))process.exit(2);require('child_process').execSync('node --test',{stdio:'ignore'})\"", "expect_exit": 0 }
 }
