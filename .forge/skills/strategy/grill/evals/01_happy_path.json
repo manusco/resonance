@@ -8,5 +8,11 @@
     "Surfaces failure and edge cases (large exports, empty data, permissions on which rows a user may export)",
     "Does not write code or scaffold the feature before shared understanding is confirmed",
     "Ends by summarizing resolved decisions and asking the user to confirm before implementation"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

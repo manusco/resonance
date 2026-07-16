@@ -4,5 +4,11 @@
   "files": [],
   "expected_behavior": [
     "The agent stops at the Prerequisites check and tells the user to clean the git status before attempting a framework upgrade"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

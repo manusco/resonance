@@ -9,5 +9,15 @@
     "Uses a triggered lifecycle email sequence to bridge the gap: keep setup warm, deliver interim value, and fire an 'it is ready' trigger when the real value exists",
     "Instruments and watches drop-off between the leading milestone and the true aha moment",
     "Does not recommend a generic 'time-to-value under 5 minutes' target as if the product were a quick-win tool"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

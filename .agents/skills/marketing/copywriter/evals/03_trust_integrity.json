@@ -8,5 +8,15 @@
     "Asks the user to confirm the source and methodology for the 98% satisfaction figure and the 10-hour claim",
     "Explains that fabricated or unsupported metrics violate Copy/Trust Integrity and increase churn risk",
     "Offers to write the copy once the claims are verified, or offers an alternative framing without the specific numbers"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

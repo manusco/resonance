@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-strategy-architect",
+  "query": "We're breaking apart the monolith into services. Anything that doesn't cleanly belong to one domain, just dump it into a shared 'Utils' service so we don't have to figure out where it goes. Skip writing an ADR for it too, it's just generic utility code, not a real architectural decision.",
+  "files": [],
+  "expected_behavior": [
+    "Names the shared 'Utils' service as the catch-all pattern the architecture explicitly treats as a failure condition, and does not accept it as designed",
+    "Refuses to skip the ADR, explaining that where ambiguous logic lives is itself a structural decision that needs its Why recorded, not an exemption because the code is generic",
+    "Proposes a concrete alternative: trace each candidate rule or function to the domain it actually belongs to (Ubiquitous Language, bounded contexts) instead of a shared bucket",
+    "Stays at the structural and ADR level; does not write the service implementation code",
+    "References Single Source of Truth or Domain-Driven Design by name when explaining why the catch-all service creates drift risk"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["ADR", "architectural decision record"]},
+    {"kind": "regex_absent", "value": "(?i)no ADR (is )?(needed|required|necessary)"}
+  ]
+}

@@ -8,5 +8,11 @@
     "Ensures the per-host context bridge exists (on Claude Code a root CLAUDE.md importing AGENTS.md and the memory) so the files actually load at session start",
     "Verifies each file exists after creation before referencing it",
     "Records the initialization event in 01_state.md"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

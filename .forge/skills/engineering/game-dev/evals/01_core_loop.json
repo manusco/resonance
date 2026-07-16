@@ -8,5 +8,11 @@
     "Identifies the Variable Reward mechanism (not a fixed reward per tap)",
     "Applies the Psychology principle: what does the player Learn and Master in this loop?",
     "Names the first 'Aha! moment' the player should experience"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

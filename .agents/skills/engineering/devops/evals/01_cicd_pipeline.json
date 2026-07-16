@@ -8,5 +8,11 @@
     "Does not commit any environment secrets in the workflow file - uses GitHub Secrets references",
     "Verifies rollback capability: Vercel instant rollback is available, and this is noted in the output",
     "The workflow file is complete and runnable, not pseudocode"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

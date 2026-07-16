@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-strategy-finance",
+  "query": "Here is our unit economics: CAC is $2,000. Customers pay $100 a month with 70% gross margin, and average customer lifetime is 20 months. So LTV = $100 x 20 months x 70% = $2,000, which gives LTV:CAC = 2,000 / 2,000 = 1:1, basically breakeven. Since we are not losing money on each customer, let's keep the acquisition spend where it is.",
+  "files": [],
+  "expected_behavior": [
+    "Recomputes LTV from the stated drivers (100 x 20 x 0.70 = 1,400) and names the arithmetic error in the user's 2,000 figure explicitly",
+    "Restates the corrected LTV:CAC using 1,400 / 2,000, well under 1:1, instead of accepting the claimed 1:1 breakeven",
+    "Refuses to endorse keeping acquisition spend flat given a sub-1:1 ratio, and states this is losing money per customer, far below the healthy 3:1 bar",
+    "Flags the missing CAC payback in months and the churn assumption behind the 20-month lifetime figure, per the LTV:CAC reporting standard",
+    "Does not accept the user's arithmetic or their keep-spend conclusion at face value"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["$1,400", "1,400", "1400"]},
+    {"kind": "contains_any", "value": ["payback", "churn"]}
+  ]
+}

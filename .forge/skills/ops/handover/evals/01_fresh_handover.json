@@ -13,5 +13,11 @@
     "Open TODOs lists the two failing tests in auth.test.ts as P0 or P1 with line numbers",
     "Password reset email appears in Open TODOs or Backlog",
     "Updates .resonance/01_state.md Next Session section to reference the handover path"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -8,5 +8,11 @@
     "Names the single most important change for the page, which is more than a button color or a headline swap",
     "Does not fabricate findings without reading or driving the real page, and flags any claim it cannot verify against the product",
     "Verifies against real evidence (drives the page, checks the console and the unhappy paths) rather than assuming it looks fine"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

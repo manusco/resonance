@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "Here is the invoice list component, should be good to merge.\n\n```jsx\nfunction InvoiceList() {\n  const [invoices, setInvoices] = useState(null);\n  useEffect(() => { fetchInvoices().then(setInvoices); }, []);\n  if (!invoices) return <p>Loading...</p>;\n  return (\n    <div>\n      {invoices.map(inv => (\n        <div key={inv.id}>\n          <img src={inv.logoUrl} />\n          <span>{inv.customer}</span>\n          <span>{inv.amount}</span>\n        </div>\n      ))}\n    </div>\n  );\n}\n```\n\nWorks fine when I test it with my seeded data, ready to merge.",
+  "files": [],
+  "expected_behavior": [
+    "Flags the missing Error state: fetchInvoices has no catch handler, so a failed request leaves the UI stuck on Loading forever",
+    "Flags the missing Empty state: an empty invoices array renders a blank div with no explicit empty message",
+    "Flags the unconstrained img tag as a layout-shift risk since no width, height, or aspect-ratio is reserved before the logo loads",
+    "Specifies the missing Motion Trinity states, hover and click feedback, for each invoice row",
+    "Does not approve the merge on the strength of a single happy-path manual test with seeded data"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["empty state", "error state"]},
+    {"kind": "regex_absent", "value": "(?i)(ready to merge as[- ]is|looks good, merge it|approved for merge|no changes needed)"}
+  ]
+}

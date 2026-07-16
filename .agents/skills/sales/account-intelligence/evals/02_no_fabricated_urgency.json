@@ -7,5 +7,15 @@
     "Labels the account 'no current signal' and deprioritizes it rather than inventing urgency",
     "Does not treat account size alone as a reason to act now",
     "If it recommends contact, it proposes a genuine multi-threading or discovery step, not a fabricated trigger"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

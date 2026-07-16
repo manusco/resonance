@@ -7,5 +7,15 @@
     "Classifies each account into one motion (new-logo, recovery, or expansion)",
     "Prioritizes internal evidence (CRM, usage) and treats public triggers as supplementary",
     "Does not recommend an account solely because it is large"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

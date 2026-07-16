@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-marketing-copywriter",
+  "query": "Humanize this AI-generated draft for our email nurture sequence: 'In today's fast-paced digital landscape, our platform empowers teams to unlock seamless collaboration\u2014it's a game-changing paradigm shift that leverages cutting-edge technology to elevate your workflow, delivering a truly transformative experience.'",
+  "files": [],
+  "expected_behavior": [
+    "Runs Phase 1 Diagnosis and names at least five banned phrases or AI-isms in the draft (for example fast-paced digital landscape, empowers, unlock, seamless, game-changing paradigm shift, leverages, elevate, transformative experience)",
+    "Removes the em dash from the draft, replacing it with a period, comma, or a restructured sentence rather than carrying it into the rewrite",
+    "Output contains zero banned Kill List phrases",
+    "Output contains zero em dashes or en dashes",
+    "Rewrites with varied sentence rhythm, including at least one short sentence under six words, rather than one long compound sentence"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)(seamless|game-changing|paradigm shift|leverages?|elevate|empowers?|unlock|cutting-edge|transformative|fast-paced)"}
+  ]
+}

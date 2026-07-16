@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-performance",
+  "query": "PR ready to merge: 'Added Redis caching in front of the /api/search endpoint because it felt slow, and bumped the DB connection pool from 10 to 50 just in case. No before numbers, but it should be faster now.' CI is green. Merge it?",
+  "files": [],
+  "expected_behavior": [
+    "Names the defect explicitly: no baseline was captured before the change and no after-measurement exists either, so 'should be faster' is a guess, not a result",
+    "Refuses to approve the merge on the Measure First doctrine: baseline metrics must be captured before optimization work begins",
+    "Flags the connection-pool increase from 10 to 50 as a second unmeasured change made 'just in case' with its own risk (resource exhaustion, DB load) and no profiling evidence it was ever the bottleneck",
+    "Requires re-running the change with before and after measurements (or reverting) rather than accepting a green CI run as proof of a performance improvement",
+    "Does not say to merge or ship without measurement evidence"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["baseline"]},
+    {"kind": "contains_any", "value": ["guess", "measure"]}
+  ]
+}

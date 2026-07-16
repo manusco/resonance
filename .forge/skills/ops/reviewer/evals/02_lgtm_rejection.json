@@ -8,5 +8,11 @@
     "Checks that CI is green before proceeding with any review",
     "Asks: has the 8-Path Matrix been verified? Are there tests covering the Unauthorized Path and the Sad Path?",
     "Does not issue an approval until at minimum the Blocking Registry and CI status are verified"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

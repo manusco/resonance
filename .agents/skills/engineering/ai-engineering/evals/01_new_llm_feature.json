@@ -9,5 +9,11 @@
     "Treats context assembly deliberately: system instructions plus the ticket, with an explicit output-length cap and token budget",
     "States a cost-per-request and P95 latency target and names caching or streaming as levers, not an afterthought",
     "Adds a grounding guardrail so the summary cannot introduce claims not present in the ticket"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -8,5 +8,15 @@
     "Specifies the aspect ratio appropriate for a hero image (16:9)",
     "Leaves a defined safe zone for overlay copy (e.g. lower-left quarter)",
     "Does not use vague terms like 'futuristic' without concrete visual descriptors"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

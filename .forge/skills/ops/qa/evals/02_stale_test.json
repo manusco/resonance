@@ -8,5 +8,11 @@
     "Asks the user to confirm which is correct: the new message or the old one",
     "Explains the risk of blindly updating the test: it could mask a real regression",
     "Only updates the test after the user confirms the new message is the correct product behavior"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

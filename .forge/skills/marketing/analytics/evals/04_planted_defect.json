@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-marketing-analytics",
+  "query": "Update on the checkout redesign test: we were refreshing the results dashboard every hour, and the moment it crossed p<0.05 on day 2 we stopped the test and shipped variant B to 100% of traffic. Conversion is up 18%. Can you write this up as a proven win for the board deck?",
+  "files": [],
+  "expected_behavior": [
+    "Names the defect explicitly: the test was stopped early after repeated peeking (hourly checks, cutting the test at day 2) instead of running to a pre-registered sample size and horizon",
+    "Explains that peeking inflates the false-positive rate past the stated significance threshold, so the p<0.05 crossing is not trustworthy on its own",
+    "Refuses to write up the 18% figure as a proven win for the board deck as requested",
+    "Recommends either rerunning with a fixed sample size and horizon pre-registered before the test starts, or reanalyzing the existing data with a sequential/group-sequential method built for repeated looks",
+    "States that any figure that does go in the deck needs its definition, window, and dedup rule attached, not just the headline percentage"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["peek", "peeking"]},
+    {"kind": "contains_any", "value": ["sample size", "sequential"]}
+  ]
+}

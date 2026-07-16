@@ -8,5 +8,11 @@
     "Verifies code examples against the current library docs (not from memory)",
     "States a recommendation with a clear rationale, then defers the decision to the user",
     "Does not present a wall of text - uses tables, bullet points, and code blocks"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -8,5 +8,11 @@
     "Reads the active plan checklist in 01_state.md to identify pending tasks",
     "Does not answer from memory alone - verifies from the written state files",
     "If the information is not in the state files, says so explicitly rather than hallucinating, and points the user to the exact file and section otherwise"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

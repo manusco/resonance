@@ -9,5 +9,11 @@
     "If the right chunk was retrieved but ignored, points at generation causes (weak grounding instruction, lost-in-the-middle, model overriding context)",
     "Recommends measuring retrieval recall and answer faithfulness separately instead of eyeballing final answers",
     "Adds a grounding requirement (answer only from context, cite the source, say 'I don't know' when the handbook lacks it) to stop invented policies"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

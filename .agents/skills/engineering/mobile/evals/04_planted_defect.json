@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-mobile",
+  "query": "Here is the save function we are shipping for offline support in the note-taking app: 'async function saveNote(note) { setLoading(true); const res = await fetch(\"/api/notes\", { method: \"POST\", body: JSON.stringify(note) }); if (!res.ok) throw new Error(\"Failed to save\"); setLoading(false); navigation.goBack(); }' Tests pass against our local API. Good to ship as our offline mode?",
+  "files": [],
+  "expected_behavior": [
+    "Names the defect explicitly: the function awaits the network request before returning and shows a loading spinner, a network-first pattern with no offline behavior at all",
+    "Rejects labeling this 'offline mode': with no connection the fetch fails or hangs and the note is never saved, contradicting the offline-first principle",
+    "Prescribes the fix: write the note to the local database (SQLite/WatermelonDB) first and return immediately, updating the UI optimistically without waiting on the network",
+    "Requires a background sync queue that flushes to the server when connectivity returns, with a named conflict-resolution strategy",
+    "Does not approve shipping the function as offline support"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["local db", "local database", "sqlite", "watermelondb"]},
+    {"kind": "contains_any", "value": ["background sync", "sync queue", "queue"]}
+  ]
+}

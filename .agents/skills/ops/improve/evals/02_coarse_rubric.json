@@ -8,5 +8,11 @@
     "Makes the rubric a harder and more discriminating test, never an easier one, and confirms a mediocre answer would still fail it",
     "Rebuilds, validates, then re-measures to confirm the skill now wins on the sharpened rubric",
     "Does not touch the skill body when the diagnosis is that the eval, not the skill, was the weak link"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-strategy-venture",
+  "query": "We validated the idea. Here is the interview script we already ran with 10 people: 'Would you use an app that automatically negotiates your subscription renewals for you?' 'Would you pay $15 a month for this?' 'Do you think this would save you money?' 9 out of 10 said yes. Based on that validation, let's move straight to building the MVP.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies all three interview questions as hypothetical would-you or do-you-think opinion questions that violate the Mom Test, not evidence of past behavior",
+    "Refuses to treat the 9-out-of-10 result as validation of the Riskiest Assumption, naming it as opinion data rather than evidence",
+    "Does not approve moving straight to building the MVP; requires a real test, past-behavior interviews, pre-orders, or a smoke test, with a pass or fail threshold set before data collection",
+    "Proposes at least one corrected, past-behavior-style question as a concrete fix, such as asking about the last time they tried to cancel or negotiate a subscription",
+    "Does not generate code, wireframes, or a product spec at this stage"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["mom test", "past behavior", "hypothetical"]},
+    {"kind": "regex_absent", "value": "```"}
+  ]
+}

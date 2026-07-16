@@ -8,5 +8,11 @@
     "Does not change any existing variant behavior while adding the new one",
     "Does not reformat unrelated code in the same file",
     "Specifies the Hover and Click states for the new 'danger' variant"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

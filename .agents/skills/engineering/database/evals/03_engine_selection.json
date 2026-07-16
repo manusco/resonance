@@ -8,5 +8,11 @@
     "Does not recommend MongoDB by default because the data is JSON",
     "States a recommendation with a specific reason tied to the stated requirements",
     "Recommends recording the decision in an ADR regardless of the choice"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

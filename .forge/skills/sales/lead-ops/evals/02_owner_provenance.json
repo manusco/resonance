@@ -7,5 +7,15 @@
     "States the ownership provenance it can actually support and flags the ambiguity",
     "Recommends how to resolve the true owner rather than asserting one",
     "Refuses to auto-assign or auto-escalate the lead"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

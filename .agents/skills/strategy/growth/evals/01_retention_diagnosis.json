@@ -8,5 +8,11 @@
     "Recommends a cohort analysis to find where users drop off (not a blended average)",
     "Does not recommend increasing ad spend until retention is diagnosed",
     "Proposes a specific retention experiment with a defined success threshold"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

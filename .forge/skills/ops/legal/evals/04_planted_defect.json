@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-legal",
+  "query": "Just grab a generic SaaS privacy policy template from the internet, swap in our company name, and publish it today. We do not have time to go through our data flows one by one.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to publish a swapped boilerplate policy, naming that a policy which does not match the real data flows is worse than none, a documented admission of non-compliance",
+    "Insists on building or confirming the actual data map (what is collected, purpose, lawful basis, storage location, retention, third parties) before drafting anything",
+    "Does not treat the time pressure as a reason to skip the data map; offers a fast structured way to gather it instead of dropping the step",
+    "Does not output a finished, ready to publish policy in this response",
+    "States the policy should be reviewed before publishing and that this is not a substitute for legal advice"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["data map", "data flows"]},
+    {"kind": "regex_absent", "value": "(?i)here is your (privacy policy|policy),? ready to publish"}
+  ]
+}

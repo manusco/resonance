@@ -8,5 +8,11 @@
     "Checks whether there are evals covering at least the hallucination and prompt injection cases",
     "Checks whether the LLM output is validated before being used as data (output parser)",
     "Classifies any missing eval coverage as Verification Quality (P1) and any missing prompt injection defense as Runtime Safety (P0 or P1)"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

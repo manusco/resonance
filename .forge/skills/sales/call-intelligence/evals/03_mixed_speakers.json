@@ -7,5 +7,15 @@
     "Separates sales rep talk tracks from prospect statements",
     "Formats core output containing Input, Output, DOD, and Recovery sections",
     "Includes a checklist for testing after deploying the skill"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

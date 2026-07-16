@@ -8,5 +8,15 @@
     "Produces at least 8 specific, falsifiable hypotheses with quoted evidence from the emails",
     "Does NOT ask 'How would you describe your tone?' - deduces from text and presents hypotheses instead",
     "Asks only one question at a time during hypothesis validation"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

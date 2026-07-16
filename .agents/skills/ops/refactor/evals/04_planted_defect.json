@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-refactor",
+  "query": "I refactored the pricing module to clean it up, pure formatting, no behavior change:\n```diff\n- function applyDiscount(total) {\n-   if (total >= 100) return total * 0.9;\n-   return total;\n- }\n+ function applyDiscount(total) {\n+   if (total > 100) return total * 0.9;\n+   return total;\n+ }\n```\nI did not re-run the discount edge-case tests since they are slow and this is just a formatting cleanup. Approve it as a pure refactor and I will merge.",
+  "files": [],
+  "expected_behavior": [
+    "Flags that total >= 100 became total > 100 as a behavioral change: a cart totaling exactly 100 silently loses the discount it used to get",
+    "Names the business consequence: customers at the exact threshold stop receiving the discount without anyone deciding that on purpose",
+    "Rejects the pure formatting claim and requires the discount edge-case tests to actually run before and after, not skipped as slow",
+    "States structural and behavioral changes must ship as separate commits, and this diff smuggles a behavioral change inside a claimed formatting pass",
+    "Does not approve the merge as a pure refactor"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["boundary", "exactly 100", "= 100", "edge case"]},
+    {"kind": "contains_any", "value": ["separate commit"]}
+  ]
+}

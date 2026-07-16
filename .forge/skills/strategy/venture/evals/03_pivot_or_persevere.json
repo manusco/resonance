@@ -8,5 +8,11 @@
     "Produces a clear Pivot / Persevere decision framework with the evidence cited",
     "If recommending to build, names the next Riskiest Assumption to test during build",
     "Does not manufacture optimism - presents the ambiguity honestly"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -8,5 +8,11 @@
     "Recommends structured logs carrying trace_id/span_id and OpenTelemetry tracing so a slow or failed request can be localized in the call graph",
     "Warns against putting unbounded-cardinality labels (raw user_id, full URL) on metrics and puts that detail on traces/logs instead",
     "Frames the goal as explaining the running system, distinct from pre-release testing (qa) or codebase health scoring (system-health)"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

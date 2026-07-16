@@ -8,5 +8,15 @@
     "Applies the PMF Diagnostics framework: which assumption is wrong? Product, market, or channel?",
     "Produces a structured pivot recommendation rather than 'just keep improving the product'",
     "Does not recommend expanding the feature set as the first response to a sub-40% PMF score"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

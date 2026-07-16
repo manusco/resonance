@@ -8,5 +8,11 @@
     "Identifies the Riskiest Assumption as a single, testable statement",
     "Produces at least 3 Mom Test interview questions (no 'would you' phrasing)",
     "Sets a kill threshold before any data collection begins"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

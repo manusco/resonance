@@ -8,5 +8,15 @@
     "Checks date signal consistency: URL, JSON-LD, byline, and meta publish date must align",
     "Proposes a 'Direct Answer block' within the first 50 words to target AI Overviews in parallel",
     "Does not recommend a full content rewrite as the first action - starts with the highest-ROI items"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

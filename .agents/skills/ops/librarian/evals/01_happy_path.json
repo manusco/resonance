@@ -8,5 +8,11 @@
     "Does not mix both quadrants in one document",
     "Produces a document with zero TBD, 'simply', or 'as needed' placeholders",
     "Links the new document to at least one related document (e.g. the API reference or the security checklist)"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

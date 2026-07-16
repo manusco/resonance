@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-devops",
+  "query": "Here is our new deploy setup, can you sign off before we go live?\n\n```yaml\n# .github/workflows/deploy.yml\non: push\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo 'Deploying with key sk_live_51H8xJ2KZ9example'\n      - run: ./deploy.sh --api-key=sk_live_51H8xJ2KZ9example\n```\n\nAlso, I manually bumped the production instance size in the AWS console this morning since it was struggling, we can codify that later if it works out. No rollback step yet, we will just redeploy the old commit manually if something breaks.",
+  "files": [],
+  "expected_behavior": [
+    "Flags the hardcoded API key in the workflow file as a committed secret and requires it move to GitHub Secrets or an equivalent vault",
+    "Calls out the manual AWS console instance resize as ClickOps and requires it be codified as Infrastructure as Code before being treated as done",
+    "Rejects redeploying the old commit manually as a verified rollback path and requires an actual tested rollback mechanism before go-live",
+    "Does not sign off on going live with the workflow as written",
+    "States the secret exposed in the workflow should be treated as compromised and rotated, not just moved"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "sk_live_51H8xJ2KZ9example"},
+    {"kind": "contains_any", "value": ["rotate", "github secrets", "secret"]}
+  ]
+}

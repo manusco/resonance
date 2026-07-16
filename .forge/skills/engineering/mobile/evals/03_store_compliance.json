@@ -8,5 +8,11 @@
     "Checks that all primary actions are reachable with one thumb in the bottom 40% of the screen",
     "Verifies the app launch time is under 200ms to interactive UI",
     "Does not produce a generic 'test your app' checklist - produces specific, actionable items"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

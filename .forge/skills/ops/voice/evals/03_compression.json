@@ -8,5 +8,15 @@
     "Cuts anything that passes the test with 'maybe' - only high-confidence lines survive",
     "Does NOT summarize sections - compresses by removing low-signal lines entirely",
     "Delivers a file under 5,000 tokens with the highest-signal content preserved"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

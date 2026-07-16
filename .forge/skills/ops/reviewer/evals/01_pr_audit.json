@@ -8,5 +8,11 @@
     "Checks all 3 critical layers for the new endpoint: Route guard, Policy, and Resource-level enforcement",
     "Does NOT lead with style or formatting feedback if an auth concern exists",
     "Produces an Atomic Review Report with findings ranked by severity, not by file order"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

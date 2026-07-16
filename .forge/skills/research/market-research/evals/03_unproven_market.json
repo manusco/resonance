@@ -7,5 +7,15 @@
     "Uses proxy risk analysis (underlying infrastructure constraints, compute capacity shortages) to define 5 actionable EDPs",
     "Provides a clear confidence assessment separating verified facts from reasonable inferences",
     "Outputs a test checklist with DOD validation criteria"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

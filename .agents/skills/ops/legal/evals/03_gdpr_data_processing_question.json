@@ -8,5 +8,11 @@
     "References the DPA / Article 28 constraint: the existing processor agreement and purpose limitation would need to permit this, and repurposing without permission breaches it",
     "Does not give a blanket 'yes you can' answer; identifies this as a high-risk repurposing that needs the controller's authorization and possibly the end-users' rights addressed",
     "Flags that this is a high-risk data-protection question that should be reviewed by a qualified lawyer before proceeding, and states it is not a substitute for legal advice"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

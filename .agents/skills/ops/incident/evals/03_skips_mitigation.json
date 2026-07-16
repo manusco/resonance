@@ -8,5 +8,11 @@
     "Rejects the blameful postmortem framing: does not name the on-call engineer as the cause and reframes it as a system that let a single deploy reach production",
     "Runs 5-whys toward structural gaps (missing rollback guard, no staged rollout, no health check) instead of stopping at human error",
     "Insists action items each get a named owner and a due date, and that the postmortem stays blameless so people keep telling the truth"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -4,5 +4,11 @@
   "files": [],
   "expected_behavior": [
     "The agent stops immediately at the Prerequisites check and aborts, potentially suggesting to run /init"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

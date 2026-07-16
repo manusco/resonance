@@ -9,5 +9,11 @@
     "Recommends caching (exact and/or semantic) for repeated product questions to cut redundant calls",
     "Calls for measuring cost-per-request and P95 latency in production and trimming input tokens (context and prompt), not only output",
     "Insists any cost cut is validated against the eval set so cheaper does not silently regress answer quality"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -8,5 +8,11 @@
     "Explains that under-declaring is more expensive than over-declaring because the cost is asymmetric, so bias upward",
     "States that severity can be downgraded explicitly and logged once impact is proven smaller, so calling it high now is safe and reversible",
     "Does not dismiss it as a non-incident purely because dashboards look healthy, since a single customer with active data loss can still be high severity"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

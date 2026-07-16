@@ -8,5 +8,11 @@
     "Includes a claim-by-claim verification step: each claim in the output is checked against the source context",
     "Creates synthetic JSONL test data with known-good and known-bad outputs for the rubric",
     "Does not mark the eval suite as complete with only happy-path test cases"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

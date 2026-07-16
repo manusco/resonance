@@ -4,5 +4,11 @@
   "files": [],
   "expected_behavior": [
     "The agent separates the changes into logical commits (chore, feat, docs) instead of one massive WIP commit before tagging"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

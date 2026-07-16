@@ -8,5 +8,11 @@
     "Produces a third-person description containing an explicit 'Use when' trigger",
     "Keeps the body an overview and pushes detail to references one level deep",
     "Runs validate_skill.py and reports it clean before declaring done"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

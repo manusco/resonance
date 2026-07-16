@@ -1,0 +1,13 @@
+{
+  "name": "build_failing_suite_green",
+  "skill": "engineering/build",
+  "task": "Implement the fix so the test suite passes. The slugify function is broken. Do not edit the test file. You are done only when the executed tests pass.",
+  "fixture": {
+    "files": {
+      "package.json": "{ \"name\": \"fx-build\", \"version\": \"1.0.0\", \"scripts\": { \"test\": \"node --test\" } }\n",
+      "slug.mjs": "export function slugify(s) {\n  return s.toLowerCase(); // bug: spaces and punctuation are not replaced\n}\n",
+      "slug.test.mjs": "import { test } from 'node:test';\nimport assert from 'node:assert';\nimport { slugify } from './slug.mjs';\ntest('spaces become hyphens', () => { assert.equal(slugify('Hello World'), 'hello-world'); });\ntest('punctuation is stripped', () => { assert.equal(slugify('Ship it, now!'), 'ship-it-now'); });\n"
+    }
+  },
+  "assert": { "type": "command", "cmd": "node --test", "expect_exit": 0 }
+}

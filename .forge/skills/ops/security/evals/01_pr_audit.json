@@ -8,5 +8,11 @@
     "Flags if the authorization is only checked at one layer (e.g. only a route guard) without policy and resource-level enforcement",
     "Checks for STRIDE: is Elevation of Privilege possible on this endpoint?",
     "Classifies the finding as P0 if authorization is missing at any critical layer"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

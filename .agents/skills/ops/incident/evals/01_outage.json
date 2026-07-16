@@ -9,5 +9,11 @@
     "Mitigates first by the fastest reversible path (rolls back the 10-minute-old deploy or flips the feature flag) instead of root-causing the code live",
     "Posts a first communication with impact, IC name, and a committed next-update time, keeping the internal channel separate from the external status page",
     "Verifies recovery against the real signal over a hold window before declaring resolved, then drafts a blameless postmortem with a timeline and owned action items"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

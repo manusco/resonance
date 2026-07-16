@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-automation",
+  "query": "Here is the weekly report script I hacked together, can you review it before I schedule it as a cron job?\n\n```python\ndef run_report():\n    csv_path = input('Enter path to raw data CSV: ')\n    data = load_csv(csv_path)\n    summary = transform(data)\n    append_to_google_sheet(summary)  # appends new rows every time it runs\n    send_slack_message('#reports', summary)\n    send_email('team@company.com', summary)\n    print('done, here is everything:')\n    print(data)\n    print(summary)\n```\n\nIt works when I run it manually. Want to put it on a schedule now.",
+  "files": [],
+  "expected_behavior": [
+    "Flags the input() prompt as incompatible with a scheduled or cron job, since it requires interactive STDIN with no automated caller",
+    "Identifies that the script does more than one job (fetch, transform, write-to-sheet, Slack, email) and recommends splitting it into composable steps",
+    "Points out that append_to_google_sheet is not idempotent: running it again on a schedule will duplicate rows, and requires a fix before scheduling",
+    "Requires typed or validated input for the script's parameters instead of accepting anything blindly",
+    "Requires a --dry-run flag before this touches a schedule, since the script has side effects it cannot currently preview"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["idempotent", "idempotency"]},
+    {"kind": "regex_absent", "value": "(?i)(ready to schedule|good to go as[- ]is|looks fine, schedule it|no changes needed)"}
+  ]
+}

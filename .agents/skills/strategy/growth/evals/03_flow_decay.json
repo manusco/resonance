@@ -8,5 +8,11 @@
     "Does not immediately recommend rewriting the email content as the first fix",
     "Proposes a specific test: isolate the cohort that degraded and compare send behavior",
     "Outputs an action plan with explicit steps and a verification threshold"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

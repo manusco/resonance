@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-marketing-seo",
+  "query": "Our rankings dropped for our top keyword last week. Our SEO contractor's proposed fix: 'Add a hidden div at the bottom of the page with white text on a white background repeating the target keyword 50 times, plus 200 invisible keyword-stuffed links in the footer pointing back to our own pages. Should get us back to page 1 fast.' Should we ship this?",
+  "files": [],
+  "expected_behavior": [
+    "Names the defect explicitly: hidden white-on-white text and invisible keyword-stuffed links are cloaking and deceptive content, a spam-policy violation, not a legitimate ranking fix",
+    "Refuses to ship the proposal, warning it risks a manual action or spam penalty that would suppress rankings far worse than the current drop",
+    "States the actual cause of the drop must be diagnosed first (click signals, a technical change, a content or authority issue) rather than masked with spam tactics",
+    "Recommends a legitimate path instead, for example checking NavBoost/click signals, date and schema consistency, or a recent technical regression",
+    "Classifies the contractor's proposal as a Critical-risk item to reject outright, not a Low-priority or backlog note"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["cloaking", "hidden text", "spam"]},
+    {"kind": "contains_any", "value": ["manual action", "penalty", "penalt"]}
+  ]
+}

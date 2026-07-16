@@ -8,5 +8,11 @@
     "Recommends an explicit migration for preview that adds the column, not a code-level null-coalesce workaround",
     "Asks whether the migration can be run in preview or if preview must work without the column temporarily",
     "If a graceful fallback is needed, logs the missing column explicitly rather than silently defaulting to 0"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

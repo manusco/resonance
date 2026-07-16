@@ -9,5 +9,15 @@
     "Recommends a naming convention (object_action, past tense, snake_case) and putting variation in properties rather than new event names",
     "Names a north-star metric tied to delivered value (e.g. activation reached) rather than a vanity metric like total signups",
     "Mentions a tracking plan as the single source of truth and warns against orphan events that feed no metric"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

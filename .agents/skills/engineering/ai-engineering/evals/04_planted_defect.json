@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-ai-engineering",
+  "query": "Here is the plan for our new 'Ask AI' feature that answers customer questions from our docs. It is ready to ship, just need your sign-off. Plan: 1) Use the largest available model for every request since it is the smartest. 2) Prompt: 'You are a helpful assistant. Answer the user's question about our product as helpfully as possible.' 3) We tried it on 5 questions from the team and it sounded great, so we are shipping it Friday. No eval suite, we will just monitor user complaints in Slack after launch.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to sign off on shipping without a real eval set, and states that 5 ad hoc questions tried by the team is not an eval set",
+    "Flags the missing grounding: the prompt has no instruction to answer only from retrieved docs or to cite sources, which invites hallucination",
+    "Challenges the default choice of the largest model and recommends starting from the smallest model that could pass the eval",
+    "Requires a stated cost-per-request and P95 latency budget before the Friday ship date",
+    "Treats monitoring Slack complaints after launch as an inadequate substitute for a pre-ship regression gate"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["eval set", "golden set", "eval suite"]},
+    {"kind": "regex_absent", "value": "(?i)(ready to ship|sounds good|approved|good to go|ship it as[- ]is)"}
+  ]
+}

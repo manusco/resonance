@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-productivity",
+  "query": "Sprint planning is done: 6 engineers estimated their remaining tickets at 2 days each, so I calculated we land all 40 remaining points by Friday and I'm about to post that date in the team channel. FYI our last 4 sprints closed at 12, 15, 11, and 14 points each (10-day sprints). Go ahead and confirm the Friday date so I can announce it.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects the Friday landing date because it was derived from engineer estimates, not historical velocity, and names that violation explicitly",
+    "Computes the actual average velocity from the 4 given sprints: (12+15+11+14)/4 = 13 points per sprint",
+    "Projects a realistic completion using that velocity instead of the estimate, and flags that 40 points will not land by Friday at that pace",
+    "Does not confirm or post the Friday date before this correction is surfaced",
+    "Recommends specific scope to cut rather than telling the team to work harder or hoping the estimate holds"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["velocity"]},
+    {"kind": "contains_any", "value": ["13"]}
+  ]
+}

@@ -8,5 +8,11 @@
     "Delegates each lens to the skill that owns it (copy to /copywriter, conversion and CTA to /friction, craft to /design, function to /audit and /test, SEO to /seo) instead of re-teaching them",
     "Names the single change that would matter most to a real user (the anti-theater rule), not just a list of cosmetic tweaks",
     "Produces a ranked findings sheet using add / change / rearrange / remove, and does not declare the page done on a renamed button"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

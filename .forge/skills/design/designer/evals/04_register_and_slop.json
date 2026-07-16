@@ -7,5 +7,15 @@
     "Refuses the AI default reflexes: does not propose a purple-to-blue gradient, gradient text, default sans for everything, or an identical three-card grid",
     "Justifies typography and color as deliberate choices tied to the brand, not model defaults",
     "Runs the design against the AI slop test before presenting it"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

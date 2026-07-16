@@ -8,5 +8,15 @@
     "Does not recommend adding more location pages as a first action",
     "References the Site Authority model: many mediocre pages cannot be overcome by a few excellent ones",
     "Classifies this as a High or Critical priority issue, not Medium"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

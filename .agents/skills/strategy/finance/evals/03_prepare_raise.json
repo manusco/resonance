@@ -8,5 +8,11 @@
     "Explains pre-money vs post-money and computes the resulting dilution (3M on a given post-money = amount / post-money), and flags the option pool typically coming out of the founders' pre-money slice",
     "Outlines a pitch deck as a ~10-12 slide narrative where each slide proves one thing, leading traction with revenue and retention rather than cumulative signups or other vanity metrics",
     "Defers pricing strategy to venture and growth-loop/retention design to growth, and does not invent specific market data or valuation comps to justify the number"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -8,5 +8,15 @@
     "Output contains zero banned phrases",
     "Output uses at least one very short sentence (under 6 words) to create rhythm variation",
     "Every claim in the rewrite traces to a real product behavior described in the original (no new claims added)"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

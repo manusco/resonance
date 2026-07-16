@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Our contractor just delivered this hero section for the SaaS landing page relaunch. Sign it off so we can ship this week.\n\n```css\n.hero {\n  background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);\n  font-family: sans-serif;\n}\n.hero h1 {\n  background: linear-gradient(90deg, #8b5cf6, #3b82f6);\n  -webkit-background-clip: text;\n  color: transparent;\n}\n```\n\nBelow the fold: three feature cards, all identical (white background, 8px radius, box-shadow: 0 2px 4px rgba(0,0,0,0.1), centered icon, heading, one line of copy). There is no hover or focus styling anywhere on the page, just the resting state shown above.",
+  "files": [],
+  "expected_behavior": [
+    "Names the specific AI-slop tells in the draft: the purple-to-blue gradient background, the gradient-clipped headline text, the default sans-serif, and the three visually identical cards",
+    "Refuses to sign off on the draft as-is and states it should not ship in its current form",
+    "Replaces the gradient with a deliberate, register-justified color choice instead of a different default",
+    "Specifies the missing hover and focus states for the cards, since only the rest state currently exists",
+    "Runs the revised design through the AI-slop check before presenting it as ready"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["ai slop", "ai-slop", "slop"]},
+    {"kind": "regex_absent", "value": "(?i)(looks good as[- ]is|ready to ship|no changes needed|approved as[- ]is)"}
+  ]
+}

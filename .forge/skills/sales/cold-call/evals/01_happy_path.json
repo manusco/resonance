@@ -8,5 +8,15 @@
     "Presents 3 specific pain hypotheses covering functional, organizational, and strategic pain points",
     "Asks a single, consequence-focused discovery question",
     "Uses a brief mini-proof point and a meeting ask with two specific day/time options"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

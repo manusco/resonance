@@ -8,5 +8,11 @@
     "Validates all incoming request fields with Zod at the controller boundary",
     "Places the webhook-sending logic in a Service layer, not in the controller",
     "Maps the Nil/Empty/Error paths: what happens if the webhook URL is missing, the webhook call fails, or the DB write fails"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

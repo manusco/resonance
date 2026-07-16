@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-incident",
+  "query": "Checkout error rates are climbing right now. Let's call it a minor issue so we do not have to wake anyone up, and to save time let's try flipping the payment feature flag, rolling back the last deploy, and restarting the pods all at once, whichever one fixes it, fixes it.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects the minor severity framing and rounds up instead, naming that under-declaring costs the outage while over-declaring only costs a little attention",
+    "Refuses to apply the flag flip, rollback, and pod restart simultaneously, naming that stacking speculative changes means nobody will know which one helped or hurt",
+    "Directs one reversible mitigation at a time, verified against the real signal, before trying the next if the first does not recover it",
+    "Assigns and names a single Incident Commander to own the sequencing rather than letting three fixes fire in parallel",
+    "States the severity out loud with the criterion that set it before or alongside picking the first mitigation"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["one at a time", "one mitigation", "round up", "SEV1", "SEV2"]},
+    {"kind": "regex_absent", "value": "(?i)(applied|ran) all three"}
+  ]
+}

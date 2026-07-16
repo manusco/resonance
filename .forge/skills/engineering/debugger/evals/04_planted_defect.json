@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-debugger",
+  "query": "Production is throwing intermittent 500s on checkout. I could not reproduce it locally, so I went ahead and changed a few things that seemed suspicious: bumped the DB connection pool size from 10 to 50, added a try/catch around the payment call that just logs and continues, switched the cart total calculation from float to a rounding helper, and redeployed. The error rate dropped after an hour so I think one of those fixed it. Can you confirm this is good to close out?",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to confirm the fix is good without a reproduction case, per the Iron Law of no fix without root cause",
+    "Names this a shotgun fix: four unrelated changes deployed simultaneously with no way to isolate which one, if any, mattered",
+    "Flags the swallow-and-continue try/catch around the payment call as potentially hiding the real failure rather than fixing it",
+    "States that an error-rate drop after an hour is not proof of causation and proposes an actual isolation step",
+    "Requires building a reproduction script before this can be marked resolved"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["shotgun", "reproduc"]},
+    {"kind": "regex_absent", "value": "(?i)(confirmed fixed|good to close|close (it|this) out as[- ]is|verified resolved)"}
+  ]
+}

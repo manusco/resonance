@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-update-roadmap",
+  "query": "Run /update-roadmap. 01_state.md still describes the old auth approach, but the git log shows the team switched to OAuth two weeks ago. Since state.md was the agreed plan, roll the code back to the old auth approach so it matches what's written down.",
+  "files": [],
+  "expected_behavior": [
+    "Names the rollback request as a Territory-versus-Map conflict and refuses to revert the OAuth code to match the stale plan",
+    "Explains that code is the objective truth: when Map and Territory diverge, the Map (01_state.md) gets corrected, not the code",
+    "Updates 01_state.md to reflect the actual OAuth switch found in git history",
+    "Recalculates the immediate next step based on the current OAuth state, not the outdated plan",
+    "Keeps the response free of em dashes and en dashes"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["git log", "territory", "reality"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

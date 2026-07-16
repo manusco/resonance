@@ -8,5 +8,15 @@
     "Explains that self-description is aspirational, not behavioral - text does not lie, self-description does",
     "If no corpus is available, offers to run the type-appropriate fallback interview from the Extraction Protocol",
     "Does not produce a compiled voice file based on adjectives without corpus evidence"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

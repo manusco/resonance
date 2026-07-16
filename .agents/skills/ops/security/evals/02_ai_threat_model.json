@@ -8,5 +8,11 @@
     "Flags that relying on a single system prompt is insufficient defense for agentic systems",
     "Recommends sandboxing the AI's ability to call internal APIs (allowlist of permitted actions)",
     "Produces a STRIDE analysis for the AI component specifically, not just the surrounding infrastructure"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

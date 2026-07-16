@@ -8,5 +8,11 @@
     "Factors in the aggregation query requirement as a concrete tradeoff criterion",
     "Does not pick silently - states a recommendation and explains the 'Why'",
     "Does not generate application code to implement the choice"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

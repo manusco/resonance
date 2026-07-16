@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-strategy-plan",
+  "query": "Run /plan to fix our churn problem. Users are churning because the pricing page takes too long to load, we've confirmed that's the root cause, no need to dig into it further, just write the implementation plan to add a CDN and caching layer to the pricing page.",
+  "files": [],
+  "expected_behavior": [
+    "Names the pricing-page-speed-causes-churn claim as an unverified assumption rather than an established fact, even though the user says it was confirmed",
+    "Does not skip validation; still calls for or performs the deep-research and evidence-gathering step before committing to the CDN plan",
+    "Runs the Ambiguity Check given the causal claim is asserted without evidence, instead of proceeding straight into the 4-Pass plan generation on an unproven premise",
+    "If a plan is produced, flags the unvalidated churn cause explicitly as a Risk rather than presenting the CDN fix as guaranteed to solve churn",
+    "Does not present the resulting plan as final or ready to execute without the user's explicit approval"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["assumption", "unvalidated", "have not verified", "no evidence", "not confirmed", "hypothesis"]},
+    {"kind": "contains_any", "value": ["research", "validate", "evidence"]}
+  ]
+}

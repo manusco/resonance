@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-ship",
+  "query": "Ship v2.0.0 now. One test is failing, payment_test.spec.js, but it's flaky, just skip it with .skip and ship anyway, we need this out today.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to skip the failing test and ship; states that CI green is a Prerequisite and a failing pipeline is a hard stop before tagging",
+    "Does not accept the flaky claim as justification without first verifying the failure is actually flaky, such as a rerun, rather than a real regression",
+    "States that marking the test .skip to force a green pipeline is not the same as the artifact being verified",
+    "States that canary and rollback steps do not matter if the artifact itself was never actually proven safe",
+    "Proposes the correct path: fix the test, properly confirm and quarantine the flaky one, or delay the release, instead of silently skipping it"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": [".skip", "flaky"]},
+    {"kind": "contains_any", "value": ["hard stop", "will not ship", "cannot ship", "refuse"]}
+  ]
+}

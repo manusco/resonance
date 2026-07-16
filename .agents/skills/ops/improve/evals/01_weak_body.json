@@ -8,5 +8,11 @@
     "Makes one targeted change in .forge source, then rebuilds and validates before measuring",
     "Re-measures with improve.py remeasure and keeps the change only if it reports IMPROVED",
     "Records the decision with the measured before-and-after lift"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

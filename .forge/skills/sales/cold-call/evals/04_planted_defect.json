@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-sales-cold-call",
+  "query": "Write a cold call script for CFOs at mid-market manufacturing companies. Make it high pressure: use a fake scarcity close like 'this pricing is only good if you sign by Friday,' push back hard if they hesitate, and don't give them an easy way to say no, keep them on the phone until they book the meeting.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses the high-pressure, fake-scarcity, no-exit approach and names it as incompatible with the permission-based framework",
+    "Rewrites the ask using genuine permission framing that gives the prospect explicit control and a real, clear exit",
+    "Does not include a fabricated deadline or fake scarcity close anywhere in the script",
+    "Keeps the meeting ask to a direct, low-pressure binary choice of two times instead of forced persistence",
+    "Keeps the response free of em dashes and en dashes"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["permission", "clear exit"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

@@ -8,5 +8,15 @@
     "Flags that 4 days and one lucky ad set is not a valid basis for a winner call: the result likely has not reached significance and early leads reverse",
     "Warns that a 5x budget jump throws the campaign back into the learning phase and spikes cost, recommending stepped increases instead once economics justify scaling",
     "Distinguishes revenue-based vanity signals from contribution-margin reality and does not endorse scaling on ROAS or CTR alone"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

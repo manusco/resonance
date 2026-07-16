@@ -7,5 +7,11 @@
     "Rolls out via a canary slice first and watches a health window where the platform supports it",
     "Runs a post-deploy smoke test against production (health, a critical path, error rate) and does not call the deploy done on green CI alone",
     "On a failed post-deploy check, rolls back to restore production first, then investigates"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

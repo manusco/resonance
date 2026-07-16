@@ -8,5 +8,11 @@
     "Queues the sync operation in the background and resolves conflicts with a named strategy",
     "The app does not show a loading spinner when saving a note - it optimistically updates the UI",
     "Handles the 'back online' event to trigger the pending sync queue"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

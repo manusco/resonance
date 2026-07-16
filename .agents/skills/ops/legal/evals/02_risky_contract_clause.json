@@ -8,5 +8,11 @@
     "Proposes specific redlines rather than only flagging problems: make the indemnity mutual or scope it to the customer's own misuse, cap liability (e.g. to fees paid in the prior 12 months) with only the legally required carve-outs, and question the Delaware governing law for a Munich GmbH",
     "Does not simply answer 'yes it is safe' or 'no do not sign'; frames it as negotiate-these-clauses with the risk of each stated in plain language",
     "Explicitly recommends escalating to counsel before signing given the uncapped indemnity and foreign governing law, and states this is not legal advice"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

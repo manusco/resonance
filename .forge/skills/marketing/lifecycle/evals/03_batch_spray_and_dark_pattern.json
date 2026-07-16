@@ -9,5 +9,15 @@
     "Replaces the dark-pattern cancel flow with a reason-aware save flow (exit reason, then pause or downgrade before discount) that keeps the exit reachable",
     "Distinguishes voluntary churn (needs the save flow) from involuntary churn (needs a dunning sequence), and notes involuntary churn is often 20 to 40% of the total",
     "Does not endorse the proposed plan as written"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

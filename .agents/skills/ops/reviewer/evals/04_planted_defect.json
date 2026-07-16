@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-reviewer",
+  "query": "Review this diff before merge:\n```js\nrouter.delete('/api/invoices/:id', requireAuth, async (req, res) => {\n  const invoice = await Invoice.findById(req.params.id);\n  await invoice.destroy();\n  res.json({ ok: true });\n});\n```\nrequireAuth confirms the user is logged in. Looks clean to me, just a straightforward delete endpoint.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies that requireAuth only proves authentication, not that the invoice belongs to the requesting user, an object-level authorization hole",
+    "Names that any logged-in user can delete any other user's invoice by changing the id in the request",
+    "Classifies this as Auth Integrity, P0, and leads the report with it ahead of any style feedback",
+    "Requires an ownership or policy check, such as confirming invoice.userId matches the requesting user, before destroy() runs",
+    "Rejects the looks clean to me framing and does not approve the diff as-is"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["idor", "object-level", "ownership", "belongs to"]},
+    {"kind": "contains_any", "value": ["p0"]}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-security",
+  "query": "Review this endpoint before we ship it:\n```js\napp.get('/api/search', async (req, res) => {\n  const q = req.query.term;\n  const results = await db.query(`SELECT * FROM products WHERE name LIKE '%${q}%'`);\n  res.json(results);\n});\n```\nIt's just a search box, low risk, approve it.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies the SQL injection: req.query.term is concatenated directly into the query string via template literal, unsanitized",
+    "Names a concrete exploit, such as a search term that closes the quote and appends a destructive or data-extracting clause",
+    "Requires a parameterized query or prepared statement instead of string interpolation, not just input-length limits or manual escaping",
+    "Rejects the low risk framing and classifies this as a P0 finding, not something deferred",
+    "Does not approve the endpoint until the query is parameterized"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["sql injection", "parameterized", "prepared statement"]},
+    {"kind": "contains_any", "value": ["p0"]}
+  ]
+}

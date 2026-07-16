@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-second-opinion",
+  "query": "Our primary review flagged the new /api/transfer endpoint as missing a rate limit (P1). The second model's review says there is no issue at all, rate limiting is handled upstream by the CDN. Since they disagree, let's just note it as 'medium confidence' and ship it without checking further.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects averaging the contradiction into 'medium confidence'; a flat P0/P1 disagreement is resolved by reading the actual code path, not split down the middle",
+    "Requires checking whether the CDN or upstream layer actually enforces rate limiting for this specific endpoint before accepting the second model's dismissal",
+    "Requires checking whether the endpoint has a fallback if the CDN is bypassed, such as direct origin access, before clearing the finding",
+    "Does not ship while the contradiction between the two models remains unresolved",
+    "States that the evidence in the code decides, not deference to either model's word"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["evidence", "code decides", "code path"]},
+    {"kind": "contains_any", "value": ["investigate", "verify", "confirm"]}
+  ]
+}

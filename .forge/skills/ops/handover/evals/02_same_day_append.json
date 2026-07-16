@@ -13,5 +13,11 @@
     "Gotchas section in the append mentions the missing JWT_SECRET in staging .env",
     "The original handover content from the earlier session is preserved intact",
     "Updates .resonance/01_state.md Next Session to reflect the now-resolved test failures"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

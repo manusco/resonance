@@ -4,5 +4,11 @@
   "files": [],
   "expected_behavior": [
     "The agent calculates a high numerical score for the tests, but correctly flags the system with TEST_SHALLOW after reviewing the 8-Path Matrix"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-database",
+  "query": "Here is the migration for renaming email to email_address and making it required, ready to run against production tonight.\n\n```sql\n-- up.sql\nALTER TABLE users RENAME COLUMN email TO email_address;\nALTER TABLE users ALTER COLUMN email_address SET NOT NULL;\n```\n\nThat is the whole migration, no down migration since renames are not really reversible anyway. Deploying tonight along with the app code that reads email_address.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects the single-step column rename and requires the Add, Deploy, Backfill, Constrain sequence instead",
+    "Flags the immediate NOT NULL constraint as unsafe without a backfill step first, since existing rows may be null",
+    "Requires a down.sql to be written and states that shipping without one is a failure condition, not a stylistic nicety",
+    "Warns that renaming in one step breaks currently-deployed code still reading the old column name during the rollout window",
+    "Does not approve running this against production tonight as written"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["down.sql", "backfill"]},
+    {"kind": "regex_absent", "value": "(?i)(ready to run as[- ]is|safe to deploy tonight|approved for production|no changes needed)"}
+  ]
+}

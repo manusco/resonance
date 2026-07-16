@@ -7,5 +7,11 @@
     "Returns to /grill to pin down what 'better for enterprise' means and a DoD a machine can verify",
     "Gets the framed plan and DoD approved before decomposing or building anything",
     "Does not guess a scope and run autonomously on it"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

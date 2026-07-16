@@ -120,7 +120,7 @@ py .forge/validate_skill.py --all .agents/skills
 
 **Give the agent eyes (grounded verification):** `.forge/exec/run_checks.py` runs the project's real tests on any toolchain (Node, Python, Go, Rust, Make); `.forge/exec/browser_check.mjs` opens a real headless browser and reports the title, console errors, missing elements, and a screenshot. `/test` and `/goal` ground on these, not on the model's own read of its work. See `.forge/exec/README.md`.
 
-**Prove the skills work, do not just assert it:** `npm run eval:score` runs every golden case with and without its skill and grades the lift, writing [`docs/EVAL_SCORECARD.md`](docs/EVAL_SCORECARD.md). Skills with no measured lift become the work-list, not a mystery.
+**Prove the skills work, do not just assert it:** `npm run eval:score` runs every golden case with and without its skill and grades the lift, with the honesty rules enforced by the runner: the judge is never the answerer, at least three generations per arm, deterministic checks where a machine can grade, planted-defect cases for ground truth, and a calibrated keep/revert gate for improvements. Results are yours and never land in this repo. Method and calibration protocol: [`docs/EVALS.md`](docs/EVALS.md). Skills with no measured lift become the work-list, not a mystery.
 
 ---
 

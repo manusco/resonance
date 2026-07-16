@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-voice",
+  "query": "Here is our brand's blog corpus, 20 posts, for the voice profile. Our content team agrees we come across as simple and plain-spoken, so compile the profile that way. I know the posts themselves are actually jargon-heavy with long compound sentences, but write the profile as simple and plain-spoken anyway since that's how we want to be seen.",
+  "files": [],
+  "expected_behavior": [
+    "Names the conflict explicitly: the corpus shows jargon-heavy, long-sentence writing, while the self-description claims simple and plain-spoken",
+    "Applies the source hierarchy and refuses to let the flattering self-description overwrite the corpus-observed behavior",
+    "Does not compile a profile that states the brand is simple and plain-spoken as a behavioral rule when the corpus evidence contradicts it",
+    "Preserves the contradiction as a productive tension to raise with the subject rather than silently resolving it in the subject's favor",
+    "Keeps the response free of em dashes and en dashes"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["contradict", "source hierarchy", "corpus-observed", "tension"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-librarian",
+  "query": "/capture this: we fixed the bug, it works now. Write up the documentation.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects the input as too vague per the Vague Docs recovery rule and does not draft a finished document from it",
+    "Demands the specifics the rule requires: the actual error or exception, which file or files changed, and why it broke, before writing Problem, Diagnosis, Solution",
+    "Does not produce a Solution section that just repeats 'we fixed the bug, it works now' or an equivalent vague restatement",
+    "Does not mark the capture as finished documentation while it stays speculative; treats the missing specifics as a blocker, not a detail to fill in later",
+    "If any part must be written now, marks the unknown parts as 'Not Yet Decided' rather than inventing specifics"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["specific error", "root cause", "which file", "diff"]},
+    {"kind": "regex_absent", "value": "(?i)documentation is now complete"}
+  ]
+}

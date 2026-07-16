@@ -8,5 +8,11 @@
     "For each slice, builds then verifies with grounded checks (runs the real tests via live execution, validators, /audit), not self-assessment",
     "Runs a second-opinion final gate, then proposes /ship and waits for explicit approval rather than shipping",
     "Records decisions and learnings during the loop"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

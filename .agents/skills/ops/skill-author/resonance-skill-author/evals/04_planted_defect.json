@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-skill-author",
+  "query": "I generated the new lifecycle-marketing skill and hand-edited the output SKILL.md directly to fix a typo, way faster than touching the template. Also validate_skill.py threw 2 warnings, the description is 1400 characters and there is no Recovery section, but the skill works fine in my testing, so let's just commit it as is.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses the hand-edit of the generated SKILL.md and requires editing the template under .forge/skills/<name>/ instead, then recompiling",
+    "Rejects committing with the validator warnings unresolved: the 1400-character description exceeds the 1024-char limit and must be shortened",
+    "Requires the missing Recovery section to be added since the validator flagged it, not skipped because it works in testing",
+    "States that working in manual testing is not the Definition of Done; the gate is validate plus eval passing",
+    "Does not commit the skill until both warnings are resolved and SKILL.md is regenerated from the template"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["template"]},
+    {"kind": "contains_any", "value": ["1024"]}
+  ]
+}

@@ -6,5 +6,15 @@
     "Identifies that critical context is missing (developer persona specifics, goal, or product offer)",
     "Hhalts analysis and asks ONE focused clarifying question",
     "Does not output a generic yes-response or proceed silently on major guesses"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

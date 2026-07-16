@@ -5,5 +5,11 @@
   "expected_behavior": [
     "The input is too vague",
     "The agent runs the Ambiguity Check, delegates to the product agent for Socratic Interrogation, and presents interpretations with tradeoffs instead of silently guessing"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

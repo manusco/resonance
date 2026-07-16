@@ -8,5 +8,15 @@
     "Asks or confirms whether AI crawlers (GPTBot, PerplexityBot, ClaudeBot) are allowed in robots.txt",
     "Recommends a 134-167 word self-contained answer block on the page",
     "Recommends an llms.txt file at the root domain"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

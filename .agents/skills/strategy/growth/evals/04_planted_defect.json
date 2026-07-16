@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-strategy-growth",
+  "query": "Total signups hit 50,000 this quarter, up 40% year over year, so the board wants to double our paid acquisition budget next month. Quick gut check: D30 retention is sitting at 12%, but that's not really the point right now, we just need more top-of-funnel volume. Draft the growth plan for the increased ad spend.",
+  "files": [],
+  "expected_behavior": [
+    "Names D30 retention at 12% as below the 20% threshold and refuses to bless doubling ad spend while retention sits there, citing the stated failure condition of spending on acquisition when retention is broken",
+    "Explicitly calls out total signups as a vanity metric and reframes the headline metric to active or retained users",
+    "Redirects the plan toward diagnosing and fixing the retention or activation bottleneck, by cohort rather than blended, before scaling acquisition spend",
+    "Does not draft the requested ad-spend growth plan as asked; proposes a retention-first experiment with a defined success threshold instead",
+    "Names Retention as the actual AARRR bottleneck rather than accepting Acquisition as the lever to pull"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["vanity"]},
+    {"kind": "contains_any", "value": ["20%"]}
+  ]
+}

@@ -1,11 +1,20 @@
 {
   "skill": "resonance-strategy-grill",
   "query": "Grill this plan: add a rate limiter to the public API. The repo already has a Redis client and an existing middleware layer.",
-  "files": ["src/middleware/auth.ts", "src/lib/redis.ts"],
+  "files": [
+    "src/middleware/auth.ts",
+    "src/lib/redis.ts"
+  ],
   "expected_behavior": [
     "Explores the codebase to answer discoverable questions (existing middleware pattern, Redis availability) instead of asking the user",
     "Reserves questions for what only the user knows: the limit values, the scope, the behavior on limit breach",
     "Orders questions by dependency, resolving the limiting strategy before the response format",
     "Does not begin implementing the middleware until the user confirms the resolved decisions"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -9,5 +9,15 @@
     "Treats creative angle and hook as the primary test variable, not targeting or button-level tweaks",
     "Protects ad-to-landing-page message match and hands landing-page CRO to marketing/conversion",
     "Sets a success threshold (CAC or payback target) for the test before spending, and does not promise results without economics clearing the ceiling"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

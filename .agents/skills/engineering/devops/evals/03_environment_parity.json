@@ -8,5 +8,11 @@
     "Recommends a migration that brings staging in sync with production schema",
     "Does not recommend writing code that silently handles the missing tables",
     "Proposes an automated parity check in the CI pipeline to catch future divergence"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

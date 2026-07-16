@@ -7,5 +7,11 @@
     "Still reconciles whatever second-model findings are provided against the primary review",
     "Notes the manual step and the setup (RESONANCE_REVIEW_CMD or --model-cmd) in the report",
     "Does not silently skip the second opinion or pretend it ran"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

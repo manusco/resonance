@@ -8,5 +8,11 @@
     "Presents the breakdown to the user and asks which to tackle first",
     "Does not execute a destructive or architectural change (schema refactor) without presenting it first and waiting for confirmation",
     "Updates 01_state.md with the broken-down checklist before any implementation begins"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -8,5 +8,11 @@
     "Provides a concrete next step: 5 Mom Test interviews or a smoke test landing page",
     "States the kill threshold that must be set before data collection begins",
     "Does not generate code, wireframes, or a product spec at this stage"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

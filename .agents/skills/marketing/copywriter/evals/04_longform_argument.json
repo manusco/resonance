@@ -9,5 +9,15 @@
     "Names the product's mechanism of the solution and ties each claim to a plausible real feature, with precise numbers only where they would be true",
     "Writes the lead last in its process (mechanism and body before headline) and keeps eye-relief formatting: short paragraphs and subheads that carry the argument on their own",
     "Contains no banned AI slop terms (delve, tapestry, nuanced, harness, landscape) and uses 'you' more than 'we'"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

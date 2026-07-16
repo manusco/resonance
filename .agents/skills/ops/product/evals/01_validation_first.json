@@ -8,5 +8,15 @@
     "Applies the Opportunity Solution Tree: maps dark mode (Solution) to an Opportunity before defining it as a feature",
     "Asks for a RICE score estimate: what is the Reach, Impact, Confidence, and Effort?",
     "Does not create a ticket 'Add dark mode' without explaining why it matters to the user"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

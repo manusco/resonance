@@ -9,5 +9,15 @@
     "Designs a triggered onboarding email sequence that supports in-app activation and branches on behavior, not a fixed batch drip that ignores whether the user already activated",
     "Names activation and retention metrics measured by cohort (time-to-first-value, activation rate, day-1 and day-7 retention) rather than blended averages",
     "Does not treat a feature tour as activation"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

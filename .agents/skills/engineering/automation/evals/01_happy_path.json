@@ -8,5 +8,11 @@
     "Produces a CLI tool or script that takes parameters as flags, not interactive STDIN prompts",
     "The tool is idempotent: running it twice produces the same output without side effects",
     "Includes a --dry-run flag showing what would be generated without writing files"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

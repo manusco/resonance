@@ -8,5 +8,11 @@
     "Recommends deleting or downgrading alerts that never lead to action, grouping/deduplicating, and moving non-urgent items to a ticket queue",
     "Names the 40-green-tile dashboard as a vanity dashboard and requires every chart to state the question it answers and the action a bad reading triggers, else delete it",
     "Does NOT respond by adding more alerts or more tiles; reduces noise and ties paging to SLO burn rate and the Golden Signals"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

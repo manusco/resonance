@@ -8,5 +8,11 @@
     "Validates props with TypeScript: discriminated union or strict prop interface, no 'any'",
     "Declares the blast radius: which pages or layouts consume this component",
     "Ensures the layout works at 320px width (Mobile-First)"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

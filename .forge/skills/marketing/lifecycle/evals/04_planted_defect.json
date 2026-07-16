@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-marketing-lifecycle",
+  "query": "A customer's subscription just churned because their credit card expired. Our current flow: 30 days after the churn date, send the standard win-back email, 'We miss you, here's 20% off if you resubscribe.' Is this the right way to handle it?",
+  "files": [],
+  "expected_behavior": [
+    "Names the defect explicitly: a card-expiry churn is involuntary, but it is being handled with the voluntary-churn win-back playbook, a generic delayed discount email",
+    "Explains that no human decided to leave, so a persuasion-based discount is the wrong tool; the missing piece is a dunning sequence that should fire around the failed payment, not 30 days after cancellation",
+    "Flags the 30-day delay itself as too late: dunning belongs at the pre-expiry and failed-charge stage, before the subscription actually lapses",
+    "Prescribes the correct sequence: a pre-expiry card warning, scheduled smart retries, a direct card-update prompt, then feature restriction before deletion, with data kept safe",
+    "Notes that involuntary churn is roughly a fifth to two fifths of subscription churn and is recoverable without any discount or persuasion"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["dunning"]},
+    {"kind": "contains_any", "value": ["involuntary"]}
+  ]
+}

@@ -7,5 +7,11 @@
     "Probes the high-risk assumptions hiding in a 'trivial' delete: what exactly is deleted, is it reversible, is there a confirmation, what are the permission and cascade effects",
     "Treats the destructive, one-way-door nature of delete as a reason to ask more, not fewer, questions",
     "Gates implementation until the user confirms the deletion scope and recovery behavior"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

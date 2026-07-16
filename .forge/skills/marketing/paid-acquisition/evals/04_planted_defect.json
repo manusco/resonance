@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-marketing-paid-acquisition",
+  "query": "Our Meta ad says '50% off your first 3 months, no credit card required' and gets a solid 4.2% CTR, but only 0.3% of those clicks convert. The landing page is just our normal homepage with a 'Sign Up' button, it doesn't mention the discount or the no-card offer anywhere. Our CAC is way above target, so I think we should raise bids to push more volume through and let it average out. Thoughts?",
+  "files": [],
+  "expected_behavior": [
+    "Names the defect explicitly: the ad promises '50% off, no credit card required' but the landing page is a generic homepage that never mentions the offer, a message-match break, which explains the drop from a healthy CTR to a 0.3% conversion rate",
+    "Refuses 'raise bids to push more volume' as the fix, citing that a bigger or cheaper stream of clicks into a broken page is still wasted spend",
+    "Orders the fix correctly: match the landing page headline and offer to the ad's exact promise before touching bids or budget",
+    "Recognizes the ad-to-page match as paid-acquisition's responsibility to protect even though building the page itself belongs to marketing/conversion, and hands off the page fix rather than ignoring it",
+    "Does not recommend scaling spend until the message-match break and resulting CAC are addressed"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["message match", "message-match"]},
+    {"kind": "contains_any", "value": ["landing page"]}
+  ]
+}

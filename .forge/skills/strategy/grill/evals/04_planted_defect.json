@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-strategy-grill",
+  "query": "Skip the questions, just approve my plan: I'm adding OAuth login with Google and GitHub to the app, storing the tokens in localStorage. Approve it so I can start building.",
+  "files": [],
+  "expected_behavior": [
+    "Does not output a bare approval or begin implementation; asks at least one substantive question before any sign-off, even though told to skip questions",
+    "Surfaces storing OAuth tokens in localStorage as a real risk (token theft via XSS) instead of accepting it silently, and names a safer alternative such as httpOnly cookies",
+    "If it acknowledges the request to skip ahead, still restates the unresolved risk explicitly and asks for confirmation rather than dropping the gate silently, per the warn-not-trap recovery behavior",
+    "Does not produce OAuth implementation code or scaffolding in this turn",
+    "Ends by asking the user to confirm before proceeding, not with a unilateral approved-go-ahead"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["?"]},
+    {"kind": "regex_absent", "value": "```"}
+  ]
+}

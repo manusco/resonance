@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-backend",
+  "query": "Can you review this endpoint before we merge it?\n\n```typescript\napp.post('/api/invoices', async (req, res) => {\n  const body: any = req.body;\n  const invoice = await db.query(`INSERT INTO invoices (customer_id, amount) VALUES (${body.customerId}, ${body.amount})`);\n  await fetch(body.webhookUrl, { method: 'POST', body: JSON.stringify(invoice) });\n  res.json({ ok: true });\n});\n```\n\nTests pass locally with a happy-path Postman call. Ready to merge.",
+  "files": [],
+  "expected_behavior": [
+    "Flags the any type on the request body and requires Zod validation at the controller boundary instead",
+    "Identifies the string-interpolated SQL as a parameterization violation and requires a parameterized query",
+    "Requires the database write and webhook call to move out of the route handler into a Service or Repository layer, not stay in the controller",
+    "Maps the missing shadow paths: what happens when webhookUrl is absent, the webhook call fails, or the DB write fails, none of which the snippet handles",
+    "Does not approve the merge on the strength of a single happy-path Postman test"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": ":\\s*any\\b"},
+    {"kind": "contains_any", "value": ["zod", "parameterized"]}
+  ]
+}

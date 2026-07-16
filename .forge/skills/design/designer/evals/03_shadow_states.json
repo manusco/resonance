@@ -8,5 +8,15 @@
     "Loading state specifies a skeleton screen or animated placeholder, not a spinner alone",
     "Error state specifies the recovery action the user can take",
     "Success state includes a micro-animation trigger (Entrance state) for the completed file entry"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

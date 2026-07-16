@@ -9,5 +9,15 @@
     "Recommends validating with a second lens before reallocating: an incrementality holdout, a marketing-mix model, a different attribution model, or zero-party 'how did you hear about us' data",
     "Distinguishes 'present on the path' from 'incremental' and identifies a geo or audience holdout as the way to measure the true causal effect",
     "Predicts that a naive cut could reduce overall conversions a quarter later with no obvious cause in the last-click view"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

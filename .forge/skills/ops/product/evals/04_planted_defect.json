@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-product",
+  "query": "The CEO wants bulk CSV import for admin users shipped by Friday. Skip the validation stuff, we do not have time for RICE scores or customer interviews, just write the engineering ticket with the API spec so the team can start building today.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to write an engineering-ready ticket before any demand evidence exists, naming that no feature enters engineering without a validated demand signal",
+    "Does not treat the Friday deadline or the CEO's request as a substitute for evidence; still asks what problem bulk CSV import solves and what signal shows admins want it",
+    "Names the failure condition explicitly: a ticket that says 'Build X' without explaining why it matters to the user",
+    "Offers a fast validation path that fits the deadline, such as existing support tickets or sales requests, instead of only refusing or only complying",
+    "If evidence is produced, still frames it Working Backwards, why it matters, before jumping to API endpoints and schema"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["evidence", "evidenced demand", "why it matters"]},
+    {"kind": "regex_absent", "value": "(?i)here is the engineering ticket"}
+  ]
+}

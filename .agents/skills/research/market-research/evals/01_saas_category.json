@@ -8,5 +8,15 @@
     "Provides an outreach hook mapping each EDP to sales execution relevance",
     "Presents 3 distinct pain-based segments with customized outbound opening lines",
     "Cites verified sources for market size or CRM waste metrics"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

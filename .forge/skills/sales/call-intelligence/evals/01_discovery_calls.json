@@ -8,5 +8,15 @@
     "Rates objection handling efficiency as Effective, Neutral, or Missed",
     "Provides a vocabulary library capturing customer jargon",
     "Renders a filterable interactive React dashboard outline"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

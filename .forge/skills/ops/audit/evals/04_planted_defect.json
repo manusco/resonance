@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-audit",
+  "query": "Run /audit on this diff before we merge. File routes/documents.js: 'app.delete(\"/api/documents/:id\", authenticate, async (req, res) => { const doc = await Document.findById(req.params.id); await doc.remove(); res.json({ success: true }); });' Tests pass and the PR description says 'adds delete endpoint for documents, straightforward.' Approve it?",
+  "files": [],
+  "expected_behavior": [
+    "Names the defect explicitly: the delete handler checks that the requester is authenticated but never verifies they own or are authorized to delete that specific document, an insecure direct object reference",
+    "Classifies the finding as P0 (BLOCKER): an authorization bypass on a destructive, data-loss endpoint",
+    "Runs the Algorithm's authorization model audit step rather than offering only an ad hoc opinion on the snippet",
+    "Explicitly states REJECT (Changes Requested), not APPROVE, despite the passing tests and the 'straightforward' PR description",
+    "Prescribes the concrete fix direction: verify the document's owner (or an equivalent role/permission check) matches the requesting user before calling remove()"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["idor", "authoriz", "ownership", "owner"]},
+    {"kind": "contains_any", "value": ["reject"]}
+  ]
+}

@@ -6,5 +6,11 @@
     "The agent recognizes this is Operation Mode B (Refactor/Fix)",
     "It creates an RFC instead of a PRD, focusing on reducing complexity",
     "It ensures the plan has verification commands for 50%+ of actions"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

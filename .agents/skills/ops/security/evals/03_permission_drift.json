@@ -8,5 +8,11 @@
     "Recommends centralizing access decisions into a capability system as the architectural fix",
     "Does not recommend simply adding more role checks in the existing pattern",
     "Classifies this as a P1 Auth Integrity finding, not a P3 Maintainability finding"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

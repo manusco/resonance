@@ -209,8 +209,8 @@ def check_evals(skill_dir: Path, r: Report) -> None:
     eval_dir = skill_dir / "evals"
     cases = list(eval_dir.glob("*.json")) if eval_dir.exists() else []
     if len(cases) < 3:
-        r.warn(f"evals: found {len(cases)} case(s) in evals/. Ship >= 3 golden cases "
-               f"(query + expected_behavior) before declaring a skill done")
+        r.error(f"evals: found {len(cases)} case(s) in evals/. A skill ships with >= 3 golden "
+                f"cases (query + expected_behavior); fewer cannot carry any measurement")
 
 
 def validate(path: Path, r: Report) -> Report:

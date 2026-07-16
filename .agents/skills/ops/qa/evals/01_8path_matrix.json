@@ -8,5 +8,11 @@
     "Identifies the Malformed Data Path: what if the cart contains an item with a null price?",
     "Requires tests to fail first (Red) before passing (Green) - not just 'write tests that pass'",
     "Does not approve any path as Covered without a specific assertion, not just 'status(200)'"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

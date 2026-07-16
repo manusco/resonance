@@ -8,5 +8,11 @@
     "Fails fast with a specific error if the Confluence API token is missing - does not silently return empty results",
     "Does not build a monolithic server that does 10 things - one MCP tool per job",
     "Validates all input arguments before making any API call to Confluence"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

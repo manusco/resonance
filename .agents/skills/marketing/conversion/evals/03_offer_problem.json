@@ -8,5 +8,15 @@
     "Does not suggest a 6th incremental A/B test as the next step",
     "Asks whether the existing page claims match actual product behavior (Product-Behavior Alignment)",
     "References the Fogg Behavior Model: suggests the bottleneck may be Motivation, not Ability or Trigger"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

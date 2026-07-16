@@ -8,5 +8,11 @@
     "Defines the Input, Trigger, Action, Reward, and Output of the loop",
     "Connects the loop design to the AARRR stage it addresses",
     "Includes a launch trajectory plan tied to a measurable benchmark at day 7 and day 30"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

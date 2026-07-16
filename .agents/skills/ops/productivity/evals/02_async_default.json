@@ -8,5 +8,15 @@
     "Recommends an async protocol first: a shared FAQ or a clearer ticket spec template",
     "Applies the Async Default: if First Response Time is already low, adding a meeting will not help",
     "Provides a specific recommendation with A/B/C options, not a blank 'what do you think?'"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

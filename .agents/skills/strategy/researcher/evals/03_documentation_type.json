@@ -8,5 +8,11 @@
     "Structures the output with headers, numbered steps (for How-To/Tutorial), or tables (for Reference)",
     "Refuses to fabricate API endpoints or config values - flags any unknown details as placeholders",
     "Produces output that is scannable, not a wall of prose"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

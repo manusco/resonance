@@ -8,5 +8,11 @@
     "Recommends recording the decomposition decision in an ADR",
     "Identifies the multi-tenancy concern as a blast-radius risk and proposes a containment strategy",
     "Does not write implementation code - stays at the structural/boundary level"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

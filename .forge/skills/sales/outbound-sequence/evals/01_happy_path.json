@@ -7,5 +7,15 @@
     "Anchors the outreach to the funding trigger and other real signals from the provided data",
     "Traces every claim to a source and flags assumptions explicitly",
     "Climbs the personalization ladder rather than sending one generic template"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

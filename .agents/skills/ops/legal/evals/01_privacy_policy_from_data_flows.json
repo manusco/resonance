@@ -6,7 +6,13 @@
     "Does not immediately output a finished policy; first builds or requests the data map (what is collected, purpose, lawful basis, storage location, retention, third parties) before drafting",
     "Assigns a specific lawful basis per purpose rather than defaulting everything to consent (e.g. contract for billing, legitimate interests or consent for analytics)",
     "Discloses the actual processors named (Stripe, Postmark, Google Analytics, AWS) and does not invent data categories the company did not mention, such as payment card data handled directly",
-    "Flags the DACH specifics: German-language Datenschutzerklärung, a compliant Impressum, and prior consent for non-essential cookies / Google Analytics under the German cookie rules",
+    "Flags the DACH specifics: German-language Datenschutzerkl\u00e4rung, a compliant Impressum, and prior consent for non-essential cookies / Google Analytics under the German cookie rules",
     "States that Google Analytics involves a US transfer and that a transfer mechanism must be confirmed, and recommends a lawyer review before publishing given the transfer and any tracking, marking this as the escalation point"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

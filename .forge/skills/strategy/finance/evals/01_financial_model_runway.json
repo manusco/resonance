@@ -8,5 +8,11 @@
     "Flags that current burn exceeds current revenue and warns the company must raise, cut, or reach profitability before the cash date, ideally with 6+ months of runway to spare",
     "Separates assumptions from calculations and recommends at least a base and a downside scenario instead of a single point forecast",
     "Does not present a hockey-stick curve without a named driver behind it, and surfaces net burn and the survival question as the headline"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

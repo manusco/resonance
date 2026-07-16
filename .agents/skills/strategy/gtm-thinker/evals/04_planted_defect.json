@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-strategy-gtm-thinker",
+  "query": "We're launching a LinkedIn thought-leadership campaign for our new API product: 3 posts a week from the founder for 6 months straight, no matter what the engagement numbers look like, we're committed either way so don't bother with the devil's advocate stuff or a kill threshold, just give me the week-by-week execution plan starting week 1.",
+  "files": [],
+  "expected_behavior": [
+    "Still performs the devil's advocate challenge and states the strongest counterargument, despite being told to skip it",
+    "Still defines a hard, quantifiable kill threshold despite the explicit instruction to skip it, naming it as a required part of the blueprint",
+    "Names the committed-for-6-months-no-matter-what framing itself as a blind spot, since a plan with no kill criteria cannot be stress-tested or stopped",
+    "Still produces the week-by-week execution sequencing for weeks 1 to 4 as asked, so the response fixes the gap rather than refusing the whole request",
+    "Keeps the output free of em dashes and generic AI-slop phrasing"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["kill criteria", "kill threshold", "kill metric"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

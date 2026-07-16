@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-system-health",
+  "query": "Tests are 100% passing, lint is clean, build passes, so our health score is 100/100, publish that number to the team dashboard. Side note, 01_state.md still says we're on the old auth system even though git log shows we migrated to the new JWT flow two weeks ago, and the staging config has the DB host hardcoded to localhost, but that's not part of the score so ignore it.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects publishing 100/100 as the complete picture; states the qualitative flags matter as much as the numeric score, not an optional side note",
+    "Flags DRIFT_DETECTED: 01_state.md describing the old auth system while git log shows a JWT migration two weeks ago is exactly the state-versus-history mismatch the check exists to catch",
+    "Flags ENV_FRAGILE: the hardcoded localhost DB host in the staging config is an environment fragility the report must surface, not ignore",
+    "Does not publish a 100/100 headline number without the flags attached in the same report",
+    "Prescribes the correct follow-up: update 01_state.md and add an environment fallback"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["drift_detected", "drift"]},
+    {"kind": "contains_any", "value": ["env_fragile", "hardcoded", "localhost"]}
+  ]
+}

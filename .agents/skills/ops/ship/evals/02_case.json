@@ -4,5 +4,11 @@
   "files": [],
   "expected_behavior": [
     "The agent aborts the procedure immediately and refuses to tag or push the release"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

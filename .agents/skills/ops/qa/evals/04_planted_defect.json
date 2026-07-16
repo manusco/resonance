@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-qa",
+  "query": "Here is the only test we wrote for the checkout flow, and it is green, so this is our full coverage:\n```js\ntest('checkout works', async () => {\n  const res = await request(app).post('/checkout').send(validPayload);\n  expect(res.status).toBe(200);\n  await sleep(3000);\n  expect(await orderDashboard.hasNewOrder()).toBe(true);\n});\n```\nMark checkout as verified.",
+  "files": [],
+  "expected_behavior": [
+    "Names expect(res.status).toBe(200) as an insufficient assertion and requires asserting the actual response body or order state instead",
+    "Names await sleep(3000) as a Deterministic Async violation, a latent flake, and requires waiting on the real condition instead of a fixed delay",
+    "Walks the 8-Path Matrix and states this test covers only the Happy Path, listing at least Sad Path, Unauthorized Path, and Malformed Data Path as Gaps",
+    "Refuses to mark checkout as verified given the named gaps",
+    "Requires the test to be rewritten or extended rather than accepting the single green run as proof"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["8-path", "8 path"]},
+    {"kind": "contains_any", "value": ["flake", "flaky", "sleep("]}
+  ]
+}

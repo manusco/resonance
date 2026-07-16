@@ -8,5 +8,11 @@
     "Requests the specific configuration steps to replace the vague instruction",
     "Does not rewrite the doc with more vague language - identifies the specific gaps",
     "Produces a revised version with zero forbidden phrases and zero unanswered 'How?' questions"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

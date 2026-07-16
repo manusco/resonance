@@ -8,5 +8,11 @@
     "Asks for a concrete example task to define the gap",
     "Does not produce a vague skill with a non-specific description",
     "Explains that an unmeasured skill is a liability, not an asset"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

@@ -8,5 +8,11 @@
     "Confirms a rollback path exists before deploying (a previous release, a feature flag, or a canary it can abort)",
     "Deploys canary-first where possible and verifies production is healthy after deploy with a real signal (a smoke test plus the error rate), treating green CI as necessary but not sufficient",
     "Applies correct semantic versioning for 1.2.0, updates the changelog, and organizes logical commits instead of one WIP dump, then tags and pushes"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

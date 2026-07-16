@@ -7,5 +7,15 @@
     "Merges rep metrics into the main Overview dashboard statistics",
     "Presents the standard Input, Output, DOD, and Recovery procedure contract",
     "Passed structural validation cleanly"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

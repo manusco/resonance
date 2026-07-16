@@ -8,5 +8,15 @@
     "Prioritizes the cheapest, highest-intent conversions first (for example brand or high-intent search, or warm retargeting) when budget is severely constrained",
     "Sets realistic expectations that $300 is a directional probe, not a statistically valid test, and frames learning goals accordingly",
     "Does not recommend spreading the spend thin across all platforms simultaneously"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

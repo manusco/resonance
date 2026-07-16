@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-game-dev",
+  "query": "Here is my implementation plan for the coin-pickup mechanic in our mobile platformer: 'On trigger enter with the coin, call score += 1, destroy the coin GameObject immediately, done. No particles, no sound, no haptic, keep it minimal so we stay inside the frame budget.' Ready to build this?",
+  "files": [],
+  "expected_behavior": [
+    "Names the defect explicitly: the plan delivers zero feedback (no visual, no audio, no haptic) on a core player action, violating the Juice Protocol / Trinity of Feedback",
+    "Rejects the 'keep it minimal for frame budget' justification, explaining a particle burst, a one-shot sound, and a haptic tap cost negligible frame time and do not conflict with the 60fps floor",
+    "Prescribes the Trinity of Feedback concretely: a visual response (particle burst or squash-stretch) on pickup, an audio cue aligned within one frame, and a light haptic impact on mobile",
+    "Flags the instant destroy-on-trigger as removing the moment for feedback to register, and recommends a brief pickup animation or delay before the object is removed",
+    "Does not approve the plan to build as described"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["particle", "haptic", "screenshake", "screen shake"]},
+    {"kind": "contains_any", "value": ["trinity", "juice"]}
+  ]
+}

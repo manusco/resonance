@@ -10,5 +10,11 @@
     "Gotchas section writes 'None identified this session' rather than inventing warnings",
     "Does not skip sections - every section is present even if its content is minimal",
     "Does not error on missing task.md - handles it with a skip and a note"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

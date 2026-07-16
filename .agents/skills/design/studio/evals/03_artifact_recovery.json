@@ -8,5 +8,15 @@
     "Does not simply regenerate the same prompt again; makes targeted changes to the camera and post-processing sections",
     "Documents what was changed and why so the fix is repeatable",
     "Escalates after 3 failed regeneration attempts rather than continuing to loop"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

@@ -8,5 +8,11 @@
     "Migrates the learnings.jsonl entries into the Lessons section of .resonance/02_memory.md so they load at session start",
     "Deletes learnings.jsonl after the migration instead of leaving a dead store behind",
     "Leaves 00_soul.md and the rest of the user's .resonance content untouched, and verifies with a health check after"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

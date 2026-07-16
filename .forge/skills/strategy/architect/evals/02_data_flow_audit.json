@@ -8,5 +8,11 @@
     "Recommends a single authoritative layer (e.g. order service) and explains why",
     "Does not rewrite the code - stays at the audit and recommendation level",
     "References the Single Source of Truth principle by name"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

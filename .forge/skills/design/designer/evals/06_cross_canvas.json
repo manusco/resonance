@@ -8,5 +8,15 @@
     "Uses fluid type (clamp) and content-driven breakpoints rather than fixed device widths",
     "Addresses the 10-foot canvas specifics: larger type and spacing, a strong visible focus treatment, and overscan-safe margins",
     "Respects safe areas and touch target minimums (at least 44px)"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

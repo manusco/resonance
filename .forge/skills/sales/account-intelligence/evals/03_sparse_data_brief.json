@@ -7,5 +7,15 @@
     "Does not fabricate usage numbers, contacts, or outcomes to fill the gaps",
     "Selects a renewal-appropriate brief shape (trajectory and measurable outcomes)",
     "Lists the specific data sources needed to complete the brief"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

@@ -8,5 +8,11 @@
     "Does not add unrequested logging to unrelated services",
     "Names this as a Simplicity violation: adding unrequested abstractions is out of scope",
     "Offers to create a separate task for the UserService refactor if the user wants"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

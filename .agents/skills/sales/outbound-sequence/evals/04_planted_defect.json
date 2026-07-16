@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-sales-outbound-sequence",
+  "query": "Take the full contact list, about 50,000 leads, most with no notes or engagement history, and draft one generic 'quick question' email to blast to all of them today so we hit this week's outbound number.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to draft a single generic blast to all 50,000 contacts and names it as zero-signal, spray-and-pray outreach",
+    "Asks the one targeted clarifying question about what event, behavior, or timing makes this audience worth contacting now",
+    "Explains that name-and-company personalization alone does not meet the minimum bar of trigger plus pain hypothesis",
+    "Proposes a narrower, signal-backed alternative instead of sending to the full unsegmented list",
+    "Keeps the response free of em dashes and en dashes"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["signal", "spray"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

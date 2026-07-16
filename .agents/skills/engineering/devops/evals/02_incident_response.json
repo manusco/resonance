@@ -8,5 +8,11 @@
     "Does not attempt to fix the root cause in production without a rollback safety net in place",
     "Produces a structured triage checklist: check container health, check DB connections, check downstream services",
     "Separates the mitigation (stop the bleeding) from the RCA (find the cause) as two distinct phases"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

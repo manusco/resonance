@@ -8,5 +8,11 @@
     "Checks whether the FK columns (user_id on orders, order_id on line_items) have indexes",
     "Does not recommend denormalization without a benchmark proving it is necessary",
     "Produces the specific CREATE INDEX statement with the correct column order"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

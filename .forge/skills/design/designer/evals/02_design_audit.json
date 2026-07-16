@@ -8,5 +8,15 @@
     "Specifies the Motion Trinity for the table (Entrance, Hover, Click states)",
     "Recommends specific HSL or mathematical adjustments, not vague 'make it darker' advice",
     "Does not output implementation CSS - stays at the specification level"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

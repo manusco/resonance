@@ -8,5 +8,11 @@
     "Considers team size (2 people) as a key constraint: avoids recommending engines with steep learning curves",
     "Considers the 60fps target: evaluates which engines meet this on mid-range Android",
     "Recommends writing an ADR to document the decision rationale"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

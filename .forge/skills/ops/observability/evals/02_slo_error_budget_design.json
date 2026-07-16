@@ -8,5 +8,11 @@
     "Refuses to page on CPU (a cause, not a user symptom): a service can run hot and still serve every request, so CPU is a diagnostic dashboard, not a page",
     "Proposes symptom-based, multiwindow burn-rate alerting on the SLO instead, with fast burn paging and slow burn opening a ticket",
     "Explains the error-budget policy: budget remaining means ship, budget exhausted means freeze features and fix reliability"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

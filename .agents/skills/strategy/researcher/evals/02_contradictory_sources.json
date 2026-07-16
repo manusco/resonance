@@ -8,5 +8,11 @@
     "Presents both conflicting claims with their sources before stating the resolution",
     "Notes which source is more current or authoritative",
     "Does not fabricate confidence - if the answer is still ambiguous after primary source check, states that explicitly"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

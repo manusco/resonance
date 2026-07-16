@@ -8,5 +8,15 @@
     "Validates the third testimonial as acceptable social proof",
     "Explains why fabricated social proof hurts conversion (savvy users detect it, trust is destroyed)",
     "Does not proceed to optimize conversion elements until the trust risks are addressed"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

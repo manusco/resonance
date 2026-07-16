@@ -8,5 +8,15 @@
     "Audits unproven assumptions such as VP HR physical address accuracy or QR code scanning permissions",
     "Expands the concept into adjacent digital channels and a contrarian 'anti-postcard' strategy",
     "Establishes a lean execution plan with an explicit week-by-week sequencing and a hard kill threshold"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

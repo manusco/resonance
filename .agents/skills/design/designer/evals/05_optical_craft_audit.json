@@ -8,5 +8,15 @@
     "Checks that state changes are eased and that focus states are designed, not the raw browser outline",
     "Runs the design against the AI slop catalog and names specific tells rather than giving vague 'make it cleaner' advice",
     "Gives concrete values or rules, not generic praise"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

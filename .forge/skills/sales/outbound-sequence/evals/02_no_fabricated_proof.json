@@ -7,5 +7,15 @@
     "Uses only claims that trace to a provided source, and flags where proof is needed with an assumption marker",
     "Marks any customer reference or result as needing approval before use",
     "Keeps the copy free of AI slop and em dashes"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
   ]
 }

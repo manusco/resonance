@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-design-studio",
+  "query": "Here is the prompt we have been using for our hero images and it is not working well: 'a professional photorealistic image of a happy diverse team in a modern office, high quality, 8k, trending on artstation, best lighting, ultra realistic'. The results look generic and plastic. Fix this for a B2B fintech landing page hero.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies why the prompt fails: vague words like 'photorealistic', 'high quality', '8k', and 'trending on artstation' do not specify an actual capture setup",
+    "Restructures the prompt into separate Subject, Style, Light, and Camera fields instead of one run-on sentence",
+    "Replaces 'photorealistic' and 'ultra realistic' with a concrete lens, aperture, and light direction",
+    "Specifies an aspect ratio matching the hero placement and a safe zone for overlay copy",
+    "Documents the revised prompt so it reproduces, not just a one-off fix"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["lens", "aperture", "mm", "focal length"]},
+    {"kind": "regex_absent", "value": "(?i)(this prompt looks fine|no changes needed|ready to use as[- ]is|good to go)"}
+  ]
+}

@@ -7,5 +7,11 @@
     "Drops the style nits and any finding that does not trace to a real line (guards against hallucination and noise)",
     "Treats a claimed P0 like the SQL injection as a candidate to confirm at the code path, not an established fact",
     "Does not average or defer to the second model; the code decides"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

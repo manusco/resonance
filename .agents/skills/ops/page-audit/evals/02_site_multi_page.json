@@ -8,5 +8,11 @@
     "Runs /system-health and /audit as the baseline safety net alongside the per-page battery",
     "Writes a FUTURE_IMPROVEMENTS.md that is forward-looking (opportunity, why it matters, effort, impact, priority), grouped by theme and ranked, not a changelog of what was done",
     "Hands implementation to /goal and shipping to /ship rather than implementing or deploying inside the audit"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }
