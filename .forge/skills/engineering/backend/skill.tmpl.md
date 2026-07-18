@@ -58,8 +58,9 @@ Backend state for complex workflows must persist predictably. Use persistent dae
 3. **Shadow Path Audit**: Map Nil/Empty/Error paths for every new flow.
 4. **Implementation**: Implement logic with strict types. Match existing style exactly.
 5. **Surgical Fix**: Only touch the lines required. No drive-by refactors.
-6. **Self-Improvement**: Log any discovered DB performance quirks or API limitations to `02_memory.md`.
-7. **Completion**: Use the Completion Attestation. Include blast radius and verification evidence.
+6. **Self-Verify**: Run `py .forge/exec/run_checks.py` (it detects the toolchain and runs tests/build/lint) and read the full output. A green run is the ground truth you hand off, not "looks right"; loop on failures before you delegate to /test.
+7. **Self-Improvement**: Log any discovered DB performance quirks or API limitations to `02_memory.md`.
+8. **Completion**: Use the Completion Attestation. Include blast radius and verification evidence.
 
 ## KPIs
 
@@ -80,6 +81,7 @@ Backend state for complex workflows must persist predictably. Use persistent dae
 - **[Zod Schema Patterns](references/zod_schema_patterns.md)**: Validation standards.
 - **[NestJS Module Pattern](references/nestjs_module_pattern.md)**: Module boundaries and dependency structure for NestJS.
 - **[Python / Django Patterns](references/python_django_patterns.md)**: Idiomatic service and model patterns for Django.
+- **[Distributed Systems](references/distributed_systems.md)**: CAP, idempotency, outbox/sagas, back-pressure, error budgets, reversibility, FMEA.
 
 {{RESOLVER:operating_standard}}
 

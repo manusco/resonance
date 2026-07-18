@@ -35,6 +35,7 @@ End every run with a status backed by evidence (output, a passing test, a diff),
 
 - **DONE**: complete, evidence shown. Complete means all of what was asked, not a representative slice; a partial delivery is DONE_WITH_CONCERNS at best, and only with the gap named.
 - **DONE_WITH_CONCERNS**: complete; list side effects or debt.
+- **DONE_PENDING_OUTCOME**: shipped and verified as far as the session allows, but the real proof is a metric that lands later (a reply rate, a conversion, a renewal). Use it instead of DONE when the ground truth is an external outcome you cannot observe now: record it in the ledger as an `exp-` entry (or a `met-` once the value is known) with a `due:` date, the day the outcome is checked in (`py .forge/measurement_due.py` surfaces it then), and it is not DONE until that outcome is checked in. Code with an in-session executed check is DONE, not this.
 - **BLOCKED**: state the blocker and what you tried.
 - **NEEDS_CONTEXT**: state exactly what is missing.
 
@@ -42,11 +43,11 @@ Escalate (STOP) if a fix failed 3 times, the change is security-sensitive and yo
 
 ### Project Memory (load at session start)
 
-Before acting, read `.resonance/01_state.md` (what this project is and where it stands) and `.resonance/02_memory.md` (the accumulated-lessons index), plus any leaf file under `.resonance/memory/` relevant to the task. A lesson written here once is read every time after.
+Before acting, read `.resonance/01_state.md` (what this project is and where it stands) and `.resonance/02_memory.md` (the accumulated-lessons index), plus any leaf file under `.resonance/memory/` relevant to the task. A lesson written here once is read every time after. When `.resonance/ledger/` exists, it is the typed system of record for decisions, lessons, metrics, customers, and experiments: recall it with `py .forge/recall.py "<topic>"` and cite entries by id rather than restating them.
 
 ### The Ratchet (Self-Improvement)
 
-Never solve the same problem twice. When you fix a bug, write the test. When you learn something durable (an API limit, a project convention, a user preference, or a correction the user just gave you), record it in the project memory: a one-line entry in `.resonance/02_memory.md`, and a short leaf file under `.resonance/memory/` if it needs detail. Settled decisions go under `## Decisions` in the same file, one line each, so they resurface every session and never get re-litigated. When the user corrects your logic or style, also fix the deterministic layer (script, validator, directive) so the class cannot recur, not just the instance. If a lesson is about a skill or the framework itself rather than this project, prefix the line with `[lib]` so library maintainers can harvest it. Brand or client material never goes into a public file; it belongs in your private pack.
+Never solve the same problem twice. When you fix a bug, write the test. When you learn something durable (an API limit, a project convention, a user preference, or a correction the user just gave you), record it in the project memory. When the project has a typed ledger (`.resonance/ledger/` exists), a durable lesson is a `les-` entry and a settled decision is a `dec-` entry there, superseded to change one, and `.resonance/02_memory.md` keeps only `[lib]` notes and pointer lines. Without a ledger, add a one-line lesson to `.resonance/02_memory.md` (a leaf file under `.resonance/memory/` if it needs detail) and put settled decisions under `## Decisions`, one line each, so they resurface every session and never get re-litigated. When the user corrects your logic or style, also fix the deterministic layer (script, validator, directive) so the class cannot recur, not just the instance. If a lesson is about a skill or the framework itself rather than this project, prefix the line with `[lib]` so library maintainers can harvest it. Brand or client material never goes into a public file; it belongs in your private pack.
 
 ---
 
@@ -105,7 +106,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/incident** -> `ops/incident` - Drive a live production incident: triage, severity, mitigate, comms, blameless postmortem.
 
 ### Always-on specialists (auto-fire, no command)
-Knowledge skills apply themselves when relevant: `engineering/backend`, `engineering/frontend`, `engineering/mobile`, `engineering/game-dev`, `engineering/database`, `engineering/devops`, `engineering/automation`, `engineering/performance`, `strategy/architect`, `strategy/growth`, `strategy/researcher`, `marketing/copywriter`, `sales/account-intelligence`, `sales/lead-ops`, `sales/outbound-sequence`, `ops/security`, `ops/product`, `ops/productivity`, `ops/observability`, `marketing/paid-acquisition`, `marketing/analytics`, `marketing/lifecycle`, `engineering/ai-engineering`, `strategy/finance`, `ops/legal`.
+Knowledge skills apply themselves when relevant: `engineering/backend`, `engineering/frontend`, `engineering/mobile`, `engineering/game-dev`, `engineering/database`, `engineering/devops`, `engineering/automation`, `engineering/performance`, `strategy/architect`, `strategy/growth`, `strategy/researcher`, `marketing/copywriter`, `sales/account-intelligence`, `sales/lead-ops`, `sales/outbound-sequence`, `ops/security`, `ops/product`, `ops/productivity`, `ops/observability`, `marketing/paid-acquisition`, `marketing/analytics`, `marketing/lifecycle`, `engineering/ai-engineering`, `strategy/finance`, `ops/legal`, `ops/founder-os`, `people/hiring`, `success/customer-success`, `sales/revops`.
 
 ---
 

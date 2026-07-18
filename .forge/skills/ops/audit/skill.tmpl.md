@@ -2,6 +2,11 @@
 name: resonance-ops-audit
 description: The Gatekeeper and Auditor Swarm. Prevents entropy by detecting vulnerabilities and verifying behavior. Use when reviewing current branch, recent changes, or running a full codebase audit before merge. Drives the security, reviewer, qa, and architect subagents.
 archetype: orchestration
+invokes:
+  - resonance-ops-security
+  - resonance-ops-reviewer
+  - resonance-ops-qa
+  - resonance-strategy-architect
 ---
 
 # /resonance-ops-audit: prevent entropy, enforce standards

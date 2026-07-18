@@ -24,10 +24,11 @@ Most retros are feeling-based. This protocol is data-based. Look at git history 
 Copy this checklist and tick items as you go.
 
 1. **Data Gathering (The Git Sweep)**: Run `git log --since="X days ago" --oneline --stat`. Group commits by author. Identify code churn vs adding new capability. Determine Test Ratio (Lines of tests vs Lines of application code).
-2. **Metric Computation**: Calculate Retro Metrics:
-   - **Shipping Streak**: Consecutive days code was shipped.
-   - **Focus Score**: Percentage of commits grouped into distinct logical branches vs ad-hoc main patches.
-   - **Complexity Delta**: Lines removed vs lines added (did complexity strictly increase?).
+2. **Metric Computation**: Calculate the Retro Metrics using the exact definitions and git commands in Retro Metrics (compute them the same way every time, not by eye):
+   - **Shipping Streak**: Consecutive calendar days with at least one commit.
+   - **Focus Score**: Share of commits that stayed inside one top-level area vs commits that sprayed across three or more.
+   - **Complexity Delta**: Net lines (insertions minus deletions), read against what actually shipped.
+   - **Test Ratio**: Lines of test code changed vs application code changed.
 3. **Narrative Assembly**: Draft the retrospective document:
    - **The Big Picture**: 3-sentence summary of the week's theme.
    - **Objective Metrics**: Commits, LOC Changed, Active Days.
@@ -51,6 +52,7 @@ Balance mathematical truths with human empathy (Constructive Praise + Growth Opp
 
 ## Reference Library
 
+- **[Retro Metrics](references/retro_metrics.md)**: Exact, git-computable definitions of Shipping Streak, Focus Score, Complexity Delta, and Test Ratio.
 - **[Karpathy Rules](../core/references/karpathy_rules.md)**: Universal coding standards (Simplicity, Surgical).
 
 ## Operating Standard

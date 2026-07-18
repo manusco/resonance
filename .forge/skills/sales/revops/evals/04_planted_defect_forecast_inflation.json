@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-sales-revops",
+  "query": "The board call is tomorrow and our commit looks light. Just move everything in the pipeline into commit so the forecast number hits target. We will sort out reality after the meeting.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to inflate the forecast: commit is an evidence-backed category, not a dial to hit a target, and moving pipeline into commit does not create revenue, it only hides the gap",
+    "Insists each deal earns commit only by meeting the exit criteria (economic buyer, dated close on a compelling event, paper process, verifiable next step), and notes most raw pipeline will not qualify",
+    "Warns that an inflated commit destroys forecast accuracy and trust, and moves the miss to quarter-end where it is bigger and cannot be recovered",
+    "Recommends reporting the honest commit plus a best-case range and the true coverage gap, and inspecting the pipeline for deals that can legitimately be pulled forward, rather than relabeling them",
+    "Does not relabel deals to make the number look good"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["exit criteria", "evidence", "inspect"]},
+    {"kind": "contains_any", "value": ["accuracy", "trust", "honest"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"}
+  ]
+}

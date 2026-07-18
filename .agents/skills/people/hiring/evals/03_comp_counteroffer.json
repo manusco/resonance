@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-people-hiring",
+  "query": "Our top candidate for the senior backend role has a competing offer that's about 20% above the top of our band for that level. I really want him. Should we just beat their number to lock him in? What's the fastest way to close?",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to reflexively blow past the band for one hire, explaining that overpaying the hardest negotiator creates an internal inequity that surfaces the moment pay becomes known, and it always does",
+    "Offers the honest fork: either the candidate is genuinely operating a level up and the scope supports re-leveling the role (then re-offer at the correct band), or the answer on comp is no and you compete on non-comp levers",
+    "Treats the competing offer as information, not just a bidding war, and asks what actually drives his decision (mission, ownership, growth, team) beyond the number",
+    "Warns that a hire won purely by outbidding at the last second tends to leave for the next higher bid, and recommends closing on the role and trajectory, not just cash",
+    "Anchors the close on knowing his real motivations and removing blockers rather than on speed or a high-pressure deadline",
+    "Does not simply tell him to match or beat the number to close fast"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["band", "comp band"]},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|comprehensive|landscape)\\b"}
+  ]
+}

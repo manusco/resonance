@@ -62,6 +62,7 @@ Every non-key column depends on the primary key, the whole key, and nothing but 
 - **[Postgres Performance Rules](references/postgres_performance_rules.md)**: Query and indexing priorities.
 - **[Migration Safety](references/migration_safety.md)**: Zero-downtime migration guide.
 - **[Schema Validation](references/schema_validation_protocol.md)**: Integrity checklist.
+- **[Distributed Systems](references/distributed_systems.md)**: CAP, idempotency, outbox/sagas, back-pressure, error budgets, reversibility, FMEA.
 
 ## Operating Standard
 

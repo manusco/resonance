@@ -10,14 +10,23 @@ State lives at .resonance/goal_state.json. Pure stdlib.
 Directives:
   CONTINUE      keep going to the next slice
   STOP_SLICE    this slice failed max_slice_attempts times: re-plan it or escalate
-  STOP_STUCK    no slice advanced in the last stuck_window iterations: stop, escalate
+  STOP_STUCK    no slice advanced in the last stuck_window iterations, OR the same
+                failure signature repeated: stop, escalate
   STOP_CAP      hit the total iteration cap: stop, report progress
+
+Pass --sig with a short fingerprint of the failing observation (for example the
+tool name plus the error class) so a loop on one identical error is caught early,
+not only after the whole stuck window. This is the duplicate-call detector the
+reliable-loop literature calls for: the same action failing the same way N times
+is a loop, not progress.
 
 Usage:
   python loop_state.py start "Add CSV export" --dod "export button downloads valid CSV; test green"
-  python loop_state.py check slice-2 advanced     # or: progress | failed
+  python loop_state.py check slice-2 advanced           # or: progress | failed
+  python loop_state.py check slice-2 failed --sig "test:AssertionError"
+  python loop_state.py resume                            # after a crash or handover
   python loop_state.py status
-  python loop_state.py done                        # clear state when the goal is verified
+  python loop_state.py done                              # clear state when the goal is verified
 """
 from __future__ import annotations
 
@@ -66,8 +75,9 @@ def cmd_check(a) -> int:
     if a.result not in ("advanced", "progress", "failed"):
         print("result must be advanced | progress | failed")
         return 2
+    sig = getattr(a, "sig", None)
     s["iterations"].append({"n": len(s["iterations"]) + 1, "slice": a.slice,
-                            "result": a.result, "ts": _now()})
+                            "result": a.result, "sig": sig, "ts": _now()})
     caps = s.get("caps", CAPS)
     its = s["iterations"]
     _save(s)
@@ -82,6 +92,15 @@ def cmd_check(a) -> int:
         print(f"STOP_SLICE  '{a.slice}' has {len(slice_attempts)} attempts without advancing. "
               f"Re-plan this slice or escalate. Do not keep retrying.")
         return 0
+    # duplicate-failure detector: the same failing signature repeating is a loop on
+    # one error, caught earlier than the whole-window stuck check.
+    if a.result != "advanced" and sig:
+        same_sig = [i for i in its if i.get("sig") == sig and i["result"] != "advanced"]
+        if len(same_sig) >= caps["max_slice_attempts"]:
+            print(f"STOP_STUCK  the same failure signature repeated {len(same_sig)} times "
+                  f"('{sig}'). You are looping on one error, not making progress. "
+                  f"Change the approach or escalate; do not retry it again.")
+            return 0
     # stuck detector
     window = its[-caps["stuck_window"]:]
     if len(window) >= caps["stuck_window"] and all(i["result"] != "advanced" for i in window):
@@ -105,6 +124,29 @@ def cmd_status(a) -> int:
     return 0
 
 
+def cmd_resume(a) -> int:
+    """After a crash, a /handover, or a new session, read the persisted state and
+    say where to pick up. The loop state is the checkpoint; this reads it back so a
+    run resumes at the last unverified slice instead of restarting."""
+    s = _load()
+    if not s:
+        print("no active goal to resume. Run `start` to begin one.")
+        return 0
+    its = s["iterations"]
+    advanced = sorted({i["slice"] for i in its if i["result"] == "advanced"})
+    last = its[-1] if its else None
+    print(f"RESUME  goal: {s['goal']}")
+    print(f"DoD: {s['dod'] or '(none set: define a checkable one before building)'}")
+    print(f"iterations so far: {len(its)} (cap {s.get('caps', CAPS)['max_iters']})")
+    print(f"slices advanced: {', '.join(advanced) if advanced else '(none yet)'}")
+    if last:
+        tail = f" [{last.get('sig')}]" if last.get("sig") else ""
+        print(f"last check: slice '{last['slice']}' -> {last['result']}{tail}")
+    print("Continue from the first slice not yet advanced. Recall memory first, then run "
+          "the loop from there. Do not restart slices already verified.")
+    return 0
+
+
 def cmd_done(a) -> int:
     if STATE.exists():
         STATE.unlink()
@@ -117,9 +159,11 @@ def main(argv: list[str]) -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("start"); p.add_argument("goal"); p.add_argument("--dod")
     p = sub.add_parser("check"); p.add_argument("slice"); p.add_argument("result")
-    sub.add_parser("status"); sub.add_parser("done")
+    p.add_argument("--sig", default=None, help="short fingerprint of the failing observation")
+    sub.add_parser("resume"); sub.add_parser("status"); sub.add_parser("done")
     a = ap.parse_args(argv)
-    return {"start": cmd_start, "check": cmd_check, "status": cmd_status, "done": cmd_done}[a.cmd](a)
+    return {"start": cmd_start, "check": cmd_check, "status": cmd_status,
+            "resume": cmd_resume, "done": cmd_done}[a.cmd](a)
 
 
 if __name__ == "__main__":

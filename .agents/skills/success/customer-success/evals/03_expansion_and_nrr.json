@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-success-customer-success",
+  "query": "We are at 92% net revenue retention and I want to hit 115%. Where do I start, and how do I know expansion is working?",
+  "files": [],
+  "expected_behavior": [
+    "Explains NRR over a fixed cohort of existing customers with no new logos mixed in, distinguishes it from GRR (which caps at 100% and measures the leak), and shows why NRR above 100% compounds the base on its own",
+    "Diagnoses that sub-100 NRR means churn and contraction are outrunning expansion, so the first move is to stop the leak (GRR, health, renewals) before pouring effort into expansion",
+    "Frames expansion as the cheapest growth (no acquisition cost, trust earned, product deployed) and enforces the sequence: expand only after value is proven, never before",
+    "Recommends triggering expansion off real usage signals (seats near licensed count, usage nearing a cap, an adjacent workflow adopted) rather than a calendar or quota clock, and uses the QBR as a proven-value expansion moment",
+    "Names the metrics to watch (NRR, GRR, expansion MRR, net new from base) and defers pricing and packaging to venture and the financial model to finance while owning the motion that moves the number"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

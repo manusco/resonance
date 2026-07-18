@@ -1,0 +1,27 @@
+{
+  "skill": "resonance-ops-founder-os",
+  "query": "Run our weekly business review. Here is where we are: MRR has been flat at 42K for the third week straight, activation ticked up from 30 percent to 34 percent, and we paused paid search two weeks ago to see if CAC drops. What should we do?",
+  "files": [],
+  "expected_behavior": [
+    "Starts from a scorecard read against targets rather than a round-robin of activity updates",
+    "Flags MRR flat for three weeks as the stuck item and drills it, distinguishing whether the work did not land, the lever is weaker than assumed, or no one owns it",
+    "Reads activation rising while MRR stays flat as a possibly broken leading-to-lagging link and names it as the finding to check",
+    "Produces concrete decisions and states they should be logged as dec- entries with one owner, superseded rather than overwritten",
+    "Treats the paused paid search as outcome-pending: its proof is next month's CAC, so it ends DONE_PENDING_OUTCOME with a met- or exp- entry carrying a due date, not a verdict declared now",
+    "Does not declare the paid-search pause a success in the room before its outcome date arrives"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "pending",
+        "due",
+        "outcome"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

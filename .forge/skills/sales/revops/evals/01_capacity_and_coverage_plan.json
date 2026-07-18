@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-sales-revops",
+  "query": "Plan next year's sales capacity. Board target is 6M net-new ARR. Our AEs carry a 1M quota on 200K OTE, our win rate on qualified pipeline is about 20%, and the average deal is 50K. We keep 3x pipeline coverage because that is the standard. How many reps and how much pipeline do we need?",
+  "files": [],
+  "expected_behavior": [
+    "Builds capacity from the target: over-assigns quota above 6M (a 1.15 to 1.25x factor) so the team lands 6M below 100% attainment, then divides by the 1M rep quota to get the rep count",
+    "Corrects the 3x coverage assumption: at a 20% win rate the required coverage is 1 / 0.20 = 5x, not 3x, so the team is under-covered; states that 3x is the inverse of a roughly 33% win rate and is a heuristic, not a law",
+    "Derives the pipeline generation target (assigned quota x 5) and converts it to qualified opps needed (pipeline / 50K ACV), handing that as the sourcing target to SDR and marketing",
+    "Adjusts for ramp by hiring ahead of need rather than assuming day-one full productivity, and adds an attrition buffer",
+    "Sanity-checks the quota against OTE (1M on 200K is 5x) and reconciles the bottom-up capacity with the top-down 6M target, naming any gap and the lever to close it"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["5x", "5:1", "1 / 0.20", "1/0.20", "1 / 0.2"]},
+    {"kind": "contains_any", "value": ["coverage", "ramp"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"}
+  ]
+}

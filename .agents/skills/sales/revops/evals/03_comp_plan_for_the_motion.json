@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-sales-revops",
+  "query": "Design a comp plan for our new-business AEs. OTE is 180K. We have a churn problem: reps close deals that cancel in the first few months. Keep them motivated to sell hard.",
+  "files": [],
+  "expected_behavior": [
+    "Starts from the motion: comp drives behavior, so a plan that pays only on signature rewards exactly the fast-churn behavior the operator wants to stop",
+    "Adds a clawback (recover commission if a deal churns or fails to pay within a defined window such as 90 to 180 days) and/or pays on retained or collected revenue, aligning the rep to durable revenue rather than the signature",
+    "Sets pay mix and commission rate from OTE and quota (for example 50/50, commission rate = target variable / quota), adds accelerators above 100% to reward overperformance, and does not cap commissions",
+    "Keeps the plan simple enough for a rep to compute their own check, with one primary metric for the role",
+    "Names the tradeoff and recommends the guardrail as a Recommendation-First decision rather than silently changing the target motion"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["clawback", "retained", "collected"]},
+    {"kind": "contains_any", "value": ["accelerator", "no cap", "uncap", "cap"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"}
+  ]
+}

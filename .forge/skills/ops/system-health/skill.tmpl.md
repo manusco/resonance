@@ -2,6 +2,9 @@
 name: resonance-ops-system-health
 description: The Doctor. Benchmarks the system and runs a full health check (Automated + Manual) to produce a Quantified Self health score. Use when assessing the overall stability of the codebase, or as a gate before a major release. Drives qa and security agents.
 archetype: orchestration
+invokes:
+  - resonance-ops-qa
+  - resonance-ops-security
 ---
 
 # /resonance-ops-system-health: measure the pulse, diagnose the drift

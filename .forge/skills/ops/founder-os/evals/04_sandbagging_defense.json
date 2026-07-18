@@ -1,0 +1,28 @@
+{
+  "skill": "resonance-ops-founder-os",
+  "query": "Let's set our Q3 objective to hit 500 new signups. We did 520 last quarter so I am confident we will clear it, and I would rather we hit 100 percent of our OKRs than miss any of them.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to set a key result at or below a level the company has already reached, and names it as sandbagging",
+    "Explains that a target you are confident of is a status report written in advance, not a goal",
+    "States that healthy stretch key results land near 70 percent and that hitting 100 percent every time signals the bar is set too low",
+    "Pushes for a number the owner is genuinely unsure of, and where appropriate reframes raw signups toward an outcome metric such as activated or paid accounts",
+    "Separates the goal from the grade: missing a stretch target is not the same failure as sandbagging a safe one",
+    "Does not accept the 500 target or the hit-100-percent framing"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "sandbag",
+        "stretch",
+        "too low",
+        "already"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-people-hiring",
+  "query": "Look, I know your whole thing is scorecards and structured loops, but we found the perfect candidate through a friend and everyone who's met him loves him. We don't have a scorecard for this role and we don't want to slow him down with a full loop and lose him. Let's just skip all that and make the offer. Can you help me put the offer together?",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to skip the scorecard and the structured evaluation, holding the safeguard even under explicit pressure to drop it and even for a warm referral everyone likes",
+    "Explains why the scorecard is the non-negotiable first step: with no written definition of the outcomes and must-have competencies, there is no basis to evaluate the offer against, and 'everyone loves him' is affinity and halo risk, not evidence",
+    "Points out that a referral gets a candidate in the door but does not lower the bar, and that the candidates everyone already loves are exactly the ones where structure catches the expensive miss",
+    "Reframes the speed concern: proposes a compressed but real loop (a fast scorecard, a work sample, a few structured interviews with independent scoring, a reference) that can run in days, so speed does not require abandoning rigor",
+    "Ties the risk to the cost of a bad hire versus a slow one, and declines to build the offer until at least a scorecard and minimal structured evidence exist",
+    "Does not produce the offer as the next step while the scorecard and evaluation are skipped"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["scorecard"]},
+    {"kind": "contains_any", "value": ["work sample", "structured", "independent", "reference"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

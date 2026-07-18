@@ -2,6 +2,14 @@
 
 > The reliable autonomous loop is not a leap of faith. It is a reason-act-observe cycle where every observation is ground truth from the environment, the number of turns is capped by code, and a failing plan gets replaced instead of retried forever. This is the opposite of the open-ended goal-chaser that judges its own progress and never stops.
 
+## Earn the loop (do not spin one you do not need)
+
+Before starting an autonomous loop, take the cheapest tool that verifies the outcome. A single skill, or a fixed prompt chain, beats a self-directing loop when the path is known. Reach for the loop only when the work needs the model to decide its own next step against feedback it cannot predict. An autonomous loop is the most expensive and least predictable option, so it is the last resort, not the default. If the goal is really one step, do the step.
+
+## Every iteration must add information
+
+A loop that re-samples the same model on the same context is a slot machine, not progress. Each turn has to inject something new: a test result, a fetched fact, a tool error, a field outcome, a human answer. If a turn would run on exactly the inputs of the last one, stop and change the inputs, do not pull the lever again.
+
 ## The cycle
 
 For each slice, one turn of the loop is:
@@ -9,7 +17,17 @@ For each slice, one turn of the loop is:
 1. **Reason:** decide the smallest next action that moves the slice toward its Definition of Done. Recall memory and settled decisions first so you do not re-solve solved problems.
 2. **Act:** build that action (`/build`).
 3. **Observe (grounded):** run the real check. Tests via `/test` live execution, the validators, `/audit` on the diff. Read the actual output. See done_conditions for what qualifies.
-4. **Record and decide:** call `loop_state.py check <slice> advanced|progress|failed`. Obey the directive. Record any real decision under `## Decisions` in `.resonance/02_memory.md`.
+4. **Record and decide:** call `loop_state.py check <slice> advanced|progress|failed`. When a check fails, pass `--sig "<tool>:<error-class>"` so a loop on one identical error is caught early. Obey the directive. Record any real decision in the project ledger or memory (see the operating standard for where).
+
+## Three clocks
+
+The loop runs at three speeds, and all three must turn:
+
+- **Inner (seconds):** the deterministic checks inside one slice, tests, validators, a build. Ground truth for "did this action work".
+- **Middle (a session):** evals and a second opinion across the whole change. Ground truth for "is the change good", not just green.
+- **Outer (weeks):** the field outcome comes back and either confirms the work or does not, and a confirmed lesson becomes a skill or doctrine change kept only if it raises measured lift. Ground truth for "did it work in the world".
+
+Most loops build only the inner clock and call it done. The inner clock proves the code ran; it cannot prove the decision was right. Close the outer clock or the system only ever grades itself.
 
 Repeat until the slice DoD is met, then move to the next slice. Repeat across slices until the goal DoD is met.
 

@@ -93,7 +93,11 @@ def split_frontmatter(text: str) -> tuple[dict, str, int]:
         if not stripped:
             continue
         if mode == "list" and stripped.startswith("- "):
-            fm.setdefault(key, []).append(stripped[2:].strip())
+            # a `key:` with no value defaults to "" (below); the first list item
+            # promotes it to a real list. Coerce so we never .append to the str.
+            if not isinstance(fm.get(key), list):
+                fm[key] = []
+            fm[key].append(stripped[2:].strip())
             continue
         mode = None
         m = re.match(r"^([A-Za-z0-9_-]+):\s*(.*)$", raw)
@@ -209,8 +213,8 @@ def check_evals(skill_dir: Path, r: Report) -> None:
     eval_dir = skill_dir / "evals"
     cases = list(eval_dir.glob("*.json")) if eval_dir.exists() else []
     if len(cases) < 3:
-        r.error(f"evals: found {len(cases)} case(s) in evals/. A skill ships with >= 3 golden "
-                f"cases (query + expected_behavior); fewer cannot carry any measurement")
+        r.err(f"evals: found {len(cases)} case(s) in evals/. A skill ships with >= 3 golden "
+              f"cases (query + expected_behavior); fewer cannot carry any measurement")
 
 
 def validate(path: Path, r: Report) -> Report:

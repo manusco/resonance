@@ -2,6 +2,14 @@
 name: resonance-ops-goal
 description: The autonomous goal loop. Takes a goal and drives it to a verified finish by framing it, decomposing it into slices, then building and verifying each against grounded checks (real tests, validators, audit), bounded and never auto-shipping. Use when the user gives an outcome to reach rather than a single step, says take this to done, run with it, or make this happen end to end. Manual-only (drives builds, tests, and real side effects).
 archetype: orchestration
+invokes:
+  - resonance-strategy-grill
+  - resonance-strategy-plan
+  - resonance-engineering-build
+  - resonance-ops-qa
+  - resonance-ops-audit
+  - resonance-ops-second-opinion
+  - resonance-ops-ship
 ---
 
 # /resonance-ops-goal: carry a goal to a verified finish

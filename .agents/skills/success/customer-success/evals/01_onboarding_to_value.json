@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-success-customer-success",
+  "query": "We just closed a 12-month deal with a 40-person marketing team. What should the first 90 days look like so they actually stick and renew?",
+  "files": [],
+  "expected_behavior": [
+    "Frames the renewal as won in onboarding, treating the first 30 to 90 days as the highest-return retention work, not a task to hand to IT",
+    "Defines first value in the customer's own terms (a marketing team's outcome like pipeline or campaigns shipped, not seats provisioned or setup completed) and pushes to compress time-to-value",
+    "Builds a success plan naming the desired outcome, a dated first-value milestone, owners on both sides, and how both sides know the outcome landed",
+    "Separates the required outcome from the appropriate experience, and calls out the sales handoff and closing the promise gap early so it does not surface as a churn reason at renewal",
+    "Lays out a 30/60/90 arc (first value, then habit and breadth, then embed and multi-thread) and warns against a feature tour or measuring onboarding by checklist steps instead of value reached"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

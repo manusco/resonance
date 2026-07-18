@@ -48,7 +48,10 @@ def _scan(base: Path, prefix: str) -> list[tuple[str, str]]:
     if not base.exists():
         return out
     mem = base / "memory"
-    md_files = sorted(base.glob("*.md")) + (sorted(mem.glob("*.md")) if mem.is_dir() else [])
+    ledger = base / "ledger"
+    md_files = (sorted(base.glob("*.md"))
+                + (sorted(mem.glob("*.md")) if mem.is_dir() else [])
+                + (sorted(ledger.glob("*.md")) if ledger.is_dir() else []))
     for md in md_files:
         text = md.read_text(encoding="utf-8", errors="replace")
         # split on level-2/3 headings; keep the heading with its body

@@ -1,0 +1,26 @@
+{
+  "skill": "resonance-ops-founder-os",
+  "query": "We want to grow next quarter. Help me set our OKRs. The company goal is to become the default onboarding tool for small B2B teams, and I want the sales, product, and success teams each to have goals that ladder up to that.",
+  "files": [],
+  "expected_behavior": [
+    "Sets one or two qualitative, directional company objectives rather than a list of tasks",
+    "Writes key results as numbers with a target and a date, three to five per objective, each checkable by a metric reading",
+    "Cascades company to team or function to this-week, and sum-checks that the function key results add up to the company target instead of just listing per-team goals",
+    "States that key results should be recorded as met- or exp- entries in the ledger with target and as_of or due dates, not kept only in a doc",
+    "Applies the outcomes-not-tasks discipline: a shipped feature is not a key result, the number it moves is",
+    "Does not accept a vague directional goal as a key result without a number and a date"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "key result",
+        "objective"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

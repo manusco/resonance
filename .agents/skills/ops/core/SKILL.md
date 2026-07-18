@@ -44,14 +44,14 @@ Use the `.resonance/` files to track state, not just in-context memory:
 - `docs/`: durable human-facing knowledge (architecture, PRDs, guides).
 
 ### The State Protocol
-Maintain `.resonance/00_soul.md` (Identity), `01_state.md` (Context), and `02_memory.md` (the accumulated-lessons index, loaded every session). These are the project's long-term memory. Deposit durable lessons into `02_memory.md` and `memory/` leaf files; because it loads at session start, it is read next time, not just written.
+Maintain `.resonance/00_soul.md` (Identity), `01_state.md` (Context), and `02_memory.md` (the accumulated-lessons index, loaded every session). These are the project's long-term memory. Deposit durable lessons into `02_memory.md` and `memory/` leaf files; because it loads at session start, it is read next time, not just written. When `.resonance/ledger/` exists, decisions, lessons, metrics, customers, and experiments are typed entries there (the system of record for those five types), superseded to change one, and `02_memory.md` keeps only `[lib]` notes and pointer lines. See State Ledger.
 
 ### Search Before Building
 Stop and search before building anything involving unfamiliar patterns. Evaluate across three layers: (1) Tried and true standard patterns, (2) New and popular patterns, (3) First principles. Look for the moment where conventional wisdom is wrong for this specific case.
 
 ## Operational Sequence
 
-1. **Search + Learn**: Skim `## Decisions` in `.resonance/02_memory.md` (already loaded at session start) to resurface settled decisions, then run `py .forge/recall.py "<task topic>"` to pull the relevant deeper memory instead of reading the whole brain. See Memory Recall.
+1. **Search + Learn**: Skim `## Decisions` in `.resonance/02_memory.md` (already loaded at session start) to resurface settled decisions, then run `py .forge/recall.py "<task topic>"` to pull the relevant deeper memory instead of reading the whole brain. See Memory Recall. If the project has a ledger, run `py .forge/measurement_due.py` to surface any `DONE_PENDING_OUTCOME` results now due to check in.
 2. **Pre-Flight**: State assumptions explicitly. Name what is unclear before proceeding.
 3. **If Triggered via `/init`**:
    - **Connection**: Check if `.resonance/` exists. If not, create it.
@@ -85,6 +85,7 @@ Stop and search before building anything involving unfamiliar patterns. Evaluate
 - **[Audit Classification Taxonomy](references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
 - **[Memory Recall](references/memory_recall.md)**: Retrieve by meaning; decisions live in the loaded index.
+- **[State Ledger](references/state_ledger.md)**: The typed layer of `.resonance/` (decisions, lessons, metrics, customers, experiments); when it exists it is the system of record for those five types, with grep-native edges and a supersede protocol.
 - **[Toolchain Detection](references/toolchain_detection.md)**: Detect and run the project's test/build/lint, shared by ship and system-health.
 
 ## Operating Standard

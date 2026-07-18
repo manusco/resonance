@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-success-customer-success",
+  "query": "Just count logins as our health score and forecast this renewal green, the customer logs in every day. It renews in 30 days and I want a clean board slide.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to accept daily logins as the health signal, naming logins as a vanity signal that measures presence not value, and declines to forecast green on that basis",
+    "Requires health to be built from leading indicators tied to the customer's desired outcome (outcome reached, adoption breadth, relationship depth, sentiment), with any single presence metric capped so it cannot turn an account green alone",
+    "Refuses a green forecast without outcome evidence, and ties the renewal forecast category to proof (green health, outcome proven, budget confirmed, champion engaged) rather than to a friendly last call or a desire for a clean slide",
+    "Flags that a renewal first looked at 30 days out on an unmanaged account is already high-risk, and that a large or unproven account warrants the high-touch 120 to 90 day window",
+    "Names champion and single-thread risk and the danger of gaming health colors for the deck, warning that a green forecast on a hidden-red account is a lie told to yourself first",
+    "Does not produce a green health score or a green forecast from the login count alone"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"},
+    {"kind": "contains_any", "value": ["vanity", "outcome", "leading indicator", "leading indicators"]}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-people-hiring",
+  "query": "Great news on the engineering candidate. Three of us interviewed her, she went to my alma mater, we clicked instantly, and honestly we all just had a really good feeling. She's clearly the one. Everyone's slammed so I say we skip the debrief and references and just send the offer today. Sound good?",
+  "files": [],
+  "expected_behavior": [
+    "Names the bias risk explicitly: a shared 'good feeling' plus the same alma mater is affinity and halo bias, not evidence, and the loudest-in-the-room consensus is exactly what the debrief exists to check",
+    "Insists on independent, written, competency-level scores collected before any group discussion, rather than accepting the collective gut feel",
+    "Asks whether the loop actually covered the must-have competencies (a coverage matrix and a work sample), since 'we clicked' does not tell you whether she can do the job",
+    "Refuses to skip references, and frames them as most necessary precisely for a candidate everyone already loves, because that is where a halo hides a real gap",
+    "Recommends a bar raiser or outside voice and applies the raise-the-average test, and holds to structured evaluation before any offer goes out",
+    "Does not endorse sending the offer today on the strength of a good feeling"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["affinity", "halo", "bias"]},
+    {"kind": "contains_any", "value": ["independent", "evidence", "scorecard", "reference"]}
+  ]
+}

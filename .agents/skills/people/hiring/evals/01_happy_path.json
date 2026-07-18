@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-people-hiring",
+  "query": "We're a 12-person startup and I want to hire our first salesperson. I've never hired for sales before. How should I run this so I don't screw it up?",
+  "files": [],
+  "expected_behavior": [
+    "Starts with a scorecard: a one-line mission, three to six measurable, ranked outcomes (a revenue number and a date), and the competencies that predict them, framed as outcomes rather than responsibilities",
+    "Plans sourcing from the funnel backward, distinguishing outbound from inbound and standing up a referral engine, since a first sales hire is almost always outbound",
+    "Designs a structured loop with a coverage matrix and a work sample (for example a mock discovery call), where every interviewer scores independently against a written rubric",
+    "Requires evidence-based evaluation with independent scores committed before the debrief, and recommends a bar raiser or an outside voice to hold the bar",
+    "Includes reference checks as a real gate and an offer built on a comp band, then a 30/60/90 onboarding plan mapped to the scorecard outcomes with an engineered first win",
+    "Does not jump straight to interview questions or job-board posts before the scorecard exists"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["scorecard"]},
+    {"kind": "contains_any", "value": ["outcome", "outcomes"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

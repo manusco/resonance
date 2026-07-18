@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-sales-revops",
+  "query": "Run our weekly forecast call. Here are the AE commits for this quarter: Deal A (60K) the rep says it is going great, the champion loves us. Deal B (120K) verbal yes, redlines came back from their legal, signature expected the 28th. Deal C (90K) the rep left three voicemails and is pretty sure it lands. Give me the commit number to take to the board.",
+  "files": [],
+  "expected_behavior": [
+    "Inspects each commit against the exit criteria (economic buyer engaged, dated close on a real event, paper process known, verifiable next step) rather than the rep's confidence language",
+    "Demotes Deal A and Deal C out of commit: champion enthusiasm and pretty-sure-with-voicemails are happy ears with no verifiable next step or economic buyer, and keeps Deal B in commit because it has a verbal, redlines in legal, and a dated close",
+    "Defines the categories and states the board number is Closed plus Commit, with Best Case as the top of the range, not the sum of everything in the pipeline",
+    "Recommends tracking forecast accuracy per rep (actual / forecast) to calibrate optimism, and asks for the missing exit-criteria evidence rather than accepting gut",
+    "Leaves each inspected deal with a next step, an owner, and a date"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["best case", "best-case"]},
+    {"kind": "contains_any", "value": ["exit criteria", "next step", "economic buyer"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"}
+  ]
+}

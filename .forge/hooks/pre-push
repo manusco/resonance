@@ -30,6 +30,7 @@ echo "Resonance ship-gate: verifying the release before push..." >&2
 fail() { echo "Resonance ship-gate: $1 Push blocked. Fix it, or bypass once with 'git push --no-verify'." >&2; exit 1; }
 "$PY" .forge/validate_skill.py --all .agents/skills >/dev/null 2>&1 || fail "skill validator failed."
 "$PY" .forge/validate_library.py >/dev/null 2>&1 || fail "library validator failed."
+[ -f .forge/tests/run.py ] && { "$PY" .forge/tests/run.py >/dev/null 2>&1 || fail "forge tooling unit tests failed."; }
 "$PY" .forge/run_evals.py --all --check >/dev/null 2>&1 || fail "eval structure check failed."
 "$PY" .forge/doc_drift.py >/dev/null 2>&1 || fail "docs are out of sync (doc_drift)."
 # Field-inbox age (machine-local, warn-only; silent when not configured).
