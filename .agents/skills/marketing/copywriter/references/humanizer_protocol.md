@@ -13,7 +13,7 @@
     *   "In the ever-evolving landscape..."
     *   "It is important to note that..."
     *   "Serves as a testament to..."
-    *   "Not only X but also Y..." (Negative Parallelism).
+    *   "Not only X but also Y..." (a correlative tell; the full sentence-shape layer is in Rhetorical Tells).
 
 ## 2. Style Violations (The Dead Giveaways)
 

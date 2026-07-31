@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.4.71
+
+The copywriter learns to catch AI's rhetorical tells, not just its words, and gains a dedicated grill pass.
+
+### Added
+- **`rhetorical_tells.md`, the shape layer of anti-slop.** The word lists catch "delve" and "leverage". This catches the sentence architecture that still marks machine prose: the "not X, but Y" pivot, the drumroll rule of three, negative anaphora, the dramatic landing sentence, nominalization, stacked nouns. The rule throughout is dose, not ban: a figure once is craft, the same figure every paragraph is the machine, so the reference rations the figures rather than forbidding them (banning contrast or triads outright would gut the copy).
+- **A Grill pass in the copywriter.** The Operational Sequence is now Draft, Edit, Humanize, Grill, Polish. The grill reads the near-final draft as an artifact and hunts the rhetorical tells, the Kill List, the rubric, and the facts, line by line, with a proposed fix for every finding.
+
+### Changed
+- **Deterministic catches for the mechanical tells.** The copy-mode guard and a new eval flag the shapes regex catches cleanly: "not only... but also", "isn't just/only/about", the filler intensifiers truly and genuinely, hedge stacks, and a few throat-clearing openers. The judgment-heavy figures stay with the grill pass. `taboo_phrases` gained the word-level filler and hedge items.
+
 ## v2.4.7
 
 The operating-loop and agentic-business release. Project memory becomes a typed ledger the agents query, cite, and supersede; the autonomous loop gains real bounds and a resume; the skill graph becomes machine-checked; and the framework grows the spine to run a whole company, a founder operating system plus the people, retention, and revenue-operations functions a founder needs.

@@ -1,0 +1,42 @@
+{
+  "skill": "resonance-marketing-copywriter",
+  "query": "Write a 120-word landing page hero and subhead for a time-tracking app aimed at freelancers. Make it punchy and modern.",
+  "files": [],
+  "expected_behavior": [
+    "Reads like one person talking: sentence length varies and no single rhetorical figure repeats down the block",
+    "Does not use the corrective-negation pivot ('it is not X, it is Y') unless it corrects a belief the reader actually holds",
+    "Does not close every paragraph on a short dramatic landing sentence, and does not use the rule of three as a rhythmic drumroll",
+    "Avoids negative anaphora ('No X. No Y. No Z.') and the correlative 'not only ... but also' as rhythmic devices",
+    "Uses 'you' more than 'we', contains no banned AI slop words (delve, tapestry, leverage, seamless), and no em dashes"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(is|are|was|were)n't (just|only|about)\\b"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\bit's not (just|about)\\b"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\bnot only\\b[^.]{0,80}\\bbut also\\b"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(truly|genuinely)\\b"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\bno \\w+\\.\\s+no \\w+\\.\\s+no \\w+"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|tapestry|leverage|seamless|elevate|unlock)\\b"
+    }
+  ]
+}

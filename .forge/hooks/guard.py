@@ -63,16 +63,30 @@ VOCAB_WORDS = [
 ]
 VOCAB_PHRASES = [
     "in today's fast-paced", "in the ever-evolving", "it is important to note",
+    "it's worth noting", "it is worth noting", "in a world where",
+    "have you ever wondered", "let's face it",
     "in conclusion", "at the end of the day", "when it comes to",
     "es ist wichtig zu beachten", "in der heutigen schnelllebigen",
 ]
 VOCAB_WORD_RX = re.compile(r"(?i)\b(" + "|".join(VOCAB_WORDS) + r")\b")
 VOCAB_PHRASE_RX = re.compile(r"(?i)(" + "|".join(re.escape(p) for p in VOCAB_PHRASES) + r")")
+# Rhetorical-shape tells that regex catches cleanly (copy mode only). They read as
+# machine in generated copy but are ordinary elsewhere, so they never run always-on.
+# The judgment-heavy figures (rule of three, landing sentences) stay in the grill
+# pass and rhetorical_tells.md, not here.
+VOCAB_FIGURES = [
+    (re.compile(r"(?i)\bnot only\b[^.\n]{0,80}\bbut also\b"), "correlative 'not only ... but also' (state it plainly)"),
+    (re.compile(r"(?i)\b(is|are|was|were)n'?t (just|only|about)\b"), "corrective negation ('isn't just/only/about')"),
+    (re.compile(r"(?i)\bit'?s not (just|about)\b"), "corrective negation (it's not about/just X, it's Y)"),
+    (re.compile(r"(?i)\b(truly|genuinely)\b"), "filler intensifier"),
+    (re.compile(r"(?i)\b(could|may|might) (potentially|possibly)\b"), "hedge stack"),
+    (re.compile(r"(?i)\bno \w+\.\s+no \w+\.\s+no \w+"), "negative anaphora ('No X. No Y. No Z.')"),
+]
 # Files that legitimately contain the banned words (they teach or document them),
 # plus framework internals. Matched as lowercase path substrings.
 VOCAB_EXEMPT = ("taboo_phrases", "humanizer", "anti_slop", "anti-slop",
-                "german_anti_slop", "/.forge/", "/docs/", "readme.md",
-                "changelog.md", "contributing.md", "agents.md")
+                "german_anti_slop", "rhetorical_tells", "/.forge/", "/docs/",
+                "readme.md", "changelog.md", "contributing.md", "agents.md")
 
 
 def private_terms() -> list[str]:
@@ -142,6 +156,10 @@ def check(path: str, problems: list[str], vocab: bool = False,
             mp = VOCAB_PHRASE_RX.search(line)
             if mp:
                 problems.append(f"{norm}:{i}: slop phrase '{mp.group(1)}' (cut it).")
+            for rx, label in VOCAB_FIGURES:
+                if rx.search(line):
+                    problems.append(f"{norm}:{i}: {label}.")
+                    break
         if terms:
             low = line.lower()
             for t in terms:
