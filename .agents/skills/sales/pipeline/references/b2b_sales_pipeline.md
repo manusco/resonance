@@ -175,6 +175,10 @@ Adds:
 | Consultative, early-stage company | SPICED | Deep problem understanding |
 | Founder-led sales | BANT + pain focus | Keep it simple, qualify fast |
 
+### The Evidence Rule (applies to every framework)
+
+A letter counts only when the answer is a buyer truth someone other than the rep can verify: an economic buyer you have spoken to, a paper process with named steps and durations, a champion who has introduced you upward. A letter you cannot answer with a fact is a gap, and the gap is the deal's next action. The revops skill (`resonance-sales-revops`) turns the same letters into stage exit criteria and forecast gates, so qualification here and the forecast there run on one set of facts.
+
 ---
 
 ## 5. Sales Methodologies - How to Sell

@@ -34,7 +34,7 @@ Copy this checklist and tick items as you go.
 
 ## Reference Library
 
-- **[B2B Sales Pipeline](references/b2b_sales_pipeline.md)**: Qualification frameworks (BANT, MEDDIC, SPICED), pipeline stage definitions, objection handling, and forecasting methodology.
+- **[B2B Sales Pipeline](references/b2b_sales_pipeline.md)**: Qualification frameworks (BANT, MEDDIC, MEDDPICC, SPICED), pipeline stage definitions, objection handling, and forecasting methodology.
 
 {{RESOLVER:operating_standard}}
 

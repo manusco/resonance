@@ -66,6 +66,9 @@ For the qualified stages, the exit criteria are the MEDDIC or SPICED elements ma
 - **Decision process known:** you can name the steps from here to signature and the dates.
 - **Paper process known:** you know who signs, whether legal and security review, and how long each takes.
 - **Compelling event:** a dated reason the buyer must act by a certain time, not a date the rep picked to fill the field.
+- **Decision criteria known:** you can name what the buyer will score solutions against and who set those criteria, not "the demo went well."
+- **Champion tested:** the champion has done something that cost them, an intro to the economic buyer or a push for you in a meeting you were not in. A friendly contact who only shares information is a coach, not a champion.
+- **Competition known:** the buyer has named who else is in the evaluation and what would tip it. "No competition" from a rep who never asked is a gap, not an edge.
 
 If a criterion cannot be answered with a fact, the deal has not earned the stage, no matter how good the call felt.
 

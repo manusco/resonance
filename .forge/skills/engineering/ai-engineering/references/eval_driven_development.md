@@ -50,7 +50,8 @@ A model grading another model's output. Powerful, and easy to do badly.
 - **Give it a rubric, not a vibe**: "Score 1 if the answer is fully supported by the provided context, 0 if any claim is not." Not "is this good?".
 - **Prefer binary or low-cardinality scores**: a judge distinguishing 1 to 10 is mostly noise. Pass/fail, or a 3-point scale, is more stable.
 - **Show it the reference**: give the judge the retrieved context or the gold answer to compare against. Judging in a vacuum measures fluency, not correctness.
-- **Calibrate against humans**: sample 20 judge verdicts, have a human check them. If the judge disagrees with humans, fix the judge prompt before trusting the number.
+- **Calibrate against humans**: sample 20 judge verdicts, have a human check them. If the judge disagrees with humans, fix the judge prompt before trusting the number. Raw agreement flatters on a mostly-pass set: a judge that says pass to everything scores 90 percent on a set that is 90 percent good and catches nothing, so check two things separately, does it agree with humans and does it catch the cases you already know are bad.
+- **Know the noise floor before you trust a delta**: run the unchanged system through the eval twice. The spread between the two runs is measurement noise, the smallest change you can actually detect. A score that moves less than that spread has not moved. Binary scores and a frozen set are what keep the floor low enough for real change to show.
 - **Position and verbosity bias are real**: judges favor the first option and the longer answer. Randomize order in pairwise comparisons.
 
 ## 5. The Regression Gate

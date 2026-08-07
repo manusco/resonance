@@ -39,6 +39,9 @@ Can the system crash, corrupt state, or expose wrong data under normal or edge-c
 | Unhandled null/undefined paths | Profile page crashes when user has no avatar |
 | Hidden data-shape assumptions | Code assumes `settings` is always an object, but legacy rows store `null` |
 | Bad fallback behavior | Error handler shows raw stack trace to user |
+| Non-idempotent write under retry | A double-click or a retried request creates two orders, two charges, two bookings |
+| Lost update on concurrent edit | Two tabs save the same record; the second silently overwrites the first |
+| Out-of-order or uncleaned async | A stale response overwrites a newer one; an unmounted view's timer still fires |
 
 ### C. Authorization Integrity
 
