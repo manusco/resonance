@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-ops-explain",
+  "query": "Walk me through what changed in the auth refactor we just did, and quiz me on it so it actually sticks.",
+  "expected_behavior": [
+    "Recognizes the request for retention (quiz) and uses the predict-then-reveal check-in",
+    "Shows only the raw change and asks one specific prediction question",
+    "Ends the turn after asking, leaking no explanation, hint, or answer in the same message as the question",
+    "Reveals the explanation only after the prediction would land, and points at where the reader's model matched or diverged",
+    "Grounds the walk-through in the actual diff, not a generic description of auth"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

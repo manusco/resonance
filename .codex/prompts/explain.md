@@ -1,0 +1,5 @@
+---
+description: Teach the operator, not the repo: a dense explainer of a concept, diff, or recent work, with an optional predict-then-reveal check-in.
+---
+
+Run the Resonance explain procedure. Read `.agents/skills/ops/explain/SKILL.md` in full and execute it, following its Definition of Done.

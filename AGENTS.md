@@ -99,6 +99,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/cold-call** -> `sales/cold-call` - B2B cold-call script from a 6-part permission-based framework.
 - **/sales-pipeline** -> `sales/pipeline` - Pipeline analytics dashboard with velocity and forecasting.
 - **/capture** -> `ops/librarian` - Document a solved problem in the right Diataxis quadrant.
+- **/explain** -> `ops/explain` - Teach the operator: a dense explainer of a concept, a diff, or recent work, with an optional predict-then-reveal check-in for active recall.
 - **/handover** -> `ops/handover` - End-of-session handover: what was done, decisions, open TODOs, backlog.
 - **/retro** -> `ops/retro` - Git-driven retrospective: shipping streak, focus score, complexity delta.
 - **/update-resonance** -> `ops/update-resonance` - Framework upgrade with backup and restore safety.

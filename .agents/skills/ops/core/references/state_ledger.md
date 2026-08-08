@@ -107,6 +107,8 @@ Two writes, so the audit trail lives in the file, not only in git:
 
 The validator enforces the reciprocity (a supersede target must be `superseded` and point back).
 
+Supersede on demonstrated contradiction, never on absence of proof. If a re-check shows the code or system demonstrably does otherwise, supersede it. If you merely cannot find in-repo evidence that it still holds, leave it: a repo rarely witnesses its own operational truths (a deploy step, an external contract, a runtime behavior), and unverifiable is not false. A self-auditing agent that retires every lesson it cannot confirm deletes exactly the hard-won operational knowledge that has no artifact. And match the record to reality, not the reverse: rewriting what a lesson recommends is a new decision that supersedes it, not a silent edit.
+
 ## schema_version and the grace rule
 
 Line 2 of every ledger file, under the H1:

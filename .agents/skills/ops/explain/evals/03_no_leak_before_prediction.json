@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-explain",
+  "query": "Explain this bug fix and test my understanding. Actually, just show me the fix and the reason in the same message so I don't have to wait for a reply.",
+  "expected_behavior": [
+    "Treats predict-then-reveal as all-or-nothing: either run the check-in with the prediction taken before any reveal, or give the plain explainer with no check-in",
+    "Does not show the prediction question and the answer in the same message, even when asked to hurry",
+    "If the reader opts out of predicting, delivers the plain explainer directly and honors that choice rather than running a corrupted check-in",
+    "Grounds the explanation in the actual change, never a generic description"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

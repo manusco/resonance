@@ -28,7 +28,7 @@ Copy this checklist and tick items as you go.
 3. **Ask one question at a time**: Send a single question, carrying your recommended answer and one concrete reason. Wait for the reply before the next. A list of ten questions is bewildering and gets skimmed. → verify: exactly one open question per turn.
 4. **Follow the dependency, not a script**: Let each answer open or close the next branch. When an answer changes an upstream assumption, walk back up before going down. → verify: later questions reflect earlier answers.
 5. **Push on the soft spots**: For each resolved area, run the failure lens: what happens at zero items and at ten thousand, on the mobile case, when the network drops, when two users race, when the input is hostile. Surface the ones that matter. → verify: edge cases and failure modes were named, not skipped.
-6. **Write the shared-understanding brief**: Summarize the resolved decisions and the recommended answers, plus any risks that remain open. Keep it short enough to read in a minute. → verify: the brief exists and reflects the conversation.
+6. **Write the shared-understanding brief**: Summarize the resolved decisions and the recommended answers, plus any risks that remain open. Keep it short enough to read in a minute. Stamp each resolved decision with its provenance so a later stage never silently re-opens it: `settled` (a tradeoff was surfaced and the user chose with it in view), `directive` (asserted without examining an alternative), or `inferred` (you proposed it and no one pushed back). See references/settled_decisions.md. → verify: the brief exists, reflects the conversation, and every resolved decision carries a provenance label.
 7. **Gate on explicit confirmation**: Ask the user to confirm the brief. Do not begin implementation, scaffolding, or code until they do. → verify: the user said yes, not "sounds good, and by the way build it" ambiguity you invented.
 
 ## Recovery
@@ -57,6 +57,7 @@ The output is not a document, it is a confirmed shared understanding. If the use
 ## Reference Library
 
 - **[Interrogation Playbook](references/interrogation_playbook.md)**: The question banks per branch (intent, scope, data, state, failure, done-criteria) and the walk order.
+- **[Settled Decisions](references/settled_decisions.md)**: The provenance protocol for resolved decisions (settled / directive / inferred) and the contradiction ladder, so downstream never silently re-opens a settled call.
 
 ## Operating Standard
 

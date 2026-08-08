@@ -12,10 +12,11 @@ You must NEVER apply a patch or fix without first confirming the root cause.
 ## 2. Hypothesis-First Execution
 Before changing any code, you must formulate a hypothesis.
 1. **Observe**: What is the exact error or behavior?
-2. **Hypothesize**: "I believe the error is caused by X because of Y."
-3. **Alternative Hypothesis**: "If it is not X, it might be Z." (This mitigates Confirmation Bias).
-4. **Test**: Write a script or assertion that proves X is the cause.
-5. **Execute**: Only apply the fix once the test confirms the hypothesis.
+2. **Assumption Audit**: Before hypothesizing, list the concrete "this must be true" beliefs your understanding rests on (the data has this shape, this function runs before that one, this config is loaded, this API returns what its docs say). Mark each verified or assumed. A correct hypothesis tested against a wrong assumption looks exactly like a wrong hypothesis, and chasing it is the most common way debugging stalls.
+3. **Hypothesize**: "I believe the error is caused by X because of Y."
+4. **Alternative Hypothesis**: "If it is not X, it might be Z." (This mitigates Confirmation Bias).
+5. **Test**: Write a script or assertion that proves X is the cause.
+6. **Execute**: Only apply the fix once the test confirms the hypothesis.
 
 ## 3. Cognitive Bias Checklist
 When debugging complex issues, engineers are prone to bias:

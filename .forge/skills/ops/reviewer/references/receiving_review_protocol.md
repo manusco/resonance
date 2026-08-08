@@ -24,6 +24,12 @@ For each review comment, in order:
 4. **Respond**: acknowledge and implement, or push back with technical reasoning. Both are valid outcomes. A reasoned disagreement is a better result than a wrong change made politely.
 5. **Implement** one item at a time, and verify each before moving to the next. A batch of ten unverified fixes is ten new hypotheses.
 
+## Batch review: judge centrally, then fix
+
+When a review lands many comments at once, judge their validity together before you touch any of them. A systematically wrong reviewer, or a bot applying a rule that does not fit this codebase, is invisible one comment at a time and obvious in aggregate: the same bad assumption repeated across ten threads is a pattern a per-comment fixer, especially an isolated subagent, cannot see. Read the whole set, decide which are real, then implement only those.
+
+Validation is a tripwire, not a gate. You open the file to make the fix anyway, so verifying costs little. Divert into deeper investigation only on a concrete signal (the claim contradicts what the code plainly does, or a deliberate earlier decision), and never manufacture doubt to avoid the work.
+
 ## Push back when the code is right
 
 If a comment is wrong for this codebase, say so plainly and show why: the line it would break, the reason the current form exists, the platform where the suggestion fails. Deferring to a mistaken reviewer to avoid friction is a failure of the review, not a courtesy.

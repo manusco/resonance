@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-ops-explain",
+  "query": "Explain how the new background job queue works. I added it this session but I want to actually understand it, not just trust it. I'm comfortable with the app but new to queues.",
+  "expected_behavior": [
+    "Treats this as a concept explainer for the operator, not documentation for the repo",
+    "Names the single load-bearing idea rather than touring the whole system",
+    "Grounds the explanation in the actual code (real file, function, or config names from this repo), not a generic textbook description of queues",
+    "Writes for the stated reader level: comfortable with the app, new to queues",
+    "Offers an optional predict-then-reveal or checked-exercise check-in without forcing it",
+    "Ends at a point where the reader could predict what breaks if the queue changed"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

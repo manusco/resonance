@@ -72,6 +72,7 @@ Every business rule, mapping, and transformation exists in exactly one place. Wh
 - **[Error + Data Flow Framework](references/error_rescue_framework.md)**: Eradicating silent failures.
 - **[Site Migration Protocol](references/site_migration_protocol.md)**: Playbook for migrating or replatforming any site.
 - **[C4 Diagram Templates](references/c4_diagram_templates.md)**: Ready C4 diagrams for context, container, component.
+- **[Adoption Verdict Protocol](references/adoption_verdict_protocol.md)**: Reversibility-tiered adopt / trial / hold / reject on a named external candidate.
 
 ## Operating Standard
 
