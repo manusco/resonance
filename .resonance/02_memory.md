@@ -2,7 +2,7 @@
 
 The compound-knowledge index for this project. One line per durable lesson; longer detail goes in a leaf file under `memory/`. This file loads at the start of every session, so a lesson written here once is read every time after. The rule is simple: never solve the same problem twice.
 
-How to use it: when you learn something durable, a bug and its fix, a project convention, a research finding, or a user preference, add a one-line entry under Lessons, newest first. Keep it specific and greppable. If it needs more than a line, write `memory/<slug>.md` and link it. Curate the file: when a lesson stops being true, correct or remove it.
+How to use it: when you learn something durable, a bug and its fix, a project convention, a research finding, or a user preference, add a one-line entry under Lessons, newest first. Keep it specific and greppable. If it needs more than a line, write `memory/<slug>.md` and link it. Curate the file: when a lesson stops being true, correct or remove it. Retire a lesson only when the code or system demonstrably contradicts it, never for lack of proof that it still holds. A repo rarely witnesses its own operational truths, so unverifiable is not false.
 
 ## Lessons
 

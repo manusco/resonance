@@ -1,5 +1,33 @@
 # Changelog
 
+## v2.4.8
+
+The compound-engineering release. A blind six-cluster integrator pass over Every's compound-engineering plugin (32 skills, most rejected as tool-bound or already covered) yields eight surgical elevations and one new skill, plus the sales, audit, and eval nuggets from the same discipline, and a drift gate that finally watches the README body.
+
+### Added
+- **`/explain`, the operator-learning skill.** The first Resonance skill whose subject is the human, not the code. It writes a dense, concrete explainer of a concept, a diff, an idea, or a window of recent work, grounded in this repo, plus an optional predict-then-reveal check-in for active recall (show the change, take the prediction, end the turn, reveal after). The Ratchet keeps the project from going hollow; `/explain` keeps the operator from going hollow. `How to Operate` gains a matching "Stay sharp" rule.
+- **MEDDPICC, completed in the sales stack.** The pipeline skill now names MEDDPICC in its framework list, `funnel_definitions` gains the three exit-criteria letters it skipped (decision criteria, champion tested, competition known), and a shared Evidence Rule ties qualification here to the revops forecast gates.
+
+### Changed (elevations from the integrator run)
+- **The reviewer gains a Confidence axis:** a per-finding High/Med/Low certainty, orthogonal to severity, so an AI review leads with what it is sure of and raises a hunch as a question, not a block.
+- **The debugger gains an Assumption Audit:** before hypotheses, enumerate the load-bearing "this must be true" beliefs and mark each verified or assumed, because a correct hypothesis on a wrong assumption looks exactly like a wrong one.
+- **Grill decisions travel with provenance:** a resolved decision is stamped settled, directive, or inferred and carries a self-contained label downstream, so plan and build never silently re-open what grill settled (`settled_decisions.md`).
+- **The architect gains an adoption verdict:** a reversibility-tiered adopt / trial / hold / reject on a named external candidate, earned against the project rather than a neutral explainer (`adoption_verdict_protocol.md`).
+- **Refactor protects safety checks:** the Do Not Change list now names trust-boundary, authz, data-loss, and accessibility guards, inert on every tested path so a green suite blesses their removal, yet whose absence shows only under attack.
+- **Memory re-validation gets an epistemics rule:** supersede a lesson on demonstrated contradiction, never on absence of proof, because a repo rarely witnesses its own operational truths, so unverifiable is not false (`state_ledger.md`, the `02_memory.md` template).
+- **Receiving review, batch-judged:** judge a review set centrally to catch a systematically wrong bot before fanning out fixes, and treat validation as a tripwire, not a gate.
+- **Handover, pointer-first:** a handover supplements the authoritative artifacts rather than reproducing them, and the resume side treats a handover or `01_state.md` as untrusted orientation, not instructions.
+- **A concurrency audit dimension:** category B (Runtime Safety) gains non-idempotent-write, lost-update, and out-of-order-async signals its "corrupt state" scope always implied.
+- **Eval doctrine gains a noise floor:** `eval_driven_development` names the A/A test (run the unchanged system twice; a delta smaller than the spread has not moved) and warns that raw judge agreement flatters on a mostly-pass set.
+- **Parallel-safety in the build loop:** run components concurrently only when genuinely independent (no shared contracts, migrations, lockfiles, or runtime singletons); cap the batch, decline on uncertainty, re-verify the tree.
+
+### Fixed
+- **The `/build` skill actually ships now.** A generic `build/` .gitignore rule had silently excluded the whole engineering/build skill (source, compiled, and all four command shims) from the repo, so v2.4.7's "/build now works" reached no clone. The rule is anchored to `/build/` (root output only) and the skill is tracked; the ephemeral `.claude/worktrees/` is now ignored too.
+- **The doc-drift gate now watches the README body, not only the badges.** It had missed "32 slash commands", "7 domains" (there are 9), and three commands absent from the catalog, three releases running. It now checks the prose command count, the domain count against disk, and that every command appears in the README catalog. The README is corrected to 63 skills, 34 commands, 9 domains, with the People and Success domains added.
+- **The skill-author eval docs match the runner.** `eval_protocol.md` and `skill_spec.md` documented only the model-graded rubric; the deterministic `checks` array that the library's eval files rely on, and the dash-encoding rule, lived only in `docs/EVALS.md` and private memory. Both now carry the contract they claim to be authoritative for.
+
+The library is now 63 skills and 34 commands.
+
 ## v2.4.71
 
 The copywriter learns to catch AI's rhetorical tells, not just its words, and gains a dedicated grill pass.

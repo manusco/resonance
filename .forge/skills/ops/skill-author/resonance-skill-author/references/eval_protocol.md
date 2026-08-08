@@ -30,6 +30,22 @@ without evals is unfalsifiable, and unfalsifiable skills rot.
 
 `expected_behavior` is a rubric of observable, gradeable statements, not "is it good".
 
+### Deterministic `checks` (optional, free, exact)
+
+Beyond the model-graded `expected_behavior` rubric, a case may carry a `checks` array of deterministic assertions the runner grades with no model. Prefer these wherever a machine can judge: free, exact, never flaky.
+
+```json
+"checks": [
+  { "kind": "not_contains_any", "value": ["delve", "seamless"] },
+  { "kind": "section_present", "value": "## Summary" },
+  { "kind": "max_lines", "value": 40 }
+]
+```
+
+Kinds include `regex_absent` / `regex_present`, `contains_any` / `not_contains_any`, `section_present`, and `max_lines`. The full list lives in `docs/EVALS.md`.
+
+Encoding gotcha, learned the hard way: a `regex_absent` pattern that targets em or en dashes must be stored ASCII-escaped (the JSON unicode escapes for those two code points), never typed as the dash characters. Tools collapse a typed escape back into the literal dash, which the em-dash guard then rejects in the eval file itself. Produce such patterns with `json.dumps(..., ensure_ascii=True)`, never by hand.
+
 ## Grading
 
 Two ways, cheapest first:

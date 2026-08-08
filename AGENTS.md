@@ -120,5 +120,6 @@ Resonance is driver-assisted. You are the pilot; the specialists are the crew.
 - **Command, don't ask.** Tell the crew what to do. "Activate the debugger. Find the JWT expiration bug in `auth.service.ts`." beats "can you help with login?".
 - **Verify, don't trust.** "Run /test. Prove the no-email edge case." beats "looks good."
 - **Compound knowledge.** When you solve something hard, run /capture or log a learning so the next session starts ahead.
+- **Stay sharp.** The crew writing the code does not mean you stop understanding it. When a change lands you could not rebuild yourself, run /explain: it teaches the operator, not the repo, so the next decision is still yours.
 
 *Start building.*

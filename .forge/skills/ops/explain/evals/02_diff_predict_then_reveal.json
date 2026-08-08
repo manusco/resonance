@@ -5,7 +5,7 @@
     "Recognizes the request for retention (quiz) and uses the predict-then-reveal check-in",
     "Shows only the raw change and asks one specific prediction question",
     "Ends the turn after asking, leaking no explanation, hint, or answer in the same message as the question",
-    "Reveals the explanation only after the prediction would land, and points at where the reader's model matched or diverged",
+    "Commits to revealing the explanation only after the prediction, in a later turn; the first message carries the raw change and the question, with no explanation content",
     "Grounds the walk-through in the actual diff, not a generic description of auth"
   ],
   "checks": [

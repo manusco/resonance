@@ -84,6 +84,18 @@ def main() -> int:
         if int(m) != n_cmds:
             problems.append(f"README badge says {m} commands but there are {n_cmds}")
 
+    # 3b. README body prose, not only the badges (where drift keeps hiding)
+    for m in re.findall(r"(\d+)\s+slash commands", readme):
+        if int(m) != n_cmds:
+            problems.append(f"README body says {m} slash commands but there are {n_cmds}")
+    n_domains = sum(1 for d in (ROOT / ".agents/skills").glob("*") if d.is_dir())
+    for m in re.findall(r"across (\d+) domains", readme):
+        if int(m) != n_domains:
+            problems.append(f"README says 'across {m} domains' but there are {n_domains}")
+    for a in cj:
+        if not re.search(rf"/{re.escape(a)}(?![\w-])", readme):
+            problems.append(f"command /{a} in commands.json but not in the README catalog")
+
     # 4. CHANGELOG has this version
     if f"## v{version}" not in read("CHANGELOG.md"):
         problems.append(f"CHANGELOG.md has no entry for v{version}")
