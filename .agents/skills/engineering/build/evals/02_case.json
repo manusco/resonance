@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-engineering-build",
+  "query": "Run /build, but the plan asks for an abstract class for a single-use function.",
+  "files": [],
+  "expected_behavior": [
+    "At the Simplicity Gate, flags the abstract class as over-engineering for a single-use function",
+    "Replaces the abstraction with a plain function, the simplest thing that passes the test",
+    "Verifies the tests still pass after simplifying",
+    "States the simplicity reasoning briefly rather than silently following the plan",
+    "Does not add the abstract class just because the plan specified it"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

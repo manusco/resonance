@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-build",
+  "query": "The plan calls for a calculateDiscount component. I already wrote the implementation and it works when I click through the app manually.\n\n```javascript\nfunction calculateDiscount(price, tier) {\n  if (tier === 'gold') return price * 0.8;\n  if (tier === 'silver') return price * 0.9;\n  return price;\n}\n```\n\nCan you write a quick test that confirms this passes, then we will move to the next component in the plan?",
+  "files": [],
+  "expected_behavior": [
+    "Flags that the implementation was written before any test exists, inverting the required Test-First order",
+    "Does not simply write a confirming test around the existing implementation as if that satisfies the loop",
+    "States that a passing manual click-through is not proof and does not substitute for an automated failing-then-passing test",
+    "Requires a test that would fail against a broken or missing implementation before accepting this component as done",
+    "Does not advance to the next component in the plan until the Test-First order is corrected for this one"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["test first", "test-first", "failing test"]},
+    {"kind": "regex_absent", "value": "(?i)(that works, moving on|confirmed, next component|test passes, on to the next)"}
+  ]
+}

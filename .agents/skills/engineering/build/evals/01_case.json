@@ -1,0 +1,19 @@
+{
+  "skill": "resonance-engineering-build",
+  "query": "Run /build to execute the approved implementation plan.",
+  "files": [],
+  "expected_behavior": [
+    "Reads implementation_plan.md and works through it one component at a time, not all at once",
+    "For each component, writes a failing test first, then the minimal code to make it pass (red then green)",
+    "Runs the linter and a security check after each component before moving to the next",
+    "Does not write code beyond what the current test requires (no speculative abstraction)",
+    "Routes to /debug after 2 consecutive failures on the same component instead of thrashing",
+    "Stops and reports when every component in the plan is implemented and its tests pass"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

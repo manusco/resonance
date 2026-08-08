@@ -6,7 +6,9 @@ node_modules/
 *.local
 secrets/
 dist/
-build/
+# Root-only: a real build-output dir. Anchored so it never catches the
+# engineering/build SKILL directory (.forge and .agents), which must ship.
+/build/
 _input/
 
 # IDEs
@@ -38,3 +40,4 @@ __pycache__/
 # Machine-local overlay (the flagship's own memory and hooks; never shipped)
 CLAUDE.local.md
 .claude/settings.local.json
+.claude/worktrees/

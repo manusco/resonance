@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-engineering-build",
+  "query": "Run /build, but the implementation plan is missing or empty.",
+  "files": [],
+  "expected_behavior": [
+    "Stops immediately at the Prerequisites check when implementation_plan.md is missing or empty",
+    "Does not start writing tests or code without an approved plan",
+    "Directs the user to run /plan first to produce the plan",
+    "States clearly why it stopped, rather than guessing an implementation",
+    "Does not fabricate a plan from the one-line query"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}
