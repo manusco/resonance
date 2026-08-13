@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-security",
+  "query": "Review this route:\n```ts\napp.get('/users', async (req, res) => {\n  const email = String(req.query.email || '');\n  const rows = await db.query('SELECT id, email FROM users WHERE email = $1', [email]);\n  res.json(rows);\n});\n```\nThe scanner flagged SQL because this file calls db.query. Should this block the PR?",
+  "files": [],
+  "expected_behavior": [
+    "Does not treat db.query by itself as proof of SQL injection",
+    "Recognizes that the query uses a parameter placeholder with a separate values array",
+    "Classifies the scanner hit as rejected or clean for SQL injection unless other evidence is present",
+    "May still mention separate validation or rate-limit considerations as candidates, not proven SQL injection",
+    "Keeps severity separate from confidence"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["parameterized", "placeholder", "$1"]},
+    {"kind": "contains_any", "value": ["not a finding", "not SQL injection", "rejected", "clean"]}
+  ]
+}

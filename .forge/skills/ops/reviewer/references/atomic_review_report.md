@@ -10,6 +10,7 @@
 | **Safety** | [Security risk] | BLOCKING | P1 | High |
 | **Style** | [Lint/Pattern] | NITPICK | P2 | Med |
 | **Tests** | [Missing coverage] | BLOCKING | P1 | High |
+| **Coverage** | [Unchecked target] | INCOMPLETE | P1 | High |
 
 **Confidence** is the reviewer's own certainty that the finding is real, scored separately from severity (how much it harms). It is the axis that most cuts false-positive noise in an AI-run review:
 
@@ -17,7 +18,7 @@
 - **Med**: consistent with the code but not proven; rests on a path not directly read.
 - **Low**: a hunch from the diff alone; may hinge on context the reviewer cannot see.
 
-Lead the report with High-confidence P0/P1 findings. A Low-confidence finding is raised as a question, never a block.
+Lead the report with High-confidence P0/P1 findings. A Low-confidence item is raised as a candidate or question, never a block. Every scoped target should end as clean, candidate, finding, rejected, fixed, skipped, or incomplete.
 
 ## 2. Decision Matrix (Iron Man Suit)
 

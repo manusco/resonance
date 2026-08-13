@@ -1,136 +1,58 @@
 # Verified Security Checklist
 
-> **Purpose**: A mandatory verification list for all code reviews and architectural decisions.
-> **Philosophy**: "Safe by Default". If it's not explicitly verified, it's insecure.
+Use this checklist for code reviews and architecture decisions. It is not a substitute for threat modeling. Every checked item needs evidence from code, configuration, tests, or runtime behavior.
 
-## Contents
+## 1. Secrets
 
-- [1. Secrets Management](#1-secrets-management)
-- [2. Input Validation (Zero Trust)](#2-input-validation-zero-trust)
-- [3. SQL Injection Prevention](#3-sql-injection-prevention)
-- [4. Authentication & Authorization](#4-authentication--authorization)
-- [5. XSS & CSRF Prevention](#5-xss--csrf-prevention)
-- [6. Rate Limiting](#6-rate-limiting)
-- [7. Dependencies](#7-dependencies)
+- [ ] No live secrets, private keys, tokens, certificates, or credentials in source, logs, examples, generated artifacts, or committed config.
+- [ ] Secret examples use inert placeholders and cannot be mistaken for real credentials.
+- [ ] Runtime secrets are loaded from approved secret storage or environment injection.
+- [ ] Review output records whether secrets are configured, not their values or partial fingerprints.
 
-## 1. Secrets Management
+## 2. Input Boundaries
 
-### ❌ NEVER Do This
-```typescript
-const apiKey = "sk-proj-xxxxx"  // Hardcoded secret
-const dbPassword = "password123" // In source code
-```
+- [ ] Every external boundary has schema validation: API body, query params, headers, files, CLI args, webhooks, queue messages, and AI/tool input.
+- [ ] Validation uses allowlists and normalization before business logic.
+- [ ] Rejected input has a safe error path and does not leak internals.
+- [ ] File uploads enforce size, content type, magic bytes, storage path, and execution behavior.
 
-### ✅ ALWAYS Do This
-```typescript
-const apiKey = process.env.OPENAI_API_KEY
-if (!apiKey) throw new Error('OPENAI_API_KEY not configured')
-```
+## 3. Injection Sinks
 
-### Verification Steps
-- [ ] No hardcoded API keys, tokens, or passwords.
-- [ ] All secrets loaded via `process.env` (or `unifiedConfig`).
-- [ ] `.env` files are in `.gitignore`.
-- [ ] Secrets are injected at runtime (e.g., Vercel/Railway env vars).
+- [ ] SQL and NoSQL paths use parameter binding or safe query builders.
+- [ ] Shell execution uses fixed executables and argument arrays, not shell string composition.
+- [ ] Template, HTML, Markdown, SVG, and rich-text rendering escape or sanitize untrusted content.
+- [ ] Redirects, outbound fetches, filesystem paths, and deserialization have explicit allowlists.
 
----
+## 4. Authentication and Authorization
 
-## 2. Input Validation (Zero Trust)
+- [ ] Sensitive actions are enforced server-side.
+- [ ] Authorization is checked across route, policy, resource, and action layers.
+- [ ] Ownership and tenant boundaries are explicit.
+- [ ] Middleware, menu visibility, and client checks are not treated as sufficient by themselves.
+- [ ] Capability changes include regression tests for allowed and denied actors.
 
-### ❌ NEVER Assume Valid Input
-```typescript
-// Dangerous: passing raw input to DB
-db.users.create(req.body)
-```
+## 5. Browser and Session Safety
 
-### ✅ ALWAYS Validate Borders
-```typescript
-import { z } from 'zod'
-const UserSchema = z.object({
-  email: z.string().email(),
-  age: z.number().int().min(0)
-})
-const validated = UserSchema.parse(req.body)
-```
+- [ ] Session cookies are HttpOnly, Secure, SameSite-aware, scoped, and rotated where needed.
+- [ ] CSP, CORS, and CSRF defenses match the application flow.
+- [ ] Unsafe HTML APIs, postMessage handlers, and third-party embeds have explicit trust boundaries.
 
-### Verification Steps
-- [ ] All external inputs (API body, query params) verified with Zod schemas.
-- [ ] File uploads restricted by size (e.g., 5MB) and strictly checked types.
-- [ ] Whitelist validation used (allow "a,b,c", not "block x,y,z").
+## 6. Abuse and Availability
 
----
+- [ ] Public and tenant-facing expensive operations have rate, cost, and concurrency limits.
+- [ ] AI calls, exports, search, upload, login, and webhook endpoints have tighter controls.
+- [ ] Error handling avoids retry storms and user-controlled amplification.
 
-## 3. SQL Injection Prevention
+## 7. Dependencies and Build Chain
 
-### ❌ NEVER Concatenate SQL
-```typescript
-const query = `SELECT * FROM users WHERE email = '${userEmail}'` // VULNERABLE
-```
+- [ ] New packages are verified for name, publisher, maintenance, install scripts, and necessity.
+- [ ] Lockfiles match manifests and are committed where the ecosystem expects them.
+- [ ] CI actions and build images are pinned or otherwise controlled.
+- [ ] Untrusted code paths do not receive secrets during install, build, or test.
 
-### ✅ ALWAYS Use Parameterized Queries
-```typescript
-// Safe - parameterized query
-await db.query('SELECT * FROM users WHERE email = $1', [userEmail])
-// Safe - ORM
-await prisma.user.findUnique({ where: { email } })
-```
+## 8. Evidence and Coverage
 
-### Verification Steps
-- [ ] No string concatenation in SQL queries.
-- [ ] Primitives mapped to parameters ($1, $2) or ORM methods used.
-
----
-
-## 4. Authentication & Authorization
-
-### ❌ NEVER Store Tokens in LocalStorage
-LocalStorage is vulnerable to XSS.
-
-### ✅ ALWAYS Use HttpOnly Cookies
-```typescript
-res.setHeader('Set-Cookie', `token=${token}; HttpOnly; Secure; SameSite=Strict`)
-```
-
-### Verification Steps
-- [ ] Tokens stored in `HttpOnly` Secure cookies.
-- [ ] Authorization checks performed server-side for *every* sensitive action.
-- [ ] Row Level Security (RLS) enabled for Supabase/Postgres.
-
----
-
-## 5. XSS & CSRF Prevention
-
-### ❌ NEVER Render Raw HTML
-```jsx
-<div dangerouslySetInnerHTML={{ __html: userContent }} /> // VULNERABLE
-```
-
-### ✅ ALWAYS Sanitize
-```typescript
-import DOMPurify from 'isomorphic-dompurify'
-const clean = DOMPurify.sanitize(userContent)
-// Then it is safe to render 'clean'
-```
-
-### Verification Steps
-- [ ] User-provided HTML sanitized with DOMPurify.
-- [ ] Content Security Policy (CSP) headers configured.
-- [ ] CSRF tokens used for state-changing operations (if not using SameSite=Strict).
-
----
-
-## 6. Rate Limiting
-
-### Verification Steps
-- [ ] Global rate limit enabled (e.g., 100 req/15min).
-- [ ] Distinct strict rate limits for Auth endpoints (Login/Register).
-- [ ] Expensive endpoints (e.g., AI generation) have tighter limits.
-
----
-
-## 7. Dependencies
-
-### Verification Steps
-- [ ] `npm audit` returns clean.
-- [ ] No unused dependencies.
-- [ ] Lockfiles (`package-lock.json`) committed.
+- [ ] Every scoped target has clean, candidate, finding, rejected, fixed, skipped, or incomplete status.
+- [ ] Findings include input, path, missing guard, impact, severity, confidence, fix, and verification command.
+- [ ] Scanner hits are not filed as final findings without confirmation.
+- [ ] Incomplete coverage is reported explicitly.

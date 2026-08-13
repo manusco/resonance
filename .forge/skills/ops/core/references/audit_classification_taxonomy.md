@@ -8,9 +8,10 @@ This file is the single source of truth for the finding categories and the sever
 
 - [1. The 7-Category Taxonomy](#1-the-7-category-taxonomy)
 - [2. Severity Ranking (P0-P3)](#2-severity-ranking-p0p3)
-- [3. Standard Report Template](#3-standard-report-template)
-- [4. Required Questions](#4-required-questions)
-- [5. Report Anti-Patterns](#5-report-anti-patterns)
+- [3. Finding Lifecycle](#3-finding-lifecycle)
+- [4. Standard Report Template](#4-standard-report-template)
+- [5. Required Questions](#5-required-questions)
+- [6. Report Anti-Patterns](#6-report-anti-patterns)
 
 ## 1. The 7-Category Taxonomy
 
@@ -163,7 +164,29 @@ Quality issues that don't affect users or safety.
 
 ---
 
-## 3. Standard Report Template
+## 3. Finding Lifecycle
+
+Every scoped target needs an outcome. A review is incomplete when targets disappear silently.
+
+| State | Meaning | Report behavior |
+| :--- | :--- | :--- |
+| **clean** | Checked and no material issue remains. | Mention in coverage summary, not findings. |
+| **candidate** | Suspicious signal exists, but exploitability or harm is not proven. | Queue for investigation. Do not block. |
+| **finding** | Evidence proves the issue and impact. | Rank P0-P3 and assign owner. |
+| **rejected** | Reviewed and found safe or not applicable. | Keep rationale when it prevents repeat noise. |
+| **fixed** | Previously proven issue was remediated and rechecked. | Include verification command or evidence. |
+| **skipped** | Intentionally excluded. | Name scope and reason. |
+| **incomplete** | Could not be checked. | Report as review risk. Do not imply safety. |
+
+Severity and confidence are separate:
+
+- **Severity**: how much harm if the issue is real.
+- **Confidence**: how strongly the evidence proves it.
+
+High severity with low confidence is an urgent candidate, not a proven blocker. Low severity with high confidence should not outrank user harm.
+
+---
+## 4. Standard Report Template
 
 Every audit-type report should output findings in this structure:
 
@@ -205,7 +228,7 @@ A safe order of operations:
 
 ---
 
-## 4. Required Questions
+## 5. Required Questions
 
 Every report must answer these questions. If the answer is "Not applicable," say so explicitly - do not skip silently.
 
@@ -242,7 +265,7 @@ Every report must answer these questions. If the answer is "Not applicable," say
 
 ---
 
-## 5. Report Anti-Patterns
+## 6. Report Anti-Patterns
 
 A strong report **never** does these things:
 

@@ -1,45 +1,61 @@
-# Protocol: Sharp Edges (Footgun Detection)
-> **Objective**: Identify API designs where the "Easy Path" leads to insecurity.
-> **Philosophy**: "The Pit of Success" - Secure usage should be the path of least resistance.
+# Sharp Edges Protocol
 
-## 1. The Core Question
-When auditing an API or Configuration Schema, ask:
-*   *"If a developer is tired, rushing, and hasn't read the docs, will they use this securely?"*
+A sharp edge is an API, configuration, workflow, or default where the easy path leads to an insecure outcome. The goal is not to shame the caller. The goal is to make unsafe use hard to express.
 
-If the answer is **NO**, it is a Sharp Edge.
+## 1. Core Question
 
----
+If a capable developer is tired, rushed, and missing context, will the design still guide them toward safe behavior?
 
-## 2. The Rogue's Gallery (Common Footguns)
+If not, treat it as a sharp edge.
 
-### A. Configuration Cliffs
-*One wrong setting causes catastrophic failure.*
-*   ❌ `verify_ssl: false` (Silent acceptance of insecure connections).
-*   ❌ `timeout: 0` (Does this mean "Immediate" or "Infinite"? Ambiguity is fatal).
-*   **Fix**: Validate config at startup. Reject dangerous values. Fail hard.
+## 2. Common Sharp Edges
 
-### B. Primitives vs Semantics
-*Exposing raw bytes invites type confusion.*
-*   ❌ `function encrypt(data: string, key: string)` (Strings are untyped).
-*   ✅ `function encrypt(data: Plaintext, key: EncryptionKey)` (Types enforce safety).
+### Configuration Cliffs
 
-### C. The "Algo" Parameter
-*Letting the caller choose the algorithm.*
-*   ❌ `jwt.verify(token, secret, { alg: 'HS256' })` (Caller controls security).
-*   ✅ `jwt.verify(token, secret)` (Library enforces strongest available).
+One value disables a critical control: certificate verification, auth enforcement, encryption, sandboxing, tenant isolation, logging, or rate limits.
 
----
+**Fix**: reject dangerous values at startup, require explicit unsafe mode names, and keep unsafe modes out of production config.
 
-## 3. Threat Modeling the Developer
-We assume three types of users:
-1.  **The Scoundrel**: Actively malicious. Can they disable security via config?
-2.  **The Lazy Developer**: Copy-pastes the first StackOverflow answer. Is that answer secure?
-3.  **The Confused Developer**: Swaps parameters. Does the type system catch it?
+### Primitive Instead of Semantic Types
 
-## 4. Severity Matrix
+Raw strings, booleans, and maps hide security meaning: `isAdmin`, `key`, `token`, `path`, `redirect`, `algorithm`, `timeout`.
 
-| Severity | Criteria | Example |
+**Fix**: use typed values, enums, branded types, and constructors that validate invariants.
+
+### Caller-Controlled Security Decisions
+
+The caller chooses algorithms, trust modes, redirect targets, policy names, roles, tenant IDs, or sandbox escape flags.
+
+**Fix**: make policy server-owned. Let callers request intent, not decide enforcement.
+
+### Framework Trust Boundaries
+
+Framework conveniences can hide entry points: catch-all routes, server actions, public procedures, middleware-only auth, internal headers, image fetchers, webhooks, and background jobs.
+
+**Fix**: document each entry point, identity source, policy layer, resource ownership check, and action boundary.
+
+### Generated and Agentic Workflows
+
+Generated rules, prompts, reports, and fixtures can be treated as trusted because they look structured.
+
+**Fix**: validate generated data, cap execution, isolate untrusted input, and require evidence before promotion.
+
+## 3. Severity Matrix
+
+| Severity | Criteria | Response |
 | :--- | :--- | :--- |
-| **Critical** | Default is insecure. | `password_hash` defaulting to MD5. |
-| **High** | Easy to disable security. | `allow_unauthorized: true` flag exists. |
-| **Medium** | Ambiguous behavior. | Negative timeouts. |
+| Critical | Unsafe default exposes secrets, remote execution, auth bypass, or cross-tenant data. | Block and redesign. |
+| High | Security can be disabled accidentally or by ordinary configuration. | Require safer API or production guard. |
+| Medium | Ambiguous behavior can produce unsafe use. | Rename, type, validate, or document with tests. |
+| Low | Confusing but unlikely to create material harm. | Improve naming or examples. |
+
+## 4. Evidence
+
+A sharp-edge finding should name:
+
+- the easy path,
+- the unsafe outcome,
+- the affected asset,
+- the safer default,
+- the migration cost,
+- the test or validation that prevents regression.

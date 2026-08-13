@@ -1,5 +1,19 @@
 # Changelog
 
+## v2.4.81
+
+The security evidence release. Security review now separates candidate discovery from confirmed findings, ranks severity apart from confidence, and requires every scoped target to end with an explicit outcome.
+
+### Added
+- **Agentic vulnerability review.** A new security reference defines surface inventory, candidate queues, bounded investigation, revalidation, headless planning, and evidence gates for model-assisted security audits.
+- **Security eval coverage.** Added cases for safe parameterized sinks and route-name-only candidates, so the skill does not turn weak scanner signals into blockers.
+
+### Changed
+- **Automated scanning is now an evidence system.** The scanning protocol now names scope, scan layers, candidate lifecycle, CI trust boundaries, stop conditions, and false-positive controls.
+- **Static analysis gets rule contracts.** Rules now need scope, sources, sinks, sanitizers, fixtures, confidence, and lifecycle behavior, with a depth ladder from token checks through interprocedural summaries.
+- **Audit reports gain lifecycle states.** Shared taxonomy and reviewer reports now distinguish clean, candidate, finding, rejected, fixed, skipped, and incomplete.
+- **Security references are stricter.** The checklist, anti-pattern registry, and sharp-edge protocol now require proof paths and avoid treating risky API usage as automatic vulnerability evidence.
+
 ## v2.4.8
 
 The compound-engineering release. A blind six-cluster integrator pass over Every's compound-engineering plugin (32 skills, most rejected as tool-bound or already covered) yields eight surgical elevations and one new skill, plus the sales, audit, and eval nuggets from the same discipline, and a drift gate that finally watches the README body.

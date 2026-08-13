@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-security",
+  "query": "Audit this diff summary only. A scanner says `admin.ts` has an endpoint named `/admin/export`, but the diff summary does not include the route body, middleware, policy file, or caller roles. Write the security review finding if there is one.",
+  "files": [],
+  "expected_behavior": [
+    "Does not invent a confirmed auth bypass from a route name alone",
+    "Marks the item as a candidate or incomplete because route, policy, resource, and action evidence are missing",
+    "Names the missing evidence needed to confirm or reject the risk",
+    "Does not approve silently when coverage is incomplete",
+    "Uses the 6-layer authorization model to describe what must be checked"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["candidate", "incomplete", "missing evidence", "cannot confirm"]},
+    {"kind": "contains_any", "value": ["route", "policy", "resource", "action"]}
+  ]
+}

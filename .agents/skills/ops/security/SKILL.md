@@ -27,7 +27,7 @@ Copy this checklist and tick items as you go.
 1. **Model**: Identify threats using STRIDE. For every new component, check: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege. → verify: all 6 STRIDE categories have a verdict.
 2. **Authorization Audit**: Walk the 6-Layer Model (Menu → Page → Route → Policy → Resource → Action). Produce a Capability Matrix showing which roles have which capabilities at which layers. Flag inconsistencies: a hidden sidebar link does NOT protect the route. → verify: Capability Matrix produced.
 3. **Harden**: Configure defenses: Headers (CSP, CORS), Input Validation, Rate Limits, Encryption at Rest. → verify: Verified Security Checklist reviewed.
-4. **Scan**: Run automated tools (SAST/DAST). Check dependencies for known CVEs. Check for Slopsquatting (hallucinated package names). → verify: scan results reviewed.
+4. **Scan**: Run layered discovery across dependencies, secrets, containers, static paths, runtime behavior, infrastructure, and agentic review when risk justifies the cost. Build a candidate queue before deep investigation. Separate severity from confidence. Require evidence before a candidate becomes a finding. -> verify: scan results reviewed and every scoped target has an outcome.
 5. **Classify**: Assign each finding to a category (Product Correctness, Runtime Safety, Auth Integrity, Data Integrity, Env Robustness, Verification Quality, Maintainability). Rank P0-P3 within each. Lead with auth and runtime risks, not formatting. → verify: findings ranked by harm, not by file order.
 6. **Report**: Produce the classified finding report. → verify: zero P0/P1 issues are unaddressed before approval.
 7. **Completion**: Use the Completion Attestation.
@@ -82,7 +82,8 @@ LLM applications need defense in depth: (1) Input Classifiers, (2) Canary Tokens
 - **[Anti-Pattern Registry](references/anti_pattern_registry.md)**: The Top 10 blocking rules.
 - **[Skill Security Protocol](references/skill_security_protocol.md)**: Prompt injection and safety.
 - **[Verified Security Checklist](references/security_checklist.md)**: Mandatory verification list.
-- **[Automated Scanning](references/automated_scanning_protocol.md)**: Dependency checks.
+- **[Automated Scanning](references/automated_scanning_protocol.md)**: Layered scanning, candidate lifecycle, gates, and evidence rules.
+- **[Agentic Vulnerability Review](references/agentic_vulnerability_review.md)**: Candidate queues, bounded investigation, revalidation, and evidence gates.
 - **[Sharp Edges Protocol](references/sharp_edges_protocol.md)**: Footgun detection checklist.
 - **[Static Analysis Strategy](references/static_analysis_strategy.md)**: CodeQL/Semgrep hierarchy.
 - **[JWT Hardening](references/jwt_hardening.md)**: Auth best practices.

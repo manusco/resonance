@@ -1,39 +1,88 @@
-# Strategy: Static Analysis (SAST)
-> **Objective**: Scale security review beyond human speed using Automated Reasoning.
-> **Philosophy**: "If a pattern causes a bug once, write a rule to catch it forever."
+# Static Analysis Strategy
 
-## 1. The Tooling Hierarchy
-Use the right tool for the depth of analysis.
+Static analysis scales review, but it does not replace judgment. Its job is to discover surfaces, build candidate queues, and prove repeatable classes of bugs with the least expensive method that can support the claim.
 
-| Tool | Depth | Speed | Use Case |
-| :--- | :--- | :--- | :--- |
-| **Semgrep** | Superficial (Regex+) | Instant | Linting, Simple Pattern Matching (`exec(user_input)`). |
-| **CodeQL** | Deep (Data Flow) | Slow | Interprocedural Taint Analysis, Complex Logic bugs. |
+## 1. Analysis Depth Ladder
 
----
+Use the shallowest reliable layer. Escalate only when the claim requires it.
 
-## 2. High-Value Pattern Classes
+| Depth | Use | Limit |
+| :--- | :--- | :--- |
+| Token or regex | Literal secrets, simple config flags, obvious dangerous calls | No control flow, weak context. |
+| Structured parser | JSON, YAML, HCL, Dockerfiles, lockfiles, workflow files | Good for config, weak for application semantics. |
+| AST match | Entry points, API calls, decorators, imports, exports | Local syntax only unless summaries are added. |
+| Intraprocedural flow | Local source-to-sink paths inside one function | Misses helper and policy boundaries. |
+| Interprocedural summary | Shared auth, validation, data access, and framework wrappers | Slower, needs strong fixtures. |
 
-### A. Divergent Representations
-*Parsing inconsistencies between layers.*
-*   **Scenario**: A WAF parses a URL one way, the Backend parses it another.
-*   **Query Goal**: Identify where input is parsed multiple times by different libraries.
+A fixed line window is not proof of safety or risk. It is only a hint.
 
-### B. Unhandled Error Flows
-*Silent failures in security critical code.*
-*   **Query Goal**: Find functions calling `auth_check()` but ignoring the return value.
-*   **Pattern**: `call = auth_check(); if (call) { ... }` (Good) vs `auth_check(); do_thing();` (Bad).
+## 2. Rule Contract
 
-### C. Tainted Loop Conditions
-*Memory corruption via user-controlled loops.*
-*   **Query Goal**: Find `for (i=0; i < user_input; i++)`.
+Every custom rule should declare:
 
----
+- rule ID and schema version,
+- file and technology scope,
+- sources, sinks, propagators, and sanitizers,
+- safe variants and accepted exceptions,
+- confidence level independent from severity,
+- expected match location,
+- positive fixtures,
+- negative fixtures,
+- suppression format with owner, reason, and expiry.
 
-## 3. The "False Positive" Rule
-*   If a rule generates > 20% false positives, **disable it** or **refine it**.
-*   Alert fatigue is a security vulnerability.
-*   **Pipeline Strategy**:
-    *   **Blocker**: High Confidence, High Severity (SQLi, Hardcoded Secrets).
-    *   **Warning**: Medium Confidence (Logic smells).
-    *   **Audit**: Low Confidence (Manual review queue).
+Generated rules are data, not trusted code. Validate them before use and bound file count, regex cost, candidate count, and collision behavior.
+
+## 3. Discovery Is Not Confirmation
+
+A rule can produce candidates. A finding needs evidence.
+
+- An entry point without a guard is a candidate until the auth path is checked.
+- A raw query API is a candidate until attacker control reaches it without safe binding.
+- A secret-looking string is a candidate until it is classified as live, test, generated, or inert.
+- A framework feature is a candidate until project config and middleware behavior are checked.
+
+Severity answers: how bad if true? Confidence answers: how sure are we? Keep them separate.
+
+## 4. Authorization Path Model
+
+Model authorization as a path:
+
+1. entry point,
+2. identity extraction,
+3. policy decision,
+4. resource ownership,
+5. action enforcement,
+6. audit trail.
+
+Do not treat a nearby `auth`, `user`, or `admin` token as proof. Do not treat a missing token as proof either. Follow the path.
+
+## 5. Technology Scope
+
+Detect technology at the package, service, or module level. Project-wide labels are scheduling hints, not correctness proof. Polyglot repositories need local scope so one framework's files do not trigger another framework's rules.
+
+## 6. Fixture Standard
+
+A useful rule has paired unsafe and safe fixtures:
+
+- comments and strings that should not match,
+- multiline calls,
+- aliases and helper functions,
+- CRLF and Windows paths,
+- generated files and ignored paths,
+- monorepo package boundaries,
+- parser failures,
+- safe framework variants,
+- exact expected rule, source, sink, line, and confidence.
+
+Tests that only assert `matches.length > 0` are not enough.
+
+## 7. High-Value Pattern Classes
+
+- Divergent parsing between layers.
+- Unhandled failures in auth, validation, crypto, and persistence code.
+- User-controlled input reaching SQL, shell, filesystem, template, redirect, deserialization, or network sinks.
+- Authorization drift across route, policy, resource, and action layers.
+- Tenant or ownership identifiers crossing trust boundaries.
+- Unsafe defaults in framework routing, middleware, image fetching, server actions, internal headers, and public procedures.
+- Secrets in source, logs, traces, fallback config, or generated artifacts.
+- Infrastructure paths to public ingress, wildcard permissions, mutable dependencies, or missing encryption.
