@@ -16,12 +16,28 @@ You are upgrading a public framework inside a real project. Treat the project as
 
 ## Prerequisites (fail fast)
 
-- [ ] Source version is known and available.
+- [ ] Source version is resolved with the Source Resolution order below.
 - [ ] Target project root is confirmed.
 - [ ] Git status has been classified by path.
 - [ ] No unresolved conflicts exist in any path the upgrade would touch.
 - [ ] A backup location outside the managed replacement paths is ready.
 
+## Source Resolution
+
+A target project does not need to record the Resonance upstream URL. Most upgraded projects will only have `.agents/` and local memory. Resolve the source in this order:
+
+1. **Explicit source from the user**: local path, Git URL, branch, tag, or commit.
+2. **Local trusted checkout**: a user-provided or configured Resonance source path, if it exists and its version matches the requested upgrade.
+3. **Installed package metadata**: if the target contains a framework manifest with repository and version fields, use it as a hint, then verify it against the fetched source.
+4. **Official public source**: fetch `https://github.com/manusco/resonance.git` with `gh repo clone manusco/resonance` or `git clone https://github.com/manusco/resonance.git` into a temp directory outside the target project.
+5. **Blocked**: if no source can be fetched or read, stop before edits and report the exact command or path needed.
+
+Verification:
+
+- The resolved source must contain `.agents/skills/`, `.forge/` when shipping source mode, `AGENTS.md`, `resonance.sh`, `resonance.ps1`, and `package.json`.
+- The source version must match the requested version, unless the user explicitly asked for a branch or commit.
+- The temp clone or staging directory must not be inside the target project.
+- Never infer the source URL from the target application remote. The app's `origin` is the product repo, not the framework source.
 ## Ownership Boundary
 
 ### Managed by the framework
@@ -58,19 +74,21 @@ Legacy exception: if `.resonance/learnings.jsonl` exists and the user approves t
 Copy this checklist and tick items as you go.
 
 0. **Read the project**: Inspect `git status --short`, existing Resonance directories, and the target's `AGENTS.md` / `CLAUDE.md` shape. -> verify: local changes are grouped as framework-managed, project-owned, or unrelated.
-1. **Plan first**: Print a plan with source version, target project, managed paths to touch, project-owned paths excluded, backup path, validation commands, and rollback command. -> verify: no file has changed yet.
-2. **Block unsafe states**: Stop if any touched path has an unresolved conflict, staged deletion, unknown ownership, or local customization that cannot be classified. Dirty application files outside the managed paths are context, not a blocker. -> verify: blocker names exact paths.
-3. **Back up before edits**: Copy every touched existing path to `.resonance/backups/resonance-upgrade-<timestamp>/` or another user-approved backup outside replacement paths. -> verify: backup contains the old files.
-4. **Stage the new framework aside**: Copy source framework files into a temporary staging directory inside `.resonance/tmp/` or system temp, never directly over live files. -> verify: staged `.agents/skills` and `.forge` counts match the source.
-5. **Compare and classify**: Diff staged framework files against live managed paths. Preserve target-local files that are outside generated trees. For generated trees, replacement is allowed only after backup and staging validation. -> verify: no project-owned path appears in the write set.
-6. **Apply atomically by path**: Replace generated framework directories with a prepared directory swap or remove-and-rename inside the confirmed project root. Copy scripts and generated bridges only when allowed by the ownership boundary. -> verify: each write target resolves inside the project root.
-7. **Migrate legacy memory only with proof**: If approved, append legacy lessons, verify they appear in `.resonance/02_memory.md`, then remove `learnings.jsonl`. -> verify: no lesson is lost.
-8. **Regenerate if the target ships `.forge`**: Run the target's Forge build when `.forge/forge.py` exists. If the project intentionally has only compiled `.agents`, do not invent `.forge`; copy compiled skills only. -> verify: generated files are consistent with source mode.
-9. **Validate**: Run the strongest available checks in the target: framework validation, command shim checks, `/system-health` or `resonance.ps1`, and any project-specific smoke check that does not require unrelated dirty files to be resolved. -> verify: failures are reported with exact commands and output.
-10. **Report**: Summarize changed paths, preserved project-owned paths, backup path, validation output, and rollback instructions.
+1. **Resolve source**: Use the Source Resolution order. Fetch or verify the source outside the target project. -> verify: source path, version, and fetch method are named.
+2. **Plan first**: Print a plan with source version, target project, managed paths to touch, project-owned paths excluded, backup path, validation commands, rollback command, and source fetch command. -> verify: no file has changed yet.
+3. **Block unsafe states**: Stop if any touched path has an unresolved conflict, staged deletion, unknown ownership, or local customization that cannot be classified. Dirty application files outside the managed paths are context, not a blocker. -> verify: blocker names exact paths.
+4. **Back up before edits**: Copy every touched existing path to `.resonance/backups/resonance-upgrade-<timestamp>/` or another user-approved backup outside replacement paths. -> verify: backup contains the old files.
+5. **Stage the new framework aside**: Copy source framework files into a temporary staging directory inside `.resonance/tmp/` or system temp, never directly over live files. -> verify: staged `.agents/skills` and `.forge` counts match the source.
+6. **Compare and classify**: Diff staged framework files against live managed paths. Preserve target-local files that are outside generated trees. For generated trees, replacement is allowed only after backup and staging validation. -> verify: no project-owned path appears in the write set.
+7. **Apply atomically by path**: Replace generated framework directories with a prepared directory swap or remove-and-rename inside the confirmed project root. Copy scripts and generated bridges only when allowed by the ownership boundary. -> verify: each write target resolves inside the project root.
+8. **Migrate legacy memory only with proof**: If approved, append legacy lessons, verify they appear in `.resonance/02_memory.md`, then remove `learnings.jsonl`. -> verify: no lesson is lost.
+9. **Regenerate if the target ships `.forge`**: Run the target's Forge build when `.forge/forge.py` exists. If the project intentionally has only compiled `.agents`, do not invent `.forge`; copy compiled skills only. -> verify: generated files are consistent with source mode.
+10. **Validate**: Run the strongest available checks in the target: framework validation, command shim checks, `/system-health` or `resonance.ps1`, and any project-specific smoke check that does not require unrelated dirty files to be resolved. -> verify: failures are reported with exact commands and output.
+11. **Report**: Summarize changed paths, preserved project-owned paths, backup path, validation output, and rollback instructions.
 
 ## Recovery
 
+- Source cannot be resolved or fetched -> stop before edits. Name the missing source path, network access, or clone command.
 - Preflight finds unresolved conflicts in touched paths -> stop. Do not edit.
 - Preflight finds unrelated dirty application files -> proceed only if the write set excludes them and report that they were left alone.
 - Backup fails -> stop before edits.

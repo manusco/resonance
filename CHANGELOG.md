@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.4.83
+
+The source-resolution release. `/update-resonance` no longer depends on a target application repo knowing the framework upstream URL.
+
+### Changed
+- **Source resolution is explicit.** The updater now resolves the framework source from an explicit user source, trusted local checkout, package metadata, or the official public Resonance repository.
+- **App remotes are not framework remotes.** The updater now forbids inferring Resonance from the target application's `origin` remote.
+- **No-upstream projects are covered.** Projects that only have compiled `.agents/` and no `.forge/` can still resolve the official framework source safely.
+
+### Added
+- **Regression coverage for missing upstream metadata.** A new eval covers targets with `.agents`, no `.forge`, and no recorded Resonance upstream URL.
 ## v2.4.82
 
 The safe upgrade release. `/update-resonance` now treats framework upgrades as migrations with preflight, ownership boundaries, backups, staged application, validation, and rollback, instead of a broad file transplant.

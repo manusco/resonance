@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-ops-update-resonance",
+  "query": "Run /update-resonance to v2.4.83. This target project has .agents locally, no .forge folder, and no file that records the Resonance upstream URL. The app remote is its own product repo.",
+  "files": [],
+  "expected_behavior": [
+    "Does not require the target project to record the Resonance upstream URL",
+    "Does not infer the framework source from the app product remote",
+    "Uses the official public Resonance source as the fallback source",
+    "Fetches or names the source outside the target project before any edits",
+    "If fetch is unavailable, stops before edits with the exact source command or path needed"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["github.com/manusco/resonance", "manusco/resonance"]},
+    {"kind": "contains_any", "value": ["outside the target", "temp", "before any edits", "before edits"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

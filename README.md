@@ -3,7 +3,7 @@
 > Operator-grade AI agent skills for builders. A cross-tool skill library and slash-command system for Claude Code, Cursor, Codex, and opencode, covering strategy, design, engineering, marketing, sales, and ops.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.82-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
+    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.83-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
     <img src="https://img.shields.io/badge/Skills-60+-00f2ea?style=for-the-badge" alt="63 skills" />
     <img src="https://img.shields.io/badge/Commands-34-7025eb?style=for-the-badge" alt="34 commands" />
