@@ -3,16 +3,16 @@
   "query": "Upgrade this project to the latest Resonance version. Note: the repo still has .resonance/learnings.jsonl with 12 lessons from months of work in it.",
   "files": [],
   "expected_behavior": [
-    "Verifies a clean git state or a backup before touching anything",
-    "Deletes .agents/ and copies the new library rather than overwriting in place",
-    "Migrates the learnings.jsonl entries into the Lessons section of .resonance/02_memory.md so they load at session start",
-    "Deletes learnings.jsonl after the migration instead of leaving a dead store behind",
-    "Leaves 00_soul.md and the rest of the user's .resonance content untouched, and verifies with a health check after"
+    "Runs preflight and creates a backup before touching framework or memory files",
+    "Asks for or confirms approval before migrating legacy learnings.jsonl into the loaded memory index",
+    "Appends the learnings.jsonl entries into the Lessons section of .resonance/02_memory.md without losing content",
+    "Deletes learnings.jsonl only after verifying the lessons now appear in .resonance/02_memory.md",
+    "Leaves 00_soul.md, 01_state.md, ledger, memory leaf files, and application code untouched",
+    "Verifies the framework upgrade after the migration"
   ],
   "checks": [
-    {
-      "kind": "regex_absent",
-      "value": "[\u2014\u2013]"
-    }
+    {"kind": "contains_any", "value": ["backup"]},
+    {"kind": "contains_any", "value": ["02_memory.md"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
   ]
 }

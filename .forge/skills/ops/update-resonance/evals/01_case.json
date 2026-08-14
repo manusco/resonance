@@ -3,12 +3,17 @@
   "query": "Run /update-resonance to the latest version",
   "files": [],
   "expected_behavior": [
-    "The agent makes backups of the .forge and .agents directories, fetches the new definitions, merges them, and runs /system-health to verify the upgrade didn't break anything"
+    "Starts with a read-only preflight plan before changing files",
+    "Names the source version, target project, managed paths, excluded project-owned paths, backup path, validation commands, and rollback path",
+    "Backs up existing managed framework files before edits",
+    "Stages the new framework copy aside before applying it",
+    "Replaces generated framework trees only after backup and staging validation",
+    "Runs system-health or the strongest available validation after applying the upgrade"
   ],
   "checks": [
-    {
-      "kind": "regex_absent",
-      "value": "[\u2014\u2013]"
-    }
+    {"kind": "contains_any", "value": ["preflight", "plan"]},
+    {"kind": "contains_any", "value": ["backup"]},
+    {"kind": "contains_any", "value": ["rollback"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
   ]
 }

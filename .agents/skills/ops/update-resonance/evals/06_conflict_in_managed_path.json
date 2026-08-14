@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-update-resonance",
+  "query": "Run /update-resonance. The project has unresolved merge conflicts in .agents/skills/ops/security/SKILL.md and in src/app/page.tsx.",
+  "files": [],
+  "expected_behavior": [
+    "Blocks the upgrade because a framework-managed path has an unresolved conflict",
+    "Names the exact touched path that blocks the upgrade",
+    "Does not edit or delete .agents while the conflict exists",
+    "Mentions that the unrelated app conflict is also context, but the managed-path conflict alone is enough to stop"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["BLOCKED", "blocked", "stop"]},
+    {"kind": "contains_any", "value": [".agents/skills/ops/security/SKILL.md", ".agents"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

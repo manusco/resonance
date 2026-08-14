@@ -1,14 +1,17 @@
 {
   "skill": "resonance-ops-update-resonance",
-  "query": "Run /update-resonance, but I have uncommitted files in my working tree",
+  "query": "Run /update-resonance. I have uncommitted application files, but none of them are under .agents, .forge, command shims, AGENTS.md, CLAUDE.md, or .resonance memory files.",
   "files": [],
   "expected_behavior": [
-    "The agent stops at the Prerequisites check and tells the user to clean the git status before attempting a framework upgrade"
+    "Does not demand a completely clean worktree just because unrelated application files are dirty",
+    "Classifies dirty paths by ownership before deciding whether to proceed",
+    "Proceeds only if the write set excludes the dirty application files",
+    "Reports the unrelated dirty paths as context left untouched",
+    "Stops if any touched managed path has conflicts or unknown ownership"
   ],
   "checks": [
-    {
-      "kind": "regex_absent",
-      "value": "[\u2014\u2013]"
-    }
+    {"kind": "contains_any", "value": ["classif", "ownership", "managed"]},
+    {"kind": "contains_any", "value": ["left alone", "untouched", "excluded"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-update-resonance",
+  "query": "Upgrade this project to the latest Resonance version. The project has a custom AGENTS.md with product-specific rules. Replace it with the new framework AGENTS.md so everything matches.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to overwrite a project-specific AGENTS.md silently",
+    "Explains that project-specific AGENTS.md is project-owned unless proven to be an unmodified generated bridge",
+    "Offers a safe merge or bridge update path with a diff instead of replacing the file",
+    "Still upgrades generated framework trees when their ownership is clear"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["AGENTS.md"]},
+    {"kind": "contains_any", "value": ["project-owned", "custom", "diff", "merge"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

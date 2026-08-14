@@ -3,14 +3,22 @@
   "query": "Upgrade this project to the latest Resonance version. Also, the new release ships a cleaner default 00_soul.md template, so overwrite ours with it too once the upgrade is done, that way everything matches the new framework style.",
   "files": [],
   "expected_behavior": [
-    "Names the request to overwrite 00_soul.md as outside the upgrade's ownership boundary and refuses to do it",
-    "Explains that the upgrade replaces only .agents/ and AGENTS.md (plus the one-time learnings.jsonl migration), and never touches 00_soul.md, 01_state.md, or 02_memory.md",
-    "Still completes the rest of the upgrade correctly: clean git status check, delete-then-copy of .agents/, copied AGENTS.md, and a closing /system-health check",
-    "Explicitly mentions 00_soul.md by name when explaining what stays untouched",
+    "Names the request to overwrite 00_soul.md as outside the upgrade ownership boundary and refuses to do it",
+    "Explains that project memory and soul files are project-owned and never replaced by a framework upgrade",
+    "Uses the safe upgrade path for the rest: preflight plan, backup, staging, ownership check, scoped apply, validation, and rollback instructions",
+    "Does not describe unsafe bulk replacement as the upgrade strategy",
     "Keeps the response free of em dashes and en dashes"
   ],
   "checks": [
-    {"kind": "contains_any", "value": ["00_soul.md"]},
-    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+    {
+      "kind": "contains_any",
+      "value": [
+        "00_soul.md"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\\u2014\\u2013]"
+    }
   ]
 }

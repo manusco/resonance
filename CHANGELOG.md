@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.4.82
+
+The safe upgrade release. `/update-resonance` now treats framework upgrades as migrations with preflight, ownership boundaries, backups, staged application, validation, and rollback, instead of a broad file transplant.
+
+### Changed
+- **Upgrade preflight is mandatory.** The maintainer now classifies dirty paths by ownership, prints a plan before edits, and blocks unresolved conflicts in touched framework paths.
+- **Project-owned files are protected.** Project memory, application code, project docs, and customized `AGENTS.md` or host bridges are preserved unless a diff proves they are generated framework files.
+- **Generated trees are replaced only through a safe path.** The protocol now requires backup, staging, inside-project path checks, validation, and rollback instructions before replacing generated framework directories.
+- **Legacy memory migration is explicit.** `learnings.jsonl` can be moved into loaded memory only after approval and verification that no lesson was lost.
+
+### Added
+- **Upgrade regression evals.** New evals cover unrelated dirty application files, managed-path conflicts, and project-specific `AGENTS.md` preservation.
 ## v2.4.81
 
 The security evidence release. Security review now separates candidate discovery from confirmed findings, ranks severity apart from confidence, and requires every scoped target to end with an explicit outcome.
