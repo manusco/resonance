@@ -136,7 +136,14 @@ Allow: /
 
 **Best practice**: Serve critical SEO elements (canonical, meta robots, structured data, title, meta description) in the initial server-rendered HTML.
 
-**SPA frameworks** (React, Vue, Angular): Flag client-side rendering that may cause indexing issues. Verify dynamic rendering or SSR setup if applicable.
+**SPA frameworks** (React, Vue, Angular): Flag client-side rendering that may cause indexing issues. Prefer SSR, SSG, or hybrid rendering for critical SEO content. Dynamic rendering is a workaround for legacy cases, not a recommended default for new builds.
+
+## Source Card
+
+- Primary source: https://developers.google.com/search/docs/crawling-indexing/javascript/dynamic-rendering
+- Verified: 2026-08-15
+- Scope: Google Search JavaScript crawling and dynamic-rendering guidance.
+- Review trigger: Google Search Central updates JavaScript SEO or dynamic-rendering documentation.
 
 ---
 

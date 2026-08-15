@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-finance-run-operating-cycle",
+  "query": "We have 400K cash and spend 55K per month. Tell me runway and what to do next.",
+  "expected_behavior": [
+    "asks for or states revenue is needed for net runway",
+    "labels 400K divided by 55K as gross cash coverage if revenue is unknown",
+    "routes finance modeling to strategy finance",
+    "records decisions or follow-up metrics"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["gross cash coverage", "revenue"] },
+    { "kind": "regex_absent", "value": "7\\.27 months of runway" }
+  ]
+}

@@ -14,7 +14,7 @@ archetype: procedure
 ## Prerequisites (fail fast)
 
 - [ ] A deal dataset containing Deal Name, Stage, Amount, Close Date, and Owner is provided.
-- [ ] You have mapped custom stages to standard probability defaults.
+- [ ] You have observed stage-to-close rates by cohort. If not, mark the forecast unweighted or assumption-based.
 
 ## Algorithm
 
@@ -29,7 +29,7 @@ Copy this checklist and tick items as you go.
 ## Recovery
 
 - Close dates are missing across dataset → skip the Forecast tab and calculate velocity using creation-to-present metrics.
-- Probability values are missing → apply standard defaults (Prospecting 10%, Demo 30%, Proposal 50%, negotiation 70%, won 100%) and note it in the overview.
+- Probability values are missing → do not pretend a weighted forecast is measured. Use observed cohort conversion if available; otherwise show an unweighted forecast and a clearly labeled assumption scenario.
 - Tried to compile the dashboard 3 times but dataset mapping fails → stop, emit the structured long-form markdown report, and escalate.
 
 ## Reference Library

@@ -13,62 +13,35 @@ Usage:
 """
 from __future__ import annotations
 
-import re
 import sys
 from pathlib import Path
 
+FORGE_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(FORGE_DIR))
+from kernel import manifest as skill_manifest  # noqa: E402
+
 SKILLS = Path(".agents/skills")
 OUT = Path("docs/SKILL_GRAPH.md")
-NAME_RE = re.compile(r"(?m)^name:\s*(.+?)\s*$")
-
-
-def _fm(text: str) -> str:
-    if not text.startswith("---"):
-        return ""
-    end = text.find("\n---", 3)
-    return text[3:end] if end != -1 else ""
-
-
-def _name(text: str) -> str:
-    m = NAME_RE.search(_fm(text))
-    return m.group(1).strip().strip('"').strip("'") if m else ""
-
-
-def _invokes(text: str) -> list[str]:
-    out, in_list = [], False
-    for line in _fm(text).splitlines():
-        if re.match(r"^invokes:\s*$", line):
-            in_list = True
-            continue
-        if in_list:
-            m = re.match(r"^\s*-\s*(.+?)\s*$", line)
-            if m:
-                out.append(m.group(1).strip())
-                continue
-            if line.strip():
-                break
-    return out
 
 
 def collect(root: Path = SKILLS) -> list[tuple[str, list[str]]]:
-    edges = []
-    for sk in sorted(root.glob("**/SKILL.md")):
-        text = sk.read_text(encoding="utf-8", errors="replace")
-        name, inv = _name(text), _invokes(text)
-        if name and inv:
-            edges.append((name, inv))  # declared order preserved
-    return sorted(edges, key=lambda e: e[0])
+    return sorted(
+        (entry["id"], entry["invokes"])
+        for entry in skill_manifest.manifest(root)
+        if entry.get("invokes")
+    )
 
 
 def render(root: Path = SKILLS) -> str:
+    data = skill_manifest.manifest(root)
     edges = collect(root)
+    by_id = {entry["id"]: entry for entry in data}
     out = [
         "# Skill Dependency Graph",
         "",
-        "> Generated from the `invokes:` frontmatter of each skill by "
-        "`.forge/skill_graph.py`. Do not edit by hand; run the script. "
-        "`validate_library.py` checks that every edge below resolves to a real skill, "
-        "so a renamed or missing delegate fails the build.",
+        "> Generated from `docs/skill-manifest.json` by `.forge/skill_graph.py`. "
+        "Do not edit by hand; run the script. `validate_library.py` checks edge "
+        "existence, ownership fields, cycles, reachability, and contract shape.",
         "",
         "## Orchestration edges",
         "",
@@ -81,6 +54,28 @@ def render(root: Path = SKILLS) -> str:
     out += ["```", "", "## Edges", "", "| Orchestrator | Invokes |", "| --- | --- |"]
     for name, inv in edges:
         out.append(f"| {name} | {', '.join(inv)} |")
+    out += [
+        "",
+        "## Ownership Contracts",
+        "",
+        "| Skill | Archetype | Authority | Failure | Side effects |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    for entry in sorted(data, key=lambda item: item["id"]):
+        effects = ", ".join(entry["side_effects"]) if entry["side_effects"] else "none"
+        out.append(
+            f"| {entry['id']} | {entry['archetype']} | {entry['authority']} | "
+            f"{entry['failure_policy']} | {effects} |"
+        )
+    invalid = skill_manifest.validate(data)
+    out += [
+        "",
+        "## Validation",
+        "",
+        "This graph is valid." if not invalid else "This graph is invalid:",
+    ]
+    for issue in invalid:
+        out.append(f"- {issue}")
     return "\n".join(out) + "\n"
 
 

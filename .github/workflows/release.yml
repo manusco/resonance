@@ -5,6 +5,8 @@ on:
 
 permissions:
   contents: write
+  attestations: write
+  id-token: write
 
 concurrency:
   group: publish-release
@@ -45,6 +47,7 @@ jobs:
           python .forge/validate_library.py --strict
           python .forge/doc_drift.py
           python .forge/run_evals.py --all --check
+          python .forge/orch_eval.py --check
           python .forge/tests/run.py
           base="$(git describe --tags --abbrev=0 HEAD^)"
           python .forge/fingerprint_scan.py --ref "$base" --head "$GITHUB_SHA" --expect-changes
@@ -56,7 +59,25 @@ jobs:
         run: |
           version="$(python .forge/release_notes.py --print-version)"
           python .forge/release_notes.py --output release-notes.md
+          python .forge/release_manifest.py --output dist/release-manifest.json --checksums dist/SHA256SUMS
           echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Upload release evidence artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: release-evidence-${{ steps.release.outputs.version }}
+          path: |
+            release-notes.md
+            dist/release-manifest.json
+            dist/SHA256SUMS
+
+      - name: Attest release evidence
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: |
+            release-notes.md
+            dist/release-manifest.json
+            dist/SHA256SUMS
 
       - name: Create tag and GitHub Release
         env:
@@ -65,4 +86,6 @@ jobs:
           gh release create "v${{ steps.release.outputs.version }}" \
             --target "$GITHUB_SHA" \
             --title "Resonance v${{ steps.release.outputs.version }}" \
-            --notes-file release-notes.md
+            --notes-file release-notes.md \
+            dist/release-manifest.json \
+            dist/SHA256SUMS

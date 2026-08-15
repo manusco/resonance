@@ -2,6 +2,32 @@
 name: resonance-ops-system-health
 description: The Doctor. Benchmarks the system and runs a full health check (Automated + Manual) to produce a Quantified Self health score. Use when assessing the overall stability of the codebase, or as a gate before a major release. Drives qa and security agents.
 archetype: orchestration
+owner: ops.system-health
+activation: manual
+authority: consequential
+triggers:
+  - score repository or system health
+entrypoints:
+  - /system-health
+negative_triggers:
+  - mutate the system being scored
+inputs:
+  - user_request
+  - artifact
+  - health_scope
+outputs:
+  - user_request
+  - recommendation
+  - evidence
+  - test_scope
+  - qa_scope
+  - security_scope
+side_effects:
+  - may_coordinate_work
+  - may_execute_checks
+write_sets:
+  - project:health-report
+failure_policy: stop
 invokes:
   - resonance-ops-qa
   - resonance-ops-security

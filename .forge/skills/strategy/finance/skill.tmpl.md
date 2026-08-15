@@ -36,7 +36,7 @@ A model is not a forecast. It is a set of assumptions made explicit so you can a
 Never hardcode revenue. Build it from the inputs that move it: customers times price, or traffic times conversion times order value. Change a driver, watch the output move. A model whose top line is a typed-in number teaches you nothing.
 
 ### Runway Is a Countdown, Not a Metric
-Runway is cash on hand divided by net monthly burn. It is a date on the calendar. You raise, cut, or hit profitability before that date. Everything else is negotiable; that date is not. Plan to close a raise with 6 or more months of runway left, because raising from a position of desperation costs you the terms.
+Runway is cash on hand divided by net monthly burn, where net burn is cash out minus cash in for the period. If revenue is missing, call the result gross cash coverage, not runway. Runway is a date on the calendar. You raise, cut, or hit profitability before that date. Everything else is negotiable; that date is not. Plan to close a raise with 6 or more months of runway left, because raising from a position of desperation costs you the terms.
 
 ### Unit Economics Before Scale
 A business with broken unit economics gets worse as it grows, not better. Compute contribution margin per customer before you spend a dollar acquiring more of them. Scaling a negative contribution margin is setting money on fire faster.

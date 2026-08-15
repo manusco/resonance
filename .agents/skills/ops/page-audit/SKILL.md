@@ -2,6 +2,46 @@
 name: resonance-ops-page-audit
 description: The Experience Auditor Swarm. Audits a live page or a whole site from first principles: the job each page exists to do, whether its value promise is real and delivered fast, clarity, the path to action, craft, function, and trust. Use when auditing a website or landing page you run, doing a first-principles UX and conversion review, asking where a site can be improved, or producing a forward-looking improvement backlog. Runs the experience lenses (conversion, design, copywriter, seo, code audit) page by page, then hands implementation to /goal and shipping to /ship.
 archetype: orchestration
+owner: ops.page-audit
+activation: manual
+authority: consequential
+triggers:
+  - audit a page, website, or product experience
+entrypoints:
+  - /page-audit
+negative_triggers:
+  - implement or deploy the findings directly
+inputs:
+  - user_request
+  - artifact
+  - page_audit_scope
+outputs:
+  - user_request
+  - recommendation
+  - plan
+  - evidence
+  - conversion_scope
+  - copy_scope
+  - design_scope
+  - seo_scope
+  - test_scope
+  - qa_scope
+  - audit_scope
+  - health_scope
+side_effects:
+  - may_coordinate_work
+  - may_execute_checks
+write_sets:
+  - project:experience-backlog
+failure_policy: stop
+invokes:
+  - resonance-ops-system-health
+  - resonance-ops-audit
+  - resonance-marketing-conversion
+  - resonance-marketing-copywriter
+  - resonance-design-designer
+  - resonance-marketing-seo
+  - resonance-ops-qa
 ---
 
 # /resonance-ops-page-audit: audit the experience, not just the code
@@ -82,6 +122,6 @@ What can be cut from this page without hurting its job? Every element that does 
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory; when `.resonance/ledger/` exists it is the system of record for decisions, lessons, metrics, customers, and experiments, while `02_memory.md` keeps `[lib]` notes and pointers).
 
 > **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

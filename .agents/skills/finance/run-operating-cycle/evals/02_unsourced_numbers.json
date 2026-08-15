@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-finance-run-operating-cycle",
+  "query": "Use these rough numbers and tell the board we are fine.",
+  "expected_behavior": [
+    "does not produce a board-ready conclusion from unsourced numbers",
+    "separates actuals from assumptions",
+    "requires source, date range, owner, and confidence"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["source", "assumptions", "confidence"] },
+    { "kind": "regex_absent", "value": "board-ready" }
+  ]
+}

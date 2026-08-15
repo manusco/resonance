@@ -2,6 +2,39 @@
 name: resonance-strategy-plan
 description: The Inception Orchestrator. Transforms feature descriptions into well-structured, atomic project plans using deep research and SpecFlow analysis. Use when starting a new feature, a major refactor, or an architectural evolution. Drives the architect, product, and researcher subagents.
 archetype: orchestration
+owner: strategy.plan
+activation: manual
+authority: consequential
+triggers:
+  - turn an idea, feature, or refactor into an implementation plan
+entrypoints:
+  - /plan
+negative_triggers:
+  - execute the plan directly
+inputs:
+  - user_request
+  - product_scope
+  - research_scope
+  - researcher_scope
+  - venture_scope
+outputs:
+  - user_request
+  - plan
+  - decision
+  - implementation_plan
+  - product_scope
+  - research_scope
+  - researcher_scope
+  - venture_scope
+side_effects:
+  - may_coordinate_work
+write_sets:
+  - project:implementation-plan
+failure_policy: stop
+invokes:
+  - resonance-ops-product
+  - resonance-strategy-researcher
+  - resonance-strategy-venture
 ---
 
 # /resonance-strategy-plan: convert ambiguity into a world-class spec

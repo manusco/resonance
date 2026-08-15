@@ -2,6 +2,39 @@
 name: resonance-strategy-plan
 description: The Inception Orchestrator. Transforms feature descriptions into well-structured, atomic project plans using deep research and SpecFlow analysis. Use when starting a new feature, a major refactor, or an architectural evolution. Drives the architect, product, and researcher subagents.
 archetype: orchestration
+owner: strategy.plan
+activation: manual
+authority: consequential
+triggers:
+  - turn an idea, feature, or refactor into an implementation plan
+entrypoints:
+  - /plan
+negative_triggers:
+  - execute the plan directly
+inputs:
+  - user_request
+  - product_scope
+  - research_scope
+  - researcher_scope
+  - venture_scope
+outputs:
+  - user_request
+  - plan
+  - decision
+  - implementation_plan
+  - product_scope
+  - research_scope
+  - researcher_scope
+  - venture_scope
+side_effects:
+  - may_coordinate_work
+write_sets:
+  - project:implementation-plan
+failure_policy: stop
+invokes:
+  - resonance-ops-product
+  - resonance-strategy-researcher
+  - resonance-strategy-venture
 ---
 
 # /resonance-strategy-plan: convert ambiguity into a world-class spec
@@ -59,6 +92,6 @@ If a developer reading the plan cannot begin executing an item in 5 seconds, it 
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory; when `.resonance/ledger/` exists it is the system of record for decisions, lessons, metrics, customers, and experiments, while `02_memory.md` keeps `[lib]` notes and pointers).
 
 > **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

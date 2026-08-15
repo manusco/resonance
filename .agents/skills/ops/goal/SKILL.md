@@ -2,6 +2,38 @@
 name: resonance-ops-goal
 description: The autonomous goal loop. Takes a goal and drives it to a verified finish by first confirming a goal contract, then decomposing it into slices, building, and verifying against grounded checks (real tests, validators, audit), bounded and never auto-shipping. Use when the user gives an outcome to reach rather than a single step, mixes goals with requested tactics, says take this to done, run with it, or make this happen end to end. Manual-only (drives builds, tests, and real side effects).
 archetype: orchestration
+owner: ops.goal
+activation: manual
+authority: consequential
+triggers:
+  - autonomous bounded goal loop requested by the user
+entrypoints:
+  - /goal
+negative_triggers:
+  - open-ended automation without evidence gates
+inputs:
+  - user_request
+outputs:
+  - user_request
+  - plan
+  - evidence
+  - decision
+  - grill_scope
+  - plan_scope
+  - implementation_plan
+  - test_scope
+  - qa_scope
+  - audit_scope
+  - release_scope
+  - ship_scope
+  - review_scope
+  - second_opinion_scope
+side_effects:
+  - may_coordinate_work
+  - may_write_files
+write_sets:
+  - project:goal-state
+failure_policy: stop
 invokes:
   - resonance-strategy-grill
   - resonance-strategy-plan
@@ -95,6 +127,6 @@ See checkpoint_protocol for how to present a checkpoint.
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory; when `.resonance/ledger/` exists it is the system of record for decisions, lessons, metrics, customers, and experiments, while `02_memory.md` keeps `[lib]` notes and pointers).
 
 > **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

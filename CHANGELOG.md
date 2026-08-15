@@ -1,5 +1,44 @@
 # Changelog
 
+## v2.5.0
+
+The operating-contract release. Resonance now has a stricter compile-time
+contract layer under the skill library, a fail-closed memory authority, and thin
+domain conductors for campaign, revenue, finance, and leadership work.
+
+### Added
+- **Graph and ownership contracts.** Skill manifests now require explicit
+  orchestration entrypoints, authority, inputs, outputs, side effects, write
+  sets, and failure policy. Validation checks missing contracts, unknown edges,
+  cycles, reachability, authority escalation, and write-set collisions.
+- **Richer generated graph docs.** `docs/SKILL_GRAPH.md` now shows 13
+  orchestrators and their ownership contracts, generated from the manifest.
+- **Fail-closed ledger authority.** The typed ledger now rejects rogue files,
+  empty required fields, duplicate fields, unknown fields, malformed dates,
+  missing bodies, and invalid supersession before recall can use the records.
+- **Outcome conductors.** New conductors coordinate marketing campaigns, sales
+  revenue motions, finance operating cycles, and leadership operating cycles
+  without adding slash commands or duplicating specialist doctrine.
+- **Domain-correctness regressions.** New tests guard high-risk factual doctrine
+  for SEO, legal, security, sales forecasting, finance runway, Lean Canvas,
+  accessibility, mobile store policy, and database migrations.
+
+### Changed
+- **SEO doctrine is source-grounded.** Leaked Google field names no longer read
+  as deterministic ranking controls, dynamic rendering is no longer a default
+  recommendation, and content guidance uses people-first source cards.
+- **Security, legal, and platform doctrine is tighter.** HttpOnly cookies are
+  described as token-theft mitigation rather than XSS immunity, GDPR scope now
+  follows Article 3, and platform policies carry source cards and review
+  triggers.
+- **Forecast and performance guidance avoids false precision.** Sales forecasts
+  require observed conversion or explicit assumptions, runway requires net burn,
+  and fixed performance thresholds are framed as measured project targets.
+- **Evidence manifest hashing ignores private input trees.** Kernel tests no
+  longer walk ignored `_input/` content while calculating tracked manifests.
+- **Release scope moves to minor versioning.** This release adds public
+  contracts and conductors, so it ships as `2.5.0`.
+
 ## v2.4.90
 
 The evidence-binding fix-forward release. It tightens the v2.4.89 evidence

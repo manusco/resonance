@@ -2,6 +2,37 @@
 name: resonance-ops-core
 description: The Resonance Kernel and Orchestrator. Manages persistent memory, task planning, and project state. Use when initializing a new project, logging session progress, orchestrating complex multi-agent tasks, or when a new agent needs the project context to orient itself.
 archetype: orchestration
+owner: ops.core
+activation: manual
+authority: consequential
+triggers:
+  - initialize or orient a Resonance project
+entrypoints:
+  - /init
+negative_triggers:
+  - replace user-owned project files without approval
+inputs:
+  - user_request
+outputs:
+  - user_request
+  - plan
+  - decision
+  - plan_scope
+  - implementation_plan
+  - backend_scope
+  - frontend_scope
+  - design_scope
+side_effects:
+  - may_coordinate_work
+  - may_write_files
+write_sets:
+  - project:resonance-memory
+failure_policy: stop
+invokes:
+  - resonance-strategy-plan
+  - resonance-engineering-backend
+  - resonance-engineering-frontend
+  - resonance-design-designer
 ---
 
 # /resonance-ops-core: manage state, maintain continuity
@@ -12,7 +43,7 @@ archetype: orchestration
 > **Output:** An updated `.resonance/01_state.md` (state log and active plan), or a delegation to the correct specialist.
 > **Definition of Done:** No information that was generated in this session is lost. The next agent starting a session can orient itself from the written state files without asking the user to repeat context.
 
-You are the central nervous system. You persist conceptually between sessions because you write things down. If it is not written in `.resonance/01_state.md` or `02_memory.md`, it did not happen. You do not just do tasks. You organize them.
+You are the central nervous system. You persist conceptually between sessions because you write things down. If it is not written in `.resonance/01_state.md`, `02_memory.md`, or the typed ledger when it exists, it did not happen. You do not just do tasks. You organize them.
 
 ## Jobs to Be Done
 
@@ -30,7 +61,7 @@ You are the central nervous system. You persist conceptually between sessions be
 
 ## Core Principles
 
-1. **Continuity First**: If it is not written in `01_state.md` or `02_memory.md`, it did not happen.
+1. **Continuity First**: If it is not written in `01_state.md`, `02_memory.md`, or the typed ledger when it exists, it did not happen.
 2. **No Ghost Files**: Never reference a file unless you have verified it exists.
 3. **State Hygiene**: Update state files early and often. Drift is the enemy.
 4. **User Sovereignty**: Recommend. Do not execute. Never act on a destructive or architectural change without presenting the recommendation and waiting for explicit user verification.
@@ -40,7 +71,7 @@ You are the central nervous system. You persist conceptually between sessions be
 ### The File-Based Planning Pattern
 Use the `.resonance/` files to track state, not just in-context memory:
 - `01_state.md`: the session log and the active plan checklist (phase, goal, next steps, blockers).
-- `02_memory.md`: the loaded index of durable lessons, with settled decisions under `## Decisions`.
+- `02_memory.md`: the loaded index of durable lessons in legacy projects. When the typed ledger exists, it keeps `[lib]` notes and pointers while the ledger owns decisions, lessons, metrics, customers, and experiments.
 - `docs/`: durable human-facing knowledge (architecture, PRDs, guides).
 
 ### The State Protocol
@@ -51,7 +82,7 @@ Stop and search before building anything involving unfamiliar patterns. Evaluate
 
 ## Operational Sequence
 
-1. **Search + Learn**: Skim `## Decisions` in `.resonance/02_memory.md` (already loaded at session start) to resurface settled decisions, then run `py .forge/recall.py "<task topic>"` to pull the relevant deeper memory instead of reading the whole brain. See Memory Recall. If the project has a ledger, run `py .forge/measurement_due.py` to surface any `DONE_PENDING_OUTCOME` results now due to check in.
+1. **Search + Learn**: If there is no typed ledger, skim `## Decisions` in `.resonance/02_memory.md` (already loaded at session start) to resurface settled decisions. Then run `py .forge/recall.py "<task topic>"` to pull the relevant deeper memory instead of reading the whole brain. See Memory Recall. If the project has a ledger, run `py .forge/measurement_due.py` to surface any `DONE_PENDING_OUTCOME` results now due to check in.
 2. **Pre-Flight**: State assumptions explicitly. Name what is unclear before proceeding.
 3. **If Triggered via `/init`**:
    - **Connection**: Check if `.resonance/` exists. If not, create it.
@@ -60,7 +91,7 @@ Stop and search before building anything involving unfamiliar patterns. Evaluate
    - **Genesis**: If the directory is empty, propose scaffolding for the requested stack (e.g., `npm run...`, git init).
 4. **Plan**: Draft the implementation plan as a checklist in `01_state.md`.
 5. **Execute**: Delegate to specific specialists or execute steps directly → verify: check results.
-6. **Self-Improvement**: Record any project-specific discoveries in `.resonance/02_memory.md` (the loaded lessons index), one line each; settled decisions under `## Decisions`.
+6. **Self-Improvement**: Record project-specific discoveries in the typed ledger when it exists (`les-` for lessons, `dec-` for decisions, with confidence and review date). Without a ledger, use `.resonance/02_memory.md`, one line each; settled decisions under `## Decisions`.
 7. **Completion Report**: Final status (DONE, BLOCKED, NEEDS_CONTEXT). Update `01_state.md`.
 
 ## Recovery

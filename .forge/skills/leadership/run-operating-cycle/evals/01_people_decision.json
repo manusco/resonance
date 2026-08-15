@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-leadership-run-operating-cycle",
+  "query": "Help me reorganize the team, hire a lead, and handle one underperformer.",
+  "expected_behavior": [
+    "frames outcome, affected people, decision rights, confidentiality, and deadline",
+    "routes hiring, founder operating cadence, productivity, retro, and legal or HR risk as needed",
+    "does not make people decisions without context or consent",
+    "produces owners, communication plan, and follow-up date"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["affected people", "decision", "follow-up"] },
+    { "kind": "regex_absent", "value": "fire them" }
+  ]
+}

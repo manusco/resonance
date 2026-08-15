@@ -47,7 +47,15 @@ const accessToken = jwt.sign(
 | :--- | :--- | :--- |
 | **LocalStorage** | 🔴 Low (XSS) | **NEVER** for sensitive apps. |
 | **SessionStorage** | 🔴 Low (XSS) | **NEVER** for sensitive apps. |
-| **Cookie (HttpOnly)** | 🟢 High (CSRF needed) | **PREFERRED**. Immune to XSS. |
+| **Cookie (HttpOnly)** | 🟢 High for token theft | **PREFERRED** for browser sessions. HttpOnly blocks JavaScript from reading the token, but it does not make the app immune to XSS or CSRF. |
+
+## Source Card
+
+- Primary source: https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html
+- Secondary source: https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html
+- Verified: 2026-08-15
+- Scope: Cookie session attributes and CSRF defense in web applications.
+- Review trigger: OWASP Session Management or CSRF Cheat Sheet update.
 
 **Cookie Configuration:**
 ```javascript

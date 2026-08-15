@@ -2,6 +2,32 @@
 name: resonance-ops-system-health
 description: The Doctor. Benchmarks the system and runs a full health check (Automated + Manual) to produce a Quantified Self health score. Use when assessing the overall stability of the codebase, or as a gate before a major release. Drives qa and security agents.
 archetype: orchestration
+owner: ops.system-health
+activation: manual
+authority: consequential
+triggers:
+  - score repository or system health
+entrypoints:
+  - /system-health
+negative_triggers:
+  - mutate the system being scored
+inputs:
+  - user_request
+  - artifact
+  - health_scope
+outputs:
+  - user_request
+  - recommendation
+  - evidence
+  - test_scope
+  - qa_scope
+  - security_scope
+side_effects:
+  - may_coordinate_work
+  - may_execute_checks
+write_sets:
+  - project:health-report
+failure_policy: stop
 invokes:
   - resonance-ops-qa
   - resonance-ops-security
@@ -67,6 +93,6 @@ A 100/100 score is useless if the tests only check the happy path (`TEST_SHALLOW
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory; when `.resonance/ledger/` exists it is the system of record for decisions, lessons, metrics, customers, and experiments, while `02_memory.md` keeps `[lib]` notes and pointers).
 
 > **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

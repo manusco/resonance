@@ -1,6 +1,14 @@
 # GDPR and DACH Data Protection
 
-The first-principles model of EU data protection, with the Germany, Austria, and Switzerland specifics a founder actually hits. GDPR (Regulation 2016/679) governs any processing of personal data of people in the EU/EEA, regardless of where the company sits. If you have EU users, this applies to you.
+The first-principles model of EU data protection, with the Germany, Austria, and Switzerland specifics a founder actually hits. GDPR territorial scope is not "any EU user, anywhere, for any reason." Article 3 applies when processing is in the context of an EU establishment, or when a non-EU controller or processor offers goods or services to people in the EU, monitors their behavior in the EU, or is in a place where Member State law applies by public international law.
+
+## Source Card
+
+- Primary source: https://eur-lex.europa.eu/eli/reg/2016/679/art_3/oj
+- Secondary source: https://www.edpb.europa.eu/documents/guideline/guidelines-32018-on-the-territorial-scope-of-the-gdpr-article-3-version-adopted_en
+- Verified: 2026-08-15
+- Scope: GDPR Article 3 territorial scope.
+- Review trigger: EDPB territorial-scope guidance update, new adequacy decision, or cross-border data-flow recommendation.
 
 ## Contents
 - Core definitions
@@ -30,7 +38,7 @@ Every processing purpose needs exactly one lawful basis (GDPR Article 6). Choose
 5. **Public task**: exercising official authority. Mostly public bodies.
 6. **Legitimate interests**: a real business interest not overridden by the person's rights. Requires a documented balancing test (the LIA: purpose, necessity, balancing). Common for fraud prevention, network security, basic analytics. Not available to public authorities for their tasks.
 
-Marketing note: unsolicited electronic marketing is governed by the ePrivacy rules, not only GDPR. In practice DACH treats cold B2C email marketing as consent-required, and cold B2B email as high-risk under German competition law (UWG). Do not promise a client that cold email is fine; flag it for counsel.
+Marketing note: unsolicited electronic marketing is governed by ePrivacy and national laws, not only GDPR. In DACH, cold B2C email is generally consent-required, and German B2B cold email is high-risk under UWG unless a narrow exception applies. Do not promise that cold email is fine; require jurisdiction, recipient type, source of contact data, consent or existing-customer basis, unsubscribe handling, and counsel review for risky sends.
 
 ## The seven processing principles
 

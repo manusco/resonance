@@ -2,6 +2,40 @@
 name: resonance-software-deliver-change
 description: End-to-end software delivery conductor. Use when a user wants a code change taken from goal contract through plan, implementation, verification, audit, release proposal, and retained evidence without auto-shipping.
 archetype: orchestration
+owner: software.delivery
+activation: manual
+authority: consequential
+triggers:
+  - deliver a software change from request to reviewed release candidate
+entrypoints:
+  - skill:software-deliver-change
+negative_triggers:
+  - ship without review consent
+inputs:
+  - user_request
+  - plan
+  - implementation_plan
+outputs:
+  - user_request
+  - artifact
+  - evidence
+  - decision
+  - grill_scope
+  - plan_scope
+  - implementation_plan
+  - test_scope
+  - qa_scope
+  - audit_scope
+  - release_scope
+  - ship_scope
+  - review_scope
+  - second_opinion_scope
+side_effects:
+  - may_coordinate_work
+  - may_write_files
+write_sets:
+  - project:software-change
+failure_policy: stop
 invokes:
   - resonance-strategy-grill
   - resonance-strategy-plan

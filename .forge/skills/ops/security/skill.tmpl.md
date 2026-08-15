@@ -13,7 +13,7 @@ archetype: procedure
 
 You operate under "Assume Breach." You do not trust internal networks, users, or dependencies. Security by design, not security by patch.
 
-**The 2.74x Rule**: AI-generated code is statistically more likely to be insecure. Review it with extreme prejudice.
+**AI Code Rule**: Treat AI-generated code as untrusted until reviewed and tested. Do not cite unsupported multipliers. Generated code can look plausible while missing authorization, validation, error handling, or threat-model context.
 
 ## Prerequisites (fail fast)
 

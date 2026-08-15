@@ -44,6 +44,8 @@ No YAML, no fences. The id is in the heading. Field lines are plain `key: value`
 type: decision
 created: 2026-07-18
 status: active
+confidence: high
+review_due: 2026-10-01
 evidences: met-queue-lock-2026-07
 
 SQLite locks the whole file under concurrent writers; the queue needs
@@ -52,7 +54,7 @@ row-level locking. Revisit only if we drop to a single worker.
 
 Id grammar: `(dec|les|met|cus|exp)-<lowercase-slug>`. The prefix must match the file (a `dec-` id lives only in `decisions.md`). Ids are globally unique, which is what makes an edge a stable citation.
 
-Shared fields on every entry: `type`, `created` (ISO date), `status` (`active`, `superseded`, or `closed`). Edge fields are optional (see below).
+Shared fields on every entry: `type`, `created` (ISO date), `status` (`active`, `superseded`, or `closed`). Decisions, lessons, and customers also require `confidence:` (`low`, `medium`, or `high`) and `review_due:` (ISO date) so stale operating truth has an ownerless check-in trigger. Edge fields are optional (see below).
 
 ## The five types
 
@@ -72,6 +74,8 @@ unit: eur
 target: 50000
 as_of: 2026-07-31
 source: stripe dashboard, manual pull
+
+Manual finance close exported from Stripe on 2026-08-01.
 ```
 
 **customer** (`cus-`): an account the business skills act on. Optional `segment`, `mrr`, `since`.
@@ -86,6 +90,8 @@ status: closed
 hypothesis: showing the top tier first lifts mid-tier conversion
 result: mid-tier conversion up 31 percent over 4 weeks, n=214
 caused: dec-pricing-three-tier
+
+Traffic split and conversion counts came from the experiment report.
 ```
 
 ## Edges and traversal
@@ -114,7 +120,7 @@ Supersede on demonstrated contradiction, never on absence of proof. If a re-chec
 Line 2 of every ledger file, under the H1:
 
 ```
-schema: resonance-ledger/1
+schema: resonance-ledger/2
 ```
 
 The rule is structural, not a flag:
@@ -140,6 +146,8 @@ created: 2026-07-18
 status: active
 hypothesis: the problem-first opener lifts reply rate above 4 percent
 due: 2026-08-01
+
+Measure replies seven days after the first send.
 ```
 
 `py .forge/measurement_due.py` scans for entries whose `due:` date has arrived and surfaces them at session start. It is pull, not push: nothing fires on a clock, and it is silent when nothing is due. When the outcome lands, the human or agent records the real result (the metric `value`, the experiment `result`), sets `status: closed`, and the loop is closed: the work is now either confirmed or refuted by reality, not by the model's own say-so. A field report that a skill misfired runs the other direction: `py .forge/field_report.py` turns it into a `les-` lesson and a stub eval case, so the miss compounds into a permanent regression check.

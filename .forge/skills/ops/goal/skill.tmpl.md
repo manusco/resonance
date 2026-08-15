@@ -2,6 +2,38 @@
 name: resonance-ops-goal
 description: The autonomous goal loop. Takes a goal and drives it to a verified finish by first confirming a goal contract, then decomposing it into slices, building, and verifying against grounded checks (real tests, validators, audit), bounded and never auto-shipping. Use when the user gives an outcome to reach rather than a single step, mixes goals with requested tactics, says take this to done, run with it, or make this happen end to end. Manual-only (drives builds, tests, and real side effects).
 archetype: orchestration
+owner: ops.goal
+activation: manual
+authority: consequential
+triggers:
+  - autonomous bounded goal loop requested by the user
+entrypoints:
+  - /goal
+negative_triggers:
+  - open-ended automation without evidence gates
+inputs:
+  - user_request
+outputs:
+  - user_request
+  - plan
+  - evidence
+  - decision
+  - grill_scope
+  - plan_scope
+  - implementation_plan
+  - test_scope
+  - qa_scope
+  - audit_scope
+  - release_scope
+  - ship_scope
+  - review_scope
+  - second_opinion_scope
+side_effects:
+  - may_coordinate_work
+  - may_write_files
+write_sets:
+  - project:goal-state
+failure_policy: stop
 invokes:
   - resonance-strategy-grill
   - resonance-strategy-plan
