@@ -1,5 +1,0 @@
----
-description: Run the audit swarm (security, review, QA, architect) and output P0-P3 classified findings.
----
-
-Run the Resonance audit procedure. Read `.agents/skills/ops/audit/SKILL.md` in full and execute it, following its Definition of Done.

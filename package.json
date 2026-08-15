@@ -29,10 +29,13 @@
   "scripts": {
     "wake": "./resonance.sh",
     "build": "py .forge/forge.py build --all",
+    "test": "py .forge/tests/run.py",
     "commands": "py .forge/forge.py commands --host all",
     "validate": "py .forge/validate_skill.py --all .agents/skills",
     "check": "py .forge/validate_library.py",
     "eval": "py .forge/run_evals.py --all --check",
+    "eval:integrity": "py .forge/eval_integrity.py",
+    "doctor": "py .forge/forge.py doctor --json",
     "eval:score": "py .forge/run_evals.py --all --score",
     "exec:test": "py .forge/exec/run_checks.py",
     "exec:browser": "node .forge/exec/browser_check.mjs",

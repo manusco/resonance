@@ -35,6 +35,6 @@ Do not add flags or reorder.
 
 ## Weaker models need less freedom
 
-When compiling for open-weight or smaller models (the open-weights overlay), shift
+When a runtime uses an open-weight or smaller model, shift
 left: convert high-freedom prose into explicit numbered steps and mandatory verify
 commands. The same template, lower freedom, via the overlay.

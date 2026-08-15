@@ -36,8 +36,8 @@ You get consistent, high-quality output because the agent runs the same protocol
 | :--- | :--- | :--- |
 | **Claude Code** | Native skills in `.claude/skills/<cmd>` | `/plan`, `/ship`, ... |
 | **Cursor** | Skills in `.cursor/skills/<cmd>` | `/plan`, `/ship`, ... |
-| **Codex** | Custom prompts in `.codex/prompts/<cmd>` plus `AGENTS.md` routing | `/plan`, `/ship`, ... |
-| **opencode** | Commands in `.opencode/command/<cmd>` plus `AGENTS.md` routing | `/plan`, `/ship`, ... |
+| **Codex** | Agent Skills discovery plus `AGENTS.md` routing | describe the job or select a skill |
+| **opencode** | Commands in `.opencode/commands/<cmd>` plus `AGENTS.md` routing | `/plan`, `/ship`, ... |
 | **Antigravity** and other AGENTS.md tools | `AGENTS.md` command map | describe the job |
 
 The command shims are generated from one source (`.forge/commands.json`) by the Forge, which also emits the per-tool **context bridge**: the file each tool loads at session start, pointing it at `AGENTS.md` and the `.resonance/` memory. Claude Code loads `CLAUDE.md`, not `AGENTS.md`, so the Forge writes a root `CLAUDE.md` that imports both; Cursor gets an always-applied `.cursor/rules/resonance.mdc`; Codex, opencode, and Antigravity read `AGENTS.md` natively. Without the bridge the operating standard and memory never reach the model. Adding a new tool is one host-config line.
@@ -109,7 +109,7 @@ Every command is a structured procedure with a Definition of Done, not a loose p
 **The Forge compiles one source to many targets.** Skills are authored once as templates in `.forge/skills/`, then compiled per tool and per model into ready `SKILL.md` files, with shared sections (voice, decisions, completion, the operating standard) injected from one place. A static validator checks every skill, and each ships with at least three golden evals.
 
 ```
-template.skill.md   x   host (tool)   x   overlay (model)   ->   SKILL.md
+template.skill.md   x   portable profile   ->   canonical SKILL.md
 ```
 
 **Rebuild after editing a template:**
@@ -129,27 +129,23 @@ py .forge/validate_skill.py --all .agents/skills
 
 ## Use it inside your own project
 
-Working in the Resonance repo directly is the simplest path (everything is committed and ready). To add Resonance to an existing project, copy the identity file, the skills, and the compiler, then generate the command shims:
+Working in the Resonance repo directly is the simplest path. For another project, use the transactional installer. It previews every write, refuses user-owned conflicts, records ownership hashes, stages outside the target, backs up replaced files, and rolls back a failed apply.
 
 **macOS / Linux**
 ```bash
-git clone https://github.com/manusco/resonance ~/resonance-tmp
-cp ~/resonance-tmp/AGENTS.md ./AGENTS.md
-cp -r ~/resonance-tmp/.agents ./.agents
-cp -r ~/resonance-tmp/.forge ./.forge
-py ./.forge/forge.py commands --host all   # writes the per-tool command shims and the CLAUDE.md / .cursor/rules context bridges
-rm -rf ~/resonance-tmp
+gh repo clone manusco/resonance ~/resonance-source -- --branch v2.4.87
+python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version 2.4.87
+python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version 2.4.87 --apply
 ```
 
 **Windows (PowerShell)**
 ```powershell
-git clone https://github.com/manusco/resonance $env:TEMP\resonance-tmp
-Copy-Item "$env:TEMP\resonance-tmp\AGENTS.md" ".\AGENTS.md"
-Copy-Item "$env:TEMP\resonance-tmp\.agents" ".\.agents" -Recurse
-Copy-Item "$env:TEMP\resonance-tmp\.forge" ".\.forge" -Recurse
-py .\.forge\forge.py commands --host all
-Remove-Item "$env:TEMP\resonance-tmp" -Recurse -Force
+gh repo clone manusco/resonance "$env:TEMP\resonance-source" -- --branch v2.4.87
+py "$env:TEMP\resonance-source\.forge\update.py" --source "$env:TEMP\resonance-source" --target . --version 2.4.87
+py "$env:TEMP\resonance-source\.forge\update.py" --source "$env:TEMP\resonance-source" --target . --version 2.4.87 --apply
 ```
+
+The first command is a dry run. Review its JSON plan before `--apply`. For an older installation with no ownership manifest, check out its installed Resonance version and pass that checkout as `--source` to the new updater with `--adopt`. Adoption claims only byte-identical released files and changes no framework file. Then use the new version checkout for the dry run and apply. A project-owned `AGENTS.md` or modified framework file remains a conflict until you review and resolve it.
 
 Then open your AI tool and type `/init`. It writes your project's vision to `.resonance/00_soul.md` and sets up the memory structure.
 
@@ -171,17 +167,15 @@ The `.resonance/` folder is what makes the agent persistent across sessions. Its
 
 ## Upgrading
 
-Resonance reorganizes its skill library between versions, so a plain copy leaves ghost files the agent will still read. Delete the generated trees first, then copy the new version in. Your `.resonance/` memory is never part of this.
+Use the source checkout's transactional updater. It removes stale framework-owned files, but it never overwrites modified or project-owned files without review. Your project memory remains outside the managed write set.
 
 ```bash
-git clone https://github.com/manusco/resonance ~/resonance-tmp
-rm -rf .agents .claude/skills .cursor/skills .codex/prompts .opencode/command
-cp -r ~/resonance-tmp/.agents ./.agents
-cp -r ~/resonance-tmp/.forge ./.forge
-cp ~/resonance-tmp/AGENTS.md ./AGENTS.md
-py ./.forge/forge.py commands --host all
-rm -rf ~/resonance-tmp
+gh repo clone manusco/resonance ~/resonance-source -- --branch <version-tag>
+python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version <version>
+python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version <version> --apply
 ```
+
+The first command previews the transaction. Installations created before ownership manifests must run `--adopt` from a clean checkout of their installed version first. Adoption accepts only byte-identical released files. Recovery uses `update.py --rollback <backup-directory>`.
 
 Verify with `/system-health`.
 

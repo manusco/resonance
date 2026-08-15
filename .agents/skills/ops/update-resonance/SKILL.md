@@ -48,8 +48,7 @@ These may be upgraded when preflight says they are safe:
 - `.forge/`
 - `.claude/skills/`
 - `.cursor/skills/`
-- `.codex/prompts/`
-- `.opencode/command/`
+- `.opencode/commands/`
 - `resonance.sh`
 - `resonance.ps1`
 - generated bridge files when the target has no local edits to them
@@ -75,12 +74,12 @@ Copy this checklist and tick items as you go.
 
 0. **Read the project**: Inspect `git status --short`, existing Resonance directories, and the target's `AGENTS.md` / `CLAUDE.md` shape. -> verify: local changes are grouped as framework-managed, project-owned, or unrelated.
 1. **Resolve source**: Use the Source Resolution order. Fetch or verify the source outside the target project. -> verify: source path, version, and fetch method are named.
-2. **Plan first**: Print a plan with source version, target project, managed paths to touch, project-owned paths excluded, backup path, validation commands, rollback command, and source fetch command. -> verify: no file has changed yet.
+2. **Plan first**: Run the new checkout's `.forge/update.py --source <source> --target <target> --version <version>`. For a pre-manifest installation, first check out its installed release and pass that old checkout as `--source` to the new updater with `--adopt`; adoption accepts only byte-identical released files. Then use the new checkout as the source for the dry run. Print the plan, backup policy, validation commands, and rollback path. -> verify: adoption changes only the ownership manifest; the dry run changes nothing.
 3. **Block unsafe states**: Stop if any touched path has an unresolved conflict, staged deletion, unknown ownership, or local customization that cannot be classified. Dirty application files outside the managed paths are context, not a blocker. -> verify: blocker names exact paths.
 4. **Back up before edits**: Copy every touched existing path to `.resonance/backups/resonance-upgrade-<timestamp>/` or another user-approved backup outside replacement paths. -> verify: backup contains the old files.
 5. **Stage the new framework aside**: Copy source framework files into a temporary staging directory inside `.resonance/tmp/` or system temp, never directly over live files. -> verify: staged `.agents/skills` and `.forge` counts match the source.
 6. **Compare and classify**: Diff staged framework files against live managed paths. Preserve target-local files that are outside generated trees. For generated trees, replacement is allowed only after backup and staging validation. -> verify: no project-owned path appears in the write set.
-7. **Apply atomically by path**: Replace generated framework directories with a prepared directory swap or remove-and-rename inside the confirmed project root. Copy scripts and generated bridges only when allowed by the ownership boundary. -> verify: each write target resolves inside the project root.
+7. **Apply transactionally**: Run the same updater command with `--apply`. It stages files outside the target, verifies ownership hashes, applies by path, writes the new manifest, and restores touched paths on failure. -> verify: each write target resolves inside the project root and the journal says `complete`.
 8. **Migrate legacy memory only with proof**: If approved, append legacy lessons, verify they appear in `.resonance/02_memory.md`, then remove `learnings.jsonl`. -> verify: no lesson is lost.
 9. **Regenerate if the target ships `.forge`**: Run the target's Forge build when `.forge/forge.py` exists. If the project intentionally has only compiled `.agents`, do not invent `.forge`; copy compiled skills only. -> verify: generated files are consistent with source mode.
 10. **Validate**: Run the strongest available checks in the target: framework validation, command shim checks, `/system-health` or `resonance.ps1`, and any project-specific smoke check that does not require unrelated dirty files to be resolved. -> verify: failures are reported with exact commands and output.
@@ -123,4 +122,4 @@ Generated framework trees can be replaced after backup because stale files are d
 
 Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
-> **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.
+> **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

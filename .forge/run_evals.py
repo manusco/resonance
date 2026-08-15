@@ -48,15 +48,20 @@ Exit: 0 pass, 1 a case failed / structural problem / a skill showed no lift, 2 b
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
 import shlex
 import subprocess
 import sys
+from dataclasses import dataclass
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import eval_integrity
 
 try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -67,6 +72,38 @@ FORGE = Path(__file__).resolve().parent
 REPO = FORGE.parent
 SKILLS = REPO / ".agents" / "skills"
 NAME_RE = re.compile(r"(?m)^name:\s*(.+?)\s*$")
+SENSITIVE_NAMES = {".env", ".npmrc", ".pypirc", "credentials", "credentials.json"}
+SENSITIVE_SUFFIXES = {".key", ".pem", ".p12", ".pfx"}
+ALLOWED_FIXTURE_ROOTS = {"src", "docs", "tests", "fixtures", "examples"}
+
+
+@dataclass
+class ModelFailure(RuntimeError):
+    command: list[str]
+    returncode: int | None
+    stdout: str
+    stderr: str
+
+    def __str__(self) -> str:
+        return f"model command failed with exit {self.returncode}: {self.stderr.strip() or 'no stderr'}"
+
+
+def contained_fixture(relpath: str) -> Path:
+    if not isinstance(relpath, str) or not relpath.strip():
+        raise ValueError("eval file path must be a non-empty repository-relative path")
+    candidate = Path(relpath)
+    if candidate.is_absolute() or ".." in candidate.parts:
+        raise ValueError(f"eval file escapes repository: {relpath}")
+    if not candidate.parts or candidate.parts[0] not in ALLOWED_FIXTURE_ROOTS:
+        raise ValueError(f"eval file is outside approved fixture roots: {relpath}")
+    resolved = (REPO / candidate).resolve(strict=False)
+    try:
+        resolved.relative_to(REPO.resolve())
+    except ValueError as exc:
+        raise ValueError(f"eval file escapes repository: {relpath}") from exc
+    if resolved.name.lower() in SENSITIVE_NAMES or resolved.suffix.lower() in SENSITIVE_SUFFIXES:
+        raise ValueError(f"eval file is sensitive and cannot be sent to a model: {relpath}")
+    return resolved
 
 
 def skill_name(skill_md: Path) -> str:
@@ -85,7 +122,15 @@ def skill_rel(sk: Path) -> str:
 
 
 def skill_md_for_rel(path: str) -> Path:
-    return SKILLS / path / "SKILL.md"
+    candidate = Path(path)
+    if not path or candidate.is_absolute() or ".." in candidate.parts:
+        raise ValueError(f"skill path escapes canonical skills: {path}")
+    resolved = (SKILLS / candidate / "SKILL.md").resolve(strict=False)
+    try:
+        resolved.relative_to(SKILLS.resolve())
+    except ValueError as exc:
+        raise ValueError(f"skill path escapes canonical skills: {path}") from exc
+    return resolved
 
 
 def changed_skill_paths(ref: str) -> set[str]:
@@ -105,7 +150,7 @@ def changed_skill_paths(ref: str) -> set[str]:
 
 def find_cases(path: str, changed_ref: str | None) -> list[tuple[Path, Path]]:
     out = []
-    roots = sorted(SKILLS.glob("**/SKILL.md")) if path == "--all" else [SKILLS / path / "SKILL.md"]
+    roots = sorted(SKILLS.glob("**/SKILL.md")) if path == "--all" else [skill_md_for_rel(path)]
     changed = changed_skill_paths(changed_ref) if changed_ref else None
     for sk in roots:
         if changed is not None and skill_rel(sk) not in changed:
@@ -117,15 +162,53 @@ def find_cases(path: str, changed_ref: str | None) -> list[tuple[Path, Path]]:
     return out
 
 
+def holdout_cases(root: str) -> list[tuple[Path, Path]]:
+    if not root:
+        raise ValueError("scored runs require --holdout-dir or RESONANCE_HOLDOUT_DIR")
+    directory = Path(root).resolve(strict=True)
+    try:
+        directory.relative_to(REPO.resolve())
+        raise ValueError("protected holdout must be outside the repository")
+    except ValueError as exc:
+        if str(exc) == "protected holdout must be outside the repository":
+            raise
+    cases = []
+    for ev in sorted(directory.glob("*.json")):
+        data = json.loads(ev.read_text(encoding="utf-8"))
+        rel = data.get("skill_path", "")
+        sk = skill_md_for_rel(rel)
+        if not sk.is_file():
+            raise ValueError(f"holdout references unknown skill_path: {rel}")
+        cases.append((sk, ev))
+    if not cases:
+        raise ValueError("protected holdout contains no JSON cases")
+    return cases
+
+
+def file_hashes(paths: list[Path]) -> dict[str, str]:
+    return {str(p.resolve()): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
+
+
+def same_command(left: str, right: str) -> bool:
+    return shlex.split(left) == shlex.split(right)
+
+
 def run_model(cmd: list[str], prompt: str) -> str:
     try:
         # force UTF-8 on stdin/stdout: skill bodies use non-ASCII (arrows, quotes)
         # that the Windows locale (cp1252) cannot encode, which would silently fail.
         r = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=300,
                            encoding="utf-8", errors="replace")
-        return (r.stdout or "").strip()
+        if r.returncode != 0:
+            raise ModelFailure(cmd, r.returncode, r.stdout or "", r.stderr or "")
+        output = (r.stdout or "").strip()
+        if not output:
+            raise ModelFailure(cmd, r.returncode, r.stdout or "", "model returned empty output")
+        return output
     except Exception as e:
-        return f"[model error: {e}]"
+        if isinstance(e, ModelFailure):
+            raise
+        raise ModelFailure(cmd, None, "", str(e)) from e
 
 
 def build_prompt(case: dict, body: str | None, selected_path: str | None = None) -> str:
@@ -142,8 +225,8 @@ def build_prompt(case: dict, body: str | None, selected_path: str | None = None)
                          f"<skill role=\"baseline\" path=\"{relpath}\">\n"
                          f"{skill_body(fp)}\n</skill>\n")
     for f in case.get("files", []) or []:
-        fp = REPO / f
-        if fp.exists():
+        fp = contained_fixture(f)
+        if fp.is_file():
             parts.append(f"<file path=\"{f}\">\n{fp.read_text(encoding='utf-8', errors='replace')}\n</file>")
     parts.append("Task: " + case["query"])
     return "\n\n".join(parts)
@@ -158,7 +241,10 @@ def judge(cmd: list[str], query: str, output: str, rubric: list[str]) -> list[bo
     m = re.search(r"\[[^\]]*\]", raw)
     try:
         vals = json.loads(m.group(0)) if m else []
-        return ([bool(v) for v in vals] + [False] * len(rubric))[:len(rubric)]
+        if (not isinstance(vals, list) or len(vals) != len(rubric)
+                or any(type(v) is not bool for v in vals)):
+            return [False] * len(rubric)
+        return vals
     except Exception:
         return [False] * len(rubric)
 
@@ -272,8 +358,19 @@ def check_case(sk: Path, ev: Path) -> list[str]:
         if not isinstance(c, dict) or c.get("kind") not in CHECK_KINDS or "value" not in c:
             problems.append(f"invalid check (kind must be one of {CHECK_KINDS}, with a value): {c}")
     for relpath in d.get("baseline_skills", []) or []:
-        if not isinstance(relpath, str) or not skill_md_for_rel(relpath).is_file():
+        try:
+            found = isinstance(relpath, str) and skill_md_for_rel(relpath).is_file()
+        except ValueError:
+            found = False
+        if not found:
             problems.append(f"baseline skill not found: {relpath}")
+    for relpath in d.get("files", []) or []:
+        try:
+            fixture = contained_fixture(relpath)
+            if not fixture.is_file() and not d.get("fixture_optional", False):
+                problems.append(f"fixture file not found: {relpath}")
+        except (OSError, ValueError) as exc:
+            problems.append(str(exc))
     return problems
 
 
@@ -287,19 +384,29 @@ def run_case(cmd: list[str], judge_cmd: list[str], sk: Path, ev: Path, threshold
     n = len(rub) + len(checks)
     wf: list[float] = []
     wof: list[float] = []
-    for _ in range(max(1, reps)):
-        with_out = run_model(cmd, build_prompt(d, the_body, selected_path=selected_path))
-        without = run_model(cmd, build_prompt(d, None))
+    evidence = []
+    for rep in range(max(1, reps)):
+        prompts = (build_prompt(d, the_body, selected_path=selected_path), build_prompt(d, None))
+        if rep % 2:
+            without, with_out = run_model(cmd, prompts[1]), run_model(cmd, prompts[0])
+            order = ["without", "with"]
+        else:
+            with_out, without = run_model(cmd, prompts[0]), run_model(cmd, prompts[1])
+            order = ["with", "without"]
         sw = sum(judge(judge_cmd, d["query"], with_out, rub)) + det_checks(with_out, checks)
         swo = sum(judge(judge_cmd, d["query"], without, rub)) + det_checks(without, checks)
         wf.append(sw / n)
         wof.append(swo / n)
+        evidence.append({"rep": rep + 1, "order": order, "with_output": with_out,
+                         "without_output": without, "with_score": wf[-1],
+                         "without_score": wof[-1]})
     with_frac = sum(wf) / len(wf)
     without_frac = sum(wof) / len(wof)
     return {"skill": skill_name(sk), "path": skill_rel(sk), "eval": ev.name,
             "rubric_n": len(rub), "checks_n": len(checks), "reps": len(wf),
             "with_frac": with_frac, "without_frac": without_frac,
             "with_reps": wf, "without_reps": wof,
+            "evidence": evidence,
             "pass": with_frac >= threshold and with_frac >= without_frac}
 
 
@@ -387,6 +494,12 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--reps", type=int, default=1,
                     help="generations per arm per case (scored runs force >= 3)")
     ap.add_argument("--threshold", type=float, default=0.8, help="fraction of rubric to pass")
+    ap.add_argument("--model-id", default=os.environ.get("RESONANCE_MODEL_ID", ""),
+                    help="stable provider/model identity for the answerer")
+    ap.add_argument("--judge-id", default=os.environ.get("RESONANCE_JUDGE_ID", ""),
+                    help="stable provider/model identity for the judge")
+    ap.add_argument("--holdout-dir", default=os.environ.get("RESONANCE_HOLDOUT_DIR", ""),
+                    help="external protected holdout directory used by --score")
     args = ap.parse_args(argv)
 
     target = "--all" if (args.all or args.changed or not args.path) else args.path
@@ -426,13 +539,21 @@ def main(argv: list[str]) -> int:
     judge_cmd_s = args.judge_cmd.strip()
     reps = max(1, args.reps)
     if args.score:
+        try:
+            cases = holdout_cases(args.holdout_dir)
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"refusing --score: {exc}")
+            return 2
         if not judge_cmd_s:
             print("refusing --score: no judge configured. The judge is never the answerer; "
                   "set RESONANCE_JUDGE_CMD (or --judge-cmd) to a DIFFERENT model.")
             return 2
-        if judge_cmd_s == model_cmd.strip():
-            print("refusing --score: judge command equals the answerer. Self-grading flatters; "
-                  "set RESONANCE_JUDGE_CMD to a different model.")
+        if not args.model_id or not args.judge_id or args.model_id == args.judge_id:
+            print("refusing --score: set distinct RESONANCE_MODEL_ID and RESONANCE_JUDGE_ID. "
+                  "Command inequality does not prove independent model identity.")
+            return 2
+        if same_command(judge_cmd_s, model_cmd):
+            print("refusing --score: judge command equals the answerer command")
             return 2
         if reps < 3:
             print(f"scored run: raising --reps {reps} -> 3 (a single generation per arm "
@@ -443,12 +564,39 @@ def main(argv: list[str]) -> int:
     jcmd = shlex.split(judge_cmd_s) if judge_cmd_s else cmd
     print(f"eval LIVE run via `{model_cmd}` (judge: `{judge_cmd_s or model_cmd}`): "
           f"{len(cases)} cases, reps={reps}, parallel={args.parallel}\n")
-    with ThreadPoolExecutor(max_workers=max(1, args.parallel)) as pool:
-        results = list(pool.map(
-            lambda ce: run_case(cmd, jcmd, ce[0], ce[1], args.threshold, reps=reps), cases))
+    manifest_problems = eval_integrity.verify()
+    if manifest_problems:
+        print("eval aborted: committed eval oracle verification failed")
+        for problem in manifest_problems:
+            print(f"  ERROR {problem}")
+        return 1
+    oracle = eval_integrity.snapshot()
+    holdout_before = file_hashes([ev for _, ev in cases]) if args.score else {}
+    try:
+        with ThreadPoolExecutor(max_workers=max(1, args.parallel)) as pool:
+            results = list(pool.map(
+                lambda ce: run_case(cmd, jcmd, ce[0], ce[1], args.threshold, reps=reps), cases))
+    except ModelFailure as exc:
+        print(f"eval aborted: {exc}")
+        print(f"stdout: {exc.stdout[:1000]}")
+        print(f"stderr: {exc.stderr[:1000]}")
+        return 1
+    mutations = eval_integrity.verify(oracle)
+    if args.score and holdout_before != file_hashes([ev for _, ev in cases]):
+        mutations.append("protected holdout changed during execution")
+    if mutations:
+        print("eval aborted: the eval oracle changed during execution")
+        for mutation in mutations:
+            print(f"  ERROR {mutation}")
+        return 1
 
     if args.score:
         md, data = write_scorecard(results, args.threshold, judge_label=judge_cmd_s, reps=reps)
+        evidence_dir = FORGE / "eval_evidence"
+        evidence_dir.mkdir(exist_ok=True)
+        evidence = {"model_id": args.model_id, "judge_id": args.judge_id,
+                    "judge_command": judge_cmd_s, "reps": reps, "results": results}
+        (evidence_dir / "latest.json").write_text(json.dumps(evidence, indent=2), encoding="utf-8")
         (FORGE / "eval_results.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
         s = data["summary"]
         print(f"scorecard: {s['measured']} skills measured, {s['proven']} proven, "

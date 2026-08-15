@@ -45,7 +45,8 @@ except Exception:
 
 DASH = re.compile(r"[\u2014\u2013]")  # em, en
 TEXT_EXT = {".md", ".txt", ".json", ".py", ".ts", ".tsx", ".js", ".jsx", ".sh",
-            ".ps1", ".yml", ".yaml", ".html", ".css", ".mjs", ".cjs", ".go", ".rs"}
+            ".ps1", ".yml", ".yaml", ".toml", ".xml", ".html", ".css", ".mjs",
+            ".cjs", ".go", ".rs"}
 SECRETS = [
     (re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"), "private key"),
     (re.compile(r"\bsk-[A-Za-z0-9]{20,}"), "OpenAI-style key"),
@@ -111,12 +112,11 @@ def private_terms() -> list[str]:
 
 
 def staged_files() -> list[str]:
-    try:
-        r = subprocess.run(["git", "diff", "--cached", "--name-only", "--diff-filter=ACM"],
-                           capture_output=True, text=True, timeout=20)
-        return [f for f in r.stdout.splitlines() if f.strip()]
-    except Exception:
-        return []
+    r = subprocess.run(["git", "diff", "--cached", "--name-only", "--diff-filter=ACMR"],
+                       capture_output=True, text=True, timeout=20)
+    if r.returncode != 0:
+        raise RuntimeError(r.stderr.strip() or "cannot discover staged files")
+    return [f for f in r.stdout.splitlines() if f.strip()]
 
 
 def _vocab_exempt(norm: str) -> bool:
@@ -124,22 +124,35 @@ def _vocab_exempt(norm: str) -> bool:
     return any(s in low for s in VOCAB_EXEMPT)
 
 
+def staged_text(path: str) -> str:
+    r = subprocess.run(["git", "show", f":{path}"], capture_output=True, timeout=20)
+    if r.returncode != 0:
+        raise RuntimeError(r.stderr.decode("utf-8", "replace") or "cannot read staged blob")
+    if r.stdout.startswith((b"\xff\xfe", b"\xfe\xff")) or b"\x00" in r.stdout[:8192]:
+        try:
+            return r.stdout.decode("utf-16")
+        except UnicodeError:
+            return r.stdout.decode("latin-1")
+    return r.stdout.decode("utf-8", "replace")
+
+
 def check(path: str, problems: list[str], vocab: bool = False,
-          terms: list[str] | None = None) -> None:
+          terms: list[str] | None = None, text: str | None = None) -> None:
     p = Path(path)
-    if not p.is_file():
+    if text is None and not p.is_file():
         return
     norm = path.replace("\\", "/")
     if norm.endswith(".resonance/00_soul.md") and os.environ.get("RESONANCE_ALLOW_SOUL") != "1":
         problems.append(f"{norm}: edits the Soul (.resonance/00_soul.md). "
                         f"Set RESONANCE_ALLOW_SOUL=1 if this is deliberate.")
         return
-    if p.suffix.lower() not in TEXT_EXT:
+    if p.suffix.lower() not in TEXT_EXT and p.suffix:
         return
-    try:
-        text = p.read_text(encoding="utf-8", errors="replace")
-    except Exception:
-        return
+    if text is None:
+        try:
+            text = p.read_text(encoding="utf-8", errors="replace")
+        except Exception:
+            return
     scan_vocab = vocab and p.suffix.lower() == ".md" and not _vocab_exempt(norm)
     for i, line in enumerate(text.splitlines(), 1):
         if "banned vocabulary" in line.lower():
@@ -239,7 +252,11 @@ def main(argv: list[str]) -> int:
     if a.hook:
         return hook_mode()
 
-    files = a.files or (staged_files() if a.staged else [])
+    try:
+        files = a.files or (staged_files() if a.staged else [])
+    except Exception as exc:
+        print(f"Resonance guard failed closed: {exc}")
+        return 1
     if not files:
         return 0
     vocab = a.copy or os.environ.get("RESONANCE_STRICT_VOCAB") == "1"
@@ -248,7 +265,11 @@ def main(argv: list[str]) -> int:
     if a.staged:
         check_version_bump(problems, files)
     for f in files:
-        check(f, problems, vocab=vocab, terms=terms)
+        try:
+            text = staged_text(f) if a.staged else None
+            check(f, problems, vocab=vocab, terms=terms, text=text)
+        except Exception as exc:
+            problems.append(f"{f}: could not scan staged blob: {exc}")
     if problems:
         print("Resonance guard blocked the commit:\n")
         for p in problems:

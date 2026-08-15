@@ -1,5 +1,0 @@
----
-description: Release protocol: pre-flight checks, changelog, semantic version, tag, deploy.
----
-
-Run the Resonance ship procedure. Read `.agents/skills/ops/ship/SKILL.md` in full and execute it, following its Definition of Done.

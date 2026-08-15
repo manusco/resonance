@@ -46,7 +46,8 @@ jobs:
           python .forge/doc_drift.py
           python .forge/run_evals.py --all --check
           python .forge/tests/run.py
-          python .forge/fingerprint_scan.py
+          base="$(git describe --tags --abbrev=0 HEAD^)"
+          python .forge/fingerprint_scan.py --ref "$base" --head "$GITHUB_SHA" --expect-changes
           python .forge/release_notes.py --check-release
 
       - name: Prepare release

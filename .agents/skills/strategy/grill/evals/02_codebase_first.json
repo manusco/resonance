@@ -5,6 +5,7 @@
     "src/middleware/auth.ts",
     "src/lib/redis.ts"
   ],
+  "fixture_optional": true,
   "expected_behavior": [
     "Explores the codebase to answer discoverable questions (existing middleware pattern, Redis availability) instead of asking the user",
     "Reserves questions for what only the user knows: the limit values, the scope, the behavior on limit breach",

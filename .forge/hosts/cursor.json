@@ -1,7 +1,6 @@
 {
   "host": "cursor",
   "label": "Cursor",
-  "output_path": ".agents/skills/{name}/SKILL.md",
   "default_model": "claude",
   "tool_names": {
     "read": "Read",

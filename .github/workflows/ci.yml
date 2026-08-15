@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -47,10 +49,15 @@ jobs:
         run: python .forge/release_notes.py --check
 
       - name: Check eval structure
-        run: python .forge/run_evals.py --all --check
+        run: |
+          python .forge/eval_integrity.py
+          python .forge/run_evals.py --all --check
 
       - name: Run Forge tests
         run: python .forge/tests/run.py
 
       - name: Scan source fingerprints
-        run: python .forge/fingerprint_scan.py
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: python .forge/fingerprint_scan.py --ref "$BASE_SHA" --head "$HEAD_SHA" --expect-changes
