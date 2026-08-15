@@ -67,9 +67,9 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 ### Inception
 - **/init** -> `ops/core` - Bootstrap `.resonance/` memory (soul, state, docs scaffold). Run once per project.
 - **/venture-model** -> `strategy/venture` - Model the business, offer stack, and revenue math before planning.
-- **/plan** -> `strategy/plan` - Turn ambiguity into an atomic, approved implementation plan. Deep research, 4-pass spec.
-- **/grill** -> `strategy/grill` - Stress-test a plan or design before any code. One question at a time to shared understanding.
-- **/goal** -> `ops/goal` - The autonomous goal loop: frame, decompose, then build and verify each slice against grounded checks, bounded, never auto-ship.
+- **/plan** -> `strategy/plan` - Turn a request or confirmed goal contract into an atomic, approved implementation plan. Deep research, 4-pass spec.
+- **/grill** -> `strategy/grill` - Stress-test a plan, design, or goal contract before any code. One question at a time, with targeted risk passes when earned.
+- **/goal** -> `ops/goal` - The autonomous goal loop: confirm a goal contract, decompose, then build and verify each slice against grounded checks, bounded, never auto-ship.
 - **/gtm-thinker** -> `strategy/gtm-thinker` - Stress-test and expand a GTM concept into a blueprint with kill criteria.
 - **/market-research** -> `research/market-research` - Discover Existential Data Points in a B2B SaaS vertical.
 - **/update-roadmap** -> `ops/update-roadmap` - Sync `01_state.md` with the git log so the map matches the territory.
@@ -87,7 +87,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/audit** -> `ops/audit` - The audit swarm (security, review, QA, architect). P0-P3 findings.
 - **/page-audit** -> `ops/page-audit` - First-principles experience audit of a page or site: job, value, clarity, CTA, craft, function, trust, plus a forward backlog.
 - **/review-pr** -> `ops/reviewer` - PR gatekeeper. Blocking Registry, findings ranked by user harm.
-- **/second-opinion** -> `ops/second-opinion` - Independent second-model review of a diff, reconciled with the primary review.
+- **/second-opinion** -> `ops/second-opinion` - Independent review of a diff or concrete decision artifact, reconciled with the primary review.
 - **/improve** -> `ops/improve` - Self-improving loop: sharpen the weakest skills or rubrics, keep only changes that raise measured lift.
 - **/system-health** -> `ops/system-health` - Health score 0-100 with qualitative flags.
 

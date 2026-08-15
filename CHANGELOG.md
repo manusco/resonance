@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.4.86
+
+The command-map accuracy release. Public docs now describe the v2.4.85 decision-contract behavior in the same terms the skills use.
+
+### Changed
+- **AGENTS command map.** `/goal`, `/grill`, `/plan`, and `/second-opinion` now mention goal contracts, targeted risk passes, and decision-artifact review where relevant.
+- **README quickstart and catalog.** `/grill` now says it can stress-test a plan or goal contract before code.
+
 ## v2.4.85
 
 The decision-contract release. Goal work now separates outcomes from requested tactics before execution, grill gains a targeted risk pass instead of simulated councils, and second opinion can review concrete decision artifacts without pretending to be an oracle.
