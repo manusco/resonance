@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import subprocess
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -21,7 +22,7 @@ def manifest_hash(root: Path) -> str:
         if not path.is_file():
             continue
         rel = path.relative_to(root).as_posix()
-        if rel.startswith(".git/") or rel.startswith(".resonance/evidence/") or rel.startswith(".resonance/executions/"):
+        if rel.startswith(".git/") or rel.startswith(".resonance/"):
             continue
         try:
             digest = hashlib.sha256(path.read_bytes()).hexdigest()
@@ -40,6 +41,7 @@ def run_execution(action_id: str, command: list[str], cwd: Path) -> dict:
     raw = json.dumps({
         "action_id": action_id,
         "command": command,
+        "nonce": uuid.uuid4().hex,
         "started_at": started,
         "finished_at": finished,
         "stdout_hash": hash_text(result.stdout),

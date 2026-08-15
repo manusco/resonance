@@ -6,13 +6,14 @@ ledger entries. It does not schedule work, run a daemon, or replace the skills.
 
 ## Boundary
 
-The kernel lives in `.forge/kernel/` and has six modules:
+The kernel lives in `.forge/kernel/` and has seven modules:
 
 - `contracts.py`: schema version, stable hashes, and receipt validation.
 - `evidence.py`: append-only state writes, file locks, stale-hash rejection, and achievement gates.
 - `transitions.py`: legal goal state transitions.
 - `ledger.py`: typed ledger parsing and status-aware recall.
 - `manifest.py`: machine-readable skill ownership contracts.
+- `runner.py`: local execution receipts for checks run through the goal loop.
 - `__init__.py`: package marker only.
 
 ## Rule

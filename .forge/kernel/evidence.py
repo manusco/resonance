@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from .contracts import ContractError, hash_data, read_json, validate_approval, validate_evidence, validate_execution
+from .runner import manifest_hash
 from .transitions import require_transition
 
 
@@ -74,6 +75,8 @@ def append_attempt(state: dict[str, Any], entry: dict[str, Any]) -> dict[str, An
 
 def accept_evidence(state: dict[str, Any], evidence: dict[str, Any], approval: dict[str, Any] | None) -> dict[str, Any]:
     validate_evidence(evidence)
+    if state.get("status", "active") != "active":
+        raise ContractError("cannot add evidence unless the goal is active")
     if not state.get("contract"):
         raise ContractError("cannot accept evidence without an active contract")
     if evidence.get("contract_hash") != state.get("contract_hash"):
@@ -90,13 +93,19 @@ def accept_evidence(state: dict[str, Any], evidence: dict[str, Any], approval: d
     criteria = state.get("criterion_ids", [])
     if evidence.get("criterion_id") not in criteria:
         raise ContractError("unknown criterion_id")
+    recorded_by_id = {e.get("execution_id"): e for e in state.get("executions", [])}
+    current_manifest = manifest_hash(Path.cwd())
     for receipt in evidence.get("execution_receipts", []):
         if not isinstance(receipt, dict):
             raise ContractError("execution receipt must be an object")
         validate_execution(receipt)
-        known_exec = {e.get("execution_id") for e in state.get("executions", [])}
-        if receipt["execution_id"] not in known_exec:
+        recorded = recorded_by_id.get(receipt["execution_id"])
+        if not recorded:
             raise ContractError("execution receipt was not recorded by this goal run")
+        if hash_data(receipt) != hash_data(recorded):
+            raise ContractError("execution receipt does not match recorded execution")
+        if receipt["after_manifest_hash"] != current_manifest:
+            raise ContractError("stale execution receipt: workspace manifest changed")
     if evidence["result"] == "overridden":
         if not approval:
             raise ContractError("override evidence requires approval")
