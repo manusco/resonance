@@ -29,6 +29,11 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+FORGE = Path(__file__).resolve().parent
+if str(FORGE) not in sys.path:
+    sys.path.insert(0, str(FORGE))
+from kernel.ledger import active_entries  # noqa: E402
+
 try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 except Exception:
@@ -50,8 +55,7 @@ def _scan(base: Path, prefix: str) -> list[tuple[str, str]]:
     mem = base / "memory"
     ledger = base / "ledger"
     md_files = (sorted(base.glob("*.md"))
-                + (sorted(mem.glob("*.md")) if mem.is_dir() else [])
-                + (sorted(ledger.glob("*.md")) if ledger.is_dir() else []))
+                + (sorted(mem.glob("*.md")) if mem.is_dir() else []))
     for md in md_files:
         text = md.read_text(encoding="utf-8", errors="replace")
         # split on level-2/3 headings; keep the heading with its body
@@ -61,6 +65,10 @@ def _scan(base: Path, prefix: str) -> list[tuple[str, str]]:
             if len(p) > 30:
                 head = p.splitlines()[0].lstrip("# ").strip()[:60]
                 out.append((f"{prefix}{md.name}:{head}", p))
+    if ledger.is_dir():
+        for e in active_entries(ledger):
+            text = f"## {e['id']}: {e['title']}\nstatus: {e['status']}\n{e['text']}".strip()
+            out.append((f"{prefix}ledger/{e['source']}:{e['id']}", text))
     return out
 
 

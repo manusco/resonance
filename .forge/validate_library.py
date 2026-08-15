@@ -180,6 +180,7 @@ def main(argv: list[str]) -> int:
     _ledger_checks(errors, warnings)
     _command_target_checks(errors)
     _skill_graph_checks(root, errors)
+    _skill_manifest_checks(root, errors)
 
     print(f"Resonance library scan: {len(skills)} skills under {root}\n")
     for e in errors:
@@ -409,6 +410,25 @@ def _skill_graph_checks(root: Path, errors: list[str]) -> None:
             if tgt not in names:
                 errors.append(f"skill graph: '{nm}' invokes '{tgt}', which is not a known "
                               f"skill ({rel(sk, root)})")
+
+
+def _skill_manifest_checks(root: Path, errors: list[str]) -> None:
+    """The machine-readable skill manifest is the compile-time ownership contract
+    for tools that should not parse Markdown ad hoc. Keep it present and fresh."""
+    try:
+        import kernel.manifest as km
+    except Exception as exc:
+        errors.append(f"skill manifest: cannot import generator: {exc}")
+        return
+    out = Path("docs/skill-manifest.json")
+    if not out.is_file():
+        errors.append("skill manifest: docs/skill-manifest.json is missing")
+        return
+    expected = json.dumps(km.manifest(root), indent=2, ensure_ascii=False) + "\n"
+    current = out.read_text(encoding="utf-8", errors="replace")
+    if current != expected:
+        errors.append("skill manifest: docs/skill-manifest.json is stale "
+                      "(run py .forge/kernel/manifest.py)")
 
 
 def _scan(text: str, path: Path, root: Path, errors: list[str], warnings: list[str]) -> None:

@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-software-deliver-change",
+  "query": "Plan a LinkedIn campaign and refactor the checkout flow in the same run.",
+  "expected_behavior": [
+    "keeps software delivery in scope",
+    "does not absorb marketing campaign work into the software conductor",
+    "splits unrelated goals or routes the marketing work elsewhere"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["split", "software"] },
+    { "kind": "regex_absent", "value": "one combined delivery loop" }
+  ]
+}

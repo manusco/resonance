@@ -16,49 +16,30 @@ from __future__ import annotations
 
 import argparse
 import datetime as _dt
-import re
 import sys
 from pathlib import Path
 
+FORGE = Path(__file__).resolve().parent
+if str(FORGE) not in sys.path:
+    sys.path.insert(0, str(FORGE))
+from kernel.ledger import active_entries  # noqa: E402
+
 LEDGER = Path(".resonance/ledger")
-ENTRY_RE = re.compile(r"^##\s+((met|exp)-[a-z0-9-]+):\s*(.+?)\s*$")
-FIELD_RE = re.compile(r"^([a-z_]+):\s*(.*)$")
-
-
-def _parse(path: Path) -> list[tuple[str, str, dict]]:
-    out: list[tuple[str, str, dict]] = []
-    if not path.is_file():
-        return out
-    lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
-    i = 0
-    while i < len(lines):
-        m = ENTRY_RE.match(lines[i])
-        if not m:
-            i += 1
-            continue
-        eid, title = m.group(1), m.group(3)
-        fields, j = {}, i + 1
-        while j < len(lines) and lines[j].strip() != "":
-            fm = FIELD_RE.match(lines[j])
-            if fm:
-                fields[fm.group(1)] = fm.group(2).strip()
-            j += 1
-        out.append((eid, title, fields))
-        i = j
-    return out
 
 
 def due_entries(today: _dt.date) -> list[tuple[str, str, str]]:
     due: list[tuple[str, str, str]] = []
-    for name in ("metrics", "experiments"):
-        for eid, title, f in _parse(LEDGER / f"{name}.md"):
-            d = f.get("due")
-            if f.get("status") == "active" and d:
-                try:
-                    if _dt.date.fromisoformat(d) <= today:
-                        due.append((eid, title, d))
-                except ValueError:
-                    print(f"warning: {eid} has a malformed due date '{d}'", file=sys.stderr)
+    for entry in active_entries(LEDGER):
+        if not entry["id"].startswith(("met-", "exp-")):
+            continue
+        f = entry["fields"]
+        d = f.get("due")
+        if f.get("status") == "active" and d:
+            try:
+                if _dt.date.fromisoformat(d) <= today:
+                    due.append((entry["id"], entry["title"], d))
+            except ValueError:
+                print(f"warning: {entry['id']} has a malformed due date '{d}'", file=sys.stderr)
     return due
 
 

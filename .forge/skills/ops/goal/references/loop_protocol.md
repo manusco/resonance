@@ -18,6 +18,7 @@ For each slice, one turn of the loop is:
 2. **Act:** build that action (`/build`).
 3. **Observe (grounded):** run the real check. Tests via `/test` live execution, the validators, `/audit` on the diff. Read the actual output. See done_conditions for what qualifies.
 4. **Record and decide:** call `loop_state.py check <slice> advanced|progress|failed`. When a check fails, pass `--sig "<tool>:<error-class>"` so a loop on one identical error is caught early. Obey the directive. Record any real decision in the project ledger or memory (see the operating standard for where).
+5. **Attach evidence:** when an acceptance criterion is proven, write an `EvidenceReceipt` and add it with `loop_state.py evidence <receipt>`. A later `achieve` command fails until every criterion has accepted current evidence.
 
 ## Three clocks
 

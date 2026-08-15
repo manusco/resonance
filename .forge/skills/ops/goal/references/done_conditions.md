@@ -28,6 +28,19 @@ A slice or goal is done only when a real check confirms it:
 
 If there is no way to verify a slice (no test, no runnable path), that is a gap in the plan, not a pass. Build the check first: write the test, add the script, make the intermediate output verifiable. A DoD you cannot execute is a DoD that is not written yet. Either make it checkable or stop and say so; never mark unverifiable work done.
 
-## The goal DoD
+## Evidence receipts
 
 The overall goal DoD, set during `/grill` and approved by the human, must itself be checkable the same way. "Users can export their data" is not a done condition. "The export button downloads a CSV that opens in a spreadsheet, and an end-to-end test covers it" is. If the goal DoD is not executable, the frame step is not finished; go back and make it so before building.
+
+For `/goal`, each acceptance check needs an evidence receipt before the loop can
+mark the goal achieved:
+
+```bash
+py .forge/skills/ops/goal/scripts/loop_state.py exec act-check -- py -c "print('ok')"
+py .forge/skills/ops/goal/scripts/loop_state.py evidence evidence.json
+py .forge/skills/ops/goal/scripts/loop_state.py achieve
+```
+
+Evidence is rejected when the contract hash, plan hash, or goal revision is
+stale, or when it does not point to an execution receipt recorded by the current
+goal run. Overrides require an approval receipt with a matching scope hash.

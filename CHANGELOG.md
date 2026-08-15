@@ -1,5 +1,36 @@
 # Changelog
 
+## v2.4.89
+
+The evidence-kernel release. Goal work now has a deterministic receipt boundary
+under the skills, and software delivery gets one governed conductor without
+adding another slash command.
+
+### Added
+- **Evidence kernel.** `.forge/kernel/` adds versioned contract helpers, legal
+  goal transitions, atomic state writes, file locks, evidence receipt validation,
+  typed ledger recall, and a generated skill manifest.
+- **Evidence-bound goal state.** `/goal` now requires an approved plan hash,
+  rejects stale evidence, requires accepted evidence for every acceptance
+  criterion before `achieved`, refuses to clear active goals, and retains
+  completed history.
+- **Machine-readable skill catalog.** `docs/skill-manifest.json` records each
+  skill's id, archetype, derived owner label, authority class, invokes, and
+  failure policy. Library validation fails when this manifest drifts.
+- **Software delivery conductor.** `software/deliver-change` coordinates goal,
+  grill, plan, build, QA, audit, second opinion, and ship proposal for software
+  changes without autonomous merge, tag, deploy, or release.
+- **Kernel documentation and eval coverage.** New docs explain the receipt
+  boundary, and the eval oracle now protects the kernel tests and conductor evals.
+
+### Changed
+- **Typed ledger is the recall authority.** Superseded ledger entries are
+  excluded from recall by default, so active decisions no longer compete with
+  retired ones.
+- **Graph and manifest checks are release gates.** Generated graph docs include
+  the new conductor, and `validate_library.py` now checks the machine-readable
+  manifest.
+
 ## v2.4.88
 
 The execution-integrity release. Framework upgrades, host compilation, Git gates, credentials, and evaluation runs now fail closed at their trust boundaries.
