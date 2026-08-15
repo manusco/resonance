@@ -1,0 +1,27 @@
+{
+  "skill": "resonance-marketing-analytics",
+  "query": "Our LinkedIn post got 2,000 impressions and 40 likes. Tell me what it proves and what to change in the next post.",
+  "expected_behavior": [
+    "States that impressions and likes alone do not prove causality or revenue impact.",
+    "Defines the metric window, denominator, and known distortions before interpreting.",
+    "Suggests directional learning signals and a next decision.",
+    "Leaves creative or channel changes to the content distribution owner."
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "directional",
+        "does not prove",
+        "cannot prove"
+      ]
+    },
+    {
+      "kind": "contains_any",
+      "value": [
+        "content-distribution",
+        "channel owner"
+      ]
+    }
+  ]
+}

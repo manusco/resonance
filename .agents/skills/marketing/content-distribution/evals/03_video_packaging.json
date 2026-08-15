@@ -1,0 +1,29 @@
+{
+  "skill": "resonance-marketing-content-distribution",
+  "query": "We have a 20-minute YouTube idea about why AI SDRs fail. Before writing the full script, help package it for YouTube and Shorts.",
+  "baseline_skills": [
+    "marketing/copywriter",
+    "marketing/analytics",
+    "design/studio"
+  ],
+  "expected_behavior": [
+    "Defines viewer promise, tension, proof, title or caption angles, thumbnail or cover brief, and opening beat before the full script.",
+    "Avoids fixed timing laws such as an exact three-second hook.",
+    "Routes final script language to copywriter, thumbnail production to studio, and retention reads to analytics.",
+    "Adapts the package separately for YouTube and Shorts."
+  ],
+  "checks": [
+    {
+      "kind": "contains_all",
+      "value": [
+        "promise",
+        "thumbnail",
+        "opening"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)exactly 3 seconds|first 3 seconds"
+    }
+  ]
+}

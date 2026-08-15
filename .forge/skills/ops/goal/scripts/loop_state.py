@@ -21,7 +21,7 @@ reliable-loop literature calls for: the same action failing the same way N times
 is a loop, not progress.
 
 Usage:
-  python loop_state.py start "Add CSV export" --dod "export button downloads valid CSV; test green"
+  python loop_state.py start "Add CSV export" --dod "export button downloads valid CSV; test green" --contract goal_contract.json --plan-hash abc123
   python loop_state.py check slice-2 advanced           # or: progress | failed
   python loop_state.py check slice-2 failed --sig "test:AssertionError"
   python loop_state.py resume                            # after a crash or handover
@@ -58,9 +58,34 @@ def _save(s: dict) -> None:
     STATE.write_text(json.dumps(s, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+def _load_contract(raw: str | None) -> tuple[dict | None, str | None]:
+    if not raw:
+        return None, None
+    p = Path(raw)
+    text = p.read_text(encoding="utf-8") if p.exists() else raw
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError as e:
+        return None, f"contract is not valid JSON: {e}"
+    if not isinstance(data, dict):
+        return None, "contract must be a JSON object"
+    required = ("outcome", "acceptance_checks")
+    missing = [k for k in required if k not in data]
+    if missing:
+        return None, f"contract missing required field(s): {', '.join(missing)}"
+    if not isinstance(data.get("acceptance_checks"), list) or not data["acceptance_checks"]:
+        return None, "contract acceptance_checks must be a non-empty list"
+    return data, None
+
+
 def cmd_start(a) -> int:
+    contract, err = _load_contract(a.contract)
+    if err:
+        print(f"cannot start goal loop: {err}")
+        return 2
     _save({"goal": a.goal, "dod": a.dod or "", "started": _now(),
-           "caps": CAPS, "iterations": []})
+           "caps": CAPS, "contract": contract, "plan_hash": a.plan_hash or "",
+           "iterations": []})
     print(f"goal loop started. DoD: {a.dod or '(none given: define a checkable one before building)'}")
     print(f"caps: {CAPS['max_slice_attempts']} attempts/slice, {CAPS['max_iters']} total, "
           f"stuck after {CAPS['stuck_window']} with no advance.")
@@ -120,6 +145,10 @@ def cmd_status(a) -> int:
     adv = sum(1 for i in its if i["result"] == "advanced")
     print(f"goal: {s['goal']}")
     print(f"DoD: {s['dod']}")
+    if s.get("contract"):
+        print(f"contract outcome: {s['contract'].get('outcome', '(none)')}")
+    if s.get("plan_hash"):
+        print(f"plan hash: {s['plan_hash']}")
     print(f"iterations: {len(its)}  advanced: {adv}  last: {its[-1] if its else '(none)'}")
     return 0
 
@@ -137,6 +166,10 @@ def cmd_resume(a) -> int:
     last = its[-1] if its else None
     print(f"RESUME  goal: {s['goal']}")
     print(f"DoD: {s['dod'] or '(none set: define a checkable one before building)'}")
+    if s.get("contract"):
+        print(f"contract outcome: {s['contract'].get('outcome', '(none)')}")
+    if s.get("plan_hash"):
+        print(f"plan hash: {s['plan_hash']}")
     print(f"iterations so far: {len(its)} (cap {s.get('caps', CAPS)['max_iters']})")
     print(f"slices advanced: {', '.join(advanced) if advanced else '(none yet)'}")
     if last:
@@ -158,6 +191,8 @@ def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description="Bound enforcer for the /goal loop.")
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("start"); p.add_argument("goal"); p.add_argument("--dod")
+    p.add_argument("--contract", help="approved goal contract JSON object or path")
+    p.add_argument("--plan-hash", default="", help="hash of the approved plan artifact")
     p = sub.add_parser("check"); p.add_argument("slice"); p.add_argument("result")
     p.add_argument("--sig", default=None, help="short fingerprint of the failing observation")
     sub.add_parser("resume"); sub.add_parser("status"); sub.add_parser("done")

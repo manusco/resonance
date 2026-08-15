@@ -3,9 +3,9 @@
 > Operator-grade AI agent skills for builders. A cross-tool skill library and slash-command system for Claude Code, Cursor, Codex, and opencode, covering strategy, design, engineering, marketing, sales, and ops.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.83-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
+    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.87-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
-    <img src="https://img.shields.io/badge/Skills-60+-00f2ea?style=for-the-badge" alt="63 skills" />
+    <img src="https://img.shields.io/badge/Skills-64-00f2ea?style=for-the-badge" alt="64 skills" />
     <img src="https://img.shields.io/badge/Commands-34-7025eb?style=for-the-badge" alt="34 commands" />
 </div>
 
@@ -19,7 +19,7 @@
 
 Resonance is an AI agent skill library you drop into any project. It turns a general coding agent into a roster of specialists that follow the same expert protocol every time, on whatever tool you use.
 
-- **60+ domain-tested skills** across strategy, engineering, design, marketing, sales, ops, research, people, and success. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
+- **64 domain-tested skills** across strategy, engineering, design, marketing, sales, ops, research, people, and success. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
 - **34 slash commands** like `/plan`, `/grill`, `/build`, `/debug`, `/design`, `/test`, `/improve`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
 - **Cross-tool by design.** One source compiles to the native format of every major agent tool. The `SKILL.md` / `AGENTS.md` open standard is the shared content; the Forge emits the per-tool command shims and the per-tool context bridge, so the operating standard, the commands, and the project memory all load after a clone in Claude Code, Cursor, Codex, opencode, and Antigravity.
 - **A project memory** (`.resonance/`) that loads at the start of every session and the agent writes back to. It does not forget your architecture, your decisions, or your voice.
@@ -55,7 +55,7 @@ Open the folder in Claude Code, Cursor, Codex, or opencode. The slash commands a
 ```
 /init          # scaffold this project's memory (.resonance/)
 /plan          # turn an idea into an atomic, approved plan
-/grill         # stress-test that plan before any code
+/grill         # stress-test the plan or goal contract before code
 /build         # execute it with a TDD loop
 /ship          # release with pre-flight checks
 ```
@@ -69,16 +69,16 @@ That is the whole setup. No install step, no plugin required.
 Every command is a structured procedure with a Definition of Done, not a loose prompt. Full map in [AGENTS.md](AGENTS.md).
 
 **The autonomous loop**
-`/goal "<outcome>"` frames the goal, decomposes it, then builds and verifies each slice against real checks (tests, validators, audit), bounded and never auto-shipping. The conductor for the skills below.
+`/goal "<outcome>"` confirms a goal contract, decomposes it, then builds and verifies each slice against real checks (tests, validators, audit), bounded and never auto-shipping. The conductor for the skills below.
 
 **Inception**
-`/init` bootstrap project memory · `/venture-model` business and revenue math · `/plan` atomic implementation plan · `/grill` stress-test a plan before code · `/gtm-thinker` go-to-market blueprint · `/market-research` B2B vertical intelligence · `/update-roadmap` sync state with git
+`/init` bootstrap project memory · `/venture-model` business and revenue math · `/plan` atomic implementation plan · `/grill` stress-test a plan or goal contract before code · `/gtm-thinker` go-to-market blueprint · `/market-research` B2B vertical intelligence · `/update-roadmap` sync state with git
 
 **Execution**
 `/build` TDD build loop · `/debug` root-cause analysis · `/refactor` behavior-preserving cleanup · `/design` elite UI craft and audit · `/studio` production visual assets · `/friction` conversion friction removal
 
 **Verification**
-`/test` 8-Path test matrix · `/audit` security + review + QA + architect swarm · `/page-audit` first-principles page and site audit · `/review-pr` PR gatekeeper · `/second-opinion` independent second-model review · `/improve` self-improving eval loop · `/system-health` health score 0-100
+`/test` 8-Path test matrix · `/audit` security + review + QA + architect swarm · `/page-audit` first-principles page and site audit · `/review-pr` PR gatekeeper · `/second-opinion` independent diff or decision review · `/improve` self-improving eval loop · `/system-health` health score 0-100
 
 **Delivery & maintenance**
 `/ship` release protocol · `/incident` production incident response · `/seo` SEO and GEO audit · `/voice-profile` extract a voice profile · `/call-intelligence` analyze a sales call · `/cold-call` cold-call script · `/sales-pipeline` pipeline analytics · `/capture` document a solved problem · `/explain` teach the operator · `/handover` end-of-session handover · `/retro` git-driven retrospective · `/update-resonance` safe framework upgrade · `/skill-author` build a new skill
@@ -87,12 +87,12 @@ Every command is a structured procedure with a Definition of Done, not a loose p
 
 ## The skill domains
 
-60+ skills across 9 domains, each a self-contained protocol backed by reference docs.
+64 skills across 9 domains, each a self-contained protocol backed by reference docs.
 
 - **Strategy**: `plan`, `grill`, `architect`, `venture`, `finance`, `growth`, `researcher`, `gtm-thinker`. Planning, system design, business and financial modeling, fundraising, and pre-build interrogation.
 - **Engineering**: `backend`, `frontend`, `mobile`, `database`, `devops`, `debugger`, `build`, `automation`, `performance`, `game-dev`, `ai-engineering`. Build, debug, and ship, including AI and LLM products built eval-first, with defense-in-depth and deterministic tests.
 - **Design**: `designer`, `studio`. First-principles UI craft: optical precision, perceptual color (OKLCH), typographic hierarchy, motion with physics, the subconscious detail layer, and cross-canvas design from phone to TV.
-- **Marketing**: `seo`, `conversion`, `copywriter`, `paid-acquisition`, `analytics`, `lifecycle`. Search and GEO, conversion, paid media, measurement and attribution, and the full lifecycle from activation to win-back.
+- **Marketing**: `seo`, `conversion`, `copywriter`, `content-distribution`, `paid-acquisition`, `analytics`, `lifecycle`. Search and GEO, conversion, organic distribution, paid media, measurement and attribution, and the full lifecycle from activation to win-back.
 - **Sales**: `pipeline`, `cold-call`, `call-intelligence`, `account-intelligence`, `lead-ops`, `outbound-sequence`, `revops`. Qualification, outreach, call analysis, and revenue operations.
 - **Ops**: `goal`, `founder-os`, `improve`, `audit`, `page-audit`, `qa`, `security`, `reviewer`, `second-opinion`, `refactor`, `ship`, `incident`, `observability`, `legal`, `librarian`, `explain`, `handover`, `retro`, `product`, `productivity`, `voice`, `core`, `skill-author`. Quality, security, delivery, reliability, incident response, legal and GDPR compliance, evidence-based self-improvement, teaching the operator, the founder operating system, and governance.
 - **Research**: `market-research`. Market sizing, competitive intelligence, and positioning.

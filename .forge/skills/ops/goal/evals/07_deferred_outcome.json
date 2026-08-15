@@ -1,0 +1,20 @@
+{
+  "skill": "resonance-ops-goal",
+  "query": "Improve newsletter signup conversion. Ship the implementation now, but the real proof is whether signup rate improves next week.",
+  "expected_behavior": [
+    "Separates in-session acceptance checks from the later business metric.",
+    "Requires a deferred metric with a due date or measurement follow-up.",
+    "Does not mark the external outcome done before it is observed.",
+    "Still defines runnable checks for the shipped implementation."
+  ],
+  "checks": [
+    {
+      "kind": "contains_all",
+      "value": [
+        "deferred",
+        "metric",
+        "due"
+      ]
+    }
+  ]
+}

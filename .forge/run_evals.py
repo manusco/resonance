@@ -22,8 +22,8 @@ Honesty rules for scored runs:
     to a DIFFERENT model; --score refuses to run when they are equal.
   - k generations per arm per case (--reps; scored runs force >= 3) so a single
     lucky completion cannot decide a verdict.
-  - cases may carry deterministic `checks` (regex_absent, contains_any,
-    section_present, max_lines) graded in pure Python at zero cost; they merge
+  - cases may carry deterministic `checks` (regex_absent, regex_present,
+    contains_any, contains_all, section_present, max_lines) graded in pure Python at zero cost; they merge
     into the rubric fraction and shrink the judged surface.
   - a case whose without-arm passes the full rubric discriminates nothing and
     gets flagged as a dead case.
@@ -84,6 +84,10 @@ def skill_rel(sk: Path) -> str:
     return sk.parent.relative_to(SKILLS).as_posix()
 
 
+def skill_md_for_rel(path: str) -> Path:
+    return SKILLS / path / "SKILL.md"
+
+
 def changed_skill_paths(ref: str) -> set[str]:
     """Skill dirs (domain/name) whose source or output changed vs a git ref."""
     try:
@@ -124,10 +128,19 @@ def run_model(cmd: list[str], prompt: str) -> str:
         return f"[model error: {e}]"
 
 
-def build_prompt(case: dict, body: str | None) -> str:
+def build_prompt(case: dict, body: str | None, selected_path: str | None = None) -> str:
     parts = []
     if body:
-        parts.append("Apply the following skill to the task.\n\n<skill>\n" + body + "\n</skill>\n")
+        parts.append("Apply the following selected skill to the task.\n\n"
+                     "<skill role=\"selected\">\n" + body + "\n</skill>\n")
+    for relpath in case.get("baseline_skills", []) or []:
+        if selected_path and relpath == selected_path:
+            continue
+        fp = skill_md_for_rel(relpath)
+        if fp.exists():
+            parts.append(f"Also consider this existing Resonance skill when routing ownership.\n\n"
+                         f"<skill role=\"baseline\" path=\"{relpath}\">\n"
+                         f"{skill_body(fp)}\n</skill>\n")
     for f in case.get("files", []) or []:
         fp = REPO / f
         if fp.exists():
@@ -150,14 +163,17 @@ def judge(cmd: list[str], query: str, output: str, rubric: list[str]) -> list[bo
         return [False] * len(rubric)
 
 
-CHECK_KINDS = ("regex_absent", "contains_any", "section_present", "max_lines")
+CHECK_KINDS = ("regex_absent", "regex_present", "contains_any", "contains_all",
+               "section_present", "max_lines")
 
 
 def det_checks(output: str, checks: list) -> int:
     """Deterministic check kinds, evaluated in pure Python at zero cost.
-    Returns how many passed. Four kinds, hard cap (resist check-kind sprawl):
+    Returns how many passed. Six kinds, hard cap (resist check-kind sprawl):
       regex_absent:    value regex must NOT match the output
+      regex_present:   value regex must match the output
       contains_any:    at least one of the value literals appears (case-insensitive)
+      contains_all:    all value literals appear (case-insensitive)
       section_present: value text appears in a markdown heading
       max_lines:       output has at most value lines
     """
@@ -168,10 +184,16 @@ def det_checks(output: str, checks: list) -> int:
         try:
             if kind == "regex_absent":
                 ok = re.search(str(val), output) is None
+            elif kind == "regex_present":
+                ok = re.search(str(val), output) is not None
             elif kind == "contains_any":
                 low = output.lower()
                 vals = val if isinstance(val, list) else [val]
                 ok = any(str(v).lower() in low for v in vals)
+            elif kind == "contains_all":
+                low = output.lower()
+                vals = val if isinstance(val, list) else [val]
+                ok = all(str(v).lower() in low for v in vals)
             elif kind == "section_present":
                 ok = re.search(r"(?mi)^#{1,6}\s+.*" + re.escape(str(val)), output) is not None
             elif kind == "max_lines":
@@ -249,6 +271,9 @@ def check_case(sk: Path, ev: Path) -> list[str]:
     for c in d.get("checks") or []:
         if not isinstance(c, dict) or c.get("kind") not in CHECK_KINDS or "value" not in c:
             problems.append(f"invalid check (kind must be one of {CHECK_KINDS}, with a value): {c}")
+    for relpath in d.get("baseline_skills", []) or []:
+        if not isinstance(relpath, str) or not skill_md_for_rel(relpath).is_file():
+            problems.append(f"baseline skill not found: {relpath}")
     return problems
 
 
@@ -258,11 +283,12 @@ def run_case(cmd: list[str], judge_cmd: list[str], sk: Path, ev: Path, threshold
     rub = d["expected_behavior"]
     checks = d.get("checks") or []
     the_body = skill_body(sk) if body is None else body
+    selected_path = skill_rel(sk)
     n = len(rub) + len(checks)
     wf: list[float] = []
     wof: list[float] = []
     for _ in range(max(1, reps)):
-        with_out = run_model(cmd, build_prompt(d, the_body))
+        with_out = run_model(cmd, build_prompt(d, the_body, selected_path=selected_path))
         without = run_model(cmd, build_prompt(d, None))
         sw = sum(judge(judge_cmd, d["query"], with_out, rub)) + det_checks(with_out, checks)
         swo = sum(judge(judge_cmd, d["query"], without, rub)) + det_checks(without, checks)

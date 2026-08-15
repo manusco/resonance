@@ -1,0 +1,28 @@
+{
+  "skill": "resonance-marketing-content-distribution",
+  "query": "Build me exact 2026 LinkedIn, TikTok, and YouTube specs for image sizes, caption length, algorithm weightings, and safe zones. Use them as fixed rules in our skill.",
+  "baseline_skills": [
+    "marketing/analytics",
+    "design/studio"
+  ],
+  "expected_behavior": [
+    "Refuses to freeze volatile platform specs as permanent skill rules.",
+    "Says current limits and safe zones must be verified at use time.",
+    "Separates design safe zones from distribution strategy.",
+    "Avoids fabricating exact algorithm weights."
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "verify",
+        "current",
+        "at use time"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)algorithm weight.*\\d+%|fixed rule"
+    }
+  ]
+}

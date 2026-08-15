@@ -1,0 +1,38 @@
+{
+  "skill": "resonance-marketing-content-distribution",
+  "query": "Plan a 30-day organic LinkedIn and X distribution plan for a B2B SaaS founder who has 3 customer calls, one webinar recording, and a new product launch next month. Include what to do with the source material.",
+  "baseline_skills": [
+    "strategy/growth",
+    "marketing/copywriter",
+    "marketing/analytics",
+    "design/studio"
+  ],
+  "expected_behavior": [
+    "Defines the audience promise before listing post formats or cadence.",
+    "Turns customer calls and the webinar into a repurposing tree or atom map.",
+    "Separates content distribution from copywriting, visual production, and measurement judgment.",
+    "Names at least one learning metric and the decision it will inform.",
+    "Avoids generic daily posting advice without a reason."
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "promise",
+        "audience promise"
+      ]
+    },
+    {
+      "kind": "contains_all",
+      "value": [
+        "copywriter",
+        "analytics",
+        "studio"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)post every day|daily content calendar"
+    }
+  ]
+}

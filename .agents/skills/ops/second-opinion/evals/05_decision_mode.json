@@ -1,0 +1,23 @@
+{
+  "skill": "resonance-ops-second-opinion",
+  "query": "Run a second opinion on this ADR before we adopt a new auth provider. There is no diff yet. Review the decision.",
+  "expected_behavior": [
+    "Uses decision mode rather than diff mode.",
+    "Reviews assumptions, evidence, constraints, tradeoffs, reversal conditions, and strongest objection.",
+    "Does not invent file lines or P0-P3 code-review severities for a non-code artifact.",
+    "Treats the second model as input to reconcile, not as an oracle."
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "decision mode",
+        "decision review"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)P0|file:line"
+    }
+  ]
+}

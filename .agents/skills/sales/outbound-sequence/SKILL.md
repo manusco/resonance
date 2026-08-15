@@ -9,7 +9,7 @@ archetype: procedure
 > **Role:** resonance-sales
 > **Input:** Target description (persona, trigger event, campaign context) + CRM/account data + sender's value proposition.
 > **Output:** A structured, source-backed outbound sequence with operator notes.
-> **Definition of Done:** The sequence contains 3-5 steps with subject lines, body copy, CTAs, personalization markers, operator notes, and assumption flags. Every claim traces to a source. No fabricated proof. No auto-send. Free of AI slop and em dashes. Passed the validator.
+> **Definition of Done:** The sequence contains 3-5 steps with subject lines, body copy, CTAs, personalization markers, operator notes, and assumption flags. Every claim traces to a source. No fabricated proof. No fake reply framing. No auto-send. Free of AI slop and em dashes. Passed the validator.
 
 ## Prerequisites (fail fast)
 
@@ -31,10 +31,10 @@ Copy this checklist and tick items as you go.
    - **Channel mix**: Email, LinkedIn, call, video? Sequence the channels.
    → verify: all five elements are documented before drafting.
 
-3. **Separate Reusable from Specific**: Identify which elements can be templated across the campaign and which must change per account or per persona. Mark personalization points with `[PERSONALIZE: field]` markers. → verify: at least 3 personalization markers exist per step.
+3. **Separate Reusable from Specific**: Identify which elements can be templated across the campaign and which must change per account or per persona. Mark personalization points with `[PERSONALIZE: field]` markers. Never treat first name, company name, or a title token as real personalization. → verify: each personalized sentence uses a real source, signal, or pain hypothesis.
 
 4. **Draft the Sequence**: Write 3-5 concise steps with:
-   - Subject line (under 8 words, no clickbait)
+   - Subject line (under 8 words, no clickbait, no fake `Re:` or `Fwd:`, no false internal-thread framing)
    - Body copy (under 120 words per step, plainspoken language)
    - One clear CTA per step (binary choice or specific ask)
    - Operator notes: what the rep should check, customize, or verify before sending
@@ -42,7 +42,9 @@ Copy this checklist and tick items as you go.
 
 5. **Flag Assumptions and Claims**: Label every claim, statistic, customer reference, or operational detail that needs verification. Use `[VERIFY: claim]` markers. Never invent proof, executive involvement, custom audits, or usage data. → verify: no unverified claims survive without a flag.
 
-6. **Tone and Signal Hygiene**: Review the full sequence for surveillance language. Behavioral signals (page visits, product usage, intent data) are useful but must not sound invasive. Use framing like "based on your team's activity" not "we noticed you visited our pricing page 4 times." → verify: read the sequence from the prospect's perspective.
+6. **Privacy, Consent, and Deliverability Hygiene**: Review the full sequence for surveillance language, over-collection, and dark patterns. Behavioral signals (page visits, product usage, intent data) are useful but must not sound invasive. Use framing like "teams in this stage often..." not "we noticed you visited our pricing page 4 times." Keep the copy plain text by default, use at most one link per step unless the user asks otherwise, and include the required opt-out or unsubscribe path when the channel requires it. → verify: read the sequence from the prospect's perspective and from a deliverability reviewer.
+
+7. **Approval Gate**: Hold the sequence as a draft until a human verifies claims, personalization, source permissions, and send settings. No tool may send, schedule, enroll, or sync the sequence to a live campaign without explicit user approval. → verify: final output says what must be checked before send.
 
 ## Recovery
 
@@ -68,6 +70,9 @@ No outbound sequence should auto-send. The workflow:
 2. Rep reviews, customizes personalization markers, verifies claims.
 3. Rep approves each step before it enters the send queue.
 4. CRM/sequencer logs the send with attribution.
+
+### Hard No List
+Reject fabricated proof, fake scarcity, fake reply threads, hidden unsubscribe paths, scraped personal details that are not approved for outreach, surveillance phrasing, and any instruction to auto-send. If the user asks for these, return a safer draft and name the risk.
 
 ## Operating Standard
 

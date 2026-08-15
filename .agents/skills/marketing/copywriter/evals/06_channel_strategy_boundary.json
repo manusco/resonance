@@ -1,0 +1,21 @@
+{
+  "skill": "resonance-marketing-copywriter",
+  "query": "Create our LinkedIn calendar, pick the channel mix, design the thumbnail, write the posts, and tell me whether the campaign worked.",
+  "expected_behavior": [
+    "Writes or outlines the post copy only after naming assumptions or asking for the distribution brief.",
+    "Routes channel mix and calendar to content distribution.",
+    "Routes thumbnail production to studio.",
+    "Routes measurement validity and campaign verdict to analytics.",
+    "Does not claim ownership of the full organic distribution system."
+  ],
+  "checks": [
+    {
+      "kind": "contains_all",
+      "value": [
+        "content-distribution",
+        "studio",
+        "analytics"
+      ]
+    }
+  ]
+}

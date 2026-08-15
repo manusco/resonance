@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## v2.4.87
+
+The benchmark-integrity release. QA, context engineering, and skill-authoring now make comparative claims harder to fool.
 
 ### Changed
 - **Eval and benchmark claims now need clean comparisons.** QA now requires isolated arms, fixed inputs, recorded runtime details, one measurement source, and explicit limits before publishing comparative LLM or agent results.
@@ -9,6 +11,46 @@
 
 ### Added
 - **Benchmark-integrity eval coverage.** QA now has a regression case for contaminated baselines, mixed meters, and shorter-output claims without safety checks.
+
+## v2.4.86
+
+The command-map accuracy release. Public docs now describe the v2.4.85 decision-contract behavior in the same terms the skills use.
+
+### Changed
+- **AGENTS command map.** `/goal`, `/grill`, `/plan`, and `/second-opinion` now mention goal contracts, targeted risk passes, and decision-artifact review where relevant.
+- **README quickstart and catalog.** `/grill` now says it can stress-test a plan or goal contract before code.
+
+## v2.4.85
+
+The decision-contract release. Goal work now separates outcomes from requested tactics before execution, grill gains a targeted risk pass instead of simulated councils, and second opinion can review concrete decision artifacts without pretending to be an oracle.
+
+### Added
+- **Goal contracts.** `/goal` now confirms outcome, requested tactics, hard constraints, non-goals, risks, acceptance checks, and deferred metrics before the bounded loop starts.
+- **Targeted risk pass.** `/grill` now applies narrow high-risk checks for one-way doors, security, privacy, money, legal, migration, data-loss, broad blast-radius, and missing-fact cases.
+- **Decision-mode second opinion.** `.forge/second_opinion.py` and `/second-opinion` now support `--mode decision` for confirmed plans, ADRs, adoption verdicts, and goal contracts.
+- **Independent review policy.** Shared resolver clarifies when to use primary work, one independent reviewer, or human/domain authority.
+
+### Changed
+- **No fake council consensus.** The framework now rejects role-played panels as independent judgment and routes true independence through configured review.
+- **Second-opinion dispatch is fail-closed.** Missing reviewer config, same reviewer identity, empty output, failed command, secrets, or oversized input cannot satisfy the gate.
+- **Goal loop state persists contracts.** `loop_state.py start` can store an approved contract and plan hash for resume and status.
+
+## v2.4.84
+
+The marketing ownership release. Organic distribution, lifecycle email, paid media, copy, analytics, studio assets, and growth strategy now have clearer boundaries and regression coverage.
+
+### Added
+- **`marketing/content-distribution`.** New organic distribution skill for unpaid feed, community distribution, repurposing, surface adaptation, and video packaging.
+- **Shared marketing ownership resolver.** Growth, copywriter, lifecycle, paid acquisition, analytics, and studio now use the same owner map before drafting.
+- **Content and asset references.** Added organic distribution, video packaging, content learning loop, and marketing asset brief references.
+- **Boundary evals.** Added regression cases for organic routing, lifecycle newsletter ownership, content learning signals, studio asset rights, growth routing, copy routing, and outbound privacy.
+- **Fingerprint scan.** Added a deterministic scan for source markers and optional private-corpus phrase overlap.
+
+### Changed
+- **Eval runner baseline mode.** Evals can now compare a candidate skill against the existing relevant skill stack through `baseline_skills`.
+- **Copywriter scope.** Social copy now depends on a channel brief and no longer owns the content calendar or measurement verdict.
+- **Outbound safety.** Outbound sequences now reject fake reply framing, invasive personalization, risky link use, and auto-send without approval.
+- **Doc drift domain counting.** The release gate now counts domains from real `SKILL.md` files, so empty local folders cannot distort the check.
 
 ## v2.4.83
 

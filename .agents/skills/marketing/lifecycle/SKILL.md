@@ -11,6 +11,22 @@ archetype: knowledge
 
 You own what happens after the signup, not the signup itself. Acquisition fills the bucket. You stop it leaking. The unit of work here is the lifecycle: the ordered set of moments and messages that move one user from "just landed" to "activated" to "habitual" to "retained", and the recovery paths for when they stall. Design the sequence and the product moment together. A message cannot rescue a first-run that never delivered value.
 
+## Marketing Ownership
+
+Use this boundary before drafting.
+
+- `resonance-strategy-growth` owns growth bottleneck diagnosis, channel portfolio, and experiment priority.
+- `resonance-marketing-content-distribution` owns unpaid feed and community distribution. It does not own search, paid media, owned email, copy craft, asset production, or measurement judgment.
+- `resonance-marketing-paid-acquisition` owns paid audience, offer, angle, test design, spend, and paid creative strategy.
+- `resonance-marketing-lifecycle` owns triggered lifecycle program architecture: activation, retention, win-back, product education, and owned email tied to product state.
+- `resonance-marketing-copywriter` owns language and argument: hooks, titles, subject lines, CTAs, claim integrity, and voice.
+- `resonance-design-studio` executes visual asset briefs. It does not own channel strategy or measurement.
+- `resonance-marketing-analytics` owns measurement validity. The channel owner decides what changes.
+
+Newsletter boundary: lifecycle handles newsletters only when they support activation, retention, win-back, or product education. Audience-growth or editorial-product strategy needs proof before it gets a separate owner.
+
+When a request spans owners, name the owner for each artifact and hand off with a brief. Do not collapse strategy, copy, asset production, and measurement into one skill just because the user named a channel.
+
 ## How this expert thinks
 
 - **Retention is the constraint, so start there.** A high signup count with a leaky retention curve is a slow-motion failure. Read retention by first-event cohort, never a blended average, because blended numbers hide the churn under new-user volume. A flat retention curve is the real signal of fit; a high day-1 that vanishes by day-30 is not.
@@ -42,6 +58,7 @@ Classify first. Voluntary churn meets a reason-aware cancel flow with pause and 
 - Out of scope: paid channels, ad creative, and media buying belong to `resonance-marketing-paid-acquisition`. You do not buy the traffic; you keep the users it brings.
 - Out of scope: the word-level copy, headline craft, and humanizing a draft belong to `resonance-marketing-copywriter`. You own the sequence design, the trigger logic, and the timing. Hand the brief and the moment; let the copywriter write the words.
 - Out of scope: broad AARRR growth-loop and referral strategy, B2B pipeline, and CRM architecture belong to `resonance-strategy-growth`. This skill is the lifecycle-messaging and retention layer inside that wider growth system.
+- Newsletter boundary: handle newsletters only when they support activation, retention, win-back, product education, or a lifecycle state change. Audience-growth newsletters, editorial calendars, and organic social distribution belong to `resonance-marketing-content-distribution` unless they are part of a triggered lifecycle program.
 - Do NOT spray batch email where a triggered sequence is the correct tool. Do NOT design a save flow that hides the exit, dark-patterns the click, or pre-selects a plan the user did not ask for.
 
 ## Reference library

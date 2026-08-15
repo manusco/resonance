@@ -32,7 +32,10 @@ NAME_RE = re.compile(r"(?m)^name:\s*(.+?)\s*$")
 DESC_SKILL = re.compile(r'"skill"\s*:\s*"([^"]+)"')
 PROVENANCE = re.compile(
     r"(ui-ux-pro-max|\bancoleman\b|Outstanding Skills Standard|Universal 1% Standard"
-    r"|Zero-Trust Agent Architecture|Created by the [A-Z])",
+    r"|Zero-Trust Agent Architecture|Created by the [A-Z]"
+    r"|Packaged Source Note|Source Note|provenance:|attribution:"
+    r"|inspired by\s+https?://|adapted from\s+https?://|ported from\s+https?://"
+    r"|forked from\s+https?://|based on\s+https?://)",
     re.I,
 )
 TIME_BOUND = re.compile(r"\b(20\d\d Edition|as of 20\d\d|in 20\d\d\b|\(20\d\d\))")

@@ -1,0 +1,23 @@
+{
+  "skill": "resonance-ops-goal",
+  "query": "Goal: make onboarding faster. I also want Redis added, no database migrations, keep the current UI, and do not touch billing. There may be edge cases I have missed. Turn this into the right work plan and run it end to end.",
+  "expected_behavior": [
+    "Creates or requires a goal contract before building.",
+    "Separates the outcome from requested tactics.",
+    "Keeps hard constraints and non-goals distinct.",
+    "Names unresolved assumptions or contradictions instead of inventing certainty.",
+    "Defines acceptance checks that can be executed."
+  ],
+  "checks": [
+    {
+      "kind": "contains_all",
+      "value": [
+        "outcome",
+        "requested tactic",
+        "constraint",
+        "non-goal",
+        "acceptance"
+      ]
+    }
+  ]
+}

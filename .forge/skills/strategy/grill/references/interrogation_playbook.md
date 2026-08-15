@@ -48,6 +48,24 @@ Run the failure lens on each resolved area and keep the ones that matter:
 - Hostile input: malformed, oversized, or adversarial data at the boundary.
 - Permission: the wrong user, the expired session, the missing role.
 
+## Targeted risk pass
+
+Run this pass only when the plan earns it:
+
+- one-way door;
+- security or privacy boundary;
+- money, billing, legal, or compliance exposure;
+- migration, data-loss, or rollback risk;
+- broad blast radius;
+- missing critical fact.
+
+Pick one to three relevant checks. Do not simulate a panel. Report:
+
+- strongest objection;
+- missing evidence;
+- required contract or plan change;
+- whether an independent decision review is needed.
+
 ## 6. Done-criteria and rollout
 
 - How do we know it works? Name the observable, checkable outcome, not "it works".

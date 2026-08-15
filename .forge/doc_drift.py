@@ -88,7 +88,8 @@ def main() -> int:
     for m in re.findall(r"(\d+)\s+slash commands", readme):
         if int(m) != n_cmds:
             problems.append(f"README body says {m} slash commands but there are {n_cmds}")
-    n_domains = sum(1 for d in (ROOT / ".agents/skills").glob("*") if d.is_dir())
+    n_domains = len({p.relative_to(ROOT / ".agents/skills").parts[0]
+                     for p in (ROOT / ".agents/skills").glob("**/SKILL.md")})
     for m in re.findall(r"across (\d+) domains", readme):
         if int(m) != n_domains:
             problems.append(f"README says 'across {m} domains' but there are {n_domains}")

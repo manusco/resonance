@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-strategy-grill",
+  "query": "Pressure-test a tiny copy change: rename the settings button to Preferences. No data model, deploy, migration, payment, or security impact.",
+  "expected_behavior": [
+    "Keeps the grill proportional to the low-risk request.",
+    "Does not summon a panel, council, vote, or many role-played personas.",
+    "Asks only the few questions needed for scope and done criteria.",
+    "Still gives a recommendation with the question."
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "(?i)council|panel|vote|six perspectives"
+    }
+  ]
+}

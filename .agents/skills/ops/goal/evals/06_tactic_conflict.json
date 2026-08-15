@@ -1,0 +1,24 @@
+{
+  "skill": "resonance-ops-goal",
+  "query": "Make search faster by adding Redis. If there is a simpler fix, use it, but I think Redis is the answer.",
+  "expected_behavior": [
+    "Treats Redis as a requested tactic, not as an approved implementation.",
+    "Keeps the real goal as faster search.",
+    "Requires evidence before accepting the tactic.",
+    "Routes the plan through grill and plan before the bounded loop starts."
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "requested tactic",
+        "proposed tactic",
+        "not pre-approved"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)we will add redis"
+    }
+  ]
+}

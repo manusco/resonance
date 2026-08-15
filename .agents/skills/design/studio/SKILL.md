@@ -19,6 +19,22 @@ Studio makes visual **assets**: illustration, photographic-style imagery, hero a
 
 Style is a deliberate choice, tied to a period and a purpose. Studio names styles so you can aim precisely. It does not rank them. Whether a given style reads as timeless or as dated slop is the designer's call, so route style decisions that touch product through `resonance-design-designer` before committing.
 
+## Marketing Ownership
+
+Use this boundary before drafting.
+
+- `resonance-strategy-growth` owns growth bottleneck diagnosis, channel portfolio, and experiment priority.
+- `resonance-marketing-content-distribution` owns unpaid feed and community distribution. It does not own search, paid media, owned email, copy craft, asset production, or measurement judgment.
+- `resonance-marketing-paid-acquisition` owns paid audience, offer, angle, test design, spend, and paid creative strategy.
+- `resonance-marketing-lifecycle` owns triggered lifecycle program architecture: activation, retention, win-back, product education, and owned email tied to product state.
+- `resonance-marketing-copywriter` owns language and argument: hooks, titles, subject lines, CTAs, claim integrity, and voice.
+- `resonance-design-studio` executes visual asset briefs. It does not own channel strategy or measurement.
+- `resonance-marketing-analytics` owns measurement validity. The channel owner decides what changes.
+
+Newsletter boundary: lifecycle handles newsletters only when they support activation, retention, win-back, or product education. Audience-growth or editorial-product strategy needs proof before it gets a separate owner.
+
+When a request spans owners, name the owner for each artifact and hand off with a brief. Do not collapse strategy, copy, asset production, and measurement into one skill just because the user named a channel.
+
 ## Prerequisites (fail fast)
 
 - [ ] Subject is defined: who or what is in the image, and what is happening?
@@ -58,6 +74,7 @@ Copy this checklist and tick items as you go.
 
 - Copy that overlaps the image (delegate to `resonance-marketing-copywriter`).
 - Interface taste, component design, and CSS from any mockup (delegate to `resonance-design-designer`, who owns the timeless-vs-slop judgment).
+- Organic or paid channel strategy, posting cadence, and performance verdicts (delegate to `resonance-marketing-content-distribution`, `resonance-marketing-paid-acquisition`, or `resonance-marketing-analytics`).
 
 ## Cognitive Frameworks
 
@@ -79,6 +96,7 @@ Subject, Style, and parameters are separate concerns. Keep them in separate fiel
 - **[Visual Prompting Protocol](references/visual_prompting_protocol.md)**: the physics of the prompt, model-neutral.
 - **[Visual Style Library](references/visual_style_library.md)**: a style vocabulary to aim with, not a ranking.
 - **[Asset Pipeline](references/asset_generation_pipeline.md)**: brief to finished asset.
+- **[Marketing Asset Briefs](references/marketing_asset_briefs.md)**: thumbnails, social graphics, creative safe zones, rights, consent, and accessibility checks.
 
 ## Operating Standard
 
