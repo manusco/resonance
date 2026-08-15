@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-ops-qa",
+  "query": "We benchmarked our new agent instruction against the baseline and it looks 60% cheaper. The baseline used my normal global agent config, while the new arm used a fresh temp config with the candidate instruction loaded. We counted local wrapper token estimates for the new arm and provider dashboard totals for the baseline. The output is shorter, so mark the benchmark ready to publish.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to publish the benchmark claim because the baseline and candidate arms were not isolated under the same conditions",
+    "Names global agent config or shared instructions as a possible contamination source",
+    "Requires both arms to use the same measurement source for tokens, cost, and latency",
+    "Requires recording model, provider, runtime, harness version, command, seed, and clean worktree state before publication",
+    "Requires safety or adversarial checks when the claim rewards shorter output or fewer lines"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["baseline"]},
+    {"kind": "contains_any", "value": ["isolate", "isolated", "contamination", "contaminated"]},
+    {"kind": "contains_any", "value": ["same measurement", "same meter", "same source"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}
