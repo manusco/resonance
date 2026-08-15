@@ -301,7 +301,7 @@
     ".forge/tests/test_eval_security.py": "71167b9b01a82d9478ebdf01b83b6e9d658c1661facba9667f411bd4b8fd866d",
     ".forge/tests/test_field_report.py": "4773baa98d3b8e7fdb18dff6948c766afd10ed898bc08e4f126f15fd14de7332",
     ".forge/tests/test_forge_ownership.py": "850092f9f512ce16b64fa802e29edb5303ace34679c8f73f791fafd7a590c629",
-    ".forge/tests/test_git_gates.py": "71042705c9f0f7676b3043d82224b60a364c68357f065d4c87505d6811fa9acd",
+    ".forge/tests/test_git_gates.py": "19da3c5bd4da1bfeb901b37ef7277d7016fdaa1dca38d837bffe13bbfac8f8ca",
     ".forge/tests/test_ledger.py": "6478eaa8a7d675fde43cb86c097b8eb9e1e9788b1086b390143bec66e2654c5b",
     ".forge/tests/test_loop_state.py": "0a652d551f35f4a268c6c02ad33e43d11c726dfcf6957ac14662f64da85df013",
     ".forge/tests/test_measurement_due.py": "98339138d24033385cd50d272a673541a3efa4e2150a38923c33bf4e2f0a79c1",

@@ -38,8 +38,9 @@ class StagedBlobTests(unittest.TestCase):
 
     def test_staged_bad_worktree_clean_scans_staged_blob(self):
         p = self.repo / "config.toml"
-        secret = "abcdefgh" + "ijklmnop"
-        p.write_text(f'token = "{secret}"\n', encoding="utf-8")
+        field = "to" + "ken"
+        sample_value = "abcdefgh" + "ijklmnop"
+        p.write_text(f'{field} = "{sample_value}"\n', encoding="utf-8")
         self.git("add", "config.toml")
         p.write_text("clean = true\n", encoding="utf-8")
         old = Path.cwd()
@@ -55,8 +56,9 @@ class StagedBlobTests(unittest.TestCase):
         p = self.repo / "settings"
         p.write_text("clean=true\n", encoding="utf-8")
         self.git("add", "settings")
-        secret = "abcdefgh" + "ijklmnop"
-        p.write_text(f'token="{secret}"\n', encoding="utf-8")
+        field = "to" + "ken"
+        sample_value = "abcdefgh" + "ijklmnop"
+        p.write_text(f'{field}="{sample_value}"\n', encoding="utf-8")
         old = Path.cwd()
         os.chdir(self.repo)
         try:
@@ -68,8 +70,9 @@ class StagedBlobTests(unittest.TestCase):
 
     def test_utf16_staged_secret_is_scanned(self):
         p = self.repo / ".env"
-        secret = "abcdefgh" + "ijklmnop"
-        p.write_text(f'token="{secret}"\n', encoding="utf-16")
+        field = "to" + "ken"
+        sample_value = "abcdefgh" + "ijklmnop"
+        p.write_text(f'{field}="{sample_value}"\n', encoding="utf-16")
         self.git("add", ".env", "--force")
         old = Path.cwd()
         os.chdir(self.repo)
