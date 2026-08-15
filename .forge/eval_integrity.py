@@ -22,7 +22,8 @@ def oracle_files() -> list[Path]:
 
 
 def snapshot() -> dict[str, str]:
-    return {p.relative_to(REPO).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+    return {p.relative_to(REPO).as_posix(): hashlib.sha256(
+                p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
             for p in oracle_files()}
 
 
