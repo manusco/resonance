@@ -63,3 +63,16 @@ When QAing an agent that uses tools (function calling), assert against the **tra
 *   **Did it call a tool unnecessarily?** (Efficiency check).
 
 If an agent fails, categorize the failure using the the Agent Debugging Protocol in the debugger skill.
+
+---
+
+## 5. Benchmark Integrity
+
+Comparative evals are only useful when the comparison is clean. Before publishing a claim that one prompt, skill, model, or agent is better than another, make the harness able to disprove that claim.
+
+1. **Same task, same inputs**: every arm receives the same fixtures, seed data, tool contracts, and success criteria.
+2. **Isolated arms**: each arm runs with a fresh workspace, fresh conversation state, and only the intended instructions or plugins loaded. Shared global config, cached prompts, or lifecycle hooks can contaminate the baseline.
+3. **Recorded environment**: capture model name, provider, runtime version, harness version, command, seed, and whether the worktree was clean.
+4. **Cost and latency from the same meter**: compare tokens, cost, and time from one measurement source per run. Do not mix provider bills, local estimates, and wrapper counters as if they were the same number.
+5. **Safety before size**: if the metric rewards smaller output or fewer lines, include adversarial checks for validation, authorization, security, accessibility, and error handling. A smaller unsafe answer is a failed answer.
+6. **Limits in the report**: state what the benchmark does not cover. A narrow fixture suite is evidence for that suite, not a universal product claim.

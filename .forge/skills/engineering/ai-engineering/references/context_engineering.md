@@ -56,6 +56,7 @@ Every token in the window is paid for on every call and eats into attention. Bud
 
 - Allocate: how many tokens for instructions, examples, retrieved context, and the reserved output? Decide before you assemble.
 - Compress retrieved context: summarize or extract the relevant span, do not paste whole documents.
+- Preserve recovery paths: if a summary, compressed payload, or extracted span can affect a decision, keep a stable pointer to the original source and reopen it before final claims, edits, audits, or destructive actions.
 - Trim history: for multi-turn, summarize old turns instead of carrying the full transcript forever.
 - Cap output: set max output tokens so a runaway generation cannot blow the budget or the latency target.
 
@@ -70,6 +71,7 @@ When you need machine-readable output, do not hope for clean JSON.
 ## 7. Common Mistakes
 
 - **Dumping everything into context "just in case"**: pay more, attend less, hide the signal.
+- **Trusting compressed context as evidence**: summaries are navigation aids, not source material. Decisions trace back to the original record.
 - **Burying the key instruction in the middle**: it gets ignored. Top or bottom.
 - **Mixing instructions and user data with no separation**: fragile and injectable.
 - **Vague instructions**: "be helpful and accurate" is not a spec. Say the format, the length, the refusal.

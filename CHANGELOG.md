@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- **Eval and benchmark claims now need clean comparisons.** QA now requires isolated arms, fixed inputs, recorded runtime details, one measurement source, and explicit limits before publishing comparative LLM or agent results.
+- **Context compression keeps a recovery path.** AI engineering now treats summaries and compressed context as navigation aids. Decisions must trace back to the original source.
+- **Simplicity has a safety floor.** Core coding guidance now forbids shrinking a diff by cutting validation, authorization, security checks, accessibility, observability, or plausible error handling.
+
+### Added
+- **Benchmark-integrity eval coverage.** QA now has a regression case for contaminated baselines, mixed meters, and shorter-output claims without safety checks.
+
 ## v2.4.83
 
 The source-resolution release. `/update-resonance` no longer depends on a target application repo knowing the framework upstream URL.

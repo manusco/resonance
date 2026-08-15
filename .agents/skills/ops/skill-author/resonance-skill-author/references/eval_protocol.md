@@ -12,6 +12,8 @@ without evals is unfalsifiable, and unfalsifiable skills rot.
 4. **Write the minimum skill** that passes.
 5. **Iterate.** Re-run, compare to baseline. Keep only what moves the score.
 
+Baseline integrity matters. If you compare a new skill against a no-skill run, isolate the arms: fresh workspace, fresh conversation state, same fixtures, same model, same tool permissions, same command, and no shared global instructions that secretly load the candidate skill. Record the harness and model versions with the result. A contaminated baseline is worse than no baseline because it makes a false improvement look measured.
+
 ## Case format
 
 ```json

@@ -22,6 +22,8 @@
 *   ❌ No abstractions for single-use code.
 *   ❌ No "configurability" that wasn't requested.
 *   ❌ No error handling for impossible scenarios.
+*   ❌ No cutting validation, authorization, security checks, accessibility, observability, or plausible error handling to make a diff look smaller.
+*   **Runnable Check**: Non-trivial logic leaves one small check behind: a test, an assertion script, or a reproduction that fails if the logic breaks.
 *   **Refactor Rule**: If you write 200 lines and it could be 50, rewrite it.
 
 > *Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.*
