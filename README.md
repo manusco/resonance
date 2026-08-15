@@ -201,7 +201,9 @@ It walks the eval-first loop: prove the gap, write the golden evals, author the 
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Report suspected vulnerabilities through the private process in [SECURITY.md](SECURITY.md).
+Questions belong in [GitHub Discussions](https://github.com/manusco/resonance/discussions). Bugs, proposals, and support routes are listed in [SUPPORT.md](SUPPORT.md).
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) to improve the framework and [MAINTAINING.md](MAINTAINING.md) for versioning and releases. Report suspected vulnerabilities through the private process in [SECURITY.md](SECURITY.md).
 
 ---
 

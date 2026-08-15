@@ -43,6 +43,9 @@ jobs:
       - name: Check documentation drift
         run: python .forge/doc_drift.py
 
+      - name: Check release metadata
+        run: python .forge/release_notes.py --check
+
       - name: Check eval structure
         run: python .forge/run_evals.py --all --check
 

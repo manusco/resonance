@@ -11,7 +11,8 @@ The benchmark-integrity release. QA, context engineering, and skill-authoring no
 
 ### Added
 - **Benchmark-integrity eval coverage.** QA now has a regression case for contaminated baselines, mixed meters, and shorter-output claims without safety checks.
-- **Public maintenance foundation.** GitHub now runs the deterministic Forge gate for every pull request and `main` update, routes bug reports and proposals through structured forms, checks action updates, and provides private security reporting guidance.
+- **Public maintenance foundation.** GitHub now runs the deterministic Forge gate for every pull request and `main` update, routes questions, bug reports, and proposals to clear support paths, checks action updates, and provides private security reporting guidance.
+- **Repeatable releases.** A maintainer guide defines Semantic Versioning from `v2.4.87` forward. A manual GitHub workflow validates increasing tags, extracts the matching changelog section, reruns the release gate, and publishes the tested commit.
 
 ## v2.4.86
 

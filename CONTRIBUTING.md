@@ -13,7 +13,7 @@ Resonance is an open skill library. If you work in a domain and know what good l
 - At least 3 evals in `.forge/skills/<domain>/<name>/evals/`
 - A clean run of `py .forge/validate_skill.py` with 0 errors
 
-For reproducible bugs, use the bug report form. For a skill that does not meet its documented behavior, use the skill field report. For security issues, follow [SECURITY.md](SECURITY.md) and report them privately.
+For reproducible bugs, use the bug report form. For a skill that does not meet its documented behavior, use the skill field report. Ask usage questions in GitHub Discussions. For security issues, follow [SECURITY.md](SECURITY.md) and report them privately. Maintainers should also follow [MAINTAINING.md](MAINTAINING.md).
 
 ## The Forge workflow
 

@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Usage questions
-    url: https://github.com/manusco/resonance/blob/main/docs/FAQ.md
-    about: Check the FAQ before opening an issue.
+    url: https://github.com/manusco/resonance/discussions
+    about: Check the FAQ, then ask the community in GitHub Discussions.
   - name: Security report
     url: https://github.com/manusco/resonance/security/advisories/new
     about: Report a suspected vulnerability privately.
