@@ -11,12 +11,17 @@
       "Design Director with a craftsman's eye. Designs interfaces that feel inevitable, human, and timeless through first-principles craft: optical precision, typographic hierarchy, perceptual color, motion with physics, and the subconscious detail layer that separates outstanding from average. Use when starting a design system, specifying UI, auditing a design that feels generic or AI-made, modeling the objects, names, and states users perceive, refining an interface toward high polish, designing across canvases (phone, tablet, laptop, TV), or planning all states (empty, loading, error, success)."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -30,13 +35,19 @@
       "Visual Asset Generator. Produces production-ready images to a brief (hero imagery, illustration, textures, marketing visuals, character sheets) using disciplined, model-agnostic prompt craft. Use when generating visual assets where composition, style consistency, and reproducibility matter. Defers all interface and UI taste to resonance-design-designer."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -44,19 +55,24 @@
     "id": "resonance-engineering-ai-engineering",
     "path": "engineering/ai-engineering/SKILL.md",
     "archetype": "knowledge",
-    "owner": "engineering.ai.engineering",
+    "owner": "engineering.ai-engineering",
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
       "AI / LLM Product Engineer. Builds reliable AI features that survive contact with real users: eval-driven, cost-bounded, hallucination-controlled. Use when building an LLM feature, designing a RAG pipeline or retrieval, architecting an agent or tool-use loop, writing prompts or context assembly, building evals for AI behavior, adding guardrails, or controlling AI cost, latency, or hallucination. Also use to diagnose a RAG pipeline that returns wrong answers or an agent that loops."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -70,13 +86,19 @@
       "Tooling Engineer Specialist. Builds CLI tools, automation scripts, and MCP servers that extend agent capabilities. Use when a manual or repetitive task needs a permanent automated solution, when building a new MCP server to give agents access to a resource, or when optimizing a slow/error-prone internal workflow."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -91,12 +113,17 @@
       "Backend Engineer Specialist. Implements business logic, API endpoints, and data flows with strict type safety, layered architecture, and explicit error handling. Use when building or modifying API endpoints, writing business logic services, integrating third-party APIs, designing data flows, or performing a shadow path audit on an existing service."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -107,16 +134,43 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The execution orchestrator. Converts architecture into atomic, verifiable steps via the Implementation Plan. Use when an implementation plan is approved and ready to be built. Drives the frontend and backend engineers."
+      "approved implementation plan ready to execute"
     ],
-    "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
-    "invokes": [],
+    "negative_triggers": [
+      "ambiguous or unapproved plan"
+    ],
+    "inputs": [
+      "user_request",
+      "plan",
+      "implementation_plan"
+    ],
+    "outputs": [
+      "user_request",
+      "artifact",
+      "evidence",
+      "backend_scope",
+      "frontend_scope",
+      "debugger_scope",
+      "security_scope",
+      "audit_scope"
+    ],
+    "invokes": [
+      "resonance-engineering-backend",
+      "resonance-engineering-frontend",
+      "resonance-engineering-debugger",
+      "resonance-ops-security",
+      "resonance-ops-audit"
+    ],
     "side_effects": [
+      "may_coordinate_work",
       "may_write_files"
     ],
-    "write_sets": [],
+    "write_sets": [
+      "project:implementation-artifacts"
+    ],
+    "entrypoints": [
+      "/build"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -131,12 +185,17 @@
       "Database Architect Specialist. Designs schemas, optimizes queries, and writes zero-downtime migrations. Use when designing a new entity schema, diagnosing a slow query, writing a migration, selecting a database engine, or auditing data integrity constraints."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -150,13 +209,19 @@
       "Debugger Specialist. Finds root causes through the Scientific Method. No fixes without reproduction. Use when investigating a bug report, diagnosing a production incident, diagnosing an agent trajectory failure, or when a flaky test needs to be pinned to a deterministic reproduction case."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -168,15 +233,20 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "DevOps Engineer Specialist. Builds CI/CD pipelines, Infrastructure as Code, and ensures zero-downtime deployments with 10-second rollback capability. Use when setting up a new CI/CD pipeline, provisioning infrastructure, responding to a production incident, auditing environment parity, or managing secret rotation."
+      "DevOps Engineer Specialist. Builds CI/CD pipelines, Infrastructure as Code, and verified rollback paths. Use when setting up a new CI/CD pipeline, provisioning infrastructure, responding to a production incident, auditing environment parity, or managing secret rotation."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -190,31 +260,41 @@
       "Frontend Engineer Specialist (\"The Glassmith\"). Implements pixel-perfect, performant, and accessible UI with strict component architecture, shadow state coverage, and Core Web Vitals compliance. Use when building React/Vue/web components, implementing a page from a design spec, polishing UX interactions, or auditing a frontend for performance or accessibility issues."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
     "id": "resonance-engineering-game-dev",
     "path": "engineering/game-dev/SKILL.md",
     "archetype": "knowledge",
-    "owner": "engineering.game.dev",
+    "owner": "engineering.game-dev",
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
       "Game Architect Specialist. Designs core game loops, injects \"Juice\" (feedback systems), and selects the right engine for the game's soul. Use when designing a core loop from scratch, making a prototype feel flat and lifeless more engaging, selecting a game engine, or adding particle/audio/haptic feedback to an existing mechanic."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -228,12 +308,17 @@
       "Mobile Architect Specialist. Builds offline-first, touch-physics-driven mobile apps in React Native and Flutter with store compliance and Thumb Zone optimization. Use when architecting a new mobile app, designing an offline sync strategy, replacing stiff animations with spring-based physics, or preparing a store submission checklist."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -247,13 +332,114 @@
       "Performance Engineer Specialist. Measures, profiles, and optimizes system throughput and latency. Use when diagnosing a slow request, resolving a Core Web Vitals violation, planning LLM FinOps (token cost or latency reduction), or auditing backend query performance before a release."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
+    "failure_policy": "stop"
+  },
+  {
+    "schema_version": 1,
+    "id": "resonance-finance-run-operating-cycle",
+    "path": "finance/run-operating-cycle/SKILL.md",
+    "archetype": "orchestration",
+    "owner": "finance.operating-cycle",
+    "activation": "manual",
+    "authority": "consequential",
+    "triggers": [
+      "run a finance operating cycle"
+    ],
+    "negative_triggers": [
+      "produce finance decisions from unsourced numbers"
+    ],
+    "inputs": [
+      "user_request",
+      "plan",
+      "finance_scope"
+    ],
+    "outputs": [
+      "user_request",
+      "artifact",
+      "evidence",
+      "decision",
+      "finance_scope",
+      "analytics_scope",
+      "legal_scope"
+    ],
+    "invokes": [
+      "resonance-strategy-finance",
+      "resonance-marketing-analytics",
+      "resonance-ops-legal"
+    ],
+    "side_effects": [
+      "may_coordinate_work",
+      "may_write_files"
+    ],
+    "write_sets": [
+      "project:finance-cycle"
+    ],
+    "entrypoints": [
+      "skill:finance-run-operating-cycle"
+    ],
+    "failure_policy": "stop"
+  },
+  {
+    "schema_version": 1,
+    "id": "resonance-leadership-run-operating-cycle",
+    "path": "leadership/run-operating-cycle/SKILL.md",
+    "archetype": "orchestration",
+    "owner": "leadership.operating-cycle",
+    "activation": "manual",
+    "authority": "consequential",
+    "triggers": [
+      "run a leadership or management operating cycle"
+    ],
+    "negative_triggers": [
+      "make people decisions without context or consent"
+    ],
+    "inputs": [
+      "user_request",
+      "plan",
+      "leadership_scope"
+    ],
+    "outputs": [
+      "user_request",
+      "plan",
+      "artifact",
+      "evidence",
+      "decision",
+      "founder_os_scope",
+      "hiring_scope",
+      "productivity_scope",
+      "retro_scope",
+      "legal_scope"
+    ],
+    "invokes": [
+      "resonance-ops-founder-os",
+      "resonance-people-hiring",
+      "resonance-ops-productivity",
+      "resonance-ops-retro",
+      "resonance-ops-legal"
+    ],
+    "side_effects": [
+      "may_coordinate_work",
+      "may_write_files"
+    ],
+    "write_sets": [
+      "project:leadership-cycle"
+    ],
+    "entrypoints": [
+      "skill:leadership-run-operating-cycle"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -268,31 +454,41 @@
       "Marketing Analytics Engineer. Builds measurement plans, event taxonomies, attribution models, and honest experiments so marketing decisions rest on data that means what it says. Use when writing a measurement plan, designing event tracking, choosing an attribution model, defining a north-star metric or funnel, sizing or reading an A/B test, analyzing an experiment, or setting up GA4/Amplitude/PostHog/Mixpanel."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
     "id": "resonance-marketing-content-distribution",
     "path": "marketing/content-distribution/SKILL.md",
     "archetype": "knowledge",
-    "owner": "marketing.content.distribution",
+    "owner": "marketing.content-distribution",
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
       "Organic Content Distribution Specialist. Plans unpaid feed and community distribution across LinkedIn, X, Instagram, TikTok, YouTube, newsletters used as editorial products, and community channels. Use when building organic content calendars, adapting one idea to platform-native posts, planning repurposing, packaging short or long-form video for discovery, defining community engagement, or deciding how unpaid content should reach an audience. Do not use for paid media, SEO, owned lifecycle email, copy craft without a channel brief, visual asset production, or measurement judgment."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -306,13 +502,19 @@
       "Conversion Rate Engineer. Removes friction and increases the rate at which users take the desired action. Use when auditing a landing page for CRO issues, running a Friction Collider simulation, designing an A/B test, or structuring an offer with bonuses, guarantees, and urgency."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -327,12 +529,17 @@
       "Conversion Copywriter Specialist. Constructs persuasive, human-sounding language and argument for landing pages, sales pages, lifecycle copy, social posts, subject lines, hooks, CTAs, and AI-generated text rewrites. Use when writing or rewriting the words, sharpening the argument, humanizing a draft, extracting voice, or checking copy for clarity, proof, and readability."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -346,30 +553,96 @@
       "Lifecycle and Retention Strategist. Designs the messaging and product moments that turn a signup into an activated, habitual, paying user, and wins back the ones drifting away. Use when planning onboarding, defining an activation or aha moment, cutting time-to-value, designing a welcome or nurture or re-engagement email sequence, choosing triggered vs batch sends, segmenting with RFM, building retention loops, or fixing churn (voluntary, involuntary, dunning, save flows, win-back)."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
     "id": "resonance-marketing-paid-acquisition",
     "path": "marketing/paid-acquisition/SKILL.md",
     "archetype": "knowledge",
-    "owner": "marketing.paid.acquisition",
+    "owner": "marketing.paid-acquisition",
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
       "Paid Acquisition Specialist and media buyer. Plans and scales paid programs across search, paid social, and demand gen, engineers account and campaign structure, runs creative and angle tests, matches ads to landing pages, and holds spend to unit economics. Use when running ads, setting up SEM or Google Ads, launching paid social, buying media, writing ad creative, scaling ad spend, allocating budget, or judging campaigns by CAC, ROAS, or payback."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
+    "entrypoints": [],
+    "failure_policy": "degrade"
+  },
+  {
+    "schema_version": 1,
+    "id": "resonance-marketing-run-campaign",
+    "path": "marketing/run-campaign/SKILL.md",
+    "archetype": "orchestration",
+    "owner": "marketing.campaign",
+    "activation": "manual",
+    "authority": "consequential",
+    "triggers": [
+      "plan and prepare a marketing campaign"
+    ],
+    "negative_triggers": [
+      "publish or spend without approval"
+    ],
+    "inputs": [
+      "user_request",
+      "plan",
+      "campaign_scope"
+    ],
+    "outputs": [
+      "user_request",
+      "plan",
+      "artifact",
+      "evidence",
+      "decision",
+      "grill_scope",
+      "copy_scope",
+      "content_distribution_scope",
+      "lifecycle_scope",
+      "paid_acquisition_scope",
+      "analytics_scope",
+      "creative_scope",
+      "legal_scope"
+    ],
+    "invokes": [
+      "resonance-strategy-grill",
+      "resonance-marketing-copywriter",
+      "resonance-marketing-content-distribution",
+      "resonance-marketing-lifecycle",
+      "resonance-marketing-paid-acquisition",
+      "resonance-marketing-analytics",
+      "resonance-design-studio",
+      "resonance-ops-legal"
+    ],
+    "side_effects": [
+      "may_coordinate_work",
+      "may_write_files"
+    ],
+    "write_sets": [
+      "project:marketing-campaign"
+    ],
+    "entrypoints": [
+      "skill:marketing-run-campaign"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -384,12 +657,17 @@
       "SEO Specialist and Answer Engine Optimizer. Handles technical audits, on-page optimization, content quality (E-E-A-T), schema markup, GEO (Generative Engine Optimization), local SEO, topic clustering, programmatic SEO, and Core Web Vitals. Use when auditing a site for search visibility, optimizing a page for AI citation, building a topic cluster, diagnosing a ranking drop, or implementing schema markup."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -400,11 +678,28 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The Gatekeeper and Auditor Swarm. Prevents entropy by detecting vulnerabilities and verifying behavior. Use when reviewing current branch, recent changes, or running a full codebase audit before merge. Drives the security, reviewer, qa, and architect subagents."
+      "audit a repository, PR, release, or system surface"
     ],
-    "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "negative_triggers": [
+      "implement the fix directly"
+    ],
+    "inputs": [
+      "user_request",
+      "artifact",
+      "audit_scope"
+    ],
+    "outputs": [
+      "user_request",
+      "recommendation",
+      "evidence",
+      "security_scope",
+      "test_scope",
+      "qa_scope",
+      "review_scope",
+      "reviewer_scope",
+      "architecture_scope",
+      "architect_scope"
+    ],
     "invokes": [
       "resonance-ops-security",
       "resonance-ops-reviewer",
@@ -412,9 +707,15 @@
       "resonance-strategy-architect"
     ],
     "side_effects": [
-      "may_write_files"
+      "may_coordinate_work",
+      "may_execute_checks"
     ],
-    "write_sets": [],
+    "write_sets": [
+      "project:audit-report"
+    ],
+    "entrypoints": [
+      "/audit"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -426,16 +727,40 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The Resonance Kernel and Orchestrator. Manages persistent memory, task planning, and project state. Use when initializing a new project, logging session progress, orchestrating complex multi-agent tasks, or when a new agent needs the project context to orient itself."
+      "initialize or orient a Resonance project"
     ],
-    "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
-    "invokes": [],
+    "negative_triggers": [
+      "replace user-owned project files without approval"
+    ],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "user_request",
+      "plan",
+      "decision",
+      "plan_scope",
+      "implementation_plan",
+      "backend_scope",
+      "frontend_scope",
+      "design_scope"
+    ],
+    "invokes": [
+      "resonance-strategy-plan",
+      "resonance-engineering-backend",
+      "resonance-engineering-frontend",
+      "resonance-design-designer"
+    ],
     "side_effects": [
+      "may_coordinate_work",
       "may_write_files"
     ],
-    "write_sets": [],
+    "write_sets": [
+      "project:resonance-memory"
+    ],
+    "entrypoints": [
+      "/init"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -450,13 +775,19 @@
       "Teaches the operator, not the repo. Produces a dense, concrete explainer of a concept, a diff, an idea, or a window of recent work, written for the specific developer so they keep building a mental model when the agent does the writing. Use when the user says explain this, teach me, help me understand this change, or what did we just build, or proactively when a change introduces a concept new to the codebase. Offers an optional predict-then-reveal check-in for active recall."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -464,19 +795,24 @@
     "id": "resonance-ops-founder-os",
     "path": "ops/founder-os/SKILL.md",
     "archetype": "knowledge",
-    "owner": "ops.founder.os",
+    "owner": "ops.founder-os",
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
       "The company operating system for a founder running a business with a fleet of agents. Ties the business skills together through the ledger, the cadence, and the authority line. Use when setting OKRs or a goal cascade, running a weekly business review, building a company KPI tree or scorecard, keeping a decision log, delegating a function to an agent, setting an operating cadence, or defining what an agent may spend, send, or commit unasked."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -487,11 +823,30 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The autonomous goal loop. Takes a goal and drives it to a verified finish by first confirming a goal contract, then decomposing it into slices, building, and verifying against grounded checks (real tests, validators, audit), bounded and never auto-shipping. Use when the user gives an outcome to reach rather than a single step, mixes goals with requested tactics, says take this to done, run with it, or make this happen end to end. Manual-only (drives builds, tests, and real side effects)."
+      "autonomous bounded goal loop requested by the user"
     ],
-    "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "negative_triggers": [
+      "open-ended automation without evidence gates"
+    ],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "user_request",
+      "plan",
+      "evidence",
+      "decision",
+      "grill_scope",
+      "plan_scope",
+      "implementation_plan",
+      "test_scope",
+      "qa_scope",
+      "audit_scope",
+      "release_scope",
+      "ship_scope",
+      "review_scope",
+      "second_opinion_scope"
+    ],
     "invokes": [
       "resonance-strategy-grill",
       "resonance-strategy-plan",
@@ -502,9 +857,15 @@
       "resonance-ops-ship"
     ],
     "side_effects": [
+      "may_coordinate_work",
       "may_write_files"
     ],
-    "write_sets": [],
+    "write_sets": [
+      "project:goal-state"
+    ],
+    "entrypoints": [
+      "/goal"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -519,13 +880,19 @@
       "Writes a handover document for a colleague after a coding session or sprint. Use at the end of a session to capture what was done, decisions made, open TODOs, and backlog. Produces docs/handovers/YYMMDD_handover.md. If a handover file already exists for today, appends to it. Run before closing the conversation. Session context is the richest input."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -537,16 +904,38 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The self-improving loop. Reads the eval scorecard, finds the skills that show no measured lift, sharpens the skill body or its rubric, and keeps a change only when it raises the measured lift. Use when improving skill quality, working the eval work-list, or making the framework better with evidence instead of opinion. Manual-only (it edits skills and rebuilds)."
+      "improve Resonance skills or evals with measured lift"
     ],
-    "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
-    "invokes": [],
+    "negative_triggers": [
+      "polish skills by opinion without remeasurement"
+    ],
+    "inputs": [
+      "user_request",
+      "evidence",
+      "skill_author_scope"
+    ],
+    "outputs": [
+      "user_request",
+      "artifact",
+      "evidence",
+      "skill_author_scope",
+      "review_scope",
+      "second_opinion_scope"
+    ],
+    "invokes": [
+      "resonance-ops-skill-author",
+      "resonance-ops-second-opinion"
+    ],
     "side_effects": [
+      "may_coordinate_work",
       "may_write_files"
     ],
-    "write_sets": [],
+    "write_sets": [
+      "framework:skill-improvement"
+    ],
+    "entrypoints": [
+      "/improve"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -561,13 +950,19 @@
       "The Incident Commander. Drives a live production incident from detection to a blameless postmortem: triage, declare severity, assign command, mitigate before root-cause, communicate on a cadence, verify recovery. Use when production is down, an active incident or outage is in progress, a SEV1 is declared, you just got paged, latency or error rates are spiking, or a deploy broke prod. Manual-only: it has real side effects (rollbacks, feature-flag flips, status-page updates, stakeholder messages), so a human must invoke it."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -582,12 +977,17 @@
       "Legal and compliance specialist with a GDPR and DACH (Germany, Austria, Switzerland) lens. Use when writing a privacy policy or terms of service, reviewing a contract or a specific risky clause, handling GDPR or data processing questions (lawful basis, DSAR, controller vs processor, DPA), preparing for a compliance audit such as SOC2, or navigating IP and licensing. Drafts and reviews documents and explains the rules in plain language. It is NOT a substitute for a qualified lawyer; escalate high-risk or binding decisions to licensed counsel."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -601,13 +1001,19 @@
       "Knowledge Keeper and Documentation Specialist. Structures knowledge so humans and agents can orient themselves without asking questions. Use when documenting a solved problem, updating an index after adding a new file, archiving a deprecated feature's docs, or auditing documentation for forbidden placeholders (TBD, \"as needed\", \"simply\")."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -622,32 +1028,70 @@
       "Observability Engineer. Makes a running system explainable from the outside: structured logs, metrics, distributed traces, SLOs, and actionable alerts. Use when adding logging or metrics, instrumenting with OpenTelemetry, defining the Four Golden Signals, designing SLIs/SLOs and error budgets, building dashboards, or fixing noisy or missing alerts for a system already in production."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
     "id": "resonance-ops-page-audit",
     "path": "ops/page-audit/SKILL.md",
     "archetype": "orchestration",
-    "owner": "ops.page.audit",
+    "owner": "ops.page-audit",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The Experience Auditor Swarm. Audits a live page or a whole site from first principles: the job each page exists to do, whether its value promise is real and delivered fast, clarity, the path to action, craft, function, and trust. Use when auditing a website or landing page you run, doing a first-principles UX and conversion review, asking where a site can be improved, or producing a forward-looking improvement backlog. Runs the experience lenses (conversion, design, copywriter, seo, code audit) page by page, then hands implementation to /goal and shipping to /ship."
+      "audit a page, website, or product experience"
     ],
-    "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
-    "invokes": [],
+    "negative_triggers": [
+      "implement or deploy the findings directly"
+    ],
+    "inputs": [
+      "user_request",
+      "artifact",
+      "page_audit_scope"
+    ],
+    "outputs": [
+      "user_request",
+      "recommendation",
+      "plan",
+      "evidence",
+      "conversion_scope",
+      "copy_scope",
+      "design_scope",
+      "seo_scope",
+      "test_scope",
+      "qa_scope",
+      "audit_scope",
+      "health_scope"
+    ],
+    "invokes": [
+      "resonance-ops-system-health",
+      "resonance-ops-audit",
+      "resonance-marketing-conversion",
+      "resonance-marketing-copywriter",
+      "resonance-design-designer",
+      "resonance-marketing-seo",
+      "resonance-ops-qa"
+    ],
     "side_effects": [
-      "may_write_files"
+      "may_coordinate_work",
+      "may_execute_checks"
     ],
-    "write_sets": [],
+    "write_sets": [
+      "project:experience-backlog"
+    ],
+    "entrypoints": [
+      "/page-audit"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -662,12 +1106,17 @@
       "Product Manager and Operations Architect. Defines what to build and why, using Working Backwards, RICE scoring, and PMF diagnostics. Use when a feature idea needs scoping, when a roadmap needs prioritization, when running an L10/EOS meeting, or when validating product-market fit with the Sean Ellis test."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -681,12 +1130,17 @@
       "Chief of Staff and Operations Engineer. Eliminates bottlenecks, enforces high-signal async communication, and projects team velocity using data. Use when analyzing team workload, grooming a backlog, auditing communication health, or projecting sprint landing dates via velocity-based burndown."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -700,13 +1154,19 @@
       "Quality Assurance Specialist. Proves that the system works, or breaks it trying. Use when writing a test plan, auditing test coverage against the 8-Path Matrix, writing destructive test cases, building an LLM eval suite, or performing a verification audit before a release."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -721,13 +1181,19 @@
       "Essentialist Refactor Specialist. Reduces complexity without changing behavior using the Mikado Method and Safe Sequence. Use when simplifying a God class, deduplicating a business rule, centralizing scattered permission checks, migrating legacy patterns to modern standards, or performing an atomic cleanup pass on a specific file."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -742,13 +1208,19 @@
       "The Analytics Officer. Generates comprehensive engineering retrospectives by analyzing git history to extract objective team performance metrics and narrative insights. Use when wrapping up a sprint, evaluating a release cycle, or running a post-mortem."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -763,13 +1235,19 @@
       "Code Reviewer and Gatekeeper. Ensures only high-quality, maintainable, and secure code reaches the main branch via classified finding reports (P0-P3). Use when reviewing a PR, auditing an AI/LLM code change, performing a pre-landing safety check, or when receiving and acting on review feedback without reflexive agreement."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -777,20 +1255,26 @@
     "id": "resonance-ops-second-opinion",
     "path": "ops/second-opinion/SKILL.md",
     "archetype": "procedure",
-    "owner": "ops.second.opinion",
+    "owner": "ops.second-opinion",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "Independent second-model review for concrete diffs and decision artifacts. Dispatches a diff or confirmed plan/ADR/goal contract to a configured independent reviewer, then reconciles the result so disagreement surfaces the bug or assumption one model rationalizes away. Use before merging a risky change, as the final gate in a goal loop, before a high-risk one-way decision, or when the user asks for a second opinion, cross-model review, independent check, or decision review."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -805,13 +1289,19 @@
       "Security Auditor Specialist. Verifies defenses through STRIDE threat modeling, authorization model audits, and the 6-layer security ensemble. Use when reviewing a PR for vulnerabilities, hardening infrastructure headers, auditing authorization consistency across 6 layers, performing a STRIDE threat model on a new system design, or checking AI features for prompt injection risks."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -826,13 +1316,19 @@
       "The Logistics Officer. Safely transports code to the user using the ShipIt protocol. Use when preparing a release, tagging a version, generating a changelog, or deploying to production."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -840,20 +1336,26 @@
     "id": "resonance-ops-skill-author",
     "path": "ops/skill-author/resonance-skill-author/SKILL.md",
     "archetype": "procedure",
-    "owner": "ops.skill.author",
+    "owner": "ops.skill-author",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "Authors, audits, and hardens Resonance skills with the Forge compiler. Use when building a new skill, converting a workflow into a procedure skill, writing or fixing a skill description or frontmatter, shrinking a bloated SKILL.md, adding evals, or running the skill validator. Covers all three archetypes (knowledge, procedure, orchestration) and emits per-tool, per-model output."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -861,23 +1363,42 @@
     "id": "resonance-ops-system-health",
     "path": "ops/system-health/SKILL.md",
     "archetype": "orchestration",
-    "owner": "ops.system.health",
+    "owner": "ops.system-health",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The Doctor. Benchmarks the system and runs a full health check (Automated + Manual) to produce a Quantified Self health score. Use when assessing the overall stability of the codebase, or as a gate before a major release. Drives qa and security agents."
+      "score repository or system health"
     ],
-    "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "negative_triggers": [
+      "mutate the system being scored"
+    ],
+    "inputs": [
+      "user_request",
+      "artifact",
+      "health_scope"
+    ],
+    "outputs": [
+      "user_request",
+      "recommendation",
+      "evidence",
+      "test_scope",
+      "qa_scope",
+      "security_scope"
+    ],
     "invokes": [
       "resonance-ops-qa",
       "resonance-ops-security"
     ],
     "side_effects": [
-      "may_write_files"
+      "may_coordinate_work",
+      "may_execute_checks"
     ],
-    "write_sets": [],
+    "write_sets": [
+      "project:health-report"
+    ],
+    "entrypoints": [
+      "/system-health"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -885,20 +1406,26 @@
     "id": "resonance-ops-update-resonance",
     "path": "ops/update-resonance/SKILL.md",
     "archetype": "procedure",
-    "owner": "ops.update.resonance",
+    "owner": "ops.update-resonance",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "The Maintainer. Upgrades the Resonance framework kernel with a preflight plan, backup, scoped replacement, rollback path, and verification. Use when migrating a project to a new version of Resonance."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -906,20 +1433,26 @@
     "id": "resonance-ops-update-roadmap",
     "path": "ops/update-roadmap/SKILL.md",
     "archetype": "procedure",
-    "owner": "ops.update.roadmap",
+    "owner": "ops.update-roadmap",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "The Synchronizer. Realigns the project map (state.md) with the territory (git history). Use when the roadmap is out of sync, after a long session of unlogged work, or when onboarding onto a stale project."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -934,13 +1467,19 @@
       "Tone of Voice Architect. Extracts the behavioral voice DNA of a Person, Brand, or Role/Character and compiles it into a portable, high-fidelity voice profile. Use when capturing an individual's writing style, documenting a brand voice, defining a character or persona, ghostwriting in someone's voice, or building a standing AI context file for consistent output."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -955,32 +1494,43 @@
       "Hiring and People Specialist. Runs a founder's hire end to end with structured, evidence-based rigor: outcome scorecards, interview loops, bias-controlled debriefs, offers, comp bands, and onboarding. Use when defining a role, writing a job description or scorecard, designing an interview loop, evaluating candidates, checking references, setting comp bands, making an offer, or planning a new hire's first 90 days."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
     "id": "resonance-research-market-research",
     "path": "research/market-research/SKILL.md",
     "archetype": "procedure",
-    "owner": "research.market.research",
+    "owner": "research.market-research",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "Conducts SaaS and B2B market research to identify Existential Data Points (EDPs) that transform solutions from nice-to-have to must-have. Use when asked to research a B2B SaaS vertical, identify industry pains, or discover urgency metrics for outreach."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -988,20 +1538,26 @@
     "id": "resonance-sales-account-intelligence",
     "path": "sales/account-intelligence/SKILL.md",
     "archetype": "procedure",
-    "owner": "sales.account.intelligence",
+    "owner": "sales.account-intelligence",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "Identifies which accounts deserve attention now, why, and what action to take next. Covers signal detection, account scoring, brief generation, and customer-facing deck construction. Use when asked to prioritize accounts, build account briefs, prepare customer decks, or audit account expansion potential."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -1009,20 +1565,26 @@
     "id": "resonance-sales-call-intelligence",
     "path": "sales/call-intelligence/SKILL.md",
     "archetype": "procedure",
-    "owner": "sales.call.intelligence",
+    "owner": "sales.call-intelligence",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "Analyzes sales call transcripts to extract deep persona insights, objection handling metrics, vocabulary libraries, and feature requests. Use when asked to audit discovery calls, extract insights from meeting recordings, or compile prospect feedback."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -1030,20 +1592,26 @@
     "id": "resonance-sales-cold-call",
     "path": "sales/cold-call/SKILL.md",
     "archetype": "procedure",
-    "owner": "sales.cold.call",
+    "owner": "sales.cold-call",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "Generates a structured B2B cold call script using a disarming, permission-based 6-part framework. Use when asked to write a cold call script, how to open a call, how to handle phone objections, or to plan a cold calling sales outbound campaign."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -1051,20 +1619,26 @@
     "id": "resonance-sales-lead-ops",
     "path": "sales/lead-ops/SKILL.md",
     "archetype": "procedure",
-    "owner": "sales.lead.ops",
+    "owner": "sales.lead-ops",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "Audits lead lifecycle quality, resolves ownership, maps the customer experience from form fill to follow-up, and generates daily watchlists. Use when asked to audit lead handling, find missed follow-ups, resolve lead owners, map inbound CX, or build a daily lead operating view."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -1072,20 +1646,26 @@
     "id": "resonance-sales-outbound-sequence",
     "path": "sales/outbound-sequence/SKILL.md",
     "archetype": "procedure",
-    "owner": "sales.outbound.sequence",
+    "owner": "sales.outbound-sequence",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "Builds source-backed outbound sequences from CRM data, trigger signals, and campaign context. Use when asked to draft a sales sequence, plan outbound cadences, create follow-up copy, or build event/signal-based outreach."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -1100,13 +1680,19 @@
       "Ingests sales pipeline deal data from CSV, HubSpot, or Salesforce, and renders a fully interactive, visual pipeline analytics dashboard with velocity calculations and forecasting. Use when asked to audit deal pipelines, forecast monthly sales goals, or track rep quota performance."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -1121,11 +1707,75 @@
       "Revenue Operations partner for a founder or operator who runs the revenue system, not a CRM admin. Sets funnel-stage and exit-criteria definitions as one source of truth, sizes pipeline coverage and sales capacity, designs territories, quotas, and comp plans, runs the weekly forecast call as inspection, and governs the deal desk. Use when defining quota, territory, or a comp plan; standing up a deal desk or discount thresholds; running a forecast call; fixing funnel or conversion definitions; sizing pipeline coverage or sales capacity; or building out RevOps."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
+    "entrypoints": [],
+    "failure_policy": "degrade"
+  },
+  {
+    "schema_version": 1,
+    "id": "resonance-sales-run-revenue-motion",
+    "path": "sales/run-revenue-motion/SKILL.md",
+    "archetype": "orchestration",
+    "owner": "sales.revenue-motion",
+    "activation": "manual",
+    "authority": "consequential",
+    "triggers": [
+      "run or prepare a governed sales motion"
+    ],
+    "negative_triggers": [
+      "send outreach or mutate CRM without approval"
+    ],
+    "inputs": [
+      "user_request",
+      "plan",
+      "revenue_motion_scope"
+    ],
+    "outputs": [
+      "user_request",
+      "plan",
+      "artifact",
+      "evidence",
+      "decision",
+      "account_scope",
+      "account_intelligence_scope",
+      "lead_ops_scope",
+      "outbound_scope",
+      "outbound_sequence_scope",
+      "call_scope",
+      "call_intelligence_scope",
+      "pipeline_scope",
+      "revops_scope",
+      "customer_success_scope",
+      "legal_scope"
+    ],
+    "invokes": [
+      "resonance-sales-account-intelligence",
+      "resonance-sales-lead-ops",
+      "resonance-sales-outbound-sequence",
+      "resonance-sales-call-intelligence",
+      "resonance-sales-pipeline",
+      "resonance-sales-revops",
+      "resonance-success-customer-success",
+      "resonance-ops-legal"
+    ],
+    "side_effects": [
+      "may_coordinate_work",
+      "may_write_files"
+    ],
+    "write_sets": [
+      "project:revenue-motion"
+    ],
+    "entrypoints": [
+      "skill:sales-run-revenue-motion"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -1133,15 +1783,36 @@
     "id": "resonance-software-deliver-change",
     "path": "software/deliver-change/SKILL.md",
     "archetype": "orchestration",
-    "owner": "software.deliver.change",
+    "owner": "software.delivery",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "End-to-end software delivery conductor. Use when a user wants a code change taken from goal contract through plan, implementation, verification, audit, release proposal, and retained evidence without auto-shipping."
+      "deliver a software change from request to reviewed release candidate"
     ],
-    "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "negative_triggers": [
+      "ship without review consent"
+    ],
+    "inputs": [
+      "user_request",
+      "plan",
+      "implementation_plan"
+    ],
+    "outputs": [
+      "user_request",
+      "artifact",
+      "evidence",
+      "decision",
+      "grill_scope",
+      "plan_scope",
+      "implementation_plan",
+      "test_scope",
+      "qa_scope",
+      "audit_scope",
+      "release_scope",
+      "ship_scope",
+      "review_scope",
+      "second_opinion_scope"
+    ],
     "invokes": [
       "resonance-strategy-grill",
       "resonance-strategy-plan",
@@ -1152,9 +1823,15 @@
       "resonance-ops-ship"
     ],
     "side_effects": [
+      "may_coordinate_work",
       "may_write_files"
     ],
-    "write_sets": [],
+    "write_sets": [
+      "project:software-change"
+    ],
+    "entrypoints": [
+      "skill:software-deliver-change"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -1169,12 +1846,17 @@
       "System Architect Specialist. Designs system architecture by producing C4 models, ADRs, domain maps, and failure mode registries. Use when designing a new service, reviewing an existing architecture, selecting a tech stack, modeling a RAG/AI pipeline, auditing data-flow integrity, or planning a site migration."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -1188,12 +1870,17 @@
       "Finance and Fundraising Specialist. Builds driver-based financial models, computes unit economics, and prepares founders to raise. Use when modeling revenue, costs, or runway; computing unit economics (CAC, LTV, payback, contribution margin); preparing a fundraise or pitch deck; writing an investor update; or working through cap table and dilution basics."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
@@ -1207,13 +1894,19 @@
       "The pre-build interrogation gate. Stress-tests a plan, design, or goal contract through one-question-at-a-time questioning and targeted risk passes before any code is written, so hidden assumptions surface while they are still cheap to fix. Use before starting a feature, refactor, migration, new project, or when the user says grill me, pressure-test this, poke holes, or challenge this idea. Reaches explicit shared understanding and gates implementation until the user confirms."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -1228,32 +1921,43 @@
       "Growth Strategist Specialist. Diagnoses growth bottlenecks, sets channel portfolio strategy, and prioritizes experiments across acquisition, activation, retention, referral, and revenue. Use when analyzing AARRR metrics, designing growth loops, planning a launch, choosing which channel deserves investment, or diagnosing churn."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   },
   {
     "schema_version": 1,
     "id": "resonance-strategy-gtm-thinker",
     "path": "strategy/gtm-thinker/SKILL.md",
     "archetype": "procedure",
-    "owner": "strategy.gtm.thinker",
+    "owner": "strategy.gtm-thinker",
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
       "Brainstorms, challenges, and expands B2B GTM campaigns and positioning concepts into highly strategic, executable blueprints with clear kill criteria. Use when asked to evaluate a campaign idea, challenge a positioning hypothesis, or plan a GTM initiative."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -1265,16 +1969,42 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The Inception Orchestrator. Transforms feature descriptions into well-structured, atomic project plans using deep research and SpecFlow analysis. Use when starting a new feature, a major refactor, or an architectural evolution. Drives the architect, product, and researcher subagents."
+      "turn an idea, feature, or refactor into an implementation plan"
     ],
-    "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
-    "invokes": [],
+    "negative_triggers": [
+      "execute the plan directly"
+    ],
+    "inputs": [
+      "user_request",
+      "product_scope",
+      "research_scope",
+      "researcher_scope",
+      "venture_scope"
+    ],
+    "outputs": [
+      "user_request",
+      "plan",
+      "decision",
+      "implementation_plan",
+      "product_scope",
+      "research_scope",
+      "researcher_scope",
+      "venture_scope"
+    ],
+    "invokes": [
+      "resonance-ops-product",
+      "resonance-strategy-researcher",
+      "resonance-strategy-venture"
+    ],
     "side_effects": [
-      "may_write_files"
+      "may_coordinate_work"
     ],
-    "write_sets": [],
+    "write_sets": [
+      "project:implementation-plan"
+    ],
+    "entrypoints": [
+      "/plan"
+    ],
     "failure_policy": "stop"
   },
   {
@@ -1289,13 +2019,19 @@
       "Research Specialist. Synthesizes verified, structured knowledge to remove ambiguity before building. Use when investigating a technical question, comparing library or stack options, producing a Synthesis Matrix, or writing Diataxis-compliant documentation."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -1310,13 +2046,19 @@
       "Venture Validator Specialist. Prevents waste by validating business ideas before building. Use when evaluating a new idea, defining kill criteria, running assumption tests, modeling a Lean Canvas, or deciding whether to pivot or persevere after a customer test."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
     "invokes": [],
     "side_effects": [
       "may_write_files"
     ],
     "write_sets": [],
+    "entrypoints": [],
     "failure_policy": "stop"
   },
   {
@@ -1324,18 +2066,23 @@
     "id": "resonance-success-customer-success",
     "path": "success/customer-success/SKILL.md",
     "archetype": "knowledge",
-    "owner": "success.customer.success",
+    "owner": "success.customer-success",
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
       "Customer Success Architect for the post-sale engine: onboarding to first value, health scoring, renewals, and expansion, run so net revenue retention compounds. Use when working on customer health, churn, renewal, NRR or GRR, onboarding delivery and time-to-value, QBRs, expansion or upsell timing, escalations, or support deflection."
     ],
     "negative_triggers": [],
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "guidance"
+    ],
     "invokes": [],
     "side_effects": [],
     "write_sets": [],
-    "failure_policy": "stop"
+    "entrypoints": [],
+    "failure_policy": "degrade"
   }
 ]

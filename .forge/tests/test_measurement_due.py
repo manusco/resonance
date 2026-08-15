@@ -20,18 +20,24 @@ METRICS = (
     "# Metrics\nschema: resonance-ledger/1\n\n"
     "## met-arr-q3: ARR check\ntype: metric\ncreated: 2026-07-01\nstatus: active\n"
     "value: 0\nunit: eur\nas_of: 2026-07-01\nsource: stripe\ndue: 2026-08-01\n\n"
+    "Awaiting ARR pull.\n\n"
     "## met-later: not yet\ntype: metric\ncreated: 2026-07-01\nstatus: active\n"
     "value: 0\nunit: eur\nas_of: 2026-07-01\nsource: stripe\ndue: 2026-12-01\n\n"
+    "Awaiting later ARR pull.\n\n"
     "## met-closed: already in\ntype: metric\ncreated: 2026-07-01\nstatus: closed\n"
-    "value: 100\nunit: eur\nas_of: 2026-07-31\nsource: stripe\ndue: 2026-07-01\n"
+    "value: 100\nunit: eur\nas_of: 2026-07-31\nsource: stripe\ndue: 2026-07-01\n\n"
+    "Closed reading.\n"
 )
 
 
 def _write(root: Path, metrics: str) -> None:
     ldir = root / ".resonance" / "ledger"
     ldir.mkdir(parents=True)
+    (ldir / "decisions.md").write_text("# Decisions\nschema: resonance-ledger/1\n\n", encoding="utf-8")
+    (ldir / "lessons.md").write_text("# Lessons\nschema: resonance-ledger/1\n\n", encoding="utf-8")
     (ldir / "metrics.md").write_text(metrics, encoding="utf-8")
-    (ldir / "experiments.md").write_text("# Experiments\nschema: resonance-ledger/1\n", encoding="utf-8")
+    (ldir / "customers.md").write_text("# Customers\nschema: resonance-ledger/1\n\n", encoding="utf-8")
+    (ldir / "experiments.md").write_text("# Experiments\nschema: resonance-ledger/1\n\n", encoding="utf-8")
 
 
 class MeasurementDueTest(unittest.TestCase):

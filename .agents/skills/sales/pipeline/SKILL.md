@@ -14,7 +14,7 @@ archetype: procedure
 ## Prerequisites (fail fast)
 
 - [ ] A deal dataset containing Deal Name, Stage, Amount, Close Date, and Owner is provided.
-- [ ] You have mapped custom stages to standard probability defaults.
+- [ ] You have observed stage-to-close rates by cohort. If not, mark the forecast unweighted or assumption-based.
 
 ## Algorithm
 
@@ -29,7 +29,7 @@ Copy this checklist and tick items as you go.
 ## Recovery
 
 - Close dates are missing across dataset → skip the Forecast tab and calculate velocity using creation-to-present metrics.
-- Probability values are missing → apply standard defaults (Prospecting 10%, Demo 30%, Proposal 50%, negotiation 70%, won 100%) and note it in the overview.
+- Probability values are missing → do not pretend a weighted forecast is measured. Use observed cohort conversion if available; otherwise show an unweighted forecast and a clearly labeled assumption scenario.
 - Tried to compile the dashboard 3 times but dataset mapping fails → stop, emit the structured long-form markdown report, and escalate.
 
 ## Reference Library
@@ -38,6 +38,6 @@ Copy this checklist and tick items as you go.
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory; when `.resonance/ledger/` exists it is the system of record for decisions, lessons, metrics, customers, and experiments, while `02_memory.md` keeps `[lib]` notes and pointers).
 
 > **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

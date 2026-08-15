@@ -1,42 +1,32 @@
-# Site Authority Signals - Domain Trust, Age & PageRank
+# Site Quality Signals
 
-The leak confirmed Google maintains domain-level authority metrics. The `QualityNsrNsrData` module (58 fields) contains the core site-level signals, while `PerDocData` (230+ fields) holds PageRank variants and domain age data.
+Google describes a mix of page-level, site-wide, and system-specific ranking signals. Treat leaked field names as unverified context, not as operating doctrine. Do not tell users that a specific internal field such as `siteAuthority`, `siteQualityStddev`, or `hostAge` is a deterministic control they can optimize directly.
 
-## QualityNsrNsrData - Site Quality Fields (Authority Subset)
+## Source Card
 
-| Field | Type | Description |
-|---|---|---|
-| `nsr` | number() | **Normalized Site Rank** - primary site quality score |
-| `siteAuthority` | number() | **Confirmed domain authority metric** (Google denied this existed) |
-| `siteQualityStddev` | number() | **Quality variance** - spread of page-level quality ratings |
-| `smallPersonalSite` | number() | Small personal site classifier |
-| `chromeInTotal` | number() | Chrome browser views for behavior tracking |
+- Primary source: https://developers.google.com/search/docs/appearance/ranking-systems-guide
+- Verified: 2026-08-15
+- Scope: Google Search public ranking-system guidance.
+- Review trigger: Google Search Central ranking-system update, major core update, or leaked-signal claim used in a recommendation.
 
-### siteAuthority - The Big Revelation
-Confirms what Google publicly denied for years: a domain-level authority score exists and influences rankings. Present in both:
-- `QualityNsrNsrData.siteAuthority` (site-level, type: number())
-- `CompressedQualitySignals.siteAuthority` (compressed for Qstar scoring, type: integer())
+## What To Audit
 
-Contributing factors include backlink profile, historical ranking performance, brand recognition, user engagement patterns, and content quality consistency.
+- Helpful content: does the site publish pages that solve real user tasks?
+- Reputation: are credible sources, customers, or communities referring to the site?
+- Entity clarity: can a crawler understand who owns the site, what it offers, and why it is credible?
+- Internal linking: can important pages be reached and understood through clear navigation and links?
+- Indexed-quality pattern: are thin, duplicate, obsolete, or low-trust pages bloating the index?
 
-### siteQualityStddev - Quality Consistency
-Measures how consistent quality is across all pages on the site. A **narrow stddev** (consistent quality) is better than a wide one. Implications:
-- A few excellent pages can't overcome many mediocre ones
-- Removing low-quality pages improves the stddev
-- Consistent editorial standards matter
+## Guardrails
 
-## PerDocData - Domain Age & Sandbox
-
-### hostAge - New Domain Sandbox
-Confirms the "sandbox" for new domains. New sites face restricted ranking potential until trust signals accumulate over time.
-- Low hostAge triggers conservative ranking treatment
-- Rankings are suppressed (not blocked) for competitive queries
-- The sandbox lifts gradually as trust signals accumulate (backlinks, content, entity recognition)
+- Do not promise that deleting pages improves rankings. Recommend prune, consolidate, noindex, or improve only when the page inventory proves a user or crawl-quality reason.
+- Do not claim a "sandbox" as fact. New sites often lack reputation, links, content depth, and behavioral evidence; diagnose those visible factors.
+- Do not optimize for leaked fields. Translate suspected signals into observable work: better content, cleaner architecture, source-backed claims, stronger distribution, and crawlable pages.
 
 ## Audit Checklist for Site Authority
 
-- [ ] **siteAuthority indicators**: Diverse backlinks, brand recognition, entity presence
-- [ ] **Domain age**: Established domain or new (potential sandbox)
-- [ ] **NSR consistency**: Quality maintained across ALL pages (check siteQualityStddev)
+- [ ] **Reputation indicators**: Diverse backlinks, brand recognition, entity presence
+- [ ] **New-site constraints**: Content depth, distribution, links, and entity clarity
+- [ ] **Quality consistency**: Thin, duplicate, outdated, or unsupported pages identified
 - [ ] **Internal linking**: Clear hierarchy distributing PageRank effectively
-- [ ] **Chrome/direct traffic**: chromeInTotal and directFrac indicate brand strength
+- [ ] **Direct demand**: Analytics and customer discovery show whether people seek the brand

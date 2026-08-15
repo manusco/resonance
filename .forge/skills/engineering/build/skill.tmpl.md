@@ -2,6 +2,40 @@
 name: resonance-engineering-build
 description: The execution orchestrator. Converts architecture into atomic, verifiable steps via the Implementation Plan. Use when an implementation plan is approved and ready to be built. Drives the frontend and backend engineers.
 archetype: orchestration
+owner: engineering.build
+activation: manual
+authority: consequential
+triggers:
+  - approved implementation plan ready to execute
+entrypoints:
+  - /build
+negative_triggers:
+  - ambiguous or unapproved plan
+inputs:
+  - user_request
+  - plan
+  - implementation_plan
+outputs:
+  - user_request
+  - artifact
+  - evidence
+  - backend_scope
+  - frontend_scope
+  - debugger_scope
+  - security_scope
+  - audit_scope
+side_effects:
+  - may_coordinate_work
+  - may_write_files
+write_sets:
+  - project:implementation-artifacts
+failure_policy: stop
+invokes:
+  - resonance-engineering-backend
+  - resonance-engineering-frontend
+  - resonance-engineering-debugger
+  - resonance-ops-security
+  - resonance-ops-audit
 ---
 
 # /resonance-engineering-build: execute with TDD rigor

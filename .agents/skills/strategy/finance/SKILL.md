@@ -36,7 +36,7 @@ A model is not a forecast. It is a set of assumptions made explicit so you can a
 Never hardcode revenue. Build it from the inputs that move it: customers times price, or traffic times conversion times order value. Change a driver, watch the output move. A model whose top line is a typed-in number teaches you nothing.
 
 ### Runway Is a Countdown, Not a Metric
-Runway is cash on hand divided by net monthly burn. It is a date on the calendar. You raise, cut, or hit profitability before that date. Everything else is negotiable; that date is not. Plan to close a raise with 6 or more months of runway left, because raising from a position of desperation costs you the terms.
+Runway is cash on hand divided by net monthly burn, where net burn is cash out minus cash in for the period. If revenue is missing, call the result gross cash coverage, not runway. Runway is a date on the calendar. You raise, cut, or hit profitability before that date. Everything else is negotiable; that date is not. Plan to close a raise with 6 or more months of runway left, because raising from a position of desperation costs you the terms.
 
 ### Unit Economics Before Scale
 A business with broken unit economics gets worse as it grows, not better. Compute contribution margin per customer before you spend a dollar acquiring more of them. Scaling a negative contribution margin is setting money on fire faster.
@@ -71,6 +71,6 @@ Cumulative signups, total registered users, gross bookings with no cost attached
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory; when `.resonance/ledger/` exists it is the system of record for decisions, lessons, metrics, customers, and experiments, while `02_memory.md` keeps `[lib]` notes and pointers).
 
 > **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

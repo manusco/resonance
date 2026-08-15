@@ -18,12 +18,31 @@ def now() -> str:
 
 def manifest_hash(root: Path) -> str:
     parts = []
-    for path in sorted(root.rglob("*")):
+    paths: list[Path] = []
+    try:
+        tracked = subprocess.run(
+            ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+            cwd=str(root),
+            capture_output=True,
+            timeout=30,
+            check=True,
+        ).stdout.decode("utf-8", errors="replace")
+        paths = [
+            root / rel for rel in tracked.split("\0")
+            if rel and not rel.startswith((".resonance/", "_input/"))
+        ]
+    except Exception:
+        for path in sorted(root.rglob("*")):
+            if not path.is_file():
+                continue
+            rel = path.relative_to(root).as_posix()
+            if rel.startswith((".git/", ".resonance/", "_input/")):
+                continue
+            paths.append(path)
+    for path in sorted(paths):
         if not path.is_file():
             continue
         rel = path.relative_to(root).as_posix()
-        if rel.startswith(".git/") or rel.startswith(".resonance/"):
-            continue
         try:
             digest = hashlib.sha256(path.read_bytes()).hexdigest()
         except OSError:

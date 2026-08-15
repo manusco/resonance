@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-leadership-run-operating-cycle",
+  "query": "Make us more accountable as a leadership team.",
+  "expected_behavior": [
+    "turns vague accountability into outcomes, owners, cadence, and review date",
+    "does not produce generic leadership advice only",
+    "records decisions and follow-up"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["owners", "cadence", "review date"] }
+  ]
+}

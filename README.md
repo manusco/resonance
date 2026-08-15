@@ -3,10 +3,10 @@
 > Operator-grade AI agent skills for builders. A cross-tool skill library and slash-command system for Claude Code, Cursor, Codex, and opencode, covering strategy, design, engineering, marketing, sales, and ops.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance/releases/latest"><img src="https://img.shields.io/badge/Resonance-v2.4.90-7025eb?style=for-the-badge&logo=github" alt="Resonance v2.4.90" /></a>
+    <a href="https://github.com/manusco/resonance/releases/latest"><img src="https://img.shields.io/badge/Resonance-v2.5.0-7025eb?style=for-the-badge&logo=github" alt="Resonance v2.5.0" /></a>
     <a href="https://github.com/manusco/resonance/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/manusco/resonance/ci.yml?branch=main&style=for-the-badge&label=CI" alt="CI status" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
-    <img src="https://img.shields.io/badge/Skills-65-00f2ea?style=for-the-badge" alt="65 skills" />
+    <img src="https://img.shields.io/badge/Skills-69-00f2ea?style=for-the-badge" alt="69 skills" />
     <img src="https://img.shields.io/badge/Commands-34-7025eb?style=for-the-badge" alt="34 commands" />
 </div>
 
@@ -20,7 +20,7 @@
 
 Resonance is an AI agent skill library you drop into any project. It turns a general coding agent into a roster of specialists that follow the same expert protocol every time, on whatever tool you use.
 
-- **65 domain-tested skills** across strategy, software, engineering, design, marketing, sales, ops, research, people, and success. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
+- **69 domain-tested skills** across strategy, software, engineering, design, marketing, sales, ops, research, people, and success. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
 - **34 slash commands** like `/plan`, `/grill`, `/build`, `/debug`, `/design`, `/test`, `/improve`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
 - **Cross-tool by design.** One source compiles to the native format of every major agent tool. The `SKILL.md` / `AGENTS.md` open standard is the shared content; the Forge emits the per-tool command shims and the per-tool context bridge, so the operating standard, the commands, and the project memory all load after a clone in Claude Code, Cursor, Codex, opencode, and Antigravity.
 - **A project memory** (`.resonance/`) that loads at the start of every session and the agent writes back to. It does not forget your architecture, your decisions, or your voice.
@@ -88,14 +88,16 @@ Every command is a structured procedure with a Definition of Done, not a loose p
 
 ## The skill domains
 
-65 skills across 10 domains, each a self-contained protocol backed by reference docs.
+69 skills across 12 domains, each a self-contained protocol backed by reference docs.
 
 - **Strategy**: `plan`, `grill`, `architect`, `venture`, `finance`, `growth`, `researcher`, `gtm-thinker`. Planning, system design, business and financial modeling, fundraising, and pre-build interrogation.
 - **Software**: `deliver-change`. End-to-end software delivery from contract through plan, build, evidence, audit, and release proposal without auto-shipping.
+- **Finance**: `run-operating-cycle`. Actuals, runway, scenarios, decisions, and metric follow-up from sourced data.
+- **Leadership**: `run-operating-cycle`. Goals, decisions, delegation, hiring, feedback, cadence, and operating reviews.
 - **Engineering**: `backend`, `frontend`, `mobile`, `database`, `devops`, `debugger`, `build`, `automation`, `performance`, `game-dev`, `ai-engineering`. Build, debug, and ship, including AI and LLM products built eval-first, with defense-in-depth and deterministic tests.
 - **Design**: `designer`, `studio`. First-principles UI craft: optical precision, perceptual color (OKLCH), typographic hierarchy, motion with physics, the subconscious detail layer, and cross-canvas design from phone to TV.
-- **Marketing**: `seo`, `conversion`, `copywriter`, `content-distribution`, `paid-acquisition`, `analytics`, `lifecycle`. Search and GEO, conversion, organic distribution, paid media, measurement and attribution, and the full lifecycle from activation to win-back.
-- **Sales**: `pipeline`, `cold-call`, `call-intelligence`, `account-intelligence`, `lead-ops`, `outbound-sequence`, `revops`. Qualification, outreach, call analysis, and revenue operations.
+- **Marketing**: `seo`, `conversion`, `copywriter`, `content-distribution`, `paid-acquisition`, `analytics`, `lifecycle`, `run-campaign`. Search and GEO, conversion, organic distribution, paid media, measurement, lifecycle, and governed campaign preparation.
+- **Sales**: `pipeline`, `cold-call`, `call-intelligence`, `account-intelligence`, `lead-ops`, `outbound-sequence`, `revops`, `run-revenue-motion`. Qualification, outreach, call analysis, forecasting, and governed revenue motions.
 - **Ops**: `goal`, `founder-os`, `improve`, `audit`, `page-audit`, `qa`, `security`, `reviewer`, `second-opinion`, `refactor`, `ship`, `incident`, `observability`, `legal`, `librarian`, `explain`, `handover`, `retro`, `product`, `productivity`, `voice`, `core`, `skill-author`. Quality, security, delivery, reliability, incident response, legal and GDPR compliance, evidence-based self-improvement, teaching the operator, the founder operating system, and governance.
 - **Research**: `market-research`. Market sizing, competitive intelligence, and positioning.
 - **People**: `hiring`. Scorecards, structured interview loops, evidence-based debriefs, comp bands, and onboarding.
@@ -134,16 +136,16 @@ Working in the Resonance repo directly is the simplest path. For another project
 
 **macOS / Linux**
 ```bash
-gh repo clone manusco/resonance ~/resonance-source -- --branch v2.4.88
-python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version 2.4.88
-python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version 2.4.88 --apply
+gh repo clone manusco/resonance ~/resonance-source -- --branch v2.5.0
+python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version 2.5.0
+python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version 2.5.0 --apply
 ```
 
 **Windows (PowerShell)**
 ```powershell
-gh repo clone manusco/resonance "$env:TEMP\resonance-source" -- --branch v2.4.88
-py "$env:TEMP\resonance-source\.forge\update.py" --source "$env:TEMP\resonance-source" --target . --version 2.4.88
-py "$env:TEMP\resonance-source\.forge\update.py" --source "$env:TEMP\resonance-source" --target . --version 2.4.88 --apply
+gh repo clone manusco/resonance "$env:TEMP\resonance-source" -- --branch v2.5.0
+py "$env:TEMP\resonance-source\.forge\update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.0
+py "$env:TEMP\resonance-source\.forge\update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.0 --apply
 ```
 
 The first command is a dry run. Review its JSON plan before `--apply`. For an older installation with no ownership manifest, check out its installed Resonance version and pass that checkout as `--source` to the new updater with `--adopt`. Adoption claims only byte-identical released files and changes no framework file. Then use the new version checkout for the dry run and apply. A project-owned `AGENTS.md` or modified framework file remains a conflict until you review and resolve it.

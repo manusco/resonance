@@ -2,6 +2,35 @@
 name: resonance-ops-improve
 description: The self-improving loop. Reads the eval scorecard, finds the skills that show no measured lift, sharpens the skill body or its rubric, and keeps a change only when it raises the measured lift. Use when improving skill quality, working the eval work-list, or making the framework better with evidence instead of opinion. Manual-only (it edits skills and rebuilds).
 archetype: orchestration
+owner: ops.improve
+activation: manual
+authority: consequential
+triggers:
+  - improve Resonance skills or evals with measured lift
+entrypoints:
+  - /improve
+negative_triggers:
+  - polish skills by opinion without remeasurement
+inputs:
+  - user_request
+  - evidence
+  - skill_author_scope
+outputs:
+  - user_request
+  - artifact
+  - evidence
+  - skill_author_scope
+  - review_scope
+  - second_opinion_scope
+side_effects:
+  - may_coordinate_work
+  - may_write_files
+write_sets:
+  - framework:skill-improvement
+failure_policy: stop
+invokes:
+  - resonance-ops-skill-author
+  - resonance-ops-second-opinion
 ---
 
 # /resonance-ops-improve: raise the floor, and prove you did

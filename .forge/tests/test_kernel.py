@@ -1,6 +1,7 @@
 """Tests for the small Resonance evidence kernel."""
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -204,18 +205,56 @@ class KernelTest(unittest.TestCase):
     def test_superseded_ledger_entries_are_not_active(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
+            for name, title in {
+                "lessons": "Lessons",
+                "metrics": "Metrics",
+                "customers": "Customers",
+                "experiments": "Experiments",
+            }.items():
+                (root / f"{name}.md").write_text(
+                    f"# {title}\nschema: resonance-ledger/1\n\n",
+                    encoding="utf-8",
+                )
             (root / "decisions.md").write_text(
                 "# Decisions\nschema: resonance-ledger/1\n\n"
                 "## dec-old: old call\n"
-                "type: decision\ncreated: 2026-08-01\nstatus: superseded\n\n"
+                "type: decision\ncreated: 2026-08-01\nstatus: superseded\n"
+                "confidence: medium\nreview_due: 2026-10-01\nsuperseded_by: dec-new\n\n"
                 "Use the old thing.\n\n"
                 "## dec-new: new call\n"
-                "type: decision\ncreated: 2026-08-02\nstatus: active\n\n"
+                "type: decision\ncreated: 2026-08-02\nstatus: active\n"
+                "confidence: high\nreview_due: 2026-10-01\nsupersedes: dec-old\n\n"
                 "Use the new thing.\n",
                 encoding="utf-8",
             )
             ids = [e["id"] for e in active_entries(root)]
             self.assertEqual(ids, ["dec-new"])
+
+    def test_manifest_hash_includes_nonignored_untracked_files(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            subprocess.run(["git", "init"], cwd=root, check=True, stdout=subprocess.DEVNULL)
+            (root / "tracked.txt").write_text("a", encoding="utf-8")
+            subprocess.run(["git", "add", "tracked.txt"], cwd=root, check=True)
+            before = manifest_hash(root)
+            (root / "new-source.txt").write_text("untracked but real", encoding="utf-8")
+            after = manifest_hash(root)
+            self.assertNotEqual(before, after)
+
+    def test_manifest_hash_excludes_private_and_ignored_files(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            subprocess.run(["git", "init"], cwd=root, check=True, stdout=subprocess.DEVNULL)
+            (root / ".gitignore").write_text("ignored.txt\n", encoding="utf-8")
+            subprocess.run(["git", "add", ".gitignore"], cwd=root, check=True)
+            before = manifest_hash(root)
+            (root / "ignored.txt").write_text("ignored", encoding="utf-8")
+            (root / "_input").mkdir()
+            (root / "_input" / "inspiration.txt").write_text("private", encoding="utf-8")
+            (root / ".resonance").mkdir()
+            (root / ".resonance" / "state.json").write_text("local", encoding="utf-8")
+            after = manifest_hash(root)
+            self.assertEqual(before, after)
 
     def test_manifest_contains_contract_fields(self):
         with tempfile.TemporaryDirectory() as d:
@@ -229,6 +268,21 @@ class KernelTest(unittest.TestCase):
                     "name: resonance-ops-goal\n"
                     "description: drive goals\n"
                     "archetype: orchestration\n"
+                    "activation: manual\n"
+                    "authority: consequential\n"
+                    "triggers:\n"
+                    "  - drive goal\n"
+                    "entrypoints:\n"
+                    "  - /goal\n"
+                    "inputs:\n"
+                    "  - user_request\n"
+                    "outputs:\n"
+                    "  - test_scope\n"
+                    "side_effects:\n"
+                    "  - may_coordinate_work\n"
+                    "write_sets:\n"
+                    "  - project:goal-state\n"
+                    "failure_policy: stop\n"
                     "invokes:\n"
                     "  - resonance-ops-qa\n"
                     "---\n",

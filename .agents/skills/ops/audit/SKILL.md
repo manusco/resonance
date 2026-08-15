@@ -2,6 +2,36 @@
 name: resonance-ops-audit
 description: The Gatekeeper and Auditor Swarm. Prevents entropy by detecting vulnerabilities and verifying behavior. Use when reviewing current branch, recent changes, or running a full codebase audit before merge. Drives the security, reviewer, qa, and architect subagents.
 archetype: orchestration
+owner: ops.audit
+activation: manual
+authority: consequential
+triggers:
+  - audit a repository, PR, release, or system surface
+entrypoints:
+  - /audit
+negative_triggers:
+  - implement the fix directly
+inputs:
+  - user_request
+  - artifact
+  - audit_scope
+outputs:
+  - user_request
+  - recommendation
+  - evidence
+  - security_scope
+  - test_scope
+  - qa_scope
+  - review_scope
+  - reviewer_scope
+  - architecture_scope
+  - architect_scope
+side_effects:
+  - may_coordinate_work
+  - may_execute_checks
+write_sets:
+  - project:audit-report
+failure_policy: stop
 invokes:
   - resonance-ops-security
   - resonance-ops-reviewer
@@ -66,6 +96,6 @@ You do not do the work yourself. You spawn specialists (`resonance-ops-security`
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory; when `.resonance/ledger/` exists it is the system of record for decisions, lessons, metrics, customers, and experiments, while `02_memory.md` keeps `[lib]` notes and pointers).
 
 > **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

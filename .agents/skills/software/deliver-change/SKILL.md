@@ -2,6 +2,40 @@
 name: resonance-software-deliver-change
 description: End-to-end software delivery conductor. Use when a user wants a code change taken from goal contract through plan, implementation, verification, audit, release proposal, and retained evidence without auto-shipping.
 archetype: orchestration
+owner: software.delivery
+activation: manual
+authority: consequential
+triggers:
+  - deliver a software change from request to reviewed release candidate
+entrypoints:
+  - skill:software-deliver-change
+negative_triggers:
+  - ship without review consent
+inputs:
+  - user_request
+  - plan
+  - implementation_plan
+outputs:
+  - user_request
+  - artifact
+  - evidence
+  - decision
+  - grill_scope
+  - plan_scope
+  - implementation_plan
+  - test_scope
+  - qa_scope
+  - audit_scope
+  - release_scope
+  - ship_scope
+  - review_scope
+  - second_opinion_scope
+side_effects:
+  - may_coordinate_work
+  - may_write_files
+write_sets:
+  - project:software-change
+failure_policy: stop
 invokes:
   - resonance-strategy-grill
   - resonance-strategy-plan
@@ -57,6 +91,6 @@ software work through plan, build, QA, audit, and ship proposal.
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory; when `.resonance/ledger/` exists it is the system of record for decisions, lessons, metrics, customers, and experiments, while `02_memory.md` keeps `[lib]` notes and pointers).
 
 > **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

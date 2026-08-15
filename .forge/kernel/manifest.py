@@ -5,10 +5,33 @@ from __future__ import annotations
 import json
 import re
 import sys
+from collections import defaultdict, deque
 from pathlib import Path
 
 ROOT = Path(".agents/skills")
 OUT = Path("docs/skill-manifest.json")
+VALID_ARCHETYPES = {"knowledge", "procedure", "orchestration"}
+VALID_ACTIVATION = {"automatic", "manual"}
+VALID_AUTHORITY = {"advisory", "consequential", "human"}
+VALID_FAILURE_POLICY = {"stop", "degrade", "escalate"}
+COMPATIBLE_CHANNELS = {"user_request", "plan", "evidence", "decision", "artifact", "recommendation"}
+UNSAFE_WRITE_SETS = {".", "./", "*", "**", "AGENTS.md", ".agents", ".forge", ".resonance"}
+CHANNEL_ALIASES = {
+    "copywriter_scope": "copy_scope",
+    "studio_scope": "creative_scope",
+    "founder_os_scope": "founder_os_scope",
+    "skill_author_resonance_skill_author_scope": "skill_author_scope",
+}
+LIST_FIELDS = {
+    "triggers",
+    "negative_triggers",
+    "inputs",
+    "outputs",
+    "invokes",
+    "side_effects",
+    "write_sets",
+    "entrypoints",
+}
 
 
 def frontmatter(text: str) -> dict:
@@ -33,35 +56,244 @@ def frontmatter(text: str) -> dict:
     return data
 
 
+def skill_id_to_path(skill_id: str) -> str:
+    prefix = "resonance-"
+    raw = skill_id[len(prefix):] if skill_id.startswith(prefix) else skill_id
+    parts = raw.split("-")
+    if len(parts) < 2:
+        return raw
+    domains = {
+        "design",
+        "engineering",
+        "finance",
+        "leadership",
+        "marketing",
+        "ops",
+        "people",
+        "research",
+        "sales",
+        "software",
+        "strategy",
+        "success",
+    }
+    if parts[0] in domains:
+        return parts[0] + "/" + "-".join(parts[1:])
+    return raw.replace("-", "/")
+
+
+def list_field(fm: dict, key: str) -> list[str]:
+    value = fm.get(key, [])
+    if isinstance(value, list):
+        return [str(item).strip() for item in value if str(item).strip()]
+    if isinstance(value, str) and value.strip():
+        return [value.strip()]
+    return []
+
+
+def inferred_outputs(archetype: str) -> list[str]:
+    if archetype == "orchestration":
+        return ["plan", "evidence", "decision"]
+    if archetype == "procedure":
+        return ["artifact", "recommendation"]
+    return ["guidance"]
+
+
+def inferred_side_effects(archetype: str) -> list[str]:
+    if archetype == "orchestration":
+        return ["may_coordinate_work", "may_write_files"]
+    if archetype == "procedure":
+        return ["may_write_files"]
+    return []
+
+
+def default_failure_policy(archetype: str) -> str:
+    return "stop" if archetype in {"orchestration", "procedure"} else "degrade"
+
+
+def normalize_entry(sk: Path, root: Path) -> dict | None:
+    text = sk.read_text(encoding="utf-8", errors="replace")
+    fm = frontmatter(text)
+    if not fm.get("name"):
+        return None
+    archetype = str(fm.get("archetype", "knowledge"))
+    orchestration = archetype == "orchestration"
+    inputs = list_field(fm, "inputs") if orchestration else list_field(fm, "inputs") or ["user_request"]
+    side_effects = (
+        list_field(fm, "side_effects")
+        if orchestration else list_field(fm, "side_effects") or inferred_side_effects(archetype)
+    )
+    authority = str(
+        fm.get("authority", "" if orchestration else "consequential" if side_effects else "advisory")
+    )
+    return {
+        "schema_version": 1,
+        "id": str(fm["name"]),
+        "path": sk.relative_to(root).as_posix(),
+        "archetype": archetype,
+        "owner": str(
+            fm.get("owner", "" if orchestration else skill_id_to_path(str(fm["name"])).replace("/", "."))
+        ),
+        "activation": str(fm.get(
+            "activation",
+            "" if orchestration else "manual" if archetype == "procedure" else "automatic",
+        )),
+        "authority": authority,
+        "triggers": list_field(fm, "triggers") if orchestration else list_field(fm, "triggers") or [str(fm.get("description", ""))],
+        "negative_triggers": list_field(fm, "negative_triggers"),
+        "inputs": inputs,
+        "outputs": list_field(fm, "outputs") if orchestration else list_field(fm, "outputs") or inferred_outputs(archetype),
+        "invokes": list_field(fm, "invokes"),
+        "side_effects": side_effects,
+        "write_sets": list_field(fm, "write_sets"),
+        "entrypoints": list_field(fm, "entrypoints"),
+        "failure_policy": str(fm.get("failure_policy", "" if orchestration else default_failure_policy(archetype))),
+    }
+
+
 def manifest(root: Path = ROOT) -> list[dict]:
     out = []
     for sk in sorted(root.glob("**/SKILL.md")):
-        text = sk.read_text(encoding="utf-8", errors="replace")
-        fm = frontmatter(text)
-        if not fm.get("name"):
-            continue
-        archetype = fm.get("archetype", "knowledge")
-        side_effects = []
-        if archetype in ("procedure", "orchestration"):
-            side_effects.append("may_write_files")
-        out.append({
-            "schema_version": 1,
-            "id": fm["name"],
-            "path": sk.relative_to(root).as_posix(),
-            "archetype": archetype,
-            "owner": str(fm["name"]).replace("resonance-", "").replace("-", "."),
-            "activation": "manual" if archetype in ("procedure", "orchestration") else "automatic",
-            "authority": "consequential" if side_effects else "advisory",
-            "triggers": [fm.get("description", "")],
-            "negative_triggers": [],
-            "inputs": [],
-            "outputs": [],
-            "invokes": fm.get("invokes", []) if isinstance(fm.get("invokes"), list) else [],
-            "side_effects": side_effects,
-            "write_sets": [],
-            "failure_policy": "stop",
-        })
+        entry = normalize_entry(sk, root)
+        if entry:
+            out.append(entry)
     return out
+
+
+def validate(data: list[dict], roots: list[str] | None = None) -> list[str]:
+    errors: list[str] = []
+    by_id = {entry["id"]: entry for entry in data}
+    if len(by_id) != len(data):
+        seen: set[str] = set()
+        for entry in data:
+            sid = entry["id"]
+            if sid in seen:
+                errors.append(f"skill manifest: duplicate id '{sid}'")
+            seen.add(sid)
+    owners: dict[str, list[str]] = defaultdict(list)
+    for entry in data:
+        sid = entry["id"]
+        owners[entry.get("owner", "")].append(sid)
+        if entry.get("schema_version") != 1:
+            errors.append(f"skill manifest: '{sid}' schema_version must be 1")
+        if entry.get("archetype") not in VALID_ARCHETYPES:
+            errors.append(f"skill manifest: '{sid}' has invalid archetype '{entry.get('archetype')}'")
+        if entry.get("activation") not in VALID_ACTIVATION:
+            errors.append(f"skill manifest: '{sid}' has invalid activation '{entry.get('activation')}'")
+        if entry.get("authority") not in VALID_AUTHORITY:
+            errors.append(f"skill manifest: '{sid}' has invalid authority '{entry.get('authority')}'")
+        if entry.get("failure_policy") not in VALID_FAILURE_POLICY:
+            errors.append(
+                f"skill manifest: '{sid}' has invalid failure_policy '{entry.get('failure_policy')}'"
+            )
+        for key in LIST_FIELDS:
+            if not isinstance(entry.get(key), list):
+                errors.append(f"skill manifest: '{sid}' field '{key}' must be a list")
+        for required in ("inputs", "outputs"):
+            if not entry.get(required):
+                errors.append(f"skill manifest: '{sid}' field '{required}' must not be empty")
+        if entry.get("archetype") == "orchestration":
+            if not entry.get("owner"):
+                errors.append(f"skill manifest: orchestration '{sid}' must declare owner")
+            if not entry.get("invokes"):
+                errors.append(f"skill manifest: orchestration '{sid}' must declare invokes")
+            if entry.get("failure_policy") == "degrade":
+                errors.append(f"skill manifest: orchestration '{sid}' cannot default to degrade")
+            if not entry.get("write_sets"):
+                errors.append(f"skill manifest: orchestration '{sid}' must declare write_sets")
+            for write_set in entry.get("write_sets", []):
+                if write_set in UNSAFE_WRITE_SETS:
+                    errors.append(f"skill manifest: orchestration '{sid}' has unsafe write_set '{write_set}'")
+            if not entry.get("entrypoints"):
+                errors.append(f"skill manifest: orchestration '{sid}' must declare entrypoints")
+    for owner, skills in owners.items():
+        if not owner:
+            errors.append("skill manifest: empty owner")
+        if len(skills) > 1:
+            errors.append(f"skill manifest: owner '{owner}' assigned to multiple skills: {skills}")
+    for entry in data:
+        for target in entry.get("invokes", []):
+            if target not in by_id:
+                errors.append(f"skill manifest: '{entry['id']}' invokes unknown skill '{target}'")
+                continue
+            caller = entry
+            callee = by_id[target]
+            parts = target.replace("resonance-", "").split("-")
+            target_channel = "_".join(parts[1:]) + "_scope" if len(parts) > 1 else ""
+            domain_channel = parts[0] + "_scope" if parts else ""
+            alias_channel = CHANNEL_ALIASES.get(target_channel, "")
+            shared = set(caller.get("outputs", [])) & set(callee.get("inputs", []))
+            if (
+                not (shared - {"user_request"})
+                and target_channel not in caller.get("outputs", [])
+                and domain_channel not in caller.get("outputs", [])
+                and alias_channel not in caller.get("outputs", [])
+            ):
+                errors.append(f"skill manifest: '{entry['id']}' cannot satisfy inputs for '{target}'")
+            if caller.get("authority") == "advisory" and callee.get("authority") in {"consequential", "human"}:
+                errors.append(f"skill manifest: '{entry['id']}' escalates authority through '{target}'")
+    for left in data:
+        for right in data:
+            if left["id"] >= right["id"]:
+                continue
+            shared_writes = set(left.get("write_sets", [])) & set(right.get("write_sets", []))
+            if shared_writes:
+                errors.append(
+                    f"skill manifest: write_set collision {sorted(shared_writes)} between "
+                    f"'{left['id']}' and '{right['id']}'"
+                )
+    graph_roots = roots or [entry["id"] for entry in data if entry.get("entrypoints")]
+    errors.extend(graph_errors(data, graph_roots))
+    return errors
+
+
+def graph_errors(data: list[dict], roots: list[str] | None = None) -> list[str]:
+    by_id = {entry["id"]: entry for entry in data}
+    errors: list[str] = []
+    graph = {entry["id"]: [t for t in entry.get("invokes", []) if t in by_id] for entry in data}
+    temporary: set[str] = set()
+    permanent: set[str] = set()
+    stack: list[str] = []
+
+    def visit(node: str) -> None:
+        if node in permanent:
+            return
+        if node in temporary:
+            cycle = stack[stack.index(node):] + [node]
+            errors.append(f"skill graph: cycle detected: {' -> '.join(cycle)}")
+            return
+        temporary.add(node)
+        stack.append(node)
+        for nxt in graph.get(node, []):
+            visit(nxt)
+        stack.pop()
+        temporary.remove(node)
+        permanent.add(node)
+
+    for node in graph:
+        visit(node)
+
+    inbound: dict[str, int] = defaultdict(int)
+    for targets in graph.values():
+        for target in targets:
+            inbound[target] += 1
+    start = roots or [entry["id"] for entry in data if entry.get("archetype") == "orchestration"]
+    reached: set[str] = set()
+    q = deque(start)
+    while q:
+        node = q.popleft()
+        if node in reached:
+            continue
+        reached.add(node)
+        q.extend(graph.get(node, []))
+    for entry in data:
+        if entry.get("archetype") == "procedure" and inbound[entry["id"]] == 0:
+            # Standalone procedures can be invoked directly through commands.
+            continue
+        if entry.get("archetype") == "knowledge":
+            continue
+        if entry["id"] not in reached:
+            errors.append(f"skill graph: '{entry['id']}' is not reachable from an orchestrator")
+    return errors
 
 
 def main(argv: list[str]) -> int:

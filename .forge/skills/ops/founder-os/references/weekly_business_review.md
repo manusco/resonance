@@ -54,9 +54,13 @@ A review that ends without decisions was a broadcast. Every real call the meetin
 type: decision
 created: 2026-07-15
 status: active
+confidence: medium
+review_due: 2026-08-15
 chose: pause paid search
 over: hold spend and wait another month
 evidences: met-cac-2026-07
+
+CAC is above target and lifecycle has unused capacity this month.
 ```
 
 When a later decision reverses or replaces this one, do not edit it. Supersede it: the new entry carries `supersedes: dec-cut-paid-search`, and the old one gets `status: superseded` and a `superseded_by:` line. The audit trail is the point. Six months on, the value is not the current decision but the chain of what you believed and when, and why you changed your mind. A decision log you overwrite is a decision log that has forgotten how you got here.

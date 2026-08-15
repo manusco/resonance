@@ -32,7 +32,7 @@ Google has a hard limit of 50,000 URLs per sitemap.
 ---
 
 ## 3. The "Anti-Thin" Content Layer
-To survive the "Helpful Content Update", pages must be >40% unique.
+To survive quality review, each page must have a real reason to exist. Use uniqueness checks as a diagnostic, not as a fixed threshold. A page with 80 percent unique filler can still be useless; a short page can be excellent if it fully answers the query.
 
 ### Variable Swapping vs. Logic Injection
 *   ❌ **Bad (Variable Swapping)**:
@@ -88,4 +88,4 @@ Isolate authority flow to prevent "orphans".
 - [ ] **Templates**: specialized layouts for different data types.
 - [ ] **Metadata**: Dynamic factories for Titles and OG Images.
 - [ ] **Sitemaps**: Split logic implemented.
-- [ ] **Performance**: Lighthouse score > 90 on template sample.
+- [ ] **Performance**: Core Web Vitals checked on representative templates, with field data when available. Use Lighthouse as lab evidence, not as the only pass/fail gate.

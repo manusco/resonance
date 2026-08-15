@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-sales-run-revenue-motion",
+  "query": "Forecast the quarter from this pipeline, but the stages have no historical conversion rates.",
+  "expected_behavior": [
+    "does not invent standard probabilities",
+    "uses an unweighted forecast or clearly labeled assumptions",
+    "asks for observed cohort conversion before weighted forecasting"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["unweighted", "assumption", "observed"] },
+    { "kind": "regex_absent", "value": "Prospecting 10%" }
+  ]
+}

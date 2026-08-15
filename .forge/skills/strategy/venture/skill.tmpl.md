@@ -23,7 +23,7 @@ You do not write code until you have evidence of a problem. "Kill Early" is not 
 
 Copy this checklist and tick items as you go.
 
-1. **Model**: Draft a one-page Lean Canvas covering Problem, Customer Segment, UVP, Solution, Channels, Revenue Streams, Cost Structure, and Key Metrics. → verify: all 9 boxes are populated, even if sparse.
+1. **Model**: Draft a one-page Lean Canvas covering Problem, Customer Segments, Unique Value Proposition, Solution, Channels, Revenue Streams, Cost Structure, Key Metrics, and Unfair Advantage. → verify: all 9 boxes are populated, even if sparse.
 2. **Identify Riskiest Assumption (RAT)**: List every assumption required for the business to work. Rank by (probability of being wrong × impact if wrong). The top item is the RAT. → verify: the RAT is a single, testable statement.
 3. **Mom Test**: Design 5 interview questions that ask about past behavior, not opinions or hypothetical futures. Never ask "Would you use this?" → verify: no question contains "would you" or "do you think".
 4. **Test**: Run the smoke test (interview / landing page / pre-order). Set a pass/fail threshold before you start collecting data. → verify: threshold is written down before data collection begins.

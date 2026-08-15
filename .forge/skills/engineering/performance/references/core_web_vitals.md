@@ -16,8 +16,16 @@
 
 ## 2. The Verification
 
-*   **Lighthouse**: Run it locally. Score > 90.
-*   **WebPageTest**: Run it on 3G.
-*   **RUM (Real User Monitoring)**: Vercel Analytics / Sentry.
+## Source Card
 
-> 🔴 **Rule**: If LCP > 2.5s, the feature is not shipped.
+- Primary source: https://web.dev/articles/vitals
+- Verified: 2026-08-15
+- Scope: Core Web Vitals field-measurement guidance.
+- Review trigger: Google updates Web Vitals thresholds or replaces a Core Web Vital.
+
+*   **Field data first**: judge Core Web Vitals at the 75th percentile when real-user data exists.
+*   **Lighthouse**: useful lab signal, not production truth. Use it to reproduce and debug.
+*   **WebPageTest**: run on representative devices and networks, not a single arbitrary 3G preset.
+*   **RUM (Real User Monitoring)**: Vercel Analytics / Sentry / browser APIs.
+
+> 🔴 **Rule**: If field or representative lab data misses the product's Core Web Vitals target, either fix it, document a conscious exception, or ship as DONE_WITH_CONCERNS.

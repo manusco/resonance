@@ -11,8 +11,9 @@
     *   *Step 3*: Backfill Data.
     *   *Step 4*: Make column required (Not Null).
 2.  **No Locks (Zero Downtime)**:
-    *   Avoid `ALTER TABLE` on large tables without `CONCURRENTLY`.
-    *   Create Indexes `CONCURRENTLY`.
+    *   Do not use invalid PostgreSQL such as `ALTER TABLE ... CONCURRENTLY`.
+    *   Create indexes with `CREATE INDEX CONCURRENTLY` when PostgreSQL supports it and the migration tool can run outside a transaction.
+    *   Treat table rewrites, backfills, and constraints as staged operations. Add nullable first, backfill in batches, validate, then constrain.
 
 ## 2. The Verification
 

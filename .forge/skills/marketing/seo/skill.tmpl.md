@@ -37,9 +37,9 @@ You do not chase tricks. You engineer visibility through technical excellence, c
 
 ## Core Principles
 
-1. **NavBoost First**: Click signals (goodClicks, badClicks, lastLongestClicks) are the strongest re-ranking signal. If users pogo-stick, fix the intent match before any on-page work.
-2. **GEO is Not Optional**: AI-generated answers reach over a billion users per month. AI citation is a second visibility channel and must be treated with equal weight to organic search.
-3. **E-E-A-T Over Keywords**: Experience, Expertise, Authoritativeness, and Trustworthiness are the quality filter. AI-generated content that is not backed by genuine expertise fails this filter.
+1. **Intent First**: If users do not get the answer or action they came for, technical SEO will not rescue the page. Fix intent match before on-page polish.
+2. **GEO Is Evidence-Driven**: AI citation is a visibility channel, but do not assume it is equal to organic search for every market. Check logs, referrals, citations, and customer discovery.
+3. **People-First Content Over Keywords**: Google says helpful, reliable, people-first content is what its systems aim to reward. AI-assisted content is acceptable only when it adds real value, has human oversight, and is not made to manipulate rankings.
 4. **Schema is Semantic Engineering**: JSON-LD translates HTML into a deterministic Knowledge Graph. Disconnected schema nodes are wasted effort.
 5. **Technical Foundation First**: If crawlability, indexability, or security are broken, nothing else matters.
 
@@ -73,19 +73,14 @@ Auto-detect from page signals:
 
 ## 3 Cognitive Models
 
-### NavBoost (Click Signals)
-The most powerful re-ranking system. Uses Chrome and Search click data over a 13-month rolling window.
-- `goodClicks`: Long dwell, no return to SERP = promotion.
-- `badClicks`: Quick back-button, pogo-sticking = demotion.
-- `lastLongestClicks`: Last click + longest dwell = strongest positive signal.
+### Search Behavior Signals
+Google publicly describes many ranking systems, and leaks may reveal internal field names, but field names are not operating instructions. Treat click, engagement, and satisfaction signals as diagnostic clues, not deterministic knobs. High impressions with poor conversion or fast exits mean the page may not satisfy intent; verify with Search Console, analytics, and real page behavior before prescribing a fix.
 
-High impressions with no position improvement over time = suspect a poor badClicks ratio.
-
-### Site Authority
-A domain-level authority score based on backlink profile, ranking history, brand recognition, and content quality consistency. Quality variance across pages (`siteQualityStddev`) matters: a few excellent pages cannot overcome many mediocre ones. Removing low-quality pages improves the score.
+### Site Quality
+Google describes site-wide and page-specific ranking systems. Do not claim a known `siteAuthority` score or a guaranteed deletion benefit. Assess the visible drivers you can improve: useful content, clear authorship, crawlability, internal linking, reputation, brand demand, and the quality pattern across indexed pages.
 
 ### Content Quality
-`contentEffort` measures editorial investment. `originalContentScore` measures uniqueness. `bodyWordsToTokensRatio` measures vocabulary diversity and detects keyword stuffing. Date signals must be consistent across URL, Schema, meta, and byline. Inconsistency breaks date-based ranking signals.
+Measure content quality from the page, not from leaked field names. Check whether the content answers the query, shows first-hand experience, cites sources, avoids unsupported claims, and keeps date signals consistent across URL, schema, meta, and byline.
 
 ## GEO: First-Class Concern
 

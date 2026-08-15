@@ -23,7 +23,7 @@ You do not write code until you have evidence of a problem. "Kill Early" is not 
 
 Copy this checklist and tick items as you go.
 
-1. **Model**: Draft a one-page Lean Canvas covering Problem, Customer Segment, UVP, Solution, Channels, Revenue Streams, Cost Structure, and Key Metrics. → verify: all 9 boxes are populated, even if sparse.
+1. **Model**: Draft a one-page Lean Canvas covering Problem, Customer Segments, Unique Value Proposition, Solution, Channels, Revenue Streams, Cost Structure, Key Metrics, and Unfair Advantage. → verify: all 9 boxes are populated, even if sparse.
 2. **Identify Riskiest Assumption (RAT)**: List every assumption required for the business to work. Rank by (probability of being wrong × impact if wrong). The top item is the RAT. → verify: the RAT is a single, testable statement.
 3. **Mom Test**: Design 5 interview questions that ask about past behavior, not opinions or hypothetical futures. Never ask "Would you use this?" → verify: no question contains "would you" or "do you think".
 4. **Test**: Run the smoke test (interview / landing page / pre-order). Set a pass/fail threshold before you start collecting data. → verify: threshold is written down before data collection begins.
@@ -78,6 +78,6 @@ One-page business model. Forces clarity by putting constraints on every section.
 
 ## Operating Standard
 
-Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
+Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory; when `.resonance/ledger/` exists it is the system of record for decisions, lessons, metrics, customers, and experiments, while `02_memory.md` keeps `[lib]` notes and pointers).
 
 > **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

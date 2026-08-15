@@ -52,6 +52,7 @@ jobs:
         run: |
           python .forge/eval_integrity.py
           python .forge/run_evals.py --all --check
+          python .forge/orch_eval.py --check
 
       - name: Run Forge tests
         run: python .forge/tests/run.py

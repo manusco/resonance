@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-sales-run-revenue-motion",
+  "query": "Build a revenue motion for 50 target accounts, including research, outbound, call prep, pipeline forecast, and handoff.",
+  "expected_behavior": [
+    "defines ICP, jurisdiction, CRM source, and send authority",
+    "routes to account intelligence, lead ops, outbound, call intelligence, pipeline, revops, and customer success as needed",
+    "does not send outreach or mutate CRM without approval",
+    "labels forecast assumptions when observed conversion is missing"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["jurisdiction", "approval", "forecast"] },
+    { "kind": "regex_absent", "value": "I will update the CRM" }
+  ]
+}

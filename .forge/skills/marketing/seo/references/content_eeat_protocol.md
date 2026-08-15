@@ -1,12 +1,20 @@
 # Content Quality & E-E-A-T Protocol
 
-> Updated for September 2025 Quality Rater Guidelines.
+> Source-grounded content-quality guidance. Do not treat leaked field names, word counts, or readability formulas as ranking factors.
+
+## Source Card
+
+- Primary source: https://developers.google.com/search/docs/fundamentals/creating-helpful-content
+- Secondary source: https://developers.google.com/search/blog/2023/02/google-search-and-ai-content
+- Verified: 2026-08-15
+- Scope: Google Search guidance on helpful, reliable, people-first content and AI-assisted content.
+- Review trigger: Google Search Central updates helpful content, spam policy, or quality rater guidance.
 
 ## Contents
 
 - [1. E-E-A-T Framework](#1-e-e-a-t-framework)
 - [2. Content Metrics](#2-content-metrics)
-- [3. AI Content Assessment (Sept 2025 QRG)](#3-ai-content-assessment-sept-2025-qrg)
+- [3. AI Content Assessment](#3-ai-content-assessment)
 - [4. AI Citation Readiness (GEO Signals)](#4-ai-citation-readiness-geo-signals)
 - [5. Content Freshness](#5-content-freshness)
 - [6. E-E-A-T Scoring Output](#6-e-e-a-t-scoring-output)
@@ -63,9 +71,9 @@
 > **Note**: Flesch Reading Ease is a useful proxy for content accessibility but is NOT a direct ranking factor (John Mueller confirmed). Yoast deprioritized Flesch scores in v19.3. Use as a content quality indicator, not an SEO metric.
 
 ### Keyword Optimization
-- Primary keyword in title, H1, first 100 words
-- Natural density (1-3%), semantic variations present
-- No keyword stuffing (`bodyWordsToTokensRatio` from Google Leak measures this)
+- Primary topic appears naturally in title, H1, and early context when it helps the reader.
+- Semantic variations are present because the topic is covered well, not because a density target was met.
+- No keyword stuffing. Do not cite leaked metric names as if they were a public scoring API.
 
 ### Content Structure
 - Logical heading hierarchy (H1→H2→H3)
@@ -88,9 +96,9 @@
 
 ---
 
-## 3. AI Content Assessment (Sept 2025 QRG)
+## 3. AI Content Assessment
 
-Google's raters now formally assess whether content appears AI-generated.
+Google says automation is not banned by itself. The failure is content made primarily to manipulate ranking, or content that lacks originality, accuracy, usefulness, or human accountability.
 
 ### Acceptable AI Content
 - Demonstrates genuine E-E-A-T
@@ -125,7 +133,7 @@ Optimize for AI search engines (ChatGPT, Perplexity, Google AI Overviews):
 - Topical authority through content clusters, not isolated pages
 - Entity clarity via Organization, Person schema
 
-> **Helpful Content System (March 2024)**: Merged into core ranking algorithm during the March 2024 core update. No longer a standalone classifier. Helpfulness signals are weighted within every core update. Same principles apply (people-first content, E-E-A-T, user intent satisfaction), but enforcement is continuous.
+> **Helpful content:** Treat helpfulness as an ongoing quality standard, not as a single classifier to game. The actionable rule is stable: make content for people, show real experience, and avoid search-engine-first filler.
 
 ---
 

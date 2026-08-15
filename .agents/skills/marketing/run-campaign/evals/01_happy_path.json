@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-marketing-run-campaign",
+  "query": "Create a launch campaign with cold outreach, LinkedIn posts, newsletter copy, thumbnails, and a paid test.",
+  "expected_behavior": [
+    "frames a campaign brief before producing assets",
+    "routes copy, lifecycle, content distribution, paid acquisition, analytics, studio, and legal only where needed",
+    "requires approval before publishing or spending",
+    "records a dated outcome check"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["brief", "approval", "outcome"] },
+    { "kind": "regex_absent", "value": "I will publish" }
+  ]
+}

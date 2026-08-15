@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-run-campaign",
+  "query": "Also rewrite our pricing model and change the checkout code as part of this campaign.",
+  "expected_behavior": [
+    "keeps campaign work in scope",
+    "routes pricing strategy and software implementation to their owners",
+    "does not absorb unrelated work into one campaign loop"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["campaign", "route", "software"] }
+  ]
+}
