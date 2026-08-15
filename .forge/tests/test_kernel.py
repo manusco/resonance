@@ -13,6 +13,7 @@ from kernel.contracts import ContractError, hash_data, validate_goal_contract  #
 from kernel.evidence import accept_evidence, transition_goal  # noqa: E402
 from kernel.ledger import active_entries  # noqa: E402
 from kernel.manifest import manifest  # noqa: E402
+from kernel.runner import manifest_hash  # noqa: E402
 
 GOOD_HASH = "sha256:" + ("b" * 64)
 
@@ -33,7 +34,7 @@ class KernelTest(unittest.TestCase):
             "stdout_hash": GOOD_HASH,
             "stderr_hash": GOOD_HASH,
             "before_manifest_hash": GOOD_HASH,
-            "after_manifest_hash": GOOD_HASH,
+            "after_manifest_hash": manifest_hash(Path.cwd()),
             "artifact_hashes": [],
             "runner": "resonance-kernel-runner/1"
         }
@@ -135,6 +136,70 @@ class KernelTest(unittest.TestCase):
         }
         with self.assertRaises(ContractError):
             transition_goal(state, "achieved")
+
+    def test_evidence_must_match_recorded_execution_bytes(self):
+        contract = {"outcome": "ship", "acceptance_checks": ["tests pass"]}
+        receipt = self._exec()
+        state = {
+            "status": "active",
+            "goal_revision": 1,
+            "run_id": "run-test",
+            "criterion_ids": ["criterion-1"],
+            "contract": contract,
+            "contract_hash": hash_data(contract),
+            "plan_hash": GOOD_HASH,
+            "executions": [receipt],
+            "evidence": [],
+        }
+        forged = dict(receipt)
+        forged["stdout_hash"] = "sha256:" + ("c" * 64)
+        evidence = {
+            "schema_version": 1,
+            "evidence_id": "evd-1",
+            "run_id": "run-test",
+            "goal_revision": 1,
+            "contract_hash": hash_data(contract),
+            "plan_hash": GOOD_HASH,
+            "slice_id": "slice-1",
+            "criterion_id": "criterion-1",
+            "verifier": "unit-test",
+            "result": "accepted",
+            "created_at": "2026-08-15T00:00:00Z",
+            "execution_receipts": [forged],
+        }
+        with self.assertRaises(ContractError):
+            accept_evidence(state, evidence, None)
+
+    def test_terminal_goal_rejects_new_evidence(self):
+        contract = {"outcome": "ship", "acceptance_checks": ["tests pass"]}
+        receipt = self._exec()
+        state = {
+            "status": "achieved",
+            "goal_revision": 1,
+            "run_id": "run-test",
+            "criterion_ids": ["criterion-1"],
+            "contract": contract,
+            "contract_hash": hash_data(contract),
+            "plan_hash": GOOD_HASH,
+            "executions": [receipt],
+            "evidence": [],
+        }
+        evidence = {
+            "schema_version": 1,
+            "evidence_id": "evd-1",
+            "run_id": "run-test",
+            "goal_revision": 1,
+            "contract_hash": hash_data(contract),
+            "plan_hash": GOOD_HASH,
+            "slice_id": "slice-1",
+            "criterion_id": "criterion-1",
+            "verifier": "unit-test",
+            "result": "accepted",
+            "created_at": "2026-08-15T00:00:00Z",
+            "execution_receipts": [receipt],
+        }
+        with self.assertRaises(ContractError):
+            accept_evidence(state, evidence, None)
 
     def test_superseded_ledger_entries_are_not_active(self):
         with tempfile.TemporaryDirectory() as d:

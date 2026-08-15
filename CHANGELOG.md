@@ -1,5 +1,24 @@
 # Changelog
 
+## v2.4.90
+
+The evidence-binding fix-forward release. It tightens the v2.4.89 evidence
+kernel before more work builds on it.
+
+### Changed
+- **Evidence must match the recorded execution.** Evidence now compares the full
+  execution receipt against the receipt recorded by the active goal run, not only
+  the execution id.
+- **Terminal goals are immutable.** Completed or cancelled goals reject new
+  checks, executions, and evidence.
+- **Goal starts fail closed.** `/goal` now rejects empty goals, invalid contracts,
+  invalid plan hashes, and attempts to overwrite an active goal.
+- **Execution ids and run ids are collision-resistant.** Goal runs and execution
+  receipts now include random nonces instead of relying on second-resolution
+  timestamps.
+- **Generated script runtime is covered.** The compiled `.agents` goal script can
+  locate `.forge/kernel/` from generated locations.
+
 ## v2.4.89
 
 The evidence-kernel release. Goal work now has a deterministic receipt boundary

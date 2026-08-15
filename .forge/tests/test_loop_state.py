@@ -19,6 +19,7 @@ from pathlib import Path
 SCRIPTS = Path(__file__).resolve().parent.parent / "skills" / "ops" / "goal" / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 import loop_state  # noqa: E402
+from kernel.runner import manifest_hash  # noqa: E402
 
 GOOD_PLAN = "sha256:" + ("a" * 64)
 GOOD_HASH = "sha256:" + ("b" * 64)
@@ -67,7 +68,7 @@ class LoopBoundTest(unittest.TestCase):
             "stdout_hash": GOOD_HASH,
             "stderr_hash": GOOD_HASH,
             "before_manifest_hash": GOOD_HASH,
-            "after_manifest_hash": GOOD_HASH,
+            "after_manifest_hash": manifest_hash(Path.cwd()),
             "artifact_hashes": [],
             "runner": "resonance-kernel-runner/1"
         }
@@ -160,6 +161,20 @@ class LoopBoundTest(unittest.TestCase):
         self.assertIn("sha256", out)
         self.assertIn("no active goal", self._run("status"))
 
+    def test_start_refuses_existing_active_goal(self):
+        self._contract()
+        out = self._run("start", "another goal")
+        self.assertIn("active goal already exists", out)
+
+    def test_check_refuses_terminal_goal(self):
+        self._contract()
+        state_path = Path(".resonance/goal_state.json")
+        state = json.loads(state_path.read_text(encoding="utf-8"))
+        state["status"] = "achieved"
+        state_path.write_text(json.dumps(state), encoding="utf-8")
+        out = self._run("check", "slice-1", "advanced")
+        self.assertIn("not active", out)
+
     def test_stale_evidence_is_rejected(self):
         self._contract()
         evidence = self._evidence(contract_hash="sha256:" + ("c" * 64))
@@ -171,8 +186,9 @@ class LoopBoundTest(unittest.TestCase):
     def test_cannot_achieve_without_all_evidence(self):
         self._contract()
         evidence = self._evidence("criterion-1")
-        Path("evidence.json").write_text(json.dumps(evidence), encoding="utf-8")
-        self.assertIn("evidence accepted", self._run("evidence", "evidence.json"))
+        evidence_path = Path(".resonance/evidence-input.json")
+        evidence_path.write_text(json.dumps(evidence), encoding="utf-8")
+        self.assertIn("evidence accepted", self._run("evidence", str(evidence_path)))
         out = self._run("achieve")
         self.assertIn("cannot achieve goal", out)
         self.assertIn("criterion-2", out)
@@ -180,8 +196,9 @@ class LoopBoundTest(unittest.TestCase):
     def test_achieve_and_done_retain_history(self):
         self._contract()
         for criterion in ("criterion-1", "criterion-2"):
-            Path(f"{criterion}.json").write_text(json.dumps(self._evidence(criterion)), encoding="utf-8")
-            self.assertIn("evidence accepted", self._run("evidence", f"{criterion}.json"))
+            evidence_path = Path(".resonance") / f"{criterion}.json"
+            evidence_path.write_text(json.dumps(self._evidence(criterion)), encoding="utf-8")
+            self.assertIn("evidence accepted", self._run("evidence", str(evidence_path)))
         self.assertIn("goal achieved", self._run("achieve"))
         self.assertIn("completed history retained", self._run("done"))
         history = json.loads(Path(".resonance/goal_history.json").read_text(encoding="utf-8"))

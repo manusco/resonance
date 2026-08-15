@@ -33,7 +33,8 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-import hashlib
+import re
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -62,6 +63,8 @@ from kernel.evidence import (  # noqa: E402
     transition_goal,
 )
 from kernel.runner import run_execution  # noqa: E402
+
+SHA_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 
 STATE = Path(".resonance") / "goal_state.json"
 CAPS = {"max_slice_attempts": 3, "max_iters": 40, "stuck_window": 4}
@@ -101,10 +104,17 @@ def _load_contract(raw: str | None) -> tuple[dict | None, str | None]:
         return None, f"contract missing required field(s): {', '.join(missing)}"
     if not isinstance(data.get("acceptance_checks"), list) or not data["acceptance_checks"]:
         return None, "contract acceptance_checks must be a non-empty list"
+    if not isinstance(data.get("outcome"), str) or not data["outcome"].strip():
+        return None, "contract outcome must be a non-empty string"
+    if any(not isinstance(x, str) or not x.strip() for x in data["acceptance_checks"]):
+        return None, "contract acceptance_checks must contain non-empty strings"
     return data, None
 
 
 def cmd_start(a) -> int:
+    if not a.goal.strip():
+        print("cannot start goal loop: goal must be non-empty")
+        return 2
     contract, err = _load_contract(a.contract)
     if err:
         print(f"cannot start goal loop: {err}")
@@ -113,11 +123,15 @@ def cmd_start(a) -> int:
     if contract and not plan_hash:
         print("cannot start goal loop: approved contract requires --plan-hash")
         return 2
-    if contract and not plan_hash.startswith("sha256:"):
+    if contract and not SHA_RE.match(plan_hash):
         print("cannot start goal loop: --plan-hash must be a sha256:<64 hex> hash")
         return 2
     with file_lock(STATE):
-        run_id = "run-" + hashlib.sha256(f"{a.goal}\n{_now()}".encode("utf-8")).hexdigest()[:16]
+        existing = _load()
+        if existing and existing.get("status", "active") == "active":
+            print("cannot start goal loop: active goal already exists")
+            return 2
+        run_id = "run-" + uuid.uuid4().hex
         criterion_ids = [f"criterion-{i + 1}" for i, _ in enumerate(contract.get("acceptance_checks", []) if contract else [])]
         _save({"schema_version": 1, "goal": a.goal, "dod": a.dod or "", "status": "active",
                "goal_revision": 1, "run_id": run_id, "criterion_ids": criterion_ids,
@@ -138,6 +152,9 @@ def cmd_check(a) -> int:
         return 2
     if a.result not in ("advanced", "progress", "failed"):
         print("result must be advanced | progress | failed")
+        return 2
+    if s.get("status", "active") != "active":
+        print("cannot check a goal that is not active")
         return 2
     sig = getattr(a, "sig", None)
     entry = {"n": len(s.get("iterations", [])) + 1, "slice": a.slice,
@@ -212,6 +229,9 @@ def cmd_exec(a) -> int:
         return 2
     with file_lock(STATE):
         s = _load()
+        if s.get("status", "active") != "active":
+            print("cannot execute for a goal that is not active")
+            return 2
         receipt = run_execution(a.action_id, command, Path.cwd())
         path = Path(".resonance") / "executions" / f"{receipt['execution_id']}.json"
         create_receipt(path, receipt)
@@ -221,7 +241,7 @@ def cmd_exec(a) -> int:
         s["execution_receipts"] = list(s["execution_receipts"]) + [path.as_posix()]
         _save(s)
     print(f"execution recorded: {receipt['execution_id']} exit={receipt['exit_code']}")
-    return 0
+    return 0 if receipt["exit_code"] == 0 else 1
 
 
 def cmd_evidence(a) -> int:
