@@ -1,0 +1,24 @@
+{
+  "skill": "resonance-strategy-grill",
+  "query": "Grill this plan: migrate billing subscriptions and payment retries to a new provider this week.",
+  "expected_behavior": [
+    "Runs a targeted risk pass because billing migration is high risk.",
+    "Surfaces rollback, idempotency, data loss, ownership, and missing evidence.",
+    "Reports the strongest objection and required plan changes.",
+    "Does not claim a multi-person consensus."
+  ],
+  "checks": [
+    {
+      "kind": "contains_all",
+      "value": [
+        "rollback",
+        "idempotency",
+        "missing evidence"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)consensus|vote"
+    }
+  ]
+}

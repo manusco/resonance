@@ -1,5 +1,20 @@
 # Changelog
 
+## v2.4.85
+
+The decision-contract release. Goal work now separates outcomes from requested tactics before execution, grill gains a targeted risk pass instead of simulated councils, and second opinion can review concrete decision artifacts without pretending to be an oracle.
+
+### Added
+- **Goal contracts.** `/goal` now confirms outcome, requested tactics, hard constraints, non-goals, risks, acceptance checks, and deferred metrics before the bounded loop starts.
+- **Targeted risk pass.** `/grill` now applies narrow high-risk checks for one-way doors, security, privacy, money, legal, migration, data-loss, broad blast-radius, and missing-fact cases.
+- **Decision-mode second opinion.** `.forge/second_opinion.py` and `/second-opinion` now support `--mode decision` for confirmed plans, ADRs, adoption verdicts, and goal contracts.
+- **Independent review policy.** Shared resolver clarifies when to use primary work, one independent reviewer, or human/domain authority.
+
+### Changed
+- **No fake council consensus.** The framework now rejects role-played panels as independent judgment and routes true independence through configured review.
+- **Second-opinion dispatch is fail-closed.** Missing reviewer config, same reviewer identity, empty output, failed command, secrets, or oversized input cannot satisfy the gate.
+- **Goal loop state persists contracts.** `loop_state.py start` can store an approved contract and plan hash for resume and status.
+
 ## v2.4.84
 
 The marketing ownership release. Organic distribution, lifecycle email, paid media, copy, analytics, studio assets, and growth strategy now have clearer boundaries and regression coverage.

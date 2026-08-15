@@ -12,7 +12,7 @@ The depth of the analysis is set by how hard the decision is to undo, not by how
 
 - **Two-way door** (cheap to reverse: a formatter, a lint rule, a dev dependency): decide fast, trial in a branch, move on. Over-analyzing a reversible call is its own waste.
 - **One-way bounded** (reversible at a known, bounded cost: a testing library, a state manager): weigh the migration cost explicitly, and name the exit before you enter.
-- **One-way high-stakes** (a database, a language, a core framework, an auth provider): full rigor. Failure modes, lock-in, the cost of being wrong, and a second independent read (delegate the cross-model panel to `ops/second-opinion`).
+- **One-way high-stakes** (a database, a language, a core framework, an auth provider): full rigor. Failure modes, lock-in, the cost of being wrong, and one independent decision review through `ops/second-opinion --mode decision`.
 
 ## The verdict
 

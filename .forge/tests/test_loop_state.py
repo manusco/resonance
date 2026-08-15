@@ -7,6 +7,7 @@ a run resumes from persisted state. This is the grounded proof that /goal cannot
 run away.
 """
 import io
+import json
 import os
 import sys
 import tempfile
@@ -70,6 +71,24 @@ class LoopBoundTest(unittest.TestCase):
         out = self._run("resume")
         self.assertIn("ship the ledger", out)
         self.assertIn("slice-1", out)
+
+    def test_start_persists_contract_and_plan_hash(self):
+        contract = {
+            "outcome": "faster search",
+            "acceptance_checks": ["benchmark improves"]
+        }
+        Path("goal_contract.json").write_text(json.dumps(contract), encoding="utf-8")
+        self._run("start", "speed search", "--dod", "benchmark improves",
+                  "--contract", "goal_contract.json", "--plan-hash", "abc123")
+        out = self._run("status")
+        self.assertIn("faster search", out)
+        self.assertIn("abc123", out)
+
+    def test_invalid_contract_blocks_start(self):
+        out = self._run("start", "speed search", "--contract", "{}")
+        self.assertIn("cannot start", out)
+        self.assertIn("missing required", out)
+        self.assertIn("no active goal", self._run("status"))
 
     def test_resume_with_no_goal(self):
         self.assertIn("no active goal", self._run("resume"))

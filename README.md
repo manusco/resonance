@@ -3,7 +3,7 @@
 > Operator-grade AI agent skills for builders. A cross-tool skill library and slash-command system for Claude Code, Cursor, Codex, and opencode, covering strategy, design, engineering, marketing, sales, and ops.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.84-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
+    <a href="https://github.com/manusco/resonance"><img src="https://img.shields.io/badge/Resonance-v2.4.85-7025eb?style=for-the-badge&logo=github" alt="Resonance" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
     <img src="https://img.shields.io/badge/Skills-64-00f2ea?style=for-the-badge" alt="64 skills" />
     <img src="https://img.shields.io/badge/Commands-34-7025eb?style=for-the-badge" alt="34 commands" />
@@ -69,7 +69,7 @@ That is the whole setup. No install step, no plugin required.
 Every command is a structured procedure with a Definition of Done, not a loose prompt. Full map in [AGENTS.md](AGENTS.md).
 
 **The autonomous loop**
-`/goal "<outcome>"` frames the goal, decomposes it, then builds and verifies each slice against real checks (tests, validators, audit), bounded and never auto-shipping. The conductor for the skills below.
+`/goal "<outcome>"` confirms a goal contract, decomposes it, then builds and verifies each slice against real checks (tests, validators, audit), bounded and never auto-shipping. The conductor for the skills below.
 
 **Inception**
 `/init` bootstrap project memory · `/venture-model` business and revenue math · `/plan` atomic implementation plan · `/grill` stress-test a plan before code · `/gtm-thinker` go-to-market blueprint · `/market-research` B2B vertical intelligence · `/update-roadmap` sync state with git
@@ -78,7 +78,7 @@ Every command is a structured procedure with a Definition of Done, not a loose p
 `/build` TDD build loop · `/debug` root-cause analysis · `/refactor` behavior-preserving cleanup · `/design` elite UI craft and audit · `/studio` production visual assets · `/friction` conversion friction removal
 
 **Verification**
-`/test` 8-Path test matrix · `/audit` security + review + QA + architect swarm · `/page-audit` first-principles page and site audit · `/review-pr` PR gatekeeper · `/second-opinion` independent second-model review · `/improve` self-improving eval loop · `/system-health` health score 0-100
+`/test` 8-Path test matrix · `/audit` security + review + QA + architect swarm · `/page-audit` first-principles page and site audit · `/review-pr` PR gatekeeper · `/second-opinion` independent diff or decision review · `/improve` self-improving eval loop · `/system-health` health score 0-100
 
 **Delivery & maintenance**
 `/ship` release protocol · `/incident` production incident response · `/seo` SEO and GEO audit · `/voice-profile` extract a voice profile · `/call-intelligence` analyze a sales call · `/cold-call` cold-call script · `/sales-pipeline` pipeline analytics · `/capture` document a solved problem · `/explain` teach the operator · `/handover` end-of-session handover · `/retro` git-driven retrospective · `/update-resonance` safe framework upgrade · `/skill-author` build a new skill

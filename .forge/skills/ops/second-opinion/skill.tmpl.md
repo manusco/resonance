@@ -1,6 +1,6 @@
 ---
 name: resonance-ops-second-opinion
-description: Independent second-model code review. Dispatches a diff to a different model than the author or primary reviewer, then reconciles the two reviews so cross-model disagreement surfaces the bug one model rationalizes away. Use before merging a risky change, as the final gate in a goal loop, or when the user asks for a second opinion, a cross-model review, or an independent check on a diff.
+description: Independent second-model review for concrete diffs and decision artifacts. Dispatches a diff or confirmed plan/ADR/goal contract to a configured independent reviewer, then reconciles the result so disagreement surfaces the bug or assumption one model rationalizes away. Use before merging a risky change, as the final gate in a goal loop, before a high-risk one-way decision, or when the user asks for a second opinion, cross-model review, independent check, or decision review.
 archetype: procedure
 ---
 
@@ -8,34 +8,42 @@ archetype: procedure
 
 > **Role:** the independent second reviewer, on a different model.
 > **Invoked as:** `/second-opinion` (to cross-check a change with another model).
-> **Input:** A diff, a PR, or "cross-check this change." Optionally the primary review.
-> **Output:** A reconciled findings list: what both models agree on (high-confidence, fix first) and where they disagree (investigate), ranked P0-P3.
-> **Definition of Done:** A second model has reviewed the diff (or the manual prompt was produced when none is configured). Agreements and disagreements are explicit. Every finding is verified against the actual code, not accepted on the second model's word.
+> **Input:** A diff, PR, confirmed goal contract, ADR, or concrete plan. Optionally the primary review.
+> **Output:** For diff mode, a reconciled findings list ranked P0-P3. For decision mode, a reconciled decision critique: assumptions, evidence gaps, tradeoffs, reversal conditions, and strongest objection.
+> **Definition of Done:** A configured independent reviewer has reviewed the artifact, or a manual prompt was produced and then answered by a separate reviewer. Agreements and disagreements are explicit. Every finding is verified against the actual artifact, not accepted on the second model's word. Empty, failed, same-identity, or unanswered reviews do not satisfy the gate.
 
 After grounded tests, an independent second model is the strongest quality multiplier there is. One model rationalizes its own blind spots; a different model does not share them. This skill runs that check and reconciles the two views. It does not replace the primary review; it pressures it.
 
+{{RESOLVER:independent_review_policy}}
+
 ## Prerequisites (fail fast)
 
-- [ ] There is a concrete diff or change to review. A vague "is my code good" is not a second-opinion request.
-- [ ] You know what the change is supposed to do (so the second model can judge intent, not just syntax).
+- [ ] There is a concrete artifact to review: a diff for `diff` mode, or a confirmed goal contract, plan, or ADR for `decision` mode. A vague "is this good" is not a second-opinion request.
+- [ ] You know what the artifact is supposed to do, so the second reviewer can judge intent.
+- [ ] Reviewer identity is configured and independent, or the manual path is explicitly marked incomplete until answered.
+- [ ] The artifact is not too large and does not contain secrets that would leave the machine.
 
 ## Algorithm
 
 Copy this checklist and tick items as you go.
 
-1. **Have a primary review.** Use the findings from `/review-pr`, or read the diff yourself against the reviewer taxonomy. This is the baseline the second model pressures. → verify: a primary list of findings exists (may be empty).
-2. **Dispatch to a second model.** Run `py .forge/second_opinion.py --context "<what it does>"` (it reviews `git diff HEAD` by default; pass `--diff` for a file). Configure the second model with `--model-cmd` or `RESONANCE_REVIEW_CMD`; without one, it prints the prompt to run by hand. → verify: a second-model review exists, or the manual prompt was produced and answered.
-3. **Reconcile.** Compare the two:
+1. **Choose the mode.** Use `diff` for code changes and PRs. Use `decision` for confirmed goal contracts, ADRs, adoption verdicts, migration plans, and one-way decisions before code exists. Do not use this for vague brainstorming or creative taste. → verify: the artifact has a mode.
+2. **Have a primary view.** Use the findings from `/review-pr`, or read the diff/decision yourself against the right rubric. This is the baseline the second model pressures. → verify: a primary list of findings or decision risks exists (may be empty).
+3. **Dispatch to a second model.** Run `py .forge/second_opinion.py --mode diff --context "<what it does>"` for diffs, or `py .forge/second_opinion.py --mode decision --artifact decision.md --context "<decision>"` for decisions. Configure the reviewer with `--model-cmd` or `RESONANCE_REVIEW_CMD` and an independent `--reviewer-id` or `RESONANCE_REVIEWER_ID`. Without a configured reviewer, it prints the manual prompt and exits incomplete. → verify: a second-model review exists and is independent, or the manual prompt was produced and later answered.
+4. **Reconcile.** Compare the two:
    - **Agreements**: both flagged it. High confidence, fix first.
    - **Only the second model flagged it**: investigate. It may see a real blind spot, or it may be wrong for this codebase. Verify against the code before acting.
    - **Only the primary flagged it**: keep it; the second model missing it is not exoneration.
    → verify: every finding is tagged agreement, second-only, or primary-only.
-4. **Verify each finding against the actual code.** Do not accept the second model on its word. Cross-model reviews still hallucinate, and a model can flatter or contradict for reasons unrelated to the code. Open the file, confirm the path. → verify: each surviving finding traces to a real line.
-5. **Report.** Rank P0-P3 by user harm. Lead with the agreements. Note where the models disagreed and how you resolved it. → verify: the report separates confidence levels.
+5. **Verify each finding against the actual artifact.** Do not accept the second model on its word. Cross-model reviews still hallucinate, and a model can flatter or contradict for reasons unrelated to the artifact. Open the file, confirm the path or decision text. → verify: each surviving finding traces to real evidence.
+6. **Report.** In diff mode, rank P0-P3 by user harm and lead with agreements. In decision mode, do not invent file lines or P severities; report assumptions, evidence gaps, tradeoffs, reversal conditions, strongest objection, and required change. → verify: the report separates confidence levels.
 
 ## Recovery
 
-- No second-model command configured → run the printed prompt in another model (Codex, Gemini, a local model) and paste its findings back, then reconcile. Note the manual step in the report.
+- No second-model command configured → run the printed prompt in another model (Codex, Gemini, a local model) and paste its findings back, then reconcile. Until then the gate is incomplete.
+- Reviewer identity is missing or the same as the author/primary reviewer → do not claim independence. Reconfigure or use manual review.
+- Dispatch fails or returns empty output → treat the gate as failed or incomplete, not green.
+- Artifact is too large or contains secrets → reduce, redact, or keep review local. Do not send sensitive dumps to an external reviewer.
 - The second model floods low-value nits → keep only what verifies against the code and matters to the user. A second opinion is signal, not a second style guide.
 - The two models flatly contradict on a P0 → do not average them. Read the code path and decide on the evidence. If still unresolved, escalate with both views.
 
@@ -43,6 +51,7 @@ Copy this checklist and tick items as you go.
 
 - The primary review itself (delegate to `/review-pr`, `resonance-ops-reviewer`).
 - Fixing the findings (delegate to the engineer).
+- Creative direction, open-ended brainstorming, or final business judgment. Domain skills recommend; the user decides.
 
 ## Reference Library
 

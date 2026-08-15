@@ -1,0 +1,19 @@
+{
+  "name": "goal_contract_handoff",
+  "skill": "ops/goal",
+  "task": "Turn this mixed request into an approved goal contract before building: make search faster, maybe add Redis, do not change the database schema, and prove it with a benchmark. The response must keep outcome, requested tactic, hard constraint, and acceptance check distinct.",
+  "fixture": {
+    "files": {
+      "README.md": "Search currently returns results but no benchmark exists.\n"
+    }
+  },
+  "assert": {
+    "type": "contains",
+    "all": [
+      "outcome",
+      "requested tactic",
+      "hard constraint",
+      "acceptance"
+    ]
+  }
+}
