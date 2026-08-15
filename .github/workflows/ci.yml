@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild generated files
+        run: |
+          python .forge/forge.py build --all
+          python .forge/forge.py commands --host all
+          git diff --exit-code
+
+      - name: Validate skills
+        run: python .forge/validate_skill.py --all --strict .agents/skills
+
+      - name: Validate library
+        run: python .forge/validate_library.py --strict
+
+      - name: Check documentation drift
+        run: python .forge/doc_drift.py
+
+      - name: Check eval structure
+        run: python .forge/run_evals.py --all --check
+
+      - name: Run Forge tests
+        run: python .forge/tests/run.py
+
+      - name: Scan source fingerprints
+        run: python .forge/fingerprint_scan.py

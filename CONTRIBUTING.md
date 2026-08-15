@@ -13,6 +13,8 @@ Resonance is an open skill library. If you work in a domain and know what good l
 - At least 3 evals in `.forge/skills/<domain>/<name>/evals/`
 - A clean run of `py .forge/validate_skill.py` with 0 errors
 
+For reproducible bugs, use the bug report form. For a skill that does not meet its documented behavior, use the skill field report. For security issues, follow [SECURITY.md](SECURITY.md) and report them privately.
+
 ## The Forge workflow
 
 Skills are not edited directly in `.agents/`. They are compiled from templates.
@@ -36,6 +38,23 @@ Do not edit `.agents/skills/` directly. Generated files carry a "do not edit" ba
 - **No broken references.** Every linked file must exist. Run the validator.
 - **One skill, one job.** If a skill tries to do two things, split it.
 - **Concrete language.** Name the file, the function, the command. No generic advice.
+- **Public provenance.** Do not include secrets, private project data, or material you do not have the right to contribute.
+
+## Before you open a pull request
+
+Run the full local gate:
+
+```bash
+py .forge/forge.py build --all
+py .forge/forge.py commands --host all
+py .forge/validate_skill.py --all --strict .agents/skills
+py .forge/validate_library.py --strict
+py .forge/doc_drift.py
+py .forge/run_evals.py --all --check
+py .forge/tests/run.py
+```
+
+Commit generated files with their source changes. Explain the problem, the change, and the checks in the pull request. CI repeats the same deterministic checks on Linux.
 
 ## Domain structure
 

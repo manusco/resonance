@@ -11,6 +11,7 @@ The benchmark-integrity release. QA, context engineering, and skill-authoring no
 
 ### Added
 - **Benchmark-integrity eval coverage.** QA now has a regression case for contaminated baselines, mixed meters, and shorter-output claims without safety checks.
+- **Public maintenance foundation.** GitHub now runs the deterministic Forge gate for every pull request and `main` update, routes bug reports and proposals through structured forms, checks action updates, and provides private security reporting guidance.
 
 ## v2.4.86
 
