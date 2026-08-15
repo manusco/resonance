@@ -19,6 +19,13 @@ graph LR
   resonance-ops-goal --> resonance-ops-ship
   resonance-ops-system-health --> resonance-ops-qa
   resonance-ops-system-health --> resonance-ops-security
+  resonance-software-deliver-change --> resonance-strategy-grill
+  resonance-software-deliver-change --> resonance-strategy-plan
+  resonance-software-deliver-change --> resonance-engineering-build
+  resonance-software-deliver-change --> resonance-ops-qa
+  resonance-software-deliver-change --> resonance-ops-audit
+  resonance-software-deliver-change --> resonance-ops-second-opinion
+  resonance-software-deliver-change --> resonance-ops-ship
 ```
 
 ## Edges
@@ -28,3 +35,4 @@ graph LR
 | resonance-ops-audit | resonance-ops-security, resonance-ops-reviewer, resonance-ops-qa, resonance-strategy-architect |
 | resonance-ops-goal | resonance-strategy-grill, resonance-strategy-plan, resonance-engineering-build, resonance-ops-qa, resonance-ops-audit, resonance-ops-second-opinion, resonance-ops-ship |
 | resonance-ops-system-health | resonance-ops-qa, resonance-ops-security |
+| resonance-software-deliver-change | resonance-strategy-grill, resonance-strategy-plan, resonance-engineering-build, resonance-ops-qa, resonance-ops-audit, resonance-ops-second-opinion, resonance-ops-ship |

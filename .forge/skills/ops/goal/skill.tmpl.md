@@ -38,16 +38,17 @@ Copy this checklist and tick items as you go.
 2. **Resolve only user-owned unknowns.** Run `/grill` on the contract. Grill resolves decisions the repo cannot answer and runs a targeted risk pass only when the triggers are present. → verify: the contract is updated with resolved decisions and remaining risks.
 3. **Decompose without reopening settled decisions.** `/plan` consumes the confirmed contract and produces atomic slices, each with its own DoD. When `/plan` is invoked by `/goal`, suppress pass-by-pass approval and return the plan for one combined gate. → verify: an ordered slice list exists and preserves contract provenance.
 4. **Approve once before code.** Present the goal contract plus the plan and acceptance checks. Get approval before any code. This single approval is what keeps the loop honest. → verify: the user approved a contract and plan with checks that a machine can run.
-5. **Start the bound.** `py .forge/skills/ops/goal/scripts/loop_state.py start "<goal>" --dod "<checkable DoD>" --contract goal_contract.json --plan-hash "<hash>"`. → verify: state initialized with the approved contract and plan hash.
+5. **Start the bound.** `py .forge/skills/ops/goal/scripts/loop_state.py start "<goal>" --dod "<checkable DoD>" --contract goal_contract.json --plan-hash "<hash>"`. → verify: state initialized with the approved contract and plan hash. Missing plan hash blocks the loop.
 6. **Loop over slices, autonomously and bounded.** For each slice:
    - **Recall** relevant memory and settled decisions (the loaded `02_memory.md` index carries both; `py .forge/recall.py "<topic>"` for deeper slices) so you do not re-solve or re-litigate.
    - **Build** the slice (`/build`).
    - **Verify with grounded signals only**: `/test` runs the real tests (`.forge/exec/run_checks.py`) and a real browser (`.forge/exec/browser_check.mjs`); run the validators; `/audit` the diff. The done-signal is executed, never "this should work". See done_conditions.
    - **Check the bound:** `loop_state.py check <slice> advanced|progress|failed`. Obey the directive: CONTINUE, or STOP_SLICE / STOP_STUCK / STOP_CAP (then re-plan the slice once, or stop and escalate). Never override a STOP.
+   - **Attach evidence:** when a criterion is proven, write an `EvidenceReceipt` and run `loop_state.py evidence <receipt>`. Stale contract or plan hashes are rejected. Overrides require an approval receipt.
    - **Record** any real decision as a one-line entry under `## Decisions` in `.resonance/02_memory.md`.
    Run multiple slices without pausing. Pause only at the checkpoints below. → verify: each slice ends verified or the loop stopped on a bound.
 7. **Final gate.** When the goal DoD verifies, run `/second-opinion --mode diff` on the whole change. For a high-risk approved contract or plan, run `/second-opinion --mode decision` once on that artifact before the loop starts. → verify: independent review was run and reconciled, or the manual prompt was answered and reconciled.
-8. **Propose ship, never auto-ship.** Present the result and the evidence and ask for approval to `/ship`. Clear the loop (`loop_state.py done`). → verify: shipped only after explicit approval.
+8. **Propose ship, never auto-ship.** Run `loop_state.py achieve`; it fails unless every acceptance criterion has accepted evidence. Present the result and evidence and ask for approval to `/ship`. Clear the loop (`loop_state.py done`) only after achievement. → verify: shipped only after explicit approval and completed history is retained.
 
 ## Checkpoints (the more-autonomous cadence)
 

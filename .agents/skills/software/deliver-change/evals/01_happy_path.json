@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-software-deliver-change",
+  "query": "Take this feature from idea to ready for release: add CSV export to the customer table.",
+  "expected_behavior": [
+    "frames a goal contract before implementation",
+    "routes through plan, build, QA, audit, second opinion when risk warrants it, and ship proposal",
+    "requires evidence receipts for acceptance checks before calling the goal achieved",
+    "does not auto-ship"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["goal contract", "evidence"] },
+    { "kind": "regex_absent", "value": "I will deploy" }
+  ]
+}
