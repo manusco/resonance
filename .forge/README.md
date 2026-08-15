@@ -1,18 +1,16 @@
 # The Resonance Forge
 
-The skill compiler. Author a skill once as a template; compile it per tool and per
-model into a ready `SKILL.md`. You author above the format and emit the open
-`SKILL.md` / `AGENTS.md` shape that every major tool reads, without locking to any
-one vendor.
+The skill compiler. Author a skill once as a template and compile one portable
+`SKILL.md`. Host adapters own only discovery paths, command shims, and context bridges.
 
 ```
-template.skill.md   x   host (tool)   x   overlay (model)   ->   SKILL.md
+template.skill.md   x   portable profile   ->   .agents/skills/<name>/SKILL.md
 ```
 
 ## Why a compiler, not hand-written skills
 
 - **Cross-tool.** Antigravity (Google), Codex (OpenAI), Cursor, OpenCode, and Claude Code all read `AGENTS.md` + `.agents/skills`. Tool differences (tool names, paths) live in one host config, not in every skill.
-- **Cross-model.** Strong models get terse prompts; weaker and open-weight models get more explicit guardrails. One overlay file per model family (`claude`, `gpt`, `gemini`, `open-weights`) and per version (`opus-4-8`, `sonnet-5`, `haiku-4-5`, `gpt-5`, `o-series`), injected at compile time. The committed build uses the family default; target a version with `--model opus-4-8`.
+- **Cross-model.** Canonical skills use one portable execution profile. Model selection and independent review happen at runtime, so a model choice cannot rewrite shared skill files.
 - **DRY.** Shared sections (voice, decision format, completion protocol, the operating locks, the Ratchet) live once in `resolvers/` and are injected into every skill. Fix the voice in one place, recompile, every skill updates.
 - **Verifiable.** Every skill is checked by `validate_skill.py` (free, deterministic) and backed by `>= 3` golden evals before it ships.
 
@@ -24,10 +22,10 @@ template.skill.md   x   host (tool)   x   overlay (model)   ->   SKILL.md
 ├── validate_skill.py        # static validator (Tier 1, free, <1s)
 ├── resolvers/               # shared sections injected into every skill
 │   ├── voice.md  decision_brief.md  completion.md  locks.md  learnings.md
-├── hosts/                   # one config per TOOL (tool-name map + output path)
+├── hosts/                   # one adapter config per tool
 │   ├── claude-code.json  codex.json  cursor.json  antigravity.json  opencode.json
-├── overlays/                # one behavioral patch per MODEL family, plus per-version
-│   ├── claude.md  gpt.md  gemini.md  open-weights.md
+├── overlays/                # the single portable execution profile
+│   └── portable.md
 ├── templates/               # the three archetype starting points
 │   ├── knowledge.skill.md  procedure.skill.md  orchestration.skill.md
 └── skills/                  # the source of truth for each skill
@@ -46,18 +44,18 @@ edit the template and recompile.
 | Placeholder | Expands to |
 | :-- | :-- |
 | `{{RESOLVER:name}}` | the contents of `resolvers/<name>.md` |
-| `{{OVERLAY}}` | the chosen model overlay |
-| `{{TOOL:logical}}` | this host's real name for a logical tool (e.g. `{{TOOL:edit}}` -> `Edit` on Claude, `apply_patch` on Codex) |
+| `{{OVERLAY}}` | the portable execution profile |
+| `{{TOOL:logical}}` | a portable logical tool name; adapters do not rewrite canonical skills |
 
 ## Commands
 
 ```bash
-py .forge/forge.py list                                  # skills, hosts, overlays
+py .forge/forge.py list                                  # skills, hosts, portable profile
 py .forge/forge.py build <name>                          # default host + model
-py .forge/forge.py build <name> --host all               # every tool
-py .forge/forge.py build <name> --model open-weights     # target a model family
 py .forge/forge.py build --all                           # every skill
 py .forge/forge.py build <name> --dry-run                # CI freshness: exit 1 on drift
+py .forge/forge.py commands --host all                   # host adapters only
+py .forge/forge.py doctor --json                         # ownership and support report
 
 py .forge/validate_skill.py <path-to-SKILL.md>           # one skill (Tier 1, structural)
 py .forge/validate_skill.py --all .agents/skills         # all skills

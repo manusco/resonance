@@ -4,6 +4,7 @@
   "files": [
     "docs/handovers/<today>_handover.md"
   ],
+  "fixture_optional": true,
   "expected_behavior": [
     "Detects that a handover file for today already exists",
     "Appends to the existing file - does not create a new file or overwrite",

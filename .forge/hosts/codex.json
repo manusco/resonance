@@ -1,7 +1,6 @@
 {
   "host": "codex",
   "label": "Codex (OpenAI)",
-  "output_path": ".agents/skills/{name}/SKILL.md",
   "default_model": "gpt",
   "tool_names": {
     "read": "read_file",
@@ -13,9 +12,7 @@
     "ask": "ask_user",
     "subagent": "spawn"
   },
-  "invocation": "/<alias> (custom prompt) or AGENTS.md routing",
-  "command_path": ".codex/prompts/{alias}.md",
-  "command_style": "prompt",
+  "invocation": "Agent Skills discovery and AGENTS.md routing",
   "context_bridge": null,
-  "notes": "Reads AGENTS.md at repo root automatically, which carries the project-memory load instruction, plus custom prompts from .codex/prompts (invoked as /alias). No separate bridge file needed. Tool names differ from Claude; mapped above."
+  "notes": "Reads AGENTS.md and discovers Agent Skills. Custom prompts are deprecated, so Resonance does not generate .codex/prompts. No separate bridge file is needed."
 }

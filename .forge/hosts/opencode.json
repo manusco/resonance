@@ -1,7 +1,6 @@
 {
   "host": "opencode",
   "label": "OpenCode (open-source, model-agnostic)",
-  "output_path": ".agents/skills/{name}/SKILL.md",
   "default_model": "open-weights",
   "tool_names": {
     "read": "read",
@@ -14,8 +13,8 @@
     "subagent": "task"
   },
   "invocation": "/<alias> (command) or AGENTS.md routing",
-  "command_path": ".opencode/command/{alias}.md",
+  "command_path": ".opencode/commands/{alias}.md",
   "command_style": "prompt",
   "context_bridge": null,
-  "notes": "Runs any backing model including local open-weights (Llama, Qwen, DeepSeek). Reads AGENTS.md automatically, which carries the project-memory load instruction, and custom commands from .opencode/command (invoked as /alias). No separate bridge file needed. Defaults to the open-weights overlay, which lowers degrees of freedom and adds explicit guardrails for weaker models."
+  "notes": "Runs any backing model including local open-weights. Reads AGENTS.md automatically and custom commands from .opencode/commands. No separate bridge file is needed."
 }

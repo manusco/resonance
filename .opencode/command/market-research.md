@@ -1,5 +1,0 @@
----
-description: Discover Existential Data Points in a B2B SaaS vertical. Positioning from nice-to-have to must-have.
----
-
-Run the Resonance market-research procedure. Read `.agents/skills/research/market-research/SKILL.md` in full and execute it, following its Definition of Done.

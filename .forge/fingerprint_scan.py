@@ -6,8 +6,8 @@ Scans changed public files for source markers and, when a private corpus is
 configured through RESONANCE_PRIVATE_CORPUS, distinctive phrase overlap.
 
 Usage:
-    python .forge/fingerprint_scan.py
-    RESONANCE_PRIVATE_CORPUS=/path/to/private/corpus python .forge/fingerprint_scan.py
+    python .forge/fingerprint_scan.py --ref origin/main
+    python .forge/fingerprint_scan.py --ref <base> --head <pushed-head> --expect-changes
 
 Exit: 0 clean, 1 findings, 2 bad args.
 """
@@ -51,13 +51,14 @@ SKIP_PARTS = {".git", "node_modules", ".venv", "dist", "build", "__pycache__"}
 PRIVATE_AUDIT_DIRS = {"marketing-agent-integration-audit"}
 
 
-def changed_files(ref: str) -> list[Path]:
+def changed_files(ref: str, head: str = "WORKTREE") -> list[Path]:
     names: set[str] = set()
-    cmds = [
-        ["git", "diff", "--name-only", ref],
-        ["git", "diff", "--name-only", "--cached"],
-        ["git", "ls-files", "--others", "--exclude-standard"],
-    ]
+    if head == "WORKTREE":
+        cmds = [["git", "diff", "--name-only", ref],
+                ["git", "diff", "--name-only", "--cached"],
+                ["git", "ls-files", "--others", "--exclude-standard"]]
+    else:
+        cmds = [["git", "diff", "--name-only", "--diff-filter=ACMR", f"{ref}..{head}"]]
     for cmd in cmds:
         r = subprocess.run(cmd, cwd=str(REPO), capture_output=True, text=True,
                            encoding="utf-8", errors="replace")
@@ -66,7 +67,7 @@ def changed_files(ref: str) -> list[Path]:
     out = []
     for name in sorted(names):
         p = REPO / name
-        if p.is_file() and is_text_path(p):
+        if (p.is_file() or head != "WORKTREE") and is_text_path(p):
             out.append(p)
     return out
 
@@ -86,19 +87,24 @@ def read_text(path: Path) -> str:
         return ""
 
 
-def old_lines(path: Path, ref: str) -> set[str]:
+def git_text(path: Path, ref: str) -> str:
     rp = rel(path)
     r = subprocess.run(["git", "show", f"{ref}:{rp}"], cwd=str(REPO),
                        capture_output=True, text=True, encoding="utf-8",
                        errors="replace")
     if r.returncode != 0:
-        return set()
-    return set(r.stdout.splitlines())
+        return ""
+    return r.stdout
 
 
-def new_text(path: Path, ref: str) -> str:
+def old_lines(path: Path, ref: str) -> set[str]:
+    return set(git_text(path, ref).splitlines())
+
+
+def new_text(path: Path, ref: str, head: str = "WORKTREE") -> str:
     previous = old_lines(path, ref)
-    return "\n".join(line for line in read_text(path).splitlines() if line not in previous)
+    current = read_text(path) if head == "WORKTREE" else git_text(path, head)
+    return "\n".join(line for line in current.splitlines() if line not in previous)
 
 
 def words(text: str) -> list[str]:
@@ -177,13 +183,18 @@ def is_scanner_definition(path: Path, line: str) -> bool:
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description="Scan changed files for source fingerprints.")
-    ap.add_argument("--ref", default="HEAD", help="Git ref to compare against")
+    ap.add_argument("--ref", required=True, help="trusted base revision to compare against")
+    ap.add_argument("--head", default="WORKTREE", help="pushed head revision or WORKTREE")
+    ap.add_argument("--expect-changes", action="store_true", help="fail when the revision range is empty")
     ap.add_argument("--min-words", type=int, default=10, help="minimum phrase length")
     ap.add_argument("--max-corpus-files", type=int, default=50000,
                     help="maximum private corpus text files to index")
     args = ap.parse_args(argv)
 
-    files = changed_files(args.ref)
+    files = changed_files(args.ref, args.head)
+    if args.expect_changes and not files:
+        print("fingerprint: expected changed text files, but the revision range is empty")
+        return 2
     findings: list[str] = []
 
     for p in files:
@@ -206,7 +217,7 @@ def main(argv: list[str]) -> int:
         changed_phrases: set[str] = set()
         phrase_owner: dict[str, str] = {}
         for p in files:
-            for ph in phrases(new_text(p, args.ref), args.min_words):
+            for ph in phrases(new_text(p, args.ref, args.head), args.min_words):
                 changed_phrases.add(ph)
                 phrase_owner.setdefault(ph, rel(p))
         hit = corpus_overlap(corpus, changed_phrases, args.min_words, args.max_corpus_files)

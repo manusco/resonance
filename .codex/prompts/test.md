@@ -1,5 +1,0 @@
----
-description: Write or audit tests against the 8-Path Matrix. Destructive and property-based coverage.
----
-
-Run the Resonance test procedure. Read `.agents/skills/ops/qa/SKILL.md` in full and execute it, following its Definition of Done.

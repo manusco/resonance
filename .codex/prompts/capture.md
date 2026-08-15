@@ -1,5 +1,0 @@
----
-description: Document a solved problem in the correct Diataxis quadrant so it is never re-discovered.
----
-
-Run the Resonance capture procedure. Read `.agents/skills/ops/librarian/SKILL.md` in full and execute it, following its Definition of Done.

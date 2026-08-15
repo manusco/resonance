@@ -1,5 +1,0 @@
----
-description: SEO and GEO audit: structured data, canonical, schema, AI-citation optimization.
----
-
-Run the Resonance seo procedure. Read `.agents/skills/marketing/seo/SKILL.md` in full and execute it, following its Definition of Done.

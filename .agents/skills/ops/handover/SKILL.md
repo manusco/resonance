@@ -28,7 +28,7 @@ If a source is missing, skip it silently. Do not fabricate.
 ## Same-Day Logic
 
 1. Compute today's date in `YYMMDD` format.
-2. Check if `docs/handovers/<YYMMDD>_handover.md` exists via Glob.
+2. Check if `docs/handovers/<YYMMDD>_handover.md` exists via search.
 3. **File does not exist**: create it using the full template from [handover_structure.md](references/handover_structure.md).
 4. **File exists**: append only. Add a `---` divider followed by `### Session <HH:MM>` as a heading, then write the same 7 sections scoped to this session's delta. Do not re-copy the earlier content.
 
@@ -59,4 +59,4 @@ If a source is missing, skip it silently. Do not fabricate.
 
 Apply the Resonance operating standard from AGENTS.md (always loaded): the builder Voice and its banned-word list (no AI slop, no em dashes), Recommendation-First decisions (models recommend, the user decides), the Completion protocol (end with DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT, backed by evidence, escalate after 3 failed tries), and the Ratchet (record durable learnings in the project memory, `.resonance/02_memory.md`, which loads at session start).
 
-> **Model note (Claude):** Strong native reasoning. Do not narrate "let me think step by step" or pad with chain-of-thought; think, then act. Prefer the dedicated file and search tools over shell. State assumptions briefly, then proceed.
+> **Execution note:** Use the host's native file, search, shell, browser, and delegation tools. Follow the procedure and verify material claims with evidence. Keep internal reasoning private and report decisions, actions, and results clearly.

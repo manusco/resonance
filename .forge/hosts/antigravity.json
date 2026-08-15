@@ -1,7 +1,6 @@
 {
   "host": "antigravity",
   "label": "Antigravity (Google)",
-  "output_path": ".agents/skills/{name}/SKILL.md",
   "default_model": "gemini",
   "tool_names": {
     "read": "read_file",

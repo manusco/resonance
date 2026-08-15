@@ -16,18 +16,20 @@ cost real debugging time baked in so nobody re-learns them:
   - Retry on 429 / 5xx / empty completion with backoff.
 
 Configure with environment variables (never hardcode a key):
-  MODEL_API_KEY   required; also read from OPENAI_API_KEY / ANTHROPIC_API_KEY /
-                  OPENROUTER_API_KEY / OPENCODE_GO_API_KEY if MODEL_API_KEY is unset
+  MODEL_PROVIDER  required: openai, openrouter, or custom
+  OPENAI_API_KEY  required for openai; bound to the official OpenAI endpoint
+  OPENROUTER_API_KEY required for openrouter; bound to its official endpoint
+  MODEL_API_KEY   required only for a custom OpenAI-compatible endpoint
   MODEL_BASE_URL  OpenAI-compatible root, e.g. https://api.openai.com/v1
   MODEL_NAME      e.g. gpt-4o, glm-5, deepseek-v4-pro
   MODEL_EXTRA     optional JSON of extra body params, only if your gateway accepts them
 
 Usage:
-  MODEL_BASE_URL=... MODEL_NAME=... MODEL_API_KEY=... \
+  MODEL_PROVIDER=custom MODEL_BASE_URL=... MODEL_NAME=... MODEL_API_KEY=... \
   RESONANCE_MODEL_CMD="python .forge/exec/model_cli.py" \
   python .forge/run_evals.py --all --score
 """
-import sys, os, json, time, urllib.request, urllib.error
+import sys, os, json, time, urllib.parse, urllib.request, urllib.error
 
 try:
     sys.stdin.reconfigure(encoding="utf-8", errors="replace")
@@ -44,18 +46,41 @@ def env(*names, default=""):
     return default
 
 
-KEY = env("MODEL_API_KEY", "OPENAI_API_KEY", "ANTHROPIC_API_KEY", "OPENROUTER_API_KEY", "OPENCODE_GO_API_KEY")
-BASE = env("MODEL_BASE_URL", default="https://api.openai.com/v1").rstrip("/")
-MODEL = env("MODEL_NAME", default="gpt-4o")
+PROVIDERS = {
+    "openai": ("https://api.openai.com/v1", "OPENAI_API_KEY"),
+    "openrouter": ("https://openrouter.ai/api/v1", "OPENROUTER_API_KEY"),
+    "custom": ("", "MODEL_API_KEY"),
+}
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
 
 
+def provider_config():
+    provider = env("MODEL_PROVIDER").lower()
+    if provider not in PROVIDERS:
+        raise ValueError("set MODEL_PROVIDER to openai, openrouter, or custom")
+    default_base, key_name = PROVIDERS[provider]
+    base = env("MODEL_BASE_URL", default=default_base).rstrip("/")
+    key = env(key_name)
+    model = env("MODEL_NAME")
+    if not base or not model or not key:
+        raise ValueError(f"{provider} requires MODEL_NAME, {key_name}, and a valid base URL")
+    parsed = urllib.parse.urlparse(base)
+    if parsed.scheme != "https" or not parsed.netloc or parsed.username or parsed.password:
+        raise ValueError("MODEL_BASE_URL must be an HTTPS URL without embedded credentials")
+    if provider != "custom" and base != default_base:
+        raise ValueError(f"{provider} credentials are bound to {default_base}; use custom with MODEL_API_KEY")
+    return key, base, model
+
+
 def main():
-    if not KEY:
-        sys.stderr.write("model_cli: no API key (set MODEL_API_KEY)\n"); return 2
+    try:
+        key, base, model = provider_config()
+    except ValueError as exc:
+        sys.stderr.write(f"model_cli: {exc}\n")
+        return 2
     prompt = sys.stdin.read()
-    body = {"model": MODEL, "messages": [{"role": "user", "content": prompt}]}
+    body = {"model": model, "messages": [{"role": "user", "content": prompt}]}
     extra = env("MODEL_EXTRA")
     if extra:
         try:
@@ -63,9 +88,9 @@ def main():
         except Exception:
             pass
     data = json.dumps(body).encode("utf-8")
-    headers = {"Authorization": "Bearer " + KEY, "Content-Type": "application/json",
+    headers = {"Authorization": "Bearer " + key, "Content-Type": "application/json",
                "Accept": "application/json", "User-Agent": UA}
-    req = urllib.request.Request(BASE + "/chat/completions", data=data, headers=headers)
+    req = urllib.request.Request(base + "/chat/completions", data=data, headers=headers)
     n = 8
     for attempt in range(n):
         try:

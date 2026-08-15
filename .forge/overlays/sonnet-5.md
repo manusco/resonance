@@ -1,1 +1,0 @@
-> **Model note (Claude Sonnet 5):** Strong reasoning at speed. Think, then act; do not narrate chain-of-thought. Prefer the dedicated file and search tools over shell. On a long multi-step procedure, tick the checklist as you go so nothing is skipped. State assumptions briefly before a heavy action, then proceed.

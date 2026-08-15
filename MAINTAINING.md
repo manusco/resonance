@@ -23,7 +23,7 @@ Resonance uses [Semantic Versioning](https://semver.org/) in the form `MAJOR.MIN
 - Increase `MINOR` for a backward-compatible capability, skill, or substantial feature.
 - Increase `PATCH` for backward-compatible fixes, protocol improvements, documentation, tests, and repository maintenance.
 
-Treat each part as an integer, not a decimal. For example, `2.4.10` follows `2.4.9`. Published historical tags remain unchanged. From `v2.4.87` onward, every release must be greater than all existing release tags. The next patch release is `v2.4.88`.
+Treat each part as an integer, not a decimal. For example, `2.4.10` follows `2.4.9`. Published historical tags remain unchanged. From `v2.4.87` onward, every release must be greater than all existing release tags.
 
 ## Prepare a release
 
