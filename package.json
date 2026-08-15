@@ -38,7 +38,8 @@
     "exec:browser": "node .forge/exec/browser_check.mjs",
     "orch-eval": "py .forge/orch_eval.py",
     "hooks:install": "py .forge/hooks/install.py",
-    "doc-drift": "py .forge/doc_drift.py"
+    "doc-drift": "py .forge/doc_drift.py",
+    "release:check": "py .forge/release_notes.py --check-release"
   },
   "engines": {
     "node": ">=18.0.0"

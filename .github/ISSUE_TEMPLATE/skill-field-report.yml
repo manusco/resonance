@@ -1,5 +1,6 @@
 name: Skill field report
 description: A Resonance skill behaved differently than its doctrine promises
+title: "[Field report]: "
 labels: ["field-report"]
 body:
   - type: input
@@ -30,3 +31,19 @@ body:
       description: Paste the relevant output or describe the gap
     validations:
       required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction context
+      description: Give the smallest safe example that can reproduce the gap. Remove secrets and private project data.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues for this behavior.
+          required: true
+        - label: I removed secrets and private project data.
+          required: true

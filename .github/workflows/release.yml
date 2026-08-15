@@ -1,0 +1,67 @@
+name: Publish release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Require main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Run this workflow from the main branch."
+          exit 1
+
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild generated files
+        run: |
+          python .forge/forge.py build --all
+          python .forge/forge.py commands --host all
+          git diff --exit-code
+
+      - name: Run release gate
+        run: |
+          python .forge/validate_skill.py --all --strict .agents/skills
+          python .forge/validate_library.py --strict
+          python .forge/doc_drift.py
+          python .forge/run_evals.py --all --check
+          python .forge/tests/run.py
+          python .forge/fingerprint_scan.py
+          python .forge/release_notes.py --check-release
+
+      - name: Prepare release
+        id: release
+        shell: bash
+        run: |
+          version="$(python .forge/release_notes.py --print-version)"
+          python .forge/release_notes.py --output release-notes.md
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Create tag and GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "v${{ steps.release.outputs.version }}" \
+            --target "$GITHUB_SHA" \
+            --title "Resonance v${{ steps.release.outputs.version }}" \
+            --notes-file release-notes.md

@@ -1,0 +1,68 @@
+name: Bug report
+description: Report a reproducible problem in Resonance
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve Resonance. Do not include secrets or private project data.
+
+  - type: input
+    id: version
+    attributes:
+      label: Resonance version
+      description: Use the version in package.json or the release tag.
+      placeholder: v2.4.87
+    validations:
+      required: true
+
+  - type: input
+    id: host
+    attributes:
+      label: Host and operating system
+      description: Name the agent tool, model if relevant, and operating system.
+      placeholder: Codex on Windows 11
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Give the smallest repeatable sequence that shows the problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include relevant output with secrets and private data removed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add logs, screenshots, or links that help isolate the cause.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues for this problem.
+          required: true
+        - label: I removed secrets and private project data.
+          required: true
