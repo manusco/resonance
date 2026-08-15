@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.4.88
+
+The execution-integrity release. Framework upgrades, host compilation, Git gates, credentials, and evaluation runs now fail closed at their trust boundaries.
+
+### Changed
+- **Upgrades are transactional.** The updater previews by default, tracks owned files, stages same-volume replacements, records a durable journal, validates the result, and supports recovery or rollback without replacing project-owned files.
+- **Credentials stay bound to their provider.** Model execution requires an explicit provider and does not send a provider key to a foreign default endpoint.
+- **Git gates inspect committed intent.** Secret checks read staged blobs, support common text encodings and formats, and stop when Git cannot provide trustworthy input.
+- **Compilation has one canonical output.** Portable skills have one writer while host adapters own only their command and bridge surfaces. Stale generated files are removed through explicit ownership markers.
+- **Scored evaluations fail closed.** Fixture paths are contained, answer and judge identities must differ, protected holdouts are required, arm order alternates, and malformed or failed model output cannot pass.
+
+### Added
+- **Tamper-evident evaluation oracle.** A normalized SHA-256 manifest protects 308 eval cases, tests, runners, and orchestration fixtures from silent mutation.
+- **Updater and compiler diagnostics.** Machine-readable doctor output reports pending recovery, conflicts, planned writes, and stale generated surfaces.
+- **Adversarial regression coverage.** Tests cover interrupted upgrades, unsafe adoption, dirty sources, staged secrets, path escapes, provider routing, stale host output, and benchmark contamination.
+
 ## v2.4.87
 
 The benchmark-integrity release. QA, context engineering, and skill-authoring now make comparative claims harder to fool.
