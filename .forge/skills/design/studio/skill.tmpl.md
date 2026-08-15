@@ -19,6 +19,8 @@ Studio makes visual **assets**: illustration, photographic-style imagery, hero a
 
 Style is a deliberate choice, tied to a period and a purpose. Studio names styles so you can aim precisely. It does not rank them. Whether a given style reads as timeless or as dated slop is the designer's call, so route style decisions that touch product through `resonance-design-designer` before committing.
 
+{{RESOLVER:marketing_ownership}}
+
 ## Prerequisites (fail fast)
 
 - [ ] Subject is defined: who or what is in the image, and what is happening?
@@ -58,6 +60,7 @@ Copy this checklist and tick items as you go.
 
 - Copy that overlaps the image (delegate to `resonance-marketing-copywriter`).
 - Interface taste, component design, and CSS from any mockup (delegate to `resonance-design-designer`, who owns the timeless-vs-slop judgment).
+- Organic or paid channel strategy, posting cadence, and performance verdicts (delegate to `resonance-marketing-content-distribution`, `resonance-marketing-paid-acquisition`, or `resonance-marketing-analytics`).
 
 ## Cognitive Frameworks
 
@@ -79,6 +82,7 @@ Subject, Style, and parameters are separate concerns. Keep them in separate fiel
 - **[Visual Prompting Protocol](references/visual_prompting_protocol.md)**: the physics of the prompt, model-neutral.
 - **[Visual Style Library](references/visual_style_library.md)**: a style vocabulary to aim with, not a ranking.
 - **[Asset Pipeline](references/asset_generation_pipeline.md)**: brief to finished asset.
+- **[Marketing Asset Briefs](references/marketing_asset_briefs.md)**: thumbnails, social graphics, creative safe zones, rights, consent, and accessibility checks.
 
 {{RESOLVER:operating_standard}}
 

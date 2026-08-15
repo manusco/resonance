@@ -1,5 +1,22 @@
 # Changelog
 
+## v2.4.84
+
+The marketing ownership release. Organic distribution, lifecycle email, paid media, copy, analytics, studio assets, and growth strategy now have clearer boundaries and regression coverage.
+
+### Added
+- **`marketing/content-distribution`.** New organic distribution skill for unpaid feed, community distribution, repurposing, surface adaptation, and video packaging.
+- **Shared marketing ownership resolver.** Growth, copywriter, lifecycle, paid acquisition, analytics, and studio now use the same owner map before drafting.
+- **Content and asset references.** Added organic distribution, video packaging, content learning loop, and marketing asset brief references.
+- **Boundary evals.** Added regression cases for organic routing, lifecycle newsletter ownership, content learning signals, studio asset rights, growth routing, copy routing, and outbound privacy.
+- **Fingerprint scan.** Added a deterministic scan for source markers and optional private-corpus phrase overlap.
+
+### Changed
+- **Eval runner baseline mode.** Evals can now compare a candidate skill against the existing relevant skill stack through `baseline_skills`.
+- **Copywriter scope.** Social copy now depends on a channel brief and no longer owns the content calendar or measurement verdict.
+- **Outbound safety.** Outbound sequences now reject fake reply framing, invasive personalization, risky link use, and auto-send without approval.
+- **Doc drift domain counting.** The release gate now counts domains from real `SKILL.md` files, so empty local folders cannot distort the check.
+
 ## v2.4.83
 
 The source-resolution release. `/update-resonance` no longer depends on a target application repo knowing the framework upstream URL.

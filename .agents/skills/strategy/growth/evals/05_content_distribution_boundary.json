@@ -1,0 +1,21 @@
+{
+  "skill": "resonance-strategy-growth",
+  "query": "We need better LinkedIn, X, and YouTube distribution. Build the channel portfolio, decide priority, and then write every post, thumbnail brief, and measurement verdict.",
+  "expected_behavior": [
+    "Owns growth bottleneck diagnosis, channel portfolio, and experiment priority.",
+    "Routes organic post calendars and repurposing to content distribution.",
+    "Routes copy, visual assets, paid spend, and measurement verdicts to their owner skills.",
+    "Does not write every post, thumbnail brief, and causal verdict as growth strategy."
+  ],
+  "checks": [
+    {
+      "kind": "contains_all",
+      "value": [
+        "content-distribution",
+        "copywriter",
+        "studio",
+        "analytics"
+      ]
+    }
+  ]
+}

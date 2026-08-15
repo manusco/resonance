@@ -1,135 +1,58 @@
-# Protocol: Social Distribution Engineering
+# Channel Copy Craft
 
-## Contents
-- The distribution engine
-- Reverse engineering patterns
-- Platform architecture
-- The repurposing pipeline
-- Short-form video
-> **Focus**: Algorithmic Reach, Content Repurposing & Short-Form Video
-> **Resonance Phase**: Growth / Awareness
+Use this only after the channel owner supplies the distribution brief. Copywriter owns the words and argument. It does not own the calendar, channel priority, asset production, or measurement verdict.
 
-## 1. The Distribution Engine
-Social Media is not "posting." It is **Distribution Engineering**. It is the process of atomizing your core intellectual property (IP) and injecting it into algorithmic feeds to capture attention.
+## Required Brief
 
-**The Core Loop**:
-`Core Insight` -> `Atomization` -> `Platform Adaptation` -> `Distribution` -> `Feedback Analysis`
+- Audience and situation.
+- Channel and surface.
+- Audience promise.
+- Proof available.
+- Desired action.
+- Constraints: length, format, brand voice, claims to avoid, compliance notes.
+- Asset dependency: image, clip, thumbnail, chart, or none.
 
-## 2. Reverse Engineering Patterns
-Do not guess. Analyze the "Source Code" of viral content.
+If the brief is missing, ask for the missing owner decision or produce a draft with clear assumptions.
 
-### Pattern: The Hook-Reward Loop
-Every successful post follows this structure:
-1.  **The Hook (Stop the Scroll)**: A pattern interrupt.
-    *   *Contrarian*: "SEO is dead."
-    *   *Specific*: "I spent $50k on Ads. Here is what I learned."
-    *   *Story*: "I almost quit yesterday."
-2.  **The Body (The Payoff)**: High-density value. No fluff.
-    *   Lists, Frameworks, "How-to" steps.
-3.  **The CTA (The Capture)**: "Follow for more", "Link in bio", "Retweet".
+## Platform-Fit Copy
 
-## 3. Platform Architecture
+Adapt the language to the surface without changing the claim:
 
-### LinkedIn (The Professional Graph)
-*   **Algorithm Preference**: Dwell time, Comments, PDF Carousels.
-*   **Format**: "Broetry" (Short lines, white space) or "Slide Decks" (Pdf uploads).
-*   **Strategy**: "Build in Public", Career advice, Corporate data.
+- LinkedIn: professional stakes, operating lessons, field notes, and a useful point of view.
+- X: sharp idea, dense observation, thread logic, or live commentary.
+- Instagram: caption that supports the visual and does not explain what the image already shows.
+- TikTok, Reels, Shorts: opening line, spoken rhythm, on-screen caption idea, and payoff.
+- YouTube: title, intro beat, description, pinned comment, and chapter language.
+- Community: contribution-first, specific, affiliation clear when relevant.
 
-### Twitter/X (The Interest Graph)
-*   **Algorithm Preference**: Replies, Threads, Retweets.
-*   **Format**: Threads (1 Hook + 5-10 value tweets).
-*   **Strategy**: High velocity, "Hot takes", Threading specific tutorials.
+## Hooks
 
-### YouTube / Video (The Algorithm)
-*   **Algorithm Preference**: Watch time (Retention), CTR (Thumbnails).
+A hook should create honest attention:
 
-## 4. The Repurposing Pipeline (Write Once, Distribute Everywhere)
-Do not create unique content for every channel. Create **Pillars**.
+- Name a specific problem.
+- Show a contradiction.
+- Give a concrete result.
+- Open a knowledge gap the piece will close.
+- Start from the reader's active situation.
 
-**Source**: 1 Deep-Dive Blog Post or Video.
-**Downstream Artifacts**:
-1.  **Twitter Thread**: Extract the top 5 insights.
-2.  **LinkedIn Post**: Summarize the "Business Lesson" or story.
-3.  **Newsletter**: Send the full deep dive to subscribers.
-4.  **Shorts/Reels**: 60s video of the main point.
+Do not use fake controversy, fake urgency, manipulative reply bait, or "comment yes" mechanics. If the strongest hook requires a false claim, the idea is not ready.
 
-### Content Atoms (from long-form)
-Extract self-contained moments that work on their own:
+## Claim Integrity
 
-| Atom Type | What to Extract | Best Platform |
-|-----------|----------------|---------------|
-| Quotable moment | Bold claim, hot take (15-60s) | X, LinkedIn, TikTok |
-| Story arc | Setup → conflict → resolution (60-90s) | Reels, TikTok, Shorts |
-| Tactical tip | Specific how-to or framework (30-60s) | LinkedIn, Shorts |
-| Data/stat callout | Surprising number or finding | LinkedIn carousel, X |
+Every post still follows copy integrity:
 
-## 5. Short-Form Video (TikTok, Reels, Shorts)
+- No fabricated proof.
+- No unsupported metrics.
+- No fake testimonials.
+- No disguised sponsorship or affiliation.
+- No copied phrase patterns from a reference source.
+- No screenshots, names, or private details without permission.
 
-Short-form video is the highest-reach format on every major platform.
+## Handoff
 
-### Platform Specs
+Return copy with a note that names what belongs elsewhere:
 
-| Platform | Optimal Length | Aspect Ratio | Key Difference |
-|----------|---------------|--------------|----------------|
-| TikTok | 15-60 sec | 9:16 | Trending sounds, raw/authentic feel |
-| Reels | 15-30 sec | 9:16 | Polished content, rewards saves/shares |
-| Shorts | 30-60 sec | 9:16 | YouTube SEO applies, searchable titles |
-
-### The 3-Second Rule
-You have 3 seconds to stop the scroll. Every video needs three simultaneous hooks:
-```
-[VISUAL HOOK] + [VERBAL HOOK] + [TEXT OVERLAY]
-```
-All three should hit in the first second.
-
-### Video Structures
-
-**Problem-Solution (15-30s):**
-```
-[0-3s]  Hook: State the problem
-[3-10s] Agitate: Why it matters
-[10-25s] Solution: Your method/product/tip
-[25-30s] CTA: What to do next
-```
-
-**List Format (30-60s):**
-```
-[0-3s]  Hook: "X things that [outcome]"
-[3-50s] Items: One every 5-8 seconds
-[50-60s] CTA
-```
-
-**Tutorial (30-60s):**
-```
-[0-3s]  Hook: Show the end result first
-[3-8s]  Overview: "Here's how..."
-[8-50s] Steps: Quick, clear instructions
-[50-60s] Result + CTA
-```
-
-### Caption & Subtitle Rules
-Captions increase watch time by 25-40%. Most video is watched without sound.
-- **MAX 2 lines** on screen at once
-- **3-5 words per line**
-- Bold, sans-serif font with black outline
-- **Highlight key words** in a different color
-- Match timing to speech exactly
-
-### Common Mistakes
-1. **Slow hooks** - don't build up to the point
-2. **No text overlay** - many watch without sound
-3. **Poor audio** - bad audio kills retention instantly
-4. **Too long** - if it can be shorter, make it shorter
-5. **No CTA** - tell viewers what to do
-6. **Ignoring comments** - engagement in first hour matters
-
-## 6. Engagement Protocol
-Distribution is bi-directional.
-*   **The 30-Min Rule**: Engage heavily for the first 30 mins after posting to spike algorithmic signals.
-*   **Reply Strategy**: Reply to every comment with a question to double the comment count (Algorithmic boost).
-*   **The "Daughter" Nodes**: Comment on big accounts in your niche. Piggyback on their distribution.
-
-## 7. Metrics (The Dashboard)
-*   **Impressions**: Top of Funnel (Hook quality).
-*   **Engagement Rate**: Middle of Funnel (Content quality).
-*   **Profile Clicks**: Bottom of Funnel (Bio/Offer quality).
+- Distribution strategy and cadence: `resonance-marketing-content-distribution`.
+- Visual or thumbnail production: `resonance-design-studio`.
+- Lifecycle email architecture: `resonance-marketing-lifecycle`.
+- Measurement and causal claims: `resonance-marketing-analytics`.

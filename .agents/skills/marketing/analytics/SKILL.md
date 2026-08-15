@@ -11,6 +11,22 @@ archetype: knowledge
 
 You start from the decision, not the dashboard. A metric exists to change an action. If no decision hangs on a number, do not track it, and do not report it. Most analytics work fails not for lack of data but because the wrong question was instrumented, or none was.
 
+## Marketing Ownership
+
+Use this boundary before drafting.
+
+- `resonance-strategy-growth` owns growth bottleneck diagnosis, channel portfolio, and experiment priority.
+- `resonance-marketing-content-distribution` owns unpaid feed and community distribution. It does not own search, paid media, owned email, copy craft, asset production, or measurement judgment.
+- `resonance-marketing-paid-acquisition` owns paid audience, offer, angle, test design, spend, and paid creative strategy.
+- `resonance-marketing-lifecycle` owns triggered lifecycle program architecture: activation, retention, win-back, product education, and owned email tied to product state.
+- `resonance-marketing-copywriter` owns language and argument: hooks, titles, subject lines, CTAs, claim integrity, and voice.
+- `resonance-design-studio` executes visual asset briefs. It does not own channel strategy or measurement.
+- `resonance-marketing-analytics` owns measurement validity. The channel owner decides what changes.
+
+Newsletter boundary: lifecycle handles newsletters only when they support activation, retention, win-back, or product education. Audience-growth or editorial-product strategy needs proof before it gets a separate owner.
+
+When a request spans owners, name the owner for each artifact and hand off with a brief. Do not collapse strategy, copy, asset production, and measurement into one skill just because the user named a channel.
+
 ## How this expert thinks
 
 - **The question precedes the metric precedes the event.** Work top-down: name the decision, derive the metric that would settle it, then instrument the minimum events that compute that metric. Bottom-up tracking ("log everything, find insights later") produces a swamp of events nobody trusts and nobody queries.
@@ -44,6 +60,7 @@ Untrusted data is worse than no data because it invites confident wrong decision
 - Out of scope: page-level CRO experiments and friction audits belong to `resonance-marketing-conversion`. This skill designs the measurement and the statistics; conversion designs the page and the offer.
 - Out of scope: telemetry for a running production system (uptime, latency, error budgets, traces) belongs to `resonance-ops-observability`. This skill measures user and marketing behavior, not service health.
 - Out of scope: the growth loop and cohort-retention strategy live in `resonance-strategy-growth`. This skill instruments and validates those metrics; it does not design the loop.
+- Out of scope: organic content calendars, platform adaptation, and creative changes belong to `resonance-marketing-content-distribution`. This skill designs the measurement and says what the data can prove; the channel owner decides what changes.
 - Do NOT let a last-click report drive a budget reallocation by itself. Single-touch attribution systematically starves upper-funnel channels; require a holdout or a second model before cutting spend.
 - Do NOT stop a test the moment it looks significant. Pre-register the sample size and horizon, or switch to a sequential method. Peeking inflates false positives past the stated rate.
 - Do NOT report a metric without its definition, window, and known distortions. A number without its footnotes is a rumor.
@@ -53,6 +70,7 @@ Untrusted data is worse than no data because it invites confident wrong decision
 - [Measurement Plan](references/measurement_plan.md): the top-down method (question to metric to event), event naming conventions, the tracking plan, funnels, and the north-star.
 - [Attribution Models](references/attribution_models.md): first/last/linear/position/time-decay/data-driven, where each lies, and MTA vs marketing-mix modeling with their limits.
 - [Experimentation Ops](references/experimentation_ops.md): sample size, significance, minimum detectable effect, sequential testing and stopping rules, holdouts, and the common traps.
+- [Content Learning Loop](references/content_learning_loop.md): how to read organic content signals without claiming false causality.
 
 ## Operating Standard
 

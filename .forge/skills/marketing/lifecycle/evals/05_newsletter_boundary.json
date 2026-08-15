@@ -1,0 +1,23 @@
+{
+  "skill": "resonance-marketing-lifecycle",
+  "query": "Build a weekly newsletter to grow our audience on LinkedIn and X. It is not tied to onboarding, retention, product education, or win-back.",
+  "expected_behavior": [
+    "Refuses to treat an audience-growth newsletter as lifecycle by default.",
+    "Explains that lifecycle owns newsletters tied to activation, retention, win-back, or product education.",
+    "Routes editorial audience-growth distribution to content distribution.",
+    "Does not design a triggered lifecycle program when no lifecycle state exists."
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "content-distribution",
+        "organic"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)triggered lifecycle program"
+    }
+  ]
+}

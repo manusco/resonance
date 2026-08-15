@@ -107,7 +107,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/incident** -> `ops/incident` - Drive a live production incident: triage, severity, mitigate, comms, blameless postmortem.
 
 ### Always-on specialists (auto-fire, no command)
-Knowledge skills apply themselves when relevant: `engineering/backend`, `engineering/frontend`, `engineering/mobile`, `engineering/game-dev`, `engineering/database`, `engineering/devops`, `engineering/automation`, `engineering/performance`, `strategy/architect`, `strategy/growth`, `strategy/researcher`, `marketing/copywriter`, `sales/account-intelligence`, `sales/lead-ops`, `sales/outbound-sequence`, `ops/security`, `ops/product`, `ops/productivity`, `ops/observability`, `marketing/paid-acquisition`, `marketing/analytics`, `marketing/lifecycle`, `engineering/ai-engineering`, `strategy/finance`, `ops/legal`, `ops/founder-os`, `people/hiring`, `success/customer-success`, `sales/revops`.
+Knowledge skills apply themselves when relevant: `engineering/backend`, `engineering/frontend`, `engineering/mobile`, `engineering/game-dev`, `engineering/database`, `engineering/devops`, `engineering/automation`, `engineering/performance`, `strategy/architect`, `strategy/growth`, `strategy/researcher`, `marketing/copywriter`, `marketing/content-distribution`, `sales/account-intelligence`, `sales/lead-ops`, `sales/outbound-sequence`, `ops/security`, `ops/product`, `ops/productivity`, `ops/observability`, `marketing/paid-acquisition`, `marketing/analytics`, `marketing/lifecycle`, `engineering/ai-engineering`, `strategy/finance`, `ops/legal`, `ops/founder-os`, `people/hiring`, `success/customer-success`, `sales/revops`.
 
 ---
 

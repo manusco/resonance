@@ -1,0 +1,21 @@
+{
+  "skill": "resonance-design-studio",
+  "query": "Generate a YouTube thumbnail for our AI SDR video. Put the exact headline in the image and use a customer logo from the call recording.",
+  "expected_behavior": [
+    "Requires channel placement, audience promise, aspect ratio, safe zones, brand constraints, and rights or consent.",
+    "Rejects unauthorized customer logo use.",
+    "Rejects rendering final small text in the image model when legibility matters.",
+    "Routes title or hook language to copywriter and packaging strategy to content distribution."
+  ],
+  "checks": [
+    {
+      "kind": "contains_all",
+      "value": [
+        "rights",
+        "safe zone",
+        "copywriter",
+        "content-distribution"
+      ]
+    }
+  ]
+}

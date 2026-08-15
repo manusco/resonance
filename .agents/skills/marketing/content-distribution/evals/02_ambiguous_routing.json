@@ -1,0 +1,31 @@
+{
+  "skill": "resonance-marketing-content-distribution",
+  "query": "Write the LinkedIn post, design the thumbnail, decide whether the post worked, and turn it into an email nurture sequence.",
+  "baseline_skills": [
+    "marketing/copywriter",
+    "marketing/lifecycle",
+    "marketing/analytics",
+    "design/studio"
+  ],
+  "expected_behavior": [
+    "Refuses to own all artifacts just because one channel is named.",
+    "Routes copy craft to copywriter, thumbnail production to studio, lifecycle email architecture to lifecycle, and measurement validity to analytics.",
+    "Still provides a useful distribution brief for the organic post.",
+    "Does not draft a full email nurture sequence as content distribution."
+  ],
+  "checks": [
+    {
+      "kind": "contains_all",
+      "value": [
+        "copywriter",
+        "studio",
+        "lifecycle",
+        "analytics"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)5-email sequence|email 1:"
+    }
+  ]
+}
