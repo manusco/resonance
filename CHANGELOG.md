@@ -36,6 +36,9 @@ domain conductors for campaign, revenue, finance, and leadership work.
   and fixed performance thresholds are framed as measured project targets.
 - **Evidence manifest hashing ignores private input trees.** Kernel tests no
   longer walk ignored `_input/` content while calculating tracked manifests.
+- **Explain chooses visual forms more deliberately.** `/explain` now names the
+  diagram shape that fits the teaching job, with eval coverage for state and
+  data-flow explanations.
 - **Release scope moves to minor versioning.** This release adds public
   contracts and conductors, so it ships as `2.5.0`.
 

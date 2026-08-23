@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-ops-explain",
+  "query": "Explain the new checkout state machine and show it visually. I need to understand how payment, inventory reservation, and order confirmation move between states.",
+  "expected_behavior": [
+    "Chooses a state flow or data-flow visual because the subject is lifecycle and boundary movement, not a generic prose summary",
+    "Grounds the visual in actual repo artifacts such as state names, functions, events, files, or integrations from the checkout change",
+    "Keeps the visual focused on the single load-bearing model instead of touring every checkout file",
+    "Explains how the reader can use the visual to predict what breaks when a state transition or boundary changes",
+    "Does not create a decorative or unrelated visual when a compact diagram is enough"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}
