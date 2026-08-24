@@ -59,7 +59,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "AI / LLM Product Engineer. Builds reliable AI features that survive contact with real users: eval-driven, cost-bounded, hallucination-controlled. Use when building an LLM feature, designing a RAG pipeline or retrieval, architecting an agent or tool-use loop, writing prompts or context assembly, building evals for AI behavior, adding guardrails, or controlling AI cost, latency, or hallucination. Also use to diagnose a RAG pipeline that returns wrong answers or an agent that loops."
+      "AI / LLM Product Engineer. Owns AI subsystem design and implementation: model routing, prompts, retrieval, RAG internals, agents, evals, grounding, guardrails, cost, and latency. Use when building or diagnosing those systems. Whole-system topology, service boundaries, trust zones, and cross-system data ownership belong to Architect."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -72,7 +72,25 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "job_id": "implementation.ai-system",
+    "stage": "EXECUTE",
+    "contributes_to": [
+      "delivery.goal"
+    ],
+    "reviews": [],
+    "finalizes": [
+      "ai-system-artifact"
+    ],
+    "artifact_access": [
+      "implementation-plan:read",
+      "ai-system-artifact:create,modify"
+    ],
+    "dispatch_conditions": [
+      "the approved work changes an LLM, RAG, retrieval, prompt, agent, or AI evaluation system"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -123,7 +141,25 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "job_id": "implementation.backend",
+    "stage": "EXECUTE",
+    "contributes_to": [
+      "delivery.goal"
+    ],
+    "reviews": [],
+    "finalizes": [
+      "backend-artifact"
+    ],
+    "artifact_access": [
+      "implementation-plan:read",
+      "backend-artifact:create,modify"
+    ],
+    "dispatch_conditions": [
+      "the approved work changes server-side business logic, APIs, or data flows"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -195,7 +231,25 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "job_id": "implementation.database",
+    "stage": "EXECUTE",
+    "contributes_to": [
+      "delivery.goal"
+    ],
+    "reviews": [],
+    "finalizes": [
+      "database-artifact"
+    ],
+    "artifact_access": [
+      "implementation-plan:read",
+      "database-artifact:create,modify"
+    ],
+    "dispatch_conditions": [
+      "the approved work changes schemas, queries, constraints, or migrations"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -233,7 +287,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "DevOps Engineer Specialist. Builds CI/CD pipelines, Infrastructure as Code, and verified rollback paths. Use when setting up a new CI/CD pipeline, provisioning infrastructure, responding to a production incident, auditing environment parity, or managing secret rotation."
+      "DevOps Engineer Specialist. Implements and verifies CI/CD, Infrastructure as Code, environment parity, rollback mechanisms, and secret rotation. Use for infrastructure changes or diagnostics. During a live incident it contributes bounded infrastructure actions under Incident command; it does not own severity, communications, or incident disposition."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -270,7 +324,25 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "job_id": "implementation.frontend",
+    "stage": "EXECUTE",
+    "contributes_to": [
+      "delivery.goal"
+    ],
+    "reviews": [],
+    "finalizes": [
+      "frontend-artifact"
+    ],
+    "artifact_access": [
+      "implementation-plan:read",
+      "frontend-artifact:create,modify"
+    ],
+    "dispatch_conditions": [
+      "the approved work changes a web interface or client-side interaction"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -329,7 +401,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "Performance Engineer Specialist. Measures, profiles, and optimizes system throughput and latency. Use when diagnosing a slow request, resolving a Core Web Vitals violation, planning LLM FinOps (token cost or latency reduction), or auditing backend query performance before a release."
+      "Performance diagnostician. Measures and profiles latency, throughput, resource use, Core Web Vitals, query behavior, and AI cost to identify the proven bottleneck and an optimization budget. Use when the cause or limiting resource is unknown. Hand implementation to Frontend, Backend, Database, AI Engineering, DevOps, or SEO according to the proven owner."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -345,7 +417,28 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "verification.performance",
+    "stage": "VERIFY",
+    "contributes_to": [
+      "verification.audit"
+    ],
+    "reviews": [
+      "delivery.goal"
+    ],
+    "finalizes": [
+      "performance-report"
+    ],
+    "artifact_access": [
+      "implementation-artifact:read,review,execute",
+      "performance-evidence:create,append_evidence",
+      "performance-report:create,modify"
+    ],
+    "dispatch_conditions": [
+      "measured latency, throughput, resource use, or cost needs diagnosis"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -451,7 +544,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Marketing Analytics Engineer. Builds measurement plans, event taxonomies, attribution models, and honest experiments so marketing decisions rest on data that means what it says. Use when writing a measurement plan, designing event tracking, choosing an attribution model, defining a north-star metric or funnel, sizing or reading an A/B test, analyzing an experiment, or setting up GA4/Amplitude/PostHog/Mixpanel."
+      "Marketing Analytics Engineer. Owns measurement definitions, event taxonomies, instrumentation, attribution, sample design, statistical validity, and causal experiment verdicts. Use when evidence must be made trustworthy or interpreted. Conversion owns the customer-facing intervention and variant hypothesis, not the measurement verdict."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -499,7 +592,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "Conversion Rate Engineer. Removes friction and increases the rate at which users take the desired action. Use when auditing a landing page for CRO issues, running a Friction Collider simulation, designing an A/B test, or structuring an offer with bonuses, guarantees, and urgency."
+      "Conversion Rate Engineer. Diagnoses decision friction and designs page, journey, offer, and experiment interventions that improve a named action. Use for CRO audits, friction simulation, variant hypotheses, or offer structure. Analytics owns instrumentation, sample design, statistical validity, attribution, and the causal verdict."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -526,7 +619,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Conversion Copywriter Specialist. Constructs persuasive, human-sounding language and argument for landing pages, sales pages, lifecycle copy, social posts, subject lines, hooks, CTAs, and AI-generated text rewrites. Use when writing or rewriting the words, sharpening the argument, humanizing a draft, extracting voice, or checking copy for clarity, proof, and readability."
+      "Conversion Copywriter Specialist. Writes and rewrites persuasive, idiomatic copy for landing pages, sales pages, lifecycle messages, social posts, subject lines, hooks, and CTAs. Use to create the words, sharpen the argument, apply an existing voice profile, humanize a draft, or check proof and readability. Voice owns extracting a reusable voice profile from a corpus."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -550,7 +643,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Lifecycle and Retention Strategist. Designs the messaging and product moments that turn a signup into an activated, habitual, paying user, and wins back the ones drifting away. Use when planning onboarding, defining an activation or aha moment, cutting time-to-value, designing a welcome or nurture or re-engagement email sequence, choosing triggered vs batch sends, segmenting with RFM, building retention loops, or fixing churn (voluntary, involuntary, dunning, save flows, win-back)."
+      "Lifecycle and Retention Strategist. Owns scalable product moments and triggered messaging from signup through activation, habit, dunning, save, and win-back. Use when the system must improve cohort behavior before or between human account interactions. Growth chooses the cross-funnel constraint and portfolio. Customer Success owns named post-sale accounts, renewals, QBRs, health, expansion, and escalations."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -606,7 +699,9 @@
     "inputs": [
       "user_request",
       "plan",
-      "campaign_scope"
+      "campaign_scope",
+      "gtm_hypothesis_decision_packet",
+      "growth_strategy_brief"
     ],
     "outputs": [
       "user_request",
@@ -621,9 +716,15 @@
       "paid_acquisition_scope",
       "analytics_scope",
       "creative_scope",
-      "legal_scope"
+      "legal_scope",
+      "gtm_hypothesis_scope",
+      "growth_strategy_scope",
+      "gtm_thinker_scope",
+      "growth_scope"
     ],
     "invokes": [
+      "resonance-strategy-gtm-thinker",
+      "resonance-strategy-growth",
       "resonance-strategy-grill",
       "resonance-marketing-copywriter",
       "resonance-marketing-content-distribution",
@@ -716,7 +817,26 @@
     "entrypoints": [
       "/audit"
     ],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "verification.audit",
+    "stage": "VERIFY",
+    "contributes_to": [],
+    "reviews": [
+      "delivery.goal"
+    ],
+    "finalizes": [
+      "audit-report"
+    ],
+    "artifact_access": [
+      "implementation-artifact:read,review",
+      "audit-evidence:create,append_evidence,modify",
+      "audit-report:create,modify,approve"
+    ],
+    "dispatch_conditions": [
+      "a repository, change, release, or system surface needs multi-specialist verification"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -799,7 +919,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "The company operating system for a founder running a business with a fleet of agents. Ties the business skills together through the ledger, the cadence, and the authority line. Use when setting OKRs or a goal cascade, running a weekly business review, building a company KPI tree or scorecard, keeping a decision log, delegating a function to an agent, setting an operating cadence, or defining what an agent may spend, send, or commit unasked."
+      "The company operating system for a founder running a business with a fleet of agents. Owns company OKRs, scorecards, weekly reviews, L10/EOS and IDS, decisions, cadence, delegation, and authority budgets. Use when running the company operating rhythm or defining what an agent may spend, send, change, or commit. Product discovery, PRDs, PMF, and product roadmap choices belong to Product."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -823,6 +943,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
+      "a new outcome must be driven through multiple stages to a verified finish",
       "autonomous bounded goal loop requested by the user"
     ],
     "negative_triggers": [
@@ -866,7 +987,24 @@
     "entrypoints": [
       "/goal"
     ],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "delivery.goal",
+    "stage": "EXECUTE",
+    "contributes_to": [],
+    "reviews": [],
+    "finalizes": [
+      "verified-outcome"
+    ],
+    "artifact_access": [
+      "goal-contract:read,create,modify",
+      "implementation-artifact:read,create,modify,execute",
+      "verified-outcome:create,modify,approve"
+    ],
+    "dispatch_conditions": [
+      "the user authorizes an outcome to be driven across multiple stages"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -947,7 +1085,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The Incident Commander. Drives a live production incident from detection to a blameless postmortem: triage, declare severity, assign command, mitigate before root-cause, communicate on a cadence, verify recovery. Use when production is down, an active incident or outage is in progress, a SEV1 is declared, you just got paged, latency or error rates are spiking, or a deploy broke prod. Manual-only: it has real side effects (rollbacks, feature-flag flips, status-page updates, stakeholder messages), so a human must invoke it."
+      "Incident Commander for an active production event. Owns severity, command roles, mitigation priority, communication cadence, approval gates, and verified recovery. Use when production is currently degraded or a live SEV is declared. DevOps contributes infrastructure actions under Incident command. Retro analyzes the event only after recovery. Manual-only because mitigation and communication have real side effects."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -998,7 +1136,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "Knowledge Keeper and Documentation Specialist. Structures knowledge so humans and agents can orient themselves without asking questions. Use when documenting a solved problem, updating an index after adding a new file, archiving a deprecated feature's docs, or auditing documentation for forbidden placeholders (TBD, \"as needed\", \"simply\")."
+      "Knowledge Keeper and canonical project-documentation owner. Turns finalized evidence or solved work into durable Diataxis documentation, chooses placement, updates indexes, supersedes contradictions, and archives deprecated docs. Do not use for open-ended research or unsettled claims; hand the evidence question to Researcher first."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1103,7 +1241,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Product Manager and Operations Architect. Defines what to build and why, using Working Backwards, RICE scoring, and PMF diagnostics. Use when a feature idea needs scoping, when a roadmap needs prioritization, when running an L10/EOS meeting, or when validating product-market fit with the Sean Ellis test."
+      "Product Manager Specialist. Defines what to build and why through discovery, Working Backwards PRDs, RICE prioritization, and PMF diagnostics. Use when a feature needs scoping, a roadmap needs product prioritization, or product-market fit needs testing. Company OKRs, scorecards, weekly reviews, L10/EOS, IDS, delegation, and authority budgets belong to Founder OS."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1167,7 +1305,28 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "verification.qa",
+    "stage": "VERIFY",
+    "contributes_to": [
+      "verification.audit"
+    ],
+    "reviews": [
+      "delivery.goal"
+    ],
+    "finalizes": [
+      "verification-report"
+    ],
+    "artifact_access": [
+      "implementation-artifact:read,review,execute",
+      "test-artifact:create,modify,execute",
+      "verification-report:create,append_evidence,modify"
+    ],
+    "dispatch_conditions": [
+      "behavior needs test design, coverage analysis, or executed verification"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1205,7 +1364,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The Analytics Officer. Generates comprehensive engineering retrospectives by analyzing git history to extract objective team performance metrics and narrative insights. Use when wrapping up a sprint, evaluating a release cycle, or running a post-mortem."
+      "Engineering retrospective analyst. Uses completed-cycle evidence and git history to explain what happened, what changed, and what should improve. Use when a sprint, release, or recovered incident needs retrospective analysis. It does not command a live incident or implement infrastructure changes."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1232,7 +1391,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "Code Reviewer and Gatekeeper. Ensures only high-quality, maintainable, and secure code reaches the main branch via classified finding reports (P0-P3). Use when reviewing a PR, auditing an AI/LLM code change, performing a pre-landing safety check, or when receiving and acting on review feedback without reflexive agreement."
+      "General code-review gatekeeper. Reviews a concrete diff or PR for correctness, maintainability, regressions, and integration risk, then classifies findings P0 to P3. Use for the whole change. Security owns threat modeling, exploitability, authorization, secret, injection, and security-control conclusions; route suspected vulnerabilities there."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1248,7 +1407,28 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "verification.code-review",
+    "stage": "VERIFY",
+    "contributes_to": [
+      "verification.audit"
+    ],
+    "reviews": [
+      "delivery.goal"
+    ],
+    "finalizes": [
+      "review-report"
+    ],
+    "artifact_access": [
+      "implementation-artifact:read,review",
+      "review-evidence:create,append_evidence",
+      "review-report:create,modify"
+    ],
+    "dispatch_conditions": [
+      "a concrete diff or pull request needs a correctness and maintainability verdict"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1286,7 +1466,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "Security Auditor Specialist. Verifies defenses through STRIDE threat modeling, authorization model audits, and the 6-layer security ensemble. Use when reviewing a PR for vulnerabilities, hardening infrastructure headers, auditing authorization consistency across 6 layers, performing a STRIDE threat model on a new system design, or checking AI features for prompt injection risks."
+      "Security Auditor Specialist. Owns threat models and security findings for authorization, secrets, injection, trust boundaries, infrastructure controls, and AI abuse paths. Use when the question is whether a system or change is exploitable or adequately defended. Reviewer owns the general correctness and maintainability gate for the full diff."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1302,7 +1482,28 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "verification.security",
+    "stage": "VERIFY",
+    "contributes_to": [
+      "verification.audit"
+    ],
+    "reviews": [
+      "delivery.goal"
+    ],
+    "finalizes": [
+      "security-findings"
+    ],
+    "artifact_access": [
+      "implementation-artifact:read,review",
+      "security-evidence:create,append_evidence",
+      "security-findings:create,modify"
+    ],
+    "dispatch_conditions": [
+      "the scope crosses a trust boundary or needs a security verdict"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1464,7 +1665,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "Tone of Voice Architect. Extracts the behavioral voice DNA of a Person, Brand, or Role/Character and compiles it into a portable, high-fidelity voice profile. Use when capturing an individual's writing style, documenting a brand voice, defining a character or persona, ghostwriting in someone's voice, or building a standing AI context file for consistent output."
+      "Tone of Voice Architect. Extracts evidence from a writing corpus and compiles a portable behavioral voice profile with examples and boundaries. Use when the reusable voice itself must be discovered or documented. Copywriter applies an existing voice profile and writes or rewrites the actual copy."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1677,7 +1878,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "Ingests sales pipeline deal data from CSV, HubSpot, or Salesforce, and renders a fully interactive, visual pipeline analytics dashboard with velocity calculations and forecasting. Use when asked to audit deal pipelines, forecast monthly sales goals, or track rep quota performance."
+      "Sales pipeline analyst. Ingests deal data from CSV, HubSpot, or Salesforce and produces deal-level pipeline inspection, velocity, forecast views, and rep performance analysis. Use when the immediate job is to understand the current pipeline. RevOps owns durable funnel definitions, coverage policy, capacity, territories, quotas, compensation, and forecast governance."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1704,7 +1905,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Revenue Operations partner for a founder or operator who runs the revenue system, not a CRM admin. Sets funnel-stage and exit-criteria definitions as one source of truth, sizes pipeline coverage and sales capacity, designs territories, quotas, and comp plans, runs the weekly forecast call as inspection, and governs the deal desk. Use when defining quota, territory, or a comp plan; standing up a deal desk or discount thresholds; running a forecast call; fixing funnel or conversion definitions; sizing pipeline coverage or sales capacity; or building out RevOps."
+      "Revenue Operations system owner. Defines funnel stages and exit criteria, coverage policy, sales capacity, territories, quotas, compensation, forecast governance, and deal-desk rules. Use when the durable revenue operating system must be designed or changed. Pipeline owns deal-level ingestion, dashboards, velocity analysis, and a current forecast view."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1787,52 +1988,53 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "deliver a software change from request to reviewed release candidate"
+      "the user explicitly invokes the software delivery compatibility entrypoint",
+      "an existing workflow targets resonance-software-deliver-change"
     ],
     "negative_triggers": [
+      "a new end-to-end outcome request without explicit compatibility invocation",
       "ship without review consent"
     ],
     "inputs": [
-      "user_request",
-      "plan",
-      "implementation_plan"
+      "user_request"
     ],
     "outputs": [
       "user_request",
-      "artifact",
-      "evidence",
-      "decision",
-      "grill_scope",
-      "plan_scope",
-      "implementation_plan",
-      "test_scope",
-      "qa_scope",
-      "audit_scope",
-      "release_scope",
-      "ship_scope",
-      "review_scope",
-      "second_opinion_scope"
+      "software_scope",
+      "goal_scope"
     ],
     "invokes": [
-      "resonance-strategy-grill",
-      "resonance-strategy-plan",
-      "resonance-engineering-build",
-      "resonance-ops-qa",
-      "resonance-ops-audit",
-      "resonance-ops-second-opinion",
-      "resonance-ops-ship"
+      "resonance-ops-goal"
     ],
     "side_effects": [
-      "may_coordinate_work",
-      "may_write_files"
+      "may_coordinate_work"
     ],
     "write_sets": [
-      "project:software-change"
+      "project:software-delivery-handoff"
     ],
     "entrypoints": [
       "skill:software-deliver-change"
     ],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "delivery.compatibility-intake",
+    "stage": "FRAME",
+    "contributes_to": [
+      "delivery.goal"
+    ],
+    "reviews": [],
+    "finalizes": [
+      "goal-handoff"
+    ],
+    "artifact_access": [
+      "software-request:read",
+      "goal-handoff:create,modify"
+    ],
+    "dispatch_conditions": [
+      "the user explicitly invokes the software delivery compatibility entrypoint",
+      "an existing workflow targets resonance-software-deliver-change"
+    ],
+    "compatibility": "alias"
   },
   {
     "schema_version": 1,
@@ -1843,7 +2045,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "System Architect Specialist. Designs system architecture by producing C4 models, ADRs, domain maps, and failure mode registries. Use when designing a new service, reviewing an existing architecture, selecting a tech stack, modeling a RAG/AI pipeline, auditing data-flow integrity, or planning a site migration."
+      "System Architect Specialist. Defines whole-system topology, service contracts, trust zones, data ownership, and durable architecture through C4 models, ADRs, domain maps, and failure registries. Use when work changes system boundaries or cross-system behavior. AI subsystem internals, prompts, retrieval, model routing, and AI evals belong to AI Engineering."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1856,7 +2058,152 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "job_id": "design.system-architecture",
+    "stage": "PLAN",
+    "contributes_to": [
+      "delivery.plan"
+    ],
+    "reviews": [],
+    "finalizes": [
+      "architecture-decision"
+    ],
+    "artifact_access": [
+      "system-context:read",
+      "architecture-decision:create,modify"
+    ],
+    "dispatch_conditions": [
+      "the work changes system boundaries, service contracts, or durable architecture"
+    ],
+    "compatibility": "active"
+  },
+  {
+    "schema_version": 1,
+    "id": "resonance-strategy-brief",
+    "path": "strategy/brief/SKILL.md",
+    "archetype": "orchestration",
+    "owner": "strategy.brief",
+    "activation": "manual",
+    "authority": "consequential",
+    "triggers": [
+      "improve, strengthen, or complete a request before execution",
+      "turn rough intent into an execution brief and run it",
+      "/brief"
+    ],
+    "negative_triggers": [
+      "convene experts or run a council",
+      "rewrite an already-clear request into a longer prompt",
+      "review a concrete artifact independently"
+    ],
+    "inputs": [
+      "user_request",
+      "project_context"
+    ],
+    "outputs": [
+      "original_request",
+      "execution_brief",
+      "intent_labels",
+      "unresolved_decisions",
+      "recommended_route",
+      "approval_status",
+      "grill_scope",
+      "plan_scope",
+      "build_scope",
+      "product_scope",
+      "researcher_scope"
+    ],
+    "invokes": [
+      "resonance-strategy-grill",
+      "resonance-strategy-plan",
+      "resonance-engineering-build",
+      "resonance-ops-product",
+      "resonance-strategy-researcher"
+    ],
+    "side_effects": [
+      "may_coordinate_work",
+      "may_execute_authorized_work"
+    ],
+    "write_sets": [
+      "project:authorized-task-scope"
+    ],
+    "entrypoints": [
+      "/brief"
+    ],
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "intent.execution-brief",
+    "stage": "FRAME",
+    "contributes_to": [],
+    "reviews": [],
+    "finalizes": [
+      "execution-brief"
+    ],
+    "artifact_access": [
+      "user-request:read",
+      "execution-brief:create,modify,approve"
+    ],
+    "dispatch_conditions": [
+      "material ambiguity must be resolved before routing or execution"
+    ],
+    "compatibility": "active"
+  },
+  {
+    "schema_version": 1,
+    "id": "resonance-strategy-council",
+    "path": "strategy/council/SKILL.md",
+    "archetype": "orchestration",
+    "owner": "strategy.council",
+    "activation": "manual",
+    "authority": "consequential",
+    "triggers": [
+      "challenge a completed analysis, recommendation, or plan through relevant specialist perspectives",
+      "review a consequential decision at a high-risk checkpoint",
+      "convene a council, expert panel, or multidisciplinary blind-spot review"
+    ],
+    "negative_triggers": [
+      "frame a raw request or create an execution brief",
+      "answer a simple reversible single-domain question",
+      "audit code or independently validate a concrete artifact",
+      "implement or auto-execute the recommendation"
+    ],
+    "inputs": [
+      "user_request",
+      "artifact",
+      "decision_scope",
+      "evidence"
+    ],
+    "outputs": [
+      "user_request",
+      "recommendation",
+      "evidence",
+      "decision",
+      "council_scope",
+      "review_scope",
+      "second_opinion_scope",
+      "brief_scope",
+      "grill_scope",
+      "plan_scope",
+      "goal_scope"
+    ],
+    "invokes": [
+      "resonance-strategy-brief",
+      "resonance-strategy-grill",
+      "resonance-strategy-plan",
+      "resonance-ops-goal",
+      "resonance-ops-second-opinion"
+    ],
+    "side_effects": [
+      "may_coordinate_work",
+      "may_write_files"
+    ],
+    "write_sets": [
+      "project:council-report"
+    ],
+    "entrypoints": [
+      "/council"
+    ],
+    "failure_policy": "stop"
   },
   {
     "schema_version": 1,
@@ -1907,7 +2254,25 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "design.plan-challenge",
+    "stage": "FRAME",
+    "contributes_to": [
+      "delivery.plan"
+    ],
+    "reviews": [],
+    "finalizes": [
+      "shared-understanding-brief"
+    ],
+    "artifact_access": [
+      "proposed-plan:read,review",
+      "shared-understanding-brief:create,modify"
+    ],
+    "dispatch_conditions": [
+      "a plan, design, or goal contract needs interrogation before implementation"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1918,7 +2283,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Growth Strategist Specialist. Diagnoses growth bottlenecks, sets channel portfolio strategy, and prioritizes experiments across acquisition, activation, retention, referral, and revenue. Use when analyzing AARRR metrics, designing growth loops, planning a launch, choosing which channel deserves investment, or diagnosing churn."
+      "Growth Strategist Specialist. Diagnoses growth bottlenecks, sets channel portfolio strategy, and prioritizes experiments across acquisition, activation, retention, referral, and revenue. Use when analyzing AARRR metrics, designing growth loops, choosing launch or channel investment priorities, or diagnosing churn. GTM Thinker challenges one uncommitted hypothesis. Run Campaign prepares an accepted campaign."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1942,7 +2307,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "Brainstorms, challenges, and expands B2B GTM campaigns and positioning concepts into highly strategic, executable blueprints with clear kill criteria. Use when asked to evaluate a campaign idea, challenge a positioning hypothesis, or plan a GTM initiative."
+      "GTM hypothesis challenger. Use when a concrete B2B positioning, audience, offer, channel, or campaign concept has not earned commitment. Deconstructs the bet, tests assumptions, compares alternatives, and defines evidence and kill criteria. Growth owns company-wide bottleneck and channel portfolio choices. Run Campaign owns approved campaign preparation."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -2005,7 +2370,26 @@
     "entrypoints": [
       "/plan"
     ],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "delivery.plan",
+    "stage": "PLAN",
+    "contributes_to": [
+      "delivery.goal"
+    ],
+    "reviews": [],
+    "finalizes": [
+      "implementation-plan"
+    ],
+    "artifact_access": [
+      "user-request:read",
+      "research-evidence:read",
+      "implementation-plan:create,modify,approve"
+    ],
+    "dispatch_conditions": [
+      "a clear intended outcome needs an atomic implementation plan"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -2016,7 +2400,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "Research Specialist. Synthesizes verified, structured knowledge to remove ambiguity before building. Use when investigating a technical question, comparing library or stack options, producing a Synthesis Matrix, or writing Diataxis-compliant documentation."
+      "Research Specialist. Gathers, verifies, compares, and synthesizes uncertain evidence before building or deciding. Use for technical investigations, option comparisons, contradictions, and non-durable research reports. Do not use for canonical project documentation, Diataxis placement, indexes, supersession, or archival; hand finalized evidence to Librarian."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -2070,7 +2454,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Customer Success Architect for the post-sale engine: onboarding to first value, health scoring, renewals, and expansion, run so net revenue retention compounds. Use when working on customer health, churn, renewal, NRR or GRR, onboarding delivery and time-to-value, QBRs, expansion or upsell timing, escalations, or support deflection."
+      "Customer Success Architect for named post-sale customer relationships. Owns onboarding delivery, account health, QBRs, renewals, expansion, escalations, and the human operating motion behind NRR and GRR. Use when account-level ownership or intervention is required. Lifecycle owns scalable product moments and triggered messaging. Growth owns the cross-funnel portfolio."
     ],
     "negative_triggers": [],
     "inputs": [

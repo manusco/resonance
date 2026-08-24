@@ -1,0 +1,22 @@
+{
+  "skill": "resonance-strategy-brief",
+  "query": "/brief In src/config.ts, rename DEFAULT_RETRY_COUNT to MAX_RETRIES, update its imports, run the focused tests, and do not change behavior.",
+  "files": [],
+  "expected_behavior": [
+    "Recognizes that the request is already concrete and does not inflate it into a long specification",
+    "Preserves every stated file, naming, behavior, and verification constraint",
+    "Marks no invented requirements as explicit",
+    "Routes to implementation without asking unnecessary questions",
+    "Keeps any execution brief short and proportional to the request"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    },
+    {
+      "kind": "max_lines",
+      "value": 45
+    }
+  ]
+}

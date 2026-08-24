@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -154,6 +155,25 @@ class UpdateTests(unittest.TestCase):
         tool.unlink()
         with self.assertRaises(ValueError):
             update.source_files(source)
+
+    def test_source_clean_check_ignores_git_stderr_warnings(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        real_run = subprocess.run
+
+        def noisy_status(args, **kwargs):
+            if args[:3] == ["git", "status", "--porcelain=v1"]:
+                return subprocess.CompletedProcess(
+                    args,
+                    0,
+                    stdout=b"",
+                    stderr=b"warning: unable to access global excludes file\n",
+                )
+            return real_run(args, **kwargs)
+
+        with mock.patch.object(update.subprocess, "run", side_effect=noisy_status):
+            files = update.source_files(source)
+        self.assertIn(".forge/tool.py", files)
 
 
 if __name__ == "__main__":

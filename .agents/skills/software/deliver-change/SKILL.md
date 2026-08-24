@@ -1,91 +1,85 @@
 ---
 name: resonance-software-deliver-change
-description: End-to-end software delivery conductor. Use when a user wants a code change taken from goal contract through plan, implementation, verification, audit, release proposal, and retained evidence without auto-shipping.
+description: Compatibility entrypoint for end-to-end software delivery. Use when the user explicitly invokes the software delivery skill or an existing workflow targets its skill ID. Confirms software scope, separates unrelated work, then delegates once to resonance-ops-goal, which owns the goal contract, bounded execution, evidence, review, and ship proposal. Do not select this instead of /goal for a new outcome request.
 archetype: orchestration
+contract_version: 1
+job_id: delivery.compatibility-intake
+stage: FRAME
+contributes_to:
+  - delivery.goal
+reviews:
+finalizes:
+  - goal-handoff
+artifact_access:
+  - software-request:read
+  - goal-handoff:create,modify
+dispatch_conditions:
+  - the user explicitly invokes the software delivery compatibility entrypoint
+  - an existing workflow targets resonance-software-deliver-change
+compatibility: alias
 owner: software.delivery
 activation: manual
 authority: consequential
 triggers:
-  - deliver a software change from request to reviewed release candidate
+  - the user explicitly invokes the software delivery compatibility entrypoint
+  - an existing workflow targets resonance-software-deliver-change
 entrypoints:
   - skill:software-deliver-change
 negative_triggers:
+  - a new end-to-end outcome request without explicit compatibility invocation
   - ship without review consent
 inputs:
   - user_request
-  - plan
-  - implementation_plan
 outputs:
   - user_request
-  - artifact
-  - evidence
-  - decision
-  - grill_scope
-  - plan_scope
-  - implementation_plan
-  - test_scope
-  - qa_scope
-  - audit_scope
-  - release_scope
-  - ship_scope
-  - review_scope
-  - second_opinion_scope
+  - software_scope
+  - goal_scope
 side_effects:
   - may_coordinate_work
-  - may_write_files
 write_sets:
-  - project:software-change
+  - project:software-delivery-handoff
 failure_policy: stop
 invokes:
-  - resonance-strategy-grill
-  - resonance-strategy-plan
-  - resonance-engineering-build
-  - resonance-ops-qa
-  - resonance-ops-audit
-  - resonance-ops-second-opinion
-  - resonance-ops-ship
+  - resonance-ops-goal
 ---
 
-# resonance-software-deliver-change: deliver a software change with evidence
+# resonance-software-deliver-change: preserve the software delivery entrypoint
 
-> **Role:** software delivery conductor.
+> **Role:** compatibility intake for software delivery.
 > **Input:** A desired software outcome, bug fix, feature, migration, or release goal.
-> **Output:** A verified change, or a stopped run with evidence and next action.
-> **Definition of Done:** The approved contract is satisfied. Tests and validators prove the change. The diff passes audit and second opinion where required. Release is proposed, not auto-shipped.
+> **Output:** A bounded software request handed to `/goal`, or a stopped intake with the scope conflict named.
+> **Definition of Done:** Software scope is explicit, unrelated work is separated, and the unchanged request plus constraints are delegated exactly once to `resonance-ops-goal`. This skill does not start or reproduce a goal loop.
 
-This is not a second goal loop and it does not call `/goal` as a subroutine. It
-uses the goal contract and evidence rules as its outer boundary, then routes the
-software work through plan, build, QA, audit, and ship proposal.
+This skill preserves an existing software-facing entrypoint. It is not a second
+goal loop. `resonance-ops-goal` owns the contract, approval gate, loop state,
+planning, building, verification, evidence, audit, independent review, and ship
+proposal. This skill performs software intake and delegates once. It never runs
+the downstream delivery pipeline itself.
 
 ## Prerequisites
 
-- [ ] The request is a software delivery outcome, not a narrow one-step command.
-- [ ] Repository status is known.
-- [ ] The user has approved any one-way door before it happens.
+- [ ] The skill was invoked explicitly or an existing workflow targeted its skill ID.
+- [ ] The request contains a software delivery outcome, not only a narrow one-step command.
 
-## Pipeline
+## Compatibility flow
 
-1. **Contract:** draft the goal contract in the `/goal` format without starting a nested goal loop. Preserve user directives, inferred tactics, non-goals, risks, and acceptance checks. → gate: checkable acceptance criteria exist.
-2. **Grill:** invoke `resonance-strategy-grill` on the contract and high-risk assumptions. → gate: unresolved human-owned decisions are answered or explicitly deferred.
-3. **Plan:** invoke `resonance-strategy-plan` to create atomic slices. → gate: each slice has a verifiable DoD and no slice crosses unrelated ownership boundaries.
-4. **Approve:** present contract plus plan before file edits. → gate: human approval exists for the plan and any consequential actions.
-5. **Build:** invoke `resonance-engineering-build` slice by slice. → gate: new or changed checks fail before the fix where practical, then pass after.
-6. **Verify:** invoke `resonance-ops-qa` and run project validators. Attach evidence receipts to the active goal state for each acceptance criterion. → gate: stale hashes are rejected and every criterion has accepted evidence.
-7. **Audit:** invoke `resonance-ops-audit` and reconcile P0/P1 findings before completion. → gate: no blocking findings remain.
-8. **Independent review:** invoke `resonance-ops-second-opinion` for high-risk contracts and material diffs. → gate: feedback is reconciled or explicitly rejected with reason.
-9. **Release proposal:** invoke `resonance-ops-ship` only as a proposal unless the user explicitly approves shipping. → gate: no autonomous commit, merge, tag, deploy, or release.
+1. **Confirm the entrypoint.** If the user did not explicitly invoke this skill and no existing workflow targeted it, route a new end-to-end outcome directly to `/goal`. -> verify: this compatibility layer does not compete with Goal during ordinary routing.
+2. **Bound software scope.** Preserve the user's request, directives, constraints, and provenance. Identify the software outcome. -> verify: no requirement is rewritten or invented.
+3. **Separate unrelated work.** Split marketing, sales, finance, leadership, or other independent outcomes and route them to their owners. Do not absorb them into software delivery. -> verify: the Goal handoff contains one coherent software outcome.
+4. **Delegate once.** Invoke `resonance-ops-goal` with the unchanged software request and its confirmed constraints. -> verify: exactly one Goal invocation occurs and no downstream delivery specialist is invoked directly by this skill.
+5. **Return Goal's result.** Preserve Goal's evidence, stop condition, approvals, and ship proposal without adding a second completion claim. -> verify: no nested state, duplicate approval, duplicate audit, or duplicate ship proposal exists.
 
 ## Recovery
 
-- Contract is vague → return to Grill. Do not build against a guess.
-- Plan cannot produce verifiable slices → return to Plan. Do not use a broad slice.
-- Evidence is stale or missing → re-run the real check and attach a current receipt.
-- Audit finds a blocker → fix the blocker before release proposal.
-- User withholds shipping approval → stop after verified implementation and PR or commit proposal.
+- Software outcome is unclear -> stop and ask the material scope question. Do not invent it.
+- Request mixes independent domains -> split them before delegation.
+- Goal cannot be invoked -> return `BLOCKED` with the missing route. Do not recreate its pipeline locally.
+- Goal stops or remains incomplete -> preserve that status and evidence exactly.
 
 ## Out of Scope
 
 - Marketing, sales, finance, or leadership operating cycles.
+- Owning goal state, plans, builds, tests, audits, reviews, or releases.
 - Autonomous merge, tag, release, deploy, or framework mutation.
 - Dynamic scheduling or a general graph runtime.
 

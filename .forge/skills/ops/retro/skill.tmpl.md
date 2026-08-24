@@ -1,6 +1,6 @@
 ---
 name: resonance-ops-retro
-description: The Analytics Officer. Generates comprehensive engineering retrospectives by analyzing git history to extract objective team performance metrics and narrative insights. Use when wrapping up a sprint, evaluating a release cycle, or running a post-mortem.
+description: Engineering retrospective analyst. Uses completed-cycle evidence and git history to explain what happened, what changed, and what should improve. Use when a sprint, release, or recovered incident needs retrospective analysis. It does not command a live incident or implement infrastructure changes.
 archetype: procedure
 ---
 

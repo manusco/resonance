@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "safety.security-vs-review.security",
+  "query": "Audit the authorization model and trust boundaries for privilege escalation, broken access control, and credential exposure.",
+  "expected_primary": "resonance-ops-security",
+  "allowed_contributors": ["resonance-ops-reviewer"],
+  "forbidden_skills": [],
+  "harm_tier": "HIGH",
+  "cluster": "security-review",
+  "rationale": "Security owns vulnerability and authorization conclusions; Reviewer may contribute general code findings.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-security"}]
+}

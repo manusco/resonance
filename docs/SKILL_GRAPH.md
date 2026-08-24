@@ -19,6 +19,8 @@ graph LR
   resonance-leadership-run-operating-cycle --> resonance-ops-productivity
   resonance-leadership-run-operating-cycle --> resonance-ops-retro
   resonance-leadership-run-operating-cycle --> resonance-ops-legal
+  resonance-marketing-run-campaign --> resonance-strategy-gtm-thinker
+  resonance-marketing-run-campaign --> resonance-strategy-growth
   resonance-marketing-run-campaign --> resonance-strategy-grill
   resonance-marketing-run-campaign --> resonance-marketing-copywriter
   resonance-marketing-run-campaign --> resonance-marketing-content-distribution
@@ -61,13 +63,17 @@ graph LR
   resonance-sales-run-revenue-motion --> resonance-sales-revops
   resonance-sales-run-revenue-motion --> resonance-success-customer-success
   resonance-sales-run-revenue-motion --> resonance-ops-legal
-  resonance-software-deliver-change --> resonance-strategy-grill
-  resonance-software-deliver-change --> resonance-strategy-plan
-  resonance-software-deliver-change --> resonance-engineering-build
-  resonance-software-deliver-change --> resonance-ops-qa
-  resonance-software-deliver-change --> resonance-ops-audit
-  resonance-software-deliver-change --> resonance-ops-second-opinion
-  resonance-software-deliver-change --> resonance-ops-ship
+  resonance-software-deliver-change --> resonance-ops-goal
+  resonance-strategy-brief --> resonance-strategy-grill
+  resonance-strategy-brief --> resonance-strategy-plan
+  resonance-strategy-brief --> resonance-engineering-build
+  resonance-strategy-brief --> resonance-ops-product
+  resonance-strategy-brief --> resonance-strategy-researcher
+  resonance-strategy-council --> resonance-strategy-brief
+  resonance-strategy-council --> resonance-strategy-grill
+  resonance-strategy-council --> resonance-strategy-plan
+  resonance-strategy-council --> resonance-ops-goal
+  resonance-strategy-council --> resonance-ops-second-opinion
   resonance-strategy-plan --> resonance-ops-product
   resonance-strategy-plan --> resonance-strategy-researcher
   resonance-strategy-plan --> resonance-strategy-venture
@@ -80,7 +86,7 @@ graph LR
 | resonance-engineering-build | resonance-engineering-backend, resonance-engineering-frontend, resonance-engineering-debugger, resonance-ops-security, resonance-ops-audit |
 | resonance-finance-run-operating-cycle | resonance-strategy-finance, resonance-marketing-analytics, resonance-ops-legal |
 | resonance-leadership-run-operating-cycle | resonance-ops-founder-os, resonance-people-hiring, resonance-ops-productivity, resonance-ops-retro, resonance-ops-legal |
-| resonance-marketing-run-campaign | resonance-strategy-grill, resonance-marketing-copywriter, resonance-marketing-content-distribution, resonance-marketing-lifecycle, resonance-marketing-paid-acquisition, resonance-marketing-analytics, resonance-design-studio, resonance-ops-legal |
+| resonance-marketing-run-campaign | resonance-strategy-gtm-thinker, resonance-strategy-growth, resonance-strategy-grill, resonance-marketing-copywriter, resonance-marketing-content-distribution, resonance-marketing-lifecycle, resonance-marketing-paid-acquisition, resonance-marketing-analytics, resonance-design-studio, resonance-ops-legal |
 | resonance-ops-audit | resonance-ops-security, resonance-ops-reviewer, resonance-ops-qa, resonance-strategy-architect |
 | resonance-ops-core | resonance-strategy-plan, resonance-engineering-backend, resonance-engineering-frontend, resonance-design-designer |
 | resonance-ops-goal | resonance-strategy-grill, resonance-strategy-plan, resonance-engineering-build, resonance-ops-qa, resonance-ops-audit, resonance-ops-second-opinion, resonance-ops-ship |
@@ -88,7 +94,9 @@ graph LR
 | resonance-ops-page-audit | resonance-ops-system-health, resonance-ops-audit, resonance-marketing-conversion, resonance-marketing-copywriter, resonance-design-designer, resonance-marketing-seo, resonance-ops-qa |
 | resonance-ops-system-health | resonance-ops-qa, resonance-ops-security |
 | resonance-sales-run-revenue-motion | resonance-sales-account-intelligence, resonance-sales-lead-ops, resonance-sales-outbound-sequence, resonance-sales-call-intelligence, resonance-sales-pipeline, resonance-sales-revops, resonance-success-customer-success, resonance-ops-legal |
-| resonance-software-deliver-change | resonance-strategy-grill, resonance-strategy-plan, resonance-engineering-build, resonance-ops-qa, resonance-ops-audit, resonance-ops-second-opinion, resonance-ops-ship |
+| resonance-software-deliver-change | resonance-ops-goal |
+| resonance-strategy-brief | resonance-strategy-grill, resonance-strategy-plan, resonance-engineering-build, resonance-ops-product, resonance-strategy-researcher |
+| resonance-strategy-council | resonance-strategy-brief, resonance-strategy-grill, resonance-strategy-plan, resonance-ops-goal, resonance-ops-second-opinion |
 | resonance-strategy-plan | resonance-ops-product, resonance-strategy-researcher, resonance-strategy-venture |
 
 ## Ownership Contracts
@@ -154,8 +162,10 @@ graph LR
 | resonance-sales-pipeline | procedure | consequential | stop | may_write_files |
 | resonance-sales-revops | knowledge | advisory | degrade | none |
 | resonance-sales-run-revenue-motion | orchestration | consequential | stop | may_coordinate_work, may_write_files |
-| resonance-software-deliver-change | orchestration | consequential | stop | may_coordinate_work, may_write_files |
+| resonance-software-deliver-change | orchestration | consequential | stop | may_coordinate_work |
 | resonance-strategy-architect | knowledge | advisory | degrade | none |
+| resonance-strategy-brief | orchestration | consequential | stop | may_coordinate_work, may_execute_authorized_work |
+| resonance-strategy-council | orchestration | consequential | stop | may_coordinate_work, may_write_files |
 | resonance-strategy-finance | knowledge | advisory | degrade | none |
 | resonance-strategy-grill | procedure | consequential | stop | may_write_files |
 | resonance-strategy-growth | knowledge | advisory | degrade | none |

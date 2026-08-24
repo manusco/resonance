@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "architecture.system-vs-ai.ai",
+  "query": "Design the retrieval pipeline, chunking, reranking, model routing, prompt contracts, hallucination controls, evals, and token-cost limits for our RAG feature.",
+  "expected_primary": "resonance-engineering-ai-engineering",
+  "allowed_contributors": ["resonance-strategy-architect"],
+  "forbidden_skills": [],
+  "harm_tier": "STANDARD",
+  "cluster": "architecture-ai",
+  "rationale": "AI Engineering owns the internal LLM and retrieval system; Architect may contribute boundary context.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-engineering-ai-engineering"}]
+}

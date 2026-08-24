@@ -45,6 +45,15 @@ BANNED_WORDS = (
 TRIGGER_CUES = ("use when", "use this", "triggers", "trigger", "when the user",
                 "when asked", "for ", "use for")
 
+COMPOSITION_CANARY_IDS = {
+    "resonance-ops-goal", "resonance-software-deliver-change", "resonance-ops-audit",
+    "resonance-ops-security", "resonance-ops-reviewer", "resonance-ops-qa",
+    "resonance-strategy-architect", "resonance-engineering-performance",
+    "resonance-engineering-backend", "resonance-engineering-frontend",
+    "resonance-engineering-database", "resonance-engineering-ai-engineering",
+    "resonance-strategy-brief", "resonance-strategy-grill", "resonance-strategy-plan",
+}
+
 
 @dataclass
 class Report:
@@ -154,6 +163,39 @@ def check_frontmatter(fm: dict, r: Report) -> str:
     return archetype if archetype in ARCHETYPES else ""
 
 
+def check_composition_contract(fm: dict, r: Report) -> None:
+    """Enforce the frozen v1 contract for the accepted composition cohort."""
+    try:
+        from kernel.manifest import composition_warnings
+    except Exception as exc:
+        r.err(f"composition contract: validator unavailable: {exc}")
+        return
+    name = str(fm.get("name", ""))
+    if name not in COMPOSITION_CANARY_IDS:
+        return
+    # normalize_entry is file based, while this check has already parsed the file.
+    # Build the same flat representation without creating a second YAML parser.
+    entry = {
+        "id": name,
+        "authority": str(fm.get("authority", "advisory")),
+        "entrypoints": fm.get("entrypoints", []) if isinstance(fm.get("entrypoints", []), list) else [],
+    }
+    list_fields = ("contributes_to", "reviews", "finalizes", "artifact_access", "dispatch_conditions")
+    for key in list_fields:
+        if key in fm:
+            value = fm.get(key, [])
+            entry[key] = value if isinstance(value, list) else ([value] if value else [])
+    for key in ("job_id", "stage", "compatibility"):
+        if key in fm:
+            entry[key] = str(fm.get(key, ""))
+    if "contract_version" in fm:
+        raw_version = str(fm.get("contract_version", "")).strip()
+        entry["contract_version"] = int(raw_version) if raw_version.isdigit() else raw_version
+    for warning in composition_warnings([entry], {name}):
+        if "references unknown job" not in warning:
+            r.err(warning.replace("composition canary:", "composition contract:", 1))
+
+
 def check_body(body: str, archetype: str, r: Report) -> None:
     n_lines = len(body.splitlines())
     if n_lines > BODY_SOFT_LINES:
@@ -217,7 +259,7 @@ def check_evals(skill_dir: Path, r: Report) -> None:
               f"cases (query + expected_behavior); fewer cannot carry any measurement")
 
 
-def validate(path: Path, r: Report) -> Report:
+def validate(path: Path, r: Report, composition_canary: bool = False) -> Report:
     if not path.exists():
         r.err("file does not exist")
         return r
@@ -227,6 +269,7 @@ def validate(path: Path, r: Report) -> Report:
         r.err("no YAML frontmatter found (file must open with a '---' block)")
         return r
     archetype = check_frontmatter(fm, r)
+    check_composition_contract(fm, r)
     check_body(body, archetype, r)
     check_references(path.parent, body, r)
     check_evals(path.parent, r)
@@ -243,6 +286,8 @@ def main(argv: list[str]) -> int:
     ap.add_argument("path", help="Path to a SKILL.md, or a root dir with --all")
     ap.add_argument("--all", action="store_true", help="Treat path as a root; validate every SKILL.md under it")
     ap.add_argument("--strict", action="store_true", help="Warnings count as failures")
+    ap.add_argument("--composition-canary", action="store_true",
+                    help="deprecated compatibility flag; v1 contract enforcement is always active")
     args = ap.parse_args(argv)
 
     root = Path(args.path)
@@ -251,7 +296,7 @@ def main(argv: list[str]) -> int:
         print(f"No SKILL.md found under {root}")
         return 2
 
-    reports = [validate(t, Report(str(t))) for t in targets]
+    reports = [validate(t, Report(str(t)), args.composition_canary) for t in targets]
     n_err = n_warn = 0
     for rep in reports:
         if not rep.errors and not rep.warnings:

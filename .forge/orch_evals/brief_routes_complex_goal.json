@@ -1,0 +1,7 @@
+{
+  "name": "brief_routes_complex_goal", "skill": "strategy/brief",
+  "task": "Turn the overloaded request into a faithful brief, then route the multi-stage outcome to Goal. Do not implement it in Brief.",
+  "fixture": {"files": {"request.txt": "Make search faster, preserve the schema, benchmark it, and take it through implementation.\n"}},
+  "assert": {"type": "contains", "all": ["explicit", "inferred", "goal"]},
+  "trace_assert": {"minimum_assurance": 1, "ordered_subsequence": [{"event": "INVOKE", "target": "ops/goal"}], "allowed_skills": ["ops/goal"], "forbidden_skills": ["engineering/build", "ops/ship"], "max_fan_out": 1}
+}

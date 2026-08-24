@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "operations.founder-os-l10",
+  "query": "Run our weekly L10. Read the company scorecard, identify the top three issues, use IDS, log decisions, and assign owners and due dates.",
+  "expected_primary": "resonance-ops-founder-os",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-ops-product"],
+  "harm_tier": "STANDARD",
+  "cluster": "product-founder-os",
+  "rationale": "Founder OS owns company cadence, scorecards, L10 reviews, IDS, decisions, and delegation.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-founder-os"}]
+}

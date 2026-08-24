@@ -1,6 +1,6 @@
 ---
 name: resonance-ops-system-health
-description: The Doctor. Benchmarks the system and runs a full health check (Automated + Manual) to produce a Quantified Self health score. Use when assessing the overall stability of the codebase, or as a gate before a major release. Drives qa and security agents.
+description: System health assessor. Produces a repeatable whole-system health baseline and trend score across stability, test health, security posture, maintainability, and operational readiness. Use for periodic health checks or release readiness trends. Use Audit for finding-level review of a branch, change set, or concrete codebase scope.
 archetype: orchestration
 owner: ops.system-health
 activation: manual

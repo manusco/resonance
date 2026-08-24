@@ -2,6 +2,20 @@
 name: <skill-name>
 description: <Third person: what this procedure does> + <when to run it>. Use when <trigger 1>, <trigger 2>. <Note "manual-only" if it has side effects (deploy, send, delete).>
 archetype: procedure
+contract_version: 1
+job_id: <stable.domain.job-id>
+stage: <FRAME | PLAN | EXECUTE | VERIFY | APPROVE | PUBLISH>
+contributes_to:
+  - <job_id this procedure contributes to, if any>
+reviews:
+  - <job_id this procedure independently reviews, if any>
+finalizes:
+  - <artifact finalized by this procedure, if any>
+artifact_access:
+  - <artifact>:<read,create,append_evidence,modify,review,approve,publish,execute>
+dispatch_conditions:
+  - <specific condition that activates this participant>
+compatibility: <active | provisional | deprecated | alias | retired>
 ---
 
 # /<skill-name>: <one-line job>

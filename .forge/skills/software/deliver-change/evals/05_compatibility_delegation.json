@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-software-deliver-change",
+  "query": "Use resonance-software-deliver-change to take this API change to a reviewed release candidate.",
+  "expected_behavior": [
+    "preserves the direct compatibility entrypoint",
+    "confirms and bounds the software outcome",
+    "delegates exactly once to resonance-ops-goal",
+    "does not invoke planning, build, QA, audit, review, or ship skills directly",
+    "does not create nested goal state or duplicate approval gates"
+  ],
+  "checks": [
+    { "kind": "contains_all", "value": ["resonance-ops-goal", "delegate once"] },
+    { "kind": "regex_absent", "value": "invoke resonance-strategy-plan|invoke resonance-engineering-build|start a second goal loop" }
+  ]
+}

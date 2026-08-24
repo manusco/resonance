@@ -14,9 +14,9 @@ Use this rubric to score content from 1-5. Target > 4.
     *   **1 (Robot)**: Balanced, neutral, "some say X, others say Y".
     *   **5 (Human)**: Has a distinct point of view. Takes a risk.
 
-4.  **Idiom & Colloquialism**
-    *   **1 (Robot)**: Textbook grammar. Zero contractions.
-    *   **5 (Human)**: Uses "You know," "Frankly," dashes, and fragments.
+4.  **Native Idiom**
+    *   **1 (Robot)**: Grammatically correct, but carries translated syntax, collocations, metaphors, or rhythm.
+    *   **5 (Human)**: Sounds natural to a native speaker in this audience and context, without forced slang or decorative idioms.
 
 5.  **Active Voice**
     *   **1 (Robot)**: "Mistakes were made."

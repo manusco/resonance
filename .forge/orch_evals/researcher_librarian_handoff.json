@@ -1,0 +1,7 @@
+{
+  "name": "researcher_librarian_handoff", "skill": "strategy/researcher",
+  "task": "Verify the uncertain claims first. After the evidence is finalized, hand the packet to Librarian to create the canonical documentation and index entry.",
+  "fixture": {"files": {"claims.md": "The service may support conditional requests. This is not verified.\n"}},
+  "assert": {"type": "contains", "all": ["evidence", "librarian"]},
+  "trace_assert": {"minimum_assurance": 1, "ordered_subsequence": [{"event": "INVOKE", "target": "ops/librarian"}], "allowed_skills": ["ops/librarian"], "forbidden_skills": [], "max_fan_out": 1}
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "architecture.ai-cross-system-topology",
+  "query": "Place a new AI assistant across our CRM, billing, and support systems. Define service boundaries, data ownership, trust zones, approval gates, and cross-system failure behavior.",
+  "expected_primary": "resonance-strategy-architect",
+  "allowed_contributors": ["resonance-engineering-ai-engineering", "resonance-ops-security"],
+  "forbidden_skills": [],
+  "harm_tier": "HIGH",
+  "cluster": "architect-ai-engineering",
+  "rationale": "Architect owns whole-system topology and cross-system contracts. AI Engineering and Security may contribute subsystem and trust-boundary expertise.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-strategy-architect"}]
+}

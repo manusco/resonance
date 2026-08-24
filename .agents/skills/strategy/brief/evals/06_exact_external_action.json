@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-strategy-brief",
+  "query": "/brief Publish the approved release note in docs/release-note.md to our named product-status page now. Use the file unchanged, then report the published URL.",
+  "files": [],
+  "expected_behavior": [
+    "Preserves the exact source file, destination, timing, and unchanged-content constraints",
+    "Recognizes that the original request explicitly authorizes the named publication action",
+    "Does not request redundant approval merely because publication is consequential",
+    "Does not broaden publication to other channels or modify the approved content",
+    "Routes or executes the exact authorized action and reports the result"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

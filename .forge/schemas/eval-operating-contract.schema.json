@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resonance.dev/schemas/eval-operating-contract/v1",
+  "title": "Resonance Evaluation Operating Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract_id", "contract_version", "approval", "canary", "answerer_policy", "judge_policy", "datasets", "confidence", "sampling", "budgets", "execution", "evidence_age_days", "failure_handling"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "contract_id": { "type": "string", "minLength": 1 },
+    "contract_version": { "const": 1 },
+    "approval": {
+      "type": "object", "additionalProperties": false, "required": ["state", "approver", "approved_at", "artifact_hash"],
+      "properties": {
+        "state": { "const": "APPROVED" }, "approver": { "const": "USER" },
+        "approved_at": { "type": "string", "format": "date-time" },
+        "artifact_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "canary": {
+      "type": "object", "additionalProperties": false, "required": ["host", "adapter", "minimum_trace_assurance"],
+      "properties": { "host": { "type": "string", "minLength": 1 }, "adapter": { "type": "string", "minLength": 1 }, "minimum_trace_assurance": { "type": "integer", "minimum": 1, "maximum": 3 } }
+    },
+    "answerer_policy": { "type": "object", "required": ["model_policy", "separate_from_judge"], "properties": { "model_policy": { "type": "string", "minLength": 1 }, "separate_from_judge": { "const": true } } },
+    "judge_policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["model_policy", "blinded_randomized_labels", "response_order_reversal", "human_gold_calibration_set", "agreement_threshold", "tie_policy", "disqualification_rule"],
+      "properties": {
+        "model_policy": { "type": "string", "minLength": 1 },
+        "blinded_randomized_labels": { "const": true }, "response_order_reversal": { "const": true },
+        "human_gold_calibration_set": { "type": "string", "minLength": 1 },
+        "agreement_threshold": { "type": "number", "minimum": 0, "maximum": 1 },
+        "tie_policy": { "enum": ["ABSTAIN", "HUMAN_REVIEW", "REJECT"] },
+        "disqualification_rule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "datasets": {
+      "type": "object", "additionalProperties": false, "required": ["public", "protected_validation", "sealed_promotion", "reserve"],
+      "properties": {
+        "public": { "$ref": "#/$defs/dataset" }, "protected_validation": { "$ref": "#/$defs/dataset" },
+        "sealed_promotion": { "$ref": "#/$defs/dataset" }, "reserve": { "$ref": "#/$defs/dataset" }
+      }
+    },
+    "confidence": { "type": "object", "required": ["method", "level", "abstention_target"], "properties": { "method": { "type": "string", "minLength": 1 }, "level": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1 }, "abstention_target": { "type": "number", "minimum": 0, "maximum": 1 } } },
+    "sampling": { "type": "object", "required": ["rule", "minimum_repetitions", "maximum_repetitions"], "properties": { "rule": { "enum": ["SEQUENTIAL", "POWER_BASED"] }, "minimum_repetitions": { "type": "integer", "minimum": 1 }, "maximum_repetitions": { "type": "integer", "minimum": 1 } } },
+    "budgets": { "type": "object", "additionalProperties": false, "required": ["currency", "spend_ceiling", "wall_clock_seconds"], "properties": { "currency": { "type": "string", "minLength": 3, "maxLength": 3 }, "spend_ceiling": { "type": "number", "exclusiveMinimum": 0 }, "wall_clock_seconds": { "type": "integer", "minimum": 1 } } },
+    "execution": { "type": "object", "additionalProperties": false, "required": ["concurrency", "retry_limit", "secret_handling"], "properties": { "concurrency": { "type": "integer", "minimum": 1 }, "retry_limit": { "type": "integer", "minimum": 0 }, "secret_handling": { "type": "string", "minLength": 1 } } },
+    "evidence_age_days": { "type": "integer", "minimum": 1 },
+    "failure_handling": { "type": "object", "additionalProperties": false, "required": ["outage", "missing_evidence", "budget_exhausted", "precision_unresolved"], "properties": { "outage": { "const": "INCOMPLETE" }, "missing_evidence": { "const": "INCOMPLETE" }, "budget_exhausted": { "const": "INCONCLUSIVE" }, "precision_unresolved": { "const": "INCONCLUSIVE" } } }
+  },
+  "$defs": {
+    "dataset": {
+      "type": "object", "additionalProperties": false,
+      "required": ["owner", "path", "created_at", "access_log", "hash_manifest", "permitted_use", "reuse_count", "contamination_events", "rotation_rule", "retirement_state"],
+      "properties": {
+        "owner": { "type": "string", "minLength": 1 }, "path": { "type": "string", "minLength": 1 }, "created_at": { "type": "string", "format": "date-time" },
+        "access_log": { "type": "string", "minLength": 1 }, "hash_manifest": { "type": "string", "minLength": 1 }, "permitted_use": { "type": "string", "minLength": 1 },
+        "reuse_count": { "type": "integer", "minimum": 0 }, "contamination_events": { "type": "array", "items": { "type": "string" } },
+        "rotation_rule": { "type": "string", "minLength": 1 }, "retirement_state": { "enum": ["ACTIVE", "CONTAMINATED", "RETIRED"] }
+      }
+    }
+  }
+}

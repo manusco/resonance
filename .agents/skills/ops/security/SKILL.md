@@ -1,7 +1,23 @@
 ---
 name: resonance-ops-security
-description: Security Auditor Specialist. Verifies defenses through STRIDE threat modeling, authorization model audits, and the 6-layer security ensemble. Use when reviewing a PR for vulnerabilities, hardening infrastructure headers, auditing authorization consistency across 6 layers, performing a STRIDE threat model on a new system design, or checking AI features for prompt injection risks.
+description: Security Auditor Specialist. Owns threat models and security findings for authorization, secrets, injection, trust boundaries, infrastructure controls, and AI abuse paths. Use when the question is whether a system or change is exploitable or adequately defended. Reviewer owns the general correctness and maintainability gate for the full diff.
 archetype: procedure
+contract_version: 1
+job_id: verification.security
+stage: VERIFY
+contributes_to:
+  - verification.audit
+reviews:
+  - delivery.goal
+finalizes:
+  - security-findings
+artifact_access:
+  - implementation-artifact:read,review
+  - security-evidence:create,append_evidence
+  - security-findings:create,modify
+dispatch_conditions:
+  - the scope crosses a trust boundary or needs a security verdict
+compatibility: active
 ---
 
 # /resonance-ops-security: verify defenses, assume breach

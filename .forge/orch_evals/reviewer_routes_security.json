@@ -1,0 +1,7 @@
+{
+  "name": "reviewer_routes_security", "skill": "ops/reviewer",
+  "task": "Review the change. When the missing authorization check becomes a vulnerability candidate, route the security conclusion to Security and preserve the general review disposition.",
+  "fixture": {"files": {"admin.js": "export async function promote(req) { return db.promote(req.params.userId); }\n"}},
+  "assert": {"type": "contains", "any": ["authorization", "access control", "security"]},
+  "trace_assert": {"minimum_assurance": 1, "ordered_subsequence": [{"event": "INVOKE", "target": "ops/security"}], "allowed_skills": ["ops/security"], "forbidden_skills": ["ops/ship"], "max_fan_out": 1}
+}

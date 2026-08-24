@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "marketing.gtm-hypothesis-challenge",
+  "query": "Challenge this postcard idea for VP HR leaders. What assumptions could kill it, what alternatives exist, and what evidence would make us reject it?",
+  "expected_primary": "resonance-strategy-gtm-thinker",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-strategy-growth", "resonance-marketing-run-campaign"],
+  "harm_tier": "STANDARD",
+  "cluster": "gtm-growth-campaign",
+  "rationale": "GTM Thinker owns one concrete, uncommitted hypothesis and its rejection evidence.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-strategy-gtm-thinker"}]
+}

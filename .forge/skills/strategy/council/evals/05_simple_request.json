@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-strategy-council",
+  "query": "What should I name this local variable? Convene a council.",
+  "files": [],
+  "expected_behavior": [
+    "The agent explains briefly that a council is disproportionate for a simple reversible single-domain choice",
+    "It answers directly or routes to the appropriate local task without spawning a specialist panel",
+    "It does not turn a trivial request into a long deliberation"
+  ],
+  "checks": [
+    { "kind": "regex_absent", "value": "[\\u2014\\u2013]" }
+  ]
+}

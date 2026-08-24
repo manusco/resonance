@@ -1,0 +1,7 @@
+{
+  "name": "goal_plan_build_handoff", "skill": "ops/goal",
+  "task": "Confirm the outcome contract, obtain an implementation plan, build the accepted slice, and verify it. Do not copy the Plan or Build methods into the Goal response.",
+  "fixture": {"files": {"README.md": "A tiny project with no implementation plan.\n"}},
+  "assert": {"type": "contains", "all": ["goal contract", "plan", "verify"]},
+  "trace_assert": {"minimum_assurance": 1, "ordered_subsequence": [{"event": "INVOKE", "target": "strategy/plan"}, {"event": "INVOKE", "target": "engineering/build"}], "allowed_skills": ["strategy/plan", "engineering/build", "ops/qa", "ops/audit", "ops/reviewer"], "forbidden_skills": ["ops/ship"], "max_fan_out": 5}
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": 1, "id": "operations.retro-recovered-incident",
+  "query": "The incident is resolved. Analyze the timeline, contributing conditions, response quality, and durable follow-up without changing production.",
+  "expected_primary": "resonance-ops-retro", "allowed_contributors": [],
+  "forbidden_skills": ["resonance-ops-incident", "resonance-engineering-devops"], "harm_tier": "STANDARD", "cluster": "incident-retro-devops",
+  "rationale": "Retro owns evidence-backed analysis after recovery and performs no live mitigation.",
+  "expected_activation_mode": "AUTO", "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-retro"}]
+}

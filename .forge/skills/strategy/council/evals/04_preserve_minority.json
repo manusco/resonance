@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-strategy-council",
+  "query": "The product, finance, and engineering reviewers support launch, but the security reviewer found a plausible account-takeover path. Reconcile the council.",
+  "files": [],
+  "expected_behavior": [
+    "The synthesis preserves the security dissent and evaluates it by evidence and user harm rather than outvoting it",
+    "The agent names the unresolved disagreement, required evidence or mitigation, and the condition under which launch could proceed",
+    "It does not manufacture consensus or average away a potentially blocking minority finding"
+  ],
+  "checks": [
+    { "kind": "regex_absent", "value": "[\\u2014\\u2013]" }
+  ]
+}

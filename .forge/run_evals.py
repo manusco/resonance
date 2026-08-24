@@ -55,6 +55,7 @@ import re
 import shlex
 import subprocess
 import sys
+import time
 from dataclasses import dataclass
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
@@ -62,6 +63,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import eval_integrity
+import evidence as run_evidence
 
 try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -397,7 +399,10 @@ def run_case(cmd: list[str], judge_cmd: list[str], sk: Path, ev: Path, threshold
         swo = sum(judge(judge_cmd, d["query"], without, rub)) + det_checks(without, checks)
         wf.append(sw / n)
         wof.append(swo / n)
-        evidence.append({"rep": rep + 1, "order": order, "with_output": with_out,
+        evidence.append({"rep": rep + 1, "order": order,
+                         "with_prompt_hash": run_evidence.sha256_bytes(prompts[0].encode("utf-8")),
+                         "without_prompt_hash": run_evidence.sha256_bytes(prompts[1].encode("utf-8")),
+                         "with_output": with_out,
                          "without_output": without, "with_score": wf[-1],
                          "without_score": wof[-1]})
     with_frac = sum(wf) / len(wf)
@@ -478,6 +483,7 @@ def write_scorecard(results: list[dict], threshold: float, judge_label: str = ""
 
 
 def main(argv: list[str]) -> int:
+    started = time.monotonic()
     ap = argparse.ArgumentParser(description="Run Resonance golden evals and score skill lift.")
     ap.add_argument("path", nargs="?", default=None, help="skill path (e.g. marketing/seo); omit for all")
     ap.add_argument("--all", action="store_true", help="run every skill's evals")
@@ -500,7 +506,28 @@ def main(argv: list[str]) -> int:
                     help="stable provider/model identity for the judge")
     ap.add_argument("--holdout-dir", default=os.environ.get("RESONANCE_HOLDOUT_DIR", ""),
                     help="external protected holdout directory used by --score")
+    ap.add_argument("--evidence-root", default=os.environ.get("RESONANCE_EVIDENCE_ROOT", ""),
+                    help="external evidence directory; omitted preserves structure-check behavior")
+    ap.add_argument("--baseline-id", default=os.environ.get("RESONANCE_BASELINE_ID", ""),
+                    help="approved baseline identifier recorded in replay provenance")
+    ap.add_argument("--promotion", action="store_true",
+                    help="fail closed unless promotion-grade provenance is configured")
+    ap.add_argument("--model-revision", default=os.environ.get("RESONANCE_MODEL_REVISION", ""))
+    ap.add_argument("--judge-revision", default=os.environ.get("RESONANCE_JUDGE_REVISION", ""))
+    ap.add_argument("--seed", default=os.environ.get("RESONANCE_EVAL_SEED", ""),
+                    help="seed requested from the provider, if the provider honors it")
     args = ap.parse_args(argv)
+
+    if args.promotion:
+        try:
+            run_evidence.require_promotion_provenance(
+                evidence_root=args.evidence_root, baseline_id=args.baseline_id,
+                identities={"answerer": args.model_id, "judge": args.judge_id},
+                revisions={"answerer": args.model_revision, "judge": args.judge_revision},
+            )
+        except ValueError as exc:
+            print(f"refusing --promotion: {exc}")
+            return 2
 
     target = "--all" if (args.all or args.changed or not args.path) else args.path
     cases = find_cases(target, args.changed)
@@ -517,8 +544,103 @@ def main(argv: list[str]) -> int:
         print(f"no evals found for '{target}'" + (" (changed selection)" if args.changed else ""))
         return 2
 
+    evidence_run = None
+    if args.evidence_root:
+        try:
+            evidence_run = run_evidence.EvidenceRun(
+                root=Path(args.evidence_root), repo=REPO, runner=Path(__file__),
+                runner_id="run_evals", baseline_id=args.baseline_id, explicit_root=True,
+            )
+        except (OSError, ValueError, RuntimeError) as exc:
+            print(f"refusing evidence root: {exc}")
+            return 2
+
+    def finish(code: int, *, result_data: object | None = None,
+               failure: str = "", reps_used: int = 1) -> int:
+        if evidence_run is None:
+            return code
+        try:
+            case_items = [run_evidence.hash_item(ev.name, ev) for _, ev in cases]
+            unique_skills = {skill_rel(sk): sk for sk, _ in cases}
+            skill_items = [run_evidence.hash_item(rel, sk) for rel, sk in sorted(unique_skills.items())]
+            model_value = args.model_id or "none"
+            judge_value = args.judge_id or (model_value if model_value != "none" else "none")
+            commands = []
+            fingerprints = {}
+            for identifier, value in (("answerer", args.model_cmd), ("judge", args.judge_cmd)):
+                if value:
+                    item, redacted = run_evidence.command_item(identifier, value)
+                    commands.append(item)
+                    fingerprints[identifier] = redacted
+            raw_hashes = []
+            prompt_hashes = []
+            if isinstance(result_data, list):
+                for row in result_data:
+                    for sample in row.get("evidence", []) if isinstance(row, dict) else []:
+                        for prompt_key in ("with_prompt_hash", "without_prompt_hash"):
+                            if sample.get(prompt_key):
+                                prompt_hashes.append({"id": (
+                                    f"{row.get('path','?')}/{row.get('eval','?')}/"
+                                    f"{sample.get('rep','?')}/{prompt_key}"
+                                ), "hash": sample[prompt_key]})
+                        for arm in ("with_output", "without_output"):
+                            if arm in sample:
+                                raw_hashes.append(run_evidence.hash_item(
+                                    f"{row.get('path','?')}/{row.get('eval','?')}/{sample.get('rep','?')}/{arm}",
+                                    sample[arm],
+                                ))
+            safe_result = result_data
+            if isinstance(result_data, list):
+                safe_result = []
+                for row in result_data:
+                    clean = dict(row)
+                    clean.pop("evidence", None)
+                    safe_result.append(clean)
+            state = "COMPLETE" if code == 0 else "FAILED"
+            path = evidence_run.write(
+                exit_state=state, cases=case_items, skills=skill_items,
+                instructions_hash=run_evidence.sha256_bytes(run_evidence.canonical_bytes([
+                    json.loads(ev.read_text(encoding="utf-8")) for _, ev in cases
+                ])),
+                models={"answerer_id": model_value, "judge_id": judge_value},
+                commands=commands, command_fingerprints=fingerprints,
+                repetitions=reps_used, thresholds={"rubric_fraction": args.threshold},
+                host=os.environ.get("RESONANCE_EVAL_HOST", "local"),
+                tool_profile=os.environ.get("RESONANCE_TOOL_PROFILE", "runner-default"),
+                permission_profile=os.environ.get("RESONANCE_PERMISSION_PROFILE", "local-process"),
+                results=None,
+                summary={
+                    "mode": "structural" if args.check or not args.model_cmd else ("scored" if args.score else "live"),
+                    "case_count": len(cases), "exit_code": code, "failure": failure or None,
+                    "raw_response_hashes": raw_hashes,
+                    "replay_envelope": {
+                        "provider_revisions": {"answerer": args.model_revision or None,
+                                               "judge": args.judge_revision or None},
+                        "decoding": {"seed": args.seed or None, "seed_honored": None},
+                        "retry_history": [], "tool_call_hashes": [],
+                        "prompt_hashes": prompt_hashes,
+                        "rubric_hash": run_evidence.sha256_bytes(run_evidence.canonical_bytes([
+                            {"expected_behavior": json.loads(ev.read_text(encoding="utf-8")).get("expected_behavior"),
+                             "checks": json.loads(ev.read_text(encoding="utf-8")).get("checks", [])}
+                            for _, ev in cases
+                        ])),
+                    },
+                },
+                latency_ms=int((time.monotonic() - started) * 1000),
+                result_payloads={"results.json": safe_result} if safe_result is not None else None,
+            )
+            print(f"evidence: {path}")
+        except Exception as exc:
+            print(f"evidence write failed: {exc}")
+            return 1
+        return code
+
     model_cmd = args.model_cmd or ("claude -p" if _has("claude") else "")
     live = bool(model_cmd) and not args.check
+    if live and evidence_run is None:
+        print("refusing live eval: configure an external --evidence-root or "
+              "RESONANCE_EVIDENCE_ROOT")
+        return 2
 
     if not live:
         print(f"eval CHECK (structure only): {len(cases)} cases\n")
@@ -534,7 +656,7 @@ def main(argv: list[str]) -> int:
         if not args.check and not model_cmd:
             print("(no model command found; ran structure check only. Set --model-cmd or "
                   "RESONANCE_MODEL_CMD, e.g. 'claude -p', for a live scored run.)")
-        return 1 if bad else 0
+        return finish(1 if bad else 0, result_data={"structural_problems": bad})
 
     judge_cmd_s = args.judge_cmd.strip()
     reps = max(1, args.reps)
@@ -543,18 +665,18 @@ def main(argv: list[str]) -> int:
             cases = holdout_cases(args.holdout_dir)
         except (OSError, ValueError, json.JSONDecodeError) as exc:
             print(f"refusing --score: {exc}")
-            return 2
+            return finish(2, failure=str(exc), reps_used=reps)
         if not judge_cmd_s:
             print("refusing --score: no judge configured. The judge is never the answerer; "
                   "set RESONANCE_JUDGE_CMD (or --judge-cmd) to a DIFFERENT model.")
-            return 2
+            return finish(2, failure="judge not configured", reps_used=reps)
         if not args.model_id or not args.judge_id or args.model_id == args.judge_id:
             print("refusing --score: set distinct RESONANCE_MODEL_ID and RESONANCE_JUDGE_ID. "
                   "Command inequality does not prove independent model identity.")
-            return 2
+            return finish(2, failure="model identities missing or equal", reps_used=reps)
         if same_command(judge_cmd_s, model_cmd):
             print("refusing --score: judge command equals the answerer command")
-            return 2
+            return finish(2, failure="judge command equals answerer", reps_used=reps)
         if reps < 3:
             print(f"scored run: raising --reps {reps} -> 3 (a single generation per arm "
                   f"cannot carry a verdict).")
@@ -569,7 +691,7 @@ def main(argv: list[str]) -> int:
         print("eval aborted: committed eval oracle verification failed")
         for problem in manifest_problems:
             print(f"  ERROR {problem}")
-        return 1
+        return finish(1, failure="eval oracle verification failed", reps_used=reps)
     oracle = eval_integrity.snapshot()
     holdout_before = file_hashes([ev for _, ev in cases]) if args.score else {}
     try:
@@ -580,7 +702,7 @@ def main(argv: list[str]) -> int:
         print(f"eval aborted: {exc}")
         print(f"stdout: {exc.stdout[:1000]}")
         print(f"stderr: {exc.stderr[:1000]}")
-        return 1
+        return finish(1, failure=str(exc), reps_used=reps)
     mutations = eval_integrity.verify(oracle)
     if args.score and holdout_before != file_hashes([ev for _, ev in cases]):
         mutations.append("protected holdout changed during execution")
@@ -588,15 +710,10 @@ def main(argv: list[str]) -> int:
         print("eval aborted: the eval oracle changed during execution")
         for mutation in mutations:
             print(f"  ERROR {mutation}")
-        return 1
+        return finish(1, failure="eval oracle changed during execution", reps_used=reps)
 
     if args.score:
         md, data = write_scorecard(results, args.threshold, judge_label=judge_cmd_s, reps=reps)
-        evidence_dir = FORGE / "eval_evidence"
-        evidence_dir.mkdir(exist_ok=True)
-        evidence = {"model_id": args.model_id, "judge_id": args.judge_id,
-                    "judge_command": judge_cmd_s, "reps": reps, "results": results}
-        (evidence_dir / "latest.json").write_text(json.dumps(evidence, indent=2), encoding="utf-8")
         (FORGE / "eval_results.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
         s = data["summary"]
         print(f"scorecard: {s['measured']} skills measured, {s['proven']} proven, "
@@ -620,7 +737,7 @@ def main(argv: list[str]) -> int:
         else:
             print("wrote .forge/eval_results.json (local scratch). No private results directory "
                   "is configured, and results never land in the repo; see docs/EVALS.md.")
-        return 1 if s["weak"] else 0
+        return finish(1 if s["weak"] else 0, result_data=results, reps_used=reps)
 
     failed = 0
     for r in results:
@@ -629,7 +746,7 @@ def main(argv: list[str]) -> int:
         print(f"  {tag}  {r['path']}/{r['eval']}  with={r['with_frac']:.2f} "
               f"without={r['without_frac']:.2f} (reps={r['reps']})")
     print(f"\n{len(results)} cases | {failed} failed")
-    return 1 if failed else 0
+    return finish(1 if failed else 0, result_data=results, reps_used=reps)
 
 
 def _has(exe: str) -> bool:

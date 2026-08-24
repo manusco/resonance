@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "framing.brief-vs-council.council",
+  "query": "The analysis is complete. Convene experts with different mandates to challenge it, rebut each other, test scenarios, and reconcile their conclusions.",
+  "expected_primary": "resonance-strategy-council",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-strategy-brief"],
+  "harm_tier": "STANDARD",
+  "cluster": "brief-council",
+  "rationale": "Council challenges a completed analysis; Brief frames raw intent.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-strategy-council"}]
+}

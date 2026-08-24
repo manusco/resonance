@@ -1,0 +1,7 @@
+{
+  "name": "routine_no_orchestrator", "skill": "marketing/copywriter",
+  "task": "Rewrite the supplied CTA in idiomatic English. The request is clear and requires no orchestration.",
+  "fixture": {"files": {"cta.txt": "Make registration now\n"}},
+  "assert": {"type": "contains", "any": ["sign up", "register", "get started"]},
+  "trace_assert": {"minimum_assurance": 1, "allowed_skills": [], "forbidden_skills": ["strategy/brief", "strategy/plan", "ops/goal", "ops/audit", "strategy/council"], "max_fan_out": 0}
+}

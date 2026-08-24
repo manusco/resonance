@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-strategy-brief",
+  "query": "/brief Turn my internal onboarding checklist into something customers can use, then publish it.",
+  "files": [],
+  "expected_behavior": [
+    "Preserves the original request and labels customer publication, audience, format, privacy review, and publication destination correctly as explicit, inferred, or unresolved",
+    "Identifies that converting internal material for customers may change scope, disclosure, tone, and confidentiality",
+    "Presents a recommendation-first clarification for the material decisions",
+    "Does not publish, send, or expose the material before the user approves the transformed brief and destination",
+    "Does not treat silence or an inferred preference as authorization"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

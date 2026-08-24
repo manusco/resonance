@@ -20,6 +20,22 @@ MANAGED_ROOTS = (".agents", ".forge", ".claude/skills", ".cursor/skills",
 LEGACY_ROOTS = (".codex/prompts", ".opencode/command")
 
 
+class SourceDirtyError(ValueError):
+    """Raised when the source checkout has real Git status entries."""
+
+    def __init__(self, paths: list[str], warnings: str = ""):
+        self.paths = paths
+        self.warnings = warnings
+        message = "source checkout must be clean; use a pinned tag or commit with no local changes"
+        if paths:
+            message += ": " + ", ".join(paths[:10])
+            if len(paths) > 10:
+                message += f", ... ({len(paths)} total)"
+        if warnings:
+            message += f" (git warnings: {warnings.strip()})"
+        super().__init__(message)
+
+
 def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -36,10 +52,26 @@ def inside(root: Path, path: Path) -> Path:
 
 def source_files(source: Path, include_legacy: bool = False) -> dict[str, Path]:
     source = source.resolve()
-    clean = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all"], cwd=source,
-                           capture_output=True, text=True, encoding="utf-8", errors="replace")
-    if clean.returncode != 0 or clean.stdout.strip():
-        raise ValueError("source checkout must be clean; use a pinned tag or commit with no local changes")
+    clean = subprocess.run(
+        ["git", "status", "--porcelain=v1", "-z", "--untracked-files=all"],
+        cwd=source,
+        capture_output=True,
+        text=False,
+    )
+    stderr = clean.stderr.decode("utf-8", errors="replace") if clean.stderr else ""
+    if clean.returncode != 0:
+        raise ValueError(
+            "source must be a Git checkout with readable status; "
+            "install from a pinned tag or commit"
+            + (f" (git stderr: {stderr.strip()})" if stderr.strip() else "")
+        )
+    dirty = [
+        entry.decode("utf-8", errors="replace")
+        for entry in clean.stdout.split(b"\0")
+        if entry
+    ]
+    if dirty:
+        raise SourceDirtyError(dirty, stderr)
     result = subprocess.run(["git", "ls-files", "-z"], cwd=source, capture_output=True)
     if result.returncode != 0:
         raise ValueError("source must be a Git checkout; install from a pinned tag or commit")

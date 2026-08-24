@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "architecture.ai-rag-diagnosis",
+  "query": "Our RAG answers cite the wrong passages. Isolate whether chunking, retrieval, reranking, context assembly, or generation is failing and design the evals for the fix.",
+  "expected_primary": "resonance-engineering-ai-engineering",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-strategy-architect"],
+  "harm_tier": "STANDARD",
+  "cluster": "architect-ai-engineering",
+  "rationale": "AI Engineering owns RAG internals, diagnosis, and AI evals. No whole-system boundary is changing.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-engineering-ai-engineering"}]
+}

@@ -1,6 +1,6 @@
 ---
 name: resonance-ops-core
-description: The Resonance Kernel and Orchestrator. Manages persistent memory, task planning, and project state. Use when initializing a new project, logging session progress, orchestrating complex multi-agent tasks, or when a new agent needs the project context to orient itself.
+description: Resonance project kernel. Initializes the public project scaffold, loads project context, and maintains project-owned state and memory inside an adopter's repository. Use for `/init`, orientation, or explicit project-state persistence. It is not the general request router, delivery conductor, audit coordinator, or owner of domain work.
 archetype: orchestration
 owner: ops.core
 activation: manual

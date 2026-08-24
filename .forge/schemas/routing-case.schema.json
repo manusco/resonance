@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resonance.dev/schemas/routing-case/v1",
+  "title": "Resonance Routing Case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "query", "expected_primary", "allowed_contributors", "forbidden_skills", "harm_tier", "cluster", "rationale", "expected_activation_mode", "ambiguity_behavior", "deterministic_checks"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$" },
+    "query": { "type": "string", "minLength": 1 },
+    "expected_primary": { "type": ["string", "null"] },
+    "allowed_contributors": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "forbidden_skills": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "harm_tier": { "enum": ["STANDARD", "HIGH", "CRITICAL"] },
+    "cluster": { "type": "string", "minLength": 1 },
+    "rationale": { "type": "string", "minLength": 1 },
+    "expected_activation_mode": { "enum": ["NONE", "AUTO", "MANUAL", "ASK"] },
+    "ambiguity_behavior": { "enum": ["ROUTE", "ASK_MATERIAL_QUESTION", "DECLINE"] },
+    "ask_materiality": {
+      "type": "object", "additionalProperties": false,
+      "required": ["route_changes_primary", "possible_primary_skills"],
+      "properties": {
+        "route_changes_primary": { "const": true },
+        "possible_primary_skills": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      },
+      "description": "Required when ambiguity_behavior is ASK_MATERIAL_QUESTION; lists distinct possible primary routes."
+    },
+    "deterministic_checks": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["kind", "value"],
+        "properties": { "kind": { "enum": ["primary_is", "contributor_includes", "skill_absent", "activation_is", "question_required"] }, "value": { "type": ["string", "boolean"] } }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "ambiguity_behavior": { "const": "ASK_MATERIAL_QUESTION" } }, "required": ["ambiguity_behavior"] },
+      "then": { "required": ["ask_materiality"] },
+      "else": { "not": { "required": ["ask_materiality"] } }
+    }
+  ]
+}

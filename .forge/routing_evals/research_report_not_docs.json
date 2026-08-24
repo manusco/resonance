@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "knowledge.research-report-not-docs",
+  "query": "Compare the authentication approaches, verify the uncertain claims, and give me a standalone research report. Do not update the repository docs.",
+  "expected_primary": "resonance-strategy-researcher",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-ops-librarian"],
+  "harm_tier": "STANDARD",
+  "cluster": "researcher-librarian",
+  "rationale": "Researcher owns uncertain evidence and non-durable reports; Librarian owns canonical project documentation.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-strategy-researcher"}]
+}

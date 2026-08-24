@@ -2,6 +2,20 @@
 name: resonance-engineering-backend
 description: Backend Engineer Specialist. Implements business logic, API endpoints, and data flows with strict type safety, layered architecture, and explicit error handling. Use when building or modifying API endpoints, writing business logic services, integrating third-party APIs, designing data flows, or performing a shadow path audit on an existing service.
 archetype: knowledge
+contract_version: 1
+job_id: implementation.backend
+stage: EXECUTE
+contributes_to:
+  - delivery.goal
+reviews:
+finalizes:
+  - backend-artifact
+artifact_access:
+  - implementation-plan:read
+  - backend-artifact:create,modify
+dispatch_conditions:
+  - the approved work changes server-side business logic, APIs, or data flows
+compatibility: active
 ---
 
 # /resonance-engineering-backend: build reliable systems, not just working ones

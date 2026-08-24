@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "marketing.campaign-untested-positioning",
+  "query": "Write and prepare twelve posts for this untested positioning idea, but do not publish them.",
+  "expected_primary": "resonance-marketing-run-campaign",
+  "allowed_contributors": ["resonance-strategy-gtm-thinker", "resonance-marketing-copywriter", "resonance-marketing-content-distribution"],
+  "forbidden_skills": ["resonance-strategy-growth"],
+  "harm_tier": "STANDARD",
+  "cluster": "gtm-growth-campaign",
+  "rationale": "Run Campaign owns the requested asset package, while GTM Thinker must first challenge the uncommitted premise.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-marketing-run-campaign"}, {"kind": "contributor_includes", "value": "resonance-strategy-gtm-thinker"}]
+}

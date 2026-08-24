@@ -2,6 +2,20 @@
 name: resonance-engineering-frontend
 description: Frontend Engineer Specialist ("The Glassmith"). Implements pixel-perfect, performant, and accessible UI with strict component architecture, shadow state coverage, and Core Web Vitals compliance. Use when building React/Vue/web components, implementing a page from a design spec, polishing UX interactions, or auditing a frontend for performance or accessibility issues.
 archetype: knowledge
+contract_version: 1
+job_id: implementation.frontend
+stage: EXECUTE
+contributes_to:
+  - delivery.goal
+reviews:
+finalizes:
+  - frontend-artifact
+artifact_access:
+  - implementation-plan:read
+  - frontend-artifact:create,modify
+dispatch_conditions:
+  - the approved work changes a web interface or client-side interaction
+compatibility: active
 ---
 
 # /resonance-engineering-frontend: craft experiences, not just components

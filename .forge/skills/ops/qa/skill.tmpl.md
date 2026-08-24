@@ -2,6 +2,23 @@
 name: resonance-ops-qa
 description: Quality Assurance Specialist. Proves that the system works, or breaks it trying. Use when writing a test plan, auditing test coverage against the 8-Path Matrix, writing destructive test cases, building an LLM eval suite, or performing a verification audit before a release.
 archetype: procedure
+authority: consequential
+contract_version: 1
+job_id: verification.qa
+stage: VERIFY
+contributes_to:
+  - verification.audit
+reviews:
+  - delivery.goal
+finalizes:
+  - verification-report
+artifact_access:
+  - implementation-artifact:read,review,execute
+  - test-artifact:create,modify,execute
+  - verification-report:create,append_evidence,modify
+dispatch_conditions:
+  - behavior needs test design, coverage analysis, or executed verification
+compatibility: active
 ---
 
 # /resonance-ops-qa: prove it cannot fail

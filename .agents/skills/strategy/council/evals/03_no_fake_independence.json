@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-strategy-council",
+  "query": "Have five experts vote independently on whether this architecture is correct and give me the consensus.",
+  "files": [],
+  "expected_behavior": [
+    "The agent does not claim that same-model specialist subagents are independent experts or that their agreement is independent consensus",
+    "It states the provenance and limits of the review, uses evidence-based reconciliation instead of voting, and distinguishes multi-lens analysis from a true second opinion",
+    "It does not use majority vote as the decision rule"
+  ],
+  "checks": [
+    { "kind": "regex_absent", "value": "[\\u2014\\u2013]" }
+  ]
+}

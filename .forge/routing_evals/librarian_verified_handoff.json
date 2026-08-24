@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "knowledge.librarian-verified-handoff",
+  "query": "The investigation is finished and the evidence is verified. Turn this packet into the canonical authentication how-to, place it correctly, and update the documentation index.",
+  "expected_primary": "resonance-ops-librarian",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-strategy-researcher"],
+  "harm_tier": "STANDARD",
+  "cluster": "researcher-librarian",
+  "rationale": "Librarian owns durable project documentation, placement, and indexes after evidence is finalized.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-librarian"}]
+}

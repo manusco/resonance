@@ -1,0 +1,9 @@
+{
+  "schema_version": 1, "id": "operations.incident-live-outage",
+  "query": "Production errors are spiking now after a deploy. Declare severity, assign command, coordinate rollback, communicate, and verify recovery.",
+  "expected_primary": "resonance-ops-incident", "allowed_contributors": ["resonance-engineering-devops"],
+  "forbidden_skills": ["resonance-ops-retro"], "harm_tier": "CRITICAL", "cluster": "incident-retro-devops",
+  "rationale": "Incident owns command and disposition during the active event; DevOps contributes infrastructure actions.",
+  "expected_activation_mode": "AUTO", "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-incident"}, {"kind": "skill_absent", "value": "resonance-ops-retro"}]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "none.greeting",
+  "query": "Hi, thanks for your help yesterday.",
+  "expected_primary": null,
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-strategy-brief", "resonance-ops-goal"],
+  "harm_tier": "STANDARD",
+  "cluster": "no-skill",
+  "rationale": "A social acknowledgement does not warrant a specialist.",
+  "expected_activation_mode": "NONE",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "activation_is", "value": "NONE"}]
+}

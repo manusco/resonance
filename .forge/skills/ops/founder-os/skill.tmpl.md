@@ -1,6 +1,6 @@
 ---
 name: resonance-ops-founder-os
-description: The company operating system for a founder running a business with a fleet of agents. Ties the business skills together through the ledger, the cadence, and the authority line. Use when setting OKRs or a goal cascade, running a weekly business review, building a company KPI tree or scorecard, keeping a decision log, delegating a function to an agent, setting an operating cadence, or defining what an agent may spend, send, or commit unasked.
+description: The company operating system for a founder running a business with a fleet of agents. Owns company OKRs, scorecards, weekly reviews, L10/EOS and IDS, decisions, cadence, delegation, and authority budgets. Use when running the company operating rhythm or defining what an agent may spend, send, change, or commit. Product discovery, PRDs, PMF, and product roadmap choices belong to Product.
 archetype: knowledge
 ---
 
@@ -19,7 +19,7 @@ A company is not a pile of tasks. It is a small set of numbers that matter, a rh
 | :--- | :--- | :--- |
 | **OKR Cascade** | New quarter, or a goal to set | Company to team to this-week, key results as `met-`/`exp-` targets |
 | **Company Scorecard** | "What are our numbers" | A KPI tree of `met-` entries, north-star decomposed into drivers |
-| **Weekly Business Review** | "Run our weekly review" | What moved, what is stuck, decisions logged as `dec-` entries |
+| **Weekly Business Review / L10** | "Run our weekly review" | What moved, what is stuck, IDS resolutions, and decisions logged as `dec-` entries |
 | **Decision Log** | A real call was made | A `dec-` entry, superseded not overwritten, with its evidence edge |
 | **Delegation** | Handing off a function | The owning skill named, the authority budget set |
 | **Authority Budget** | "What can this agent do unasked" | Spend/send/commit/change limits, escalation tiers, a `dec-` entry |
@@ -86,6 +86,7 @@ A decision needs debate before it and alignment after it. Once a `dec-` entry is
 
 - Building the financial model, unit economics, or the raise. Delegate to `resonance-strategy-finance`.
 - Defining product scope, PRDs, or PMF diagnosis. Delegate to `resonance-ops-product`.
+- Prioritizing product features or choosing a product roadmap through discovery evidence and RICE. Delegate to `resonance-ops-product`.
 - Running the autonomous build loop for a goal. That is `resonance-ops-goal`; this skill sets the company-level cascade the goal serves.
 - Scaffolding the ledger itself. `resonance-ops-core` and `/init` create `.resonance/ledger/`; this skill assumes it exists and transacts against it.
 

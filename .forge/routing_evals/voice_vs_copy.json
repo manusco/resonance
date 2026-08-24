@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "language.voice-vs-copy.voice",
+  "query": "Analyze this writing corpus and compile a reusable voice profile that other writers can apply later.",
+  "expected_primary": "resonance-ops-voice",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-marketing-copywriter"],
+  "harm_tier": "STANDARD",
+  "cluster": "voice-copywriter",
+  "rationale": "Voice extracts a reusable profile; Copywriter applies one to copy.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-voice"}]
+}

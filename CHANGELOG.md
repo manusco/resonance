@@ -1,5 +1,34 @@
 # Changelog
 
+## v2.5.1
+
+The routing and skill-boundary hardening release. Resonance now routes ordinary
+language to the correct specialist without making users learn internal command
+rules, and it adds focused procedures for intent recovery and decision challenge.
+
+### Added
+- **Brief and Council.** `/brief` recovers intent and routes work. `/council`
+  challenges completed analyses and consequential decisions through independent
+  specialist views.
+- **Routing and orchestration contracts.** Public fixtures, protected-holdout
+  custody, promotion evidence, and composition validation now fail closed on
+  invalid ownership, authority, activation, and evaluation state.
+- **Private failure diagnostics.** Sealed routing runs can write an external
+  post-failure sidecar while keeping cases, model output, and run evidence out of
+  the public repository.
+
+### Changed
+- **Natural-language routing is the default.** Manual host exposure no longer
+  prevents a clear ordinary-language request from selecting its specialist.
+- **Skill boundaries are explicit.** Nearby skills declare one owner per job,
+  earned contributors, narrow review authority, and compatibility entrypoints.
+- **Native-language quality is mandatory.** Framework voice and copywriting
+  guidance now reject translated syntax and require idiomatic target-language
+  writing.
+- **Promotion preflight is non-consuming.** Invalid ASK oracles, semantic private
+  identifiers, mutable custody controls, and malformed sealed sets fail before a
+  single-use dataset is consumed.
+
 ## v2.5.0
 
 The operating-contract release. Resonance now has a stricter compile-time

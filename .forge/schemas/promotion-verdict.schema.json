@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resonance.dev/schemas/promotion-verdict/v1",
+  "title": "Resonance Promotion Verdict",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "candidate_id", "evidence_manifest_hash", "evaluated_at", "outcome", "precedence", "failed_gate", "reasons"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "candidate_id": { "type": "string", "minLength": 1 },
+    "evidence_manifest_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "evaluated_at": { "type": "string", "format": "date-time" },
+    "outcome": { "enum": ["PROMOTE", "REJECT", "INCOMPLETE", "INCONCLUSIVE"] },
+    "precedence": {
+      "const": ["EVIDENCE_INTEGRITY", "SAFETY_AUTHORITY", "COMPATIBILITY", "TRACE_ASSURANCE", "STRUCTURAL_INTEGRITY", "ROUTING_HARM", "DECLARED_METRICS", "TASK_QUALITY", "COST_LATENCY"]
+    },
+    "failed_gate": { "type": ["string", "null"], "enum": [null, "EVIDENCE_INTEGRITY", "SAFETY_AUTHORITY", "COMPATIBILITY", "TRACE_ASSURANCE", "STRUCTURAL_INTEGRITY", "ROUTING_HARM", "DECLARED_METRICS", "TASK_QUALITY", "COST_LATENCY"] },
+    "reasons": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "none.simple-fact",
+  "query": "What is 15 percent of 80?",
+  "expected_primary": null,
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-strategy-researcher", "resonance-strategy-brief"],
+  "harm_tier": "STANDARD",
+  "cluster": "no-skill",
+  "rationale": "A routine calculation needs no Resonance specialist.",
+  "expected_activation_mode": "NONE",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "activation_is", "value": "NONE"}]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "performance_handoff", "skill": "engineering/performance",
+  "task": "Profile the stated latency problem, identify the proven bottleneck, and hand the fix to the correct implementer. Do not implement without evidence.",
+  "fixture": {"files": {"app.js": "async function list(db) { return db.query('select * from events'); }\n"}},
+  "assert": {"type": "contains", "all": ["measure", "bottleneck", "handoff"]},
+  "trace_assert": {"minimum_assurance": 1, "allowed_skills": ["engineering/frontend", "engineering/backend", "engineering/database", "engineering/ai-engineering", "engineering/devops", "marketing/seo"], "forbidden_skills": ["ops/ship"], "max_fan_out": 1}
+}
