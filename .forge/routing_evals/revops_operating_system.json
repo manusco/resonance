@@ -1,0 +1,9 @@
+{
+  "schema_version": 1, "id": "sales.revops-operating-system",
+  "query": "Redesign our funnel stages, exit criteria, pipeline coverage policy, territories, quotas, compensation, and weekly forecast governance.",
+  "expected_primary": "resonance-sales-revops", "allowed_contributors": ["resonance-sales-pipeline"],
+  "forbidden_skills": [], "harm_tier": "HIGH", "cluster": "pipeline-revops",
+  "rationale": "RevOps owns the durable revenue operating system; Pipeline may supply current-state evidence.",
+  "expected_activation_mode": "AUTO", "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-sales-revops"}]
+}

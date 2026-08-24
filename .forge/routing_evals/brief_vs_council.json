@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "framing.brief-vs-council.brief",
+  "query": "This request is rambling and incomplete. Recover what I mean, turn it into a faithful execution brief, then route it.",
+  "expected_primary": "resonance-strategy-brief",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-strategy-council"],
+  "harm_tier": "STANDARD",
+  "cluster": "brief-council",
+  "rationale": "Brief recovers intent before execution; Council challenges a completed artifact.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-strategy-brief"}]
+}

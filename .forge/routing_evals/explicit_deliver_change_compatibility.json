@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "delivery.explicit-compatibility-entrypoint",
+  "query": "Use resonance-software-deliver-change for this software release candidate.",
+  "expected_primary": "resonance-software-deliver-change",
+  "allowed_contributors": ["resonance-ops-goal"],
+  "forbidden_skills": [],
+  "harm_tier": "HIGH",
+  "cluster": "goal-deliver-change",
+  "rationale": "An explicit legacy skill invocation remains compatible and delegates to Goal.",
+  "expected_activation_mode": "MANUAL",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-software-deliver-change"}]
+}

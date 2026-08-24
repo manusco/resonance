@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "marketing.growth-channel-portfolio",
+  "query": "D30 retention is 8 percent. Diagnose the AARRR bottleneck and decide whether paid search, founder content, or partnerships deserves next quarter's budget.",
+  "expected_primary": "resonance-strategy-growth",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-strategy-gtm-thinker", "resonance-marketing-run-campaign"],
+  "harm_tier": "STANDARD",
+  "cluster": "gtm-growth-campaign",
+  "rationale": "Growth owns cross-funnel diagnosis and channel portfolio investment.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-strategy-growth"}]
+}

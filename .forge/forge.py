@@ -163,6 +163,149 @@ def load_commands() -> list[dict]:
     return json.loads(p.read_text(encoding="utf-8")).get("commands", [])
 
 
+def load_command_registry() -> dict:
+    """Read command presentation data without interpreting skill semantics."""
+    p = FORGE / "commands.json"
+    if not p.exists():
+        raise SystemExit(f"forge: missing command registry ({p})")
+    data = json.loads(p.read_text(encoding="utf-8"))
+    if not isinstance(data.get("commands"), list) or not isinstance(data.get("catalog"), dict):
+        raise SystemExit("forge: commands.json requires 'commands' and 'catalog' objects")
+    return data
+
+
+DOC_SECTIONS = {
+    "README.md": ("COMMAND_COUNT_BADGE", "COMMAND_COUNT_SUMMARY", "COMMAND_CATALOG"),
+    "AGENTS.md": ("COMMAND_CATALOG",),
+}
+
+
+def section_marker(name: str, edge: str) -> str:
+    return f"<!-- RESONANCE-GENERATED:{name}:{edge} -->"
+
+
+def replace_generated_section(text: str, name: str, rendered: str, path: Path) -> str:
+    """Replace one bounded section, refusing ambiguous or damaged boundaries."""
+    start = section_marker(name, "START")
+    end = section_marker(name, "END")
+    if text.count(start) != 1 or text.count(end) != 1:
+        raise SystemExit(
+            f"forge: {path} requires exactly one {start} and one {end} marker"
+        )
+    start_at = text.index(start)
+    end_at = text.index(end)
+    if start_at >= end_at:
+        raise SystemExit(f"forge: {path} has reversed markers for {name}")
+    body_start = start_at + len(start)
+    replacement = "\n" + rendered.rstrip() + "\n"
+    return text[:body_start] + replacement + text[end_at:]
+
+
+def validate_catalog(registry: dict) -> tuple[list[dict], list[dict], list[str]]:
+    commands = registry["commands"]
+    families = registry["catalog"].get("families")
+    help_items = registry["catalog"].get("help")
+    if not isinstance(families, list) or not isinstance(help_items, list):
+        raise SystemExit("forge: command catalog requires 'families' and 'help' lists")
+    aliases = [c.get("alias") for c in commands]
+    if any(not isinstance(a, str) or not a for a in aliases) or len(aliases) != len(set(aliases)):
+        raise SystemExit("forge: command aliases must be non-empty and unique")
+    catalog_aliases = [a for family in families for a in family.get("aliases", [])]
+    if len(catalog_aliases) != len(set(catalog_aliases)):
+        raise SystemExit("forge: every command may appear in only one catalog family")
+    missing = sorted(set(aliases) - set(catalog_aliases))
+    unknown = sorted(set(catalog_aliases) - set(aliases))
+    if missing or unknown:
+        raise SystemExit(f"forge: command catalog mismatch; missing={missing}, unknown={unknown}")
+    if any(not isinstance(item, str) or not item.strip() for item in help_items):
+        raise SystemExit("forge: command catalog help entries must be non-empty strings")
+    manifest_path = REPO / "docs" / "skill-manifest.json"
+    if not manifest_path.exists():
+        raise SystemExit("forge: docs/skill-manifest.json is required to validate command targets")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    by_path = {Path(item["path"]).parent.as_posix(): item for item in manifest}
+    for command in commands:
+        alias, skill = command.get("alias"), command.get("skill")
+        if not isinstance(skill, str) or skill not in by_path:
+            raise SystemExit(f"forge: /{alias} targets unknown canonical skill {skill!r}")
+        if "manual" in command and not isinstance(command["manual"], bool):
+            raise SystemExit(f"forge: /{alias} manual must be boolean")
+        declared = by_path[skill].get("entrypoints", [])
+        if declared and f"/{alias}" not in declared:
+            raise SystemExit(
+                f"forge: /{alias} conflicts with {skill} declared entrypoints {declared}"
+            )
+    return commands, families, help_items
+
+
+def render_readme_catalog(commands: list[dict], families: list[dict], help_items: list[str]) -> str:
+    by_alias = {c["alias"]: c for c in commands}
+    lines = [f"The registry contains **{len(commands)} commands**.", ""]
+    for family in families:
+        lines.append(f"**{family['name']}**")
+        entries = [f"`/{alias}`: {by_alias[alias]['desc']}" for alias in family["aliases"]]
+        lines.append(" · ".join(entries))
+        lines.append("")
+    lines.append("**Which command should I use?**")
+    lines.extend(f"- {item}" for item in help_items)
+    lines.extend(["", "If the route is still unclear, start with `/brief`."])
+    return "\n".join(lines)
+
+
+def render_agents_catalog(commands: list[dict], families: list[dict], help_items: list[str]) -> str:
+    by_alias = {c["alias"]: c for c in commands}
+    lines = []
+    for family in families:
+        lines.append(f"### {family['name']}")
+        for alias in family["aliases"]:
+            spec = by_alias[alias]
+            lines.append(f"- **/{alias}** -> `{spec['skill']}` - {spec['desc']}")
+        lines.append("")
+    lines.append("### Choosing between nearby commands")
+    lines.extend(f"- {item}" for item in help_items)
+    lines.extend(["", "If the route is still unclear, start with `/brief`."])
+    return "\n".join(lines)
+
+
+def build_command_docs(dry_run: bool) -> int:
+    """Generate bounded command documentation while preserving all other bytes."""
+    commands, families, help_items = validate_catalog(load_command_registry())
+    rendered = {
+        "README.md": {
+            "COMMAND_COUNT_BADGE": (
+                f'    <img src="https://img.shields.io/badge/Commands-{len(commands)}-7025eb?style=for-the-badge" '
+                f'alt="{len(commands)} commands" />'
+            ),
+            "COMMAND_COUNT_SUMMARY": (
+                f"- **{len(commands)} slash commands** like `/brief`, `/plan`, `/grill`, `/council`, "
+                "`/build`, `/debug`, `/design`, `/test`, `/improve`, and `/ship`. Type the command, "
+                "or describe the job and let the specialist auto-fire."
+            ),
+            "COMMAND_CATALOG": render_readme_catalog(commands, families, help_items),
+        },
+        "AGENTS.md": {
+            "COMMAND_CATALOG": render_agents_catalog(commands, families, help_items),
+        },
+    }
+    rc = 0
+    for relative, names in DOC_SECTIONS.items():
+        path = REPO / relative
+        # Decode bytes directly so Python does not normalize line endings. The
+        # replacement is bounded; every byte outside the markers stays intact.
+        current = path.read_bytes().decode("utf-8")
+        updated = current
+        for name in names:
+            updated = replace_generated_section(updated, name, rendered[relative][name], path)
+        if dry_run:
+            if current != updated:
+                print(f"DRIFT  {path}")
+                rc = 1
+        else:
+            path.write_bytes(updated.encode("utf-8"))
+            print(f"catalog   {relative}: {len(commands)} commands")
+    return rc
+
+
 def render_command(alias: str, spec: dict, host: dict) -> str:
     """A thin command shim that routes to the canonical skill. The heavy body lives
     once under .agents/skills; the shim only registers the /alias per tool."""
@@ -339,7 +482,7 @@ def main(argv: list[str]) -> int:
 
     if args.cmd == "commands":
         hosts = available_hosts() if args.host == "all" else [args.host]
-        rc = 0
+        rc = build_command_docs(args.dry_run)
         for h in hosts:
             rc |= build_commands(h, args.dry_run)
             rc |= build_bridges(h, args.dry_run)
@@ -355,6 +498,7 @@ def main(argv: list[str]) -> int:
     # bridge (the carrier) so a clone is ready to use on every tool.
     if args.all:
         hosts = available_hosts() if args.host == "all" else [args.host]
+        rc |= build_command_docs(args.dry_run)
         for h in hosts:
             rc |= build_commands(h, args.dry_run)
             rc |= build_bridges(h, args.dry_run)

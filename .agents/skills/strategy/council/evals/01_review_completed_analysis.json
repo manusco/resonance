@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-strategy-council",
+  "query": "Run /council on this completed market-entry analysis. Challenge its assumptions and tell me whether to proceed.",
+  "files": [],
+  "expected_behavior": [
+    "The agent treats the supplied analysis as the artifact under review rather than replacing it with a new plan",
+    "It selects relevant specialist mandates, collects blind opening positions, runs one rebuttal round, tests relevant scenarios, and produces a reconciled recommendation",
+    "It identifies assumptions, evidence gaps, the strongest objection, confidence, reversal conditions, and a concrete next action",
+    "It does not implement the recommendation"
+  ],
+  "checks": [
+    { "kind": "regex_absent", "value": "[\\u2014\\u2013]" }
+  ]
+}

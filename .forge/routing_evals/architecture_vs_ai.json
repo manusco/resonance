@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "architecture.system-vs-ai.system",
+  "query": "Define the service boundaries, C4 containers, domain ownership, cross-system data flows, and architecture decision records for the platform.",
+  "expected_primary": "resonance-strategy-architect",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-engineering-ai-engineering"],
+  "harm_tier": "STANDARD",
+  "cluster": "architecture-ai",
+  "rationale": "Architect owns system boundaries and cross-system decisions.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-strategy-architect"}]
+}

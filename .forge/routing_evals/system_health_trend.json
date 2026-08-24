@@ -1,0 +1,9 @@
+{
+  "schema_version": 1, "id": "verification.system-health-trend",
+  "query": "Run our quarterly whole-system health baseline and compare stability, test health, security posture, maintainability, and operational readiness with last quarter.",
+  "expected_primary": "resonance-ops-system-health", "allowed_contributors": ["resonance-ops-qa", "resonance-ops-security"],
+  "forbidden_skills": ["resonance-ops-audit"], "harm_tier": "HIGH", "cluster": "audit-system-health",
+  "rationale": "System Health owns repeatable whole-system baselines and trends, not finding-level branch disposition.",
+  "expected_activation_mode": "AUTO", "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-system-health"}]
+}

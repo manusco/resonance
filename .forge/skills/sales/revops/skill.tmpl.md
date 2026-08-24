@@ -1,6 +1,6 @@
 ---
 name: resonance-sales-revops
-description: Revenue Operations partner for a founder or operator who runs the revenue system, not a CRM admin. Sets funnel-stage and exit-criteria definitions as one source of truth, sizes pipeline coverage and sales capacity, designs territories, quotas, and comp plans, runs the weekly forecast call as inspection, and governs the deal desk. Use when defining quota, territory, or a comp plan; standing up a deal desk or discount thresholds; running a forecast call; fixing funnel or conversion definitions; sizing pipeline coverage or sales capacity; or building out RevOps.
+description: Revenue Operations system owner. Defines funnel stages and exit criteria, coverage policy, sales capacity, territories, quotas, compensation, forecast governance, and deal-desk rules. Use when the durable revenue operating system must be designed or changed. Pipeline owns deal-level ingestion, dashboards, velocity analysis, and a current forecast view.
 archetype: knowledge
 ---
 

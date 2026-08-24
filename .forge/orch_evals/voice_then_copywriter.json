@@ -1,0 +1,7 @@
+{
+  "name": "voice_then_copywriter", "skill": "ops/voice",
+  "task": "Extract a reusable voice profile from the samples, then hand that profile to Copywriter to draft one new paragraph. Keep profile ownership separate from copy ownership.",
+  "fixture": {"files": {"samples.txt": "We say what happened. We use plain words. We never pretend certainty.\n"}},
+  "assert": {"type": "contains", "all": ["voice profile", "paragraph"]},
+  "trace_assert": {"minimum_assurance": 1, "ordered_subsequence": [{"event": "INVOKE", "target": "marketing/copywriter"}], "allowed_skills": ["marketing/copywriter"], "forbidden_skills": [], "max_fan_out": 1}
+}

@@ -83,6 +83,8 @@ def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description="Validate the whole Resonance skill library.")
     ap.add_argument("--root", default=".agents/skills", help="Skills root to scan")
     ap.add_argument("--strict", action="store_true", help="Warnings count as failure")
+    ap.add_argument("--composition-canary", action="store_true",
+                    help="deprecated compatibility flag; v1 contract enforcement is always active")
     args = ap.parse_args(argv)
 
     root = Path(args.root)
@@ -160,6 +162,12 @@ def main(argv: list[str]) -> int:
     _command_target_checks(errors)
     _skill_graph_checks(root, errors)
     _skill_manifest_checks(root, errors)
+    from kernel.manifest import composition_warnings, manifest
+    from validate_skill import COMPOSITION_CANARY_IDS
+    errors.extend(
+        warning.replace("composition canary:", "composition contract:", 1)
+        for warning in composition_warnings(manifest(root), COMPOSITION_CANARY_IDS)
+    )
 
     print(f"Resonance library scan: {len(skills)} skills under {root}\n")
     for e in errors:

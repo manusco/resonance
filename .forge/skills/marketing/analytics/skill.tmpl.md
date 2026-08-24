@@ -1,6 +1,6 @@
 ---
 name: resonance-marketing-analytics
-description: Marketing Analytics Engineer. Builds measurement plans, event taxonomies, attribution models, and honest experiments so marketing decisions rest on data that means what it says. Use when writing a measurement plan, designing event tracking, choosing an attribution model, defining a north-star metric or funnel, sizing or reading an A/B test, analyzing an experiment, or setting up GA4/Amplitude/PostHog/Mixpanel.
+description: Marketing Analytics Engineer. Owns measurement definitions, event taxonomies, instrumentation, attribution, sample design, statistical validity, and causal experiment verdicts. Use when evidence must be made trustworthy or interpreted. Conversion owns the customer-facing intervention and variant hypothesis, not the measurement verdict.
 archetype: knowledge
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: resonance-marketing-lifecycle
-description: Lifecycle and Retention Strategist. Designs the messaging and product moments that turn a signup into an activated, habitual, paying user, and wins back the ones drifting away. Use when planning onboarding, defining an activation or aha moment, cutting time-to-value, designing a welcome or nurture or re-engagement email sequence, choosing triggered vs batch sends, segmenting with RFM, building retention loops, or fixing churn (voluntary, involuntary, dunning, save flows, win-back).
+description: Lifecycle and Retention Strategist. Owns scalable product moments and triggered messaging from signup through activation, habit, dunning, save, and win-back. Use when the system must improve cohort behavior before or between human account interactions. Growth chooses the cross-funnel constraint and portfolio. Customer Success owns named post-sale accounts, renewals, QBRs, health, expansion, and escalations.
 archetype: knowledge
 ---
 

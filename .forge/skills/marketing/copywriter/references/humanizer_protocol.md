@@ -2,6 +2,10 @@
 
 > "Perfect structure feels algorithmic. Tangents, asides, and half-formed thoughts are human."
 
+## 0. Native-Language Gate
+
+Write as a native speaker of the target language would write for the specific audience and context. Do not preserve source-language syntax, metaphors, collocations, or rhythm. Correct grammar is not enough. Rewrite anything that sounds translated or unnatural. Use idioms, slang, and colloquialisms only when a native speaker would use them naturally.
+
 ## 1. The Banned Vocabulary List (Instant Deletion)
 
 **If you use these words, you are failing.**

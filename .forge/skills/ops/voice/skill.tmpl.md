@@ -1,6 +1,6 @@
 ---
 name: resonance-ops-voice
-description: Tone of Voice Architect. Extracts the behavioral voice DNA of a Person, Brand, or Role/Character and compiles it into a portable, high-fidelity voice profile. Use when capturing an individual's writing style, documenting a brand voice, defining a character or persona, ghostwriting in someone's voice, or building a standing AI context file for consistent output.
+description: Tone of Voice Architect. Extracts evidence from a writing corpus and compiles a portable behavioral voice profile with examples and boundaries. Use when the reusable voice itself must be discovered or documented. Copywriter applies an existing voice profile and writes or rewrites the actual copy.
 archetype: procedure
 ---
 

@@ -2,6 +2,20 @@
 name: <skill-name>
 description: <Third person: what pipeline this runs> by coordinating <skills/agents>. Use when <trigger 1>, <trigger 2>.
 archetype: orchestration
+contract_version: 1
+job_id: <stable.domain.job-id>
+stage: <FRAME | PLAN | EXECUTE | VERIFY | APPROVE | PUBLISH>
+contributes_to:
+  - <job_id this orchestrator contributes to, if any>
+reviews:
+  - <job_id this orchestrator independently reviews, if any>
+finalizes:
+  - <artifact finalized by this orchestrator, if any>
+artifact_access:
+  - <artifact>:<read,create,append_evidence,modify,review,approve,publish,execute>
+dispatch_conditions:
+  - <specific condition that activates this participant>
+compatibility: <active | provisional | deprecated | alias | retired>
 ---
 
 # /<skill-name>: <one-line pipeline job>

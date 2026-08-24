@@ -1,13 +1,13 @@
 {
   "skill": "resonance-strategy-researcher",
-  "query": "Write me documentation for our new user authentication flow.",
+  "query": "Research our new user authentication flow and give me a readable findings report, but do not change repository documentation.",
   "files": [],
   "expected_behavior": [
-    "Asks which Diataxis type is needed before writing (Tutorial, How-To, Reference, or Explanation)",
-    "Does not mix Diataxis types in a single document",
-    "Structures the output with headers, numbered steps (for How-To/Tutorial), or tables (for Reference)",
-    "Refuses to fabricate API endpoints or config values - flags any unknown details as placeholders",
-    "Produces output that is scannable, not a wall of prose"
+    "verifies the authentication claims before reporting them",
+    "separates confirmed facts, contradictions, and unknowns",
+    "produces a readable non-durable research report",
+    "does not choose repository placement or update documentation indexes",
+    "offers an evidence packet handoff to Librarian if canonical documentation is later requested"
   ],
   "checks": [
     {

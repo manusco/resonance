@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resonance.dev/schemas/evidence-manifest/v1",
+  "title": "Resonance Evidence Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "started_at", "ended_at", "repository", "runner", "cases", "skills", "instructions", "models", "commands", "execution", "results", "summary", "exit_state"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "started_at": { "type": "string", "format": "date-time" },
+    "ended_at": { "type": "string", "format": "date-time" },
+    "repository": {
+      "type": "object", "additionalProperties": false,
+      "required": ["git_sha", "dirty", "changed_paths"],
+      "properties": {
+        "git_sha": { "type": "string", "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$" },
+        "dirty": { "type": "boolean" },
+        "changed_paths": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+      }
+    },
+    "runner": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "hash"],
+      "properties": { "id": { "type": "string", "minLength": 1 }, "hash": { "$ref": "#/$defs/sha256" } }
+    },
+    "cases": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/hashed_item" } },
+    "skills": { "type": "array", "items": { "$ref": "#/$defs/hashed_item" } },
+    "instructions": { "$ref": "#/$defs/sha256" },
+    "models": {
+      "type": "object", "additionalProperties": false,
+      "required": ["answerer_id", "judge_id"],
+      "properties": { "answerer_id": { "type": "string", "minLength": 1 }, "judge_id": { "type": "string", "minLength": 1 } }
+    },
+    "commands": { "type": "array", "items": { "$ref": "#/$defs/hashed_item" } },
+    "execution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repetitions", "thresholds", "host", "tool_profile", "permission_profile", "cost", "latency_ms"],
+      "properties": {
+        "repetitions": { "type": "integer", "minimum": 1 },
+        "thresholds": { "type": "object" },
+        "host": { "type": "string", "minLength": 1 },
+        "tool_profile": { "type": "string", "minLength": 1 },
+        "permission_profile": { "type": "string", "minLength": 1 },
+        "cost": { "type": "object", "required": ["currency", "amount"], "properties": { "currency": { "type": "string", "minLength": 3, "maxLength": 3 }, "amount": { "type": "number", "minimum": 0 } } },
+        "latency_ms": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "results": { "type": "array", "items": { "$ref": "#/$defs/hashed_item" } },
+    "summary": { "type": "object" },
+    "exit_state": { "enum": ["COMPLETE", "INCOMPLETE", "INCONCLUSIVE", "FAILED"] }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "hashed_item": {
+      "type": "object", "additionalProperties": false, "required": ["id", "hash"],
+      "properties": { "id": { "type": "string", "minLength": 1 }, "hash": { "$ref": "#/$defs/sha256" } }
+    }
+  }
+}

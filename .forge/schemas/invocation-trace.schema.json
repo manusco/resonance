@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resonance.dev/schemas/invocation-trace/v1",
+  "title": "Resonance Invocation Trace",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "assurance_level", "events"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "assurance_level": { "type": "integer", "minimum": 0, "maximum": 3 },
+    "events": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["run_id", "sequence", "timestamp", "actor", "event", "target", "authority", "artifact", "mutation_mode", "approval_state", "outcome"],
+        "properties": {
+          "run_id": { "type": "string", "minLength": 1 },
+          "sequence": { "type": "integer", "minimum": 1 },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "actor": { "type": "string", "minLength": 1 },
+          "event": { "enum": ["ACTIVATE", "DECOMPOSE", "INVOKE", "HANDOFF", "REVIEW", "APPROVE", "PUBLISH", "EXECUTE", "FINALIZE", "FAIL"] },
+          "target": { "type": "string", "minLength": 1 },
+          "authority": { "enum": ["READ", "CREATE", "MODIFY", "REVIEW", "APPROVE", "PUBLISH", "EXECUTE", "DELETE"] },
+          "artifact": { "type": ["string", "null"] },
+          "mutation_mode": { "enum": ["NONE", "PROPOSE", "WRITE", "EXTERNAL", "DESTRUCTIVE"] },
+          "approval_state": { "enum": ["NOT_REQUIRED", "PENDING", "APPROVED", "APPROVED_WITH_CONDITIONS", "REJECTED", "EXPIRED"] },
+          "outcome": { "enum": ["STARTED", "SUCCEEDED", "FAILED", "BLOCKED", "SKIPPED"] }
+        }
+      }
+    }
+  }
+}

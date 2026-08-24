@@ -1,0 +1,9 @@
+{
+  "schema_version": 1, "id": "verification.security-single-domain",
+  "query": "Threat-model this authorization change and determine whether an attacker can cross the tenant boundary.",
+  "expected_primary": "resonance-ops-security", "allowed_contributors": [],
+  "forbidden_skills": ["resonance-ops-audit", "resonance-ops-reviewer"], "harm_tier": "CRITICAL", "cluster": "audit-specialists",
+  "rationale": "Security owns the single-domain exploitability and authorization conclusion.",
+  "expected_activation_mode": "AUTO", "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-security"}]
+}

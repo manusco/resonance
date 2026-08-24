@@ -86,3 +86,19 @@ Each week, the outcome-check-in step reads whatever `measurement_due.py` surface
 - **Grading the ungradable.** Declaring a decision a success in the room when its proof lands next month. Mark it `DONE_PENDING_OUTCOME` and set the check-in.
 - **Overwriting decisions.** Editing a past `dec-` instead of superseding it, which erases the reasoning trail.
 - **No timebox.** The review sprawls, so people dread it, so it decays. Cap it and defer deep work to a separate session.
+
+## 9. Optional EOS and L10 variant
+
+Use this variant when the company already runs EOS. Keep the same evidence-first rule and ledger outputs.
+
+1. Segue, 5 minutes. One personal or professional win per person.
+2. Scorecard, 5 minutes. Mark off-track numbers for the issues list.
+3. Rocks, 5 minutes. Mark each quarterly priority on track or off track.
+4. Headlines, 5 minutes. Capture material customer and employee news.
+5. To-dos, 5 minutes. Check last week's commitments. Treat misses as system evidence, not guilt.
+6. IDS, 60 minutes. Identify, Discuss, Solve the highest-priority issues.
+7. Conclude, 5 minutes. Assign new actions, name messages to cascade, and rate the meeting.
+
+For IDS, collect issues from off-track metrics, off-track Rocks, organizational constraints, and headlines. Force a top three. For each issue, identify the root cause before discussing solutions, then choose one action with one owner and one due date. Write each settled call as a `dec-` entry. "The team" is not an owner.
+
+Do not let the L10 format replace the core contract. The meeting still starts from evidence, respects timeboxes, and ends with owned decisions and dated follow-up.

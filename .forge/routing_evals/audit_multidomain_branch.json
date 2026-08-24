@@ -1,0 +1,10 @@
+{
+  "schema_version": 1, "id": "verification.audit-multidomain-branch",
+  "query": "Audit this branch before merge across correctness, security, tests, architecture, performance, and product intent. Reconcile duplicate findings and give one disposition.",
+  "expected_primary": "resonance-ops-audit",
+  "allowed_contributors": ["resonance-ops-security", "resonance-ops-reviewer", "resonance-ops-qa", "resonance-strategy-architect", "resonance-engineering-backend", "resonance-engineering-performance", "resonance-ops-product"],
+  "forbidden_skills": ["resonance-ops-system-health"], "harm_tier": "HIGH", "cluster": "audit-specialists",
+  "rationale": "Audit owns scope, earned dispatch, normalization, reconciliation, and disposition for a multi-domain review.",
+  "expected_activation_mode": "AUTO", "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-audit"}]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "council_read_only_challenge", "skill": "strategy/council",
+  "task": "Challenge the completed recommendation from multiple relevant perspectives. Reconcile the debate, but do not edit or implement the artifact.",
+  "fixture": {"files": {"recommendation.md": "Adopt a single-region deployment with nightly backups.\n"}},
+  "assert": {"type": "contains", "all": ["recommendation", "risk"]},
+  "trace_assert": {"minimum_assurance": 1, "allowed_skills": [], "forbidden_skills": ["engineering/build", "engineering/backend", "engineering/devops", "ops/ship"], "max_fan_out": 0, "artifact_access": [{"artifact": "recommendation.md", "owner": "user", "allowed_mutations": []}], "correlate_world_state": true}
+}

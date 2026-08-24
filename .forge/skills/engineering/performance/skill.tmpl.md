@@ -1,7 +1,24 @@
 ---
 name: resonance-engineering-performance
-description: Performance Engineer Specialist. Measures, profiles, and optimizes system throughput and latency. Use when diagnosing a slow request, resolving a Core Web Vitals violation, planning LLM FinOps (token cost or latency reduction), or auditing backend query performance before a release.
+description: Performance diagnostician. Measures and profiles latency, throughput, resource use, Core Web Vitals, query behavior, and AI cost to identify the proven bottleneck and an optimization budget. Use when the cause or limiting resource is unknown. Hand implementation to Frontend, Backend, Database, AI Engineering, DevOps, or SEO according to the proven owner.
 archetype: procedure
+authority: consequential
+contract_version: 1
+job_id: verification.performance
+stage: VERIFY
+contributes_to:
+  - verification.audit
+reviews:
+  - delivery.goal
+finalizes:
+  - performance-report
+artifact_access:
+  - implementation-artifact:read,review,execute
+  - performance-evidence:create,append_evidence
+  - performance-report:create,modify
+dispatch_conditions:
+  - measured latency, throughput, resource use, or cost needs diagnosis
+compatibility: active
 ---
 
 # /resonance-engineering-performance: measure first, optimize second

@@ -38,6 +38,13 @@ __pycache__/
 .forge/eval_results.json
 .forge/eval_evidence/
 
+# Maintainer-only hardening records and live model evidence
+docs/audits/
+docs/plans/
+.private-eval/
+.forge/host_traces/
+.forge/eval-operating-contract.local.json
+
 # Machine-local overlay (the flagship's own memory and hooks; never shipped)
 CLAUDE.local.md
 .claude/settings.local.json

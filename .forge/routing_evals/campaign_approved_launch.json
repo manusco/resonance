@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "marketing.campaign-approved-launch",
+  "query": "The strategy and LinkedIn channel are approved. Coordinate the posts, email, paid test, creative, compliance, tracking, and launch proposal without publishing.",
+  "expected_primary": "resonance-marketing-run-campaign",
+  "allowed_contributors": ["resonance-marketing-copywriter", "resonance-marketing-content-distribution", "resonance-marketing-paid-acquisition", "resonance-marketing-analytics", "resonance-design-studio", "resonance-ops-legal"],
+  "forbidden_skills": ["resonance-strategy-gtm-thinker", "resonance-strategy-growth"],
+  "harm_tier": "HIGH",
+  "cluster": "gtm-growth-campaign",
+  "rationale": "Run Campaign owns approved campaign preparation and must not reopen settled strategy without evidence.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-marketing-run-campaign"}, {"kind": "skill_absent", "value": "resonance-strategy-gtm-thinker"}, {"kind": "skill_absent", "value": "resonance-strategy-growth"}]
+}

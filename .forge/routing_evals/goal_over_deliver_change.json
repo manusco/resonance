@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "delivery.goal-over-compatibility-entrypoint",
+  "query": "Take this software feature from request to a verified finish and prepare it for release.",
+  "expected_primary": "resonance-ops-goal",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-software-deliver-change"],
+  "harm_tier": "HIGH",
+  "cluster": "goal-deliver-change",
+  "rationale": "Goal owns new outcome-to-finish routing; Deliver Change is a direct compatibility entrypoint only.",
+  "expected_activation_mode": "MANUAL",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-goal"}]
+}

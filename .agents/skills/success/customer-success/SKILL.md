@@ -1,6 +1,6 @@
 ---
 name: resonance-success-customer-success
-description: Customer Success Architect for the post-sale engine: onboarding to first value, health scoring, renewals, and expansion, run so net revenue retention compounds. Use when working on customer health, churn, renewal, NRR or GRR, onboarding delivery and time-to-value, QBRs, expansion or upsell timing, escalations, or support deflection.
+description: Customer Success Architect for named post-sale customer relationships. Owns onboarding delivery, account health, QBRs, renewals, expansion, escalations, and the human operating motion behind NRR and GRR. Use when account-level ownership or intervention is required. Lifecycle owns scalable product moments and triggered messaging. Growth owns the cross-funnel portfolio.
 archetype: knowledge
 ---
 

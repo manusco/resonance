@@ -2,6 +2,20 @@
 name: resonance-strategy-grill
 description: The pre-build interrogation gate. Stress-tests a plan, design, or goal contract through one-question-at-a-time questioning and targeted risk passes before any code is written, so hidden assumptions surface while they are still cheap to fix. Use before starting a feature, refactor, migration, new project, or when the user says grill me, pressure-test this, poke holes, or challenge this idea. Reaches explicit shared understanding and gates implementation until the user confirms.
 archetype: procedure
+contract_version: 1
+job_id: design.plan-challenge
+stage: FRAME
+contributes_to:
+  - delivery.plan
+reviews:
+finalizes:
+  - shared-understanding-brief
+artifact_access:
+  - proposed-plan:read,review
+  - shared-understanding-brief:create,modify
+dispatch_conditions:
+  - a plan, design, or goal contract needs interrogation before implementation
+compatibility: active
 ---
 
 # /resonance-strategy-grill: interrogate the plan before you build it

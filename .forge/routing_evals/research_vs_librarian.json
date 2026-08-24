@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "knowledge.research-vs-library.research",
+  "query": "Investigate the current evidence for this technical choice, compare the credible sources, and return a synthesis with uncertainty.",
+  "expected_primary": "resonance-strategy-researcher",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-ops-librarian"],
+  "harm_tier": "STANDARD",
+  "cluster": "research-librarian",
+  "rationale": "Researcher gathers and synthesizes evidence; Librarian owns durable documentation and knowledge structure.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-strategy-researcher"}]
+}

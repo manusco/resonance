@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "language.voice-vs-copy.copy",
+  "query": "Using the approved voice profile, write the landing-page headline, proof section, and call to action.",
+  "expected_primary": "resonance-marketing-copywriter",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-ops-voice"],
+  "harm_tier": "STANDARD",
+  "cluster": "voice-copywriter",
+  "rationale": "Copywriter applies an existing voice profile to persuasive copy.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-marketing-copywriter"}]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "reviewer_security_invocation_smoke",
+  "skill": "ops/reviewer",
+  "task": "Review only admin.js. The missing authorization check is a security vulnerability candidate. Invoke Security through the host skill tool for the security conclusion, preserve Reviewer ownership of the general disposition, and return a brief final review. Do not modify files or inspect unrelated references.",
+  "fixture": {
+    "files": {
+      "admin.js": "export async function promote(req) { return db.promote(req.params.userId); }\n"
+    }
+  },
+  "assert": {
+    "type": "contains",
+    "all": ["authorization", "security"]
+  },
+  "trace_assert": {
+    "minimum_assurance": 2,
+    "ordered_subsequence": [
+      {"event": "INVOKE", "target": "ops/security"}
+    ],
+    "allowed_skills": ["ops/security"],
+    "forbidden_skills": ["ops/ship"],
+    "max_fan_out": 1
+  }
+}

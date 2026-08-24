@@ -1,0 +1,9 @@
+{
+  "schema_version": 1, "id": "marketing.conversion-intervention",
+  "query": "Audit this checkout for decision friction and design the offer and page variants we should test. The tracking plan already exists.",
+  "expected_primary": "resonance-marketing-conversion", "allowed_contributors": [],
+  "forbidden_skills": ["resonance-marketing-analytics"], "harm_tier": "STANDARD", "cluster": "conversion-analytics",
+  "rationale": "Conversion owns the customer-facing intervention and variant hypothesis.",
+  "expected_activation_mode": "AUTO", "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-marketing-conversion"}]
+}

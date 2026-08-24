@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "knowledge.research-vs-library.capture",
+  "query": "The investigation is finished. Turn the findings into durable project documentation, classify it using Diataxis, and update the knowledge index.",
+  "expected_primary": "resonance-ops-librarian",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-strategy-researcher"],
+  "harm_tier": "STANDARD",
+  "cluster": "research-librarian",
+  "rationale": "Librarian owns durable capture and indexing after evidence gathering is complete.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-librarian"}]
+}

@@ -1,7 +1,22 @@
 ---
 name: resonance-strategy-plan
-description: The Inception Orchestrator. Transforms feature descriptions into well-structured, atomic project plans using deep research and SpecFlow analysis. Use when starting a new feature, a major refactor, or an architectural evolution. Drives the architect, product, and researcher subagents.
+description: Implementation-plan author. Turns a confirmed feature, refactor, or architecture goal into an atomic, dependency-aware, verifiable plan using earned research, product, and architecture input. Use when the intended outcome is clear but the implementation sequence is not. It produces the approved plan artifact but does not build it. Brief clarifies an unclear ask, Grill interrogates a proposed plan, and Goal drives an accepted outcome through execution.
 archetype: orchestration
+contract_version: 1
+job_id: delivery.plan
+stage: PLAN
+contributes_to:
+  - delivery.goal
+reviews:
+finalizes:
+  - implementation-plan
+artifact_access:
+  - user-request:read
+  - research-evidence:read
+  - implementation-plan:create,modify,approve
+dispatch_conditions:
+  - a clear intended outcome needs an atomic implementation plan
+compatibility: active
 owner: strategy.plan
 activation: manual
 authority: consequential

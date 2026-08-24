@@ -1,7 +1,22 @@
 ---
 name: resonance-ops-audit
-description: The Gatekeeper and Auditor Swarm. Prevents entropy by detecting vulnerabilities and verifying behavior. Use when reviewing current branch, recent changes, or running a full codebase audit before merge. Drives the security, reviewer, qa, and architect subagents.
+description: Audit conductor for a branch, change set, or codebase. Owns audit scope, earned specialist dispatch, severity normalization, reconciliation, and final disposition. Use for a multi-domain audit before merge or release. Security, Reviewer, QA, Architect, Backend, Performance, and Product own their domain findings. Use a specialist directly for a single-domain question.
 archetype: orchestration
+contract_version: 1
+job_id: verification.audit
+stage: VERIFY
+contributes_to:
+reviews:
+  - delivery.goal
+finalizes:
+  - audit-report
+artifact_access:
+  - implementation-artifact:read,review
+  - audit-evidence:create,append_evidence,modify
+  - audit-report:create,modify,approve
+dispatch_conditions:
+  - a repository, change, release, or system surface needs multi-specialist verification
+compatibility: active
 owner: ops.audit
 activation: manual
 authority: consequential

@@ -2,6 +2,20 @@
 name: resonance-engineering-database
 description: Database Architect Specialist. Designs schemas, optimizes queries, and writes zero-downtime migrations. Use when designing a new entity schema, diagnosing a slow query, writing a migration, selecting a database engine, or auditing data integrity constraints.
 archetype: knowledge
+contract_version: 1
+job_id: implementation.database
+stage: EXECUTE
+contributes_to:
+  - delivery.goal
+reviews:
+finalizes:
+  - database-artifact
+artifact_access:
+  - implementation-plan:read
+  - database-artifact:create,modify
+dispatch_conditions:
+  - the approved work changes schemas, queries, constraints, or migrations
+compatibility: active
 ---
 
 # /resonance-engineering-database: schema is destiny

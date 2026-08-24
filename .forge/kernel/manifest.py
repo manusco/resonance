@@ -14,6 +14,12 @@ VALID_ARCHETYPES = {"knowledge", "procedure", "orchestration"}
 VALID_ACTIVATION = {"automatic", "manual"}
 VALID_AUTHORITY = {"advisory", "consequential", "human"}
 VALID_FAILURE_POLICY = {"stop", "degrade", "escalate"}
+VALID_CONTRACT_VERSIONS = {1}
+VALID_CONTRACT_STAGES = {"FRAME", "PLAN", "EXECUTE", "VERIFY", "APPROVE", "PUBLISH"}
+VALID_COMPATIBILITY = {"active", "provisional", "deprecated", "alias", "retired"}
+VALID_ARTIFACT_RIGHTS = {
+    "read", "create", "append_evidence", "modify", "review", "approve", "publish", "execute",
+}
 COMPATIBLE_CHANNELS = {"user_request", "plan", "evidence", "decision", "artifact", "recommendation"}
 UNSAFE_WRITE_SETS = {".", "./", "*", "**", "AGENTS.md", ".agents", ".forge", ".resonance"}
 CHANNEL_ALIASES = {
@@ -31,6 +37,11 @@ LIST_FIELDS = {
     "side_effects",
     "write_sets",
     "entrypoints",
+}
+
+COMPOSITION_FIELDS = {
+    "contract_version", "job_id", "stage", "contributes_to", "reviews", "finalizes",
+    "artifact_access", "dispatch_conditions", "compatibility",
 }
 
 
@@ -125,7 +136,8 @@ def normalize_entry(sk: Path, root: Path) -> dict | None:
     authority = str(
         fm.get("authority", "" if orchestration else "consequential" if side_effects else "advisory")
     )
-    return {
+    contract_version = str(fm.get("contract_version", "")).strip()
+    entry = {
         "schema_version": 1,
         "id": str(fm["name"]),
         "path": sk.relative_to(root).as_posix(),
@@ -148,6 +160,108 @@ def normalize_entry(sk: Path, root: Path) -> dict | None:
         "entrypoints": list_field(fm, "entrypoints"),
         "failure_policy": str(fm.get("failure_policy", "" if orchestration else default_failure_policy(archetype))),
     }
+    if any(field in fm for field in COMPOSITION_FIELDS):
+        entry.update({
+            "contract_version": int(contract_version) if contract_version.isdigit() else contract_version,
+            "job_id": str(fm.get("job_id", "")),
+            "stage": str(fm.get("stage", "")),
+            "contributes_to": list_field(fm, "contributes_to"),
+            "reviews": list_field(fm, "reviews"),
+            "finalizes": list_field(fm, "finalizes"),
+            "artifact_access": list_field(fm, "artifact_access"),
+            "dispatch_conditions": list_field(fm, "dispatch_conditions"),
+            "compatibility": str(fm.get("compatibility", "")),
+        })
+    return entry
+
+
+def artifact_rights(items: list[str]) -> tuple[dict[str, set[str]], list[str]]:
+    """Parse flat `<artifact>:<right>[,<right>]` declarations."""
+    parsed: dict[str, set[str]] = {}
+    issues: list[str] = []
+    for item in items:
+        artifact, sep, raw_rights = item.partition(":")
+        rights = {right.strip().lower() for right in raw_rights.split(",") if right.strip()}
+        if not sep or not artifact.strip() or not rights:
+            issues.append(f"invalid artifact_access '{item}' (expected artifact:right[,right])")
+            continue
+        invalid = rights - VALID_ARTIFACT_RIGHTS
+        if invalid:
+            issues.append(f"invalid artifact right(s) {sorted(invalid)} in '{item}'")
+        parsed.setdefault(artifact.strip(), set()).update(rights)
+    return parsed, issues
+
+
+def composition_warnings(data: list[dict], canary_ids: set[str]) -> list[str]:
+    """Return warning-only v1 canary findings. This never changes strict validation."""
+    warnings: list[str] = []
+    by_job = {entry.get("job_id"): entry for entry in data if entry.get("job_id")}
+    job_counts: dict[str, int] = defaultdict(int)
+    for entry in data:
+        if entry.get("job_id"):
+            job_counts[str(entry["job_id"])] += 1
+
+    for entry in data:
+        sid = entry["id"]
+        present = COMPOSITION_FIELDS & set(entry)
+        version = entry.get("contract_version", 0)
+        if sid in canary_ids and not present:
+            warnings.append(f"composition canary: '{sid}' is v0 and has no contract")
+            continue
+        if not present:
+            continue
+        if version == 0:
+            warnings.append(f"composition canary: '{sid}' mixes v0 with v1 fields; explicit migration required")
+            continue
+        if version not in VALID_CONTRACT_VERSIONS:
+            warnings.append(f"composition canary: '{sid}' has unknown contract_version '{version}'; fail closed")
+            continue
+        missing = [field for field in COMPOSITION_FIELDS if field not in entry]
+        if missing:
+            warnings.append(f"composition canary: '{sid}' v1 contract is missing {sorted(missing)}")
+            continue
+        if not entry.get("job_id"):
+            warnings.append(f"composition canary: '{sid}' has an empty job_id")
+        elif job_counts[str(entry["job_id"])] > 1:
+            warnings.append(f"composition canary: job_id '{entry['job_id']}' is declared more than once")
+        if entry.get("stage") not in VALID_CONTRACT_STAGES:
+            warnings.append(f"composition canary: '{sid}' has invalid stage '{entry.get('stage')}'")
+        if entry.get("compatibility") not in VALID_COMPATIBILITY:
+            warnings.append(f"composition canary: '{sid}' has invalid compatibility '{entry.get('compatibility')}'")
+
+        access, access_issues = artifact_rights(entry.get("artifact_access", []))
+        warnings.extend(f"composition canary: '{sid}' {issue}" for issue in access_issues)
+        if not access:
+            warnings.append(f"composition canary: '{sid}' has no valid artifact_access")
+        own_job = entry.get("job_id")
+        if own_job in entry.get("contributes_to", []):
+            warnings.append(f"composition canary: '{sid}' contributes to its own job")
+        if own_job in entry.get("reviews", []):
+            warnings.append(f"composition canary: '{sid}' reviews its own job")
+        if set(entry.get("contributes_to", [])) & set(entry.get("reviews", [])):
+            warnings.append(f"composition canary: '{sid}' both contributes to and reviews the same job")
+        for target in entry.get("contributes_to", []) + entry.get("reviews", []):
+            peer = by_job.get(target)
+            if peer is None:
+                warnings.append(f"composition canary: '{sid}' references unknown job '{target}'")
+            elif peer.get("contract_version", 0) != version:
+                warnings.append(f"composition canary: '{sid}' and job '{target}' mix contract versions; reject")
+        finalizes = set(entry.get("finalizes", []))
+        for artifact in finalizes:
+            if not ({"approve", "publish", "create", "modify"} & access.get(artifact, set())):
+                warnings.append(f"composition canary: '{sid}' finalizes '{artifact}' without a finalizing artifact right")
+        if entry.get("reviews") and not any("review" in rights for rights in access.values()):
+            warnings.append(f"composition canary: '{sid}' reviews jobs without artifact review access")
+        privileged = {right for rights in access.values() for right in rights} & {"approve", "publish", "execute"}
+        if entry.get("authority") == "advisory" and privileged:
+            warnings.append(f"composition canary: advisory '{sid}' declares privileged rights {sorted(privileged)}")
+        if entry.get("compatibility") == "alias" and len(entry.get("contributes_to", [])) != 1:
+            warnings.append(f"composition canary: alias '{sid}' must contribute to exactly one canonical job")
+        if entry.get("compatibility") == "retired" and (entry.get("entrypoints") or entry.get("finalizes")):
+            warnings.append(f"composition canary: retired '{sid}' retains an entrypoint or finalizer")
+        if not entry.get("dispatch_conditions"):
+            warnings.append(f"composition canary: '{sid}' has no dispatch_conditions")
+    return sorted(set(warnings))
 
 
 def manifest(root: Path = ROOT) -> list[dict]:

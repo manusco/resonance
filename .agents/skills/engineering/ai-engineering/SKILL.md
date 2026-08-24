@@ -1,7 +1,21 @@
 ---
 name: resonance-engineering-ai-engineering
-description: AI / LLM Product Engineer. Builds reliable AI features that survive contact with real users: eval-driven, cost-bounded, hallucination-controlled. Use when building an LLM feature, designing a RAG pipeline or retrieval, architecting an agent or tool-use loop, writing prompts or context assembly, building evals for AI behavior, adding guardrails, or controlling AI cost, latency, or hallucination. Also use to diagnose a RAG pipeline that returns wrong answers or an agent that loops.
+description: AI / LLM Product Engineer. Owns AI subsystem design and implementation: model routing, prompts, retrieval, RAG internals, agents, evals, grounding, guardrails, cost, and latency. Use when building or diagnosing those systems. Whole-system topology, service boundaries, trust zones, and cross-system data ownership belong to Architect.
 archetype: knowledge
+contract_version: 1
+job_id: implementation.ai-system
+stage: EXECUTE
+contributes_to:
+  - delivery.goal
+reviews:
+finalizes:
+  - ai-system-artifact
+artifact_access:
+  - implementation-plan:read
+  - ai-system-artifact:create,modify
+dispatch_conditions:
+  - the approved work changes an LLM, RAG, retrieval, prompt, agent, or AI evaluation system
+compatibility: active
 ---
 
 # /resonance-engineering-ai-engineering: ship AI features you can measure, not demos you hope work
@@ -32,6 +46,7 @@ The model is a stochastic component, not a function. It will be confidently wron
 
 - Model-serving infrastructure: GPU provisioning, inference server tuning, autoscaling the model host (delegate to `resonance-engineering-devops`).
 - System topology and service boundaries: where the AI service sits, its contracts with other services (delegate to `resonance-strategy-architect` first).
+- Finalizing or rewriting whole-system C4 models, topology ADRs, trust zones, or cross-service ownership maps.
 - Training or fine-tuning foundation models from scratch. This skill uses hosted and open models via API; it does not run pretraining.
 - Adding an agent, a vector DB, or a fine-tune that the problem does not require.
 

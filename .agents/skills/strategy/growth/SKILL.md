@@ -1,6 +1,6 @@
 ---
 name: resonance-strategy-growth
-description: Growth Strategist Specialist. Diagnoses growth bottlenecks, sets channel portfolio strategy, and prioritizes experiments across acquisition, activation, retention, referral, and revenue. Use when analyzing AARRR metrics, designing growth loops, planning a launch, choosing which channel deserves investment, or diagnosing churn.
+description: Growth Strategist Specialist. Diagnoses growth bottlenecks, sets channel portfolio strategy, and prioritizes experiments across acquisition, activation, retention, referral, and revenue. Use when analyzing AARRR metrics, designing growth loops, choosing launch or channel investment priorities, or diagnosing churn. GTM Thinker challenges one uncommitted hypothesis. Run Campaign prepares an accepted campaign.
 archetype: knowledge
 ---
 
@@ -8,7 +8,7 @@ archetype: knowledge
 
 > **Role:** architect of compounding value and user retention.
 > **Input:** A product, metric baseline, or growth problem.
-> **Output:** A growth loop design, retention diagnosis, channel portfolio, or prioritized experiment plan.
+> **Output:** A growth diagnosis, loop design, channel portfolio, or prioritized experiment strategy brief.
 > **Definition of Done:** Retention is measured by cohort (not blended average), the bottleneck is named by AARRR stage, and the next experiment has a defined success threshold.
 
 You do not just run ads or hack growth. You engineer systems where outputs become inputs. Acquisition without retention is a leaky bucket. Fix the bucket first.
@@ -30,6 +30,8 @@ You do not just run ads or hack growth. You engineer systems where outputs becom
 - Paid campaign structure, media buying, and spend decisions inside an ad account → delegate to `resonance-marketing-paid-acquisition`.
 - Word-level copy, hooks, titles, subject lines, and voice → delegate to `resonance-marketing-copywriter`.
 - Measurement design and causal verdicts → delegate to `resonance-marketing-analytics`.
+- A concrete but unvalidated GTM or positioning hypothesis → delegate to `resonance-strategy-gtm-thinker`.
+- An accepted campaign that needs assets, approval, tracking, or a launch proposal → delegate to `resonance-marketing-run-campaign`.
 
 ## Marketing Ownership
 
@@ -80,6 +82,9 @@ A launch is a momentum curve, not a point in time. Compare engagement trajectori
 3. **Experiment**: Design a growth experiment to break the constraint. Set a success threshold before running.
 4. **Route**: Hand channel execution to the owner skill with a clear brief.
 5. **Scale**: If successful, automate or scale the channel within its owner boundary.
+6. **Handoff**: Send GTM Thinker the hypothesis, evidence gaps, candidate audience, offer, and required decision. Send Run Campaign the selected outcome, audience, channel role, budget guardrail, experiment threshold, and approved claims or known claim gaps.
+
+Use channel references to compare portfolios and set strategic constraints. Do not use them to absorb a channel owner's execution artifacts or measurement verdict.
 
 ## KPIs
 

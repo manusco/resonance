@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "marketing.campaign-ambiguous-launch",
+  "query": "Plan our launch.",
+  "expected_primary": null,
+  "allowed_contributors": [],
+  "forbidden_skills": [],
+  "harm_tier": "STANDARD",
+  "cluster": "gtm-growth-campaign",
+  "rationale": "The request does not reveal whether the unresolved job is hypothesis challenge, portfolio choice, or campaign preparation.",
+  "expected_activation_mode": "ASK",
+  "ambiguity_behavior": "ASK_MATERIAL_QUESTION",
+  "ask_materiality": {"route_changes_primary": true, "possible_primary_skills": ["resonance-strategy-gtm-thinker", "resonance-strategy-growth", "resonance-marketing-run-campaign"]},
+  "deterministic_checks": [{"kind": "question_required", "value": true}]
+}

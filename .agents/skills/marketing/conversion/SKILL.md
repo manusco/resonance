@@ -1,6 +1,6 @@
 ---
 name: resonance-marketing-conversion
-description: Conversion Rate Engineer. Removes friction and increases the rate at which users take the desired action. Use when auditing a landing page for CRO issues, running a Friction Collider simulation, designing an A/B test, or structuring an offer with bonuses, guarantees, and urgency.
+description: Conversion Rate Engineer. Diagnoses decision friction and designs page, journey, offer, and experiment interventions that improve a named action. Use for CRO audits, friction simulation, variant hypotheses, or offer structure. Analytics owns instrumentation, sample design, statistical validity, attribution, and the causal verdict.
 archetype: procedure
 ---
 

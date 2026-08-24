@@ -1,0 +1,7 @@
+{
+  "name": "incident_devops_no_retro", "skill": "ops/incident",
+  "task": "Command the active outage. Delegate the bounded rollback action to DevOps, require approval before the side effect, verify recovery, and keep Retro inactive until recovery.",
+  "fixture": {"files": {"status.txt": "production degraded\n"}},
+  "assert": {"type": "contains", "all": ["severity", "approval", "recovery"]},
+  "trace_assert": {"minimum_assurance": 2, "ordered_subsequence": [{"event": "APPROVAL", "target": "engineering/devops"}, {"event": "INVOKE", "target": "engineering/devops"}], "allowed_skills": ["engineering/devops"], "forbidden_skills": ["ops/retro"], "max_fan_out": 1, "approval_before_side_effect": true}
+}

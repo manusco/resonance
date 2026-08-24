@@ -1,0 +1,19 @@
+{
+  "skill": "resonance-strategy-brief",
+  "query": "/brief Make our signup better and then handle it.",
+  "files": [],
+  "expected_behavior": [
+    "Preserves the original request verbatim or as a clearly labeled original-request block",
+    "Produces a compact execution brief that separates explicit requirements, inferred details, and unresolved questions",
+    "Uses available project context to resolve discoverable details before asking the user",
+    "Does not invent a target metric, audience, or implementation scope",
+    "Routes the approved brief to the relevant product, conversion, planning, or implementation skill rather than attempting every discipline itself",
+    "Executes directly only when no material intent decision remains and the requested action is authorized"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

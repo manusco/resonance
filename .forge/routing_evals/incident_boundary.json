@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "safety.incident-vs-retro.critical",
+  "query": "Production is down right now. Declare severity, establish command, contain impact, coordinate recovery, and manage stakeholder communication.",
+  "expected_primary": "resonance-ops-incident",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-ops-retro"],
+  "harm_tier": "CRITICAL",
+  "cluster": "incident-retro",
+  "rationale": "Incident commands a live outage; Retro reviews a completed work cycle.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-incident"}, {"kind": "skill_absent", "value": "resonance-ops-retro"}]
+}

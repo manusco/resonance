@@ -1,0 +1,7 @@
+{
+  "name": "audit_earned_dispatch", "skill": "ops/audit",
+  "task": "Audit the fixture. Dispatch only specialists justified by concrete evidence. Reconcile their findings into one severity-normalized disposition.",
+  "fixture": {"files": {"routes.js": "export function health(req, res) { res.json({ok: true}); }\n"}},
+  "assert": {"type": "contains", "all": ["disposition"]},
+  "trace_assert": {"minimum_assurance": 1, "allowed_skills": ["ops/reviewer", "ops/security", "ops/qa", "strategy/architect", "engineering/backend", "engineering/performance", "ops/product"], "forbidden_skills": ["ops/ship"], "max_fan_out": 7}
+}

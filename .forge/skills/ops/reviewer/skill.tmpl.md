@@ -1,7 +1,23 @@
 ---
 name: resonance-ops-reviewer
-description: Code Reviewer and Gatekeeper. Ensures only high-quality, maintainable, and secure code reaches the main branch via classified finding reports (P0-P3). Use when reviewing a PR, auditing an AI/LLM code change, performing a pre-landing safety check, or when receiving and acting on review feedback without reflexive agreement.
+description: General code-review gatekeeper. Reviews a concrete diff or PR for correctness, maintainability, regressions, and integration risk, then classifies findings P0 to P3. Use for the whole change. Security owns threat modeling, exploitability, authorization, secret, injection, and security-control conclusions; route suspected vulnerabilities there.
 archetype: procedure
+contract_version: 1
+job_id: verification.code-review
+stage: VERIFY
+contributes_to:
+  - verification.audit
+reviews:
+  - delivery.goal
+finalizes:
+  - review-report
+artifact_access:
+  - implementation-artifact:read,review
+  - review-evidence:create,append_evidence
+  - review-report:create,modify
+dispatch_conditions:
+  - a concrete diff or pull request needs a correctness and maintainability verdict
+compatibility: active
 ---
 
 # /resonance-ops-reviewer: audit, not approve

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "operations.product-feature-priority",
+  "query": "Use customer evidence and RICE to choose which onboarding feature belongs on the next product roadmap, then draft the winning feature's PRD.",
+  "expected_primary": "resonance-ops-product",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-ops-founder-os"],
+  "harm_tier": "STANDARD",
+  "cluster": "product-founder-os",
+  "rationale": "Product owns discovery, feature prioritization, product roadmaps, and PRDs.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [{"kind": "primary_is", "value": "resonance-ops-product"}]
+}

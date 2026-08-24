@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resonance.dev/schemas/composition-contract/v1",
+  "title": "Resonance Composition Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract_version", "job_id", "stage", "lead", "contributors", "reviewers", "finalizer", "artifact_access", "dispatch_conditions", "compatibility", "authority_split"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "contract_version": { "const": 1 },
+    "job_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$" },
+    "stage": { "enum": ["FRAME", "PLAN", "EXECUTE", "VERIFY", "APPROVE", "PUBLISH"] },
+    "lead": { "type": "string", "minLength": 1 },
+    "contributors": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "reviewers": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "finalizer": { "type": "string", "minLength": 1 },
+    "artifact_access": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["artifact", "actor", "rights"],
+        "properties": {
+          "artifact": { "type": "string", "minLength": 1 },
+          "actor": { "type": "string", "minLength": 1 },
+          "rights": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["CREATE", "APPEND_EVIDENCE", "MODIFY", "REVIEW", "APPROVE", "PUBLISH", "EXECUTE"] } }
+        }
+      }
+    },
+    "dispatch_conditions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "compatibility": {
+      "type": "object", "additionalProperties": false,
+      "required": ["supported_versions", "unknown_version", "mixed_version", "upgrade", "downgrade"],
+      "properties": {
+        "supported_versions": { "const": [1] },
+        "unknown_version": { "const": "FAIL_CLOSED" },
+        "mixed_version": { "const": "REJECT" },
+        "upgrade": { "enum": ["EXPLICIT_MIGRATION_REQUIRED", "NOT_SUPPORTED"] },
+        "downgrade": { "enum": ["EXPLICIT_MIGRATION_REQUIRED", "NOT_SUPPORTED"] }
+      }
+    },
+    "authority_split": {
+      "type": "object", "additionalProperties": false,
+      "required": ["frontmatter_owns", "command_registry_owns", "conflict_behavior"],
+      "properties": {
+        "frontmatter_owns": { "const": ["skill_identity", "owner", "activation", "authority", "side_effects", "entrypoints", "inputs", "outputs", "invocation_relationships", "failure_policy"] },
+        "command_registry_owns": { "const": ["command_name", "aliases", "target_skill_id", "host_exposure", "help_text", "host_rendering"] },
+        "conflict_behavior": { "const": "FAIL" }
+      }
+    }
+  }
+}

@@ -2,10 +2,25 @@
 name: resonance-ops-goal
 description: The autonomous goal loop. Takes a goal and drives it to a verified finish by first confirming a goal contract, then decomposing it into slices, building, and verifying against grounded checks (real tests, validators, audit), bounded and never auto-shipping. Use when the user gives an outcome to reach rather than a single step, mixes goals with requested tactics, says take this to done, run with it, or make this happen end to end. Manual-only (drives builds, tests, and real side effects).
 archetype: orchestration
+contract_version: 1
+job_id: delivery.goal
+stage: EXECUTE
+contributes_to:
+reviews:
+finalizes:
+  - verified-outcome
+artifact_access:
+  - goal-contract:read,create,modify
+  - implementation-artifact:read,create,modify,execute
+  - verified-outcome:create,modify,approve
+dispatch_conditions:
+  - the user authorizes an outcome to be driven across multiple stages
+compatibility: active
 owner: ops.goal
 activation: manual
 authority: consequential
 triggers:
+  - a new outcome must be driven through multiple stages to a verified finish
   - autonomous bounded goal loop requested by the user
 entrypoints:
   - /goal
