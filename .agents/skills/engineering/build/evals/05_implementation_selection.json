@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-engineering-build",
+  "query": "The approved plan says to add a date picker, but the supported browser already provides the required date input. The plan also suggests installing a component library.",
+  "files": [],
+  "expected_behavior": [
+    "Traces the requirement and checks whether the native date input satisfies the actual contract",
+    "Chooses the native platform capability before proposing a new dependency or custom component",
+    "Names the condition that would justify a library, such as a required behavior the native control cannot provide",
+    "Does not silently reduce the requested behavior to save lines",
+    "Keeps validation, accessibility, and verification requirements intact"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\\u2014\\u2013]"
+    }
+  ]
+}

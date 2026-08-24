@@ -24,6 +24,9 @@ domain conductors for campaign, revenue, finance, and leadership work.
   accessibility, mobile store policy, and database migrations.
 
 ### Changed
+- **Implementation selection is ordered.** The shared simplicity lock now
+  checks unnecessary work, existing code, standard-library support, native
+  platform capabilities, installed dependencies, and only then new machinery.
 - **SEO doctrine is source-grounded.** Leaked Google field names no longer read
   as deterministic ranking controls, dynamic rendering is no longer a default
   recommendation, and content guidance uses people-first source cards.

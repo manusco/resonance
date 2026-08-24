@@ -87,7 +87,7 @@ Copy this checklist and tick items as you go.
 Test → Code → Refactor. The test proves the requirement. The code satisfies the test. The refactor cleans the code. Skipping the failing test means you cannot prove the code actually solved the problem.
 
 ### Simplicity Gate
-Engineers love to over-engineer. Before committing, run the Simplicity Gate: is this the absolute minimum code required to satisfy the failing test and the plan? Delete speculative abstractions.
+Engineers love to over-engineer. Before committing, run the Simplicity Gate: is this the absolute minimum code required to satisfy the failing test and the plan? Apply the implementation selection ladder in Karpathy Rules, stopping at the first sufficient option before adding a dependency or custom abstraction. Delete speculative abstractions.
 
 ## Reference Library
 
