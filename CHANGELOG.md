@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- **SEO audits bind Search Console claims to evidence.** The SEO specialist now
+  verifies the exact property, source metadata, freshness, truncation, and
+  follow-up window before making GSC-backed recommendations.
+
 ## v2.5.1
 
 The routing and skill-boundary hardening release. Resonance now routes ordinary

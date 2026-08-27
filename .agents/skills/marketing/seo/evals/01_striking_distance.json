@@ -1,13 +1,14 @@
 {
   "skill": "resonance-marketing-seo",
-  "query": "Our SaaS blog posts rank at position 8-15 for several high-intent keywords but haven't moved in 3 months.",
+  "query": "Our SaaS blog posts rank at position 8-15 for several high-intent keywords but haven't moved in 3 months. We have a Search Console export, but it may only include the first 1,000 rows and we are not sure whether it came from the domain property or the blog URL-prefix property.",
   "files": [],
   "expected_behavior": [
-    "Identifies NavBoost as the likely cause and requests click signal data (CTR, dwell time, pogo-stick rate)",
-    "Recommends a title/H1 rewrite to improve CTR from the SERP before any content changes",
-    "Checks date signal consistency: URL, JSON-LD, byline, and meta publish date must align",
-    "Proposes a 'Direct Answer block' within the first 50 words to target AI Overviews in parallel",
-    "Does not recommend a full content rewrite as the first action - starts with the highest-ROI items"
+    "Does not declare NavBoost, title mismatch, or content decay as the cause before verifying the Search Console evidence boundary",
+    "Asks for or verifies the exact GSC property identity, including domain property vs URL-prefix property",
+    "Requests the export metadata needed for diagnosis: retrieval time, timezone, date range, dimensions, filters, row limit or truncation, sorting, and whether the data is final, preliminary, or unknown",
+    "Treats the 1,000-row export as potentially incomplete and does not treat missing rows as zero",
+    "Frames next steps as hypotheses to test, such as intent mismatch, weak snippet, stale content, canonical conflict, or internal-link weakness",
+    "Still proposes high-ROI checks once evidence is bounded: title/H1 query fit, direct answer block, date signal consistency, internal links, and a comparable follow-up period"
   ],
   "checks": [
     {
