@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.5.2
+
+The frontend attention-path release. It tightens the frontend implementation
+audit so shipped UI must preserve hierarchy, action priority, grouping, state
+recovery, and access checks before merge.
+
+### Changed
+- **Frontend UX audit.** `resonance-engineering-frontend` now checks the first
+  glance, secondary and destructive action weight, grouping by spacing,
+  decorative restraint, empty/loading/error guidance, contrast, focus-visible
+  treatment, and keyboard order.
+
+### Added
+- **Attention-path eval.** A new frontend eval catches equal-weight settings
+  actions, box-heavy grouping, weak empty states, and missing focus validation.
+
 ## v2.5.1
 
 The routing and skill-boundary hardening release. Resonance now routes ordinary
