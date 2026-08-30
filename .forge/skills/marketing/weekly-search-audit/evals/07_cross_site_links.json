@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-marketing-weekly-search-audit",
+  "query": "Add reciprocal exact-match links across every domain to build authority.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects sitewide reciprocity and exact-match anchor schemes",
+    "Proposes a cross-site link only when it answers a real reader question and the destination is authoritative",
+    "Records source and destination intent, language, ownership, and acceptance criteria",
+    "Does not claim that a link guarantees rankings or AI citations"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"}
+  ]
+}

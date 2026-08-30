@@ -126,6 +126,7 @@ graph LR
 | resonance-marketing-paid-acquisition | knowledge | advisory | degrade | none |
 | resonance-marketing-run-campaign | orchestration | consequential | stop | may_coordinate_work, may_write_files |
 | resonance-marketing-seo | knowledge | advisory | degrade | none |
+| resonance-marketing-weekly-search-audit | procedure | consequential | stop | may_write_files |
 | resonance-ops-audit | orchestration | consequential | stop | may_coordinate_work, may_execute_checks |
 | resonance-ops-core | orchestration | consequential | stop | may_coordinate_work, may_write_files |
 | resonance-ops-explain | procedure | consequential | stop | may_write_files |

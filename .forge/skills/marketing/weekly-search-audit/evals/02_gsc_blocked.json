@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-marketing-weekly-search-audit",
+  "query": "The GSC token failed for one property. Continue the weekly run and tell me what you can conclude.",
+  "files": [],
+  "expected_behavior": [
+    "Marks the affected property blocked for GSC conclusions and names the authentication failure",
+    "Continues public technical, on-page, and GEO checks without inventing clicks, impressions, CTR, or rankings",
+    "Separates confirmed observations from unverified performance hypotheses",
+    "Records the blocked check and the exact recovery action in the dated report",
+    "Does not reset, clean, or overwrite unrelated repository changes"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"}
+  ]
+}

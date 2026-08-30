@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- **Weekly search audit procedure.** Adds a bounded, evidence-backed Google Search Console, technical SEO, and GEO audit with property reports, privacy rules, cross-site linking safeguards, machine-readable provenance, and adversarial eval coverage.
+
 ## v2.5.2
 
 The repository-ownership and execution-contract release. Resonance now preserves

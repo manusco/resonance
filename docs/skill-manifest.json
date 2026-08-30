@@ -772,6 +772,33 @@
   },
   {
     "schema_version": 1,
+    "id": "resonance-marketing-weekly-search-audit",
+    "path": "marketing/weekly-search-audit/SKILL.md",
+    "archetype": "procedure",
+    "owner": "marketing.weekly-search-audit",
+    "activation": "manual",
+    "authority": "consequential",
+    "triggers": [
+      "Portfolio search-performance operator. Runs a restrained weekly Google Search Console, technical SEO, and GEO audit across approved properties, writes evidence-backed reports, and produces a ranked action queue without changing application code. Use when running a recurring search audit, reviewing GSC performance across sites, or deciding the next safe SEO and GEO actions."
+    ],
+    "negative_triggers": [],
+    "inputs": [
+      "user_request"
+    ],
+    "outputs": [
+      "artifact",
+      "recommendation"
+    ],
+    "invokes": [],
+    "side_effects": [
+      "may_write_files"
+    ],
+    "write_sets": [],
+    "entrypoints": [],
+    "failure_policy": "stop"
+  },
+  {
+    "schema_version": 1,
     "id": "resonance-ops-audit",
     "path": "ops/audit/SKILL.md",
     "archetype": "orchestration",

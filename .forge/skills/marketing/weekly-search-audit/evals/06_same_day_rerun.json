@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-marketing-weekly-search-audit",
+  "query": "Rerun today's audit after a transient API error.",
+  "files": [],
+  "expected_behavior": [
+    "Uses a new run_id and filename rather than overwriting the first report",
+    "Keeps the bounded retrieval budget and records the retrieval attempt and recovery outcome",
+    "Distinguishes confirmed results from checks that remained blocked"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"}
+  ]
+}

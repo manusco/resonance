@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-marketing-weekly-search-audit",
+  "query": "Suggest links between our domains to improve SEO and GEO.",
+  "files": [],
+  "expected_behavior": [
+    "Requires a real reader question and an authoritative destination before proposing a cross-site link",
+    "Maps source and destination intent, language, ownership, and relationship",
+    "Rejects circular self-promotion, doorway patterns, and links that do not help the reader",
+    "Separates a measured internal or cross-site opportunity from a guaranteed ranking claim",
+    "Provides acceptance criteria and a follow-up measurement window for any proposed link"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"}
+  ]
+}

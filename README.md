@@ -7,7 +7,7 @@
     <a href="https://github.com/manusco/resonance/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/manusco/resonance/ci.yml?branch=main&style=for-the-badge&label=CI" alt="CI status" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
 <!-- RESONANCE-GENERATED:SKILL_COUNT_BADGE:START -->
-    <img src="https://img.shields.io/badge/Skills-71-00f2ea?style=for-the-badge" alt="71 skills" />
+    <img src="https://img.shields.io/badge/Skills-72-00f2ea?style=for-the-badge" alt="72 skills" />
 <!-- RESONANCE-GENERATED:SKILL_COUNT_BADGE:END -->
 <!-- RESONANCE-GENERATED:COMMAND_COUNT_BADGE:START -->
     <img src="https://img.shields.io/badge/Commands-36-7025eb?style=for-the-badge" alt="36 commands" />
@@ -25,7 +25,7 @@
 Resonance is an AI agent skill library you drop into any project. It turns a general coding agent into a roster of specialists that follow the same expert protocol every time, on whatever tool you use.
 
 <!-- RESONANCE-GENERATED:SKILL_COUNT_SUMMARY:START -->
-- **71 domain-tested skills** across design, engineering, finance, leadership, marketing, ops, people, research, sales, software, strategy, and success. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
+- **72 domain-tested skills** across design, engineering, finance, leadership, marketing, ops, people, research, sales, software, strategy, and success. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
 <!-- RESONANCE-GENERATED:SKILL_COUNT_SUMMARY:END -->
 <!-- RESONANCE-GENERATED:COMMAND_COUNT_SUMMARY:START -->
 - **36 slash commands** like `/brief`, `/plan`, `/grill`, `/council`, `/build`, `/debug`, `/design`, `/test`, `/improve`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
@@ -109,7 +109,7 @@ If the route is still unclear, start with `/brief`.
 ## The skill domains
 
 <!-- RESONANCE-GENERATED:SKILL_DOMAIN_COUNT:START -->
-71 skills across 12 domains, each a self-contained protocol backed by reference docs.
+72 skills across 12 domains, each a self-contained protocol backed by reference docs.
 <!-- RESONANCE-GENERATED:SKILL_DOMAIN_COUNT:END -->
 
 - **Strategy**: `plan`, `grill`, `architect`, `venture`, `finance`, `growth`, `researcher`, `gtm-thinker`. Planning, system design, business and financial modeling, fundraising, and pre-build interrogation.

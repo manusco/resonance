@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-marketing-weekly-search-audit",
+  "query": "Review a completed report for machine readability and provenance.",
+  "files": [],
+  "expected_behavior": [
+    "Uses schema_version, run_id, run_timezone, data_timezone, status, source_commit, runner_version, previous_report, attempted/completed/blocked counts, truncation, and raw-data retention fields",
+    "Uses a single actual status value such as DONE, DONE_WITH_CONCERNS, or BLOCKED",
+    "Ensures finding and proposed action counts match the body",
+    "Labels implementation as none and keeps reports separate from release changes"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-marketing-weekly-search-audit",
+  "query": "Run this week's audit for our approved portfolio and tell me what to fix first.",
+  "files": [],
+  "expected_behavior": [
+    "Freezes the approved property registry and exact GSC properties before retrieving data",
+    "Uses one bounded complete comparison window per property and records freshness, timezone, dimensions, filters, row limits, and retrieval time",
+    "Runs technical SEO and GEO checks without changing application files",
+    "Writes a dated machine-readable report per repository and a portfolio roll-up",
+    "Ranks at most five portfolio actions and at most three per property by user benefit, effort, and risk",
+    "Recommends Tuesday at 09:30 Europe/Berlin using a complete window rather than spending GitHub Actions on a routine matrix"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"}
+  ]
+}
