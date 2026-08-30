@@ -9,12 +9,13 @@
 - [3. The GEO Scoring Framework (5 Dimensions)](#3-the-geo-scoring-framework-5-dimensions)
 - [4. AI Crawler Management](#4-ai-crawler-management)
 - [5. llms.txt Standard](#5-llmstxt-standard)
-- [6. RSL 1.0 (Really Simple Licensing)](#6-rsl-10-really-simple-licensing)
-- [7. Platform-Specific Optimization](#7-platform-specific-optimization)
-- [8. The "Statistics" Hook](#8-the-statistics-hook)
-- [9. The "Unique Data" Strategy (Citation Optimization)](#9-the-unique-data-strategy-citation-optimization)
-- [10. Action Tiers](#10-action-tiers)
-- [11. Audit Output](#11-audit-output)
+- [6. Experimental Machine Signals](#6-experimental-machine-signals)
+- [7. RSL 1.0 (Really Simple Licensing)](#7-rsl-10-really-simple-licensing)
+- [8. Platform-Specific Optimization](#8-platform-specific-optimization)
+- [9. The "Statistics" Hook](#9-the-statistics-hook)
+- [10. The "Unique Data" Strategy (Citation Optimization)](#10-the-unique-data-strategy-citation-optimization)
+- [11. Action Tiers](#11-action-tiers)
+- [12. Audit Output](#12-audit-output)
 
 ## 1. The Landscape (April 2026)
 
@@ -181,14 +182,28 @@ The emerging standard provides AI crawlers with structured content guidance.
 
 ---
 
-## 6. RSL 1.0 (Really Simple Licensing)
+## 6. Experimental Machine Signals
+
+Experimental machine-facing signals can help discovery, but they are not proof of AI citation readiness by themselves.
+
+**Audit rule:** separate directly observed crawler access from future-facing hints.
+
+- Verify crawler access with `robots.txt`, status codes, server-rendered content, and logs where available.
+- Treat llms.txt, AI preference declarations, HTTP Link discovery, and content negotiation as informational unless current primary documentation and the site context justify a stronger recommendation.
+- Do not assign score points, pass/fail status, or promised citation lift to an emerging signal without measured evidence.
+- Recommend HTTP Link service discovery only for API-first, developer-tooling, or documentation-heavy sites. Omit it for ordinary business pages unless there is a clear service-discovery use case.
+- Test content negotiation with direct HTTP or browser request capture that shows headers and content type. A rendered body fetch is not enough for header-level claims.
+
+---
+
+## 7. RSL 1.0 (Really Simple Licensing)
 
 Machine-readable AI licensing terms standard (December 2025).
 Backed by Reddit, Yahoo, Medium, Quora, Cloudflare, Akamai, Creative Commons.
 
 ---
 
-## 7. Platform-Specific Optimization
+## 8. Platform-Specific Optimization
 
 | Platform | Key Citation Sources | Optimization Focus |
 |----------|---------------------|-------------------|
@@ -199,7 +214,7 @@ Backed by Reddit, Yahoo, Medium, Quora, Cloudflare, Akamai, Creative Commons.
 
 ---
 
-## 8. The "Statistics" Hook
+## 9. The "Statistics" Hook
 
 LLMs trust numbers. Include a data table (`<table>`) in every substantive post.
 - **Pattern**: "According to [Study], 80% of..."
@@ -207,7 +222,7 @@ LLMs trust numbers. Include a data table (`<table>`) in every substantive post.
 
 ---
 
-## 9. The "Unique Data" Strategy (Citation Optimization)
+## 10. The "Unique Data" Strategy (Citation Optimization)
 
 AI engines need a reason to cite *you* and not Wikipedia.
 - **Create Unique Data**: Run a survey. Benchmark a tool. Release a dataset.
@@ -216,7 +231,7 @@ AI engines need a reason to cite *you* and not Wikipedia.
 
 ---
 
-## 10. Action Tiers
+## 11. Action Tiers
 
 ### Quick Wins
 1. Add "What is [topic]?" definition in first 60 words
@@ -228,7 +243,7 @@ AI engines need a reason to cite *you* and not Wikipedia.
 7. Allow key AI crawlers in robots.txt
 
 ### Medium Effort
-1. Create `/llms.txt` file
+1. Create or repair `/llms.txt` when site context and verified adoption justify it
 2. Add author bio with credentials + Wikipedia/LinkedIn links
 3. Ensure server-side rendering for key content
 4. Build entity presence on Reddit, YouTube
@@ -244,13 +259,13 @@ AI engines need a reason to cite *you* and not Wikipedia.
 
 ---
 
-## 11. Audit Output
+## 12. Audit Output
 
 Generate GEO analysis with:
 1. **GEO Readiness Score: XX/100** (weighted across 5 dimensions)
 2. **Platform breakdown** (Google AIO, ChatGPT, Perplexity scores)
 3. **AI Crawler Access Status** (which crawlers allowed/blocked)
-4. **llms.txt Status** (present/missing/recommendations)
+4. **Machine-Facing Signal Notes** (llms.txt, preference declarations, service discovery, or content negotiation when relevant)
 5. **Brand Mention Analysis** (presence on Wikipedia, Reddit, YouTube, LinkedIn)
 6. **Passage-Level Citability** (optimal 134-167 word blocks identified)
 7. **Server-Side Rendering Check** (JavaScript dependency analysis)

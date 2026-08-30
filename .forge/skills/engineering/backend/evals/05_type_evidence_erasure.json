@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-engineering-backend",
+  "query": "Can you review this TypeScript helper before I ship it?\n\n```typescript\ntype User = { id: string; email: string };\n\nexport function makeUser() {\n  const seed = { id: \"u_123\", email: \"a@example.com\" };\n  const hidden: unknown = seed;\n  return hidden as User;\n}\n\nexport function parseWebhook(body: unknown): User {\n  return body as User;\n}\n```\n\nThere is no `any`, so I think the type safety rule is satisfied.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects the claim that no any is enough for type safety",
+    "Flags the precise seed object being widened to unknown and later recovered with an assertion",
+    "Explains that known in-process values should preserve inference or use satisfies instead of erasing evidence",
+    "Requires external webhook input to be parsed at the boundary with a schema before returning User",
+    "Allows unknown at trust boundaries while rejecting assertion-only recovery",
+    "Does not treat every justified assertion as an unconditional release blocker"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["unknown", "boundary", "satisfies"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

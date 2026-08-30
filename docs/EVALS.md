@@ -4,7 +4,7 @@ Every Resonance skill ships golden eval cases. This repo ships the MEASURING TOO
 
 ## Versioned contracts
 
-The machine-readable contracts live in `.forge/schemas/`. They use JSON Schema Draft 2020-12 and version 1. The repository does not add a JSON Schema runtime dependency in S02. Focused standard-library tests validate the supported subset and the cross-contract rules. S03 may choose a production validator when runners begin consuming these files.
+The machine-readable contracts live in `.forge/schemas/`. They use JSON Schema Draft 2020-12 and version 1. The standard-library runtime validates the supported schema subset and fails closed on unsupported keywords. Focused tests cover schema behavior and cross-contract rules.
 
 Every instance must declare `schema_version: 1`. Composition and evaluation operating instances also declare `contract_version: 1`. Unknown versions fail closed. A new version needs a new schema ID, migration notes, compatibility tests, and an explicit runner support change. Producers must not silently upgrade or downgrade evidence.
 
@@ -22,6 +22,10 @@ The contracts are:
 Version 1 supports only version 1 peers. Unknown versions fail closed. Mixed versions are rejected unless a later schema explicitly defines a safe normalization rule. Upgrade and downgrade require an explicit migration. A compatibility declaration never changes the source of truth.
 
 Skill frontmatter owns semantic facts: skill identity, owner, activation, authority, side effects, entrypoints, inputs, outputs, invocation relationships, and failure policy. `.forge/commands.json` owns command presentation: command name, aliases, target skill ID, host exposure, help text, and host rendering. A field claimed by both authorities is a contract error.
+
+Composition has two explicit layers. Each skill carries a declaration in its frontmatter. `.forge/job_composition.py` compiles those declarations into job-level contracts in `docs/job-compositions.json`. The generated file is the inspectable view for hosts and tooling, while frontmatter remains the source. Validation rejects stale output, multiple leads for one job, conflicting participant roles, missing artifact access, or an authority overlap.
+
+Project-specific and private skills remain repository content so every collaborator receives the same procedures. Put them under `.agents/skills/`, commit them with the project, and run `python3 .forge/project_skills.py` after the framework has been installed. The resulting `.resonance/project-skills.lock.json` records only project-owned skill files. Framework upgrades read their own exact-file ownership manifest, preserve unowned skills, and never rewrite the project lock. Use `--check` in project CI. A skill directory containing both framework-owned and project-owned files is rejected because its upgrade behavior would be ambiguous.
 
 ### Invocation assurance
 

@@ -26,6 +26,24 @@
 *   **Runnable Check**: Non-trivial logic leaves one small check behind: a test, an assertion script, or a reproduction that fails if the logic breaks.
 *   **Refactor Rule**: If you write 200 lines and it could be 50, rewrite it.
 
+### The implementation selection ladder
+
+After understanding the request and tracing the flow the change touches, stop
+at the first option that satisfies the contract:
+
+1. Remove work that is not needed.
+2. Reuse code already in the repository.
+3. Use the standard library.
+4. Use a native platform capability.
+5. Reuse an installed dependency.
+6. Compose the simplest clear implementation.
+7. Add new custom machinery only when the earlier options do not satisfy the contract.
+
+The ladder controls implementation choice, not scope. Do not silently shrink
+what the user asked for. Do not use a shorter implementation as a reason to
+remove validation, authorization, security, accessibility, error handling that
+prevents data loss, or a required behavior.
+
 > *Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.*
 
 > ❌ **Anti-Pattern**: Strategy pattern + abstract classes + config dataclass for a single `calculate_discount(amount, percent)` call.

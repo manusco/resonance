@@ -10,10 +10,16 @@ This matrix describes what Resonance maintains as a public project.
 | Cursor bridge | Supported | Generated from host config |
 | Codex routing | Supported | Uses `AGENTS.md` and repository skills |
 | opencode command path | Supported | Generated from host config when configured |
+| OpenClaw project skills | Supported | Native discovery from the repository's `.agents/skills` tree |
+| Claude Code plugin marketplace | Supported | Version-aligned `.claude-plugin/plugin.json` and `marketplace.json` manifests |
+| Hermes Agent | Compatibility target | Host contract exists; global installation is not yet claimed as repo-faithful support |
 | `.resonance/` project memory | User-owned | Never overwritten by upgrades |
+| Repository-owned private skills | User-owned | Committed under `.agents/skills`, content-locked, and preserved by upgrades |
 | Private `_input/` inspiration trees | Out of scope | Ignored and never part of release evidence |
 | Scored model eval results | Local/private | Never committed to the public repo |
 
 No response-time promise is made. Bugs and proposals belong in GitHub Issues;
 questions belong in Discussions; suspected vulnerabilities use the private
 security route.
+
+“Supported” means the repository has a maintained path and deterministic evidence for it. “Compatibility target” means the file format is understood, but Resonance does not yet promise equivalent discovery, precedence, memory loading, or upgrade behavior. A marketplace listing or successful copy is distribution evidence, not behavioral parity.

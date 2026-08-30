@@ -29,6 +29,7 @@ class UpdateTests(unittest.TestCase):
         (source / "package.json").write_text('{"version":"9.9.9"}', encoding="utf-8")
         for name in ("tool.py", "forge.py", "validate_skill.py", "eval_integrity.py"):
             (source / ".forge" / name).write_text("raise SystemExit(0)\n", encoding="utf-8")
+        shutil.copy2(ROOT / ".forge" / "project_skills.py", source / ".forge" / "project_skills.py")
         subprocess.run(["git", "init"], cwd=source, check=True, capture_output=True)
         subprocess.run(["git", "config", "user.email", "test@example.test"], cwd=source, check=True)
         subprocess.run(["git", "config", "user.name", "Test"], cwd=source, check=True)
@@ -109,6 +110,49 @@ class UpdateTests(unittest.TestCase):
         self.assertIn(".agents/skills/known/SKILL.md", owned)
         self.assertNotIn(".agents/skills/custom/SKILL.md", owned)
         self.assertNotIn("AGENTS.md", owned)
+
+    def test_upgrade_preserves_committed_private_skill_and_lock(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        private = target / ".agents" / "skills" / "company" / "private"
+        private.mkdir(parents=True)
+        (private / "SKILL.md").write_text("private multiplayer skill", encoding="utf-8")
+        lock = target / ".resonance" / "project-skills.lock.json"
+        lock.parent.mkdir(parents=True)
+        private_hash = update.digest(private / "SKILL.md")
+        lock.write_text(json.dumps({
+            "schema_version": 1,
+            "skills": [{
+                "id": "company/private",
+                "files": {".agents/skills/company/private/SKILL.md": private_hash},
+            }],
+        }, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        before_lock = lock.read_text(encoding="utf-8")
+        update.apply(source, target, "9.9.9")
+        self.assertEqual(
+            "private multiplayer skill",
+            (private / "SKILL.md").read_text(encoding="utf-8"),
+        )
+        self.assertEqual(before_lock, lock.read_text(encoding="utf-8"))
+
+    def test_stale_private_skill_lock_rolls_back_upgrade(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        private = target / ".agents" / "skills" / "company" / "private"
+        private.mkdir(parents=True)
+        (private / "SKILL.md").write_text("changed", encoding="utf-8")
+        lock = target / ".resonance" / "project-skills.lock.json"
+        lock.parent.mkdir(parents=True)
+        lock.write_text(json.dumps({
+            "schema_version": 1,
+            "skills": [{
+                "id": "company/private",
+                "files": {".agents/skills/company/private/SKILL.md": "0" * 64},
+            }],
+        }, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        with self.assertRaisesRegex(RuntimeError, "project skill verification failed"):
+            update.apply(source, target, "9.9.9")
+        self.assertFalse((target / ".forge" / "tool.py").exists())
 
     def test_adopt_does_not_claim_customized_known_file(self):
         td, source, target = self.fixture()

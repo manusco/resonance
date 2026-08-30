@@ -175,8 +175,15 @@ def load_command_registry() -> dict:
 
 
 DOC_SECTIONS = {
-    "README.md": ("COMMAND_COUNT_BADGE", "COMMAND_COUNT_SUMMARY", "COMMAND_CATALOG"),
-    "AGENTS.md": ("COMMAND_CATALOG",),
+    "README.md": (
+        "SKILL_COUNT_BADGE",
+        "COMMAND_COUNT_BADGE",
+        "SKILL_COUNT_SUMMARY",
+        "COMMAND_COUNT_SUMMARY",
+        "COMMAND_CATALOG",
+        "SKILL_DOMAIN_COUNT",
+    ),
+    "AGENTS.md": ("COMMAND_CATALOG", "AUTOMATIC_SKILLS"),
 }
 
 
@@ -270,8 +277,20 @@ def render_agents_catalog(commands: list[dict], families: list[dict], help_items
 def build_command_docs(dry_run: bool) -> int:
     """Generate bounded command documentation while preserving all other bytes."""
     commands, families, help_items = validate_catalog(load_command_registry())
+    manifest = json.loads((REPO / "docs" / "skill-manifest.json").read_text(encoding="utf-8"))
+    skill_count = len(manifest)
+    domains = sorted({Path(item["path"]).parts[0] for item in manifest})
+    automatic = sorted(
+        Path(item["path"]).parent.as_posix()
+        for item in manifest
+        if item.get("activation") == "automatic"
+    )
     rendered = {
         "README.md": {
+            "SKILL_COUNT_BADGE": (
+                f'    <img src="https://img.shields.io/badge/Skills-{skill_count}-00f2ea?style=for-the-badge" '
+                f'alt="{skill_count} skills" />'
+            ),
             "COMMAND_COUNT_BADGE": (
                 f'    <img src="https://img.shields.io/badge/Commands-{len(commands)}-7025eb?style=for-the-badge" '
                 f'alt="{len(commands)} commands" />'
@@ -282,9 +301,22 @@ def build_command_docs(dry_run: bool) -> int:
                 "or describe the job and let the specialist auto-fire."
             ),
             "COMMAND_CATALOG": render_readme_catalog(commands, families, help_items),
+            "SKILL_COUNT_SUMMARY": (
+                f"- **{skill_count} domain-tested skills** across {', '.join(domains[:-1])}, and {domains[-1]}. "
+                "Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, "
+                "and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol."
+            ),
+            "SKILL_DOMAIN_COUNT": (
+                f"{skill_count} skills across {len(domains)} domains, each a self-contained protocol backed by reference docs."
+            ),
         },
         "AGENTS.md": {
             "COMMAND_CATALOG": render_agents_catalog(commands, families, help_items),
+            "AUTOMATIC_SKILLS": (
+                "Knowledge skills apply themselves when relevant: "
+                + ", ".join(f"`{path}`" for path in automatic)
+                + "."
+            ),
         },
     }
     rc = 0

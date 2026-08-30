@@ -21,7 +21,7 @@
         "properties": {
           "artifact": { "type": "string", "minLength": 1 },
           "actor": { "type": "string", "minLength": 1 },
-          "rights": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["CREATE", "APPEND_EVIDENCE", "MODIFY", "REVIEW", "APPROVE", "PUBLISH", "EXECUTE"] } }
+          "rights": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["READ", "CREATE", "APPEND_EVIDENCE", "MODIFY", "REVIEW", "APPROVE", "PUBLISH", "EXECUTE"] } }
         }
       }
     },

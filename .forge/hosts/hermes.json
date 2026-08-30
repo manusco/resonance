@@ -1,0 +1,18 @@
+{
+  "host": "hermes",
+  "label": "Hermes Agent",
+  "default_model": "portable",
+  "tool_names": {
+    "read": "read_file",
+    "write": "terminal",
+    "edit": "terminal",
+    "bash": "terminal",
+    "grep": "terminal",
+    "glob": "terminal",
+    "ask": "ask the user",
+    "subagent": "delegate"
+  },
+  "invocation": "Explicit skill installation or plugin adapter",
+  "context_bridge": null,
+  "notes": "Hermes installs ordinary skills into a user-global directory and plugin skills are explicitly loaded. Resonance does not treat that mutable directory as the project source of truth. Keep project and private skills in the repository; Hermes packaging remains a compatibility target until an adapter proves repo lock fidelity, precedence, and upgrade safety."
+}
