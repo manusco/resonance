@@ -125,7 +125,9 @@ If the route is still unclear, start with `/brief`.
 <!-- RESONANCE-GENERATED:COMMAND_CATALOG:END -->
 
 ### Always-on specialists (auto-fire, no command)
-Knowledge skills apply themselves when relevant: `engineering/backend`, `engineering/frontend`, `engineering/mobile`, `engineering/game-dev`, `engineering/database`, `engineering/devops`, `engineering/automation`, `engineering/performance`, `strategy/architect`, `strategy/growth`, `strategy/researcher`, `marketing/copywriter`, `marketing/content-distribution`, `sales/account-intelligence`, `sales/lead-ops`, `sales/outbound-sequence`, `ops/security`, `ops/product`, `ops/productivity`, `ops/observability`, `marketing/paid-acquisition`, `marketing/analytics`, `marketing/lifecycle`, `engineering/ai-engineering`, `strategy/finance`, `ops/legal`, `ops/founder-os`, `people/hiring`, `success/customer-success`, `sales/revops`.
+<!-- RESONANCE-GENERATED:AUTOMATIC_SKILLS:START -->
+Knowledge skills apply themselves when relevant: `design/designer`, `engineering/ai-engineering`, `engineering/backend`, `engineering/database`, `engineering/devops`, `engineering/frontend`, `engineering/game-dev`, `engineering/mobile`, `marketing/analytics`, `marketing/content-distribution`, `marketing/copywriter`, `marketing/lifecycle`, `marketing/paid-acquisition`, `marketing/seo`, `ops/founder-os`, `ops/legal`, `ops/observability`, `ops/product`, `ops/productivity`, `people/hiring`, `sales/revops`, `strategy/architect`, `strategy/finance`, `strategy/growth`, `success/customer-success`.
+<!-- RESONANCE-GENERATED:AUTOMATIC_SKILLS:END -->
 
 ---
 

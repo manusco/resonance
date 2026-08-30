@@ -1,0 +1,18 @@
+{
+  "host": "openclaw",
+  "label": "OpenClaw",
+  "default_model": "portable",
+  "tool_names": {
+    "read": "read",
+    "write": "write",
+    "edit": "edit",
+    "bash": "shell",
+    "grep": "search",
+    "glob": "search",
+    "ask": "ask the user",
+    "subagent": "delegate"
+  },
+  "invocation": "Project Agent Skills discovery",
+  "context_bridge": null,
+  "notes": "OpenClaw discovers project skills from <workspace>/.agents/skills. Resonance keeps both framework and project-owned multiplayer skills there, so no copied user-global skill tree is required. Tool names remain portable because OpenClaw installations may expose different toolsets."
+}

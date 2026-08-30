@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "Review this account settings screen before we merge it. The Save, Cancel, and Delete Account buttons are all filled and the same size. Each field is wrapped in its own bordered card, every section uses the same 16px gap, and the empty billing state only says \"No data\". Keyboard focus is still the browser default because it works.",
+  "files": [],
+  "expected_behavior": [
+    "Flags that Save, Cancel, and Delete Account have equal visual weight and require one clear primary action",
+    "Demotes secondary and destructive actions so they do not compete with the main save path",
+    "Identifies the bordered-card pattern and equal spacing as weak grouping that should be solved with proximity and spacing",
+    "Requires the empty billing state to explain what belongs there and provide a useful next action or recovery path",
+    "Requires explicit contrast, focus-visible, and keyboard-order verification before merge"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["primary action", "visual weight", "focus-visible", "empty state"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

@@ -319,6 +319,19 @@ def _skill_manifest_checks(root: Path, errors: list[str]) -> None:
                       "(run py .forge/kernel/manifest.py)")
     errors.extend(km.validate(km.manifest(root)))
 
+    try:
+        import job_composition
+        expected_jobs = json.dumps(job_composition.compile_contracts(km.manifest(root)), indent=2) + "\n"
+    except Exception as exc:
+        errors.append(f"job composition: cannot compile contracts: {exc}")
+        return
+    job_out = Path("docs/job-compositions.json")
+    if not job_out.is_file():
+        errors.append("job composition: docs/job-compositions.json is missing")
+    elif job_out.read_text(encoding="utf-8", errors="replace") != expected_jobs:
+        errors.append("job composition: docs/job-compositions.json is stale "
+                      "(run py .forge/job_composition.py)")
+
 
 def _scan(text: str, path: Path, root: Path, errors: list[str], warnings: list[str]) -> None:
     for ln_no, line in enumerate(text.splitlines(), 1):

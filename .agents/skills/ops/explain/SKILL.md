@@ -33,6 +33,7 @@ Pick the mode from the request:
 - Write for one reader. Name their level and what they know; teach from there, not from zero.
 - Concrete over abstract. Use the real names: this file, this function, this number. An example from the actual change beats a generic one.
 - Dense and visual. A diagram, a before and after, a small table earns its space. Prose walls do not.
+- Choose the visual form that matches the idea. Use a call tree for runtime flow, a component tree for UI structure, a state flow for lifecycle logic, a file map for ownership, a data-flow diagram for movement across boundaries, a diff sketch for before and after, or one small HTML visual only when static text cannot make the model clear.
 - One model per explainer. Teach the single load-bearing idea well; do not tour the whole system.
 - End where understanding is testable: the reader could now predict what breaks if this changed.
 

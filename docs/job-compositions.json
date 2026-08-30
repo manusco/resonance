@@ -1,0 +1,1383 @@
+[
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "delivery.compatibility-intake",
+    "stage": "FRAME",
+    "lead": "resonance-software-deliver-change",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-software-deliver-change",
+    "artifact_access": [
+      {
+        "artifact": "goal-handoff",
+        "actor": "resonance-software-deliver-change",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "software-request",
+        "actor": "resonance-software-deliver-change",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "the user explicitly invokes the software delivery compatibility entrypoint",
+      "an existing workflow targets resonance-software-deliver-change"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "delivery.goal",
+    "stage": "EXECUTE",
+    "lead": "resonance-ops-goal",
+    "contributors": [
+      "resonance-engineering-ai-engineering",
+      "resonance-engineering-backend",
+      "resonance-engineering-database",
+      "resonance-engineering-frontend",
+      "resonance-software-deliver-change",
+      "resonance-strategy-plan"
+    ],
+    "reviewers": [
+      "resonance-engineering-performance",
+      "resonance-ops-audit",
+      "resonance-ops-qa",
+      "resonance-ops-reviewer",
+      "resonance-ops-security"
+    ],
+    "finalizer": "resonance-ops-goal",
+    "artifact_access": [
+      {
+        "artifact": "goal-contract",
+        "actor": "resonance-ops-goal",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "READ"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-goal",
+        "rights": [
+          "CREATE",
+          "EXECUTE",
+          "MODIFY",
+          "READ"
+        ]
+      },
+      {
+        "artifact": "verified-outcome",
+        "actor": "resonance-ops-goal",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "ai-system-artifact",
+        "actor": "resonance-engineering-ai-engineering",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-ai-engineering",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "backend-artifact",
+        "actor": "resonance-engineering-backend",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-backend",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "database-artifact",
+        "actor": "resonance-engineering-database",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-database",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "frontend-artifact",
+        "actor": "resonance-engineering-frontend",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-frontend",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "goal-handoff",
+        "actor": "resonance-software-deliver-change",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "software-request",
+        "actor": "resonance-software-deliver-change",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-strategy-plan",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "research-evidence",
+        "actor": "resonance-strategy-plan",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "user-request",
+        "actor": "resonance-strategy-plan",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-engineering-performance",
+        "rights": [
+          "EXECUTE",
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "performance-evidence",
+        "actor": "resonance-engineering-performance",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "performance-report",
+        "actor": "resonance-engineering-performance",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "audit-evidence",
+        "actor": "resonance-ops-audit",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "audit-report",
+        "actor": "resonance-ops-audit",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-audit",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-qa",
+        "rights": [
+          "EXECUTE",
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "test-artifact",
+        "actor": "resonance-ops-qa",
+        "rights": [
+          "CREATE",
+          "EXECUTE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "verification-report",
+        "actor": "resonance-ops-qa",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-reviewer",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "review-evidence",
+        "actor": "resonance-ops-reviewer",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "review-report",
+        "actor": "resonance-ops-reviewer",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "security-evidence",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "security-findings",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "the user authorizes an outcome to be driven across multiple stages"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "delivery.plan",
+    "stage": "PLAN",
+    "lead": "resonance-strategy-plan",
+    "contributors": [
+      "resonance-strategy-architect",
+      "resonance-strategy-grill"
+    ],
+    "reviewers": [],
+    "finalizer": "resonance-strategy-plan",
+    "artifact_access": [
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-strategy-plan",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "research-evidence",
+        "actor": "resonance-strategy-plan",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "user-request",
+        "actor": "resonance-strategy-plan",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "architecture-decision",
+        "actor": "resonance-strategy-architect",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "system-context",
+        "actor": "resonance-strategy-architect",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "proposed-plan",
+        "actor": "resonance-strategy-grill",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "shared-understanding-brief",
+        "actor": "resonance-strategy-grill",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "a clear intended outcome needs an atomic implementation plan"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "design.plan-challenge",
+    "stage": "FRAME",
+    "lead": "resonance-strategy-grill",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-strategy-grill",
+    "artifact_access": [
+      {
+        "artifact": "proposed-plan",
+        "actor": "resonance-strategy-grill",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "shared-understanding-brief",
+        "actor": "resonance-strategy-grill",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "a plan, design, or goal contract needs interrogation before implementation"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "design.system-architecture",
+    "stage": "PLAN",
+    "lead": "resonance-strategy-architect",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-strategy-architect",
+    "artifact_access": [
+      {
+        "artifact": "architecture-decision",
+        "actor": "resonance-strategy-architect",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "system-context",
+        "actor": "resonance-strategy-architect",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "the work changes system boundaries, service contracts, or durable architecture"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "implementation.ai-system",
+    "stage": "EXECUTE",
+    "lead": "resonance-engineering-ai-engineering",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-engineering-ai-engineering",
+    "artifact_access": [
+      {
+        "artifact": "ai-system-artifact",
+        "actor": "resonance-engineering-ai-engineering",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-ai-engineering",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "the approved work changes an LLM, RAG, retrieval, prompt, agent, or AI evaluation system"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "implementation.backend",
+    "stage": "EXECUTE",
+    "lead": "resonance-engineering-backend",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-engineering-backend",
+    "artifact_access": [
+      {
+        "artifact": "backend-artifact",
+        "actor": "resonance-engineering-backend",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-backend",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "the approved work changes server-side business logic, APIs, or data flows"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "implementation.database",
+    "stage": "EXECUTE",
+    "lead": "resonance-engineering-database",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-engineering-database",
+    "artifact_access": [
+      {
+        "artifact": "database-artifact",
+        "actor": "resonance-engineering-database",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-database",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "the approved work changes schemas, queries, constraints, or migrations"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "implementation.frontend",
+    "stage": "EXECUTE",
+    "lead": "resonance-engineering-frontend",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-engineering-frontend",
+    "artifact_access": [
+      {
+        "artifact": "frontend-artifact",
+        "actor": "resonance-engineering-frontend",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-frontend",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "the approved work changes a web interface or client-side interaction"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "intent.execution-brief",
+    "stage": "FRAME",
+    "lead": "resonance-strategy-brief",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-strategy-brief",
+    "artifact_access": [
+      {
+        "artifact": "execution-brief",
+        "actor": "resonance-strategy-brief",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "user-request",
+        "actor": "resonance-strategy-brief",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "material ambiguity must be resolved before routing or execution"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "verification.audit",
+    "stage": "VERIFY",
+    "lead": "resonance-ops-audit",
+    "contributors": [
+      "resonance-engineering-performance",
+      "resonance-ops-qa",
+      "resonance-ops-reviewer",
+      "resonance-ops-security"
+    ],
+    "reviewers": [],
+    "finalizer": "resonance-ops-audit",
+    "artifact_access": [
+      {
+        "artifact": "audit-evidence",
+        "actor": "resonance-ops-audit",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "audit-report",
+        "actor": "resonance-ops-audit",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-audit",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-engineering-performance",
+        "rights": [
+          "EXECUTE",
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "performance-evidence",
+        "actor": "resonance-engineering-performance",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "performance-report",
+        "actor": "resonance-engineering-performance",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-qa",
+        "rights": [
+          "EXECUTE",
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "test-artifact",
+        "actor": "resonance-ops-qa",
+        "rights": [
+          "CREATE",
+          "EXECUTE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "verification-report",
+        "actor": "resonance-ops-qa",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-reviewer",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "review-evidence",
+        "actor": "resonance-ops-reviewer",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "review-report",
+        "actor": "resonance-ops-reviewer",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "security-evidence",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "security-findings",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "a repository, change, release, or system surface needs multi-specialist verification"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "verification.code-review",
+    "stage": "VERIFY",
+    "lead": "resonance-ops-reviewer",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-ops-reviewer",
+    "artifact_access": [
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-reviewer",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "review-evidence",
+        "actor": "resonance-ops-reviewer",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "review-report",
+        "actor": "resonance-ops-reviewer",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "a concrete diff or pull request needs a correctness and maintainability verdict"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "verification.performance",
+    "stage": "VERIFY",
+    "lead": "resonance-engineering-performance",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-engineering-performance",
+    "artifact_access": [
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-engineering-performance",
+        "rights": [
+          "EXECUTE",
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "performance-evidence",
+        "actor": "resonance-engineering-performance",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "performance-report",
+        "actor": "resonance-engineering-performance",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "measured latency, throughput, resource use, or cost needs diagnosis"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "verification.qa",
+    "stage": "VERIFY",
+    "lead": "resonance-ops-qa",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-ops-qa",
+    "artifact_access": [
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-qa",
+        "rights": [
+          "EXECUTE",
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "test-artifact",
+        "actor": "resonance-ops-qa",
+        "rights": [
+          "CREATE",
+          "EXECUTE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "verification-report",
+        "actor": "resonance-ops-qa",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "behavior needs test design, coverage analysis, or executed verification"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "verification.security",
+    "stage": "VERIFY",
+    "lead": "resonance-ops-security",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-ops-security",
+    "artifact_access": [
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "security-evidence",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "security-findings",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "the scope crosses a trust boundary or needs a security verdict"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  }
+]

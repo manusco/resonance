@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-marketing-seo",
+  "query": "An agency audit says our site fails GEO because it has no AI preference header, no HTTP Link discovery headers, and no Markdown content negotiation. Should we lower the score and implement all three?",
+  "files": [],
+  "expected_behavior": [
+    "Rejects treating experimental machine-facing signals as a universal GEO failure or guaranteed ranking and citation factor",
+    "Checks direct crawler access separately through robots.txt, status codes, server-rendered critical content, and logs where available",
+    "Frames AI preference declarations, HTTP Link discovery, and content negotiation as informational or optional unless current primary-source documentation and site context support implementation",
+    "Recommends HTTP Link service discovery only for API-first, developer-tooling, or documentation-heavy sites, not ordinary business pages by default",
+    "Requires direct HTTP or browser request capture to verify headers and negotiated content types"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["informational", "optional", "context"]},
+    {"kind": "contains_any", "value": ["robots.txt", "status code", "server-rendered", "logs"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"},
+    {"kind": "regex_absent", "value": "(?i)(must implement all three|universal GEO failure|guaranteed citation lift|guaranteed ranking lift|is a ranking factor)"}
+  ]
+}

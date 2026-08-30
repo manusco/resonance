@@ -64,6 +64,8 @@ Never overwrite these as part of a framework upgrade:
 - `.resonance/memory/`
 - application code
 - project docs, plans, audits, handovers, and tests
+- private or company skills under `.agents/skills/` that are absent from the framework ownership manifest
+- `.resonance/project-skills.lock.json`, the committed content lock for those project skills
 - project-specific `AGENTS*.md`, `CLAUDE*.md`, or host settings unless the diff proves they are generated framework bridges with no local edits
 
 Legacy exception: if `.resonance/learnings.jsonl` exists and the user approves the migration, append its lessons into `.resonance/02_memory.md` and remove the legacy file only after the append is verified.
@@ -83,7 +85,8 @@ Copy this checklist and tick items as you go.
 8. **Migrate legacy memory only with proof**: If approved, append legacy lessons, verify they appear in `.resonance/02_memory.md`, then remove `learnings.jsonl`. -> verify: no lesson is lost.
 9. **Regenerate if the target ships `.forge`**: Run the target's Forge build when `.forge/forge.py` exists. If the project intentionally has only compiled `.agents`, do not invent `.forge`; copy compiled skills only. -> verify: generated files are consistent with source mode.
 10. **Validate**: Run the strongest available checks in the target: framework validation, command shim checks, `/system-health` or `resonance.ps1`, and any project-specific smoke check that does not require unrelated dirty files to be resolved. -> verify: failures are reported with exact commands and output.
-11. **Report**: Summarize changed paths, preserved project-owned paths, backup path, validation output, and rollback instructions.
+11. **Verify project skills**: When `.resonance/project-skills.lock.json` exists, run `python3 .forge/project_skills.py --check`. Never regenerate the project-owned lock as an implicit part of a framework upgrade. -> verify: every committed private skill still matches its pre-upgrade content lock.
+12. **Report**: Summarize changed paths, preserved project-owned paths, backup path, validation output, and rollback instructions.
 
 ## Recovery
 

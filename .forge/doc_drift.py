@@ -73,13 +73,16 @@ def main() -> int:
         if cj[a] != amap[a]:
             problems.append(f"command map: /{a} points to {cj[a]} vs AGENTS {amap[a]}")
 
-    # 3. README counts not below reality
+    # 3. README counts match reality
     n_skills = len(list((ROOT / ".agents/skills").glob("**/SKILL.md")))
     n_cmds = len(cj)
     readme = read("README.md")
     for m in re.findall(r"Skills-(\d+)\+?", readme):
-        if int(m) > n_skills:
+        if int(m) != n_skills:
             problems.append(f"README claims {m} skills but there are {n_skills}")
+    for m in re.findall(r"(\d+)\s+(?:domain-tested\s+)?skills", readme):
+        if int(m) != n_skills:
+            problems.append(f"README body says {m} skills but there are {n_skills}")
     for m in re.findall(r"Commands-(\d+)", readme):
         if int(m) != n_cmds:
             problems.append(f"README badge says {m} commands but there are {n_cmds}")
@@ -96,6 +99,29 @@ def main() -> int:
     for a in cj:
         if not re.search(rf"/{re.escape(a)}(?![\w-])", readme):
             problems.append(f"command /{a} in commands.json but not in the README catalog")
+
+    # 3c. AGENTS automatic-routing list matches the manifest activation contract
+    try:
+        manifest = json.loads(read("docs/skill-manifest.json"))
+    except Exception:
+        manifest = []
+    expected_automatic = {
+        Path(item["path"]).parent.as_posix()
+        for item in manifest
+        if item.get("activation") == "automatic"
+    }
+    automatic_section = re.search(
+        r"RESONANCE-GENERATED:AUTOMATIC_SKILLS:START -->(.*?)<!-- RESONANCE-GENERATED:AUTOMATIC_SKILLS:END",
+        read("AGENTS.md"),
+        re.S,
+    )
+    actual_automatic = set(re.findall(r"`([^`]+)`", automatic_section.group(1))) if automatic_section else set()
+    if actual_automatic != expected_automatic:
+        problems.append(
+            "AGENTS automatic skills differ from manifest: "
+            f"missing={sorted(expected_automatic - actual_automatic)}, "
+            f"extra={sorted(actual_automatic - expected_automatic)}"
+        )
 
     # 4. CHANGELOG has this version
     if f"## v{version}" not in read("CHANGELOG.md"):

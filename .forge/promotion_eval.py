@@ -6,9 +6,17 @@ import argparse
 import hashlib
 import json
 import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+
+FORGE = Path(__file__).resolve().parent
+if str(FORGE) not in sys.path:
+    sys.path.insert(0, str(FORGE))
+
+from schema_check import SchemaFailure, load_schema, validate
 
 
 REPO = Path(__file__).resolve().parent.parent
@@ -17,6 +25,18 @@ PRECEDENCE = [
     "TRACE_ASSURANCE", "STRUCTURAL_INTEGRITY", "ROUTING_HARM",
     "DECLARED_METRICS", "TASK_QUALITY", "COST_LATENCY",
 ]
+REQUIRED_GATES_BY_KIND = {
+    "structural": {"EVIDENCE_INTEGRITY", "COMPATIBILITY", "STRUCTURAL_INTEGRITY"},
+    "routing_public": {"EVIDENCE_INTEGRITY", "COMPATIBILITY", "ROUTING_HARM"},
+    "routing_protected": {
+        "EVIDENCE_INTEGRITY", "ROUTING_HARM", "DECLARED_METRICS", "TASK_QUALITY",
+    },
+    "orchestration": {
+        "EVIDENCE_INTEGRITY", "SAFETY_AUTHORITY", "TRACE_ASSURANCE",
+        "STRUCTURAL_INTEGRITY", "TASK_QUALITY",
+    },
+}
+GATE_STATES = {"PASS", "FAIL", "REJECT", "INCOMPLETE", "INCONCLUSIVE", "NOT_APPLICABLE"}
 
 
 def digest(path: Path) -> str:
@@ -46,19 +66,19 @@ def verdict(candidate_id: str, manifests: list[Path], *, repo: Path = REPO,
     reasons: dict[str, list[str]] = {gate: [] for gate in PRECEDENCE}
     loaded: list[tuple[Path, dict[str, Any]]] = []
     now = datetime.now(timezone.utc)
+    schema = load_schema("evidence-manifest.schema.json")
     for path in manifests:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
-            if data.get("schema_version") != 1:
-                raise ValueError("unsupported evidence schema")
+            validate(data, schema)
             if data.get("exit_state") != "COMPLETE":
                 reasons["EVIDENCE_INTEGRITY"].append(f"{path.name}: run is {data.get('exit_state', 'missing')}")
             age = (now - utc(data["ended_at"])).total_seconds() / 3600
             if age < 0 or age > max_age_hours:
                 reasons["EVIDENCE_INTEGRITY"].append(f"{path.name}: evidence age {age:.1f}h exceeds {max_age_hours}h")
             loaded.append((path, data))
-        except Exception as exc:
-            reasons["EVIDENCE_INTEGRITY"].append(f"{path}: {exc}")
+        except (OSError, ValueError, json.JSONDecodeError, SchemaFailure) as exc:
+            reasons["EVIDENCE_INTEGRITY"].append(f"{path.name}: schema or read failure: {exc}")
 
     if not loaded:
         reasons["EVIDENCE_INTEGRITY"].append("no readable evidence manifests")
@@ -74,14 +94,43 @@ def verdict(candidate_id: str, manifests: list[Path], *, repo: Path = REPO,
             reasons["EVIDENCE_INTEGRITY"].append(f"{path.name}: changed paths do not match current tree")
         summary = data.get("summary", {})
         kind = summary.get("evidence_kind")
-        if isinstance(kind, str):
-            kinds.add(kind)
-        for gate in PRECEDENCE[1:]:
-            state = summary.get("gates", {}).get(gate)
+        if kind not in REQUIRED_GATES_BY_KIND:
+            reasons["EVIDENCE_INTEGRITY"].append(f"{path.name}: unknown evidence kind '{kind}'")
+            continue
+        if kind in kinds:
+            reasons["EVIDENCE_INTEGRITY"].append(f"{path.name}: duplicate evidence kind '{kind}'")
+        kinds.add(kind)
+        if summary.get("candidate_id") != candidate_id:
+            reasons["EVIDENCE_INTEGRITY"].append(
+                f"{path.name}: candidate_id '{summary.get('candidate_id')}' does not match '{candidate_id}'"
+            )
+        gates = summary.get("gates")
+        if not isinstance(gates, dict):
+            reasons["EVIDENCE_INTEGRITY"].append(f"{path.name}: gates must be an object")
+            gates = {}
+        missing_gates = sorted(REQUIRED_GATES_BY_KIND[kind] - set(gates))
+        if missing_gates:
+            reasons["EVIDENCE_INTEGRITY"].append(
+                f"{path.name}: missing required gates: {', '.join(missing_gates)}"
+            )
+        unknown_gates = sorted(set(gates) - set(PRECEDENCE))
+        if unknown_gates:
+            reasons["EVIDENCE_INTEGRITY"].append(
+                f"{path.name}: unknown gates: {', '.join(unknown_gates)}"
+            )
+        for gate in PRECEDENCE:
+            state = gates.get(gate)
+            if state is not None and state not in GATE_STATES:
+                reasons["EVIDENCE_INTEGRITY"].append(
+                    f"{path.name}: {gate} has unknown state '{state}'"
+                )
+                continue
             if state in {"FAIL", "REJECT"}:
                 reasons[gate].append(f"{path.name}: {gate} failed")
             elif state in {"INCOMPLETE", "INCONCLUSIVE"}:
                 reasons[gate].append(f"{path.name}: {gate} is {state.lower()}")
+            elif gate in REQUIRED_GATES_BY_KIND[kind] and state == "NOT_APPLICABLE":
+                reasons[gate].append(f"{path.name}: required gate {gate} is not applicable")
 
     missing = sorted(required - kinds)
     if missing:

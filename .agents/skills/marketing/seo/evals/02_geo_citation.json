@@ -7,7 +7,8 @@
     "Checks the 5 GEO dimensions: Citability, Structural Readability, Multi-Modal Content, Authority/Brand Signals, Technical Accessibility",
     "Asks or confirms whether AI crawlers (GPTBot, PerplexityBot, ClaudeBot) are allowed in robots.txt",
     "Recommends a 134-167 word self-contained answer block on the page",
-    "Recommends an llms.txt file at the root domain"
+    "Checks whether llms.txt or similar machine-facing hints are relevant and frames them as optional or emerging rather than universal requirements",
+    "Separates verified AI crawler access from experimental machine-facing signals and avoids claiming guaranteed citation lift from either"
   ],
   "checks": [
     {

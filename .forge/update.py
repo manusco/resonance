@@ -208,6 +208,20 @@ def apply(source: Path, target: Path, expected_version: str | None = None) -> Pa
         tmp = mp.with_suffix(".tmp")
         tmp.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
         os.replace(tmp, mp)
+        project_lock = target / ".resonance" / "project-skills.lock.json"
+        if project_lock.is_file():
+            project_check = target / ".forge" / "project_skills.py"
+            if not project_check.is_file():
+                raise RuntimeError("project skill lock exists but its verifier is missing")
+            result = subprocess.run(
+                [sys.executable, str(project_check), "--check"], cwd=target,
+                capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60,
+            )
+            if result.returncode != 0:
+                raise RuntimeError(
+                    "post-update project skill verification failed:\n"
+                    f"{result.stdout}\n{result.stderr}"
+                )
         journal["status"] = "complete"
         journal_path.write_text(json.dumps(journal, indent=2) + "\n", encoding="utf-8")
         return backup

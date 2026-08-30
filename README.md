@@ -3,10 +3,12 @@
 > Operator-grade AI agent skills for builders. A cross-tool skill library and slash-command system for Claude Code, Cursor, Codex, and opencode, covering strategy, design, engineering, marketing, sales, and ops.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance/releases/latest"><img src="https://img.shields.io/badge/Resonance-v2.5.1-7025eb?style=for-the-badge&logo=github" alt="Resonance v2.5.1" /></a>
+    <a href="https://github.com/manusco/resonance/releases/latest"><img src="https://img.shields.io/badge/Resonance-v2.5.2-7025eb?style=for-the-badge&logo=github" alt="Resonance v2.5.2" /></a>
     <a href="https://github.com/manusco/resonance/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/manusco/resonance/ci.yml?branch=main&style=for-the-badge&label=CI" alt="CI status" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
-    <img src="https://img.shields.io/badge/Skills-69-00f2ea?style=for-the-badge" alt="69 skills" />
+<!-- RESONANCE-GENERATED:SKILL_COUNT_BADGE:START -->
+    <img src="https://img.shields.io/badge/Skills-71-00f2ea?style=for-the-badge" alt="71 skills" />
+<!-- RESONANCE-GENERATED:SKILL_COUNT_BADGE:END -->
 <!-- RESONANCE-GENERATED:COMMAND_COUNT_BADGE:START -->
     <img src="https://img.shields.io/badge/Commands-36-7025eb?style=for-the-badge" alt="36 commands" />
 <!-- RESONANCE-GENERATED:COMMAND_COUNT_BADGE:END -->
@@ -22,7 +24,9 @@
 
 Resonance is an AI agent skill library you drop into any project. It turns a general coding agent into a roster of specialists that follow the same expert protocol every time, on whatever tool you use.
 
-- **69 domain-tested skills** across strategy, software, engineering, design, marketing, sales, ops, research, people, and success. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
+<!-- RESONANCE-GENERATED:SKILL_COUNT_SUMMARY:START -->
+- **71 domain-tested skills** across design, engineering, finance, leadership, marketing, ops, people, research, sales, software, strategy, and success. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
+<!-- RESONANCE-GENERATED:SKILL_COUNT_SUMMARY:END -->
 <!-- RESONANCE-GENERATED:COMMAND_COUNT_SUMMARY:START -->
 - **36 slash commands** like `/brief`, `/plan`, `/grill`, `/council`, `/build`, `/debug`, `/design`, `/test`, `/improve`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
 <!-- RESONANCE-GENERATED:COMMAND_COUNT_SUMMARY:END -->
@@ -104,7 +108,9 @@ If the route is still unclear, start with `/brief`.
 
 ## The skill domains
 
-69 skills across 12 domains, each a self-contained protocol backed by reference docs.
+<!-- RESONANCE-GENERATED:SKILL_DOMAIN_COUNT:START -->
+71 skills across 12 domains, each a self-contained protocol backed by reference docs.
+<!-- RESONANCE-GENERATED:SKILL_DOMAIN_COUNT:END -->
 
 - **Strategy**: `plan`, `grill`, `architect`, `venture`, `finance`, `growth`, `researcher`, `gtm-thinker`. Planning, system design, business and financial modeling, fundraising, and pre-build interrogation.
 - **Software**: `deliver-change`. End-to-end software delivery from contract through plan, build, evidence, audit, and release proposal without auto-shipping.
@@ -152,16 +158,16 @@ Working in the Resonance repo directly is the simplest path. For another project
 
 **macOS / Linux**
 ```bash
-gh repo clone manusco/resonance ~/resonance-source -- --branch v2.5.1
-python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version 2.5.1
-python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version 2.5.1 --apply
+gh repo clone manusco/resonance ~/resonance-source -- --branch v2.5.2
+python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version 2.5.2
+python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version 2.5.2 --apply
 ```
 
 **Windows (PowerShell)**
 ```powershell
-gh repo clone manusco/resonance "$env:TEMP\resonance-source" -- --branch v2.5.1
-py "$env:TEMP\resonance-source\.forge\update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.1
-py "$env:TEMP\resonance-source\.forge\update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.1 --apply
+gh repo clone manusco/resonance "$env:TEMP\resonance-source" -- --branch v2.5.2
+py "$env:TEMP\resonance-source\.forge\update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.2
+py "$env:TEMP\resonance-source\.forge\update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.2 --apply
 ```
 
 The first command is a dry run. Review its JSON plan before `--apply`. For an older installation with no ownership manifest, check out its installed Resonance version and pass that checkout as `--source` to the new updater with `--adopt`. Adoption claims only byte-identical released files and changes no framework file. Then use the new version checkout for the dry run and apply. A project-owned `AGENTS.md` or modified framework file remains a conflict until you review and resolve it.
@@ -209,6 +215,8 @@ Add your own skill with the meta-skill:
 ```
 
 It walks the eval-first loop: prove the gap, write the golden evals, author the template, compile with the Forge, pass the validator, and only then ship. See `.forge/README.md` for the compiler and `.agents/skills/ops/skill-author/resonance-skill-author/` for the spec.
+
+Project-specific or private team skills belong in the same repository under `.agents/skills/`. They stay multiplayer, reviewable, and branchable with the code. After installing Resonance, run `python3 .forge/project_skills.py` and commit `.resonance/project-skills.lock.json`; use `--check` in CI. Framework upgrades preserve those unowned skill files and refuse mixed ownership instead of overwriting them. Do not use a mutable global skills directory as the canonical copy of a team procedure.
 
 ---
 

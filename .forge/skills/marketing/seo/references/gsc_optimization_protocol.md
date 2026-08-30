@@ -3,6 +3,18 @@
 > **Status**: Core Implementation Standard
 > **Objective**: Harness Google Search Console (GSC) data-via direct API access, UI analysis, or export-to move "Striking Distance" pages into Top 3 positions and secure AI citations.
 
+## 0. GSC Evidence Preflight
+
+GSC-backed recommendations start with the evidence boundary, not the fix.
+
+1. Confirm the available source: API, UI evidence, export, or trusted report. Without live evidence, mark every GSC-dependent conclusion as unverified.
+2. Record the exact property identity and distinguish URL-prefix from domain properties.
+3. Capture retrieval time, timezone, reporting period, dimensions, filters, sorting, row limits, pagination, and whether the data is final, preliminary, or unknown.
+4. Disclose truncation and never treat missing rows as zero.
+5. Keep the audit read-only unless the user authorizes the exact account or sitemap mutation.
+
+Every recommendation must name the observed evidence, the hypothesis, the smallest action that tests it, and a comparable follow-up window.
+
 ## 1. The "Striking Distance" Mine (Positions 8-20)
 
 Top 1% experts don't focus on what's already winning; they focus on what's *almost* winning.
@@ -54,7 +66,7 @@ If impressions are high but CTR is < 2% in the Top 5:
 
 ### The Decay & Freshness Audit
 *   **Performance Decay**: If a page with high historitcal impressions shows a downward trend in average position over 6 months, it is suffering from **Content Decay**.
-*   **The Refresh Protocol**: Update with 3-5 new paragraphs of current data, refresh the publish date, and re-index via GSC API/UI immediately.
+*   **The Refresh Protocol**: Update only when evidence supports a freshness or completeness gap. Keep publish and modified dates honest. Use URL inspection to understand Google's indexed view, and request recrawl only when the user authorizes that exact action.
 
 ### The Link-to-Value Ratio
 *   **Internal**: 1 per 50 words (Distribute authority).
