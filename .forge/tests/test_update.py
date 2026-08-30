@@ -62,6 +62,21 @@ class UpdateTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "profile is required"):
             update.plan(source, target)
 
+    def test_legacy_manifest_keeps_profile_unknown_until_explicit_choice(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        (source / ".agents" / "skills" / "demo").mkdir(parents=True)
+        (source / ".agents" / "skills" / "demo" / "SKILL.md").write_text("demo", encoding="utf-8")
+        self.commit(source)
+        (target / ".agents" / "skills").mkdir(parents=True)
+        manifest = target / update.MANIFEST
+        manifest.parent.mkdir(parents=True)
+        manifest.write_text(json.dumps({"schema": 1, "version": "2.5.1", "files": {}}), encoding="utf-8")
+        self.assertNotIn("profile", update.load_manifest(target))
+        with self.assertRaisesRegex(ValueError, "profile is required"):
+            update.plan(source, target)
+        self.assertEqual("compiled", update.plan(source, target, "compiled")["profile"])
+
     def test_compiled_apply_validates_from_pinned_source(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
@@ -73,6 +88,51 @@ class UpdateTests(unittest.TestCase):
         self.assertEqual(manifest["profile"], "compiled")
         self.assertTrue((target / ".agents" / "skills" / "demo" / "SKILL.md").exists())
         self.assertFalse((target / ".forge").exists())
+
+    def test_compiled_apply_checks_private_lock_in_target(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        generated = source / ".agents" / "skills" / "demo" / "SKILL.md"
+        generated.parent.mkdir(parents=True)
+        generated.write_text("demo v1", encoding="utf-8")
+        self.commit(source)
+        update.apply(source, target, "9.9.9", "compiled")
+        private = target / ".agents" / "skills" / "company" / "private" / "SKILL.md"
+        private.parent.mkdir(parents=True)
+        private.write_text("private", encoding="utf-8")
+        subprocess.run(
+            [sys.executable, str(source / ".forge" / "project_skills.py"), "--root", str(target)],
+            check=True,
+            capture_output=True,
+        )
+        generated.write_text("demo v2", encoding="utf-8")
+        self.commit(source)
+        update.apply(source, target, "9.9.9", "compiled")
+        self.assertEqual("private", private.read_text(encoding="utf-8"))
+
+    def test_compiled_apply_rejects_stale_private_lock_in_target(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        generated = source / ".agents" / "skills" / "demo" / "SKILL.md"
+        generated.parent.mkdir(parents=True)
+        generated.write_text("demo v1", encoding="utf-8")
+        self.commit(source)
+        update.apply(source, target, "9.9.9", "compiled")
+        private = target / ".agents" / "skills" / "company" / "private" / "SKILL.md"
+        private.parent.mkdir(parents=True)
+        private.write_text("private", encoding="utf-8")
+        lock = target / ".resonance" / "project-skills.lock.json"
+        lock.write_text(json.dumps({
+            "schema_version": 1,
+            "skills": [{"id": "company/private", "files": {
+                ".agents/skills/company/private/SKILL.md": "0" * 64,
+            }}],
+        }, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        generated.write_text("demo v2", encoding="utf-8")
+        self.commit(source)
+        with self.assertRaisesRegex(RuntimeError, "project skill verification failed"):
+            update.apply(source, target, "9.9.9", "compiled")
+        self.assertEqual("demo v1", (target / ".agents" / "skills" / "demo" / "SKILL.md").read_text(encoding="utf-8"))
 
     def test_adopt_requires_profile_for_target_without_source_tree(self):
         td, source, target = self.fixture()

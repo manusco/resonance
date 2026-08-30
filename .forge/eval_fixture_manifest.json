@@ -413,7 +413,7 @@
     ".forge/tests/test_second_opinion.py": "ee52be9e2bd6a127b25fbe6f7b65c1b3698546cf3a02364c22ed4f4a125fcb64",
     ".forge/tests/test_semantic_contracts.py": "c385fc6934b9e120b8c718f8cc0c9f8d0f5cb9dd95d6b7bcda136520ead94d10",
     ".forge/tests/test_skill_graph.py": "abaa48bfd09ee130303d0330bb5b83e4989b0bb326836a7f3e8dd913c78a70b3",
-    ".forge/tests/test_update.py": "d3a08ddd1763836e6482d4c291e29a80c123f5fe56cf971b0b71a5c82d95427a",
+    ".forge/tests/test_update.py": "ba5b25ee772616614c661ad7cfcc74d3c1d7a0818af0b580707585def756eadd",
     ".forge/tests/test_validate_skill.py": "c53c17f1ba3586ef6ad01e5ccfff874f7ae7be4960875fdfc65c958d2ae04fac"
   },
   "tiers": {

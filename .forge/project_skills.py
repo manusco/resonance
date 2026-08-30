@@ -56,18 +56,32 @@ def project_skill_lock(skills: Path = SKILLS, owned: set[str] | None = None) -> 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
-    parser.add_argument("--output", type=Path, default=LOCK)
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=ROOT,
+        help="repository root whose framework manifest and project skills are checked",
+    )
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
-    payload = json.dumps(project_skill_lock(), indent=2, sort_keys=True) + "\n"
+    root = args.root.resolve()
+    skills = root / ".agents" / "skills"
+    manifest = root / ".resonance" / "framework-manifest.json"
+    output = args.output or (root / ".resonance" / "project-skills.lock.json")
+    payload = json.dumps(
+        project_skill_lock(skills, framework_files(manifest)),
+        indent=2,
+        sort_keys=True,
+    ) + "\n"
     if args.check:
-        if not args.output.is_file() or args.output.read_text(encoding="utf-8") != payload:
-            print(f"project skill lock is missing or stale: {args.output}")
+        if not output.is_file() or output.read_text(encoding="utf-8") != payload:
+            print(f"project skill lock is missing or stale: {output}")
             return 1
-        print(f"project skill lock is current: {args.output}")
+        print(f"project skill lock is current: {output}")
         return 0
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(payload, encoding="utf-8")
-    print(f"wrote {args.output}")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(payload, encoding="utf-8")
+    print(f"wrote {output}")
     return 0
 
 
