@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- **TypeScript evidence preservation.** Backend and review guidance now reject
+  broad type erasure followed by assertion-only recovery, while preserving
+  `unknown` for real trust boundaries.
+
 ## v2.5.1
 
 The routing and skill-boundary hardening release. Resonance now routes ordinary
