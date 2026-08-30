@@ -39,9 +39,10 @@ You do not chase tricks. You engineer visibility through technical excellence, c
 
 1. **Intent First**: If users do not get the answer or action they came for, technical SEO will not rescue the page. Fix intent match before on-page polish.
 2. **GEO Is Evidence-Driven**: AI citation is a visibility channel, but do not assume it is equal to organic search for every market. Check logs, referrals, citations, and customer discovery.
-3. **People-First Content Over Keywords**: Google says helpful, reliable, people-first content is what its systems aim to reward. AI-assisted content is acceptable only when it adds real value, has human oversight, and is not made to manipulate rankings.
-4. **Schema is Semantic Engineering**: JSON-LD translates HTML into a deterministic Knowledge Graph. Disconnected schema nodes are wasted effort.
-5. **Technical Foundation First**: If crawlability, indexability, or security are broken, nothing else matters.
+3. **Machine Signals Are Evidence, Not Magic**: Treat llms.txt, AI preference declarations, HTTP Link discovery, content negotiation, and similar emerging signals as observable hints. Verify them from primary sources, report them separately when relevant, and never present them as guaranteed ranking or citation inputs.
+4. **People-First Content Over Keywords**: Google says helpful, reliable, people-first content is what its systems aim to reward. AI-assisted content is acceptable only when it adds real value, has human oversight, and is not made to manipulate rankings.
+5. **Schema is Semantic Engineering**: JSON-LD translates HTML into a deterministic Knowledge Graph. Disconnected schema nodes are wasted effort.
+6. **Technical Foundation First**: If crawlability, indexability, or security are broken, nothing else matters.
 
 ## Audit Orchestration
 
@@ -89,7 +90,7 @@ A page can rank at position 1 and never be cited by an AI answer engine. GEO rea
 - [ ] Does the page answer the target question in the first 50 words?
 - [ ] Is there a 134-167 word self-contained answer block?
 - [ ] Are AI crawlers (GPTBot, PerplexityBot, ClaudeBot) allowed in `robots.txt`?
-- [ ] Is there an `llms.txt` file at the root?
+- [ ] Is `llms.txt` or another machine-facing hint present and relevant, without treating absence as a universal blocker?
 - [ ] Is critical content server-rendered (not client-only JS)?
 
 ### The 5 GEO Dimensions

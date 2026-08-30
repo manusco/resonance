@@ -42,6 +42,16 @@
 - Blocking `GPTBot` prevents OpenAI training but does NOT prevent ChatGPT from citing via browsing (`ChatGPT-User`)
 - **Recommendation**: Cross-reference `geo_protocol.md` for full AI visibility strategy before blocking
 
+### Experimental Machine-Signal Notes
+
+Machine-facing hints belong in the technical audit only when the site type makes them useful.
+
+- Check direct crawler access first: robots directives, status codes, server-rendered critical content, and logs where available.
+- Report llms.txt, AI preference declarations, HTTP Link discovery, and content negotiation as informational unless primary-source documentation and the specific site context support a recommendation.
+- Do not lower a technical SEO score solely because an experimental machine signal is absent.
+- Recommend HTTP Link service discovery for API-first, developer-tooling, or documentation-heavy sites, not as a default for ordinary business pages.
+- Verify header-level signals with direct HTTP or browser request capture. Rendered page content alone cannot prove headers or negotiated content types.
+
 **Example selective blocking:**
 ```
 User-agent: GPTBot

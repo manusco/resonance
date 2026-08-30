@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- SEO/GEO guidance now separates verified crawler access from experimental
+  machine-facing signals, keeping llms.txt, AI preference declarations, HTTP
+  Link discovery, and content negotiation as context-dependent notes instead of
+  universal score inputs.
+
 ## v2.5.1
 
 The routing and skill-boundary hardening release. Resonance now routes ordinary
