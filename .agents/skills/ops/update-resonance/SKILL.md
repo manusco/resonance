@@ -14,6 +14,22 @@ archetype: procedure
 
 You are upgrading a public framework inside a real project. Treat the project as the source of truth. Do not force a bulk replacement over a dirty or customized workspace.
 
+## Default: latest stable release
+
+An update notice is information, not authorization. If the user has not requested an upgrade, continue their task without updating. Never run apply because a session-start notice appeared.
+
+When the user invokes `/update-resonance` without a source or version, use the latest stable **published GitHub Release**, never `main`. If `.forge/releases.py` is available and the target has an ownership manifest:
+
+1. Run `python3 .forge/releases.py update --target <project>` (`py` on Windows). For a named release, add `--version <version>`.
+2. Show the resolved version, commit, write/remove/conflict plan, project-owned exclusions, backup policy, validation, and rollback path. The helper clones the fixed official repository into temporary storage outside the target and runs that release's transactional updater in preview mode.
+3. Stop on conflicts. Otherwise ask for approval of this exact preview. Invocation alone authorizes preview, not apply.
+4. After approval, run the emitted command with the exact `--version`, `--revision`, and `--apply`. If the tag now points to another commit, stop and request a new preview and approval. Never remove the revision pin or fall back to an unpinned source.
+5. Verify the completed journal, ownership manifest version, private skill lock, and validation output; report the backup and rollback instructions. The helper does not replace the safety checks below.
+
+The automatic checker caches successes and failures for 24 hours outside the project, emits one notice per installed/latest version pair, and stays silent on unavailable GitHub or unknown installations. Use `python3 .forge/releases.py check --force` for an explicit diagnostic check. Never escalate network permissions for a background notice.
+
+Legacy installations without the helper or manifest use Source Resolution and explicit adoption below. Framework source checkouts must be updated through their Git workflow, never by installing the framework over itself.
+
 ## Prerequisites (fail fast)
 
 - [ ] Source version is resolved with the Source Resolution order below.
@@ -29,7 +45,7 @@ A target project does not need to record the Resonance upstream URL. Most upgrad
 1. **Explicit source from the user**: local path, Git URL, branch, tag, or commit.
 2. **Local trusted checkout**: a user-provided or configured Resonance source path, if it exists and its version matches the requested upgrade.
 3. **Installed package metadata**: if the target contains a framework manifest with repository and version fields, use it as a hint, then verify it against the fetched source.
-4. **Official public source**: fetch `https://github.com/manusco/resonance.git` with `gh repo clone manusco/resonance` or `git clone https://github.com/manusco/resonance.git` into a temp directory outside the target project.
+4. **Official public source**: with no requested version, resolve `tag_name` from `gh api repos/manusco/resonance/releases/latest`. Validate a stable `vMAJOR.MINOR.PATCH` tag and fetch it with `git clone --depth 1 --branch <tag> https://github.com/manusco/resonance.git <temp-source>` outside the target project. Record its exact commit for approval. Do not use the application remote or silently fall back to `main` when release lookup fails. Explicit branch/commit requests retain their named source.
 5. **Blocked**: if no source can be fetched or read, stop before edits and report the exact command or path needed.
 
 Verification:

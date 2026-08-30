@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-update-resonance",
+  "query": "Run /update-resonance. This project has .forge/releases.py and a valid framework-manifest.json for 2.5.2. I did not specify a version.",
+  "files": [],
+  "expected_behavior": [
+    "Runs releases.py update in preview mode to resolve the latest stable published GitHub Release",
+    "Does not use main or the application remote as the release source",
+    "Shows the resolved version and commit and the transactional plan before requesting approval",
+    "Does not apply merely because an update is available"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["releases.py update"]},
+    {"kind": "contains_any", "value": ["approval", "approve"]},
+    {"kind": "contains_any", "value": ["preview", "plan"]}
+  ]
+}

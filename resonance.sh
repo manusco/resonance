@@ -9,6 +9,15 @@ NC='\033[0m'
 echo "🔮 Resonance v2.5.2 - System Check"
 echo "========================================"
 
+# Best-effort discovery, cached outside the project. Never installs anything.
+if [ -f .forge/releases.py ]; then
+    if command -v python3 >/dev/null 2>&1; then
+        python3 .forge/releases.py check --quiet 2>/dev/null || true
+    elif command -v py >/dev/null 2>&1; then
+        py .forge/releases.py check --quiet 2>/dev/null || true
+    fi
+fi
+
 # 1. Check Memory (project brain)
 if [ ! -f .resonance/01_state.md ]; then
     echo ""

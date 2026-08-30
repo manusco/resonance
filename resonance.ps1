@@ -3,6 +3,15 @@
 Write-Host "🔮 Resonance v2.5.2 - System Check"
 Write-Host "========================================"
 
+# Best-effort discovery, cached outside the project. Never installs anything.
+if (Test-Path ".forge/releases.py") {
+    if (Get-Command py -ErrorAction SilentlyContinue) {
+        py .forge/releases.py check --quiet 2>$null
+    } elseif (Get-Command python3 -ErrorAction SilentlyContinue) {
+        python3 .forge/releases.py check --quiet 2>$null
+    }
+}
+
 # 1. Check Memory (project brain)
 if (-not (Test-Path ".resonance\01_state.md")) {
     Write-Host ""

@@ -192,7 +192,32 @@ The `.resonance/` folder is what makes the agent persistent across sessions. Its
 
 ## Upgrading
 
-Use the source checkout's transactional updater. It removes stale framework-owned files, but it never overwrites modified or project-owned files without review. Your project memory remains outside the managed write set.
+Type `/update-resonance` in your AI chat. It resolves the latest stable GitHub Release, previews the changes, and asks for approval before applying them. A named release is supported too: `/update-resonance 2.5.2`.
+
+Installed projects check for updates at session start through the `AGENTS.md` instructions, and when running `resonance.sh` or `resonance.ps1`. If a newer version is available, you see:
+
+```text
+Resonance <latest> is available. You have <installed>. Run /update-resonance to preview the upgrade.
+```
+
+Checks are best-effort, require Python and permitted network access, and never install anything. They cache successes and failures for 24 hours per project outside your repository, with one notice per installed/latest version pair. Missing tools, unknown installed versions, and offline GitHub do not interrupt work. Set `RESONANCE_NO_UPDATE_CHECK=1` to disable discovery. Hosts must follow the session instructions for chat notices; there is no background service or native app notification.
+
+For a direct terminal workflow:
+
+```bash
+python3 .forge/releases.py check --force
+python3 .forge/releases.py update
+```
+
+Use `py` instead of `python3` on Windows. The second command previews the latest release and prints the exact apply command. Review the plan, then run that command: its version and commit pin prevent a moved release tag from substituting a different update. `--version <version>` previews a specific stable release. Explicit failures are reported; unavailable release discovery never falls back to `main`.
+
+The helper uses only Python's standard library and Git. Cache files live under `~/Library/Caches/resonance` on macOS, `%LOCALAPPDATA%/resonance` on Windows, and `$XDG_CACHE_HOME/resonance` (or `~/.cache/resonance`) on Linux. No project content or credentials are sent to the release API.
+
+Updates retain the source checkout's transactional updater. It removes stale framework-owned files, but never overwrites modified or project-owned files without review. Your project memory remains outside the managed write set. Local edits to managed files, including customized instruction bridges, can block an upgrade and require review.
+
+### Older installations and source checkouts
+
+Existing installations need one normal upgrade to a release containing `.forge/releases.py` and the session instruction before automatic notices work. If the helper is absent, use the existing source-checkout workflow:
 
 ```bash
 gh repo clone manusco/resonance ~/resonance-source -- --branch <version-tag>
@@ -200,7 +225,9 @@ python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target
 python3 ~/resonance-source/.forge/update.py --source ~/resonance-source --target . --version <version> --apply
 ```
 
-The first command previews the transaction. Installations created before ownership manifests must run `--adopt` from a clean checkout of their installed version first. Adoption accepts only byte-identical released files. Recovery uses `update.py --rollback <backup-directory>`.
+The first Python command previews the transaction. Installations created before ownership manifests must run `--adopt` from a clean checkout of their installed version first. Adoption accepts only byte-identical released files. Recovery uses `update.py --rollback <backup-directory>`.
+
+If you work directly in the Resonance source repository, the checker reads its own package version. Update that checkout through Git with the usual local-change review; the installed-project helper deliberately refuses a self-install. No release PR is merged and no version is published by these commands.
 
 Verify with `/system-health`.
 
