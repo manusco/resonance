@@ -1,5 +1,40 @@
 # Changelog
 
+## v2.5.2
+
+The repository-ownership and execution-contract release. Resonance now preserves
+multiplayer project skills through framework upgrades, exposes deterministic job
+composition, and tightens evidence handling across promotion, SEO, TypeScript,
+implementation choice, explanation, and frontend review.
+
+### Added
+- **Multiplayer project-skill locks.** Private team skills remain committed under
+  `.agents/skills`; `.forge/project_skills.py` records their content without
+  claiming framework files, and the updater rolls back if their lock changes.
+- **Generated job composition.** Skill declarations compile into validated
+  job-level contracts with one lead, explicit participants, artifact access, and
+  separated semantic and presentation authority.
+- **OpenClaw and Hermes host contracts.** OpenClaw uses native repository skill
+  discovery. Hermes remains an explicit compatibility target until global or
+  plugin installation proves repository-lock fidelity.
+- **Focused skill evals.** New cases cover visual explanation form, native
+  implementation choice, TypeScript evidence preservation, bounded GSC data,
+  experimental GEO signals, and frontend attention paths.
+
+### Changed
+- **Promotion evidence fails closed.** Runtime schema validation, candidate
+  identity, evidence kinds, required gates, duplicate detection, and gate states
+  must all pass before promotion.
+- **Framework updates preserve project ownership.** Exact framework files remain
+  vendored and hash-owned; repository-specific skills and their lock are never
+  silently regenerated or overwritten.
+- **SEO conclusions require bounded evidence.** Search Console property identity,
+  freshness, filters, truncation, and authority are recorded before diagnosis,
+  while emerging machine signals remain contextual rather than universal scores.
+- **Implementation and review guidance is more precise.** Build stops at the
+  first sufficient existing capability, TypeScript review distinguishes evidence
+  erasure from justified assertions, and frontend review checks attention order.
+
 ## v2.5.1
 
 The routing and skill-boundary hardening release. Resonance now routes ordinary
