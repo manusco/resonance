@@ -46,6 +46,12 @@ A STOP directive is a stop. Do not override it. Report what was done and what bl
 
 Retrying the same failing action is how loops thrash. When a slice fails its bound, the plan for that slice was probably wrong, not just unlucky. Re-plan the one slice (`/plan` scoped to it) with what you learned from the failure. If the re-planned slice also fails, the problem is above your pay grade for autonomy: stop and hand it back with the real output. This is plan-and-execute with a re-planning step, which is the pattern that beats naive retry loops on long tasks.
 
+## Verified cursor, not admin status
+
+In staged work, the cursor moves on implemented behavior and executed checks, not on progress metadata. Missing or stale status rows, receipts, dashboards, presence markers, or administrative hashes do not prove output is wrong, and they do not justify replaying completed slices outside the changed dependency cone.
+
+Replay a slice only when the input meaning, target revision, product contract, output shape, or observed behavior changed. If an orchestrator refuses an authorized path only because its own metadata is stale, run the smallest valid stage manually, validate the output, record the evidence needed for the current claim, and remove the admin-only gate from the plan. Do not weaken product integrity checks, pinned input identity, benchmarks, or execution receipts that carry command, input, result, and expected condition.
+
 ## Plan-and-execute, not improvise
 
 Frame the whole goal into slices up front (via `/grill` and `/plan`), then execute slice by slice. Do not discover the plan by wandering. A slice is small enough to build and verify in one short cycle and produces something independently checkable. If a slice cannot be verified on its own, it is too big or too vague; split it.

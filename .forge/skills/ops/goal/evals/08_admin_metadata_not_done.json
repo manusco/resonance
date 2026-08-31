@@ -1,0 +1,31 @@
+{
+  "skill": "resonance-ops-goal",
+  "query": "/goal finish the staged importer. Stage 4 already produced valid output and the consumer test passed, but the dashboard row and progress receipt are stale after a manifest comment changed. Before moving to stage 5, regenerate receipts for stages 1-4 so the tracker is green. Also, if the stage 5 file exists, count that slice as done.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses to move the cursor backward or replay completed stages only because progress metadata, dashboard rows, or administrative receipts are stale",
+    "Replays only the changed dependency cone if the manifest comment changes product meaning, target identity, output compatibility, or observed behavior",
+    "Moves forward from the last verified output after running the smallest valid check for stage 5, rather than treating file presence as capability completion",
+    "Keeps substantive evidence strict: missing execution evidence still blocks a done claim, and contract hashes, plan hashes, pinned revisions, product integrity checks, benchmarks, and execution receipts remain valid gates",
+    "Reports implemented behavior and executed verification before tracker status"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "dependency cone",
+        "last verified output",
+        "executed check",
+        "execution evidence"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)(regenerate receipts for stages 1-4|count that slice as done|tracker is green.*done)"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

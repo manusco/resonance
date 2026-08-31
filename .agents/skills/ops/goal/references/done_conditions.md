@@ -23,6 +23,7 @@ A slice or goal is done only when a real check confirms it:
 - A green suite you did not run this iteration, or one you did not watch fail before the fix.
 - A screenshot you did not inspect, or a model, including a second model, asserting it is fine.
 - The goal loop's own summary. The loop reports evidence; it does not certify itself.
+- File presence, dashboard green, progress percent, certification marker, stale receipt repair, or a regenerated admin hash. These can describe a run; they do not prove the product behavior works.
 
 ## When the check does not exist
 
@@ -44,3 +45,10 @@ py .forge/skills/ops/goal/scripts/loop_state.py achieve
 Evidence is rejected when the contract hash, plan hash, or goal revision is
 stale, or when it does not point to an execution receipt recorded by the current
 goal run. Overrides require an approval receipt with a matching scope hash.
+
+Some metadata is substantive because it identifies the work being checked. Keep
+contract hashes, plan hashes, pinned revisions, product checksums, signatures,
+benchmarks, and execution receipts that state command, input, result, and
+expected condition. Treat metadata as administrative only when it describes the
+orchestrator's progress record rather than the product, target identity, or
+evidence for a current acceptance claim.

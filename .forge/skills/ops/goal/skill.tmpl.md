@@ -90,6 +90,7 @@ Copy this checklist and tick items as you go.
    - **Recall** relevant memory and settled decisions (the loaded `02_memory.md` index carries both; `py .forge/recall.py "<topic>"` for deeper slices) so you do not re-solve or re-litigate.
    - **Build** the slice (`/build`).
    - **Verify with grounded signals only**: `/test` runs the real tests (`.forge/exec/run_checks.py`) and a real browser (`.forge/exec/browser_check.mjs`); run the validators; `/audit` the diff. The done-signal is executed, never "this should work". See done_conditions.
+   - **Move the cursor on real evidence only**: if staged work is blocked by stale progress metadata, replay only the changed dependency cone, run the smallest valid check manually when authorized, and continue from the last verified output. Do not roll back completed slices for administrative-only drift.
    - **Check the bound:** `loop_state.py check <slice> advanced|progress|failed`. Obey the directive: CONTINUE, or STOP_SLICE / STOP_STUCK / STOP_CAP (then re-plan the slice once, or stop and escalate). Never override a STOP.
    - **Attach evidence:** when a criterion is proven, write an `EvidenceReceipt` and run `loop_state.py evidence <receipt>`. Stale contract or plan hashes are rejected. Overrides require an approval receipt.
    - **Record** any real decision as a one-line entry under `## Decisions` in `.resonance/02_memory.md`.

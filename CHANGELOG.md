@@ -19,7 +19,8 @@ implementation choice, explanation, and frontend review.
   plugin installation proves repository-lock fidelity.
 - **Focused skill evals.** New cases cover visual explanation form, native
   implementation choice, TypeScript evidence preservation, bounded GSC data,
-  experimental GEO signals, and frontend attention paths.
+  experimental GEO signals, frontend attention paths, and goal-loop cursor
+  discipline.
 
 ### Changed
 - **Promotion evidence fails closed.** Runtime schema validation, candidate
@@ -34,6 +35,9 @@ implementation choice, explanation, and frontend review.
 - **Implementation and review guidance is more precise.** Build stops at the
   first sufficient existing capability, TypeScript review distinguishes evidence
   erasure from justified assertions, and frontend review checks attention order.
+- **Goal loops reject administrative rewinds.** Stale progress metadata no
+  longer justifies replaying completed slices, while product identity,
+  integrity checks, benchmarks, and execution receipts stay substantive.
 
 ## v2.5.1
 
