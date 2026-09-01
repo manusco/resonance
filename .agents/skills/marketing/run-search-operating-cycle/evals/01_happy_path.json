@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-marketing-run-search-operating-cycle",
+  "query": "Run our monthly search operating cycle for two public sites. Credentials are already available by reference. Keep the report private.",
+  "expected_behavior": [
+    "creates and validates the run contract before interpretation",
+    "covers every registered property",
+    "invokes the SEO specialist for diagnosis",
+    "stores evidence and the report outside the repository by default",
+    "uses canonical audit categories and P0-P3 severities"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["private", "P0", "P3", "SEO"]},
+    {"kind": "not_contains_any", "value": ["cron", "scheduled the job"]}
+  ]
+}
