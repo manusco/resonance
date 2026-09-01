@@ -79,12 +79,40 @@ class CommandCatalogTests(unittest.TestCase):
             consumer = Path(directory)
             (consumer / "AGENTS.md").write_bytes((ROOT / "AGENTS.md").read_bytes())
             with mock.patch.object(forge, "REPO", consumer):
-                self.assertEqual(forge.build_command_docs(True), 0)
-                self.assertEqual(forge.build_command_docs(False), 0)
+                self.assertEqual(forge.build_command_docs(True, consumer=True), 0)
+                self.assertEqual(forge.build_command_docs(False, consumer=True), 0)
             self.assertFalse((consumer / "README.md").exists())
             self.assertEqual(["AGENTS.md"], [path.name for path in consumer.iterdir()])
 
-    def test_command_docs_require_framework_owned_agents_bridge(self):
+    def test_command_docs_preserve_unmarked_project_readme(self):
+        with tempfile.TemporaryDirectory() as directory:
+            consumer = Path(directory)
+            readme = consumer / "README.md"
+            readme.write_text("# Product\n\nProject documentation.\n", encoding="utf-8")
+            (consumer / "AGENTS.md").write_bytes((ROOT / "AGENTS.md").read_bytes())
+            before = readme.read_bytes()
+            with mock.patch.object(forge, "REPO", consumer):
+                self.assertEqual(forge.build_command_docs(True, consumer=True), 0)
+                self.assertEqual(forge.build_command_docs(False, consumer=True), 0)
+            self.assertEqual(before, readme.read_bytes())
+
+    def test_command_docs_preserve_partially_marked_project_readme(self):
+        with tempfile.TemporaryDirectory() as directory:
+            consumer = Path(directory)
+            readme = consumer / "README.md"
+            readme.write_text(
+                "# Product\n\n<!-- RESONANCE-GENERATED:SKILL_COUNT_BADGE:START -->\nold\n"
+                "<!-- RESONANCE-GENERATED:SKILL_COUNT_BADGE:END -->\n",
+                encoding="utf-8",
+            )
+            (consumer / "AGENTS.md").write_bytes((ROOT / "AGENTS.md").read_bytes())
+            before = readme.read_bytes()
+            with mock.patch.object(forge, "REPO", consumer):
+                self.assertEqual(forge.build_command_docs(True, consumer=True), 0)
+                self.assertEqual(forge.build_command_docs(False, consumer=True), 0)
+            self.assertEqual(before, readme.read_bytes())
+
+    def test_source_command_docs_require_framework_agents(self):
         with tempfile.TemporaryDirectory() as directory:
             consumer = Path(directory)
             with mock.patch.object(forge, "REPO", consumer):

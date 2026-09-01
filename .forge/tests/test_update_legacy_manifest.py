@@ -17,8 +17,16 @@ class ProjectOwnedDocsUpgradeTests(unittest.TestCase):
             target.mkdir()
             for relative in (".forge", ".agents", ".claude", ".cursor", ".opencode"):
                 shutil.copytree(ROOT / relative, target / relative)
-            for relative in ("AGENTS.md", "CLAUDE.md"):
-                shutil.copy2(ROOT / relative, target / relative)
+            (target / "AGENTS.md").write_text("# Consumer instructions\n", encoding="utf-8")
+            (target / "CLAUDE.md").write_text(
+                "# Consumer Claude instructions\n\nthe Forge regenerates it\n\nLocal rules.\n",
+                encoding="utf-8",
+            )
+            agents_bytes = (target / "AGENTS.md").read_bytes()
+            claude_bytes = (target / "CLAUDE.md").read_bytes()
+            project_readme = target / "README.md"
+            project_readme.write_text("# Consumer project\n", encoding="utf-8")
+            readme_bytes = project_readme.read_bytes()
 
             manifest = json.loads((ROOT / "docs/skill-manifest.json").read_text(encoding="utf-8"))
             stale = [entry for entry in manifest if entry["id"] != "resonance-strategy-blueprint"]
@@ -34,7 +42,10 @@ class ProjectOwnedDocsUpgradeTests(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            command = [sys.executable, str(target / ".forge/forge.py"), "build", "--all", "--host", "all", "--dry-run"]
+            command = [
+                sys.executable, str(target / ".forge/forge.py"), "build", "--all",
+                "--host", "all", "--dry-run", "--consumer",
+            ]
             for state in ("stale", "missing"):
                 with self.subTest(project_manifest=state):
                     result = subprocess.run(
@@ -43,7 +54,9 @@ class ProjectOwnedDocsUpgradeTests(unittest.TestCase):
                     )
                     self.assertEqual(0, result.returncode, result.stdout + result.stderr)
                     self.assertNotIn("docs/skill-manifest.json", result.stdout + result.stderr)
-                    self.assertFalse((target / "README.md").exists())
+                    self.assertEqual(readme_bytes, project_readme.read_bytes())
+                    self.assertEqual(agents_bytes, (target / "AGENTS.md").read_bytes())
+                    self.assertEqual(claude_bytes, (target / "CLAUDE.md").read_bytes())
                 if state == "stale":
                     self.assertEqual(stale_bytes, (target / "docs/skill-manifest.json").read_bytes())
                     (target / "docs/skill-manifest.json").unlink()
