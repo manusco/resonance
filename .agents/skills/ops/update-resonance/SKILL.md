@@ -69,7 +69,7 @@ Never overwrite these as part of a framework upgrade:
 - `.resonance/project-skills.lock.json`, the committed content lock for those project skills
 - project-specific `AGENTS*.md`, `CLAUDE*.md`, or host settings unless the diff proves they are generated framework bridges with no local edits
 
-Project-owned documentation is never runtime authority for framework validation. Forge derives command targets and runtime skill metadata from framework-owned skill templates. Generated files such as `docs/skill-manifest.json` may be stale in a consumer without blocking or changing an upgrade.
+Project-owned documentation is never runtime authority for framework validation. Forge derives command targets and runtime skill metadata from framework-owned skill templates. Project docs such as a root `README.md` may be absent, and generated files such as `docs/skill-manifest.json` may be stale or absent, without blocking an upgrade. Validation skips missing project-doc targets and never creates them.
 
 Legacy exception: if `.resonance/learnings.jsonl` exists and the user approves the migration, append its lessons into `.resonance/02_memory.md` and remove the legacy file only after the append is verified.
 

@@ -1,8 +1,10 @@
 import importlib.util
 import copy
 import sys
+import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[2]
 spec = importlib.util.spec_from_file_location("forge_catalog", ROOT / ".forge" / "forge.py")
@@ -71,6 +73,23 @@ class CommandCatalogTests(unittest.TestCase):
         self.assertEqual(forge.build_command_docs(False), 0)
         after = {name: (ROOT / name).read_bytes() for name in forge.DOC_SECTIONS}
         self.assertEqual(before, after)
+
+    def test_command_docs_skip_absent_project_readme_without_creating_it(self):
+        with tempfile.TemporaryDirectory() as directory:
+            consumer = Path(directory)
+            (consumer / "AGENTS.md").write_bytes((ROOT / "AGENTS.md").read_bytes())
+            with mock.patch.object(forge, "REPO", consumer):
+                self.assertEqual(forge.build_command_docs(True), 0)
+                self.assertEqual(forge.build_command_docs(False), 0)
+            self.assertFalse((consumer / "README.md").exists())
+            self.assertEqual(["AGENTS.md"], [path.name for path in consumer.iterdir()])
+
+    def test_command_docs_require_framework_owned_agents_bridge(self):
+        with tempfile.TemporaryDirectory() as directory:
+            consumer = Path(directory)
+            with mock.patch.object(forge, "REPO", consumer):
+                with self.assertRaises(FileNotFoundError):
+                    forge.build_command_docs(True)
 
 
 if __name__ == "__main__":

@@ -30,7 +30,9 @@ Framework validation never reads project-owned generated documentation as
 runtime authority. Command targets and skill metadata come from the
 framework-owned templates installed with `.forge`. A consumer may keep an older
 `docs/skill-manifest.json`; the updater neither changes it nor uses it to decide
-whether the framework is valid.
+whether the framework is valid. Project documentation may also be absent.
+Required validation skips missing project-doc targets such as a root `README.md`
+and never creates them.
 
 ## Validation and transaction
 

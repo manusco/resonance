@@ -1,4 +1,4 @@
-# resonance.ps1 - System check for Resonance v2.5.31 (Windows)
+# resonance.ps1 - System check for Resonance v2.5.32 (Windows)
 
 # Update notices are opt-in. The check never applies an update and never blocks startup.
 try {
@@ -7,7 +7,7 @@ try {
     # Startup must not fail when the network or Python launcher is unavailable.
 }
 
-Write-Host "🔮 Resonance v2.5.31 - System Check"
+Write-Host "🔮 Resonance v2.5.32 - System Check"
 Write-Host "========================================"
 
 # 1. Check Memory (project brain)

@@ -187,6 +187,7 @@ DOC_SECTIONS = {
     ),
     "AGENTS.md": ("COMMAND_CATALOG", "AUTOMATIC_SKILLS"),
 }
+OPTIONAL_DOC_TARGETS = {"README.md"}
 
 
 def section_marker(name: str, edge: str) -> str:
@@ -333,6 +334,8 @@ def build_command_docs(dry_run: bool) -> int:
     rc = 0
     for relative, names in DOC_SECTIONS.items():
         path = REPO / relative
+        if relative in OPTIONAL_DOC_TARGETS and not path.is_file():
+            continue
         # Decode bytes directly so Python does not normalize line endings. The
         # replacement is bounded; every byte outside the markers stays intact.
         current = path.read_bytes().decode("utf-8")
