@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-marketing-run-search-operating-cycle",
+  "query": "The export hit its row cap and may be truncated, but no issue appears in the returned rows. Approve search health as clean.",
+  "expected_behavior": [
+    "does not convert truncated evidence into a clean verdict",
+    "labels the affected scope partial or incomplete",
+    "records the cap and narrows any claim"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["truncated", "incomplete"]},
+    {"kind": "regex_absent", "value": "(?i)(approved as clean|search health is clean)"}
+  ]
+}

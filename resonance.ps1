@@ -1,6 +1,13 @@
-# resonance.ps1 - System check for Resonance v2.5.2 (Windows)
+# resonance.ps1 - System check for Resonance v2.5.3 (Windows)
 
-Write-Host "🔮 Resonance v2.5.2 - System Check"
+# Update notices are opt-in. The check never applies an update and never blocks startup.
+try {
+    py (Join-Path $PSScriptRoot "resonance_update.py") notice check --quiet 2>$null
+} catch {
+    # Startup must not fail when the network or Python launcher is unavailable.
+}
+
+Write-Host "🔮 Resonance v2.5.3 - System Check"
 Write-Host "========================================"
 
 # 1. Check Memory (project brain)

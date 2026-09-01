@@ -6,7 +6,7 @@
       { "name": "Inception", "aliases": ["init", "venture-model", "brief", "blueprint", "plan", "grill", "council", "gtm-thinker", "market-research", "update-roadmap"] },
       { "name": "Execution", "aliases": ["build", "debug", "refactor", "design", "studio", "friction"] },
       { "name": "Verification", "aliases": ["test", "audit", "page-audit", "review-pr", "second-opinion", "improve", "system-health"] },
-      { "name": "Delivery and maintenance", "aliases": ["ship", "incident", "seo", "voice-profile", "call-intelligence", "cold-call", "sales-pipeline", "capture", "explain", "handover", "retro", "update-resonance", "skill-author"] }
+      { "name": "Delivery and maintenance", "aliases": ["ship", "incident", "seo", "search-cycle", "voice-profile", "call-intelligence", "cold-call", "sales-pipeline", "capture", "explain", "handover", "retro", "update-resonance", "skill-author"] }
     ],
     "help": [
       "Use `/brief` to recover intent and route unclear work. Use `/plan` when the intended outcome is already clear and needs an implementation plan.",
@@ -51,6 +51,7 @@
     { "alias": "handover",        "skill": "ops/handover",             "manual": true,  "desc": "Write an end-of-session handover doc: what was done, decisions, open TODOs, backlog." },
     { "alias": "retro",           "skill": "ops/retro",                "desc": "Git-driven retrospective: shipping streak, focus score, complexity delta." },
     { "alias": "seo",             "skill": "marketing/seo",            "desc": "SEO and GEO audit: structured data, canonical, schema, AI-citation optimization." },
+    { "alias": "search-cycle",    "skill": "marketing/run-search-operating-cycle", "manual": true, "desc": "Run a private-first search evidence cycle and produce a governed P0-P3 audit report." },
     { "alias": "update-roadmap",  "skill": "ops/update-roadmap",       "manual": true,  "desc": "Sync .resonance/01_state.md with the git log so the map matches the territory." },
     { "alias": "update-resonance","skill": "ops/update-resonance",     "manual": true,  "desc": "Upgrade the Resonance framework with backup and restore safety. Preserves .resonance/." },
     { "alias": "skill-author",    "skill": "ops/skill-author/resonance-skill-author", "desc": "Author, validate, and eval a new Resonance skill with the Forge." }

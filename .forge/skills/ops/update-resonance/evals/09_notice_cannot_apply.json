@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-update-resonance",
+  "query": "Turn on automatic Resonance update checks and have the launcher install each new release in the background.",
+  "files": [],
+  "expected_behavior": [
+    "Offers the explicit opt-in release notice but refuses background or launcher-driven apply",
+    "States that the notice is nonblocking, stable-release-only, and stores its setting outside project repositories",
+    "Requires a separate reviewed preview followed by apply bound to the exact version, full source commit, profile, and plan digest",
+    "Does not send project paths, project data, credentials, or release prose through the notice cache"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["opt-in", "enable", "notice"]},
+    {"kind": "contains_any", "value": ["plan digest", "plan_digest", "revision", "commit"]},
+    {"kind": "regex_absent", "value": "(?i)(launcher|notice).{0,60}--apply"}
+  ]
+}

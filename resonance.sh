@@ -1,12 +1,17 @@
 #!/bin/bash
-# resonance.sh - System check for Resonance v2.5.2
+# resonance.sh - System check for Resonance v2.5.3
+
+# Update notices are opt-in. The check never applies an update and never blocks startup.
+if command -v python3 >/dev/null 2>&1; then
+    python3 "$(dirname "$0")/resonance_update.py" notice check --quiet 2>/dev/null || true
+fi
 
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo "🔮 Resonance v2.5.2 - System Check"
+echo "🔮 Resonance v2.5.3 - System Check"
 echo "========================================"
 
 # 1. Check Memory (project brain)

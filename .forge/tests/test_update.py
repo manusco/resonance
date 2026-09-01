@@ -43,6 +43,122 @@ class UpdateTests(unittest.TestCase):
         self.assertIn(".forge/tool.py", result["writes"])
         self.assertFalse((target / ".forge").exists())
 
+    def test_compiled_profile_excludes_source_tooling(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        (source / ".agents" / "skills" / "demo").mkdir(parents=True)
+        (source / ".agents" / "skills" / "demo" / "SKILL.md").write_text("demo", encoding="utf-8")
+        self.commit(source)
+        work = update.plan(source, target, "compiled")
+        self.assertEqual(work["profile"], "compiled")
+        self.assertIn(".agents/skills/demo/SKILL.md", work["writes"])
+        self.assertNotIn(".forge/forge.py", work["writes"])
+        self.assertNotIn("AGENTS.md", work["writes"])
+
+    def test_legacy_compiled_looking_target_requires_profile(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        (target / ".agents" / "skills").mkdir(parents=True)
+        with self.assertRaisesRegex(ValueError, "profile is required"):
+            update.plan(source, target)
+
+    def test_legacy_manifest_keeps_profile_unknown_until_explicit_choice(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        (source / ".agents" / "skills" / "demo").mkdir(parents=True)
+        (source / ".agents" / "skills" / "demo" / "SKILL.md").write_text("demo", encoding="utf-8")
+        self.commit(source)
+        (target / ".agents" / "skills").mkdir(parents=True)
+        manifest = target / update.MANIFEST
+        manifest.parent.mkdir(parents=True)
+        manifest.write_text(json.dumps({"schema": 1, "version": "2.5.1", "files": {}}), encoding="utf-8")
+        self.assertNotIn("profile", update.load_manifest(target))
+        with self.assertRaisesRegex(ValueError, "profile is required"):
+            update.plan(source, target)
+        self.assertEqual("compiled", update.plan(source, target, "compiled")["profile"])
+
+    def test_recorded_profile_migration_is_unsupported(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        manifest = target / update.MANIFEST
+        manifest.parent.mkdir(parents=True)
+        for recorded, requested in (("source", "compiled"), ("compiled", "source")):
+            manifest.write_text(
+                json.dumps({"schema": 1, "version": "2.5.2", "profile": recorded, "files": {}}),
+                encoding="utf-8",
+            )
+            with self.subTest(recorded=recorded, requested=requested):
+                with self.assertRaisesRegex(ValueError, "profile migration is unsupported"):
+                    update.plan(source, target, requested)
+
+    def test_compiled_apply_validates_from_pinned_source(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        (source / ".agents" / "skills" / "demo").mkdir(parents=True)
+        (source / ".agents" / "skills" / "demo" / "SKILL.md").write_text("demo", encoding="utf-8")
+        self.commit(source)
+        update.apply(source, target, "9.9.9", "compiled")
+        manifest = json.loads((target / update.MANIFEST).read_text(encoding="utf-8"))
+        self.assertEqual(manifest["profile"], "compiled")
+        self.assertTrue((target / ".agents" / "skills" / "demo" / "SKILL.md").exists())
+        self.assertFalse((target / ".forge").exists())
+
+    def test_compiled_apply_checks_private_lock_in_target(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        generated = source / ".agents" / "skills" / "demo" / "SKILL.md"
+        generated.parent.mkdir(parents=True)
+        generated.write_text("demo v1", encoding="utf-8")
+        self.commit(source)
+        update.apply(source, target, "9.9.9", "compiled")
+        private = target / ".agents" / "skills" / "company" / "private" / "SKILL.md"
+        private.parent.mkdir(parents=True)
+        private.write_text("private", encoding="utf-8")
+        subprocess.run(
+            [sys.executable, str(source / ".forge" / "project_skills.py"), "--root", str(target)],
+            check=True,
+            capture_output=True,
+        )
+        generated.write_text("demo v2", encoding="utf-8")
+        self.commit(source)
+        update.apply(source, target, "9.9.9", "compiled")
+        self.assertEqual("private", private.read_text(encoding="utf-8"))
+
+    def test_compiled_apply_rejects_stale_private_lock_in_target(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        generated = source / ".agents" / "skills" / "demo" / "SKILL.md"
+        generated.parent.mkdir(parents=True)
+        generated.write_text("demo v1", encoding="utf-8")
+        self.commit(source)
+        update.apply(source, target, "9.9.9", "compiled")
+        private = target / ".agents" / "skills" / "company" / "private" / "SKILL.md"
+        private.parent.mkdir(parents=True)
+        private.write_text("private", encoding="utf-8")
+        lock = target / ".resonance" / "project-skills.lock.json"
+        lock.write_text(json.dumps({
+            "schema_version": 1,
+            "skills": [{"id": "company/private", "files": {
+                ".agents/skills/company/private/SKILL.md": "0" * 64,
+            }}],
+        }, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        generated.write_text("demo v2", encoding="utf-8")
+        self.commit(source)
+        with self.assertRaisesRegex(RuntimeError, "project skill verification failed"):
+            update.apply(source, target, "9.9.9", "compiled")
+        self.assertEqual("demo v1", (target / ".agents" / "skills" / "demo" / "SKILL.md").read_text(encoding="utf-8"))
+
+    def test_adopt_requires_profile_for_target_without_source_tree(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        (source / ".agents" / "skills" / "demo").mkdir(parents=True)
+        (source / ".agents" / "skills" / "demo" / "SKILL.md").write_text("demo", encoding="utf-8")
+        self.commit(source)
+        (target / ".agents" / "skills" / "demo").mkdir(parents=True)
+        (target / ".agents" / "skills" / "demo" / "SKILL.md").write_text("demo", encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "profile is required"):
+            update.adopt(source, target)
+
     def test_apply_records_ownership_and_blocks_user_change(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
@@ -70,7 +186,7 @@ class UpdateTests(unittest.TestCase):
         (target / ".forge").mkdir()
         existing = target / ".forge" / "tool.py"
         existing.write_text("raise SystemExit(0)\n", encoding="utf-8")
-        update.adopt(source, target)
+        update.adopt(source, target, "source")
         self.assertEqual(existing.read_text(encoding="utf-8"), "raise SystemExit(0)\n")
         self.assertEqual(update.plan(source, target)["conflicts"], [])
 
@@ -105,7 +221,7 @@ class UpdateTests(unittest.TestCase):
         (target / ".agents" / "skills" / "custom").mkdir(parents=True)
         (target / ".agents" / "skills" / "custom" / "SKILL.md").write_text("custom", encoding="utf-8")
         (target / "AGENTS.md").write_text("project", encoding="utf-8")
-        update.adopt(source, target)
+        update.adopt(source, target, "source")
         owned = update.load_manifest(target)["files"]
         self.assertIn(".agents/skills/known/SKILL.md", owned)
         self.assertNotIn(".agents/skills/custom/SKILL.md", owned)
@@ -128,7 +244,7 @@ class UpdateTests(unittest.TestCase):
             }],
         }, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         before_lock = lock.read_text(encoding="utf-8")
-        update.apply(source, target, "9.9.9")
+        update.apply(source, target, "9.9.9", "source")
         self.assertEqual(
             "private multiplayer skill",
             (private / "SKILL.md").read_text(encoding="utf-8"),
@@ -151,7 +267,7 @@ class UpdateTests(unittest.TestCase):
             }],
         }, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         with self.assertRaisesRegex(RuntimeError, "project skill verification failed"):
-            update.apply(source, target, "9.9.9")
+            update.apply(source, target, "9.9.9", "source")
         self.assertFalse((target / ".forge" / "tool.py").exists())
 
     def test_adopt_does_not_claim_customized_known_file(self):

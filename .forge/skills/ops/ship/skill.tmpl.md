@@ -29,13 +29,14 @@ Copy this checklist and tick items as you go.
    - **Build**: Run the project's build command.
    - **Perf**: Check bundle sizes (ensure no massive chunks).
    - **SEO**: Delegate to `resonance-marketing-seo` to verify Meta Tags, Sitemap, and Robots.txt.
-2. **Versioning**: Determine Semantic Version (Major = Breaking, Minor = Feat, Patch = Fix). Update `package.json`.
-3. **Changelog & Docs Sync**: Use `git log --oneline [last_tag]..HEAD` and update `CHANGELOG.md` with human-readable notes. Then run `py .forge/doc_drift.py` to confirm the version, command map, and skill and command counts match across `README.md`, `AGENTS.md`, and the manifests. Fix any drift before committing.
-4. **Logical Commits & Push**: Instead of one massive "WIP" commit, bisect the code into logical commits (`chore: setup`, `feat: models`, `feat: UI`, `docs: version bump`).
-5. **Tag & Release**: `git tag vX.Y.Z`, then `git push origin main --tags`. Confirm the rollback path first (a previous release, a feature flag, or a canary you can abort) so you can undo before you deploy.
-6. **Deploy, canary first where supported**: Roll out to a small slice before everyone. Watch the health window before promoting to full traffic. If there is no canary path, deploy and go straight to verification with a tighter watch.
-7. **Verify the deploy (do not skip)**: After deploy, prove production is healthy. Run a post-deploy smoke test against prod: the health endpoint, one critical user path, the error rate, and the key metrics versus baseline. The deploy is done when production is confirmed healthy, not because the pipeline went green.
-8. **Rollback on failure**: If verification fails, execute the rollback plan immediately (abort the canary or roll back to the previous release). Restore production first, then investigate. See Canary and Rollback.
+2. **Blueprint Release Gate**: When `.resonance/04_systems.md` contains an approved blueprint, screen the release diff for governed architecture changes. Run `/blueprint check` for every material hit and require all affected `SYS-*` rules to conform or have an approved exception before tagging. Record a one-sentence justified skip for local releases. Do not invent a baseline. → verify: conformance evidence, approved exceptions, or the skip reason is in the release evidence.
+3. **Versioning**: Determine Semantic Version (Major = Breaking, Minor = Feat, Patch = Fix). Update `package.json`.
+4. **Changelog & Docs Sync**: Use `git log --oneline [last_tag]..HEAD` and update `CHANGELOG.md` with human-readable notes. Then run `py .forge/doc_drift.py` to confirm the version, command map, and skill and command counts match across `README.md`, `AGENTS.md`, and the manifests. Fix any drift before committing.
+5. **Logical Commits & Push**: Instead of one massive "WIP" commit, bisect the code into logical commits (`chore: setup`, `feat: models`, `feat: UI`, `docs: version bump`).
+6. **Tag & Release**: `git tag vX.Y.Z`, then `git push origin main --tags`. Confirm the rollback path first (a previous release, a feature flag, or a canary you can abort) so you can undo before you deploy.
+7. **Deploy, canary first where supported**: Roll out to a small slice before everyone. Watch the health window before promoting to full traffic. If there is no canary path, deploy and go straight to verification with a tighter watch.
+8. **Verify the deploy (do not skip)**: After deploy, prove production is healthy. Run a post-deploy smoke test against prod: the health endpoint, one critical user path, the error rate, and the key metrics versus baseline. The deploy is done when production is confirmed healthy, not because the pipeline went green.
+9. **Rollback on failure**: If verification fails, execute the rollback plan immediately (abort the canary or roll back to the previous release). Restore production first, then investigate. See Canary and Rollback.
 
 ## Recovery
 

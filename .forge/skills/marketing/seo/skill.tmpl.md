@@ -104,14 +104,14 @@ Measure content quality from the page, not from leaked field names. Check whethe
 
 A page can rank at position 1 and never be cited by an AI answer engine. GEO readiness is a separate audit:
 
-- [ ] Does the page answer the target question in the first 50 words?
-- [ ] Is there a 134-167 word self-contained answer block?
+- [ ] Does the page answer the target question early, in a self-contained passage that remains clear when extracted?
+- [ ] Are factual claims specific, attributable, and supported by sources the reader can inspect?
 - [ ] Are AI crawlers (GPTBot, PerplexityBot, ClaudeBot) allowed in `robots.txt`?
 - [ ] Is `llms.txt` or another machine-facing hint present and relevant, without treating absence as a universal blocker?
 - [ ] Is critical content server-rendered (not client-only JS)?
 
 ### The 5 GEO Dimensions
-1. **Citability** (25%): Self-contained answer blocks, 134-167 word optimal passages, statistics with sources.
+1. **Citability** (25%): Self-contained answer passages, specific claims, and inspectable sources.
 2. **Structural Readability** (20%): Clean heading hierarchy, question-based H2/H3, tables, lists.
 3. **Multi-Modal Content** (15%): Images, videos, charts alongside text.
 4. **Authority + Brand Signals** (20%): Entity presence across platforms, `sameAs` schema, expert authorship.
@@ -119,10 +119,10 @@ A page can rank at position 1 and never be cited by an AI answer engine. GEO rea
 
 ## 8 Highest-ROI Actions
 
-1. **Title/H1 alignment with GSC queries**: Mine Pos 8-20 queries, inject high-impression terms.
-2. **Direct Answer block**: 40-60 word bolded answer immediately after H1.
-3. **Schema completeness**: Organization + BreadcrumbList + page-specific type.
-4. **Internal link injection**: 3-5 new links from topically related pages to the target.
+1. **Title/H1 alignment with GSC queries**: Use verified query data to check whether the title, heading, and page job match the dominant intent.
+2. **Direct Answer passage**: Answer the primary question early, then add the qualifications and evidence the answer needs.
+3. **Schema eligibility**: Recommend only markup supported for the page type and content shown, using `schema_types_current.md` as the gate.
+4. **Internal link repair**: Add relevant links where they improve discovery, context, or navigation. Do not target a fixed density.
 5. **CWV fix**: Prioritize LCP image (`fetchpriority="high"`, no lazy-load on hero).
 6. **AI crawler access**: Allow GPTBot, PerplexityBot, ClaudeBot in `robots.txt`.
 7. **Date signal consistency**: Align publish date across URL, JSON-LD, byline, and meta.

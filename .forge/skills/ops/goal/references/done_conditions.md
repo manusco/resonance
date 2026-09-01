@@ -2,6 +2,8 @@
 
 > This is the load-bearing rule of the whole loop. The signal that a slice or the goal is done must be an executed check against the environment, never the model's own judgment that it should work. A model cannot reliably grade its own reasoning without an external signal, and when it tries, it tends to report success it did not earn. So do not let it.
 
+- File presence, a dashboard status, progress percentage, or another reporting marker. These describe progress; only an executed check proves the acceptance condition.
+
 ## Why this is settled, not a preference
 
 Measured, not asserted: a model told to self-correct its reasoning with no external signal tends to degrade, not improve (DeepMind, "Large Language Models Cannot Self-Correct Reasoning Yet", ICLR 2024). The apparent gains from self-correction come from an oracle, a real check, deciding when to stop. And the jump in agent reliability on hard software tasks came from iterating against executed tests, not from better self-assessment. Treat this as a closed question: the done-signal is the executed check. Do not reopen it inside a run.

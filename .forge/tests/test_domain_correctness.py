@@ -1,4 +1,5 @@
 """Regression tests for high-risk domain doctrine."""
+import re
 import unittest
 from pathlib import Path
 
@@ -57,6 +58,35 @@ class DomainCorrectnessTest(unittest.TestCase):
         self.assertIn("not as operating doctrine", authority)
         self.assertIn("not optimize for leaked fields", authority)
         self.assertNotIn("bodyWordsToTokensRatio", content)
+
+    def test_seo_uses_evidence_not_universal_content_quotas(self):
+        files = [
+            "marketing/seo/skill.tmpl.md",
+            "marketing/seo/references/gsc_optimization_protocol.md",
+            "marketing/seo/references/aeo_geo_protocol.md",
+            "marketing/seo/references/quality_gates.md",
+            "marketing/seo/references/content_eeat_protocol.md",
+            "marketing/seo/references/technical_seo_protocol.md",
+            "marketing/seo/references/topic_clustering_protocol.md",
+            "marketing/seo/references/seo_audit_checklist.md",
+        ]
+        doctrine = "\n".join(read(path) for path in files)
+        unsupported_quotas = [
+            r"CTR\s*<\s*2%",
+            r"134[-\u2013]167",
+            r"40[-\u2013]60\s+words",
+            r"1\s+(?:internal\s+|external\s+)?link\s+per\s+\d+",
+            r"3[-\u2013]5\s+(?:new\s+)?(?:internal\s+)?links",
+            r"Pillar\s+2,500[-\u2013]4,000",
+        ]
+        for pattern in unsupported_quotas:
+            self.assertIsNone(re.search(pattern, doctrine, re.IGNORECASE), pattern)
+
+        self.assertIn("Compare impressions, clicks, position, page job", doctrine)
+        self.assertIn("A downward trend is an observation, not a diagnosis", doctrine)
+        self.assertIn("primary or best available sources", doctrine)
+        self.assertIn("schema_types_current.md", doctrine)
+        self.assertIn("visible content and page type meet current eligibility", doctrine)
 
 
 if __name__ == "__main__":

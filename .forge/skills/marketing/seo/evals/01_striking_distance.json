@@ -8,7 +8,9 @@
     "Requests the export metadata needed for diagnosis: retrieval time, timezone, date range, dimensions, filters, row limit or truncation, sorting, and whether the data is final, preliminary, or unknown",
     "Treats the 1,000-row export as potentially incomplete and does not treat missing rows as zero",
     "Frames next steps as hypotheses to test, such as intent mismatch, weak snippet, stale content, canonical conflict, or internal-link weakness",
-    "Still proposes high-ROI checks once evidence is bounded: title/H1 query fit, direct answer block, date signal consistency, internal links, and a comparable follow-up period"
+    "Still proposes high-ROI checks once evidence is bounded: title/H1 query fit, direct answer quality, date signal consistency, relevant internal links, and a comparable follow-up period",
+    "Compares CTR against relevant cohorts and SERP context instead of applying a universal CTR cutoff",
+    "Treats a ranking decline as a hypothesis that requires technical, SERP, demand, competitor, and intent checks before diagnosing content decay"
   ],
   "checks": [
     {

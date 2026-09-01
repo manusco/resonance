@@ -752,6 +752,51 @@
   },
   {
     "schema_version": 1,
+    "id": "resonance-marketing-run-search-operating-cycle",
+    "path": "marketing/run-search-operating-cycle/SKILL.md",
+    "archetype": "orchestration",
+    "owner": "marketing.search-operations",
+    "activation": "manual",
+    "authority": "consequential",
+    "triggers": [
+      "run a search performance operating cycle",
+      "produce a governed SEO evidence report"
+    ],
+    "negative_triggers": [
+      "schedule a recurring search job",
+      "write search exports into the repository without approval"
+    ],
+    "inputs": [
+      "user_request",
+      "search_run_scope",
+      "search_evidence"
+    ],
+    "outputs": [
+      "user_request",
+      "search_run_scope",
+      "seo_scope",
+      "evidence",
+      "recommendation",
+      "audit_report"
+    ],
+    "invokes": [
+      "resonance-marketing-seo"
+    ],
+    "side_effects": [
+      "may_coordinate_work",
+      "may_execute_checks",
+      "may_write_files"
+    ],
+    "write_sets": [
+      "private:search-operating-cycle"
+    ],
+    "entrypoints": [
+      "/search-cycle"
+    ],
+    "failure_policy": "stop"
+  },
+  {
+    "schema_version": 1,
     "id": "resonance-marketing-seo",
     "path": "marketing/seo/SKILL.md",
     "archetype": "knowledge",
@@ -803,13 +848,15 @@
       "review_scope",
       "reviewer_scope",
       "architecture_scope",
-      "architect_scope"
+      "architect_scope",
+      "blueprint_scope"
     ],
     "invokes": [
       "resonance-ops-security",
       "resonance-ops-reviewer",
       "resonance-ops-qa",
-      "resonance-strategy-architect"
+      "resonance-strategy-architect",
+      "resonance-strategy-blueprint"
     ],
     "side_effects": [
       "may_coordinate_work",
@@ -2447,7 +2494,8 @@
       "product_scope",
       "research_scope",
       "researcher_scope",
-      "venture_scope"
+      "venture_scope",
+      "blueprint_scope"
     ],
     "invokes": [
       "resonance-ops-product",

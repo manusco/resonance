@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-marketing-run-search-operating-cycle",
+  "query": "Run the search report. I have not specified properties, dates, timezone, or where the artifact belongs.",
+  "expected_behavior": [
+    "does not invent missing run fields",
+    "returns NEEDS_CONTEXT with the exact missing contract fields",
+    "does not collect or interpret evidence before the contract is complete"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["NEEDS_CONTEXT", "property", "timezone", "comparison", "destination"]}
+  ]
+}

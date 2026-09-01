@@ -48,25 +48,24 @@
 
 ---
 
-## 2. Content Metrics
+## 2. Content Tests
 
-### Word Count by Page Type
+### Page Job and Coverage
 
-| Page Type | Minimum | Unique Content % |
-|-----------|---------|-----------------|
-| Homepage | 500 | 100% |
-| Service / Feature page | 800 | 100% |
-| Blog post | 1,500 | 100% |
-| Product page | 300+ (400+ for complex) | 80%+ |
-| Location page (primary) | 600 | 60%+ |
-| Location page (secondary) | 500 | 40%+ |
+Do not prescribe a minimum word count. Define what the page must help its audience understand or do, then test whether it:
 
-> **Important**: These are topical coverage floors, not targets. Google has confirmed word count is NOT a direct ranking factor. A 500-word page that thoroughly answers the query will outrank a 2,000-word page that doesn't. Use these as guidelines for adequate coverage depth.
+- answers the dominant intent without filler;
+- covers the material questions and decision criteria for that page type;
+- distinguishes itself from overlapping pages with real information, experience, or utility;
+- supports factual claims with primary or best available sources;
+- gives the next useful action or route when the task continues elsewhere.
+
+Length follows the work. A short page can be complete, and a long page can still be thin.
 
 ### Readability
-- Flesch Reading Ease: Target 60-70 for general audience
-- Sentence length: Average 15-20 words
-- Paragraph length: 2-4 sentences
+- Match vocabulary and sentence structure to the intended audience.
+- Break sections where the subject or reader task changes.
+- Use lists, tables, examples, or diagrams only when they make the information easier to use.
 
 > **Note**: Flesch Reading Ease is a useful proxy for content accessibility but is NOT a direct ranking factor (John Mueller confirmed). Yoast deprioritized Flesch scores in v19.3. Use as a content quality indicator, not an SEO metric.
 
@@ -80,7 +79,7 @@
 - Scannable sections with descriptive headings
 - Bullet/numbered lists where appropriate
 - Table of contents for long-form content
-- **AI Pattern Fatigue Check**: No more than 2 paragraphs without a visual break (list, table, quote, image)
+- **Pattern Fatigue Check**: Vary structure when the content calls for it. Do not insert decorative breaks to satisfy a quota.
 
 ### Multimedia
 - Relevant images with proper alt text
@@ -89,7 +88,7 @@
 - Charts/graphs for statistics
 
 ### Internal Linking
-- 3-5 relevant internal links per 1,000 words (density: ~1 per 50-75 words)
+- Add relevant links when they improve discovery, supply needed context, or advance the reader's next task.
 - Descriptive anchor text (never "click here")
 - Links to related content
 - No orphan pages
@@ -113,10 +112,10 @@ Google says automation is not banned by itself. The failure is content made prim
 - No author attribution
 - Factual inaccuracies
 
-### AI Pattern Fatigue (Entropy Check)
-1. **Format Variance**: No more than 2 paragraphs without a visual break
-2. **Rhythm Variance**: Sentences must vary in length. 3 sentences with identical structure = fail
-3. **Tone Modulation**: Shift between technical and conversational at least once per 500 words
+### AI Pattern Fatigue Check
+1. **Format Fit**: Use the structure best suited to the information instead of repeating one template across pages.
+2. **Natural Rhythm**: Rewrite mechanical repetition that makes the text harder to read.
+3. **Voice Fit**: Keep one appropriate voice for the audience. Do not force tone shifts as a detection tactic.
 
 ---
 
@@ -131,7 +130,7 @@ Optimize for AI search engines (ChatGPT, Perplexity, Google AI Overviews):
 - Tables and lists for comparative data
 - Clear attribution and source citations
 - Topical authority through content clusters, not isolated pages
-- Entity clarity via Organization, Person schema
+- Entity clarity through consistent names and, when eligible, structured data supported by the visible page content and `schema_types_current.md`
 
 > **Helpful content:** Treat helpfulness as an ongoing quality standard, not as a single classifier to game. The actionable rule is stable: make content for people, show real experience, and avoid search-engine-first filler.
 
@@ -141,8 +140,8 @@ Optimize for AI search engines (ChatGPT, Perplexity, Google AI Overviews):
 
 - Publication date visible
 - Last updated date if content has been revised
-- Flag content older than 12 months without update for fast-changing topics
-- Date signals must be consistent across URL, Schema, meta, and byline (inconsistency breaks `trustSyntacticDateInRanking` - see `content_quality_signals.md`)
+- Review fast-changing topics on a cadence justified by their subject and risk, not a universal age cutoff.
+- Keep URL, structured data, metadata, byline, publication, and modified dates truthful and mutually consistent.
 
 ---
 

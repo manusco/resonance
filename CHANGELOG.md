@@ -1,5 +1,39 @@
 # Changelog
 
+## v2.5.3
+
+The architecture and evidence release. Resonance now keeps a durable blueprint
+in the same systems file as the current implementation record, checks material
+architecture drift at planning, review, audit, build, and release gates, and
+turns the strongest parts of the remaining pull requests into verified public
+workflows.
+
+### Added
+- **Architecture blueprint.** `/blueprint` creates and checks an architecture
+  constitution with stable `SYS-*` rules, explicit exceptions, and a separate
+  descriptive system record in `.resonance/04_systems.md`.
+- **Search operating cycle.** `/search-cycle` coordinates bounded Search Console
+  evidence through the SEO specialist, keeps artifacts private by default, and
+  uses the canonical seven categories and P0-P3 severities.
+- **Safe update notices.** Optional per-installation notices are disabled by
+  default, store no project data, reject unstable releases, and can never apply
+  an update.
+
+### Changed
+- **Blueprint conformance is earned.** `/plan`, `/build`, `/review-pr`, `/audit`,
+  and `/ship` screen for governed architecture changes. Material changes run a
+  blueprint check; local changes record a justified skip.
+- **Updater transactions bind review to apply.** Both source and compiled
+  profiles use the installed runtime. Apply requires the reviewed version, full
+  source commit, and plan digest, while profile migration remains unsupported.
+- **Completion evidence stays external.** Dashboard state, progress metadata,
+  and file presence cannot override loop stops or replace an executed check.
+- **SEO doctrine is evidence-led.** Fixed content, link, CTR, and answer quotas
+  were removed in favor of page job, cohort, intent, source, and schema
+  eligibility checks.
+- **CI artifacts use the current action runtime.** The release workflow now uses
+  `actions/upload-artifact@v7`.
+
 ## v2.5.2
 
 The repository-ownership and execution-contract release. Resonance now preserves

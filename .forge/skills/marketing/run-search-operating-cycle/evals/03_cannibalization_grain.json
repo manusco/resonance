@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-marketing-run-search-operating-cycle",
+  "query": "The query export and page export both dropped. Mark this as a proven cannibalization issue.",
+  "expected_behavior": [
+    "refuses to prove cannibalization from separate query-only and page-only totals",
+    "keeps the issue as a candidate",
+    "requests evidence with joint query and page dimensions"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["candidate", "query", "page"]},
+    {"kind": "regex_absent", "value": "(?i)proven cannibalization"}
+  ]
+}

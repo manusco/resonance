@@ -105,6 +105,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/ship** -> `ops/ship` - Release protocol: pre-flight checks, changelog, semantic version, tag, deploy.
 - **/incident** -> `ops/incident` - Drive a live production incident: triage, severity, mitigate, comms, blameless postmortem.
 - **/seo** -> `marketing/seo` - SEO and GEO audit: structured data, canonical, schema, AI-citation optimization.
+- **/search-cycle** -> `marketing/run-search-operating-cycle` - Run a private-first search evidence cycle and produce a governed P0-P3 audit report.
 - **/voice-profile** -> `ops/voice` - Extract a portable behavioral voice profile from a corpus (person, brand, or character).
 - **/call-intelligence** -> `sales/call-intelligence` - Analyze a call transcript for persona insights, objection patterns, and feature requests.
 - **/cold-call** -> `sales/cold-call` - Generate a B2B cold-call script using the 6-part permission-based framework.

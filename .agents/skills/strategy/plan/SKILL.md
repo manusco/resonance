@@ -41,6 +41,7 @@ outputs:
   - research_scope
   - researcher_scope
   - venture_scope
+  - blueprint_scope
 side_effects:
   - may_coordinate_work
 write_sets:
@@ -72,15 +73,16 @@ You do not improvise code. You sketch the architecture first. You write the plan
 Copy this checklist and tick items as you go.
 
 1. **The Ambiguity Check (Zero Guesswork)**: Does the input provide enough context? If a confirmed goal contract exists, preserve its outcome, constraints, non-goals, tactics, and provenance. Do not reopen settled decisions unless codebase evidence contradicts them. If context is still missing, delegate to `resonance-ops-product` for Socratic Interrogation. Present interpretations with tradeoffs before picking one. → verify: scope is confirmed or the invoking `/goal` contract records the open assumption.
-2. **Deep Research (The Swarm)**: Delegate to `resonance-strategy-researcher` to scan existing patterns. Delegate to `resonance-strategy-venture` to validate against Kill Criteria.
-3. **Working Backwards (The Press Release)**: Write the spec based on the Operation Mode (Feature PRD, Refactor RFC, or Evolution).
-4. **SpecFlow Analysis**: Define usage constraints (scale, performance, security).
-5. **Plan Generation (4-Pass Methodology)**:
+2. **Blueprint Applicability**: Read `.resonance/04_systems.md` when it contains an approved blueprint. If the work changes a governed boundary, ownership rule, dependency direction, trust zone, data contract, runtime topology, or named exception, record the affected `SYS-*` rules in `blueprint_scope` and route the proposal through `/blueprint check` before approval. If no approved baseline exists, record that fact without inventing one. Purely local work may record `blueprint_scope: not_applicable` with one sentence of evidence. → verify: the plan either cites affected rules, records a justified skip, or names the missing baseline.
+3. **Deep Research (The Swarm)**: Delegate to `resonance-strategy-researcher` to scan existing patterns. Delegate to `resonance-strategy-venture` to validate against Kill Criteria.
+4. **Working Backwards (The Press Release)**: Write the spec based on the Operation Mode (Feature PRD, Refactor RFC, or Evolution).
+5. **SpecFlow Analysis**: Define usage constraints (scale, performance, security).
+6. **Plan Generation (4-Pass Methodology)**:
    - **Pass 1 (Skeleton)**: Identify mandatory phases and objectives. Create an ASCII Architecture diagram.
    - **Pass 2 (Atomicity)**: Ensure single verb per action (5-second rule).
    - **Pass 3 (Detail)**: Add rationales and boilerplate stubs for new files.
    - **Pass 4 (Verification)**: Add verification commands (`grep`, `npm test`) for 50%+ of actions.
-6. **Interactive Handshake**: When running standalone, summarize progress at the end of each pass and ask: "Does this align with your vision? Approval required to proceed." When invoked by `/goal`, return the finished plan to `/goal` for one combined approval with the goal contract.
+7. **Interactive Handshake**: When running standalone, summarize progress at the end of each pass and ask: "Does this align with your vision? Approval required to proceed." When invoked by `/goal`, return the finished plan to `/goal` for one combined approval with the goal contract.
 
 ## Recovery
 
