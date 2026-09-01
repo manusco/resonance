@@ -21,14 +21,14 @@ Top 1% experts don't focus on what's already winning; they focus on what's *almo
 
 ### Extraction Strategy
 1.  **Filter**: Last 28-90 days.
-2.  **Sort**: Average Position between 8 and 20.
-3.  **Prioritize by Impressions**: High impressions at Position 12 indicate massive latent demand.
+2.  **Segment**: Find pages and queries close enough to their target result set that a focused change can be measured. Position bands are discovery filters, not guarantees.
+3.  **Prioritize by opportunity**: Compare impressions, clicks, position, page job, business value, and the reliability of the sample.
 4.  **Identify "Hidden" Queries**: Find queries that the page ranks for but are MISSING from the Title, H1, and First Paragraph.
 
 ### The Capture Loop
 *   **Query Intent Mapping**: Don't just add keywords. Classify the GSC query as **Informational**, **Transactional**, or **Navigational**. Ensure the page's *Above-the-Fold* content matches the dominant intent.
     *   *Expert Move*: If a page ranks (Pos 12) for a "comparison" query but is a "product" page, restructure it into a comparison layout to satisfy the searcher's intent.
-*   **Title/H1 Update**: Inject the high-impression query directly into the Title and H1.
+*   **Title/H1 Update**: Rewrite only when the verified query and dominant intent are a better description of the page's actual job. Keep titles readable and truthful.
 *   **Contextual Injection**: Add a sub-heading (H2) specifically addressing the "Hidden" query if it's not adequately covered.
 
 ---
@@ -38,9 +38,9 @@ Top 1% experts don't focus on what's already winning; they focus on what's *almo
 Internal links are the skeleton of **Model Trust**. They tell both Google and LLMs which nodes of information are authoritative.
 
 ### The Semantic Tightening Rule
-*   **Density**: Target ~1 internal link per 50-75 words.
+*   **Relevance**: Add a link when it helps a reader or crawler discover a related page, understand the relationship, or complete the next task. Do not optimize to a density quota.
 *   **Semantic Anchors**: Never use "click here." Use anchor text that describes the *Entity* of the target page (e.g., "how to optimize vector databases").
-*   **Inbound Flow**: Scrape the site for all pages semantically related to your "Striking Distance" page. Point 3-5 new internal links from these related pages back to the target.
+*   **Inbound Flow**: Find contextually related pages and add only the inbound links that fit their content and navigation job.
 
 ---
 
@@ -48,26 +48,26 @@ Internal links are the skeleton of **Model Trust**. They tell both Google and LL
 
 Once a page moves into the Top 10 via GSC tuning, it must be hardened for **AI Retrieval**.
 
-### The 50-Word Direct Answer
+### The Direct Answer Passage
 *   **Placement**: Immediately following the `<h1>` or the relevant `<h2>`.
 *   **Structure**: `[Question Rephrase] + [Direct Answer (Bold)] + [Nuance]`.
-*   **Length**: 40-60 words.
-*   **Purpose**: This is the primary extraction point for ChatGPT, Perplexity, and Google AI Overviews.
+*   **Length**: As short as the complete, accurate answer allows. Do not pad or cut it to a fixed word count.
+*   **Purpose**: Give readers and answer engines a self-contained passage whose claims remain clear outside the surrounding page.
 
 ---
 
 ## 4. Maintenance & Monitoring
 
 ### The CTR Lever (Snippet Engineering)
-If impressions are high but CTR is < 2% in the Top 5:
+If CTR underperforms comparable queries, pages, devices, countries, or prior periods after position and SERP features are accounted for:
 *   **Analyze the Snippet**: Is the meta description cut off? Does it lack a "Value Hook"?
-*   **Add Schema**: Ensure FAQ or Review schema is present to expand the SERP footprint.
-*   **Title Psychology**: Use brackets `[2026 Updated]` or specific numbers `7 Best...` to increase the visual salience of the link.
+*   **Check Schema Eligibility**: Use `schema_types_current.md`; recommend markup only when the page content and Google's current eligibility rules support it.
+*   **Test the Title**: Make the value and page job clear without manufactured dates, numbers, or promises.
 
 ### The Decay & Freshness Audit
-*   **Performance Decay**: If a page with high historitcal impressions shows a downward trend in average position over 6 months, it is suffering from **Content Decay**.
-*   **The Refresh Protocol**: Update only when evidence supports a freshness or completeness gap. Keep publish and modified dates honest. Use URL inspection to understand Google's indexed view, and request recrawl only when the user authorizes that exact action.
+*   **Performance Change**: A downward trend is an observation, not a diagnosis. Check technical changes, indexing, SERP composition, demand, competitors, intent, and measurement comparability before proposing content decay.
+*   **The Refresh Protocol**: Update only when evidence supports a freshness, accuracy, or completeness gap. Keep publish and modified dates honest. Use URL inspection to understand Google's indexed view, and request recrawl only when the user authorizes that exact action.
 
-### The Link-to-Value Ratio
-*   **Internal**: 1 per 50 words (Distribute authority).
-*   **External**: 1 per 150 words (Contextual citations to high-authority nodes).
+### The Link-to-Value Test
+*   **Internal**: Link when the destination advances the reader's task or clarifies the site's information structure.
+*   **External**: Cite the primary or best available source for material claims. Link count follows evidence needs, not word count.

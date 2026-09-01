@@ -4,8 +4,8 @@
 
 ## Contents
 
-- [1. The Landscape (April 2026)](#1-the-landscape-april-2026)
-- [2. The Core Finding: Brand Mentions > Backlinks](#2-the-core-finding-brand-mentions--backlinks)
+- [1. Evidence Boundary](#1-evidence-boundary)
+- [2. Entity and Source Signals](#2-entity-and-source-signals)
 - [3. The GEO Scoring Framework (5 Dimensions)](#3-the-geo-scoring-framework-5-dimensions)
 - [4. AI Crawler Management](#4-ai-crawler-management)
 - [5. llms.txt Standard](#5-llmstxt-standard)
@@ -17,34 +17,17 @@
 - [11. Action Tiers](#11-action-tiers)
 - [12. Audit Output](#12-audit-output)
 
-## 1. The Landscape (April 2026)
+## 1. Evidence Boundary
 
-| Metric | Value | Source |
-|--------|-------|--------|
-| AI Overviews reach | 1.5B users/month, 200+ countries | Google |
-| AI Overviews query coverage | 50%+ of all queries | Industry data |
-| AI-referred sessions growth | 527% (Jan-May 2025) | SparkToro |
-| ChatGPT weekly active users | 900M | OpenAI |
-| Perplexity monthly queries | 500M+ | Perplexity |
-| Google AI Mode | Zero organic links, citation-only | Google (May 2025) |
+AI answer surfaces, crawler behavior, traffic share, and citation sources change quickly. Verify current platform behavior from primary documentation and direct observation before making a platform-specific claim. Record the query, locale, device, date, signed-in state when relevant, and the observed links or citations.
 
-**The shift is structural.** AI Mode (launched May 2025) provides a fully conversational search experience with zero organic blue links. AI citation is the only visibility mechanism in that context.
+Treat AI citation as a distinct visibility channel. Do not assume its reach, value, or relationship to organic ranking is the same for every market.
 
 ---
 
-## 2. The Core Finding: Brand Mentions > Backlinks
+## 2. Entity and Source Signals
 
-**Brand mentions correlate 3x more strongly with AI visibility than backlinks.** (Ahrefs, December 2025, 75,000-brand study)
-
-| Signal | Correlation with AI Citations |
-|--------|-------------------------------|
-| YouTube mentions | ~0.737 (strongest) |
-| Reddit mentions | High |
-| Wikipedia presence | High |
-| LinkedIn presence | Moderate |
-| Domain Rating (backlinks) | ~0.266 (weak) |
-
-**Only 11% of domains** are cited by both ChatGPT and Google AI Overviews for the same query. Platform-specific optimization is not optional - it's required.
+Brand mentions, links, source reputation, topical fit, and first-party evidence may all matter to discovery or selection. Correlation studies do not establish a universal ranking formula. Use them to form hypotheses, then inspect actual citations, referral data, logs, and customer discovery for the target market.
 
 ---
 
@@ -52,12 +35,12 @@
 
 ### 3.1 Citability Score (25%)
 
-**Optimal passage length: 134-167 words** for AI citation extraction.
+There is no universal passage length for AI citation extraction. Prefer the shortest passage that answers the question completely and keeps its qualifications and sources intact.
 
 **Strong signals:**
 - Clear, quotable sentences with specific facts/statistics
 - Self-contained answer blocks (extractable without surrounding context)
-- Direct answer in first 40-60 words of section
+- Direct answer early in the section, followed by the context and evidence it needs
 - Claims attributed with specific sources
 - Definitions following "X is..." or "X refers to..." patterns
 - Unique data points not found elsewhere
@@ -72,16 +55,16 @@
 ```
 [Question Rephrase] + [Direct Answer (Bold)] + [Nuance]
 ```
-Place the direct answer in the first `<p>` after the `<h1>` or relevant `<h2>`. If the user's question isn't answered in the first 50 words, the AI will skip you.
+Place the direct answer near the heading when that serves the reader. Do not claim an engine will skip a page because an answer crosses a fixed word boundary.
 
 ### 3.2 Structural Readability (20%)
 
-**92% of AI Overview citations come from top-10 ranking pages**, but 47% come from pages ranking below position 5 - proving AI uses different selection logic than organic ranking.
+Compare AI citations with organic results for the actual query set. Overlap can inform a hypothesis, but it does not prove one stable selection rule.
 
 **Strong signals:**
 - Clean H1→H2→H3 heading hierarchy
 - Question-based headings (match query patterns)
-- Short paragraphs (2-4 sentences)
+- Paragraphs sized for one coherent idea
 - Tables for comparative data
 - Ordered/unordered lists for step-by-step or multi-item content
 - FAQ sections with clear Q&A format
@@ -89,11 +72,11 @@ Place the direct answer in the first `<p>` after the `<h1>` or relevant `<h2>`. 
 **The Token Economy**: LLMs have limited attention. Fluff gets ignored.
 - ❌ "In today's modern era of technology, it is important to consider..." (0 value)
 - ✅ "Vector databases optimize high-dimensional search." (high information density)
-- **Rule**: Reduce word count by 30%. Increase fact count by 50%.
+- **Rule**: Remove filler, preserve needed qualifications, and support material claims.
 
 ### 3.3 Multi-Modal Content (15%)
 
-Content with multi-modal elements sees **156% higher selection rates**.
+Use multi-modal elements when they add evidence, explanation, or utility. Do not promise citation lift from their presence.
 
 **Check for:**
 - Text + relevant images (with descriptive alt text)
@@ -124,7 +107,7 @@ Content with multi-modal elements sees **156% higher selection rates**.
 
 ### 3.5 Technical Accessibility (20%)
 
-**AI crawlers do NOT execute JavaScript.** Server-side rendering is critical.
+Crawler rendering capabilities differ and change. Verify whether critical content is present in the fetched or rendered response used by the target system. Server-rendered content is the safest default for broad accessibility.
 
 **Check for:**
 - Server-side rendering (SSR) vs client-only content
@@ -154,9 +137,8 @@ Check `robots.txt` for these AI crawlers:
 **Key distinctions:**
 - Blocking `Google-Extended` prevents Gemini training but does NOT affect Google Search or AI Overviews (those use `Googlebot`)
 - Blocking `GPTBot` prevents training but does NOT prevent ChatGPT from citing via browsing (`ChatGPT-User`)
-- ~3-5% of websites now use AI-specific robots.txt rules
 
-**Recommendation:** Allow GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot for AI search visibility. Block training-only crawlers if desired.
+**Recommendation:** Decide crawler access from current vendor documentation, the site's licensing and privacy posture, and observed access needs. Do not equate training crawler access with search citation eligibility.
 
 ---
 
@@ -207,16 +189,16 @@ Backed by Reddit, Yahoo, Medium, Quora, Cloudflare, Akamai, Creative Commons.
 
 | Platform | Key Citation Sources | Optimization Focus |
 |----------|---------------------|-------------------|
-| **Google AI Overviews** | Top-10 ranking pages (92%) | Traditional SEO + passage optimization |
-| **ChatGPT** | Wikipedia (47.9%), Reddit (11.3%) | Entity presence, authoritative sources |
-| **Perplexity** | Reddit (46.7%), Wikipedia | Community validation, discussions |
+| **Google AI Overviews** | Verify citations on the target query set | Search fundamentals, clear passages, source quality |
+| **ChatGPT** | Inspect returned citations and referral evidence | Entity clarity, inspectable primary sources |
+| **Perplexity** | Inspect returned citations and referral evidence | Source quality, direct support for claims |
 | **Bing Copilot** | Bing index, authoritative sites | Bing SEO, IndexNow |
 
 ---
 
 ## 9. The "Statistics" Hook
 
-LLMs trust numbers. Include a data table (`<table>`) in every substantive post.
+Use numbers when they materially answer the question, and present them in a table only when comparison benefits from rows and columns.
 - **Pattern**: "According to [Study], 80% of..."
 - **Rule**: Every claim should have a named source.
 
@@ -234,13 +216,13 @@ AI engines need a reason to cite *you* and not Wikipedia.
 ## 11. Action Tiers
 
 ### Quick Wins
-1. Add "What is [topic]?" definition in first 60 words
-2. Create 134-167 word self-contained answer blocks
+1. Add a direct definition when the reader needs one
+2. Create self-contained answer passages with inspectable sources
 3. Add question-based H2/H3 headings
 4. Include specific statistics with sources
 5. Add publication/update dates
-6. Implement Person schema for authors
-7. Allow key AI crawlers in robots.txt
+6. Implement Person schema only when the visible content and current eligibility support it
+7. Set crawler access intentionally from current vendor documentation and the site's licensing and privacy posture
 
 ### Medium Effort
 1. Create or repair `/llms.txt` when site context and verified adoption justify it
@@ -267,6 +249,6 @@ Generate GEO analysis with:
 3. **AI Crawler Access Status** (which crawlers allowed/blocked)
 4. **Machine-Facing Signal Notes** (llms.txt, preference declarations, service discovery, or content negotiation when relevant)
 5. **Brand Mention Analysis** (presence on Wikipedia, Reddit, YouTube, LinkedIn)
-6. **Passage-Level Citability** (optimal 134-167 word blocks identified)
+6. **Passage-Level Citability** (self-contained, source-backed passages identified)
 7. **Server-Side Rendering Check** (JavaScript dependency analysis)
 8. **Top 5 Highest-Impact Changes**

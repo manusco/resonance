@@ -20,7 +20,7 @@ SERP-overlap clustering groups keywords by shared top-10 results. If two keyword
 
 ## 2. Seed Keyword Expansion
 
-Expand the seed keyword into 30-50 variants:
+Expand the seed keyword until the meaningful intent space is represented:
 
 1. **Related searches** - Extract from SERP
 2. **People Also Ask (PAA)** - Extract all visible questions
@@ -29,7 +29,7 @@ Expand the seed keyword into 30-50 variants:
 5. **Intent modifiers** - "pricing", "review", "alternative", "comparison", "free", "top"
 
 **Deduplication**: Normalize (lowercase, strip articles), remove exact duplicates.
-Target: 30-50 unique variants. Under 30 → run second pass with top PAA as seeds.
+Stop when another pass produces no material new intent, audience question, or decision criterion. Record the source and retrieval date because query sets and SERPs change.
 
 ---
 
@@ -37,14 +37,14 @@ Target: 30-50 unique variants. Under 30 → run second pass with top PAA as seed
 
 For each candidate pair, search both keywords and count shared URLs in top 10 organic results (ignore ads, featured snippets, PAA):
 
-| Shared Results | Relationship | Action |
-|---------------|-------------|--------|
-| 7-10 | Same post | Merge into single target page |
-| 4-6 | Same cluster | Group under same spoke cluster |
-| 2-3 | Interlink | Place in adjacent clusters, add cross-links |
-| 0-1 | Separate | Different clusters or exclude |
+Compare shared ranking URLs, result types, and dominant intent. Treat overlap as evidence, not a universal numeric boundary:
 
-**Optimization**: Pre-group by intent to reduce comparisons. 40 keywords × full pairwise = 780 comparisons. Pre-group into 4 groups of ~10 = 4 × 45 = 180 comparisons.
+- Strong overlap with the same page job supports one target page.
+- Partial overlap with related but distinct jobs supports separate, connected pages.
+- Little overlap or different result types supports separate clusters or exclusion.
+- Recheck ambiguous or high-value decisions across devices, locations, or dates when those factors matter.
+
+**Efficiency**: Pre-group by intent before pairwise comparison, then spend manual review on ambiguous and high-value boundaries.
 
 ---
 
@@ -63,9 +63,9 @@ Keywords can have mixed intent - classify by dominant intent.
 
 ## 5. Hub-and-Spoke Architecture
 
-1. **Pillar keyword**: Highest volume, broadest intent, most SERP overlap
-2. **Cluster grouping**: 2-5 subtopic clusters per pillar
-3. **Spoke assignment**: 2-4 posts per cluster
+1. **Pillar job**: The broad user task that can route readers to its distinct subtopics.
+2. **Cluster grouping**: One cluster per coherent page job and audience need.
+3. **Spoke assignment**: Add a spoke only when it answers a distinct intent that the pillar should not absorb.
 4. **Template selection by intent**:
 
 | Intent Pattern | Template |
@@ -77,8 +77,8 @@ Keywords can have mixed intent - classify by dominant intent.
 | Commercial (evaluate) | Review |
 | Transactional | Landing page |
 
-5. **Word count targets**: Pillar 2,500-4,000 words, spokes 1,200-1,800 words
-6. **Cannibalization check**: No two posts share the same primary keyword. SERP overlap ≥7 → merge
+5. **Coverage test**: Each page is as long as its job requires and no longer.
+6. **Cannibalization check**: Investigate pages competing for the same intent. Merge only when evidence shows one page can satisfy both jobs better.
 
 ---
 
@@ -88,12 +88,11 @@ Keywords can have mixed intent - classify by dominant intent.
 |-----------|-----------|-------------|
 | Spoke → Pillar | Mandatory | Every spoke |
 | Pillar → Spoke | Mandatory | Every spoke |
-| Spoke ↔ Spoke (same cluster) | Recommended | 2-3 links per post |
-| Cross-cluster | Optional | 0-1 links per post |
+| Spoke ↔ Spoke (same cluster) | Recommended when useful | Link where the reader needs the adjacent topic |
+| Cross-cluster | Optional | Link only when the relationship is clear |
 
 **Rules:**
-- Every post: minimum 3 incoming internal links
-- No orphan pages (every post reachable from pillar in 2 clicks)
+- Give every indexable page a crawlable route from the site's information architecture.
 - Anchor text: target keyword or close variant (never "click here")
 - Link placement: within body content, not navigation/sidebar
 
@@ -103,9 +102,9 @@ Keywords can have mixed intent - classify by dominant intent.
 
 | Metric | Target |
 |--------|--------|
-| Coverage | 100% (posts written / planned) |
-| Link Density | 3+ internal links per post |
-| Orphan Pages | 0 |
-| Cannibalization | 0 conflicts |
-| Pillar Links | 100% bidirectional |
-| Cross-Links | 80%+ implemented |
+| Coverage | Material user intents have an owned page or an explicit exclusion |
+| Link Purpose | Links reflect real relationships and next tasks |
+| Orphan Pages | No intended indexable page lacks a crawlable route |
+| Cannibalization | Suspected conflicts are measured and resolved |
+| Pillar Links | Pillar and spokes connect where navigation requires it |
+| Cross-Links | Added only when useful |

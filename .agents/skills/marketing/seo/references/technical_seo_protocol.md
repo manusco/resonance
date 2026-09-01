@@ -73,7 +73,7 @@ Allow: /
 
 - **Canonical tags**: Self-referencing, no conflicts with noindex
 - **Duplicate content**: Near-duplicates, parameter URLs, www vs non-www
-- **Thin content**: Pages below minimum word counts per page type (see `quality_gates.md`)
+- **Low-value content**: Pages that fail their page job, repeat other pages without added value, or lack the evidence and detail their audience needs (see `quality_gates.md`)
 - **Pagination**: rel=next/prev or load-more pattern
 - **Hreflang**: Correct for multi-language/multi-region sites
 - **Index bloat**: Unnecessary pages consuming crawl budget

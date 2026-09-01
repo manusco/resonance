@@ -6,7 +6,9 @@
     "Addresses GEO as a separate visibility channel from organic search rankings",
     "Checks the 5 GEO dimensions: Citability, Structural Readability, Multi-Modal Content, Authority/Brand Signals, Technical Accessibility",
     "Asks or confirms whether AI crawlers (GPTBot, PerplexityBot, ClaudeBot) are allowed in robots.txt",
-    "Recommends a 134-167 word self-contained answer block on the page",
+    "Recommends an early self-contained answer passage sized for completeness and clarity, not a fixed word count",
+    "Requires specific claims to be attributable and supported by inspectable sources",
+    "Checks schema eligibility against the page's visible content and current supported types instead of recommending a fixed schema bundle",
     "Checks whether llms.txt or similar machine-facing hints are relevant and frames them as optional or emerging rather than universal requirements",
     "Separates verified AI crawler access from experimental machine-facing signals and avoids claiming guaranteed citation lift from either"
   ],
