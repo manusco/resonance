@@ -38,6 +38,7 @@ HOLDOUT_CONTROL_FILES = {"dataset.json", "hash-manifest.json", "custody-state.js
 MANUAL_ROUTE_OWNERS = {
     "resonance-ops-goal",
     "resonance-ops-ship",
+    "resonance-strategy-blueprint",
     "resonance-software-deliver-change",
 }
 OPAQUE_TOKEN = re.compile(r"^[a-f0-9]{16,64}$")

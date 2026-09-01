@@ -178,12 +178,15 @@
     "inputs": [
       "user_request",
       "plan",
-      "implementation_plan"
+      "implementation_plan",
+      "architecture_blueprint"
     ],
     "outputs": [
       "user_request",
       "artifact",
       "evidence",
+      "architecture_conformance_report",
+      "blueprint_scope",
       "backend_scope",
       "frontend_scope",
       "debugger_scope",
@@ -191,6 +194,7 @@
       "audit_scope"
     ],
     "invokes": [
+      "resonance-strategy-blueprint",
       "resonance-engineering-backend",
       "resonance-engineering-frontend",
       "resonance-engineering-debugger",
@@ -2075,6 +2079,95 @@
     ],
     "dispatch_conditions": [
       "the work changes system boundaries, service contracts, or durable architecture"
+    ],
+    "compatibility": "active"
+  },
+  {
+    "schema_version": 1,
+    "id": "resonance-strategy-blueprint",
+    "path": "strategy/blueprint/SKILL.md",
+    "archetype": "orchestration",
+    "owner": "strategy.blueprint",
+    "activation": "manual",
+    "authority": "consequential",
+    "triggers": [
+      "create or revise an architecture blueprint",
+      "audit a brownfield system from first principles without requiring a rewrite",
+      "check a plan, change, PR, or release for architectural drift"
+    ],
+    "negative_triggers": [
+      "answer an isolated architecture question without creating or checking a durable blueprint",
+      "perform a general multi-domain code audit",
+      "implement, deploy, or merge changes"
+    ],
+    "inputs": [
+      "user_request",
+      "project_evidence",
+      "blueprint_mode",
+      "system_context",
+      "implementation_artifact"
+    ],
+    "outputs": [
+      "user_request",
+      "recommendation",
+      "evidence",
+      "system_context",
+      "implementation_artifact",
+      "architecture_blueprint",
+      "architecture_conformance_report",
+      "architecture_scope",
+      "architect_scope",
+      "product_scope",
+      "security_scope",
+      "observability_scope",
+      "qa_scope",
+      "plan_scope",
+      "review_scope",
+      "reviewer_scope"
+    ],
+    "invokes": [
+      "resonance-strategy-architect",
+      "resonance-ops-product",
+      "resonance-ops-security",
+      "resonance-ops-observability",
+      "resonance-ops-qa",
+      "resonance-strategy-plan",
+      "resonance-ops-reviewer"
+    ],
+    "side_effects": [
+      "may_coordinate_work",
+      "may_write_architecture_artifacts"
+    ],
+    "write_sets": [
+      "project:architecture-artifacts"
+    ],
+    "entrypoints": [
+      "/blueprint"
+    ],
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "job_id": "architecture.blueprint",
+    "stage": "APPROVE",
+    "contributes_to": [],
+    "reviews": [
+      "delivery.plan"
+    ],
+    "finalizes": [
+      "architecture-blueprint",
+      "architecture-conformance-report"
+    ],
+    "artifact_access": [
+      "project-evidence:read",
+      "architecture-blueprint:create,modify,review",
+      "architecture-decision:create,modify,review",
+      "architecture-exception:create,modify,review",
+      "implementation-plan:read,review",
+      "implementation-artifact:read,review",
+      "architecture-conformance-report:create,modify,approve"
+    ],
+    "dispatch_conditions": [
+      "a project needs a durable architecture constitution or an existing blueprint needs revision",
+      "a plan, change, PR, or release needs an architecture conformance decision"
     ],
     "compatibility": "active"
   },

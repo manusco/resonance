@@ -76,6 +76,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/init** -> `ops/core` - Bootstrap the .resonance/ project memory (soul, state, docs scaffold). Run once per new project.
 - **/venture-model** -> `strategy/venture` - Model the business, offer stack, and revenue math before planning.
 - **/brief** -> `strategy/brief` - Turn a rough request into an intent-faithful execution brief, then run or route it within the user's authority.
+- **/blueprint** -> `strategy/blueprint` - Create or revise a durable architecture constitution, or check a plan, change, PR, or release for architectural drift.
 - **/plan** -> `strategy/plan` - Turn a feature or idea into an atomic, approved implementation plan. Deep research, 4-pass spec.
 - **/grill** -> `strategy/grill` - Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding.
 - **/council** -> `strategy/council` - Challenge an analysis or high-risk decision through relevant specialist reviews, debate, scenarios, and reconciliation.
@@ -119,6 +120,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - Use `/brief` to recover intent and route unclear work. Use `/plan` when the intended outcome is already clear and needs an implementation plan.
 - Use `/grill` to interrogate a plan or goal contract before execution. Use `/council` to challenge a completed analysis or a consequential decision.
 - Use `/test` for test design and coverage, `/review-pr` for a concrete diff, `/audit` for a multi-specialist finding review, and `/system-health` for a repeatable health score.
+- Use `/blueprint` to establish or revise the durable architecture baseline and check conformance. Use the architect for an isolated system design, `/plan` for implementation sequencing, and `/review-pr` for general correctness.
 - Use `/goal` to drive an outcome across stages, `/build` to execute an approved implementation plan, and `/ship` to prepare and perform a release.
 
 If the route is still unclear, start with `/brief`.
