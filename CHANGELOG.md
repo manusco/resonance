@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.5.33
+
+The consumer-boundary release.
+
+### Fixed
+- **Opaque project files.** Updater validation now invokes Forge in explicit
+  consumer mode. Consumer mode never reads or writes root project docs.
+  Existing unowned README, AGENTS, CLAUDE, and host bridge files are preserved,
+  excluded from framework ownership, and reported without blocking install.
+- **Correct verification surface.** Source-profile consumers get one read-only,
+  machine-readable health check. The framework-source test runner refuses
+  consumer installations instead of comparing project state to Resonance's
+  public scaffold.
+- **PowerShell proof.** Windows CI parses the real launcher and runs the exact
+  consumer PowerShell-check path used on installed projects.
+
 ## v2.5.32
 
 The missing project-doc repair.

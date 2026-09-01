@@ -16,6 +16,7 @@ import urllib.request
 from pathlib import Path
 
 MANIFEST = ".resonance/framework-manifest.json"
+PRESERVE_IF_UNOWNED = ("AGENTS.md", "CLAUDE.md", ".cursor/rules/resonance.mdc")
 MANAGED_ROOTS = (".agents", ".forge", ".claude/skills", ".cursor/skills",
                  ".cursor/rules/resonance.mdc", ".opencode/commands", "AGENTS.md",
                  "CLAUDE.md", "resonance.ps1", "resonance.sh", "resonance_update.py")
@@ -33,7 +34,7 @@ RELEASE_API = "https://api.github.com/repos/manusco/resonance/releases/latest"
 NOTICE_SCHEMA = 1
 MAX_NOTICE_BYTES = 64 * 1024
 NOTICE_TTL_SECONDS = 24 * 60 * 60
-FRAMEWORK_VERSION = "2.5.32"
+FRAMEWORK_VERSION = "2.5.33"
 
 
 class SourceDirtyError(ValueError):
@@ -186,7 +187,9 @@ def source_revision(source: Path) -> str:
 
 
 def plan_digest(work: dict) -> str:
-    stable = {key: work[key] for key in ("version", "revision", "profile", "writes", "removes", "conflicts")}
+    stable = {key: work[key] for key in (
+        "version", "revision", "profile", "writes", "removes", "conflicts", "preserved",
+    )}
     return hashlib.sha256(json.dumps(stable, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
 
 
@@ -315,6 +318,8 @@ def adopt(source: Path, target: Path, profile: str | None = None) -> Path:
         raise ValueError("profile is required when adopting a target without .forge; choose source or compiled")
     profile = profile or "source"
     incoming = source_files(source, include_legacy=True, profile=profile)
+    for rel in PRESERVE_IF_UNOWNED:
+        incoming.pop(rel, None)
     files = {rel: target / rel for rel, src in incoming.items()
              if (target / rel).is_file() and digest(target / rel) == digest(src)}
     if not files:
@@ -334,6 +339,12 @@ def plan(source: Path, target: Path, profile: str | None = None) -> dict:
     current = load_manifest(target)
     profile = resolve_profile(target, profile, current)
     incoming = source_files(source, profile=profile)
+    preserved = []
+    for rel in PRESERVE_IF_UNOWNED:
+        destination = inside(target, target / rel)
+        if rel in incoming and destination.is_file() and rel not in current["files"]:
+            incoming.pop(rel)
+            preserved.append(rel)
     conflicts, writes, removes = [], [], []
     for rel, src in incoming.items():
         dst = inside(target, target / rel)
@@ -352,6 +363,7 @@ def plan(source: Path, target: Path, profile: str | None = None) -> dict:
     result = {"version": version(source), "revision": source_revision(source),
             "profile": profile, "writes": sorted(writes),
             "removes": sorted(removes), "conflicts": sorted(set(conflicts)),
+            "preserved": sorted(preserved),
             "files": {rel: digest(src) for rel, src in incoming.items()}}
     result["plan_digest"] = plan_digest(result)
     return result
@@ -414,7 +426,7 @@ def apply(source: Path, target: Path, expected_version: str | None = None,
             checks = [target / ".forge" / "forge.py", target / ".forge" / "validate_skill.py",
                       target / ".forge" / "eval_integrity.py"]
             commands = [
-                [sys.executable, str(checks[0]), "build", "--all", "--host", "all", "--dry-run"],
+                [sys.executable, str(checks[0]), "build", "--all", "--host", "all", "--dry-run", "--consumer"],
                 [sys.executable, str(checks[1]), "--all", "--strict", str(target / ".agents" / "skills")],
                 [sys.executable, str(checks[2])],
             ]

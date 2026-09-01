@@ -187,7 +187,7 @@ DOC_SECTIONS = {
     ),
     "AGENTS.md": ("COMMAND_CATALOG", "AUTOMATIC_SKILLS"),
 }
-OPTIONAL_DOC_TARGETS = {"README.md"}
+CONSUMER_PROJECT_DOC_TARGETS = {"README.md", "AGENTS.md"}
 
 
 def section_marker(name: str, edge: str) -> str:
@@ -286,7 +286,7 @@ def render_agents_catalog(commands: list[dict], families: list[dict], help_items
     return "\n".join(lines)
 
 
-def build_command_docs(dry_run: bool) -> int:
+def build_command_docs(dry_run: bool, consumer: bool = False) -> int:
     """Generate bounded command documentation while preserving all other bytes."""
     commands, families, help_items = validate_catalog(load_command_registry())
     manifest = framework_skill_manifest()
@@ -334,7 +334,7 @@ def build_command_docs(dry_run: bool) -> int:
     rc = 0
     for relative, names in DOC_SECTIONS.items():
         path = REPO / relative
-        if relative in OPTIONAL_DOC_TARGETS and not path.is_file():
+        if consumer and relative in CONSUMER_PROJECT_DOC_TARGETS:
             continue
         # Decode bytes directly so Python does not normalize line endings. The
         # replacement is bounded; every byte outside the markers stays intact.
@@ -453,7 +453,7 @@ def render_bridge(host: dict) -> str | None:
     raise SystemExit(f"forge: unknown context_bridge style '{style}'")
 
 
-def build_bridges(host_name: str, dry_run: bool) -> int:
+def build_bridges(host_name: str, dry_run: bool, consumer: bool = False) -> int:
     """Emit the per-host context bridge (e.g. CLAUDE.md for Claude Code). No-op for
     AGENTS.md-native hosts, whose context_bridge is null."""
     host = load_host(host_name)
@@ -461,6 +461,8 @@ def build_bridges(host_name: str, dry_run: bool) -> int:
         return 0
     out = REPO / host["context_bridge"]["path"]
     rendered = (render_bridge(host) or "").rstrip() + "\n"
+    if consumer:
+        return 0
     if dry_run:
         current = out.read_text(encoding="utf-8") if out.exists() else ""
         if current != rendered:
@@ -492,10 +494,12 @@ def main(argv: list[str]) -> int:
     b.add_argument("--host", default="claude-code", help="Host name or 'all'")
     b.add_argument("--model", default=None, help="Model overlay (default: host default)")
     b.add_argument("--dry-run", action="store_true", help="Compare only; exit 1 on drift")
+    b.add_argument("--consumer", action="store_true", help="Skip project-owned documentation targets")
 
     c = sub.add_parser("commands", help="Generate per-host command shims and context bridges")
     c.add_argument("--host", default="all", help="Host name or 'all'")
     c.add_argument("--dry-run", action="store_true", help="Compare only; exit 1 on drift")
+    c.add_argument("--consumer", action="store_true", help="Skip project-owned documentation targets")
 
     sub.add_parser("list", help="List available skills, hosts, overlays")
     d = sub.add_parser("doctor", help="Report compiler ownership and adapter support")
@@ -528,10 +532,10 @@ def main(argv: list[str]) -> int:
 
     if args.cmd == "commands":
         hosts = available_hosts() if args.host == "all" else [args.host]
-        rc = build_command_docs(args.dry_run)
+        rc = build_command_docs(args.dry_run, args.consumer)
         for h in hosts:
             rc |= build_commands(h, args.dry_run)
-            rc |= build_bridges(h, args.dry_run)
+            rc |= build_bridges(h, args.dry_run, args.consumer)
         return rc
 
     names = available_skills() if args.all else ([args.name] if args.name else [])
@@ -544,10 +548,10 @@ def main(argv: list[str]) -> int:
     # bridge (the carrier) so a clone is ready to use on every tool.
     if args.all:
         hosts = available_hosts() if args.host == "all" else [args.host]
-        rc |= build_command_docs(args.dry_run)
+        rc |= build_command_docs(args.dry_run, args.consumer)
         for h in hosts:
             rc |= build_commands(h, args.dry_run)
-            rc |= build_bridges(h, args.dry_run)
+            rc |= build_bridges(h, args.dry_run, args.consumer)
     return rc
 
 

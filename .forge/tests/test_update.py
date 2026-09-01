@@ -203,6 +203,25 @@ class UpdateTests(unittest.TestCase):
             update.apply(source, target)
         self.assertEqual((target / ".agents" / "owned.md").read_text(), "user")
 
+    def test_unowned_root_bridges_are_preserved_without_conflict(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        for name in ("AGENTS.md", "CLAUDE.md"):
+            (source / name).write_text("framework", encoding="utf-8")
+            (target / name).write_text("project", encoding="utf-8")
+        self.commit(source)
+        work = update.plan(source, target, "source")
+        self.assertEqual([], work["conflicts"])
+        self.assertEqual(["AGENTS.md", "CLAUDE.md"], work["preserved"])
+        self.assertNotIn("AGENTS.md", work["files"])
+        self.assertNotIn("CLAUDE.md", work["files"])
+        update.apply(source, target, "9.9.9", "source")
+        self.assertEqual("project", (target / "AGENTS.md").read_text(encoding="utf-8"))
+        self.assertEqual("project", (target / "CLAUDE.md").read_text(encoding="utf-8"))
+        installed = json.loads((target / update.MANIFEST).read_text(encoding="utf-8"))
+        self.assertNotIn("AGENTS.md", installed["files"])
+        self.assertNotIn("CLAUDE.md", installed["files"])
+
     def test_adopt_records_existing_bytes_without_changing_them(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
@@ -249,6 +268,31 @@ class UpdateTests(unittest.TestCase):
         self.assertIn(".agents/skills/known/SKILL.md", owned)
         self.assertNotIn(".agents/skills/custom/SKILL.md", owned)
         self.assertNotIn("AGENTS.md", owned)
+
+    def test_adopt_never_claims_unowned_root_bridges_even_when_identical(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        managed = source / ".agents" / "skills" / "known" / "SKILL.md"
+        managed.parent.mkdir(parents=True)
+        managed.write_text("known", encoding="utf-8")
+        for relative in update.PRESERVE_IF_UNOWNED:
+            source_file = source / relative
+            source_file.parent.mkdir(parents=True, exist_ok=True)
+            source_file.write_text("framework", encoding="utf-8")
+            target_file = target / relative
+            target_file.parent.mkdir(parents=True, exist_ok=True)
+            target_file.write_text("framework", encoding="utf-8")
+        target_managed = target / managed.relative_to(source)
+        target_managed.parent.mkdir(parents=True)
+        target_managed.write_text("known", encoding="utf-8")
+        self.commit(source)
+
+        update.adopt(source, target, "source")
+
+        owned = update.load_manifest(target)["files"]
+        self.assertIn(".agents/skills/known/SKILL.md", owned)
+        for relative in update.PRESERVE_IF_UNOWNED:
+            self.assertNotIn(relative, owned)
 
     def test_upgrade_preserves_committed_private_skill_and_lock(self):
         td, source, target = self.fixture()

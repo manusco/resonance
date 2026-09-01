@@ -30,9 +30,18 @@ Framework validation never reads project-owned generated documentation as
 runtime authority. Command targets and skill metadata come from the
 framework-owned templates installed with `.forge`. A consumer may keep an older
 `docs/skill-manifest.json`; the updater neither changes it nor uses it to decide
-whether the framework is valid. Project documentation may also be absent.
-Required validation skips missing project-doc targets such as a root `README.md`
-and never creates them.
+whether the framework is valid. Required validation invokes Forge in explicit
+consumer mode. In that mode Forge never reads or writes root project
+documentation. Existing unowned `README.md`, `AGENTS.md`, `CLAUDE.md`, and host
+bridges are preserved byte-for-byte, excluded from framework ownership, and
+reported as non-blocking integration notes. Framework-repository builds remain
+strict about Resonance's own generated documents.
+
+For a source-profile consumer, use `python3 .forge/consumer_check.py --root .`.
+It verifies owned hashes, generated output, skills, eval integrity, project-skill
+locks, and available launcher parsers without comparing project-owned docs to
+the Resonance repository scaffold. `.forge/tests/run.py` is source-repository
+test infrastructure and refuses to run in an installed consumer.
 
 ## Validation and transaction
 

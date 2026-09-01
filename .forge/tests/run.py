@@ -8,9 +8,17 @@ import unittest
 from pathlib import Path
 
 TESTS_DIR = Path(__file__).resolve().parent
+ROOT = TESTS_DIR.parents[1]
 
 
 def main() -> int:
+    if (ROOT / ".resonance/framework-manifest.json").is_file():
+        print(
+            "Forge source tests do not apply to installed consumers. "
+            "Run: python3 .forge/consumer_check.py --root .",
+            file=sys.stderr,
+        )
+        return 2
     loader = unittest.TestLoader()
     suite = loader.discover(start_dir=str(TESTS_DIR), pattern="test_*.py")
     result = unittest.TextTestRunner(verbosity=2).run(suite)
