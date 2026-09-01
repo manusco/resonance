@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "architecture.blueprint-check-change",
+  "query": "Run /blueprint check on this release candidate against our approved architecture constitution. Report drift, controlled exceptions, and a conformance verdict. Do not deploy it.",
+  "expected_primary": "resonance-strategy-blueprint",
+  "allowed_contributors": ["resonance-strategy-architect", "resonance-ops-reviewer", "resonance-ops-qa", "resonance-ops-security"],
+  "forbidden_skills": ["resonance-ops-ship"],
+  "harm_tier": "HIGH",
+  "cluster": "blueprint-architect-audit",
+  "rationale": "The explicit blueprint command owns conformance against an approved architecture baseline and must not turn the check into deployment.",
+  "expected_activation_mode": "MANUAL",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [
+    {"kind": "primary_is", "value": "resonance-strategy-blueprint"},
+    {"kind": "activation_is", "value": "MANUAL"}
+  ]
+}

@@ -7,10 +7,10 @@
     <a href="https://github.com/manusco/resonance/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/manusco/resonance/ci.yml?branch=main&style=for-the-badge&label=CI" alt="CI status" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
 <!-- RESONANCE-GENERATED:SKILL_COUNT_BADGE:START -->
-    <img src="https://img.shields.io/badge/Skills-71-00f2ea?style=for-the-badge" alt="71 skills" />
+    <img src="https://img.shields.io/badge/Skills-72-00f2ea?style=for-the-badge" alt="72 skills" />
 <!-- RESONANCE-GENERATED:SKILL_COUNT_BADGE:END -->
 <!-- RESONANCE-GENERATED:COMMAND_COUNT_BADGE:START -->
-    <img src="https://img.shields.io/badge/Commands-36-7025eb?style=for-the-badge" alt="36 commands" />
+    <img src="https://img.shields.io/badge/Commands-37-7025eb?style=for-the-badge" alt="37 commands" />
 <!-- RESONANCE-GENERATED:COMMAND_COUNT_BADGE:END -->
 </div>
 
@@ -25,10 +25,10 @@
 Resonance is an AI agent skill library you drop into any project. It turns a general coding agent into a roster of specialists that follow the same expert protocol every time, on whatever tool you use.
 
 <!-- RESONANCE-GENERATED:SKILL_COUNT_SUMMARY:START -->
-- **71 domain-tested skills** across design, engineering, finance, leadership, marketing, ops, people, research, sales, software, strategy, and success. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
+- **72 domain-tested skills** across design, engineering, finance, leadership, marketing, ops, people, research, sales, software, strategy, and success. Each skill is a structured procedure with prerequisites, a step-by-step algorithm, a Recovery path, and a Definition of Done, backed by a deep reference library. Not a prompt. A protocol.
 <!-- RESONANCE-GENERATED:SKILL_COUNT_SUMMARY:END -->
 <!-- RESONANCE-GENERATED:COMMAND_COUNT_SUMMARY:START -->
-- **36 slash commands** like `/brief`, `/plan`, `/grill`, `/council`, `/build`, `/debug`, `/design`, `/test`, `/improve`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
+- **37 slash commands** like `/brief`, `/plan`, `/grill`, `/council`, `/build`, `/debug`, `/design`, `/test`, `/improve`, and `/ship`. Type the command, or describe the job and let the specialist auto-fire.
 <!-- RESONANCE-GENERATED:COMMAND_COUNT_SUMMARY:END -->
 - **Cross-tool by design.** One source compiles to the native format of every major agent tool. The `SKILL.md` / `AGENTS.md` open standard is the shared content; the Forge emits the per-tool command shims and the per-tool context bridge, so the operating standard, the commands, and the project memory all load after a clone in Claude Code, Cursor, Codex, opencode, and Antigravity.
 - **A project memory** (`.resonance/`) that loads at the start of every session and the agent writes back to. It does not forget your architecture, your decisions, or your voice.
@@ -78,13 +78,13 @@ That is the whole setup. No install step, no plugin required.
 Every command is a structured procedure with a Definition of Done, not a loose prompt. Full map in [AGENTS.md](AGENTS.md).
 
 <!-- RESONANCE-GENERATED:COMMAND_CATALOG:START -->
-The registry contains **36 commands**.
+The registry contains **37 commands**.
 
 **Autonomous loop**
 `/goal`: The autonomous goal loop: frame, decompose, then build and verify each slice against real checks, bounded, never auto-ship.
 
 **Inception**
-`/init`: Bootstrap the .resonance/ project memory (soul, state, docs scaffold). Run once per new project. · `/venture-model`: Model the business, offer stack, and revenue math before planning. · `/brief`: Turn a rough request into an intent-faithful execution brief, then run or route it within the user's authority. · `/plan`: Turn a feature or idea into an atomic, approved implementation plan. Deep research, 4-pass spec. · `/grill`: Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding. · `/council`: Challenge an analysis or high-risk decision through relevant specialist reviews, debate, scenarios, and reconciliation. · `/gtm-thinker`: Stress-test and expand a go-to-market campaign concept into a strategic blueprint with kill criteria. · `/market-research`: Discover Existential Data Points in a B2B SaaS vertical. Positioning from nice-to-have to must-have. · `/update-roadmap`: Sync .resonance/01_state.md with the git log so the map matches the territory.
+`/init`: Bootstrap the .resonance/ project memory (soul, state, docs scaffold). Run once per new project. · `/venture-model`: Model the business, offer stack, and revenue math before planning. · `/brief`: Turn a rough request into an intent-faithful execution brief, then run or route it within the user's authority. · `/blueprint`: Create or revise a durable architecture constitution, or check a plan, change, PR, or release for architectural drift. · `/plan`: Turn a feature or idea into an atomic, approved implementation plan. Deep research, 4-pass spec. · `/grill`: Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding. · `/council`: Challenge an analysis or high-risk decision through relevant specialist reviews, debate, scenarios, and reconciliation. · `/gtm-thinker`: Stress-test and expand a go-to-market campaign concept into a strategic blueprint with kill criteria. · `/market-research`: Discover Existential Data Points in a B2B SaaS vertical. Positioning from nice-to-have to must-have. · `/update-roadmap`: Sync .resonance/01_state.md with the git log so the map matches the territory.
 
 **Execution**
 `/build`: Execute the implementation plan with a TDD loop (test, code, verify). · `/debug`: Root-cause a bug via the Scientific Method. Reproduction script required, no fix without a proven cause. · `/refactor`: Atomic, behavior-preserving cleanup. Mikado method, safe sequence, SOLID. · `/design`: Design or audit UI with elite craft: hierarchy, perceptual color, motion, and the subconscious detail layer. · `/studio`: Produce production-ready visual assets with structured prompt engineering. · `/friction`: Friction Collider: simulate the anti-persona to find and remove conversion drag.
@@ -109,7 +109,7 @@ If the route is still unclear, start with `/brief`.
 ## The skill domains
 
 <!-- RESONANCE-GENERATED:SKILL_DOMAIN_COUNT:START -->
-71 skills across 12 domains, each a self-contained protocol backed by reference docs.
+72 skills across 12 domains, each a self-contained protocol backed by reference docs.
 <!-- RESONANCE-GENERATED:SKILL_DOMAIN_COUNT:END -->
 
 - **Strategy**: `plan`, `grill`, `architect`, `venture`, `finance`, `growth`, `researcher`, `gtm-thinker`. Planning, system design, business and financial modeling, fundraising, and pre-build interrogation.

@@ -2,6 +2,115 @@
   {
     "schema_version": 1,
     "contract_version": 1,
+    "job_id": "architecture.blueprint",
+    "stage": "APPROVE",
+    "lead": "resonance-strategy-blueprint",
+    "contributors": [],
+    "reviewers": [],
+    "finalizer": "resonance-strategy-blueprint",
+    "artifact_access": [
+      {
+        "artifact": "architecture-blueprint",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "architecture-conformance-report",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "architecture-decision",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "architecture-exception",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "project-evidence",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "a project needs a durable architecture constitution or an existing blueprint needs revision",
+      "a plan, change, PR, or release needs an architecture conformance decision"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
     "job_id": "delivery.compatibility-intake",
     "stage": "FRAME",
     "lead": "resonance-software-deliver-change",
@@ -384,7 +493,9 @@
       "resonance-strategy-architect",
       "resonance-strategy-grill"
     ],
-    "reviewers": [],
+    "reviewers": [
+      "resonance-strategy-blueprint"
+    ],
     "finalizer": "resonance-strategy-plan",
     "artifact_access": [
       {
@@ -439,6 +550,67 @@
         "rights": [
           "CREATE",
           "MODIFY"
+        ]
+      },
+      {
+        "artifact": "architecture-blueprint",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "architecture-conformance-report",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "architecture-decision",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "architecture-exception",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "project-evidence",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "READ"
         ]
       }
     ],

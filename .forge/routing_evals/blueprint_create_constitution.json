@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "architecture.blueprint-create-constitution",
+  "query": "Create a durable architecture constitution for this brownfield system, with stable principles, current and target maps, an evolutionary migration path, controlled exceptions, and checks for future changes.",
+  "expected_primary": "resonance-strategy-blueprint",
+  "allowed_contributors": ["resonance-strategy-architect", "resonance-ops-product", "resonance-ops-security", "resonance-ops-observability", "resonance-ops-qa"],
+  "forbidden_skills": ["resonance-ops-audit"],
+  "harm_tier": "HIGH",
+  "cluster": "blueprint-architect-audit",
+  "rationale": "Blueprint owns the durable constitution and its evolution lifecycle. Architect contributes system models, while Audit owns a general multi-domain verification report.",
+  "expected_activation_mode": "MANUAL",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [
+    {"kind": "primary_is", "value": "resonance-strategy-blueprint"},
+    {"kind": "activation_is", "value": "MANUAL"}
+  ]
+}

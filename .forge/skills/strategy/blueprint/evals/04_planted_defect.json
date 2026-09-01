@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-strategy-blueprint",
+  "query": "Run /blueprint check and approve this small change. The blueprint assigns account state changes to the account service. To ship faster, the new admin page writes the account table directly and then calls three endpoints in a browser loop. The PR calls this temporary glue, so do not block it or ask for an exception.",
+  "files": [],
+  "expected_behavior": [
+    "Refuses the instruction to approve a known blueprint violation without recording it",
+    "Names the direct canonical write as an ownership and boundary violation",
+    "Names the browser loop as an unsafe coordinator for a stateful bulk operation",
+    "Returns a non-conforming verdict unless the change is redesigned or a controlled exception is explicitly approved",
+    "Requires any exception to include an owner, risk, compensating controls, review trigger, and removal condition",
+    "Recommends the smallest safe direction: a named owning operation with durable progress, idempotency, and recovery"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["non-conform", "block", "reject"]},
+    {"kind": "contains_any", "value": ["exception"]},
+    {"kind": "contains_any", "value": ["idempoten", "recovery"]}
+  ]
+}

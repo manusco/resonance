@@ -76,6 +76,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/init** -> `ops/core` - Bootstrap the .resonance/ project memory (soul, state, docs scaffold). Run once per new project.
 - **/venture-model** -> `strategy/venture` - Model the business, offer stack, and revenue math before planning.
 - **/brief** -> `strategy/brief` - Turn a rough request into an intent-faithful execution brief, then run or route it within the user's authority.
+- **/blueprint** -> `strategy/blueprint` - Create or revise a durable architecture constitution, or check a plan, change, PR, or release for architectural drift.
 - **/plan** -> `strategy/plan` - Turn a feature or idea into an atomic, approved implementation plan. Deep research, 4-pass spec.
 - **/grill** -> `strategy/grill` - Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding.
 - **/council** -> `strategy/council` - Challenge an analysis or high-risk decision through relevant specialist reviews, debate, scenarios, and reconciliation.
