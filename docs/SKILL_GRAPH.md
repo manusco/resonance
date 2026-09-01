@@ -6,6 +6,7 @@
 
 ```mermaid
 graph LR
+  resonance-engineering-build --> resonance-strategy-blueprint
   resonance-engineering-build --> resonance-engineering-backend
   resonance-engineering-build --> resonance-engineering-frontend
   resonance-engineering-build --> resonance-engineering-debugger
@@ -64,6 +65,13 @@ graph LR
   resonance-sales-run-revenue-motion --> resonance-success-customer-success
   resonance-sales-run-revenue-motion --> resonance-ops-legal
   resonance-software-deliver-change --> resonance-ops-goal
+  resonance-strategy-blueprint --> resonance-strategy-architect
+  resonance-strategy-blueprint --> resonance-ops-product
+  resonance-strategy-blueprint --> resonance-ops-security
+  resonance-strategy-blueprint --> resonance-ops-observability
+  resonance-strategy-blueprint --> resonance-ops-qa
+  resonance-strategy-blueprint --> resonance-strategy-plan
+  resonance-strategy-blueprint --> resonance-ops-reviewer
   resonance-strategy-brief --> resonance-strategy-grill
   resonance-strategy-brief --> resonance-strategy-plan
   resonance-strategy-brief --> resonance-engineering-build
@@ -83,7 +91,7 @@ graph LR
 
 | Orchestrator | Invokes |
 | --- | --- |
-| resonance-engineering-build | resonance-engineering-backend, resonance-engineering-frontend, resonance-engineering-debugger, resonance-ops-security, resonance-ops-audit |
+| resonance-engineering-build | resonance-strategy-blueprint, resonance-engineering-backend, resonance-engineering-frontend, resonance-engineering-debugger, resonance-ops-security, resonance-ops-audit |
 | resonance-finance-run-operating-cycle | resonance-strategy-finance, resonance-marketing-analytics, resonance-ops-legal |
 | resonance-leadership-run-operating-cycle | resonance-ops-founder-os, resonance-people-hiring, resonance-ops-productivity, resonance-ops-retro, resonance-ops-legal |
 | resonance-marketing-run-campaign | resonance-strategy-gtm-thinker, resonance-strategy-growth, resonance-strategy-grill, resonance-marketing-copywriter, resonance-marketing-content-distribution, resonance-marketing-lifecycle, resonance-marketing-paid-acquisition, resonance-marketing-analytics, resonance-design-studio, resonance-ops-legal |
@@ -95,6 +103,7 @@ graph LR
 | resonance-ops-system-health | resonance-ops-qa, resonance-ops-security |
 | resonance-sales-run-revenue-motion | resonance-sales-account-intelligence, resonance-sales-lead-ops, resonance-sales-outbound-sequence, resonance-sales-call-intelligence, resonance-sales-pipeline, resonance-sales-revops, resonance-success-customer-success, resonance-ops-legal |
 | resonance-software-deliver-change | resonance-ops-goal |
+| resonance-strategy-blueprint | resonance-strategy-architect, resonance-ops-product, resonance-ops-security, resonance-ops-observability, resonance-ops-qa, resonance-strategy-plan, resonance-ops-reviewer |
 | resonance-strategy-brief | resonance-strategy-grill, resonance-strategy-plan, resonance-engineering-build, resonance-ops-product, resonance-strategy-researcher |
 | resonance-strategy-council | resonance-strategy-brief, resonance-strategy-grill, resonance-strategy-plan, resonance-ops-goal, resonance-ops-second-opinion |
 | resonance-strategy-plan | resonance-ops-product, resonance-strategy-researcher, resonance-strategy-venture |
@@ -164,6 +173,7 @@ graph LR
 | resonance-sales-run-revenue-motion | orchestration | consequential | stop | may_coordinate_work, may_write_files |
 | resonance-software-deliver-change | orchestration | consequential | stop | may_coordinate_work |
 | resonance-strategy-architect | knowledge | advisory | degrade | none |
+| resonance-strategy-blueprint | orchestration | consequential | stop | may_coordinate_work, may_write_architecture_artifacts |
 | resonance-strategy-brief | orchestration | consequential | stop | may_coordinate_work, may_execute_authorized_work |
 | resonance-strategy-council | orchestration | consequential | stop | may_coordinate_work, may_write_files |
 | resonance-strategy-finance | knowledge | advisory | degrade | none |

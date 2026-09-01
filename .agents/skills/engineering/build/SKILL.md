@@ -15,10 +15,13 @@ inputs:
   - user_request
   - plan
   - implementation_plan
+  - architecture_blueprint
 outputs:
   - user_request
   - artifact
   - evidence
+  - architecture_conformance_report
+  - blueprint_scope
   - backend_scope
   - frontend_scope
   - debugger_scope
@@ -31,6 +34,7 @@ write_sets:
   - project:implementation-artifacts
 failure_policy: stop
 invokes:
+  - resonance-strategy-blueprint
   - resonance-engineering-backend
   - resonance-engineering-frontend
   - resonance-engineering-debugger
@@ -51,6 +55,7 @@ You are the executor. You do not improvise. You follow the plan. You work in ato
 ## Prerequisites (fail fast)
 
 - [ ] `implementation_plan.md` exists and is approved by the user.
+- [ ] `.resonance/04_systems.md` is loaded when it exists. No test or implementation code starts until the Architecture Gate has screened the plan and obtained any required verdict for its exact revision or digest.
 - [ ] Repo is clean (no uncommitted changes).
 - [ ] Dev environment is running (if UI verification needed).
 
@@ -59,22 +64,24 @@ You are the executor. You do not improvise. You follow the plan. You work in ato
 Copy this checklist and tick items as you go.
 
 1. **Context Loading**: Read `implementation_plan.md` and `task.md`. If anything is ambiguous, explicitly state what is unclear and ask the user before proceeding. → verify: plan is clear.
-2. **The Build Loop**: For each logical component in the plan:
+2. **Architecture Gate**: Screen the plan against the conformance triggers in `.resonance/04_systems.md`. If none apply, record `not applicable` and the reason. If any apply, invoke `/blueprint check` before writing code. Stop on `NEEDS_CONTEXT` or `NON_CONFORMING`; do not weaken the baseline or improvise around the finding. Reject a verdict for an older plan revision. → verify: the applicability decision cites the plan and, when required, the pinned approved architecture version, approval evidence, exact plan revision or digest, and conformance verdict.
+3. **The Build Loop**: For each logical component in the plan:
    - **Test First**: Delegate to `resonance-engineering-backend` or `resonance-engineering-frontend` to create a failing test (Unit or E2E). → verify: test fails as expected.
    - **Implementation**: Write the code to satisfy the test.
    - **Simplicity Gate**: Before running tests, ask: "Would a senior engineer say this is overcomplicated? Did I add anything not in the spec?" If yes, simplify first.
    - **Verification**: Run the test again. → verify: test passes.
    - **Visual Check**: If UI, open browser and verify.
-   - **Parallel safety**: the loop is serial by default. Run components concurrently only when they are genuinely independent: no shared types, API contracts, migrations, lockfiles, generated files, or config and schema surfaces, and no contended runtime singleton (one dev server or port, one database, one browser session, a package install, a rate limit). File overlap is necessary but not sufficient. Cap the batch at three to five, decline on uncertainty, and re-inspect the real tree afterward, because a clean merge is not proof of semantic compatibility.
-3. **The Quality Gate**: Run `npm run lint` and `tsc`.
-4. **Security Check**: Delegate to `resonance-ops-security` for a quick Sharp Edges check.
-5. **Completion**: Run `/audit` to verify the finished work before marking DONE.
+   - **Parallel safety**: the loop is serial by default. Run components concurrently only when they are independent in fact: no shared types, API contracts, migrations, lockfiles, generated files, or config and schema surfaces, and no contended runtime singleton (one dev server or port, one database, one browser session, a package install, a rate limit). File overlap is necessary but not sufficient. Cap the batch at three to five, decline on uncertainty, and re-inspect the real tree afterward, because a clean merge is not proof of semantic compatibility.
+4. **The Quality Gate**: Run `npm run lint` and `tsc`.
+5. **Security Check**: Delegate to `resonance-ops-security` for a quick Sharp Edges check.
+6. **Completion**: Run `/audit` to verify the finished work before marking DONE.
 
 ## Recovery
 
 - Test Failure → If implementation fails test > 2 times, stop. Re-read the file. Invoke `/debug` to isolate the root cause before attempting another fix.
 - Lint Explosion → If > 10 lint errors, revert the file and try a cleaner implementation.
 - Missing Context → Do not guess what the plan means. Stop and ask the user.
+- Architecture Gate Failure → Stop before code. Route a non-conforming plan back to `/plan` or a proposed normative change to `/blueprint revise`. Never edit the constitution merely to make the plan pass.
 
 ## Out of Scope
 

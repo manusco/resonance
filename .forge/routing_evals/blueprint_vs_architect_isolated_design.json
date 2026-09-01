@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "architecture.blueprint-vs-architect-isolated-design",
+  "query": "Define the service boundary, data owner, trust zone, and ADR for a new reporting service. We do not need a project constitution or recurring conformance gate.",
+  "expected_primary": "resonance-strategy-architect",
+  "allowed_contributors": [],
+  "forbidden_skills": ["resonance-strategy-blueprint"],
+  "harm_tier": "STANDARD",
+  "cluster": "blueprint-architect-audit",
+  "rationale": "Architect owns an isolated system design and ADR. Blueprint is reserved for a durable constitution or conformance lifecycle.",
+  "expected_activation_mode": "AUTO",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [
+    {"kind": "primary_is", "value": "resonance-strategy-architect"}
+  ]
+}

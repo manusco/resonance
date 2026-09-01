@@ -3,7 +3,7 @@
   "catalog": {
     "families": [
       { "name": "Autonomous loop", "aliases": ["goal"] },
-      { "name": "Inception", "aliases": ["init", "venture-model", "brief", "plan", "grill", "council", "gtm-thinker", "market-research", "update-roadmap"] },
+      { "name": "Inception", "aliases": ["init", "venture-model", "brief", "blueprint", "plan", "grill", "council", "gtm-thinker", "market-research", "update-roadmap"] },
       { "name": "Execution", "aliases": ["build", "debug", "refactor", "design", "studio", "friction"] },
       { "name": "Verification", "aliases": ["test", "audit", "page-audit", "review-pr", "second-opinion", "improve", "system-health"] },
       { "name": "Delivery and maintenance", "aliases": ["ship", "incident", "seo", "voice-profile", "call-intelligence", "cold-call", "sales-pipeline", "capture", "explain", "handover", "retro", "update-resonance", "skill-author"] }
@@ -12,6 +12,7 @@
       "Use `/brief` to recover intent and route unclear work. Use `/plan` when the intended outcome is already clear and needs an implementation plan.",
       "Use `/grill` to interrogate a plan or goal contract before execution. Use `/council` to challenge a completed analysis or a consequential decision.",
       "Use `/test` for test design and coverage, `/review-pr` for a concrete diff, `/audit` for a multi-specialist finding review, and `/system-health` for a repeatable health score.",
+      "Use `/blueprint` to establish or revise the durable architecture baseline and check conformance. Use the architect for an isolated system design, `/plan` for implementation sequencing, and `/review-pr` for general correctness.",
       "Use `/goal` to drive an outcome across stages, `/build` to execute an approved implementation plan, and `/ship` to prepare and perform a release."
     ]
   },
@@ -22,6 +23,7 @@
     { "alias": "grill",           "skill": "strategy/grill",           "desc": "Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding." },
     { "alias": "goal",            "skill": "ops/goal",                 "manual": true,  "desc": "The autonomous goal loop: frame, decompose, then build and verify each slice against real checks, bounded, never auto-ship." },
     { "alias": "brief",          "skill": "strategy/brief",           "desc": "Turn a rough request into an intent-faithful execution brief, then run or route it within the user's authority." },
+    { "alias": "blueprint",      "skill": "strategy/blueprint",       "desc": "Create or revise a durable architecture constitution, or check a plan, change, PR, or release for architectural drift." },
     { "alias": "council",        "skill": "strategy/council",         "desc": "Challenge an analysis or high-risk decision through relevant specialist reviews, debate, scenarios, and reconciliation." },
     { "alias": "gtm-thinker",     "skill": "strategy/gtm-thinker",     "desc": "Stress-test and expand a go-to-market campaign concept into a strategic blueprint with kill criteria." },
     { "alias": "market-research", "skill": "research/market-research", "desc": "Discover Existential Data Points in a B2B SaaS vertical. Positioning from nice-to-have to must-have." },

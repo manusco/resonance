@@ -1,0 +1,19 @@
+{
+  "skill": "resonance-strategy-blueprint",
+  "query": "Run /blueprint revise. A legacy integration must remain for six months because its replacement is not ready. It violates the preferred dependency direction. Record a safe exception without pretending the current system already matches the target.",
+  "files": [],
+  "expected_behavior": [
+    "Preserves the legacy integration as an explicit transition state instead of demanding immediate removal",
+    "Records the exception with scope, rationale, owner, risk, compensating controls, review trigger, and removal condition",
+    "Keeps the exception proposed until the declared human approval role explicitly accepts it and records that approval evidence",
+    "Keeps the stable principle unchanged unless evidence shows the principle itself is wrong",
+    "Shows the allowed dependency only on the current or transition map, not as part of the target architecture",
+    "Defines evidence that will close or extend the exception",
+    "Avoids using an arbitrary deadline as the sole removal mechanism"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["exception", "deviation"]},
+    {"kind": "contains_any", "value": ["owner"]},
+    {"kind": "contains_any", "value": ["removal condition", "exit condition"]}
+  ]
+}

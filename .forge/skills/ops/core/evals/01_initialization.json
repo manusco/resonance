@@ -5,6 +5,7 @@
   "expected_behavior": [
     "Creates .resonance/00_soul.md, 01_state.md, 02_memory.md, 03_tools.md, and 04_systems.md",
     "Creates 02_memory.md from the canonical template so it contains both a Lessons section and a Decisions section",
+    "Creates 04_systems.md from the canonical template with a normative constitution and descriptive system record instead of creating a parallel system overview",
     "Ensures the per-host context bridge exists (on Claude Code a root CLAUDE.md importing AGENTS.md and the memory) so the files actually load at session start",
     "Verifies each file exists after creation before referencing it",
     "Records the initialization event in 01_state.md"

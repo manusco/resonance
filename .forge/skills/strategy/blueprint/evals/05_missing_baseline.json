@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-strategy-blueprint",
+  "query": "Run /blueprint check on the attached release candidate. We do not have an approved architecture baseline yet, but give it a conformance verdict anyway.",
+  "files": [
+    "fixtures/blueprint/release_candidate.diff"
+  ],
+  "expected_behavior": [
+    "Stops because an approved, versioned architecture baseline is required for a reproducible conformance check",
+    "Returns NEEDS_CONTEXT and names the missing approved baseline",
+    "Does not infer the intended architecture from the implementation or issue a conforming or non-conforming verdict",
+    "Still identifies the concrete artifact that was supplied without pretending it defines the rules"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["NEEDS_CONTEXT"]},
+    {"kind": "regex_absent", "value": "\\b(?:CONFORMING|NON_CONFORMING)\\b"}
+  ]
+}
