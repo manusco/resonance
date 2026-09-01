@@ -27,7 +27,7 @@ class _Response(io.BytesIO):
 class ReleaseUpdateTests(unittest.TestCase):
     def test_stable_version_rejects_prerelease_and_partial_versions(self):
         self.assertEqual((2, 5, 3), update.stable_version("v2.5.3"))
-        self.assertEqual("2.5.3", update.FRAMEWORK_VERSION)
+        self.assertEqual("2.5.31", update.FRAMEWORK_VERSION)
         self.assertIsNone(update.stable_version("2.5"))
         self.assertIsNone(update.stable_version("2.5.3-rc.1"))
 

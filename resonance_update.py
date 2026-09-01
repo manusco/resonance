@@ -33,7 +33,7 @@ RELEASE_API = "https://api.github.com/repos/manusco/resonance/releases/latest"
 NOTICE_SCHEMA = 1
 MAX_NOTICE_BYTES = 64 * 1024
 NOTICE_TTL_SECONDS = 24 * 60 * 60
-FRAMEWORK_VERSION = "2.5.3"
+FRAMEWORK_VERSION = "2.5.31"
 
 
 class SourceDirtyError(ValueError):
@@ -52,6 +52,19 @@ class SourceDirtyError(ValueError):
         super().__init__(message)
 
 
+class UpdateRollbackError(RuntimeError):
+    """Raised when an update fails and its automatic rollback also fails."""
+
+    def __init__(self, apply_error: BaseException, rollback_error: BaseException, backup: Path):
+        self.apply_error = apply_error
+        self.rollback_error = rollback_error
+        self.backup = backup
+        super().__init__(
+            f"update failed ({apply_error}); rollback also failed ({rollback_error}); "
+            f"recovery journal: {backup / 'journal.json'}"
+        )
+
+
 def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -64,6 +77,28 @@ def inside(root: Path, path: Path) -> Path:
     except ValueError as exc:
         raise ValueError(f"path escapes target: {path}") from exc
     return resolved
+
+
+def verify_write_access(target: Path, paths: list[str]) -> None:
+    """Probe create and delete access in each existing destination directory."""
+    checked: set[Path] = set()
+    for relative in paths:
+        destination = inside(target, target / relative)
+        parent = destination if destination.is_dir() else destination.parent
+        while not parent.exists() and parent != target:
+            parent = parent.parent
+        parent = inside(target, parent)
+        if parent in checked:
+            continue
+        checked.add(parent)
+        try:
+            with tempfile.NamedTemporaryFile(prefix=".resonance-write-probe-", dir=parent, delete=True):
+                pass
+        except OSError as exc:
+            raise PermissionError(
+                f"managed path is not writable before update: {parent}; "
+                "rerun with filesystem permission that also covers rollback"
+            ) from exc
 
 
 def source_files(source: Path, include_legacy: bool = False,
@@ -340,6 +375,7 @@ def apply(source: Path, target: Path, expected_version: str | None = None,
         missing = [rel for rel in required if rel not in work["files"]]
         if missing:
             raise ValueError("source is incomplete; missing required validators: " + ", ".join(missing))
+    verify_write_access(target, work["writes"] + work["removes"] + [MANIFEST])
     stamp = time.strftime("%Y%m%d-%H%M%S") + f"-{time.time_ns() % 1_000_000_000:09d}"
     backup = target / ".resonance" / "backups" / f"resonance-update-{stamp}"
     backup.mkdir(parents=True, exist_ok=False)
@@ -424,8 +460,11 @@ def apply(source: Path, target: Path, expected_version: str | None = None,
         journal["status"] = "complete"
         journal_path.write_text(json.dumps(journal, indent=2) + "\n", encoding="utf-8")
         return backup
-    except BaseException:
-        rollback(backup)
+    except BaseException as apply_error:
+        try:
+            rollback(backup)
+        except BaseException as rollback_error:
+            raise UpdateRollbackError(apply_error, rollback_error, backup) from rollback_error
         raise
     finally:
         shutil.rmtree(stage, ignore_errors=True)

@@ -26,6 +26,12 @@ profile for a target without `.forge`. A modified or unowned file remains a
 conflict. The updater never regenerates a private project-skill lock to make an
 upgrade pass.
 
+Framework validation never reads project-owned generated documentation as
+runtime authority. Command targets and skill metadata come from the
+framework-owned templates installed with `.forge`. A consumer may keep an older
+`docs/skill-manifest.json`; the updater neither changes it nor uses it to decide
+whether the framework is valid.
+
 ## Validation and transaction
 
 Compiled targets are validated from the pinned source checkout. The source
@@ -39,6 +45,14 @@ Both profiles use the same staged backup, hash comparison, atomic replacement,
 manifest write, and rollback journal. Profile migration is unsupported. Once a
 manifest records a profile, every requested profile must match it. Run an
 explicit dry run first:
+
+Before creating a backup, apply probes reversible file creation and deletion in
+each existing managed destination directory. This catches denied `.agents`,
+`.forge`, adapter, launcher, or ownership-manifest directories before the
+transaction begins. It cannot predict a later permission change or every
+file-specific ACL. Those failures still trigger rollback. If apply and rollback
+both fail, the error reports both causes and the exact journal path needed for
+manual recovery.
 
 ```text
 python .forge/update.py --source <pinned-resonance-checkout> --target <project> --profile compiled

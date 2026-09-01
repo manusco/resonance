@@ -43,6 +43,29 @@ class UpdateTests(unittest.TestCase):
         self.assertIn(".forge/tool.py", result["writes"])
         self.assertFalse((target / ".forge").exists())
 
+    def test_apply_checks_live_write_authority_before_backup(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        with mock.patch.object(update.tempfile, "NamedTemporaryFile", side_effect=PermissionError("sandbox")):
+            with self.assertRaisesRegex(PermissionError, "before update"):
+                update.apply(source, target)
+        self.assertFalse((target / ".resonance" / "backups").exists())
+
+    def test_rollback_failure_preserves_both_errors_and_journal(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        (source / ".forge" / "forge.py").write_text("raise SystemExit('validator broke')\n", encoding="utf-8")
+        self.commit(source)
+        runtime = sys.modules[update.apply.__module__]
+        with mock.patch.object(runtime, "rollback", side_effect=PermissionError("rollback blocked")):
+            with self.assertRaises(update.UpdateRollbackError) as raised:
+                update.apply(source, target)
+        message = str(raised.exception)
+        self.assertIn("post-update validation failed", message)
+        self.assertIn("rollback blocked", message)
+        self.assertIn("journal.json", message)
+        self.assertTrue(raised.exception.backup.joinpath("journal.json").is_file())
+
     def test_compiled_profile_excludes_source_tooling(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
