@@ -409,7 +409,7 @@
     ".forge/skills/success/customer-success/evals/04_planted_defect_discount_save.json": "a45a8ba8b372f70fc6d9559fddff174924c98050f46b47da1a180a137b95ded7",
     ".forge/tests/test_blueprint_lifecycle.py": "7cac367ae73b40e8f082e035d5cd669fda9ead7bd82fd0e4efeffde086aec65d",
     ".forge/tests/test_command_catalog.py": "0b931956d42822f6e55988a49c78d842c26ba1aeaab6ae4ca31c3635ca7732f5",
-    ".forge/tests/test_consumer_check.py": "4a8efb79f387e9c4cfea4d03ae00392d286dae0199ddbead3485b4792947afc9",
+    ".forge/tests/test_consumer_check.py": "3648ec2f18bddb80945c8fdfeed97b6e08fb3ad331c96ce6a7021b9f287c5dba",
     ".forge/tests/test_domain_correctness.py": "9db80eb766e5f02053d7dfdf0ff76b4d65b68fc8ba5b92229e2e75dc896a634c",
     ".forge/tests/test_eval_integrity.py": "10fe8ecf928fa7e394b8e2d5e4479954217fbf64c40e3a09ce904757e4147ba5",
     ".forge/tests/test_eval_schemas.py": "b9707e41d085f40202b3d0be5407c2aee7c50c331c1cb1100a8c94c570436d70",

@@ -80,6 +80,9 @@ class ConsumerCheckTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "unsupported consumer manifest schema"):
             consumer.check(root)
 
+    def test_powershell_path_literal_escapes_apostrophes(self):
+        self.assertEqual("'C:\\project\\owner''s\\resonance.ps1'", consumer.powershell_literal("C:\\project\\owner's\\resonance.ps1"))
+
     @unittest.skipUnless(shutil.which("pwsh") or shutil.which("powershell"), "PowerShell unavailable")
     def test_installed_powershell_parser_path(self):
         root, _, _ = self.fixture()

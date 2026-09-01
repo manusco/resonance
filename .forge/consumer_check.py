@@ -71,6 +71,11 @@ def run_check(name: str, command: list[str], cwd: Path) -> dict:
     return check
 
 
+def powershell_literal(value: str) -> str:
+    """Quote a string for a single-quoted PowerShell literal."""
+    return "'" + value.replace("'", "''") + "'"
+
+
 def check(root: Path) -> dict:
     root = root.resolve()
     manifest = json.loads((root / MANIFEST).read_text(encoding="utf-8"))
@@ -117,8 +122,9 @@ def check(root: Path) -> dict:
             "powershell_syntax",
             [
                 powershell, "-NoProfile", "-NonInteractive", "-Command",
-                "$e=$null; [System.Management.Automation.Language.Parser]::ParseFile($args[0],[ref]$null,[ref]$e) > $null; if ($e.Count) { $e | Out-String | Write-Error; exit 1 }",
-                str(ps1),
+                "$e=$null; [System.Management.Automation.Language.Parser]::ParseFile("
+                + powershell_literal(str(ps1))
+                + ",[ref]$null,[ref]$e) > $null; if ($e.Count) { $e | Out-String | Write-Error; exit 1 }",
             ],
             root,
         )
