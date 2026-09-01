@@ -43,6 +43,8 @@ RESOURCE_DIRS = ("references", "scripts", "assets", "evals")
 
 FORGE = Path(__file__).resolve().parent
 REPO = FORGE.parent
+if str(FORGE) not in sys.path:
+    sys.path.insert(0, str(FORGE))
 SKILLS_SRC = FORGE / "skills"
 RESOLVERS = FORGE / "resolvers"
 OVERLAYS = FORGE / "overlays"
@@ -226,10 +228,7 @@ def validate_catalog(registry: dict) -> tuple[list[dict], list[dict], list[str]]
         raise SystemExit(f"forge: command catalog mismatch; missing={missing}, unknown={unknown}")
     if any(not isinstance(item, str) or not item.strip() for item in help_items):
         raise SystemExit("forge: command catalog help entries must be non-empty strings")
-    manifest_path = REPO / "docs" / "skill-manifest.json"
-    if not manifest_path.exists():
-        raise SystemExit("forge: docs/skill-manifest.json is required to validate command targets")
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest = framework_skill_manifest()
     by_path = {Path(item["path"]).parent.as_posix(): item for item in manifest}
     for command in commands:
         alias, skill = command.get("alias"), command.get("skill")
@@ -243,6 +242,18 @@ def validate_catalog(registry: dict) -> tuple[list[dict], list[dict], list[str]]
                 f"forge: /{alias} conflicts with {skill} declared entrypoints {declared}"
             )
     return commands, families, help_items
+
+
+def framework_skill_manifest() -> list[dict]:
+    """Build runtime metadata only from framework-owned skill templates."""
+    from kernel.manifest import normalize_entry
+
+    entries = []
+    for template in sorted(SKILLS_SRC.glob("**/skill.tmpl.md")):
+        entry = normalize_entry(template, SKILLS_SRC)
+        if entry:
+            entries.append(entry)
+    return entries
 
 
 def render_readme_catalog(commands: list[dict], families: list[dict], help_items: list[str]) -> str:
@@ -277,7 +288,7 @@ def render_agents_catalog(commands: list[dict], families: list[dict], help_items
 def build_command_docs(dry_run: bool) -> int:
     """Generate bounded command documentation while preserving all other bytes."""
     commands, families, help_items = validate_catalog(load_command_registry())
-    manifest = json.loads((REPO / "docs" / "skill-manifest.json").read_text(encoding="utf-8"))
+    manifest = framework_skill_manifest()
     skill_count = len(manifest)
     domains = sorted({Path(item["path"]).parts[0] for item in manifest})
     automatic = sorted(

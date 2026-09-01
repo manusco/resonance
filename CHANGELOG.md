@@ -1,5 +1,28 @@
 # Changelog
 
+## v2.5.31
+
+The updater ownership-boundary repair. Source-profile upgrades no longer depend
+on project-owned generated documentation, and transactions now check destination
+directory access before creating a backup.
+
+### Fixed
+- **Forge runtime authority.** Command validation and generated command docs now
+  derive skill metadata from framework-owned templates. A stale consumer
+  `docs/skill-manifest.json` cannot block a new command such as `/blueprint` and
+  remains untouched by the upgrade.
+- **Permission preflight.** The updater probes reversible file creation and
+  deletion in every existing managed destination directory before starting a
+  transaction. Later permission failures still trigger rollback.
+- **Rollback diagnostics.** When both apply and rollback fail, the updater keeps
+  both errors and prints the exact recovery journal path.
+
+### Verification
+- A synthetic legacy target with a stale project-owned skill manifest completes
+  a full Forge build without changing that manifest.
+- Regression tests cover denied managed-tree writes before backup and simultaneous
+  apply and rollback failures.
+
 ## v2.5.3
 
 The architecture and evidence release. Resonance now keeps a durable blueprint

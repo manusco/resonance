@@ -69,6 +69,8 @@ Never overwrite these as part of a framework upgrade:
 - `.resonance/project-skills.lock.json`, the committed content lock for those project skills
 - project-specific `AGENTS*.md`, `CLAUDE*.md`, or host settings unless the diff proves they are generated framework bridges with no local edits
 
+Project-owned documentation is never runtime authority for framework validation. Forge derives command targets and runtime skill metadata from framework-owned skill templates. Generated files such as `docs/skill-manifest.json` may be stale in a consumer without blocking or changing an upgrade.
+
 Legacy exception: if `.resonance/learnings.jsonl` exists and the user approves the migration, append its lessons into `.resonance/02_memory.md` and remove the legacy file only after the append is verified.
 
 ### Optional update notice
@@ -82,7 +84,7 @@ Copy this checklist and tick items as you go.
 0. **Read the project**: Inspect `git status --short`, existing Resonance directories, and the target's `AGENTS.md` / `CLAUDE.md` shape. -> verify: local changes are grouped as framework-managed, project-owned, or unrelated.
 1. **Resolve source**: Use the Source Resolution order. Fetch or verify the source outside the target project. -> verify: source path, version, and fetch method are named.
 2. **Choose the profile and plan first**: Run the pinned checkout's `resonance_update.py --source <source> --target <target> --profile <source|compiled> --version <version>`. For a pre-manifest installation, first check out its installed release and pass that old checkout as `--source` with `--adopt` and an explicit profile; adoption accepts only byte-identical released files. Then use the new checkout as the source for the dry run. Print the profile, full source revision, plan digest, backup policy, validation commands, and rollback path. -> verify: adoption changes only the ownership manifest; the dry run changes nothing.
-3. **Block unsafe states**: Stop if any touched path has an unresolved conflict, staged deletion, unknown ownership, or local customization that cannot be classified. Dirty application files outside the managed paths are context, not a blocker. -> verify: blocker names exact paths.
+3. **Block unsafe states**: Stop if any touched path has an unresolved conflict, staged deletion, unknown ownership, or local customization that cannot be classified. Probe reversible file creation and deletion in each existing managed destination directory before creating a backup. Dirty application files outside the managed paths are context, not a blocker. -> verify: blocker names exact paths and denied destination directories stop before backup.
 4. **Back up before edits**: Copy every touched existing path to `.resonance/backups/resonance-upgrade-<timestamp>/` or another user-approved backup outside replacement paths. -> verify: backup contains the old files.
 5. **Stage the new framework aside**: Copy source framework files into a temporary staging directory inside `.resonance/tmp/` or system temp, never directly over live files. -> verify: staged paths match the selected profile; compiled staging contains no `.forge`.
 6. **Compare and classify**: Diff staged framework files against live managed paths. Preserve target-local files that are outside generated trees. For generated trees, replacement is allowed only after backup and staging validation. -> verify: no project-owned path appears in the write set.
@@ -100,7 +102,7 @@ Copy this checklist and tick items as you go.
 - Preflight finds unrelated dirty application files -> proceed only if the write set excludes them and report that they were left alone.
 - Backup fails -> stop before edits.
 - Staging validation fails -> remove staging directory and stop.
-- Apply fails midway -> restore touched paths from backup, then rerun validation.
+- Apply fails midway -> restore touched paths from backup, then rerun validation. If rollback also fails, preserve both errors and the exact recovery journal path.
 - Validation fails after apply -> leave the backup in place, report failure, and offer rollback. Do not claim success.
 - `.agents/skills` is empty after apply -> restore from backup immediately. Empty skills disable the framework.
 - Project-specific `AGENTS.md` differs from framework `AGENTS.md` -> do not overwrite silently. Either preserve it and add missing bridge guidance manually, or ask for approval with a diff.
