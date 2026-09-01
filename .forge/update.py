@@ -105,10 +105,9 @@ def load_manifest(target: Path) -> dict:
     data = json.loads(p.read_text(encoding="utf-8"))
     if data.get("schema") != 1 or not isinstance(data.get("files"), dict):
         raise ValueError(f"invalid ownership manifest: {p}")
-    profile = data.get("profile", "source")
-    if profile not in PROFILE_ROOTS:
+    profile = data.get("profile")
+    if profile is not None and profile not in PROFILE_ROOTS:
         raise ValueError(f"invalid installation profile in ownership manifest: {p}")
-    data["profile"] = profile
     return data
 
 
@@ -268,7 +267,7 @@ def apply(source: Path, target: Path, expected_version: str | None = None,
             if not project_check.is_file():
                 raise RuntimeError("project skill lock exists but its verifier is missing")
             result = subprocess.run(
-                [sys.executable, str(project_check), "--check"], cwd=target,
+                [sys.executable, str(project_check), "--check", "--root", str(target)], cwd=target,
                 capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60,
             )
             if result.returncode != 0:

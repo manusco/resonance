@@ -16,7 +16,11 @@ updater owns.
 - `compiled` owns generated skills, host adapters, and launchers. It does not
   own `.forge`, project `AGENTS.md`, project `CLAUDE.md`, or project memory.
 
-The updater fails closed when a legacy target looks compiled but has no profile.
+The updater preserves an absent profile as unknown. It fails closed when a
+legacy target looks compiled but has no profile, while a legacy source target
+can continue in source mode when its `.forge` tree is present. A legacy target
+without a profile can be upgraded only after the operator explicitly chooses a
+profile.
 Adoption accepts only byte-identical released files and requires an explicit
 profile for a target without `.forge`. A modified or unowned file remains a
 conflict. The updater never regenerates a private project-skill lock to make an
