@@ -1,0 +1,29 @@
+{
+  "skill": "resonance-engineering-build",
+  "query": "Run /build for the attached approved implementation plan. The repository has the attached approved .resonance/04_systems.md baseline.",
+  "files": [
+    "fixtures/blueprint/approved_systems.md",
+    "fixtures/blueprint/implementation_plan.md"
+  ],
+  "expected_behavior": [
+    "Screens the plan against the conformance triggers before writing tests or implementation code",
+    "Recognizes canonical data ownership and a new service boundary as requiring /blueprint check",
+    "Pins the approved architecture version, approval evidence, and exact plan revision or digest before checking applicable Part I SYS rules",
+    "Stops before implementation on NEEDS_CONTEXT or NON_CONFORMING instead of weakening the baseline",
+    "Proceeds only with CONFORMING or CONFORMING_WITH_EXCEPTIONS and lists any accepted debt"
+  ],
+  "checks": [
+    {
+      "kind": "contains_all",
+      "value": [
+        "blueprint check",
+        "before",
+        "architecture"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\\u2014\\u2013]"
+    }
+  ]
+}

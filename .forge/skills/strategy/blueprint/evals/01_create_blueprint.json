@@ -6,7 +6,9 @@
     "Inspects the repository and operational evidence before defining the target architecture",
     "Separates observed current state, approved target state, and the next safe transition",
     "Defines stable principles, quality attributes, boundaries, ownership, dependency rules, state transitions, side effects, failure recovery, trust zones, observability, and verification expectations",
-    "Produces project-owned artifacts rather than embedding project architecture in the reusable skill",
+    "Writes the normative constitution and descriptive current-system record into .resonance/04_systems.md instead of embedding project architecture in the reusable skill",
+    "Keeps principles and constraints distinct from technology and deployment facts, and makes a technology binding only through a stable normative rule",
+    "Uses linked ADRs, diagrams, inventories, and runbooks only as non-normative annexes instead of creating a parallel authority",
     "Proposes bounded migration seams that preserve working behavior instead of recommending a total rewrite",
     "Labels evidence, assumptions, decisions, and unresolved questions distinctly",
     "Requires human approval before the blueprint becomes the conformance baseline"
@@ -15,6 +17,7 @@
     {"kind": "contains_any", "value": ["current state", "as-is", "observed"]},
     {"kind": "contains_any", "value": ["target state", "to-be", "approved target"]},
     {"kind": "contains_any", "value": ["transition", "evolution", "migration"]},
+    {"kind": "contains_any", "value": ["source of truth", "authoritative", "canonical"]},
     {"kind": "regex_absent", "value": "[\u2014\u2013]"}
   ]
 }

@@ -6,6 +6,7 @@
 
 ```mermaid
 graph LR
+  resonance-engineering-build --> resonance-strategy-blueprint
   resonance-engineering-build --> resonance-engineering-backend
   resonance-engineering-build --> resonance-engineering-frontend
   resonance-engineering-build --> resonance-engineering-debugger
@@ -90,7 +91,7 @@ graph LR
 
 | Orchestrator | Invokes |
 | --- | --- |
-| resonance-engineering-build | resonance-engineering-backend, resonance-engineering-frontend, resonance-engineering-debugger, resonance-ops-security, resonance-ops-audit |
+| resonance-engineering-build | resonance-strategy-blueprint, resonance-engineering-backend, resonance-engineering-frontend, resonance-engineering-debugger, resonance-ops-security, resonance-ops-audit |
 | resonance-finance-run-operating-cycle | resonance-strategy-finance, resonance-marketing-analytics, resonance-ops-legal |
 | resonance-leadership-run-operating-cycle | resonance-ops-founder-os, resonance-people-hiring, resonance-ops-productivity, resonance-ops-retro, resonance-ops-legal |
 | resonance-marketing-run-campaign | resonance-strategy-gtm-thinker, resonance-strategy-growth, resonance-strategy-grill, resonance-marketing-copywriter, resonance-marketing-content-distribution, resonance-marketing-lifecycle, resonance-marketing-paid-acquisition, resonance-marketing-analytics, resonance-design-studio, resonance-ops-legal |

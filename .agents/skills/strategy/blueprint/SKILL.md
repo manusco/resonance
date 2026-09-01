@@ -13,9 +13,9 @@ finalizes:
   - architecture-conformance-report
 artifact_access:
   - project-evidence:read
-  - architecture-blueprint:create,modify,review,approve
+  - architecture-blueprint:create,modify,review
   - architecture-decision:create,modify,review
-  - architecture-exception:create,modify,review,approve
+  - architecture-exception:create,modify,review
   - implementation-plan:read,review
   - implementation-artifact:read,review
   - architecture-conformance-report:create,modify,approve
@@ -83,15 +83,20 @@ invokes:
 > **Output:** A project-owned architecture blueprint or an architecture conformance report with evidence, findings, exceptions, and a verdict.
 > **Definition of Done:** Current reality, approved target, and next safe transition are distinct; every material rule and boundary has an owner; decisions and exceptions are traceable; the result cites evidence; a human approves a new baseline or principle change; and no application change, deployment, or merge is performed.
 
-The blueprint governs architectural direction. It is not a description of every
-file, a style guide, or a reason to rewrite working software. Read
+The blueprint is the governance procedure. In a Resonance project its durable
+artifact is `.resonance/04_systems.md`, which keeps the normative constitution
+and the descriptive system record in one place without confusing them. It is
+not a description of every file, a style guide, or a reason to rewrite working software. Read
 [Blueprint Protocol](references/blueprint_protocol.md) for creation and revision.
-Read [Conformance Protocol](references/conformance_protocol.md) for checks.
+Read [Conformance Protocol](references/conformance_protocol.md) and
+[Audit Classification Taxonomy](../../ops/core/references/audit_classification_taxonomy.md)
+for checks.
 
 ## Prerequisites
 
 - [ ] Name the mode: `create`, `revise`, or `check`.
 - [ ] Preserve the user's outcome, constraints, and exclusions.
+- [ ] In a Resonance project, use `.resonance/04_systems.md` as the sole normative architecture baseline. Outside Resonance, locate or declare one canonical architecture artifact. Do not create a competing authority.
 - [ ] In `create` or `revise`, inspect repository and operational evidence. Do not derive intended architecture from code alone.
 - [ ] In `check`, obtain the approved blueprint and the concrete plan, diff, PR, or release candidate. If either is missing, stop and name it.
 
@@ -104,7 +109,7 @@ Read [Conformance Protocol](references/conformance_protocol.md) for checks.
    - `revise`: classify the new evidence as clarification, exception, decision, or principle change. Preserve stable principles unless the evidence invalidates them.
    - `check`: trace the artifact against each applicable rule and contract. Do not rewrite the baseline to make the artifact pass.
 4. **Control evolution.** Keep current state, target state, and transition state separate. For every gap, select keep, constrain, migrate, replace, or remove. Prefer the smallest reversible slice that reduces risk while preserving behavior. -> gate: no total rewrite is proposed without evidence that incremental paths cannot meet the required qualities.
-5. **Record decisions and exceptions.** Write an architecture decision for a durable choice. Record a controlled exception for a temporary violation. Never hide debt in prose or label it temporary without an exit condition. -> gate: each exception has scope, rationale, owner, risk, compensating controls, review trigger, evidence, and removal condition.
+5. **Record decisions and exceptions.** Write an architecture decision for a durable choice. Record a controlled exception for a temporary violation. Never hide debt in prose or label it temporary without an exit condition. Keep the exception `PROPOSED` until the declared human approval role accepts it. -> gate: each exception has scope, rationale, owner, risk, compensating controls, review trigger, evidence, removal condition, and approval evidence when active.
 6. **Verify.** Invoke `resonance-ops-qa` for testability and failure paths, `resonance-ops-security` for trust or authorization boundaries, and `resonance-ops-observability` for runtime proof when applicable. -> gate: every claimed invariant has a verification method or is labeled unverified.
 7. **Decide.** For a blueprint, return `PROPOSED` until a human approves it, then `APPROVED`. For a check, return `CONFORMING`, `CONFORMING_WITH_EXCEPTIONS`, or `NON_CONFORMING`, with blocking findings first and the smallest safe next action. -> gate: accepted debt never appears as clean conformance.
 8. **Route.** Send approved migration work to `resonance-strategy-plan` and concrete code review to `resonance-ops-reviewer`. Do not implement, deploy, merge, or change production state.
@@ -117,7 +122,13 @@ Read [Conformance Protocol](references/conformance_protocol.md) for checks.
 - Failure behavior, idempotency, retries, reconciliation, audit evidence, and recovery are part of the design.
 - Dependencies cross boundaries only through explicit contracts.
 - Architecture debt is visible, owned, bounded, and removable.
+- The skill may propose and review an exception. It never accepts architecture debt on the human approval role's behalf.
 - The blueprint changes through evidence and explicit decisions, not implementation convenience.
+- Every conformance report identifies the approved blueprint version or revision it checked.
+- Public artifacts identify owners by role, team, or maintainer group and contain no personal contact details.
+- In a Resonance project, linked diagrams, ADRs, inventories, and evidence are non-normative annexes. They never override `.resonance/04_systems.md`.
+- Documentation depth scales with architectural risk and irreversibility, not project size. Do not force blueprint checks on routine local changes.
+- Every `/build` screens its approved plan for architecture applicability. A full check runs before code only when a conformance trigger applies.
 - Project architecture belongs in project artifacts. Never copy it into this reusable skill.
 
 ## Recovery
@@ -133,6 +144,7 @@ Read [Conformance Protocol](references/conformance_protocol.md) for checks.
 
 - **[Blueprint Protocol](references/blueprint_protocol.md):** Artifact structure, first-principles derivation, brownfield mapping, evolution rules, and exception schema.
 - **[Conformance Protocol](references/conformance_protocol.md):** Change tracing, finding severity, verdicts, and planning, review, and release gates.
+- **[Audit Classification Taxonomy](../../ops/core/references/audit_classification_taxonomy.md):** The project-wide finding categories and P0-P3 severity ladder.
 
 ## Operating Standard
 

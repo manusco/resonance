@@ -1,9 +1,15 @@
 {
   "skill": "resonance-strategy-blueprint",
-  "query": "Run /blueprint check on this release candidate. The approved blueprint says billing decisions belong to the domain service and customer messages require durable delivery state. This change calculates eligibility in the browser, calls the payment provider directly, and marks the message sent when it is queued. Tests cover only the happy path.",
-  "files": [],
+  "query": "Run /blueprint check on the attached approved architecture baseline and release candidate. Cite the evidence you use and return a conformance verdict.",
+  "files": [
+    "fixtures/blueprint/approved_systems.md",
+    "fixtures/blueprint/release_candidate.diff"
+  ],
   "expected_behavior": [
     "Treats the approved blueprint as the conformance baseline and cites the violated rules",
+    "Identifies the approved blueprint version or revision so the verdict is reproducible",
+    "Confirms recorded human approval evidence and identifies the exact release-candidate revision or content digest",
+    "Cites both attached artifact paths or specific evidence locations from them",
     "Identifies browser-owned eligibility, direct provider access, and queue-equals-delivery as three distinct boundary violations",
     "Traces the affected decision, state, side effect, failure path, and verification gap",
     "Ranks findings by consequence and blast radius rather than by style",
@@ -13,6 +19,8 @@
   "checks": [
     {"kind": "contains_any", "value": ["non-conform", "block", "reject"]},
     {"kind": "contains_any", "value": ["delivery", "delivered"]},
-    {"kind": "contains_any", "value": ["browser", "client"]}
+    {"kind": "contains_any", "value": ["browser", "client"]},
+    {"kind": "contains_any", "value": ["approved_systems.md", "release_candidate.diff"]},
+    {"kind": "contains_any", "value": ["P0", "P1", "P2", "P3"]}
   ]
 }

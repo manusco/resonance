@@ -99,6 +99,7 @@ The registry contains **37 commands**.
 - Use `/brief` to recover intent and route unclear work. Use `/plan` when the intended outcome is already clear and needs an implementation plan.
 - Use `/grill` to interrogate a plan or goal contract before execution. Use `/council` to challenge a completed analysis or a consequential decision.
 - Use `/test` for test design and coverage, `/review-pr` for a concrete diff, `/audit` for a multi-specialist finding review, and `/system-health` for a repeatable health score.
+- Use `/blueprint` to establish or revise the durable architecture baseline and check conformance. Use the architect for an isolated system design, `/plan` for implementation sequencing, and `/review-pr` for general correctness.
 - Use `/goal` to drive an outcome across stages, `/build` to execute an approved implementation plan, and `/ship` to prepare and perform a release.
 
 If the route is still unclear, start with `/brief`.
@@ -112,7 +113,7 @@ If the route is still unclear, start with `/brief`.
 72 skills across 12 domains, each a self-contained protocol backed by reference docs.
 <!-- RESONANCE-GENERATED:SKILL_DOMAIN_COUNT:END -->
 
-- **Strategy**: `plan`, `grill`, `architect`, `venture`, `finance`, `growth`, `researcher`, `gtm-thinker`. Planning, system design, business and financial modeling, fundraising, and pre-build interrogation.
+- **Strategy**: `blueprint`, `plan`, `grill`, `architect`, `venture`, `finance`, `growth`, `researcher`, `gtm-thinker`. Architecture governance, planning, system design, business and financial modeling, fundraising, and pre-build interrogation.
 - **Software**: `deliver-change`. End-to-end software delivery from contract through plan, build, evidence, audit, and release proposal without auto-shipping.
 - **Finance**: `run-operating-cycle`. Actuals, runway, scenarios, decisions, and metric follow-up from sourced data.
 - **Leadership**: `run-operating-cycle`. Goals, decisions, delegation, hiring, feedback, cadence, and operating reviews.
@@ -174,6 +175,19 @@ The first command is a dry run. Review its JSON plan before `--apply`. For an ol
 
 Then open your AI tool and type `/init`. It writes your project's vision to `.resonance/00_soul.md` and sets up the memory structure.
 
+For architecture, `.resonance/04_systems.md` keeps two explicit layers in one
+place. Its architecture constitution contains the normative principles and
+constraints. Its system record captures current technologies, topology,
+deployment, and workflows without turning every implementation fact into law.
+Run `/blueprint create` before a change creates a durable boundary or makes
+failure costly to reverse, such as canonical data ownership, authorization,
+billing, multi-tenancy, async delivery, a critical provider, recovery behavior,
+a second deployable service, or a measurable scale or reliability target.
+Before `/build`, every approved plan gets a quick applicability screen. Plans
+that touch a governed concern require `/blueprint check`; routine local changes
+do not. Small projects use the same file without inventing a second architecture
+document or a speculative target.
+
 ---
 
 ## Project memory
@@ -185,7 +199,7 @@ The `.resonance/` folder is what makes the agent persistent across sessions. Its
 | `00_soul.md` | Vision, mission, and the laws that govern the project. Written once, referenced forever. |
 | `01_state.md` | Active task, last decision, current blocker. Updated after every session. |
 | `02_memory.md` | The lessons index, loaded every session so a lesson written once is read every time after. One line per lesson; detail in `memory/` leaf files. Settled decisions live under `## Decisions` in the same file. Recall deeper slices by meaning with `.forge/recall.py`. Never solve the same problem twice. |
-| `03_tools.md`, `04_systems.md` | Tool boundaries and the system architecture map. |
+| `03_tools.md`, `04_systems.md` | Tool boundaries, then the architecture constitution and descriptive system record in one canonical file. |
 | `guards.json` | Project-specific guardrails and constraints. |
 
 ---

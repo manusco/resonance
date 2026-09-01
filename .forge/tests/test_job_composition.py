@@ -49,6 +49,18 @@ class JobCompositionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "participants have no artifact access"):
             job_composition.compile_contracts(mutated)
 
+    def test_blueprint_cannot_approve_human_governed_artifacts(self):
+        blueprint = next(
+            item for item in self.manifest if item.get("job_id") == "architecture.blueprint"
+        )
+        rights = {
+            row.split(":", 1)[0]: set(row.split(":", 1)[1].split(","))
+            for row in blueprint["artifact_access"]
+        }
+        self.assertNotIn("approve", rights["architecture-blueprint"])
+        self.assertNotIn("approve", rights["architecture-exception"])
+        self.assertIn("approve", rights["architecture-conformance-report"])
+
 
 if __name__ == "__main__":
     unittest.main()

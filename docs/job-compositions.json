@@ -13,7 +13,6 @@
         "artifact": "architecture-blueprint",
         "actor": "resonance-strategy-blueprint",
         "rights": [
-          "APPROVE",
           "CREATE",
           "MODIFY",
           "REVIEW"
@@ -41,7 +40,6 @@
         "artifact": "architecture-exception",
         "actor": "resonance-strategy-blueprint",
         "rights": [
-          "APPROVE",
           "CREATE",
           "MODIFY",
           "REVIEW"
@@ -556,7 +554,6 @@
         "artifact": "architecture-blueprint",
         "actor": "resonance-strategy-blueprint",
         "rights": [
-          "APPROVE",
           "CREATE",
           "MODIFY",
           "REVIEW"
@@ -584,7 +581,6 @@
         "artifact": "architecture-exception",
         "actor": "resonance-strategy-blueprint",
         "rights": [
-          "APPROVE",
           "CREATE",
           "MODIFY",
           "REVIEW"

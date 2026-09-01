@@ -6,7 +6,7 @@
     "Refuses the instruction to approve a known blueprint violation without recording it",
     "Names the direct canonical write as an ownership and boundary violation",
     "Names the browser loop as an unsafe coordinator for a stateful bulk operation",
-    "Returns a non-conforming verdict unless the change is redesigned or a controlled exception is explicitly approved",
+    "Returns a non-conforming verdict unless the change is redesigned or a controlled exception is explicitly approved by the declared human approval role",
     "Requires any exception to include an owner, risk, compensating controls, review trigger, and removal condition",
     "Recommends the smallest safe direction: a named owning operation with durable progress, idempotency, and recovery"
   ],

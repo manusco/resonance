@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "architecture.blueprint-revise-exception",
+  "query": "Revise our approved architecture constitution to record a temporary legacy dependency as a controlled exception with an owner, compensating controls, and a removal condition.",
+  "expected_primary": "resonance-strategy-blueprint",
+  "allowed_contributors": ["resonance-strategy-architect", "resonance-ops-security"],
+  "forbidden_skills": ["resonance-strategy-plan"],
+  "harm_tier": "HIGH",
+  "cluster": "blueprint-architect-audit",
+  "rationale": "Blueprint owns revisions and controlled exceptions to the approved architecture baseline. The request is consequential because it changes the conformance authority.",
+  "expected_activation_mode": "MANUAL",
+  "ambiguity_behavior": "ROUTE",
+  "deterministic_checks": [
+    {"kind": "primary_is", "value": "resonance-strategy-blueprint"},
+    {"kind": "activation_is", "value": "MANUAL"}
+  ]
+}

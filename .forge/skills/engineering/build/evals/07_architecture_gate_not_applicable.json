@@ -1,0 +1,29 @@
+{
+  "skill": "resonance-engineering-build",
+  "query": "Run /build for an approved plan that corrects two spelling mistakes in existing public documentation. No behavior, boundary, contract, owner, deployment, or system rule changes.",
+  "files": [],
+  "expected_behavior": [
+    "Screens the plan against the architecture conformance triggers before implementation",
+    "Records the architecture gate as not applicable with the concrete reason that the change is routine copy only",
+    "Does not run a full /blueprint check or issue a conformance verdict",
+    "Continues with the normal scoped build and verification workflow",
+    "Does not invent an architecture concern to justify ceremony"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "not applicable",
+        "does not apply"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)(CONFORMING_WITH_EXCEPTIONS|NON_CONFORMING|NEEDS_CONTEXT)"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\\u2014\\u2013]"
+    }
+  ]
+}

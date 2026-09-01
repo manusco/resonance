@@ -1,0 +1,19 @@
+diff --git a/src/web/account-admin.ts b/src/web/account-admin.ts
+index 1111111..2222222 100644
+--- a/src/web/account-admin.ts
++++ b/src/web/account-admin.ts
+@@ -1,3 +1,10 @@
++const eligible = account.balance > 0 && account.status === "active";
++if (eligible) {
++  await paymentProvider.charge(account.id);
++}
++for (const message of messages) {
++  await queue.publish(message);
++  message.status = "delivered";
++}
+diff --git a/tests/account-admin.test.ts b/tests/account-admin.test.ts
+index 3333333..4444444 100644
+--- a/tests/account-admin.test.ts
++++ b/tests/account-admin.test.ts
+@@ -1 +1,2 @@
++it("queues messages for eligible accounts", () => expect(true).toBe(true));

@@ -178,12 +178,15 @@
     "inputs": [
       "user_request",
       "plan",
-      "implementation_plan"
+      "implementation_plan",
+      "architecture_blueprint"
     ],
     "outputs": [
       "user_request",
       "artifact",
       "evidence",
+      "architecture_conformance_report",
+      "blueprint_scope",
       "backend_scope",
       "frontend_scope",
       "debugger_scope",
@@ -191,6 +194,7 @@
       "audit_scope"
     ],
     "invokes": [
+      "resonance-strategy-blueprint",
       "resonance-engineering-backend",
       "resonance-engineering-frontend",
       "resonance-engineering-debugger",
@@ -2154,9 +2158,9 @@
     ],
     "artifact_access": [
       "project-evidence:read",
-      "architecture-blueprint:create,modify,review,approve",
+      "architecture-blueprint:create,modify,review",
       "architecture-decision:create,modify,review",
-      "architecture-exception:create,modify,review,approve",
+      "architecture-exception:create,modify,review",
       "implementation-plan:read,review",
       "implementation-artifact:read,review",
       "architecture-conformance-report:create,modify,approve"

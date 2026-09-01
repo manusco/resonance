@@ -120,6 +120,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - Use `/brief` to recover intent and route unclear work. Use `/plan` when the intended outcome is already clear and needs an implementation plan.
 - Use `/grill` to interrogate a plan or goal contract before execution. Use `/council` to challenge a completed analysis or a consequential decision.
 - Use `/test` for test design and coverage, `/review-pr` for a concrete diff, `/audit` for a multi-specialist finding review, and `/system-health` for a repeatable health score.
+- Use `/blueprint` to establish or revise the durable architecture baseline and check conformance. Use the architect for an isolated system design, `/plan` for implementation sequencing, and `/review-pr` for general correctness.
 - Use `/goal` to drive an outcome across stages, `/build` to execute an approved implementation plan, and `/ship` to prepare and perform a release.
 
 If the route is still unclear, start with `/brief`.
