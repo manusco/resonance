@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-ops-refactor",
+  "query": "Refactor this date field. It currently uses a custom JavaScript calendar widget and a new adapter around it, but the product only needs a normal date value in modern browsers.",
+  "files": [],
+  "expected_behavior": [
+    "Traces the current flow and locks existing required behavior before choosing a smaller implementation",
+    "Runs the necessity order and prefers the native platform date input over a custom widget, adapter, or new dependency",
+    "Removes obsolete code and dependency surface instead of introducing another abstraction",
+    "Preserves validation, accessibility, error handling, and every explicitly required behavior",
+    "Verifies the smaller implementation with the same behavior checks before and after"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

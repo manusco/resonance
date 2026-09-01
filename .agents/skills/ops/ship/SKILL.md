@@ -30,13 +30,14 @@ Copy this checklist and tick items as you go.
    - **Perf**: Check bundle sizes (ensure no massive chunks).
    - **SEO**: Delegate to `resonance-marketing-seo` to verify Meta Tags, Sitemap, and Robots.txt.
 2. **Blueprint Release Gate**: When `.resonance/04_systems.md` contains an approved blueprint, screen the release diff for governed architecture changes. Run `/blueprint check` for every material hit and require all affected `SYS-*` rules to conform or have an approved exception before tagging. Record a one-sentence justified skip for local releases. Do not invent a baseline. → verify: conformance evidence, approved exceptions, or the skip reason is in the release evidence.
-3. **Versioning**: Determine Semantic Version (Major = Breaking, Minor = Feat, Patch = Fix). Update `package.json`.
-4. **Changelog & Docs Sync**: Use `git log --oneline [last_tag]..HEAD` and update `CHANGELOG.md` with human-readable notes. Then run `py .forge/doc_drift.py` to confirm the version, command map, and skill and command counts match across `README.md`, `AGENTS.md`, and the manifests. Fix any drift before committing.
-5. **Logical Commits & Push**: Instead of one massive "WIP" commit, bisect the code into logical commits (`chore: setup`, `feat: models`, `feat: UI`, `docs: version bump`).
-6. **Tag & Release**: `git tag vX.Y.Z`, then `git push origin main --tags`. Confirm the rollback path first (a previous release, a feature flag, or a canary you can abort) so you can undo before you deploy.
-7. **Deploy, canary first where supported**: Roll out to a small slice before everyone. Watch the health window before promoting to full traffic. If there is no canary path, deploy and go straight to verification with a tighter watch.
-8. **Verify the deploy (do not skip)**: After deploy, prove production is healthy. Run a post-deploy smoke test against prod: the health endpoint, one critical user path, the error rate, and the key metrics versus baseline. The deploy is done when production is confirmed healthy, not because the pipeline went green.
-9. **Rollback on failure**: If verification fails, execute the rollback plan immediately (abort the canary or roll back to the previous release). Restore production first, then investigate. See Canary and Rollback.
+3. **Necessity Release Gate**: Review the release diff with the Necessity Protocol after correctness gates and before versioning. Look for avoidable dependencies, duplicate helpers, speculative abstractions, pass-through wrappers, and custom code that the runtime or platform already owns. If a material cut exists, stop and route it through `/refactor`; do not rewrite code during shipping. Then restart pre-flight checks. Never gate on line count or cut protected behavior. → verify: `lean`, or refactor completed and all gates rerun.
+4. **Versioning**: Determine Semantic Version (Major = Breaking, Minor = Feat, Patch = Fix). Update `package.json`.
+5. **Changelog & Docs Sync**: Use `git log --oneline [last_tag]..HEAD` and update `CHANGELOG.md` with human-readable notes. Then run `py .forge/doc_drift.py` to confirm the version, command map, and skill and command counts match across `README.md`, `AGENTS.md`, and the manifests. Fix any drift before committing.
+6. **Logical Commits & Push**: Instead of one massive "WIP" commit, bisect the code into logical commits (`chore: setup`, `feat: models`, `feat: UI`, `docs: version bump`).
+7. **Tag & Release**: `git tag vX.Y.Z`, then `git push origin main --tags`. Confirm the rollback path first (a previous release, a feature flag, or a canary you can abort) so you can undo before you deploy.
+8. **Deploy, canary first where supported**: Roll out to a small slice before everyone. Watch the health window before promoting to full traffic. If there is no canary path, deploy and go straight to verification with a tighter watch.
+9. **Verify the deploy (do not skip)**: After deploy, prove production is healthy. Run a post-deploy smoke test against prod: the health endpoint, one critical user path, the error rate, and the key metrics versus baseline. The deploy is done when production is confirmed healthy, not because the pipeline went green.
+10. **Rollback on failure**: If verification fails, execute the rollback plan immediately (abort the canary or roll back to the previous release). Restore production first, then investigate. See Canary and Rollback.
 
 ## Recovery
 
@@ -57,6 +58,9 @@ Shipping is irreversible. The artifact must be verified before it receives a ver
 ### Logical Commits
 Do not dump 50 files into a single commit. Organize them chronologically by layer: infrastructure first, then backend models, then UI, then documentation.
 
+### Necessity Release Gate
+Shipping is the last safe point to reject new ownership surface, not the place to perform an unplanned rewrite. A material simplification sends the change back through `/refactor`, tests, review, and pre-flight. An already lean diff proceeds without ceremony.
+
 ### Canary and Rollback
 Deploy to a small slice first and watch it before full rollout, so a bad release hits a few users, not all of them. Always know how to undo before you deploy. Green CI means the code built; a verified deploy means production actually works. Only the second one is done.
 
@@ -66,6 +70,7 @@ Deploy to a small slice first and watch it before full rollout, so a bad release
 - **[Git Mastery](../core/references/git_mastery.md)**: Tagging, branching, and release protocols.
 - **[Toolchain Detection](../core/references/toolchain_detection.md)**: Detect and run the project's commands, not npm by reflex.
 - **[Canary and Rollback](references/canary_and_rollback.md)**: Progressive rollout, post-deploy verification, and rollback triggers.
+- **[Necessity Protocol](../core/references/necessity_protocol.md)**: Final check for avoidable ownership before versioning and tagging.
 
 ## Operating Standard
 
