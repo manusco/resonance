@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.5.32
+
+The missing project-doc repair.
+
+### Fixed
+- **Optional project documentation.** Required Forge validation now skips absent
+  documentation targets such as a project-owned root `README.md`. It neither
+  creates the file nor weakens validation of framework-owned command metadata.
+- **Regression fixture.** The legacy consumer fixture no longer copies a root
+  README, so source-profile upgrades prove they work when project documentation
+  is stale, missing, or both.
+
 ## v2.5.31
 
 The updater ownership-boundary repair. Source-profile upgrades no longer depend
