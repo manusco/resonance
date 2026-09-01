@@ -30,18 +30,35 @@ upgrade pass.
 
 Compiled targets are validated from the pinned source checkout. The source
 checkout runs its Forge dry run and integrity checks, while the source validator
-checks the target's generated skills. This keeps meaningful verification without
-installing source tooling into the project. Source targets continue to validate
-from their own `.forge` tree.
+checks the target's generated skills and any project-skill lock. This keeps
+meaningful verification without installing source tooling into the project.
+Source targets use the verifier in their own `.forge` tree. Neither profile
+regenerates a project-owned lock during an update.
 
 Both profiles use the same staged backup, hash comparison, atomic replacement,
-manifest write, and rollback journal. Profile changes are migrations, not an
-implicit inference. Run an explicit dry run first:
+manifest write, and rollback journal. Profile migration is unsupported. Once a
+manifest records a profile, every requested profile must match it. Run an
+explicit dry run first:
 
 ```text
 python .forge/update.py --source <pinned-resonance-checkout> --target <project> --profile compiled
 ```
 
 The first pilot should cover one real compiled consumer and one real source
-installation before any fleet update. The updater must never replace the
-existing `v2.5.2` tag; this change belongs in a later deliberate release.
+installation before any fleet update. Never replace an existing release tag.
+
+## Optional release notices
+
+Release notices are disabled by default. Enable them per installation with
+`python3 resonance_update.py notice enable`. The setting and its small cache
+live in the operating system's user configuration directory, outside every
+project. The notice request has a three-second timeout, a 64 KiB response cap,
+rejects redirects, drafts, and prereleases, and never sends project paths or
+project data. Launchers only run the quiet check when enabled. A failed check
+does not block startup, and no notice command can apply an update.
+
+The installed `resonance_update.py` runtime performs preview and apply for both
+profiles. `.forge/update.py` is a compatibility entrypoint for source installs.
+Apply requires the exact version, full source commit, and plan digest printed by
+the reviewed preview. It copies released files from the pinned checkout and
+never imports or executes Python fetched during the notice request.

@@ -41,6 +41,7 @@ outputs:
   - reviewer_scope
   - architecture_scope
   - architect_scope
+  - blueprint_scope
 side_effects:
   - may_coordinate_work
   - may_execute_checks
@@ -52,6 +53,7 @@ invokes:
   - resonance-ops-reviewer
   - resonance-ops-qa
   - resonance-strategy-architect
+  - resonance-strategy-blueprint
 ---
 
 # /resonance-ops-audit: prevent entropy, enforce standards
@@ -76,12 +78,13 @@ Copy this checklist and tick items as you go.
 1. **Security Scan**: Delegate to `resonance-ops-security`. Scan for secrets, `eval()`, weak crypto. → verify: findings logged.
 2. **Quality Scan**: Delegate to `resonance-ops-reviewer`. Run linters, check for code smell and Cognitive Complexity. → verify: structural issues logged.
 3. **Authorization Model Audit**: Delegate to `resonance-ops-security`. Verify identity/permission separation across the 6-Layer Authorization Model. → verify: Capability Matrix produced.
-4. **Data Truth Audit**: Delegate to `resonance-strategy-architect`. Identify duplicated business rules, mappings, and transformations. → verify: drift risks named.
-5. **Environment Robustness Check**: Delegate to `resonance-engineering-backend`. Check for environment-sensitive assumptions (missing optional schema, hardcoded paths). → verify: fallback gaps logged.
-6. **Verification Gap Analysis**: Delegate to `resonance-ops-qa`. Walk the 8-Path Matrix for every critical feature. → verify: missing failure paths reported.
-7. **Product Integrity Check**: Verify user-facing behavior matches product intent (no fabricated testimonials or unsupported claims).
-8. **Performance Scan**: Check for structural performance debt (N+1 queries, synchronous work on interactive requests).
-9. **Synthesis (The Report)**: Combine all findings into the Standard Report Template.
+4. **Blueprint Conformance**: When `.resonance/04_systems.md` contains an approved blueprint, screen the audit scope for changes to governed boundaries, ownership, dependency direction, trust zones, data contracts, runtime topology, or named exceptions. Delegate material changes to `resonance-strategy-blueprint` for `/blueprint check`, then normalize any drift finding into the same P0-P3 taxonomy as every other finding. Record `blueprint_scope: not_applicable` with evidence for a local change. A missing baseline blocks an architecture verdict only when the requested audit depends on one. → verify: affected `SYS-*` rules, a justified skip, or the missing-baseline limitation is recorded.
+5. **Data Truth Audit**: Delegate to `resonance-strategy-architect`. Identify duplicated business rules, mappings, and transformations. → verify: drift risks named.
+6. **Environment Robustness Check**: Delegate to `resonance-engineering-backend`. Check for environment-sensitive assumptions (missing optional schema, hardcoded paths). → verify: fallback gaps logged.
+7. **Verification Gap Analysis**: Delegate to `resonance-ops-qa`. Walk the 8-Path Matrix for every critical feature. → verify: missing failure paths reported.
+8. **Product Integrity Check**: Verify user-facing behavior matches product intent (no fabricated testimonials or unsupported claims).
+9. **Performance Scan**: Check for structural performance debt (N+1 queries, synchronous work on interactive requests).
+10. **Synthesis (The Report)**: Combine all findings into the Standard Report Template.
 
 ## Recovery
 

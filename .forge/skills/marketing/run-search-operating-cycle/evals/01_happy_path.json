@@ -10,6 +10,6 @@
   ],
   "checks": [
     {"kind": "contains_all", "value": ["private", "P0", "P3", "SEO"]},
-    {"kind": "not_contains_any", "value": ["cron", "scheduled the job"]}
+    {"kind": "regex_absent", "value": "(?i)(cron|scheduled the job)"}
   ]
 }

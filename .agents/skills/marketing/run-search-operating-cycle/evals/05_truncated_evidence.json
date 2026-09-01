@@ -8,6 +8,6 @@
   ],
   "checks": [
     {"kind": "contains_all", "value": ["truncated", "incomplete"]},
-    {"kind": "not_contains_any", "value": ["approved as clean", "search health is clean"]}
+    {"kind": "regex_absent", "value": "(?i)(approved as clean|search health is clean)"}
   ]
 }

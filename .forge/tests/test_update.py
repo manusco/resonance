@@ -77,6 +77,20 @@ class UpdateTests(unittest.TestCase):
             update.plan(source, target)
         self.assertEqual("compiled", update.plan(source, target, "compiled")["profile"])
 
+    def test_recorded_profile_migration_is_unsupported(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        manifest = target / update.MANIFEST
+        manifest.parent.mkdir(parents=True)
+        for recorded, requested in (("source", "compiled"), ("compiled", "source")):
+            manifest.write_text(
+                json.dumps({"schema": 1, "version": "2.5.2", "profile": recorded, "files": {}}),
+                encoding="utf-8",
+            )
+            with self.subTest(recorded=recorded, requested=requested):
+                with self.assertRaisesRegex(ValueError, "profile migration is unsupported"):
+                    update.plan(source, target, requested)
+
     def test_compiled_apply_validates_from_pinned_source(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)

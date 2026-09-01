@@ -30,10 +30,12 @@ graph LR
   resonance-marketing-run-campaign --> resonance-marketing-analytics
   resonance-marketing-run-campaign --> resonance-design-studio
   resonance-marketing-run-campaign --> resonance-ops-legal
+  resonance-marketing-run-search-operating-cycle --> resonance-marketing-seo
   resonance-ops-audit --> resonance-ops-security
   resonance-ops-audit --> resonance-ops-reviewer
   resonance-ops-audit --> resonance-ops-qa
   resonance-ops-audit --> resonance-strategy-architect
+  resonance-ops-audit --> resonance-strategy-blueprint
   resonance-ops-core --> resonance-strategy-plan
   resonance-ops-core --> resonance-engineering-backend
   resonance-ops-core --> resonance-engineering-frontend
@@ -95,7 +97,8 @@ graph LR
 | resonance-finance-run-operating-cycle | resonance-strategy-finance, resonance-marketing-analytics, resonance-ops-legal |
 | resonance-leadership-run-operating-cycle | resonance-ops-founder-os, resonance-people-hiring, resonance-ops-productivity, resonance-ops-retro, resonance-ops-legal |
 | resonance-marketing-run-campaign | resonance-strategy-gtm-thinker, resonance-strategy-growth, resonance-strategy-grill, resonance-marketing-copywriter, resonance-marketing-content-distribution, resonance-marketing-lifecycle, resonance-marketing-paid-acquisition, resonance-marketing-analytics, resonance-design-studio, resonance-ops-legal |
-| resonance-ops-audit | resonance-ops-security, resonance-ops-reviewer, resonance-ops-qa, resonance-strategy-architect |
+| resonance-marketing-run-search-operating-cycle | resonance-marketing-seo |
+| resonance-ops-audit | resonance-ops-security, resonance-ops-reviewer, resonance-ops-qa, resonance-strategy-architect, resonance-strategy-blueprint |
 | resonance-ops-core | resonance-strategy-plan, resonance-engineering-backend, resonance-engineering-frontend, resonance-design-designer |
 | resonance-ops-goal | resonance-strategy-grill, resonance-strategy-plan, resonance-engineering-build, resonance-ops-qa, resonance-ops-audit, resonance-ops-second-opinion, resonance-ops-ship |
 | resonance-ops-improve | resonance-ops-skill-author, resonance-ops-second-opinion |
@@ -134,6 +137,7 @@ graph LR
 | resonance-marketing-lifecycle | knowledge | advisory | degrade | none |
 | resonance-marketing-paid-acquisition | knowledge | advisory | degrade | none |
 | resonance-marketing-run-campaign | orchestration | consequential | stop | may_coordinate_work, may_write_files |
+| resonance-marketing-run-search-operating-cycle | orchestration | consequential | stop | may_coordinate_work, may_execute_checks, may_write_files |
 | resonance-marketing-seo | knowledge | advisory | degrade | none |
 | resonance-ops-audit | orchestration | consequential | stop | may_coordinate_work, may_execute_checks |
 | resonance-ops-core | orchestration | consequential | stop | may_coordinate_work, may_write_files |

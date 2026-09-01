@@ -38,6 +38,7 @@ SOURCE_MARKERS = re.compile(
 )
 ALLOWED_MARKERS = (
     "github.com/manusco/resonance",
+    "api.github.com/repos/manusco/resonance",
 )
 SCANNER_IMPLEMENTATIONS = {
     ".forge/fingerprint_scan.py",

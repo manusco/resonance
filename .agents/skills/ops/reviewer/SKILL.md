@@ -42,11 +42,12 @@ Copy this checklist and tick items as you go.
 1. **Search + Learn**: Check `02_memory.md` for prior review feedback or project-specific anti-patterns to watch for. → verify: checked.
 2. **Automated Check**: Verify CI status. If failing, stop. → verify: CI green.
 3. **Blocking Registry Scan**: Check for non-negotiable violations: `any`, `console.log` without a flag, secrets in code, TODO without a ticket number. Any hit is a P0 block. → verify: registry checked.
-4. **Logic Read**: Understand the control flow. Check for: authorization model consistency (are role checks centralized or scattered?), data-truth duplication (same business rule in multiple places?), N+1 queries, missing error states. → verify: logic is understood, not just skimmed.
-5. **Classify Each Finding**: Assign to a category. Rank P0-P3 within each. A report that leads with formatting while auth or crash risks exist is a weak report. → verify: every finding has a category and a severity.
-6. **Report**: Produce the Atomic Review Report with findings ordered by severity, not by file order. → verify: report leads with the highest-harm findings.
-7. **Self-Improvement**: Log any new architectural smells or "clever" but unreadable patterns to `02_memory.md`.
-8. **Decide**: Approve, Request Changes, or Block. Use the Completion Attestation.
+4. **Blueprint Applicability**: When `.resonance/04_systems.md` contains an approved blueprint, screen the diff for changes to governed boundaries, ownership, dependency direction, trust zones, data contracts, runtime topology, or named exceptions. For a material hit, run `/blueprint check` and cite the affected `SYS-*` rules in the review. For a local change, record a one-sentence justified skip. Never invent rules when no approved baseline exists. → verify: conformance evidence or the skip reason is present.
+5. **Logic Read**: Understand the control flow. Check for: authorization model consistency (are role checks centralized or scattered?), data-truth duplication (same business rule in multiple places?), N+1 queries, missing error states. → verify: logic is understood, not just skimmed.
+6. **Classify Each Finding**: Assign to a category. Rank P0-P3 within each. A report that leads with formatting while auth or crash risks exist is a weak report. → verify: every finding has a category and a severity.
+7. **Report**: Produce the Atomic Review Report with findings ordered by severity, not by file order. → verify: report leads with the highest-harm findings.
+8. **Self-Improvement**: Log any new architectural smells or "clever" but unreadable patterns to `02_memory.md`.
+9. **Decide**: Approve, Request Changes, or Block. Use the Completion Attestation.
 
 ## Recovery
 

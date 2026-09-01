@@ -8,6 +8,6 @@
   ],
   "checks": [
     {"kind": "contains_all", "value": ["outside", "approval", "cadence"]},
-    {"kind": "not_contains_any", "value": ["cron expression", "automation created"]}
+    {"kind": "regex_absent", "value": "(?i)(cron expression|automation created)"}
   ]
 }

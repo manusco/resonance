@@ -8,6 +8,6 @@
   ],
   "checks": [
     {"kind": "contains_all", "value": ["candidate", "query", "page"]},
-    {"kind": "not_contains_any", "value": ["proven cannibalization"]}
+    {"kind": "regex_absent", "value": "(?i)proven cannibalization"}
   ]
 }
