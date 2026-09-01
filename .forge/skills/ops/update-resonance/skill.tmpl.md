@@ -21,6 +21,7 @@ You are upgrading a public framework inside a real project. Treat the project as
 - [ ] Git status has been classified by path.
 - [ ] No unresolved conflicts exist in any path the upgrade would touch.
 - [ ] A backup location outside the managed replacement paths is ready.
+- [ ] The installation profile is known: `source` or `compiled`. A legacy target with generated skills but no profile is blocked until the owner chooses.
 
 ## Source Resolution
 
@@ -34,7 +35,7 @@ A target project does not need to record the Resonance upstream URL. Most upgrad
 
 Verification:
 
-- The resolved source must contain `.agents/skills/`, `.forge/` when shipping source mode, `AGENTS.md`, `resonance.sh`, `resonance.ps1`, and `package.json`.
+- The resolved source must contain `.agents/skills/`, `.forge/` for source-mode validation, `resonance.sh`, `resonance.ps1`, and `package.json`.
 - The source version must match the requested version, unless the user explicitly asked for a branch or commit.
 - The temp clone or staging directory must not be inside the target project.
 - Never infer the source URL from the target application remote. The app's `origin` is the product repo, not the framework source.
@@ -45,7 +46,7 @@ Verification:
 These may be upgraded when preflight says they are safe:
 
 - `.agents/skills/`
-- `.forge/`
+- `.forge/` in source mode only
 - `.claude/skills/`
 - `.cursor/skills/`
 - `.opencode/commands/`
@@ -76,14 +77,14 @@ Copy this checklist and tick items as you go.
 
 0. **Read the project**: Inspect `git status --short`, existing Resonance directories, and the target's `AGENTS.md` / `CLAUDE.md` shape. -> verify: local changes are grouped as framework-managed, project-owned, or unrelated.
 1. **Resolve source**: Use the Source Resolution order. Fetch or verify the source outside the target project. -> verify: source path, version, and fetch method are named.
-2. **Plan first**: Run the new checkout's `.forge/update.py --source <source> --target <target> --version <version>`. For a pre-manifest installation, first check out its installed release and pass that old checkout as `--source` to the new updater with `--adopt`; adoption accepts only byte-identical released files. Then use the new checkout as the source for the dry run. Print the plan, backup policy, validation commands, and rollback path. -> verify: adoption changes only the ownership manifest; the dry run changes nothing.
+2. **Choose the profile and plan first**: Run the pinned checkout's `.forge/update.py --source <source> --target <target> --profile <source|compiled> --version <version>`. For a pre-manifest installation, first check out its installed release and pass that old checkout as `--source` with `--adopt` and an explicit profile; adoption accepts only byte-identical released files. Then use the new checkout as the source for the dry run. Print the profile, plan, backup policy, validation commands, and rollback path. -> verify: adoption changes only the ownership manifest; the dry run changes nothing.
 3. **Block unsafe states**: Stop if any touched path has an unresolved conflict, staged deletion, unknown ownership, or local customization that cannot be classified. Dirty application files outside the managed paths are context, not a blocker. -> verify: blocker names exact paths.
 4. **Back up before edits**: Copy every touched existing path to `.resonance/backups/resonance-upgrade-<timestamp>/` or another user-approved backup outside replacement paths. -> verify: backup contains the old files.
-5. **Stage the new framework aside**: Copy source framework files into a temporary staging directory inside `.resonance/tmp/` or system temp, never directly over live files. -> verify: staged `.agents/skills` and `.forge` counts match the source.
+5. **Stage the new framework aside**: Copy source framework files into a temporary staging directory inside `.resonance/tmp/` or system temp, never directly over live files. -> verify: staged paths match the selected profile; compiled staging contains no `.forge`.
 6. **Compare and classify**: Diff staged framework files against live managed paths. Preserve target-local files that are outside generated trees. For generated trees, replacement is allowed only after backup and staging validation. -> verify: no project-owned path appears in the write set.
-7. **Apply transactionally**: Run the same updater command with `--apply`. It stages files outside the target, verifies ownership hashes, applies by path, writes the new manifest, and restores touched paths on failure. -> verify: each write target resolves inside the project root and the journal says `complete`.
+7. **Apply transactionally**: Run the same profile-aware updater command with `--apply`. It stages files outside the target, verifies ownership hashes, applies by path, writes the profile to the manifest, and restores touched paths on failure. -> verify: each write target resolves inside the project root and the journal says `complete`.
 8. **Migrate legacy memory only with proof**: If approved, append legacy lessons, verify they appear in `.resonance/02_memory.md`, then remove `learnings.jsonl`. -> verify: no lesson is lost.
-9. **Regenerate if the target ships `.forge`**: Run the target's Forge build when `.forge/forge.py` exists. If the project intentionally has only compiled `.agents`, do not invent `.forge`; copy compiled skills only. -> verify: generated files are consistent with source mode.
+9. **Validate by profile**: Run the target's Forge build only in source mode. In compiled mode, run the pinned source validators against the target's generated skills and never invent `.forge`. -> verify: source dry run, skill validation, adapter checks, and integrity checks pass.
 10. **Validate**: Run the strongest available checks in the target: framework validation, command shim checks, `/system-health` or `resonance.ps1`, and any project-specific smoke check that does not require unrelated dirty files to be resolved. -> verify: failures are reported with exact commands and output.
 11. **Verify project skills**: When `.resonance/project-skills.lock.json` exists, run `python3 .forge/project_skills.py --check`. Never regenerate the project-owned lock as an implicit part of a framework upgrade. -> verify: every committed private skill still matches its pre-upgrade content lock.
 12. **Report**: Summarize changed paths, preserved project-owned paths, backup path, validation output, and rollback instructions.
