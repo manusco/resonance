@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-ops-ship",
+  "query": "Ship a release whose tests and build pass, but the release diff adds a new dependency and wrapper for behavior already provided by the standard library.",
+  "files": [],
+  "expected_behavior": [
+    "Runs a bounded necessity pass on the release diff after correctness gates and before tagging",
+    "Stops the release when the avoidable dependency and wrapper are material, and routes the change through refactor rather than editing code during shipping",
+    "Requires tests and build verification again after the refactor before resuming the release",
+    "Does not use line count alone as a release gate",
+    "Never proposes removing validation, authorization, accessibility, error handling that prevents data loss, or explicitly requested behavior"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

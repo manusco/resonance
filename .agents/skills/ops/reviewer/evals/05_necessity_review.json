@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-ops-reviewer",
+  "query": "Review a green PR that adds a factory, an interface with one implementation, and a new package for formatting one timestamp even though the runtime standard library already formats it.",
+  "files": [],
+  "expected_behavior": [
+    "Completes correctness and safety review before judging whether the implementation is necessary",
+    "Flags the standard-library replacement, single-implementation abstraction, and avoidable dependency as concrete Maintainability findings",
+    "Names what to delete and what existing or standard capability replaces it",
+    "Ranks findings by user harm using the canonical P0-P3 taxonomy rather than a separate complexity severity system",
+    "Does not treat tests, validation, authorization, accessibility, or data-loss guards as removable complexity"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

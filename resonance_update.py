@@ -34,7 +34,7 @@ RELEASE_API = "https://api.github.com/repos/manusco/resonance/releases/latest"
 NOTICE_SCHEMA = 1
 MAX_NOTICE_BYTES = 64 * 1024
 NOTICE_TTL_SECONDS = 24 * 60 * 60
-FRAMEWORK_VERSION = "2.5.33"
+FRAMEWORK_VERSION = "2.5.34"
 
 
 class SourceDirtyError(ValueError):

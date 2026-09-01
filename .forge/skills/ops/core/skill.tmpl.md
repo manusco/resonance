@@ -118,6 +118,7 @@ Stop and search before building anything involving unfamiliar patterns. Evaluate
 - **[Memory Recall](references/memory_recall.md)**: Retrieve by meaning; decisions live in the loaded index.
 - **[State Ledger](references/state_ledger.md)**: The typed layer of `.resonance/` (decisions, lessons, metrics, customers, experiments); when it exists it is the system of record for those five types, with grep-native edges and a supersede protocol.
 - **[Toolchain Detection](references/toolchain_detection.md)**: Detect and run the project's test/build/lint, shared by ship and system-health.
+- **[Necessity Protocol](references/necessity_protocol.md)**: Shared delete, reuse, and platform-first gate for refactor, review, and ship.
 
 {{RESOLVER:operating_standard}}
 

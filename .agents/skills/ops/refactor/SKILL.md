@@ -27,11 +27,12 @@ Copy this checklist and tick items as you go.
 2. **Verify (Before)**: Run the test suite. → verify: green before any change.
 3. **Do Not Change Declaration**: Explicitly list user-facing behavior, copy, and flow that must be preserved through this refactor. This step is required, not optional. It also names the safety checks that must survive: trust-boundary validation, authorization checks, data-loss guards, and accessibility affordances. These look inert on every tested path, so a green suite before and after will happily bless their removal, yet their absence shows only under attack or failure. A safety check is never dead code. → verify: list written, safety checks named.
 4. **Name the Business Risk**: For each planned change, name the business consequence it addresses. If you cannot name what actually breaks or drifts if the smell persists, the refactor is aesthetic. Deprioritize it. → verify: business consequence named for each change.
-5. **Plan (Mikado)**: Identify the dependency graph. Fix the leaves first. Name only the files and functions that will change. → verify: scope is specific.
-6. **Apply the Safe Sequence**: Lock (ensure behavior is captured by tests) → Extract (pull duplicated truth into one source) → Centralize (consolidate scattered access or permission rules) → Split (separate overloaded responsibilities) → Cleanup (formatting, naming, dead code, always last). → verify: only one concern per commit.
-7. **Verify (After)**: Run the test suite. Verify every item on the Do Not Change list. → verify: same suite green. Diff shows only expected files.
-8. **Commit**: Atomic commit "refactor: ..." → verify: `git diff --stat` shows only expected files.
-9. **Completion**: Use the Completion Attestation. Include blast radius, preserved behavior list, and verification evidence.
+5. **Necessity Pass**: Apply the Necessity Protocol after tracing the real flow: delete or decline → reuse the codebase → standard library → native platform → installed dependency → minimum local code. Stop at the first option that fully satisfies the requirement. Prefer deletion and reuse over extraction. Never cut protected behavior from step 3. → verify: every retained concept has a current job; every proposed cut names its replacement and safety check.
+6. **Plan (Mikado)**: Identify the dependency graph. Fix the leaves first. Name only the files and functions that will change. → verify: scope is specific.
+7. **Apply the Safe Sequence**: Lock (ensure behavior is captured by tests) → Delete/Reuse (remove unnecessary machinery before creating a new abstraction) → Extract (pull duplicated truth into one source) → Centralize (consolidate scattered access or permission rules) → Split (separate overloaded responsibilities) → Cleanup (formatting, naming, dead code, always last). → verify: only one concern per commit.
+8. **Verify (After)**: Run the test suite. Verify every item on the Do Not Change list. → verify: same suite green. Diff shows only expected files.
+9. **Commit**: Atomic commit "refactor: ..." → verify: `git diff --stat` shows only expected files.
+10. **Completion**: Use the Completion Attestation. Include blast radius, preserved behavior list, necessity-pass result, and verification evidence.
 
 ## Recovery
 
@@ -62,7 +63,10 @@ Visualize the dependency graph. Fix the leaves first. Never try to fix the root 
 SRP, OCP, LSP, ISP, DIP. If a class does two things, split it. Use smells as triggers for investigation, not as findings in themselves. Always follow up with the business consequence.
 
 ### The Safe Sequence
-Risk-ordered refactoring steps: Lock → Extract → Centralize → Split → Cleanup. The sequence matters, cleanup last, always. Mikado handles dependency order. Safe Sequence handles risk order.
+Risk-ordered refactoring steps: Lock → Delete/Reuse → Extract → Centralize → Split → Cleanup. The sequence matters, cleanup last, always. Mikado handles dependency order. Safe Sequence handles risk order.
+
+### Necessity Protocol
+Fewer lines are not the goal. Fewer owned concepts are. Search and understand first, then stop at the earliest layer that already solves the requirement. If the code is already the smallest safe implementation, do not churn it.
 
 ### Boy Scout Rule (Reconciled)
 Leave the file cleaner than you found it. Limited to the file already being touched for the current task. Never crosses file boundaries. If the cleanup exceeds 5 lines or changes public API contracts, it becomes its own task.
@@ -82,6 +86,7 @@ Leave the file cleaner than you found it. Limited to the file already being touc
 - **[Boy Scout Protocol](references/boy_scout_protocol.md)**: Iterative cleanup with Surgical Lock reconciliation.
 - **[Code Smell Matrix](references/code_smell_matrix.md)**: Diagnosis tool with business consequences.
 - **[SOLID Principles](references/solid_principles.md)**: Design rules.
+- **[Necessity Protocol](../core/references/necessity_protocol.md)**: Delete, reuse, platform-first decision order with protected-behavior boundaries.
 
 ## Operating Standard
 

@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.5.34
+
+The necessity-gate release.
+
+### Changed
+- **One decision order.** Refactor, code review, and ship now share one protocol:
+  delete or decline, reuse the codebase, use the standard library, use the
+  native platform, reuse an installed dependency, then write the minimum local
+  code.
+- **Safety before size.** Validation, authorization, data-loss protection,
+  accessibility, operational recovery, regression tests, explicit scope, and
+  approved architecture rules are never valid simplification targets.
+- **Release discipline.** Material avoidable ownership found during shipping
+  returns through `/refactor`, tests, and review before versioning. Shipping
+  never performs an unplanned rewrite.
+
 ## v2.5.33
 
 The consumer-boundary release.

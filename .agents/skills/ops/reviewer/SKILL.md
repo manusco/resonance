@@ -44,10 +44,11 @@ Copy this checklist and tick items as you go.
 3. **Blocking Registry Scan**: Check for non-negotiable violations: `any`, `console.log` without a flag, secrets in code, TODO without a ticket number. Any hit is a P0 block. → verify: registry checked.
 4. **Blueprint Applicability**: When `.resonance/04_systems.md` contains an approved blueprint, screen the diff for changes to governed boundaries, ownership, dependency direction, trust zones, data contracts, runtime topology, or named exceptions. For a material hit, run `/blueprint check` and cite the affected `SYS-*` rules in the review. For a local change, record a one-sentence justified skip. Never invent rules when no approved baseline exists. → verify: conformance evidence or the skip reason is present.
 5. **Logic Read**: Understand the control flow. Check for: authorization model consistency (are role checks centralized or scattered?), data-truth duplication (same business rule in multiple places?), N+1 queries, missing error states. → verify: logic is understood, not just skimmed.
-6. **Classify Each Finding**: Assign to a category. Rank P0-P3 within each. A report that leads with formatting while auth or crash risks exist is a weak report. → verify: every finding has a category and a severity.
-7. **Report**: Produce the Atomic Review Report with findings ordered by severity, not by file order. → verify: report leads with the highest-harm findings.
-8. **Self-Improvement**: Log any new architectural smells or "clever" but unreadable patterns to `02_memory.md`.
-9. **Decide**: Approve, Request Changes, or Block. Use the Completion Attestation.
+6. **Necessity Pass**: After correctness and safety, inspect the diff in this order: delete or decline → reuse the codebase → standard library → native platform → installed dependency → minimum local code. Report only evidence-backed cuts. Name the symbol, what disappears, what replaces it, and the safety check. Never flag protected behavior or use line count alone. → verify: unnecessary dependencies, speculative abstractions, pass-through wrappers, duplicate helpers, and dead flexibility were checked.
+7. **Classify Each Finding**: Assign to a category. Rank P0-P3 within each. Complexity findings remain Maintainability findings under the canonical taxonomy. A report that leads with formatting while auth or crash risks exist is a weak report. → verify: every finding has a category and a severity.
+8. **Report**: Produce the Atomic Review Report with findings ordered by severity, not by file order. For material necessity findings, request `/refactor` and require re-review. → verify: report leads with the highest-harm findings.
+9. **Self-Improvement**: Log any new architectural smells or "clever" but unreadable patterns to `02_memory.md`.
+10. **Decide**: Approve, Request Changes, or Block. Use the Completion Attestation.
 
 ## Recovery
 
@@ -81,6 +82,9 @@ Every finding belongs to one of 7 categories: Product Correctness, Runtime Safet
 ### Cognitive Complexity
 If `if` statements are nested 3 levels deep, the next engineer cannot safely modify that code. Request a refactor. Flag the complexity as a Maintainability finding with a P2 severity.
 
+### Necessity Protocol
+Judge ownership surface, not raw line count. Prefer an existing lower layer that already owns the behavior. A shorter rewrite that weakens validation, authorization, accessibility, recovery, or tests is a regression, not simplification.
+
 ### Receiving a Review
 When the code under review is yours, reflexive agreement is the failure mode, not defensiveness. Never open with "You're absolutely right" before checking the claim against the actual code. Restate the comment, verify it in the codebase, evaluate it for this codebase, then either implement or push back with technical reasoning. A reasoned disagreement beats a wrong change made politely. Apply YAGNI to suggested abstractions: grep for real usage before adding "make it generic for later".
 
@@ -107,6 +111,7 @@ When the code under review is yours, reflexive agreement is the failure mode, no
 - **[Pull Request Template](references/pull_request_template.md)**: PR description standard.
 - **[Audit Classification Taxonomy](../core/references/audit_classification_taxonomy.md)**: Finding categories and P0-P3 ranking.
 - **[Universal Audit Directives](../core/references/universal_audit_directives.md)**: Authorization, verification, and report quality rules.
+- **[Necessity Protocol](../core/references/necessity_protocol.md)**: Evidence-backed deletion and reuse review after correctness and safety.
 
 ## Operating Standard
 
