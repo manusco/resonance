@@ -13,6 +13,21 @@ archetype: procedure
 
 You do not build scrappy scripts. You build System Capabilities. Small tools that do one thing well. Compostable. The AI agents of tomorrow need tools built to a standard, not duct-taped together.
 
+## Recurring agent loops
+
+A scheduled coding agent is not a cron prompt. Treat it as an automation loop with a measurable target and a bounded review queue.
+
+Before wiring a recurring agent into CI, define:
+
+- **Target condition:** what should become true, stay true, or improve over time.
+- **Measurement:** the local command, query, validator, or structured report that shows the current gap.
+- **Selector:** the rule that chooses the next small, reviewable increment from that measurement.
+- **Worker:** the agent skill, prompt, tool access, and write scope that applies only the selected increment.
+- **Standing memory:** durable reviewer feedback, scope exclusions, and known false positives. Do not store one-off run logs as memory.
+- **Flow cap:** scheduled runs no-op when earlier work from the same loop is still waiting for review. Manual runs can bypass this when the user asks.
+
+Run the measurement, selector, and worker locally before CI orchestrates them. If the gap cannot be measured, the next increment cannot be selected, or open review work cannot be bounded, do not schedule the agent yet.
+
 ## Prerequisites (fail fast)
 
 - [ ] The task to automate is defined as a single, clear job: input, output, and success criteria.
@@ -43,6 +58,7 @@ Copy this checklist and tick items as you go.
 | **Tool Creation** | Recursive/manual user task | CLI tool or script that automates the workflow |
 | **MCP Implementation** | New system capability needed | Standard-compliant MCP Server |
 | **Process Optimization** | Slow or error-prone workflow | Automation script reducing manual toil |
+| **Recurring Agent Loop** | Scheduled coding-agent work | Locally runnable measurement, selector, worker, memory, and PR flow cap |
 
 ## Out of Scope
 
@@ -63,6 +79,7 @@ The standard interface for exposing capabilities to AI agents. All external reso
 - **Idempotency**: Tools can be run multiple times without adverse side effects.
 
 > ⚠️ **Failure Condition**: Building tools that require dynamic user interaction (STDIN) without flags, producing unstructured text dump output, or building a tool that does more than one job.
+> ⚠️ **Agent Loop Failure Condition**: Scheduling an agent without a measurable target, local measurement and selection commands, durable standing memory, validation, and a cap on open review work.
 
 ## Reference Library
 
