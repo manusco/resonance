@@ -1,0 +1,30 @@
+{
+  "skill": "resonance-engineering-automation",
+  "query": "Set up a weekly coding agent that scans the repo, fixes whatever it finds, and opens PRs automatically.",
+  "files": [],
+  "expected_behavior": [
+    "Does not accept an unbounded \"fix whatever it finds\" prompt as ready to schedule",
+    "Defines a measurable target condition before choosing the automation shape",
+    "Requires a local measurement command or structured report that shows the current gap",
+    "Requires a selector rule that chooses one small, reviewable increment per run",
+    "Requires a worker scope, validation commands, standing memory for durable feedback, and a cap so scheduled runs do not create new PRs while earlier loop work is still awaiting review"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": ["measurable target", "target condition", "current gap"]
+    },
+    {
+      "kind": "contains_any",
+      "value": ["cap", "bound", "open PR", "review"]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)(ready to schedule|fix whatever it finds|no guardrails needed|open unlimited PRs)"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}
