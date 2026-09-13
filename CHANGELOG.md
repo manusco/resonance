@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.5.36
+
+The bounded recurring agent loop release.
+
+### Changed
+- **Bounded automation.** Recurring agent loops now require a measurable target, a current-gap measurement, a small selector rule, validation commands, standing memory, and a cap while earlier work awaits review.
+- **Eval integrity.** The recurring-agent-loop eval fixture is registered in the eval oracle manifest.
+
 ## v2.5.35
 
 The conversion offer protocol and eval integrity repair.

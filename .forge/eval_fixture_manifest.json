@@ -434,7 +434,7 @@
     ".forge/tests/test_promotion_eval.py": "cb5f114f3140c61fb9c8e4a3f0331c5671bcd570f4ada96f114a0a794e8b7fbf",
     ".forge/tests/test_release_manifest.py": "6309e30900b497969bc9abc664dedd19f314fce31eeef6f4dd01cbad90469aff",
     ".forge/tests/test_release_notes.py": "be95a25a758de8d9cadeb02909e27e9e0913ebbf42a39d28dd5be893883eeb44",
-    ".forge/tests/test_release_update.py": "6298387cbcda4a6dad2d4da10c05523ed19f35ec8427bc0f67dd6897d266344d",
+    ".forge/tests/test_release_update.py": "1022ebcc0c61b4169cb5efc2f607806abe650561478c7f8473b08bd128e869fb",
     ".forge/tests/test_routing_eval.py": "4f29c89dd9f6959fe5f9a3aefaed203c8907728ec538040426e204acdc019e7a",
     ".forge/tests/test_routing_security.py": "28d266b893372743b67e8bb8fb1cf0843ed29170d0f2fb873c93c1966666c4fd",
     ".forge/tests/test_schema_check.py": "e759e6636eb089f5c91d2621b35808d6efc8abdf16ded3f617e4e9ac611d62f8",
