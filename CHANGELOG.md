@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.5.35
+
+The conversion offer protocol and eval integrity repair.
+
+### Changed
+- **Offer decision quality.** Conversion guidance now tests the buyer's current alternative, proof, economics, margin, delivery cost, sales cycle, and fundable risk reversal before optimizing page tactics.
+- **Eval integrity.** The changed offer-problem fixture is registered in the eval oracle manifest.
+
 ## v2.5.34
 
 The necessity-gate release.

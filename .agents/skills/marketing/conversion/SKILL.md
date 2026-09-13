@@ -43,7 +43,7 @@ Copy this checklist and tick items as you go.
 | **CRO Audit** | Low conversion rate | List of friction points and proposed fixes |
 | **Friction Collider** | `/friction` | Simulation of user resistance (4 categories) |
 | **A/B Test Plan** | Optimization cycle | Hypothesis, variant design, sample size |
-| **Offer Design** | New campaign | Optimized offer structure: Bonus, Guarantee, Urgency |
+| **Offer Design** | New campaign, price change, or stalled experiment | Offer structure grounded in proof, price, buyer risk, margin, and delivery constraints |
 
 ## Out of Scope
 
