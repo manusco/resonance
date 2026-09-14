@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- **Usage-first motion.** Design and frontend guidance now choose motion by job before tuning values, replace generic `transition: all` advice with explicit-property animation, and require reduced-motion handling that keeps feedback intact.
+- **Frontend motion audit.** A new eval catches decorative animation, layout-shifting loading states, repeated error motion, and missing reduced-motion support.
+
 ## v2.5.36
 
 The bounded recurring agent loop release.

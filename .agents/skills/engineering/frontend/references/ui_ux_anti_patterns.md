@@ -4,7 +4,8 @@
 
 ## 1. Interaction & State Anti-Patterns
 *   **Layout-Shifting Hovers**: ❌ Never use `transform: scale()` or border width changes on hover if it causes the surrounding layout to jump or shift.
-*   **Instant State Changes**: ❌ Never snap between states (hover/active/disabled) in 0ms. Always use `transition: all 150ms ease-in-out` (or similar).
+*   **Instant State Changes**: ❌ Never snap between states (hover/active/disabled) in 0ms. Animate explicit properties only, such as `opacity`, `transform`, `color`, or `background-color`; never use `transition: all`.
+*   **Decorative Motion**: ❌ Never add motion because the screen feels flat. Name the job first: feedback, reveal, navigation, loading, error, or confirmation. If the motion does not orient, confirm, or help the user follow change, remove it.
 *   **Invisible Disabled States**: ❌ Never leave disabled buttons looking clickable. Reduce opacity to 0.5, change the cursor to `not-allowed`, and remove hover effects.
 *   **Missing Cursors**: ❌ All clickable elements (that do not default to it, like custom divs acting as buttons) MUST have `cursor: pointer`.
 
