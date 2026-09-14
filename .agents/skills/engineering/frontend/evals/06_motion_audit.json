@@ -1,0 +1,27 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "Review this PR before merge. It adds `transition: all 300ms ease` to every button, card, dropdown, and skeleton. The dropdown opens and closes with the same timing from the center of the panel, the skeleton appears after content loads and pushes the layout down, the error state shakes on every keypress, and there is no reduced-motion handling because the animations are short.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects `transition: all` and requires explicit animated properties tied to the actual changed state",
+    "Classifies motion by job before tuning values: feedback, reveal, loading, error, and confirmation or navigation where relevant",
+    "Flags the dropdown as reveal motion that should anchor to its trigger and close faster than it opens",
+    "Flags the skeleton layout shift and requires reserved space before content loads",
+    "Flags repeated error shaking as hostile and requires restrained error feedback paired with text",
+    "Requires `prefers-reduced-motion` support that preserves feedback while removing travel or repeated motion"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": ["transition: all", "explicit properties", "prefers-reduced-motion", "reduced motion"]
+    },
+    {
+      "kind": "contains_any",
+      "value": ["feedback", "reveal", "loading", "error"]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

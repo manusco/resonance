@@ -28,6 +28,12 @@ Every `<input>` MUST have a `<label>`.
 *   **Text**: 4.5:1 ratio minimum.
 *   **Icons**: 3:1 ratio minimum.
 
+## 5. Motion Preferences
+
+*   Honor `prefers-reduced-motion` for animated UI.
+*   Reduced motion still needs feedback: keep instant state acknowledgment, focus visibility, and clear status text while removing travel, parallax, autoplay, and repeated motion.
+*   Do not trap keyboard or screen-reader users behind delayed animation. If motion hides or delays content, provide an immediate path to the same state.
+
 ## Source Card
 
 - Primary source: https://www.w3.org/TR/WCAG22/

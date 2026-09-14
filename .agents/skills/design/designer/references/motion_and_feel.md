@@ -4,6 +4,7 @@
 
 ## Contents
 - Should this animate at all?
+- Motion vocabulary by job
 - Nothing snaps: easing is mandatory
 - The easing curves that feel natural
 - Spring physics
@@ -25,6 +26,19 @@ Before easing or duration, ask whether the change should animate at all. Motion 
 - An action the user repeats dozens of times a day gets no animation. A command palette that opens instantly beats one that plays a 200ms reveal for the hundredth time today. Raycast animates almost nothing for exactly this reason.
 - A keyboard-initiated action gets no animation. The keyboard user is optimizing for speed, and motion is in the way.
 - Animate the changes the user needs to follow (something moved, appeared, or turned into something else), not the ones they just want done. When in doubt, cut it. Respecting the frequent user is faster than delighting the first-time one.
+
+## Motion vocabulary by job
+
+Choose motion by the job it does, not by the raw number or effect. A premium system has a small vocabulary that repeats with intent, so users learn how the product moves.
+
+- **Feedback**: hover, focus, press, selected, disabled. Keep it tiny and immediate: color, opacity, shadow, a small transform, or a clear focus ring on explicit properties.
+- **Reveal**: dropdowns, popovers, panels, tooltips. Anchor the motion to the trigger when there is one, use opacity plus a small scale or translate, and make close faster than open.
+- **Navigation**: list to detail, step to step, forward and back. Preserve direction logic so the space feels stable. Symmetric movement between two on-screen states usually wants the same duration both ways.
+- **Loading**: skeletons, streamed content, partial data. Reserve space first, then reveal real content without layout shift. A loader must explain wait, not decorate it.
+- **Error**: invalid field, failed action, conflict. Use restrained motion to draw attention once, pair it with text, and let the user continue without fighting a repeated shake.
+- **Confirmation**: saved, paid, sent, completed. Spend the most character here, but only after a real user win. Keep it short, replayable, and easy to skip through reduced motion.
+
+For each job, tune five things together: duration, easing, distance, scale, and blur. Match them to intent first. A close can be faster than an open even when both affect the same element; a text swap can be short while a confirmation gets more time. Do not use a generic effect just because it looks good in isolation.
 
 ## Nothing snaps: easing is mandatory
 
