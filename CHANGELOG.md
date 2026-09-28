@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## v2.5.40
+
+The usage-first motion guidance release.
 
 ### Changed
 - **Usage-first motion.** Design and frontend guidance now choose motion by job before tuning values, replace generic `transition: all` advice with explicit-property animation, and require reduced-motion handling that keeps feedback intact.

@@ -12,11 +12,15 @@
   ],
   "checks": [
     {
-      "kind": "contains_any",
-      "value": ["transition: all", "explicit properties", "prefers-reduced-motion", "reduced motion"]
+      "kind": "contains_all",
+      "value": ["transition: all", "explicit properties"]
     },
     {
       "kind": "contains_any",
+      "value": ["prefers-reduced-motion", "reduced motion"]
+    },
+    {
+      "kind": "contains_all",
       "value": ["feedback", "reveal", "loading", "error"]
     },
     {
