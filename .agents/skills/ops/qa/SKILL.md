@@ -45,17 +45,19 @@ Copy this checklist and tick items as you go.
 3. **Goal-Driven Setup**: Transform the task into verifiable criteria. "QA the checkout flow" becomes "Verify: add item → enter payment → order confirmation appears." Weak criteria require constant clarification. Strong criteria let you loop autonomously. → verify: assertions are written as specific, observable outcomes.
 4. **8-Path Walk**: For each feature, walk the matrix and mark Covered, N/A, or Gap for all 8 categories. Write tests for every "Gap". Do not skip silently. → verify: every user-facing flow has a category verdict.
 5. **Strategy Selection**: Pick Unit (pure logic), Integration (routes/DB), E2E (user journeys), Property (fuzzing), or SAST (static analysis).
-6. **Automate (AAA)**: Write tests using Arrange/Act/Assert. Use the correct Assertion Layer (Source vs. Rendered vs. Visible-Text vs. Behavior). → verify: tests fail first, then pass (Red-Green).
-7. **Break (The Stress)**: Run the test. Does it fail if you break the code? (Mutation Testing). Fuzz inputs. Test offline. Test with corrupt data. → verify: system handles bad input with a specific, expected error, not a crash or a generic message.
-8. **Stale Test Check**: If any test fails, check whether the test or the product is wrong. A stale test that contradicts current product intent must be flagged, not silently updated. → verify: divergences are explicit.
-9. **Self-Improvement**: Log any discovered flakiness or "trick" to get tests passing to `02_memory.md`.
-10. **Completion**: Use the Completion Attestation. List verification evidence, not just DONE/BLOCKED.
+6. **Test Value Gate**: Before adding or preserving a test, name the observable behavior, invariant, or independent contract it protects; the credible regression that would fail; why existing coverage does not already own that failure; and whether the test demands a production seam no production caller needs. If it only repeats source shape, import lists, mocks, private call order, or test-only seams, rewrite it at the owning boundary or delete it during an audit. -> verify: the test protects behavior or a real contract at its strongest practical boundary.
+7. **Automate (AAA)**: Write tests using Arrange/Act/Assert. Use the correct Assertion Layer (Source vs. Rendered vs. Visible-Text vs. Behavior). → verify: tests fail first, then pass (Red-Green).
+8. **Break (The Stress)**: Run the test. Does it fail if you break the code? (Mutation Testing). Fuzz inputs. Test offline. Test with corrupt data. → verify: system handles bad input with a specific, expected error, not a crash or a generic message.
+9. **Stale Test Check**: If any test fails, check whether the test or the product is wrong. A stale test that contradicts current product intent must be flagged, not silently updated. → verify: divergences are explicit.
+10. **Self-Improvement**: Log any discovered flakiness or "trick" to get tests passing to `02_memory.md`.
+11. **Completion**: Use the Completion Attestation. List verification evidence, not just DONE/BLOCKED.
 
 ## Recovery
 
 - A test category is "N/A" but you are uncertain → mark it as N/A with a specific reason. "N/A because this endpoint has no auth" is acceptable. "N/A" alone is not.
 - A failing test contradicts current product intent → flag as a divergence. Do not change the product to satisfy an obsolete test. Do not blindly update the test either. Verify with product truth first.
 - Coverage is < 100% for a critical path → block the release. Do not ship with known gaps in critical path coverage.
+- A requested or existing test needs a production export, flag, wrapper, global, or injection hook used only by tests -> move the proof to the real owner boundary or reject the seam. Test convenience is not product architecture.
 
 ## Jobs to Be Done
 
@@ -67,6 +69,7 @@ Copy this checklist and tick items as you go.
 | **Regression** | Release prep | Full sweep of critical paths across all 8 test categories |
 | **Verification Audit** | Audit request | Gap analysis: which paths are tested, which are missing |
 | **Live Verification** | A change or bug to prove | Executed proof (green tests, live browser check) plus a regression test |
+| **Test Value Audit** | Bloated or brittle suite | Low-value tests and test-only seams removed or rewritten at owner boundaries |
 
 ## Out of Scope
 
@@ -120,6 +123,7 @@ A flaky test is an unnamed race, not bad luck. Never `sleep(n)` and hope the wor
 - **[Assertion Layers](references/assertion_layers.md)**: Source vs. Rendered decision flowchart.
 - **[Async Test Stability](references/async_test_stability.md)**: Kill flakiness by waiting on conditions, not the clock.
 - **[Live Execution](references/live_execution.md)**: Run tests and drive a browser to verify against reality, not vibes.
+- **[Test Value Audit](references/test_value_audit.md)**: Keep tests that protect behavior; remove source-shape checks, duplicates, and test-only seams.
 - **[CI Test Runner](references/ci_test_runner_protocol.md)**: Running the suite in CI, flake control.
 - **[LLM Eval Protocol](references/llm_eval_protocol.md)**: Adversarial cases and scoring for AI features.
 - **[Load Testing (k6)](references/load_testing_k6.md)**: Throughput and latency under load.

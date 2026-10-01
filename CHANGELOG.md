@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.5.41
+
+The audit validation-gates release.
+
+### Changed
+- **Security source visibility.** Security review now keeps source-visible proof separate from deployment or provider facts, marks source-grounded but externally blocked leads as needs validation, and requires independent validation before confirming findings.
+- **Test value audit.** QA now rejects low-value tests that only preserve source shape, duplicate stronger proof, or demand test-only production seams, with a new eval covering the owner-boundary gate.
+
 ## v2.5.40
 
 The usage-first motion guidance release.
