@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-ops-qa",
+  "query": "Review this test plan. I want to add a unit test that imports `src/routes.ts`, snapshots the exported route array, and adds a new `export const __testOnlyRoutes = routes` from production code so the test can read private route metadata. We already have integration tests that hit each public route and assert auth redirects and visible page titles.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects or rewrites the proposed source-shape test because stronger integration coverage already owns the public route contract",
+    "Does not add a production test-only export or seam just for the test",
+    "Names the observable contract that matters: route behavior, auth redirect, and visible page title",
+    "Allows source inspection only if the source shape itself is the public contract",
+    "Suggests extending the existing owner-boundary integration table if a real route behavior gap remains"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["test-only", "test only", "__testOnlyRoutes", "seam"]},
+    {"kind": "contains_any", "value": ["integration", "owner boundary", "public route", "behavior"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}
