@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 import platform
 import re
@@ -41,6 +42,15 @@ def sha256_bytes(value: bytes) -> str:
 
 def sha256_file(path: Path) -> str:
     return sha256_bytes(path.read_bytes())
+
+
+def is_measured_cost(amount: Any) -> bool:
+    if isinstance(amount, bool) or not isinstance(amount, (int, float)):
+        return False
+    try:
+        return math.isfinite(amount) and amount >= 0
+    except OverflowError:
+        return False
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -192,8 +202,10 @@ class EvidenceRun:
               thresholds: dict[str, Any], host: str, tool_profile: str,
               permission_profile: str, results: list[dict[str, str]] | None,
               summary: dict[str, Any], latency_ms: int = 0,
-              cost_currency: str = "USD", cost_amount: float = 0.0,
+              cost_currency: str = "USD", cost_amount: float | None = None,
               result_payloads: dict[str, Any] | None = None) -> Path:
+        if cost_amount is not None and not is_measured_cost(cost_amount):
+            raise ValueError("measured cost must be a finite non-negative number or unknown")
         repository, changed_hashes = git_state(self.repo)
         replay = dict(summary.get("replay_envelope", {}))
         replay.update({
@@ -236,7 +248,7 @@ class EvidenceRun:
                 "host": host,
                 "tool_profile": tool_profile,
                 "permission_profile": permission_profile,
-                "cost": {"currency": cost_currency, "amount": max(0.0, cost_amount)},
+                "cost": {"currency": cost_currency, "amount": cost_amount},
                 "latency_ms": max(0, latency_ms),
             },
             "results": result_items,

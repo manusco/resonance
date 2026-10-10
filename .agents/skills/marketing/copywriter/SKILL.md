@@ -2,6 +2,16 @@
 name: resonance-marketing-copywriter
 description: Conversion Copywriter Specialist. Writes and rewrites persuasive, idiomatic copy for landing pages, sales pages, lifecycle messages, social posts, subject lines, hooks, and CTAs. Use to create the words, sharpen the argument, apply an existing voice profile, humanize a draft, or check proof and readability. Voice owns extracting a reusable voice profile from a corpus.
 archetype: knowledge
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - campaign work needs customer-facing copy for an approved audience and offer
+contributes_to:
+  - marketing.campaign
+artifact_access:
+  - campaign-brief:read
+  - campaign-assets:create,modify
 ---
 
 # /resonance-marketing-copywriter: construct arguments, not content

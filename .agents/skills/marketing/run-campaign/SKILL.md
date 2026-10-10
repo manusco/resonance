@@ -52,6 +52,23 @@ invokes:
   - resonance-marketing-analytics
   - resonance-design-studio
   - resonance-ops-legal
+contract_version: 1
+job_id: marketing.campaign
+stage: PLAN
+contributes_to:
+reviews:
+finalizes:
+  - campaign-launch-proposal
+artifact_access:
+  - campaign-brief:create,modify
+  - gtm-hypothesis-packet:read
+  - campaign-assets:read
+  - campaign-measurement-plan:read
+  - campaign-compliance-review:read
+  - campaign-launch-proposal:create,modify
+dispatch_conditions:
+  - a defined campaign needs a governed brief, assets, measurement, and launch proposal
+compatibility: active
 ---
 
 # resonance-marketing-run-campaign: prepare campaigns that can survive contact

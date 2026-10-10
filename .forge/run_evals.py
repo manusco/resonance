@@ -59,7 +59,7 @@ import time
 from dataclasses import dataclass
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import eval_integrity
@@ -124,8 +124,12 @@ def skill_rel(sk: Path) -> str:
 
 
 def skill_md_for_rel(path: str) -> Path:
-    candidate = Path(path)
-    if not path or candidate.is_absolute() or ".." in candidate.parts:
+    if not isinstance(path, str) or not path.strip():
+        raise ValueError(f"skill path escapes canonical skills: {path}")
+    candidate = Path(path.replace("\\", "/"))
+    windows = PureWindowsPath(path)
+    if (candidate.is_absolute() or windows.is_absolute() or windows.drive
+            or ".." in candidate.parts):
         raise ValueError(f"skill path escapes canonical skills: {path}")
     resolved = (SKILLS / candidate / "SKILL.md").resolve(strict=False)
     try:
@@ -177,14 +181,49 @@ def holdout_cases(root: str) -> list[tuple[Path, Path]]:
     cases = []
     for ev in sorted(directory.glob("*.json")):
         data = json.loads(ev.read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            raise ValueError(f"holdout case must be an object: {ev.name}")
         rel = data.get("skill_path", "")
         sk = skill_md_for_rel(rel)
         if not sk.is_file():
             raise ValueError(f"holdout references unknown skill_path: {rel}")
+        problems = check_case(sk, ev)
+        if problems:
+            raise ValueError(f"invalid holdout case {ev.name}: " + "; ".join(problems))
         cases.append((sk, ev))
     if not cases:
         raise ValueError("protected holdout contains no JSON cases")
     return cases
+
+
+def score_configuration_error(*, check: bool, holdout_dir: str, evidence_root: str,
+                              model_cmd: str, judge_cmd: str, model_id: str,
+                              judge_id: str, baseline_id: str, repo: Path = REPO) -> str | None:
+    if check:
+        return "--score cannot be combined with --check"
+    if not holdout_dir:
+        return "--score requires an external --holdout-dir or RESONANCE_HOLDOUT_DIR"
+    if not evidence_root:
+        return "--score requires an external --evidence-root or RESONANCE_EVIDENCE_ROOT"
+    if not baseline_id.strip():
+        return "--score requires an approved --baseline-id or RESONANCE_BASELINE_ID"
+    try:
+        Path(evidence_root).expanduser().resolve(strict=False).relative_to(repo.resolve())
+    except ValueError:
+        pass
+    except (OSError, RuntimeError):
+        return "--score evidence root cannot be resolved safely"
+    else:
+        return "--score evidence root must be outside the repository"
+    if not model_cmd.strip():
+        return "--score requires --model-cmd or RESONANCE_MODEL_CMD"
+    if not judge_cmd.strip():
+        return "--score requires --judge-cmd or RESONANCE_JUDGE_CMD"
+    if not model_id.strip() or not judge_id.strip() or model_id.strip() == judge_id.strip():
+        return "--score requires distinct --model-id and --judge-id values"
+    if same_command(model_cmd.strip(), judge_cmd.strip()):
+        return "--score requires distinct answerer and judge commands"
+    return None
 
 
 def file_hashes(paths: list[Path]) -> dict[str, str]:
@@ -488,28 +527,29 @@ def main(argv: list[str]) -> int:
     ap.add_argument("path", nargs="?", default=None, help="skill path (e.g. marketing/seo); omit for all")
     ap.add_argument("--all", action="store_true", help="run every skill's evals")
     ap.add_argument("--check", action="store_true", help="structure only, no model")
-    ap.add_argument("--score", action="store_true", help="live run, write the per-skill scorecard")
+    ap.add_argument("--score", action="store_true",
+                    help="score an external holdout; requires external evidence and distinct answerer/judge commands and IDs")
     ap.add_argument("--changed", nargs="?", const="HEAD~1", default=None,
                     help="only skills changed vs a git ref (default HEAD~1)")
     ap.add_argument("--limit", type=int, default=0, help="cap cases per skill (0 = all)")
     ap.add_argument("--parallel", type=int, default=4, help="concurrent model calls")
     ap.add_argument("--model-cmd", default=os.environ.get("RESONANCE_MODEL_CMD", ""),
-                    help="model command reading the prompt on stdin (default: claude -p)")
+                    help="answerer command reading prompts on stdin; required by --score, which has no command default")
     ap.add_argument("--judge-cmd", default=os.environ.get("RESONANCE_JUDGE_CMD", ""),
-                    help="judge model command; must differ from the answerer for --score")
+                    help="independent judge command; required and distinct from answerer for --score")
     ap.add_argument("--reps", type=int, default=1,
                     help="generations per arm per case (scored runs force >= 3)")
     ap.add_argument("--threshold", type=float, default=0.8, help="fraction of rubric to pass")
     ap.add_argument("--model-id", default=os.environ.get("RESONANCE_MODEL_ID", ""),
-                    help="stable provider/model identity for the answerer")
+                    help="stable answerer provider/model identity; required by --score")
     ap.add_argument("--judge-id", default=os.environ.get("RESONANCE_JUDGE_ID", ""),
-                    help="stable provider/model identity for the judge")
+                    help="stable independent judge provider/model identity; required by --score")
     ap.add_argument("--holdout-dir", default=os.environ.get("RESONANCE_HOLDOUT_DIR", ""),
-                    help="external protected holdout directory used by --score")
+                    help="external protected JSON holdout directory; required by --score")
     ap.add_argument("--evidence-root", default=os.environ.get("RESONANCE_EVIDENCE_ROOT", ""),
-                    help="external evidence directory; omitted preserves structure-check behavior")
+                    help="external evidence directory; required for live runs and --score")
     ap.add_argument("--baseline-id", default=os.environ.get("RESONANCE_BASELINE_ID", ""),
-                    help="approved baseline identifier recorded in replay provenance")
+                    help="approved baseline identifier; required by --score and recorded in replay provenance")
     ap.add_argument("--promotion", action="store_true",
                     help="fail closed unless promotion-grade provenance is configured")
     ap.add_argument("--model-revision", default=os.environ.get("RESONANCE_MODEL_REVISION", ""))
@@ -517,6 +557,23 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--seed", default=os.environ.get("RESONANCE_EVAL_SEED", ""),
                     help="seed requested from the provider, if the provider honors it")
     args = ap.parse_args(argv)
+
+    model_cmd = args.model_cmd or ("claude -p" if not args.score and _has("claude") else "")
+    judge_cmd_s = args.judge_cmd.strip()
+    if args.score:
+        error = score_configuration_error(
+            check=args.check, holdout_dir=args.holdout_dir, evidence_root=args.evidence_root,
+            model_cmd=model_cmd, judge_cmd=judge_cmd_s, model_id=args.model_id,
+            judge_id=args.judge_id, baseline_id=args.baseline_id,
+        )
+        if error:
+            print(f"refusing --score: {error}")
+            return 2
+        try:
+            holdout_cases(args.holdout_dir)
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"refusing --score: {exc}")
+            return 2
 
     if args.promotion:
         try:
@@ -635,7 +692,6 @@ def main(argv: list[str]) -> int:
             return 1
         return code
 
-    model_cmd = args.model_cmd or ("claude -p" if _has("claude") else "")
     live = bool(model_cmd) and not args.check
     if live and evidence_run is None:
         print("refusing live eval: configure an external --evidence-root or "
@@ -658,7 +714,6 @@ def main(argv: list[str]) -> int:
                   "RESONANCE_MODEL_CMD, e.g. 'claude -p', for a live scored run.)")
         return finish(1 if bad else 0, result_data={"structural_problems": bad})
 
-    judge_cmd_s = args.judge_cmd.strip()
     reps = max(1, args.reps)
     if args.score:
         try:
@@ -666,17 +721,6 @@ def main(argv: list[str]) -> int:
         except (OSError, ValueError, json.JSONDecodeError) as exc:
             print(f"refusing --score: {exc}")
             return finish(2, failure=str(exc), reps_used=reps)
-        if not judge_cmd_s:
-            print("refusing --score: no judge configured. The judge is never the answerer; "
-                  "set RESONANCE_JUDGE_CMD (or --judge-cmd) to a DIFFERENT model.")
-            return finish(2, failure="judge not configured", reps_used=reps)
-        if not args.model_id or not args.judge_id or args.model_id == args.judge_id:
-            print("refusing --score: set distinct RESONANCE_MODEL_ID and RESONANCE_JUDGE_ID. "
-                  "Command inequality does not prove independent model identity.")
-            return finish(2, failure="model identities missing or equal", reps_used=reps)
-        if same_command(judge_cmd_s, model_cmd):
-            print("refusing --score: judge command equals the answerer command")
-            return finish(2, failure="judge command equals answerer", reps_used=reps)
         if reps < 3:
             print(f"scored run: raising --reps {reps} -> 3 (a single generation per arm "
                   f"cannot carry a verdict).")

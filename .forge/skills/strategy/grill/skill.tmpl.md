@@ -6,7 +6,7 @@ contract_version: 1
 job_id: design.plan-challenge
 stage: FRAME
 contributes_to:
-  - delivery.plan
+  - delivery.goal
 reviews:
 finalizes:
   - shared-understanding-brief

@@ -2,6 +2,16 @@
 name: resonance-ops-retro
 description: Engineering retrospective analyst. Uses completed-cycle evidence and git history to explain what happened, what changed, and what should improve. Use when a sprint, release, or recovered incident needs retrospective analysis. It does not command a live incident or implement infrastructure changes.
 archetype: procedure
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - leadership work needs evidence from completed cycles to inform the next decision
+contributes_to:
+  - leadership.operating-cycle
+artifact_access:
+  - leadership-scope:read
+  - retrospective-report:create,modify
 ---
 
 # /resonance-ops-retro: data-driven retrospectives

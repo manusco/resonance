@@ -7,6 +7,7 @@ job_id: implementation.frontend
 stage: EXECUTE
 contributes_to:
   - delivery.goal
+  - delivery.build
 reviews:
 finalizes:
   - frontend-artifact

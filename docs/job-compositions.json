@@ -109,6 +109,255 @@
   {
     "schema_version": 1,
     "contract_version": 1,
+    "job_id": "delivery.build",
+    "stage": "EXECUTE",
+    "lead": "resonance-engineering-build",
+    "contributors": [
+      "resonance-engineering-backend",
+      "resonance-engineering-debugger",
+      "resonance-engineering-frontend",
+      "resonance-ops-audit",
+      "resonance-ops-security",
+      "resonance-strategy-blueprint"
+    ],
+    "reviewers": [],
+    "finalizer": "resonance-engineering-build",
+    "artifact_access": [
+      {
+        "artifact": "build-evidence",
+        "actor": "resonance-engineering-build",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "build-result",
+        "actor": "resonance-engineering-build",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-engineering-build",
+        "rights": [
+          "CREATE",
+          "EXECUTE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-build",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "backend-artifact",
+        "actor": "resonance-engineering-backend",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-backend",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "debug-evidence",
+        "actor": "resonance-engineering-debugger",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-engineering-debugger",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-debugger",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "frontend-artifact",
+        "actor": "resonance-engineering-frontend",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-engineering-frontend",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "audit-evidence",
+        "actor": "resonance-ops-audit",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "audit-report",
+        "actor": "resonance-ops-audit",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-audit",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "security-evidence",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "APPEND_EVIDENCE",
+          "CREATE"
+        ]
+      },
+      {
+        "artifact": "security-findings",
+        "actor": "resonance-ops-security",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "architecture-blueprint",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "architecture-conformance-report",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "APPROVE",
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "architecture-decision",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "architecture-exception",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "implementation-artifact",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "implementation-plan",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "READ",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "project-evidence",
+        "actor": "resonance-strategy-blueprint",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "an approved implementation plan is ready for an execution slice"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
     "job_id": "delivery.compatibility-intake",
     "stage": "FRAME",
     "lead": "resonance-software-deliver-change",
@@ -180,7 +429,7 @@
       "resonance-engineering-backend",
       "resonance-engineering-database",
       "resonance-engineering-frontend",
-      "resonance-software-deliver-change",
+      "resonance-strategy-grill",
       "resonance-strategy-plan"
     ],
     "reviewers": [
@@ -281,18 +530,19 @@
         ]
       },
       {
-        "artifact": "goal-handoff",
-        "actor": "resonance-software-deliver-change",
+        "artifact": "proposed-plan",
+        "actor": "resonance-strategy-grill",
         "rights": [
-          "CREATE",
-          "MODIFY"
+          "READ",
+          "REVIEW"
         ]
       },
       {
-        "artifact": "software-request",
-        "actor": "resonance-software-deliver-change",
+        "artifact": "shared-understanding-brief",
+        "actor": "resonance-strategy-grill",
         "rights": [
-          "READ"
+          "CREATE",
+          "MODIFY"
         ]
       },
       {
@@ -488,8 +738,7 @@
     "stage": "PLAN",
     "lead": "resonance-strategy-plan",
     "contributors": [
-      "resonance-strategy-architect",
-      "resonance-strategy-grill"
+      "resonance-strategy-architect"
     ],
     "reviewers": [
       "resonance-strategy-blueprint"
@@ -532,22 +781,6 @@
         "actor": "resonance-strategy-architect",
         "rights": [
           "READ"
-        ]
-      },
-      {
-        "artifact": "proposed-plan",
-        "actor": "resonance-strategy-grill",
-        "rights": [
-          "READ",
-          "REVIEW"
-        ]
-      },
-      {
-        "artifact": "shared-understanding-brief",
-        "actor": "resonance-strategy-grill",
-        "rights": [
-          "CREATE",
-          "MODIFY"
         ]
       },
       {
@@ -737,6 +970,187 @@
     ],
     "dispatch_conditions": [
       "the work changes system boundaries, service contracts, or durable architecture"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "finance.operating-cycle",
+    "stage": "PLAN",
+    "lead": "resonance-finance-run-operating-cycle",
+    "contributors": [
+      "resonance-marketing-analytics",
+      "resonance-ops-legal",
+      "resonance-strategy-finance"
+    ],
+    "reviewers": [],
+    "finalizer": "resonance-finance-run-operating-cycle",
+    "artifact_access": [
+      {
+        "artifact": "finance-decision-brief",
+        "actor": "resonance-finance-run-operating-cycle",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "finance-metric-brief",
+        "actor": "resonance-finance-run-operating-cycle",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "finance-model",
+        "actor": "resonance-finance-run-operating-cycle",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "finance-risk-review",
+        "actor": "resonance-finance-run-operating-cycle",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "finance-scope",
+        "actor": "resonance-finance-run-operating-cycle",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "campaign-brief",
+        "actor": "resonance-marketing-analytics",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-measurement-plan",
+        "actor": "resonance-marketing-analytics",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "finance-metric-brief",
+        "actor": "resonance-marketing-analytics",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "finance-scope",
+        "actor": "resonance-marketing-analytics",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-brief",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-compliance-review",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "finance-risk-review",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "finance-scope",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "leadership-risk-review",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "leadership-scope",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "finance-model",
+        "actor": "resonance-strategy-finance",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "finance-scope",
+        "actor": "resonance-strategy-finance",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "source actuals or assumptions must be reconciled before a finance decision is proposed"
     ],
     "compatibility": {
       "supported_versions": [
@@ -1048,6 +1462,654 @@
     ],
     "dispatch_conditions": [
       "material ambiguity must be resolved before routing or execution"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "leadership.operating-cycle",
+    "stage": "PLAN",
+    "lead": "resonance-leadership-run-operating-cycle",
+    "contributors": [
+      "resonance-ops-founder-os",
+      "resonance-ops-legal",
+      "resonance-ops-productivity",
+      "resonance-ops-retro",
+      "resonance-people-hiring"
+    ],
+    "reviewers": [],
+    "finalizer": "resonance-leadership-run-operating-cycle",
+    "artifact_access": [
+      {
+        "artifact": "hiring-plan",
+        "actor": "resonance-leadership-run-operating-cycle",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "leadership-decision-brief",
+        "actor": "resonance-leadership-run-operating-cycle",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "leadership-risk-review",
+        "actor": "resonance-leadership-run-operating-cycle",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "leadership-scope",
+        "actor": "resonance-leadership-run-operating-cycle",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "operating-cadence-plan",
+        "actor": "resonance-leadership-run-operating-cycle",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "productivity-analysis",
+        "actor": "resonance-leadership-run-operating-cycle",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "retrospective-report",
+        "actor": "resonance-leadership-run-operating-cycle",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "leadership-scope",
+        "actor": "resonance-ops-founder-os",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "operating-cadence-plan",
+        "actor": "resonance-ops-founder-os",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "campaign-brief",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-compliance-review",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "finance-risk-review",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "finance-scope",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "leadership-risk-review",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "leadership-scope",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "leadership-scope",
+        "actor": "resonance-ops-productivity",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "productivity-analysis",
+        "actor": "resonance-ops-productivity",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "leadership-scope",
+        "actor": "resonance-ops-retro",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "retrospective-report",
+        "actor": "resonance-ops-retro",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "hiring-plan",
+        "actor": "resonance-people-hiring",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "leadership-scope",
+        "actor": "resonance-people-hiring",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "a leadership cycle needs an explicit recommendation, decision owner, and follow-up"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "marketing.campaign",
+    "stage": "PLAN",
+    "lead": "resonance-marketing-run-campaign",
+    "contributors": [
+      "resonance-marketing-analytics",
+      "resonance-marketing-copywriter",
+      "resonance-ops-legal",
+      "resonance-strategy-gtm-thinker"
+    ],
+    "reviewers": [],
+    "finalizer": "resonance-marketing-run-campaign",
+    "artifact_access": [
+      {
+        "artifact": "campaign-assets",
+        "actor": "resonance-marketing-run-campaign",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-brief",
+        "actor": "resonance-marketing-run-campaign",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "campaign-compliance-review",
+        "actor": "resonance-marketing-run-campaign",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-launch-proposal",
+        "actor": "resonance-marketing-run-campaign",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "campaign-measurement-plan",
+        "actor": "resonance-marketing-run-campaign",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "gtm-hypothesis-packet",
+        "actor": "resonance-marketing-run-campaign",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-brief",
+        "actor": "resonance-marketing-analytics",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-measurement-plan",
+        "actor": "resonance-marketing-analytics",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "finance-metric-brief",
+        "actor": "resonance-marketing-analytics",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "finance-scope",
+        "actor": "resonance-marketing-analytics",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-assets",
+        "actor": "resonance-marketing-copywriter",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "campaign-brief",
+        "actor": "resonance-marketing-copywriter",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-brief",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-compliance-review",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "finance-risk-review",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "finance-scope",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "leadership-risk-review",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "CREATE",
+          "MODIFY",
+          "REVIEW"
+        ]
+      },
+      {
+        "artifact": "leadership-scope",
+        "actor": "resonance-ops-legal",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "campaign-brief",
+        "actor": "resonance-strategy-gtm-thinker",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "gtm-hypothesis-packet",
+        "actor": "resonance-strategy-gtm-thinker",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "a defined campaign needs a governed brief, assets, measurement, and launch proposal"
+    ],
+    "compatibility": {
+      "supported_versions": [
+        1
+      ],
+      "unknown_version": "FAIL_CLOSED",
+      "mixed_version": "REJECT",
+      "upgrade": "EXPLICIT_MIGRATION_REQUIRED",
+      "downgrade": "NOT_SUPPORTED"
+    },
+    "authority_split": {
+      "frontmatter_owns": [
+        "skill_identity",
+        "owner",
+        "activation",
+        "authority",
+        "side_effects",
+        "entrypoints",
+        "inputs",
+        "outputs",
+        "invocation_relationships",
+        "failure_policy"
+      ],
+      "command_registry_owns": [
+        "command_name",
+        "aliases",
+        "target_skill_id",
+        "host_exposure",
+        "help_text",
+        "host_rendering"
+      ],
+      "conflict_behavior": "FAIL"
+    }
+  },
+  {
+    "schema_version": 1,
+    "contract_version": 1,
+    "job_id": "sales.revenue-motion",
+    "stage": "PLAN",
+    "lead": "resonance-sales-run-revenue-motion",
+    "contributors": [
+      "resonance-sales-account-intelligence",
+      "resonance-sales-call-intelligence",
+      "resonance-sales-lead-ops",
+      "resonance-sales-outbound-sequence",
+      "resonance-sales-pipeline",
+      "resonance-sales-revops",
+      "resonance-success-customer-success"
+    ],
+    "reviewers": [],
+    "finalizer": "resonance-sales-run-revenue-motion",
+    "artifact_access": [
+      {
+        "artifact": "account-intelligence-brief",
+        "actor": "resonance-sales-run-revenue-motion",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "call-intelligence-report",
+        "actor": "resonance-sales-run-revenue-motion",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "customer-success-handoff",
+        "actor": "resonance-sales-run-revenue-motion",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "lead-treatment-report",
+        "actor": "resonance-sales-run-revenue-motion",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "outbound-sequence",
+        "actor": "resonance-sales-run-revenue-motion",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "pipeline-report",
+        "actor": "resonance-sales-run-revenue-motion",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "revenue-compliance-review",
+        "actor": "resonance-sales-run-revenue-motion",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "revenue-motion-proposal",
+        "actor": "resonance-sales-run-revenue-motion",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "revenue-motion-scope",
+        "actor": "resonance-sales-run-revenue-motion",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "revops-plan",
+        "actor": "resonance-sales-run-revenue-motion",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "account-intelligence-brief",
+        "actor": "resonance-sales-account-intelligence",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "revenue-motion-scope",
+        "actor": "resonance-sales-account-intelligence",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "call-intelligence-report",
+        "actor": "resonance-sales-call-intelligence",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "revenue-motion-scope",
+        "actor": "resonance-sales-call-intelligence",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "lead-treatment-report",
+        "actor": "resonance-sales-lead-ops",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "revenue-motion-scope",
+        "actor": "resonance-sales-lead-ops",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "outbound-sequence",
+        "actor": "resonance-sales-outbound-sequence",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "revenue-motion-scope",
+        "actor": "resonance-sales-outbound-sequence",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "pipeline-report",
+        "actor": "resonance-sales-pipeline",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "revenue-motion-scope",
+        "actor": "resonance-sales-pipeline",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "revenue-motion-scope",
+        "actor": "resonance-sales-revops",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
+        "artifact": "revops-plan",
+        "actor": "resonance-sales-revops",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "customer-success-handoff",
+        "actor": "resonance-success-customer-success",
+        "rights": [
+          "CREATE",
+          "MODIFY"
+        ]
+      },
+      {
+        "artifact": "revenue-motion-scope",
+        "actor": "resonance-success-customer-success",
+        "rights": [
+          "READ"
+        ]
+      }
+    ],
+    "dispatch_conditions": [
+      "a governed revenue motion spans account work, outreach, pipeline, forecast, or post-sale handoff"
     ],
     "compatibility": {
       "supported_versions": [

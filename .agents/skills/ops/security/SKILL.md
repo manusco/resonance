@@ -7,6 +7,7 @@ job_id: verification.security
 stage: VERIFY
 contributes_to:
   - verification.audit
+  - delivery.build
 reviews:
   - delivery.goal
 finalizes:

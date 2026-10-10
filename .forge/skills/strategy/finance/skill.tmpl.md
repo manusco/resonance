@@ -2,6 +2,16 @@
 name: resonance-strategy-finance
 description: Finance and Fundraising Specialist. Builds driver-based financial models, computes unit economics, and prepares founders to raise. Use when modeling revenue, costs, or runway; computing unit economics (CAC, LTV, payback, contribution margin); preparing a fundraise or pitch deck; writing an investor update; or working through cap table and dilution basics.
 archetype: knowledge
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - finance-cycle work needs driver-based modeling or scenario analysis
+contributes_to:
+  - finance.operating-cycle
+artifact_access:
+  - finance-scope:read
+  - finance-model:create,modify
 ---
 
 # /resonance-strategy-finance: model the money, then raise against it

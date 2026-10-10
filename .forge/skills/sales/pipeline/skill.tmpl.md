@@ -2,6 +2,16 @@
 name: resonance-sales-pipeline
 description: Sales pipeline analyst. Ingests deal data from CSV, HubSpot, or Salesforce and produces deal-level pipeline inspection, velocity, forecast views, and rep performance analysis. Use when the immediate job is to understand the current pipeline. RevOps owns durable funnel definitions, coverage policy, capacity, territories, quotas, compensation, and forecast governance.
 archetype: procedure
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - revenue-motion work needs deal-level pipeline inspection or forecasting
+contributes_to:
+  - sales.revenue-motion
+artifact_access:
+  - revenue-motion-scope:read
+  - pipeline-report:create,modify
 ---
 
 # /resonance-sales-pipeline: analyze sales pipelines

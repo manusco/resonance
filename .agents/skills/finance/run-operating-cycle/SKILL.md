@@ -33,6 +33,22 @@ invokes:
   - resonance-strategy-finance
   - resonance-marketing-analytics
   - resonance-ops-legal
+contract_version: 1
+job_id: finance.operating-cycle
+stage: PLAN
+contributes_to:
+reviews:
+finalizes:
+  - finance-decision-brief
+artifact_access:
+  - finance-scope:create,modify
+  - finance-model:read
+  - finance-metric-brief:read
+  - finance-risk-review:read
+  - finance-decision-brief:create,modify
+dispatch_conditions:
+  - source actuals or assumptions must be reconciled before a finance decision is proposed
+compatibility: active
 ---
 
 # resonance-finance-run-operating-cycle: turn numbers into governed decisions

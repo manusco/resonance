@@ -238,6 +238,17 @@ class EvalSchemaTests(unittest.TestCase):
         with self.assertRaisesRegex(SchemaFailure, "missing runner"):
             validate(instance, load("evidence-manifest.schema.json"))
 
+    def test_evidence_cost_accepts_unknown_without_conflating_zero(self):
+        instance = samples()["evidence-manifest.schema.json"]
+        schema = load("evidence-manifest.schema.json")
+        instance["execution"]["cost"]["amount"] = None
+        validate(instance, schema)
+        instance["execution"]["cost"]["amount"] = 0
+        validate(instance, schema)
+        instance["execution"]["cost"]["amount"] = -0.01
+        with self.assertRaises(SchemaFailure):
+            validate(instance, schema)
+
     def test_routing_schema_requires_materiality_only_for_ask(self):
         schema = load("routing-case.schema.json")
         ask = dict(samples()["routing-case.schema.json"])

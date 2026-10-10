@@ -45,9 +45,9 @@ You do not "polish" skills by feel. A skill improves only when the number moves,
 
 ## Prerequisites (fail fast)
 
-- [ ] A scorecard exists (`.forge/eval_results.json`). If not, run `python .forge/run_evals.py --all --score` first (needs a model command).
+- [ ] A private scorecard exists (`.forge/eval_results.json` is only local scratch). If not, prepare an approved external holdout, evidence root, distinct answerer and judge commands and model IDs, plus human-gold judge calibration as specified in `docs/evals/private-behavioral-baseline.md`. Then run `python .forge/run_evals.py --score --holdout-dir <private-holdout> --evidence-root <private-evidence> --model-cmd <answerer-command> --model-id <provider/answerer-version> --judge-cmd <independent-judge-command> --judge-id <provider/judge-version> --baseline-id <approved-baseline-id> --reps 3`. Never score public cases as a substitute for a protected behavioral baseline.
 - [ ] Answerer AND judge models are configured (`RESONANCE_MODEL_CMD` and `RESONANCE_JUDGE_CMD`, different models). Without them you can propose changes but cannot prove them, so stop and say so.
-- [ ] Calibration exists (`python .forge/improve.py calibrate`, a one-time A/A noise-floor run). Without it remeasure prints numbers but refuses verdicts.
+- [ ] Statistical noise calibration exists (`python .forge/improve.py calibrate`, a one-time A/A noise-floor run). This is separate from human-gold calibration of the judge. Without it remeasure prints numbers but refuses verdicts.
 
 ## Algorithm
 

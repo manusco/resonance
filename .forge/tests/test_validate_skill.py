@@ -4,6 +4,7 @@ The eval-floor check runs on every skill, so if it raises instead of reporting a
 error, one malformed skill takes down the whole validation run. These tests hold
 it to reporting cleanly, and cover the frontmatter parser and the Report API.
 """
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -39,6 +40,15 @@ def _make_skill(tmp: Path, n_evals: int) -> Path:
 
 
 class EvalFloorTest(unittest.TestCase):
+    def test_alias_validation_resolves_manifest_when_called_outside_repo(self):
+        skill_md = FORGE_DIR.parent / ".agents/skills/software/deliver-change/SKILL.md"
+        with tempfile.TemporaryDirectory() as cwd:
+            result = subprocess.run(
+                [sys.executable, str(FORGE_DIR / "validate_skill.py"), str(skill_md), "--strict"],
+                cwd=cwd, capture_output=True, text=True, check=False,
+            )
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+
     def test_too_few_evals_reports_not_raises(self):
         """The regression: fewer than 3 evals must produce an error, not raise."""
         with tempfile.TemporaryDirectory() as d:

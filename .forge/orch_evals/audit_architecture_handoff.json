@@ -1,0 +1,52 @@
+{
+  "name": "audit_routes_architecture_conformance",
+  "skill": "ops/audit",
+  "task": "Audit this proposed change for architecture and trust-boundary conformance. The service now sends customer identifiers to a new analytics vendor. Write audit-report.md with the finding, severity, evidence, and disposition. Do not implement the change.",
+  "fixture": {
+    "files": {
+      "change.md": "The new metrics adapter sends account_id and email to an external analytics vendor. No data-flow review, retention limit, or consent behavior is documented.\n",
+      "audit-report.check.py": "from pathlib import Path\nr=Path('audit-report.md').read_text().lower()\nassert 'severity' in r and ('p1' in r or 'p2' in r)\nassert 'analytics' in r and ('disposition' in r or 'reject' in r or 'changes requested' in r)\n"
+    }
+  },
+  "assert": {
+    "type": "command",
+    "cmd": "python3 audit-report.check.py",
+    "expect_exit": 0
+  },
+  "trace_assert": {
+    "minimum_assurance": 3,
+    "ordered_subsequence": [
+      {
+        "event": "INVOKE",
+        "target": "strategy/architect"
+      },
+      {
+        "event": "INVOKE",
+        "target": "strategy/blueprint"
+      }
+    ],
+    "allowed_skills": [
+      "ops/security",
+      "ops/reviewer",
+      "ops/qa",
+      "strategy/architect",
+      "strategy/blueprint",
+      "engineering/performance"
+    ],
+    "forbidden_skills": [
+      "ops/ship"
+    ],
+    "max_fan_out": 6,
+    "artifact_access": [
+      {
+        "artifact": "audit-report.md",
+        "owner": "ops/audit",
+        "allowed_mutations": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "correlate_world_state": true
+  }
+}

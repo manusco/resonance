@@ -23,7 +23,7 @@ Version 1 supports only version 1 peers. Unknown versions fail closed. Mixed ver
 
 Skill frontmatter owns semantic facts: skill identity, owner, activation, authority, side effects, entrypoints, inputs, outputs, invocation relationships, and failure policy. `.forge/commands.json` owns command presentation: command name, aliases, target skill ID, host exposure, help text, and host rendering. A field claimed by both authorities is a contract error.
 
-Composition has two explicit layers. Each skill carries a declaration in its frontmatter. `.forge/job_composition.py` compiles those declarations into job-level contracts in `docs/job-compositions.json`. The generated file is the inspectable view for hosts and tooling, while frontmatter remains the source. Validation rejects stale output, multiple leads for one job, conflicting participant roles, missing artifact access, or an authority overlap.
+Composition has two explicit layers. Each skill carries a declaration in its frontmatter. Leads declare `contract_role: lead` (the default) with a job ID, stage, finalizers, and dispatch conditions. A specialist that contributes to or reviews a job declares `contract_role: participant`, version 1, active compatibility, its role relations, artifact rights, and dispatch conditions. A participant has no job ID, stage, or finalizer of its own. `.forge/job_composition.py` compiles those declarations into job-level contracts in `docs/job-compositions.json`. The generated file is the inspectable view for hosts and tooling, while frontmatter remains the source. Validation rejects stale output, multiple leads for one job, conflicting participant roles, invocation-unreachable roles, missing artifact access, and authority overlap.
 
 Project-specific and private skills remain repository content so every collaborator receives the same procedures. Put them under `.agents/skills/`, commit them with the project, and run `python3 .forge/project_skills.py` after the framework has been installed. The resulting `.resonance/project-skills.lock.json` records only project-owned skill files. Framework upgrades read their own exact-file ownership manifest, preserve unowned skills, and never rewrite the project lock. Use `--check` in project CI. A skill directory containing both framework-owned and project-owned files is rejected because its upgrade behavior would be ambiguous.
 
@@ -76,13 +76,24 @@ A lower gate cannot offset a higher failure. Missing required evidence returns `
 ## The three layers
 
 1. **Structure gate (free, deterministic, seconds).** `npm run eval` (`run_evals.py --all --check`) verifies every case binds to a real skill, has a query, a rubric, and valid deterministic checks. Runs in the pre-push ship-gate.
-2. **Scored lift (model-priced, minutes).** `run_evals.py --all --score` answers every case twice per rep, once cold and once with the skill body in context, grades both, and reports the lift per skill. Honesty rules are enforced, not suggested:
+2. **Scored lift (live model calls).** `--score` reads only a protected holdout outside the repository. It answers every case twice per rep, once cold and once with the skill body in context, grades both, and reports lift per skill. It refuses to run without an external holdout and evidence root, answerer and judge commands, and distinct answerer and judge model IDs. Example with explicit placeholders:
+
+   ```powershell
+   py .forge/run_evals.py --score `
+     --holdout-dir "D:/private/evals/holdout" `
+     --evidence-root "D:/private/evals/evidence" `
+     --model-cmd "<answerer command>" --model-id "<provider/answerer-version>" `
+     --judge-cmd "<independent judge command>" --judge-id "<provider/judge-version>" `
+     --baseline-id "<approved baseline ID>" --reps 3
+   ```
+
+   The holdout directory contains private JSON cases with `skill_path`, `skill`, `query`, and `expected_behavior`, using the same case fields as public evals. `--all` does not select private cases; score mode uses the supplied holdout. Prepare the holdout and human-gold judge calibration as described in [Private behavioral baseline protocol](evals/private-behavioral-baseline.md) before running. The runner does not create human judgments or claim a calibrated baseline by itself. Honesty rules are enforced, not suggested:
    - the judge is never the answerer (`RESONANCE_JUDGE_CMD` must differ; the run refuses otherwise),
    - at least 3 generations per arm per case (a lucky completion cannot carry a verdict),
    - cases may carry deterministic `checks` graded in pure Python (kinds: `regex_absent`, `contains_any`, `section_present`, `max_lines`); a skill whose items are half deterministic gets a `grounded` marker,
    - a case whose cold arm already passes the full rubric is flagged as a dead case (it discriminates nothing),
    - planted-defect cases (one per skill) embed a concrete doctrine violation in the query, so grading has ground truth instead of self-agreement.
-3. **Grounded orchestration evals (agent-priced).** `run_evals` grades one completion; orchestration skills (`/goal`, `/build`, `/ship`, `/audit`, `/reviewer`) are graded by outcome instead: `orch_eval.py` stands up a fixture with a planted defect, runs a real tools-capable agent, then checks the world (did the executed suite go green, did the release get refused on a red suite).
+3. **Grounded orchestration evals.** `run_evals` grades one completion; orchestration skills (`/goal`, `/build`, `/ship`, `/audit`, `/reviewer`) are graded by outcome instead: `orch_eval.py` stages a disposable fixture, runs a tools-capable agent, then checks the world (did the executed suite go green, did the release get refused on a red suite). The temporary fixture contains writes made through case paths, but it is not an OS security sandbox. The agent process inherits the invoking user's accessible files, credentials, network, and process permissions unless the host or caller provides a real sandbox. Run agents only with a trusted CLI and appropriate host isolation.
 
 ## Public routing evals
 
@@ -181,7 +192,7 @@ python .forge/improve.py calibrate                # one-time A/A noise floors
 python .forge/improve.py remeasure <skill-path>   # paired A/B vs HEAD, verdict
 ```
 
-- **Calibrate first.** Ten A/A runs (a skill measured against itself) establish the pipeline's noise floor. Floors are pooled across the calibration set and shared by all skills; the pooled floor is the minimum detectable effect of the gate, printed so nobody mistakes noise for signal. Uncalibrated remeasures print numbers but refuse verdicts.
+- **Calibrate first.** `improve.py calibrate` runs ten A/A comparisons (a skill measured against itself) to estimate the pipeline's noise floor. This is statistical noise calibration, not human calibration of the judge. Floors are pooled across the calibration set and shared by all skills; uncalibrated remeasures print numbers but refuse verdicts.
 - **Paired remeasure.** The body at `--baseline-ref` and the working tree run in the same session, same cases, same judge. KEEP only if the mean delta clears `max(0.10, pooled floor)` AND no case regressed beyond the per-case floor.
 - **Rubric edits never count as lift.** The evals directory is hashed into the baseline; a changed hash means NEW BASELINE and no verdict. Make the test harder and the skill better, in that order.
 
@@ -197,6 +208,6 @@ RESONANCE_AGENT_CMD="<a tools-capable agent CLI>"        # orchestration evals
 
 `.forge/exec/model_cli.py` adapts any OpenAI-compatible endpoint (`MODEL_BASE_URL`, `MODEL_NAME`, `MODEL_API_KEY`) to that contract, with UTF-8 forced and retries built in.
 
-## Cost, so nobody skips measurement out of fear
+## Cost evidence
 
-A full-library scored run at 3 reps is roughly 240 cases x 3 reps x 2 arms plus judging: low single-digit dollars on a budget model. A per-skill remeasure is cents. Calibration is a few hundred calls, once.
+An unmeasured cost is `null` in an evidence manifest. Keep a measured zero as numeric `0`; never substitute zero when the provider or host supplied no usage or billing evidence. A promotion that marks `COST_LATENCY` as `PASS` must include a measured finite, non-negative cost amount. Estimate spend from the selected providers and actual planned sample count before requesting approval, then record provider-reported usage or billing evidence after the run. This repository does not publish a generic price estimate.

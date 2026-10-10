@@ -17,6 +17,7 @@ if str(FORGE) not in sys.path:
     sys.path.insert(0, str(FORGE))
 
 from schema_check import SchemaFailure, load_schema, validate
+from evidence import is_measured_cost
 
 
 REPO = Path(__file__).resolve().parent.parent
@@ -131,6 +132,10 @@ def verdict(candidate_id: str, manifests: list[Path], *, repo: Path = REPO,
                 reasons[gate].append(f"{path.name}: {gate} is {state.lower()}")
             elif gate in REQUIRED_GATES_BY_KIND[kind] and state == "NOT_APPLICABLE":
                 reasons[gate].append(f"{path.name}: required gate {gate} is not applicable")
+            if gate == "COST_LATENCY" and state == "PASS":
+                amount = data.get("execution", {}).get("cost", {}).get("amount")
+                if not is_measured_cost(amount):
+                    reasons[gate].append(f"{path.name}: COST_LATENCY cannot pass without measured cost")
 
     missing = sorted(required - kinds)
     if missing:

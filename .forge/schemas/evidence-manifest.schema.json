@@ -42,7 +42,7 @@
         "host": { "type": "string", "minLength": 1 },
         "tool_profile": { "type": "string", "minLength": 1 },
         "permission_profile": { "type": "string", "minLength": 1 },
-        "cost": { "type": "object", "required": ["currency", "amount"], "properties": { "currency": { "type": "string", "minLength": 3, "maxLength": 3 }, "amount": { "type": "number", "minimum": 0 } } },
+        "cost": { "type": "object", "additionalProperties": false, "required": ["currency", "amount"], "properties": { "currency": { "type": "string", "minLength": 3, "maxLength": 3 }, "amount": { "type": ["number", "null"], "minimum": 0 } } },
         "latency_ms": { "type": "integer", "minimum": 0 }
       }
     },

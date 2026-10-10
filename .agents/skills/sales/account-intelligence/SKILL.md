@@ -2,6 +2,16 @@
 name: resonance-sales-account-intelligence
 description: Identifies which accounts deserve attention now, why, and what action to take next. Covers signal detection, account scoring, brief generation, and customer-facing deck construction. Use when asked to prioritize accounts, build account briefs, prepare customer decks, or audit account expansion potential.
 archetype: procedure
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - revenue-motion work needs evidence-backed account prioritization or briefs
+contributes_to:
+  - sales.revenue-motion
+artifact_access:
+  - revenue-motion-scope:read
+  - account-intelligence-brief:create,modify
 ---
 
 # /resonance-sales-account-intelligence: know your accounts before you call

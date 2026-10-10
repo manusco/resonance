@@ -2,6 +2,16 @@
 name: resonance-ops-productivity
 description: Chief of Staff and Operations Engineer. Eliminates bottlenecks, enforces high-signal async communication, and projects team velocity using data. Use when analyzing team workload, grooming a backlog, auditing communication health, or projecting sprint landing dates via velocity-based burndown.
 archetype: knowledge
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - leadership work needs ownership, coordination, or operating cadence clarified
+contributes_to:
+  - leadership.operating-cycle
+artifact_access:
+  - leadership-scope:read
+  - productivity-analysis:create,modify
 ---
 
 # /resonance-ops-productivity: eliminate bottlenecks, project velocity with data

@@ -42,7 +42,7 @@ import subprocess
 import sys
 import tempfile
 import time
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 import evidence as run_evidence
 import trace_adapters
@@ -67,39 +67,141 @@ def skill_body(skill: str) -> str:
     return t[end + 4:].strip() if t.startswith("---") and end != -1 else t
 
 
+def contained_skill_path(value: object) -> tuple[str, Path]:
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("orchestration skill path must be a non-empty relative path")
+    normalized = value.replace("\\", "/")
+    candidate = Path(normalized)
+    windows = PureWindowsPath(value)
+    if ("\x00" in value or candidate.is_absolute() or windows.is_absolute() or windows.drive
+            or ".." in candidate.parts or normalized in {".", ""}):
+        raise ValueError(f"orchestration skill path escapes canonical skills: {value}")
+    source = SKILLS / candidate
+    current = SKILLS
+    for part in candidate.parts:
+        current = current / part
+        if current.is_symlink():
+            raise ValueError(f"orchestration skill path contains a symlink: {value}")
+    resolved = source.resolve(strict=False)
+    try:
+        resolved.relative_to(SKILLS.resolve())
+    except ValueError as exc:
+        raise ValueError(f"orchestration skill path escapes canonical skills: {value}") from exc
+    return candidate.as_posix(), resolved
+
+
+def require_symlink_free_tree(source: Path) -> None:
+    if source.is_symlink():
+        raise ValueError(f"staged skill contains a symlink: {source}")
+    for root, directories, files in os.walk(source, followlinks=False):
+        for name in directories + files:
+            path = Path(root) / name
+            if path.is_symlink():
+                raise ValueError(f"staged skill contains a symlink: {path}")
+
+
+def validate_fixture_relpath(relpath: object) -> Path:
+    if not isinstance(relpath, str) or not relpath.strip():
+        raise ValueError("orchestration fixture path must be a non-empty relative path")
+    candidate = Path(relpath)
+    windows = PureWindowsPath(relpath)
+    if ("\x00" in relpath or candidate.is_absolute() or windows.is_absolute() or windows.drive
+            or ".." in candidate.parts or candidate.parts in ((), (".",))):
+        raise ValueError(f"orchestration fixture escapes its temporary workspace: {relpath}")
+    return candidate
+
+
+def contained_fixture_path(work: Path, relpath: object) -> Path:
+    candidate = validate_fixture_relpath(relpath)
+    resolved = (work / candidate).resolve(strict=False)
+    try:
+        resolved.relative_to(work.resolve())
+    except ValueError as exc:
+        raise ValueError(f"orchestration fixture escapes its temporary workspace: {relpath}") from exc
+    return resolved
+
+
+def validate_fixture_layout(paths: object) -> None:
+    if not isinstance(paths, dict):
+        raise ValueError("fixture.files must be an object")
+    normalized = []
+    for value in paths:
+        candidate = validate_fixture_relpath(value)
+        rel = candidate.as_posix()
+        if (rel == "AGENTS.md" or rel.startswith("AGENTS.md/")
+                or rel == ".agents" or rel.startswith(".agents/")):
+            raise ValueError(f"fixture path overlaps staged agent instructions: {value}")
+        normalized.append((value, candidate.parts))
+    for index, (left, left_parts) in enumerate(normalized):
+        for right, right_parts in normalized[index + 1:]:
+            if (left_parts == right_parts or left_parts == right_parts[:len(left_parts)]
+                    or right_parts == left_parts[:len(right_parts)]):
+                raise ValueError(f"fixture paths overlap: {left} and {right}")
+
+
 def case_skill_paths(case: dict) -> set[str]:
     """Return the bounded skill surface that a case is designed to exercise."""
-    paths = {str(case["skill"])}
+    paths = {contained_skill_path(case["skill"])[0]}
     trace = case.get("trace_assert", {})
-    paths.update(str(path) for path in trace.get("allowed_skills", []))
-    paths.update(str(path) for path in trace.get("forbidden_skills", []))
+    for field in ("allowed_skills", "forbidden_skills"):
+        paths.update(contained_skill_path(path)[0] for path in trace.get(field, []))
     for pattern in trace.get("ordered_subsequence", []):
         for field in ("target", "actor"):
             value = pattern.get(field)
-            if isinstance(value, str) and (SKILLS / value / "SKILL.md").is_file():
-                paths.add(value)
+            if isinstance(value, str):
+                skill, source = contained_skill_path(value)
+                if (source / "SKILL.md").is_file():
+                    paths.add(skill)
     return paths
 
 
 def stage_framework(work: Path, case: dict) -> None:
     """Expose only the case's runtime skill surface to a disposable fixture."""
+    staged = []
     for skill_path in sorted(case_skill_paths(case)):
-        source = SKILLS / skill_path
-        target = work / ".agents" / "skills" / skill_path
+        _, source = contained_skill_path(skill_path)
+        if not (source / "SKILL.md").is_file():
+            raise ValueError(f"staged skill not found: {skill_path}")
+        require_symlink_free_tree(source)
+        target = contained_fixture_path(work, f".agents/skills/{skill_path}")
+        staged.append((source, target))
+    for source, target in staged:
         shutil.copytree(source, target, ignore=shutil.ignore_patterns("evals", "__pycache__"))
     shutil.copy2(REPO / "AGENTS.md", work / "AGENTS.md")
 
 
 def check_case(c: dict) -> list[str]:
+    if not isinstance(c, dict):
+        return ["case must be an object"]
     problems = []
     for k in ("name", "skill", "task", "fixture", "assert"):
         if k not in c:
             problems.append(f"missing '{k}'")
-    if "skill" in c and not (SKILLS / c["skill"] / "SKILL.md").exists():
-        problems.append(f"skill not found: {c['skill']}")
-    if isinstance(c.get("fixture"), dict) and not c["fixture"].get("files"):
+    if "skill" in c:
+        try:
+            skill, source = contained_skill_path(c["skill"])
+            if not (source / "SKILL.md").is_file():
+                problems.append(f"skill not found: {skill}")
+        except ValueError as exc:
+            problems.append(str(exc))
+    fixture = c.get("fixture")
+    if not isinstance(fixture, dict):
+        problems.append("fixture must be an object")
+    elif not fixture.get("files"):
         problems.append("fixture has no files")
+    elif not isinstance(fixture.get("files"), dict):
+        problems.append("fixture.files must be an object")
+    elif any(not isinstance(content, str) for content in fixture["files"].values()):
+        problems.append("fixture file contents must be strings")
+    else:
+        try:
+            validate_fixture_layout(fixture["files"])
+        except ValueError as exc:
+            problems.append(str(exc))
     a = c.get("assert", {})
+    if not isinstance(a, dict):
+        problems.append("assert must be an object")
+        a = {}
     if a.get("type") not in ("command", "contains"):
         problems.append("assert.type must be 'command' or 'contains'")
     ta = c.get("trace_assert")
@@ -124,16 +226,64 @@ def check_case(c: dict) -> list[str]:
                           "artifact_access"):
                 if field in ta and not isinstance(ta[field], list):
                     problems.append(f"trace_assert.{field} must be an array")
+            for field in ("allowed_skills", "forbidden_skills"):
+                values = ta.get(field, [])
+                for value in values if isinstance(values, list) else []:
+                    try:
+                        skill, source = contained_skill_path(value)
+                        if not (source / "SKILL.md").is_file():
+                            problems.append(f"trace_assert.{field} skill not found: {skill}")
+                    except ValueError as exc:
+                        problems.append(str(exc))
+            patterns = ta.get("ordered_subsequence", [])
+            for pattern in patterns if isinstance(patterns, list) else []:
+                if not isinstance(pattern, dict):
+                    problems.append("trace_assert.ordered_subsequence items must be objects")
+                    continue
+                trace_fields = {"run_id", "sequence", "timestamp", "actor", "event", "target",
+                                "authority", "artifact", "mutation_mode", "approval_state", "outcome"}
+                if not pattern or not (set(pattern) & trace_fields):
+                    problems.append("trace_assert.ordered_subsequence patterns must constrain at least one trace field")
+                unknown_pattern_fields = set(pattern) - trace_fields
+                if unknown_pattern_fields:
+                    problems.append("trace_assert.ordered_subsequence has unknown fields: "
+                                    f"{sorted(unknown_pattern_fields)}")
+                for field in ("target", "actor"):
+                    value = pattern.get(field)
+                    if isinstance(value, str):
+                        try:
+                            contained_skill_path(value)
+                        except ValueError as exc:
+                            problems.append(str(exc))
+    if isinstance(fixture, dict) and isinstance(fixture.get("files"), dict):
+        for relpath in fixture["files"]:
+            try:
+                validate_fixture_relpath(relpath)
+            except (OSError, ValueError) as exc:
+                problems.append(str(exc))
     return problems
 
 
 def run_case(agent_cmd: list[str], c: dict, timeout: int = 900,
              trace_root: Path | None = None, trace_adapter: str = "") -> dict:
+    problems = check_case(c)
+    if problems:
+        raise ValueError("invalid orchestration case: " + "; ".join(problems))
+    fixture_paths = c["fixture"]["files"]
+    validate_fixture_layout(fixture_paths)
+    for skill_path in case_skill_paths(c):
+        _, source = contained_skill_path(skill_path)
+        if not (source / "SKILL.md").is_file():
+            raise ValueError(f"staged skill not found: {skill_path}")
+        require_symlink_free_tree(source)
     work = Path(tempfile.mkdtemp(prefix="orch_"))
     try:
+        for rel in fixture_paths:
+            contained_fixture_path(work, rel)
         stage_framework(work, c)
+        targets = {rel: contained_fixture_path(work, rel) for rel in fixture_paths}
         for rel, content in c["fixture"]["files"].items():
-            fp = work / rel
+            fp = targets[rel]
             fp.parent.mkdir(parents=True, exist_ok=True)
             fp.write_text(content, encoding="utf-8")
         before = trace_adapters.snapshot_files(work)
@@ -248,6 +398,23 @@ def main(argv: list[str]) -> int:
         print("--case-timeout must be at least 1 second")
         return 2
 
+    if a.agent_cmd and not a.check:
+        if not a.evidence_root:
+            print("refusing grounded eval: configure an external --evidence-root or "
+                  "RESONANCE_EVIDENCE_ROOT")
+            return 2
+        try:
+            resolved_evidence = Path(a.evidence_root).expanduser().resolve(strict=False)
+            resolved_evidence.relative_to(REPO.resolve())
+        except ValueError:
+            pass
+        except (OSError, RuntimeError) as exc:
+            print(f"refusing grounded eval: evidence root cannot be resolved safely: {exc}")
+            return 2
+        else:
+            print("refusing grounded eval: --evidence-root must be outside the repository")
+            return 2
+
     if a.promotion:
         try:
             run_evidence.require_promotion_provenance(
@@ -293,11 +460,6 @@ def main(argv: list[str]) -> int:
         except (OSError, ValueError, RuntimeError) as exc:
             print(f"refusing evidence root: {exc}")
             return 2
-    if a.agent_cmd and not a.check and evidence_run is None:
-        print("refusing grounded eval: configure an external --evidence-root or "
-              "RESONANCE_EVIDENCE_ROOT")
-        return 2
-
     def finish(code: int, *, result_data: object | None = None, failure: str = "",
                exit_state: str | None = None) -> int:
         if evidence_run is None:

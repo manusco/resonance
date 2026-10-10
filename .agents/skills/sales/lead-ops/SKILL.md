@@ -2,6 +2,16 @@
 name: resonance-sales-lead-ops
 description: Audits lead lifecycle quality, resolves ownership, maps the customer experience from form fill to follow-up, and generates daily watchlists. Use when asked to audit lead handling, find missed follow-ups, resolve lead owners, map inbound CX, or build a daily lead operating view.
 archetype: procedure
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - revenue-motion work depends on lead lifecycle quality or ownership
+contributes_to:
+  - sales.revenue-motion
+artifact_access:
+  - revenue-motion-scope:read
+  - lead-treatment-report:create,modify
 ---
 
 # /resonance-sales-lead-ops: no lead left behind
