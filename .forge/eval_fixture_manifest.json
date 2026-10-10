@@ -452,7 +452,7 @@
     ".forge/tests/test_systems_template.py": "ca1944d4fe64118d8df8d9574ccfc73fd7c3489d0a8e47efb745ed9e555ddca7",
     ".forge/tests/test_update.py": "1375a6a316ef37cbd93df3a378dc5af73cfcf72b9546e7d4f3256e7c52162b6b",
     ".forge/tests/test_update_legacy_manifest.py": "c49874f4297d2f335b2eaba08e489e054479f4533d7bfa9f2cc53a04ab37ac93",
-    ".forge/tests/test_validate_skill.py": "c53c17f1ba3586ef6ad01e5ccfff874f7ae7be4960875fdfc65c958d2ae04fac"
+    ".forge/tests/test_validate_skill.py": "cacf8f1df759043ceed956348cd2f3c38f9652632c76d679c24b34789f023e8d"
   },
   "tiers": {
     ".forge/eval_integrity.py": "T1-tooling",

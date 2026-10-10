@@ -163,7 +163,7 @@ def check_frontmatter(fm: dict, r: Report) -> str:
     return archetype if archetype in ARCHETYPES else ""
 
 
-def check_composition_contract(fm: dict, r: Report) -> None:
+def check_composition_contract(fm: dict, path: Path, r: Report) -> None:
     """Enforce the frozen v1 contract for the accepted composition cohort."""
     try:
         from kernel.manifest import composition_warnings, manifest
@@ -194,7 +194,12 @@ def check_composition_contract(fm: dict, r: Report) -> None:
         entry["contract_version"] = int(raw_version) if raw_version.isdigit() else raw_version
     # Alias validity depends on its canonical target's job metadata, so validate
     # the local declaration against the complete compiled manifest.
-    known = [item for item in manifest() if item["id"] != name]
+    skills_root = next(
+        (parent for parent in path.resolve().parents
+         if parent.name == "skills" and parent.parent.name == ".agents"),
+        Path(__file__).resolve().parents[1] / ".agents" / "skills",
+    )
+    known = [item for item in manifest(skills_root) if item["id"] != name]
     known.append(entry)
     for warning in composition_warnings(known, {name}):
         if f"'{name}'" not in warning:
@@ -276,7 +281,7 @@ def validate(path: Path, r: Report, composition_canary: bool = False) -> Report:
         r.err("no YAML frontmatter found (file must open with a '---' block)")
         return r
     archetype = check_frontmatter(fm, r)
-    check_composition_contract(fm, r)
+    check_composition_contract(fm, path, r)
     check_body(body, archetype, r)
     check_references(path.parent, body, r)
     check_evals(path.parent, r)
