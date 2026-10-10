@@ -34,15 +34,14 @@ def loaded(*events, level=1):
 class InvocationTraceTests(unittest.TestCase):
     def test_case_timeout_stops_a_direct_host_process(self):
         case = {
-            "name": "timeout", "skill": "ops/example", "task": "wait",
+            "name": "timeout", "skill": "ops/goal", "task": "wait",
             "fixture": {"files": {"input.txt": "x"}},
             "assert": {"type": "contains", "any": ["done"]},
         }
         started = time.monotonic()
-        with mock.patch.object(orch_eval, "stage_framework"):
-            result = orch_eval.run_case(
-                [sys.executable, "-c", "import time; time.sleep(5)"], case, timeout=1,
-            )
+        result = orch_eval.run_case(
+            [sys.executable, "-c", "import time; time.sleep(5)"], case, timeout=1,
+        )
         self.assertFalse(result["passed"])
         self.assertIn("timed out", result["detail"])
         self.assertLess(time.monotonic() - started, 3)
@@ -55,7 +54,7 @@ class InvocationTraceTests(unittest.TestCase):
             }}}
         })
         case = {
-            "name": "partial", "skill": "ops/example", "task": "wait",
+            "name": "partial", "skill": "ops/goal", "task": "wait",
             "fixture": {"files": {"input.txt": "x"}},
             "assert": {"type": "contains", "any": ["done"]},
             "trace_assert": {
@@ -65,8 +64,7 @@ class InvocationTraceTests(unittest.TestCase):
             },
         }
         script = f"import time; print({host_event!r}, flush=True); time.sleep(5)"
-        with tempfile.TemporaryDirectory() as trace_td, \
-             mock.patch.object(orch_eval, "stage_framework"):
+        with tempfile.TemporaryDirectory() as trace_td:
             trace_root = Path(trace_td)
             result = orch_eval.run_case(
                 [sys.executable, "-c", script], case, timeout=1,

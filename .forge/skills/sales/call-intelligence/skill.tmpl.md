@@ -2,6 +2,16 @@
 name: resonance-sales-call-intelligence
 description: Analyzes sales call transcripts to extract deep persona insights, objection handling metrics, vocabulary libraries, and feature requests. Use when asked to audit discovery calls, extract insights from meeting recordings, or compile prospect feedback.
 archetype: procedure
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - revenue-motion work includes a call transcript that needs structured analysis
+contributes_to:
+  - sales.revenue-motion
+artifact_access:
+  - revenue-motion-scope:read
+  - call-intelligence-report:create,modify
 ---
 
 # /resonance-sales-call-intelligence: analyze sales transcripts

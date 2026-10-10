@@ -2,6 +2,16 @@
 name: resonance-ops-founder-os
 description: The company operating system for a founder running a business with a fleet of agents. Owns company OKRs, scorecards, weekly reviews, L10/EOS and IDS, decisions, cadence, delegation, and authority budgets. Use when running the company operating rhythm or defining what an agent may spend, send, change, or commit. Product discovery, PRDs, PMF, and product roadmap choices belong to Product.
 archetype: knowledge
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - leadership work needs company priorities, goals, or operating scorecards
+contributes_to:
+  - leadership.operating-cycle
+artifact_access:
+  - leadership-scope:read
+  - operating-cadence-plan:create,modify
 ---
 
 # /resonance-ops-founder-os: run the company as a system, not a stream of prompts

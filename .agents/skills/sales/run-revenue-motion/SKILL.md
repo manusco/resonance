@@ -47,6 +47,27 @@ invokes:
   - resonance-sales-revops
   - resonance-success-customer-success
   - resonance-ops-legal
+contract_version: 1
+job_id: sales.revenue-motion
+stage: PLAN
+contributes_to:
+reviews:
+finalizes:
+  - revenue-motion-proposal
+artifact_access:
+  - revenue-motion-scope:create,modify
+  - account-intelligence-brief:read
+  - lead-treatment-report:read
+  - outbound-sequence:read
+  - call-intelligence-report:read
+  - pipeline-report:read
+  - revops-plan:read
+  - customer-success-handoff:read
+  - revenue-compliance-review:read
+  - revenue-motion-proposal:create,modify
+dispatch_conditions:
+  - a governed revenue motion spans account work, outreach, pipeline, forecast, or post-sale handoff
+compatibility: active
 ---
 
 # resonance-sales-run-revenue-motion: govern the path from target account to handoff

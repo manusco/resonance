@@ -1,5 +1,20 @@
 # Changelog
 
+## v2.5.41
+
+The evaluation integrity and bounded workflow release.
+
+### Added
+- **Architecture boundary.** `docs/ARCHITECTURE_BOUNDARY.md` defines what the portable Resonance framework supplies and what host adapters and adopters must prove or operate.
+- **Governed field reports.** Reports can carry run, artifact, sensitivity, owner, and delayed-outcome metadata. Restricted reports are rejected before proposal output; accepted reports remain review proposals and do not self-promote into skills or evals.
+- **Selective job contracts.** Build, campaign, revenue motion, finance cycle, and leadership cycle now have formal workflow contracts, with invocation reachability and handoffs checked against declared participants.
+- **Baseline protocol.** `docs/evals/private-behavioral-baseline.md` defines private holdout handling, human-gold judge calibration, model identity, spend limits, and reporting requirements. No behavioral lift is claimed by this release.
+
+### Fixed
+- **Eval path containment.** Orchestration fixtures and staged skill paths are validated before writes, including traversal and symlink escapes.
+- **Scoring setup.** Scored evals require external holdout and evidence roots, distinct answerer and judge identities, and a baseline identity.
+- **Honest cost gates.** Unknown cost is represented as `null`; it cannot pass a gate that requires measured cost.
+
 ## v2.5.40
 
 The usage-first motion guidance release.

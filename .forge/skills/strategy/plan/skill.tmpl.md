@@ -41,6 +41,7 @@ outputs:
   - research_scope
   - researcher_scope
   - venture_scope
+  - architect_scope
   - blueprint_scope
 side_effects:
   - may_coordinate_work
@@ -51,6 +52,8 @@ invokes:
   - resonance-ops-product
   - resonance-strategy-researcher
   - resonance-strategy-venture
+  - resonance-strategy-architect
+  - resonance-strategy-blueprint
 ---
 
 # /resonance-strategy-plan: convert ambiguity into a world-class spec

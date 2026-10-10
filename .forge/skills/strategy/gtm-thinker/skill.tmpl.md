@@ -2,6 +2,16 @@
 name: resonance-strategy-gtm-thinker
 description: GTM hypothesis challenger. Use when a concrete B2B positioning, audience, offer, channel, or campaign concept has not earned commitment. Deconstructs the bet, tests assumptions, compares alternatives, and defines evidence and kill criteria. Growth owns company-wide bottleneck and channel portfolio choices. Run Campaign owns approved campaign preparation.
 archetype: procedure
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - campaign work needs its audience, offer, channel, or hypothesis stress-tested
+contributes_to:
+  - marketing.campaign
+artifact_access:
+  - campaign-brief:read
+  - gtm-hypothesis-packet:create,modify
 ---
 
 # /resonance-strategy-gtm-thinker: stress-test and expand GTM concepts

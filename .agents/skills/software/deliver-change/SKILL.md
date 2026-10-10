@@ -6,7 +6,6 @@ contract_version: 1
 job_id: delivery.compatibility-intake
 stage: FRAME
 contributes_to:
-  - delivery.goal
 reviews:
 finalizes:
   - goal-handoff

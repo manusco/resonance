@@ -6,6 +6,7 @@ contract_version: 1
 job_id: verification.audit
 stage: VERIFY
 contributes_to:
+  - delivery.build
 reviews:
   - delivery.goal
 finalizes:
@@ -42,6 +43,7 @@ outputs:
   - architecture_scope
   - architect_scope
   - blueprint_scope
+  - performance_scope
 side_effects:
   - may_coordinate_work
   - may_execute_checks
@@ -54,6 +56,7 @@ invokes:
   - resonance-ops-qa
   - resonance-strategy-architect
   - resonance-strategy-blueprint
+  - resonance-engineering-performance
 ---
 
 # /resonance-ops-audit: prevent entropy, enforce standards

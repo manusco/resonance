@@ -24,6 +24,8 @@ outputs:
   - blueprint_scope
   - backend_scope
   - frontend_scope
+  - ai_engineering_scope
+  - database_scope
   - debugger_scope
   - security_scope
   - audit_scope
@@ -37,9 +39,26 @@ invokes:
   - resonance-strategy-blueprint
   - resonance-engineering-backend
   - resonance-engineering-frontend
+  - resonance-engineering-ai-engineering
+  - resonance-engineering-database
   - resonance-engineering-debugger
   - resonance-ops-security
   - resonance-ops-audit
+contract_version: 1
+job_id: delivery.build
+stage: EXECUTE
+contributes_to:
+reviews:
+finalizes:
+  - build-result
+artifact_access:
+  - implementation-plan:read,review
+  - implementation-artifact:create,modify,execute
+  - build-result:create,modify
+  - build-evidence:create,append_evidence
+dispatch_conditions:
+  - an approved implementation plan is ready for an execution slice
+compatibility: active
 ---
 
 # /resonance-engineering-build: execute with TDD rigor

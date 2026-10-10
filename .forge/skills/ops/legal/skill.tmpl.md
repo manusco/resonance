@@ -2,6 +2,24 @@
 name: resonance-ops-legal
 description: Legal and compliance specialist with a GDPR and DACH (Germany, Austria, Switzerland) lens. Use when writing a privacy policy or terms of service, reviewing a contract or a specific risky clause, handling GDPR or data processing questions (lawful basis, DSAR, controller vs processor, DPA), preparing for a compliance audit such as SOC2, or navigating IP and licensing. Drafts and reviews documents and explains the rules in plain language. It is NOT a substitute for a qualified lawyer; escalate high-risk or binding decisions to licensed counsel.
 archetype: knowledge
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - leadership decisions carry material legal or compliance exposure
+  - campaign assets require a legal or claims review
+  - finance decisions depend on a legal or compliance risk assessment
+contributes_to:
+  - leadership.operating-cycle
+  - marketing.campaign
+  - finance.operating-cycle
+artifact_access:
+  - finance-risk-review:create,modify,review
+  - finance-scope:read
+  - campaign-compliance-review:create,modify,review
+  - campaign-brief:read
+  - leadership-scope:read
+  - leadership-risk-review:create,modify,review
 ---
 
 # /resonance-ops-legal: get the legal surface right without waiting on outside counsel

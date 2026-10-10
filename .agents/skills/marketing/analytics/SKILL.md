@@ -2,6 +2,20 @@
 name: resonance-marketing-analytics
 description: Marketing Analytics Engineer. Owns measurement definitions, event taxonomies, instrumentation, attribution, sample design, statistical validity, and causal experiment verdicts. Use when evidence must be made trustworthy or interpreted. Conversion owns the customer-facing intervention and variant hypothesis, not the measurement verdict.
 archetype: knowledge
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - campaign work needs a measurement plan, instrumentation, or experiment verdict
+  - finance work needs defensible metric definitions or attribution
+contributes_to:
+  - finance.operating-cycle
+  - marketing.campaign
+artifact_access:
+  - campaign-brief:read
+  - campaign-measurement-plan:create,modify
+  - finance-scope:read
+  - finance-metric-brief:create,modify
 ---
 
 # /resonance-marketing-analytics: measure the question, not the tool

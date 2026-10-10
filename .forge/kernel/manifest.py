@@ -40,7 +40,7 @@ LIST_FIELDS = {
 }
 
 COMPOSITION_FIELDS = {
-    "contract_version", "job_id", "stage", "contributes_to", "reviews", "finalizes",
+    "contract_version", "contract_role", "job_id", "stage", "contributes_to", "reviews", "finalizes",
     "artifact_access", "dispatch_conditions", "compatibility",
 }
 
@@ -163,6 +163,7 @@ def normalize_entry(sk: Path, root: Path) -> dict | None:
     if any(field in fm for field in COMPOSITION_FIELDS):
         entry.update({
             "contract_version": int(contract_version) if contract_version.isdigit() else contract_version,
+            "contract_role": str(fm.get("contract_role", "lead")),
             "job_id": str(fm.get("job_id", "")),
             "stage": str(fm.get("stage", "")),
             "contributes_to": list_field(fm, "contributes_to"),
@@ -196,6 +197,7 @@ def composition_warnings(data: list[dict], canary_ids: set[str]) -> list[str]:
     """Return warning-only v1 canary findings. This never changes strict validation."""
     warnings: list[str] = []
     by_job = {entry.get("job_id"): entry for entry in data if entry.get("job_id")}
+    by_id = {entry["id"]: entry for entry in data}
     job_counts: dict[str, int] = defaultdict(int)
     for entry in data:
         if entry.get("job_id"):
@@ -216,16 +218,32 @@ def composition_warnings(data: list[dict], canary_ids: set[str]) -> list[str]:
         if version not in VALID_CONTRACT_VERSIONS:
             warnings.append(f"composition canary: '{sid}' has unknown contract_version '{version}'; fail closed")
             continue
-        missing = [field for field in COMPOSITION_FIELDS if field not in entry]
+        # contract_role defaults to lead for backward-compatible v1 lead
+        # declarations. Participant profiles must state it explicitly.
+        required_fields = COMPOSITION_FIELDS - {"contract_role"}
+        if entry.get("contract_role") == "participant":
+            required_fields = COMPOSITION_FIELDS
+        missing = [field for field in required_fields if field not in entry]
         if missing:
             warnings.append(f"composition canary: '{sid}' v1 contract is missing {sorted(missing)}")
             continue
-        if not entry.get("job_id"):
-            warnings.append(f"composition canary: '{sid}' has an empty job_id")
-        elif job_counts[str(entry["job_id"])] > 1:
-            warnings.append(f"composition canary: job_id '{entry['job_id']}' is declared more than once")
-        if entry.get("stage") not in VALID_CONTRACT_STAGES:
-            warnings.append(f"composition canary: '{sid}' has invalid stage '{entry.get('stage')}'")
+        role = entry.get("contract_role", "lead")
+        if role not in {"lead", "participant"}:
+            warnings.append(f"composition canary: '{sid}' has invalid contract_role '{role}'")
+        if role == "lead":
+            if not entry.get("job_id"):
+                warnings.append(f"composition canary: '{sid}' has an empty job_id")
+            elif job_counts[str(entry["job_id"])] > 1:
+                warnings.append(f"composition canary: job_id '{entry['job_id']}' is declared more than once")
+            if entry.get("stage") not in VALID_CONTRACT_STAGES:
+                warnings.append(f"composition canary: '{sid}' has invalid stage '{entry.get('stage')}'")
+        elif role == "participant":
+            if entry.get("job_id") or entry.get("finalizes"):
+                warnings.append(f"composition canary: participant '{sid}' cannot declare a job_id or finalizes")
+            if not (entry.get("contributes_to") or entry.get("reviews")):
+                warnings.append(f"composition canary: participant '{sid}' must contribute to or review a job")
+            if entry.get("compatibility") != "active":
+                warnings.append(f"composition canary: participant '{sid}' must declare active compatibility")
         if entry.get("compatibility") not in VALID_COMPATIBILITY:
             warnings.append(f"composition canary: '{sid}' has invalid compatibility '{entry.get('compatibility')}'")
 
@@ -255,8 +273,18 @@ def composition_warnings(data: list[dict], canary_ids: set[str]) -> list[str]:
         privileged = {right for rights in access.values() for right in rights} & {"approve", "publish", "execute"}
         if entry.get("authority") == "advisory" and privileged:
             warnings.append(f"composition canary: advisory '{sid}' declares privileged rights {sorted(privileged)}")
-        if entry.get("compatibility") == "alias" and len(entry.get("contributes_to", [])) != 1:
-            warnings.append(f"composition canary: alias '{sid}' must contribute to exactly one canonical job")
+        if entry.get("compatibility") == "alias":
+            canonical_invokes = [
+                target for target in entry.get("invokes", [])
+                if target in by_id and by_id[target].get("job_id")
+            ]
+            if len(entry.get("contributes_to", [])) != 1 and not (
+                not entry.get("contributes_to") and len(canonical_invokes) == 1
+            ):
+                warnings.append(
+                    f"composition canary: alias '{sid}' must contribute to one canonical job "
+                    "or invoke exactly one canonical job lead"
+                )
         if entry.get("compatibility") == "retired" and (entry.get("entrypoints") or entry.get("finalizes")):
             warnings.append(f"composition canary: retired '{sid}' retains an entrypoint or finalizer")
         if not entry.get("dispatch_conditions"):

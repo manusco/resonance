@@ -1,5 +1,5 @@
 name: Skill field report
-description: A Resonance skill behaved differently than its doctrine promises
+description: A sanitized account of a Resonance skill behaving differently than its doctrine promises
 title: "[Field report]: "
 labels: ["field-report"]
 body:
@@ -11,31 +11,76 @@ body:
     validations:
       required: true
   - type: input
+    id: summary
+    attributes:
+      label: Short summary
+      description: A brief, sanitized title for the observed gap
+    validations:
+      required: true
+  - type: input
     id: host
     attributes:
       label: Tool and model
-      description: e.g. Claude Code + Opus, Cursor + GPT
+      description: Optional host and model name, only if safe to share publicly
     validations:
       required: false
+  - type: input
+    id: run_id
+    attributes:
+      label: Opaque run ID
+      description: Optional short ID safe to share publicly. Do not paste a run URL, account ID, or private identifier.
+    validations:
+      required: false
+  - type: input
+    id: artifact_version
+    attributes:
+      label: Skill or workflow version
+      description: Required with a run ID; use a version or commit token safe to share publicly.
+    validations:
+      required: false
+  - type: dropdown
+    id: sensitivity
+    attributes:
+      label: Data sensitivity
+      description: This issue is public. Never include restricted details here; prepare a redacted derivative first.
+      options:
+        - public-sanitized
+        - restricted-do-not-submit
+    validations:
+      required: true
   - type: textarea
     id: expected
     attributes:
       label: What the skill promises
-      description: The behavior its SKILL.md or description led you to expect
+      description: The behavior its SKILL.md or description led you to expect. Remove private project data.
     validations:
       required: true
   - type: textarea
-    id: got
+    id: scenario
     attributes:
-      label: What actually happened
-      description: Paste the relevant output or describe the gap
+      label: Sanitized scenario and observed behavior
+      description: Smallest safe prompt/input and what happened. Remove secrets, personal data, customer data, and private project details.
     validations:
       required: true
-  - type: textarea
-    id: reproduction
+  - type: input
+    id: owner_role
     attributes:
-      label: Reproduction context
-      description: Give the smallest safe example that can reproduce the gap. Remove secrets and private project data.
+      label: Accountable role
+      description: Optional lowercase role slug (for example, skill-maintainer). Never enter a person's name here.
+    validations:
+      required: false
+  - type: input
+    id: outcome
+    attributes:
+      label: Delayed outcome to check
+      description: Optional observable result expected after the correction is reviewed and applied.
+    validations:
+      required: false
+  - type: input
+    id: due_date
+    attributes:
+      label: Outcome check date
+      description: Required with accountable role and delayed outcome. Use YYYY-MM-DD.
     validations:
       required: false
   - type: checkboxes
@@ -43,7 +88,7 @@ body:
     attributes:
       label: Checks
       options:
-        - label: I searched existing issues for this behavior.
+        - label: I searched existing issues and removed secrets and private project data.
           required: true
-        - label: I removed secrets and private project data.
+        - label: I understand this public report creates a proposal only; it does not change or promote a skill.
           required: true

@@ -1,0 +1,51 @@
+{
+  "name": "leadership_cycle_assigns_owner_and_followup",
+  "skill": "leadership/run-operating-cycle",
+  "task": "Use the supplied team objective and capacity facts to create leadership-decision-brief.md. Include the outcome, decision owner, accountable work owners, communication plan, and follow-up date. If evidence is insufficient, keep the decision open. Do not create extra meetings.",
+  "fixture": {
+    "files": {
+      "team.md": "Objective: finish the migration by 2026-11-30. Two engineers are available for one day per week each. Current work has no named owner.\n",
+      "leadership-check.py": "from pathlib import Path\ns=Path('leadership-decision-brief.md').read_text().lower()\nfor term in ['migration','owner','follow-up','2026-11-30']:\n assert term in s, term\nassert 'meeting' not in s or 'no meeting' in s\n"
+    }
+  },
+  "assert": {
+    "type": "command",
+    "cmd": "python3 leadership-check.py",
+    "expect_exit": 0
+  },
+  "trace_assert": {
+    "minimum_assurance": 3,
+    "ordered_subsequence": [
+      {
+        "event": "INVOKE",
+        "target": "ops/founder-os"
+      },
+      {
+        "event": "INVOKE",
+        "target": "ops/productivity"
+      }
+    ],
+    "allowed_skills": [
+      "ops/founder-os",
+      "people/hiring",
+      "ops/productivity",
+      "ops/retro",
+      "ops/legal"
+    ],
+    "forbidden_skills": [
+      "ops/ship"
+    ],
+    "max_fan_out": 5,
+    "artifact_access": [
+      {
+        "artifact": "leadership-decision-brief.md",
+        "owner": "leadership/run-operating-cycle",
+        "allowed_mutations": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "correlate_world_state": true
+  }
+}

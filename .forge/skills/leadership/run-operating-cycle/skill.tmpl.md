@@ -38,6 +38,24 @@ invokes:
   - resonance-ops-productivity
   - resonance-ops-retro
   - resonance-ops-legal
+contract_version: 1
+job_id: leadership.operating-cycle
+stage: PLAN
+contributes_to:
+reviews:
+finalizes:
+  - leadership-decision-brief
+artifact_access:
+  - leadership-scope:create,modify
+  - operating-cadence-plan:read
+  - hiring-plan:read
+  - productivity-analysis:read
+  - retrospective-report:read
+  - leadership-risk-review:read
+  - leadership-decision-brief:create,modify
+dispatch_conditions:
+  - a leadership cycle needs an explicit recommendation, decision owner, and follow-up
+compatibility: active
 ---
 
 # resonance-leadership-run-operating-cycle: make management explicit
