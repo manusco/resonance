@@ -63,11 +63,11 @@ def lesson_block(rep: dict, date: str) -> str:
     summary = rep.get("summary", "").strip() or "a field report"
     exp = rep.get("expected") or []
     first = exp[0] if exp else "handle this case correctly"
-    attribution = _proposal_metadata(rep)
+    report_metadata = _proposal_metadata(rep)
     provenance = ""
-    if attribution:
+    if report_metadata:
         provenance = "\nReport metadata (submitter-provided, unverified): " + "; ".join(
-            f"{key}={_one_line(str(value))}" for key, value in attribution.items()
+            f"{key}={_one_line(str(value))}" for key, value in report_metadata.items()
         ) + ".\n"
     return (f"## les-{rid}: {summary}\n"
             f"Proposed {date} lesson from field report on {skill}: it misfired on the scenario below. It should "

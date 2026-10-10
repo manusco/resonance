@@ -1,6 +1,6 @@
 # Resonance implementation results
 
-**Date:** 2026-10-10  
+**Date:** 2026-10-10
 The planning artifact remained local and is not part of this release.
 
 ## Result
