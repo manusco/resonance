@@ -59,6 +59,7 @@ Never patch a running server. Replace it. Deploy a new container image, drain th
 
 ## Reference Library
 
+- **[GitHub repository and Actions](references/github_actions.md)**: Repository governance and workflow security decisions.
 - **[Production Readiness](references/production_readiness_checklist.md)**: Go-live verification checklist.
 - **[Platform Decision Tree](references/platform_tree.md)**: Hosting selection guide.
 - **[Rollback Matrix](references/rollback_matrix.md)**: Emergency response procedures.

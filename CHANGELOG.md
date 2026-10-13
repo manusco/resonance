@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.5.42
+
+Document GitHub repository governance, Actions security, release provenance, and cost controls in the DevOps skill.
+
+### Added
+- **GitHub repository and Actions reference** (`engineering/devops`): covers repository rules, untrusted pull request workflows, permissions, required checks, workflow reliability and cost, and release provenance.
+- **Validation-only Rust CI eval.** Adds a deterministic case for safe pull request and `main` validation, with no deployment, release, or publish behavior.
+
+### Fixed
+- **Fingerprint scan false positive.** Official `docs.github.com` links no longer match the repository-source marker; direct GitHub repository links remain detectable.
+
 ## v2.5.41
 
 The evaluation integrity and bounded workflow release.
