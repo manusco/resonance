@@ -3,33 +3,32 @@
 > **Resonance Phase**: Friction Removal / Conversion
 
 ## 1. The Core Architecture (Audit Structure)
-A page layout must adhere to standard mental models. Innovation in layout is usually friction in disguise.
-**The Law of Clarity**: Is the value proposition immediately understandable within 5 seconds?
+Use familiar patterns when they make the stated decision easier. Derive information order and action staging from audience, traffic intent, offer, and decision stage. Treat speed-to-understanding as a question to test, not a universal five-second law.
 
 ### Hero Section (Above the Fold)
 *   **Headline**: The promise. Be specific, outcome-driven, and devoid of marketing jargon (e.g., "AI-powered synergies").
     *   *Strong Pattern*: `Get [Outcome] without [Pain Point]`.
 *   **Subheadline**: The mechanism or the "How". Authenticate the headline's claim.
-*   **Primary CTA**: Must be the most visually distinct element. Finish the sentence: "I want to..." 
+*   **Next step**: Make the action that best serves the current decision easy to identify. A focused signup page may have one dominant CTA; comparison, self-selection, or in-product work may need several legitimate actions.
     *   *Bad*: `Sign up`.
     *   *Good*: `Start building for free`.
 
 ### The Trust Vector (Social Proof)
 Deploy proof immediately following claims.
 *   **Testimonials**: 🔴 **Rule**: Fake or generic ("Great app!") reviews fail instantly. Use specific figures and face shots.
-*   **Client Logos**: Positioned directly underneath the hero CTA for immediate credibility.
+*   **Client Logos**: Use only verified logos, where they support the claim and audience decision.
 
 ### Information Hierarchy (The Scroll)
 *   **Scannability**: Users do not read; they scan. 
-    *   Use F-pattern or Z-pattern layouts.
-    *   Subheaders must tell the full story if a user reads *only* the subheaders.
-*   **Friction Removal**: White space is required. Cut any paragraph exceeding 3 lines.
+    *   Choose hierarchy from content and task; F/Z patterns are hypotheses, not required scan paths.
+    *   Use headings that help users find information relevant to their decision.
+*   **Friction Removal**: Edit for clarity and remove material that does not serve the decision. Do not use a fixed paragraph length as a usability rule.
 
 ## 2. Friction Points to Terminate
 During an audit, look for these conversion killers:
-*   **Multi-CTA Confusion**: A page should have one primary goal. Secondary goals must look demonstrably different (ghost buttons, text links).
+*   **Action competition**: Identify the page's commercial job and decision stage. On a focused acquisition page, distinguish its main action from secondary paths. On comparison or in-product surfaces, preserve valid peer actions and their context.
 *   **High-Cost Forms**: Cut every non-essential field. If you don't *need* their phone number on step 1, remove it.
-*   **Analysis Paralysis**: If you present 5 options, the user will often choose zero. Consolidate to maximum 3 logical choices.
+*   **Choice clarity**: Group choices by user goals and explain material differences. Do not apply a universal option cap or hide alternatives users need to compare.
 *   **Unclear Next Steps**: Don't force users to guess what happens after they click a button. Explain the process.
 
 ## 3. The Assessment Framework

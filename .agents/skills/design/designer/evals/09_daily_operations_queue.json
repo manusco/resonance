@@ -1,0 +1,24 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Design a daily operations queue for a support team. Operators review 120 cases per shift and must compare account, payment status, due time, amount, and owner before choosing among four valid dispositions. A mistaken refund is costly but reversible through a two-step support process; routine status updates are frequent. At 360 CSS px, operators still need to identify overdue cases and open one safely. The workflow also has a rare bulk-delete action for selected closed duplicates. Deletion permanently removes every selected case, cannot be undone, and may affect many cases. Specify the main view, narrow-screen behavior, action hierarchy, destructive-action recovery, and how you would validate it. Do not invent product policy.",
+  "files": [],
+  "expected_behavior": [
+    "States the operator task and uses the supplied frequency, consequence, and recovery facts without combining them into a fake numerical score",
+    "Keeps the comparison fields together in a table or equivalent comparison view and explains the task reason; does not convert cases to isolated cards by reflex",
+    "At 360 CSS px preserves overdue status and the context needed to identify and open a case, and says how remaining fields and actions can be inspected",
+    "Keeps all four legitimate dispositions available at the relevant decision point while distinguishing frequent routine action from the costlier refund action",
+    "Makes the refund target and consequence clear and chooses confirmation or a recovery affordance based on the stated reversibility and cost",
+    "Provides a measurable validation outcome such as wrong disposition rate, overdue-case discovery, or task completion time, with a condition that would disprove the design",
+    "For permanent bulk deletion, identifies the selected target and consequence, provides a safe cancel path, and justifies confirmation or another recovery mechanism from the high recovery cost; if using a modal, specifies accessible focus entry, containment, close behavior, and focus return"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\\u2014\\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
+  ]
+}

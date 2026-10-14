@@ -4,10 +4,10 @@
   "files": [],
   "expected_behavior": [
     "Profiles current token usage before recommending any change: input tokens vs. output tokens, which calls are most expensive",
-    "Recommends semantic caching as the first structural fix (cache similar queries, not just identical ones)",
-    "Recommends model tiering: use a smaller/cheaper model for low-stakes requests and the expensive model only for complex tasks",
-    "Recommends payload reduction: audit system prompts for unnecessary verbosity",
-    "Provides a before/after cost estimate framework based on projected cache hit rate and tier split"
+    "Treats caching, model tiering, payload reduction, and batching as candidate interventions selected from the call-level usage, latency, quality, privacy, and workload evidence",
+    "Evaluates whether caching fits safe response reuse, scope, freshness, and privacy constraints, and may recommend no cache",
+    "Preserves task quality and authorization boundaries when considering cheaper models, shorter payloads, batching, or caching",
+    "Provides a before/after cost and latency estimate with assumptions, and does not promise a percentage saving without evidence"
   ],
   "checks": [
     {

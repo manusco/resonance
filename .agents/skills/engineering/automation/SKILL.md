@@ -4,14 +4,14 @@ description: Tooling Engineer Specialist. Builds CLI tools, automation scripts, 
 archetype: procedure
 ---
 
-# /resonance-engineering-automation: build system capabilities, not scrappy scripts
+# /resonance-engineering-automation: build the smallest reliable tool for the job
 
 > **Role:** toolsmith and capability engineer.
-> **Input:** A manual/repetitive task, a resource to expose via MCP, or a workflow to automate.
-> **Output:** A CLI tool, automation script, or MCP server that is modular, typed, and idempotent.
-> **Definition of Done:** 100% of tool arguments are validated with Zod. The tool can be run multiple times without adverse side effects (idempotent). Output is structured (JSON or machine-readable). The tool passes its own test with edge cases and the `--help` flag.
+> **Input:** A manual/repetitive task, a resource to expose via MCP, or a workflow whose automation has a clear benefit.
+> **Output:** A CLI tool, automation script, or MCP server that fits the project's runtime and safely handles its inputs and effects.
+> **Definition of Done:** Untrusted inputs are validated at their boundary using the project's validation stack. Repeatable side effects are safe to retry or recover. Output follows the caller's needs, and nontrivial logic has relevant checks. CLI help is clear when the tool has a CLI.
 
-You do not build scrappy scripts. You build System Capabilities. Small tools that do one thing well. Compostable. The AI agents of tomorrow need tools built to a standard, not duct-taped together.
+Reuse a command or script when it already meets the need. Add durable automation when its benefit and operating path justify it. Keep tools focused, composable, and safe to run.
 
 ## Recurring agent loops
 
@@ -31,7 +31,13 @@ Run the measurement, selector, and worker locally before CI orchestrates them. I
 ## Prerequisites (fail fast)
 
 - [ ] The task to automate is defined as a single, clear job: input, output, and success criteria.
-- [ ] The tool's input/output schema is defined before any implementation begins.
+- [ ] The tool's input/output contract is clear; define a schema when its interface or consumers need one.
+
+## Choose the lightest sufficient mechanism
+
+Use the [Necessity Protocol](../../ops/core/references/necessity_protocol.md) before adding a command, agent, service, trigger, persistent state, retry loop, or handoff. Check the existing command/library and runtime first. Name the current operator burden and the observable frequency, reliability, or recovery need that warrants each added part. A deterministic one-shot task should stay a command when that meets the contract; recurring work needs a trigger and state only when its schedule and recovery require them. Keep validation at trust boundaries, tests for nontrivial logic, idempotency for repeatable side effects, and an operator-visible recovery path. Use the project's existing validation stack; require structured output for machine consumers, `--help` for a CLI, and dry-run only when a material side effect needs a safe preview.
+
+Measure, validate, or automate a check early when uncertainty, a policy obligation, or a quality/safety boundary requires it; an early check does not commit the surrounding workflow to automation. Define the bounded unit, completion condition, error/stop path, output-quality check, and operator recovery. Choose mechanization when it meets a required assurance, latency, reliability, or repeated-work need and its output quality and ongoing runtime, maintenance, and recovery cost are acceptable. The surrounding workflow need not all be automated or stable first.
 
 ## Algorithm
 
@@ -39,15 +45,15 @@ Copy this checklist and tick items as you go.
 
 1. **Search + Learn**: Check `02_memory.md` for similar tools or project-specific automation constraints. Do not rebuild what already exists. → verify: existing tools checked.
 2. **Safety Check**: Run `scripts/check_guards.py` on any file the tool will modify. Flag any guarded or frozen files before proceeding. → verify: no guarded files in the modification scope.
-3. **Design**: Define inputs (Zod schema) and outputs (JSON/Structured). Write the schema before writing any logic. → verify: schema written and reviewed.
+3. **Design**: Define inputs and outputs using the project's existing validation and output conventions. Validate untrusted inputs at the boundary; use structured output when a machine consumes it. → verify: the contract is clear and reviewed.
 4. **Implement**: Build the tool. Follow the Unix Philosophy: one job, composable, pipeable. → verify: tool performs exactly one job with no hidden side effects.
-5. **Verify**: Test with the happy path, edge cases, missing input, and the `--help` flag. → verify: all cases pass, `--help` output is clear.
-6. **Self-Improvement**: Log tool usage patterns or "gotchas" to `02_memory.md`.
+5. **Verify**: Check the happy path, relevant edge cases, and missing input. For a CLI, check `--help`; test repeatability when side effects can recur. → verify: applicable checks pass.
+6. **Self-Improvement**: Record durable tool usage lessons or "gotchas" in project memory.
 7. **Completion Report**: Final status (DONE, BLOCKED, NEEDS_CONTEXT).
 
 ## Recovery
 
-- Tool has a side effect that cannot be made idempotent → add a `--dry-run` flag that shows what would change without making changes. Document the non-idempotent behavior explicitly.
+- A material side effect is hard to reverse and cannot be previewed another safe way → provide a dry-run or equivalent safe preview and document the remaining recovery path.
 - MCP server cannot connect to the resource → fail fast with a specific error message. Do not silently return empty results.
 - Tried 3 implementations without meeting the success criteria → stop, show the constraint, and escalate.
 
@@ -68,17 +74,17 @@ Copy this checklist and tick items as you go.
 ## Cognitive Frameworks
 
 ### Unix Philosophy
-Write programs that do one thing and do it well. Write programs that work together. Prefer small, pipeable tools over monolithic "do everything" scripts. If a tool needs more than one sentence to describe, it is doing too much.
+Give each tool a clear job and compose tools where separate owners or callers benefit. Keep a multi-step command together when those steps share one contract and splitting them would add handoffs without a current benefit.
 
 ### Model Context Protocol (MCP)
-The standard interface for exposing capabilities to AI agents. All external resources must be accessible via MCP schemas. Every tool argument is typed and validated.
+Use MCP schemas when MCP is the chosen interface for an agent-facing capability. An existing command or native API is sufficient when it meets the caller's contract. Validate untrusted arguments at the chosen interface boundary with the project's validation stack.
 
 ## KPIs
 
-- **Type Safety**: 100% of tool arguments are validated with Zod.
-- **Idempotency**: Tools can be run multiple times without adverse side effects.
+- **Input Safety**: Untrusted tool inputs are validated at their boundary with the project's validation stack.
+- **Repeatability**: Repeatable side effects are safe to retry or have a clear recovery path.
 
-> ⚠️ **Failure Condition**: Building tools that require dynamic user interaction (STDIN) without flags, producing unstructured text dump output, or building a tool that does more than one job.
+> ⚠️ **Failure Condition**: Requiring interactive input with no automated interface, emitting an output format the caller cannot use, or combining unrelated jobs without a shared contract or caller benefit.
 > ⚠️ **Agent Loop Failure Condition**: Scheduling an agent without a measurable target, local measurement and selection commands, durable standing memory, validation, and a cap on open review work.
 
 ## Reference Library

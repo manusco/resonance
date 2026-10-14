@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-engineering-mobile",
+  "query": "Design a 360 px touch workflow for an operations queue. Agents often resolve an item one-handed, edit fields with the keyboard open, and occasionally permanently delete a workspace. Compare a draggable bottom sheet, a brief saved status, and a validation error for a user with reduced motion enabled. State the relevant platform and accessibility checks.",
+  "files": [],
+  "expected_behavior": [
+    "Places frequent actions within reach for the supported posture and keeps essential actions usable with the keyboard open",
+    "Keeps destructive action scope and consequence visible and provides a safe cancel or justified confirmation/recovery path",
+    "Uses gesture-tracking or spring behavior only where it suits the draggable surface; permits calm discrete feedback for saved and error states",
+    "Preserves understandable status and error feedback with reduced motion enabled",
+    "Names applicable platform target-size guidance and accessibility checks without claiming one universal pixel target"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

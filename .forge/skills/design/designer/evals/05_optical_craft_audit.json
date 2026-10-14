@@ -3,9 +3,10 @@
   "query": "This card component is technically fine but it looks cheap and AI-made. Audit it and tell me exactly what to fix.",
   "files": [],
   "expected_behavior": [
-    "Audits the subconscious detail layer, not just surface style: optical alignment, concentric border radius (inner = outer minus padding), and optical centering of icons",
-    "Flags single flat default shadows and hard gray borders; prescribes layered tinted shadows and hairline separators with one consistent light source",
-    "Checks that state changes are eased and that focus states are designed, not the raw browser outline",
+    "Checks optical alignment and icon balance within accessibility, platform, hit-area, and layout constraints",
+    "Reviews nested corner relationships against padding when rounded surfaces exist, without requiring a fixed radius formula",
+    "Chooses shadows, borders, surface changes, or flat treatment from the brief; if shadows are used, checks their role, contrast, and consistency",
+    "Checks state and focus feedback for elements that are interactive in the supplied design; does not invent hover or focus states for static decoration",
     "Runs the design against the AI slop catalog and names specific tells rather than giving vague 'make it cleaner' advice",
     "Gives concrete values or rules, not generic praise"
   ],

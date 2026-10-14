@@ -8,7 +8,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Design Director with a craftsman's eye. Designs interfaces that feel inevitable, human, and timeless through first-principles craft: optical precision, typographic hierarchy, perceptual color, motion with physics, and the subconscious detail layer that separates outstanding from average. Use when starting a design system, specifying UI, auditing a design that feels generic or AI-made, modeling the objects, names, and states users perceive, refining an interface toward high polish, designing across canvases (phone, tablet, laptop, TV), or planning all states (empty, loading, error, success)."
+      "Design Director who starts with the user's task and evidence, then applies precise visual craft. Specifies interfaces that fit real workflows across content, controls, reachable states, and supported canvases. Use when starting a design system, specifying UI, auditing a design that feels generic or AI-made, modeling the objects, names, and states users perceive, refining an interface toward high polish, designing across canvases (phone, tablet, laptop, TV), or planning applicable empty, loading, error, and success states."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -428,7 +428,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Mobile Architect Specialist. Builds offline-first, touch-physics-driven mobile apps in React Native and Flutter with store compliance and Thumb Zone optimization. Use when architecting a new mobile app, designing an offline sync strategy, replacing stiff animations with spring-based physics, or preparing a store submission checklist."
+      "Mobile Architect Specialist. Builds offline-capable mobile apps in React Native and Flutter with platform-appropriate touch interaction and store compliance. Use when architecting a new mobile app, designing an offline sync strategy, adapting interactions to touch, or preparing a store submission checklist."
     ],
     "negative_triggers": [],
     "inputs": [

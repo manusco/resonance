@@ -1,0 +1,21 @@
+{
+  "skill": "resonance-marketing-conversion",
+  "query": "Our SaaS pricing page converts at 2.1%. Audit it and give me an A/B hypothesis.",
+  "files": [],
+  "expected_behavior": [
+    "Does not invent page friction, an audience, offer terms, traffic intent, or a causal explanation from the conversion rate alone",
+    "Requests the page or relevant evidence and asks for audience, offer, traffic intent, and decision stage where needed",
+    "Defers an A/B hypothesis until a specific issue is supported by evidence",
+    "Leaves sample design and statistical planning to analytics rather than inventing a sample size or test duration"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\\u2014\\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
+  ]
+}

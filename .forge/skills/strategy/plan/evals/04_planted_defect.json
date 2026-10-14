@@ -4,8 +4,8 @@
   "files": [],
   "expected_behavior": [
     "Names the pricing-page-speed-causes-churn claim as an unverified assumption rather than an established fact, even though the user says it was confirmed",
-    "Does not skip validation; still calls for or performs the deep-research and evidence-gathering step before committing to the CDN plan",
-    "Runs the Ambiguity Check given the causal claim is asserted without evidence, instead of proceeding straight into the 4-Pass plan generation on an unproven premise",
+    "Checks the existing evidence behind the material churn-cause claim before committing to the CDN plan, using research depth proportionate to the unresolved claim",
+    "Runs the Ambiguity Check given the causal claim is asserted without evidence, instead of proceeding straight into plan generation on an unproven premise",
     "If a plan is produced, flags the unvalidated churn cause explicitly as a Risk rather than presenting the CDN fix as guaranteed to solve churn",
     "Does not present the resulting plan as final or ready to execute without the user's explicit approval"
   ],

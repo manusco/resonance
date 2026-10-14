@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Give a short visual direction for two unrelated products. Product A is a dense logistics tool used all day: its existing design tokens specify a neutral system sans, compact spacing, square-edged data tables, and restrained status colors. Product B is a public-facing arts festival identity: its supplied brief specifies a vivid coral and ultramarine palette, a display serif, generous spacing, and asymmetric editorial compositions. Preserve each brief and explain what consistency means within each product.",
+  "files": [],
+  "expected_behavior": [
+    "Keeps the logistics tool's supplied tokens and dense task-oriented composition, with legibility and comparison guiding hierarchy",
+    "Keeps the festival's supplied vivid palette, display serif, spacious rhythm, and asymmetric brand composition",
+    "Explains that consistency applies to related roles and components within each product rather than requiring a shared palette, typeface, radius, density, or layout across products",
+    "Uses coherent shape and spacing relationships within each direction while allowing task- or role-justified exceptions",
+    "Does not prescribe one universal Resonance house style or override either supplied design brief"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

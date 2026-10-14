@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-engineering-devops",
+  "query": "Our required GitHub Actions workflow takes 22 minutes. Logs show 12 minutes waiting for a hosted runner and 10 minutes executing jobs. We could buy a larger runner, remove a security check, or split the integration suite. How should we reduce the wait?",
+  "files": [],
+  "expected_behavior": [
+    "Separates runner queue wait from job execution time and targets the measured source of end-to-end delay",
+    "Compares runner cost and end-to-end throughput before recommending added capacity or workflow changes",
+    "Does not remove the required security check to reduce elapsed time",
+    "Considers how splitting the integration suite affects test validity, failures, and recovery before recommending it",
+    "Keeps the existing workflow boundary and protected release behavior in view"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["queue", "wait"]}
+  ]
+}

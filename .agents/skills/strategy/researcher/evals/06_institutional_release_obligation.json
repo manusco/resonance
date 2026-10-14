@@ -1,0 +1,27 @@
+{
+  "skill": "resonance-strategy-researcher",
+  "query": "A release checklist has a legal approval step. Someone says it is not a physical or logical necessity, so first-principles reasoning should remove it. Recommend what to do.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects the idea that only physical or logical constraints can bind the decision",
+    "Treats the approval as a premise to verify with its governing source, applicability and responsible owner before removal",
+    "Distinguishes a binding, applicable obligation from a preference, obsolete policy or duplicated process",
+    "Preserves applicable obligations and explicit scope while identifying a safe way to remove or narrow inapplicable or duplicate steps",
+    "States uncertainty rather than asserting that all legal gates must always remain"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "owner",
+        "legal",
+        "obligation",
+        "applicable"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
-# Offline-First Architecture
+# Offline and Sync Architecture
 
-> The subway test: Can I open the app, read content, and "like" a post while in a tunnel?
+Start from the product contract: what must users be able to read or change without a connection? Do not default to a local-first database and sync engine. Choose storage and caching for requirements such as secure credentials, persistence, performance, or offline use.
 
 ## 1. Sync Strategies
 
@@ -14,8 +14,8 @@
 *   **Data**: Optimistic update -> Queue mutation -> Retry on reconnect.
 *   **Risk**: Conflict resolution if server rejects change.
 
-### Strategy C: Local-First (True Offline)
-*   **Best for**: Tools, Note-taking, Complex Apps (Production Standard).
+### Strategy C: Local-First (Required Offline Use)
+*   **Best for**: Products whose users must continue working offline, such as note-taking or field tools.
 *   **Data**: The "Truth" is `SQLite` / `WatermelonDB` / `Realm`.
 *   **Sync**: A background service ("Sync Engine") pushes changes to server when possible. Server is just a backup.
 
@@ -28,5 +28,5 @@ Does the app need to work on a plane?
     ├── Read only? → **Cache-First (React Query Persist)**
     └── Read/Write?
         ├── Simple? → **Optimistic UI**
-        └── Complex? → **Local-First (SQLite)**
+        └── Complex? → **Local-First (SQLite), if required by the product contract**
 ```

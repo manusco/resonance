@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-marketing-conversion",
+  "query": "Compare two surfaces. A marketing pricing page has a verified signup offer and should help a ready buyer start. An in-product workspace lets a user choose among four legitimate case dispositions after comparing account, payment, and refund data. We have no audience research or verified deadline. Recommend action hierarchy for each.",
+  "files": [],
+  "expected_behavior": [
+    "May recommend a clear dominant signup action on the pricing page based on the stated ready-buyer task",
+    "Preserves multiple valid disposition actions and their comparison context in the product workspace",
+    "Separates the commercial conversion role from general product-task hierarchy",
+    "Avoids fabricated urgency or unsupported claims and identifies missing audience evidence where it changes the recommendation",
+    "Gives a measurable prediction or evidence needed to evaluate the proposed change"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

@@ -20,9 +20,9 @@
 
 ## 3. The Input/Output Mandate
 
-*   **Inputs**: Must be JSON Schema validated.
-*   **Outputs**: Must be structured text (Markdown or JSON) that an LLM can parse easily.
+*   **Inputs**: Validate untrusted inputs at the boundary with the project's existing schema or validation stack.
+*   **Outputs**: Match the caller. Use structured text or a schema when a person, script, or model needs to inspect or consume the result.
     *   ❌ Output: A binary blob.
     *   ✅ Output: "Success: File created at /tmp/foo.txt"
 
-> 🔴 **Rule**: If your tool needs more than 5 arguments, splits it.
+> 🔴 **Prompt**: More than five arguments may signal that the job or interface needs review; split only when separate owners or callers benefit.

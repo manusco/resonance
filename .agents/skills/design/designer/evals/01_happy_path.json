@@ -3,16 +3,16 @@
   "query": "Design a design system for a B2B SaaS dashboard product. The brand should feel premium and technical, not playful.",
   "files": [],
   "expected_behavior": [
-    "Produces HSL-based color variables, not hex codes",
-    "Defines a typographic scale using a mathematical ratio (1.618 or 1.414)",
-    "Specifies spacing in multiples of a base unit, not arbitrary pixel values",
-    "Identifies a brand archetype from the Style Matrix",
-    "Does not output plain Bootstrap-style colors or generic blue/grey palettes"
+    "Identifies the product users, frequent dashboard task, and evidence or assumptions relevant to the request before choosing visual foundations",
+    "Provides a usable color system with semantic roles and checks applicable WCAG 2.2 AA contrast; color notation is not treated as a success criterion",
+    "Defines typography and spacing scales that fit the product content without requiring a particular mathematical ratio",
+    "Names an appropriate brand register or style direction only insofar as it supports the supplied premium technical brief",
+    "Avoids inventing product facts and gives a concrete way to assess whether the system supports the task"
   ],
   "checks": [
     {
       "kind": "regex_absent",
-      "value": "[\u2014\u2013]"
+      "value": "[\\u2014\\u2013]"
     },
     {
       "kind": "regex_absent",

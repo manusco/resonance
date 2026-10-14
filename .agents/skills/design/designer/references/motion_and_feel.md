@@ -9,7 +9,7 @@
 - The easing curves that feel natural
 - Spring physics
 - Gesture physics: handoff and interruption
-- Duration budgets by distance
+- Timing by interaction and user wait
 - Hover, done with care
 - Focus that looks designed
 - Press and active feedback
@@ -23,7 +23,7 @@
 
 Before easing or duration, ask whether the change should animate at all. Motion is not free; on the wrong action it is drag.
 
-- An action the user repeats dozens of times a day gets no animation. A command palette that opens instantly beats one that plays a 200ms reveal for the hundredth time today. Raycast animates almost nothing for exactly this reason.
+- A frequently repeated action may work better without an animation. For example, a command palette used many times a day should open promptly; use motion only if it helps orientation without slowing the task.
 - A keyboard-initiated action gets no animation. The keyboard user is optimizing for speed, and motion is in the way.
 - Animate the changes the user needs to follow (something moved, appeared, or turned into something else), not the ones they just want done. When in doubt, cut it. Respecting the frequent user is faster than delighting the first-time one.
 
@@ -38,45 +38,28 @@ Choose motion by the job it does, not by the raw number or effect. A premium sys
 - **Error**: invalid field, failed action, conflict. Use restrained motion to draw attention once, pair it with text, and let the user continue without fighting a repeated shake.
 - **Confirmation**: saved, paid, sent, completed. Spend the most character here, but only after a real user win. Keep it short, replayable, and easy to skip through reduced motion.
 
-For each job, tune five things together: duration, easing, distance, scale, and blur. Match them to intent first. A close can be faster than an open even when both affect the same element; a text swap can be short while a confirmation gets more time. Do not use a generic effect just because it looks good in isolation.
+When motion is useful, tune the properties that matter for that interaction, such as duration, easing, distance, scale, or blur. Match them to intent. A close can be faster than an open; a text swap can be short while a confirmation gets more time. Do not add an effect only because it looks good in isolation.
 
-## Nothing snaps: easing is mandatory
+## When motion helps, choose easing with intent
 
-Any state change that jumps instantly reads as broken or cheap. Every transition of color, position, size, or opacity carries an easing curve. This one habit separates polished from amateur more than any single effect.
+An abrupt change can be appropriate for frequent actions, keyboard-driven work, reduced-motion preferences, or instant state feedback. Animate only when movement helps users follow a change; when used, choose easing that fits the transition.
 
-## The easing curves that feel natural
+## Easing by interaction
 
-Linear motion looks robotic because nothing in the physical world moves at a constant speed. Natural motion accelerates and decelerates.
+Choose easing to clarify how a change relates to the user's action. A reveal may decelerate into place; direct manipulation may track the pointer; a status update may need no travel at all. Linear motion is useful when the visual value should track elapsed time, such as a progress indicator. These are starting patterns, not requirements. Match motion to the product, platform, task, and reduced-motion setting.
 
-- **Ease-out for entrances and most UI.** Fast start, gentle settle. Elements arriving on screen decelerate into place, the way a real object does. This is the default for opening, revealing, and moving toward the user. A curve like `cubic-bezier(0.16, 1, 0.3, 1)` feels expensive.
-- **Never animate an entrance from `scale(0)` or from nothing.** Nothing in the real world appears from a single point. Start entrances at `scale(0.9)` to `scale(0.97)` with `opacity: 0`, so the element grows and fades in from almost-there.
-- **Ease-out for exits too.** An exit is the user's own command taking effect, so it must respond at once, not sit nearly still for the opening frames and then rush. Fade and shrink with an ease-out, a touch faster than the entrance. An accelerating (ease-in) exit belongs only to a brand-register cinematic moment, never to product UI.
-- **Ease-in-out for movement between two on-screen points.** Symmetric, smooth at both ends.
-- **Avoid the browser default `ease`.** It is weak. Author your own curves and store them as tokens (`--ease-out`, `--ease-spring`).
-- Standard-issue linear or the default `ease` on everything is a tell that motion was an afterthought.
+A brief scale or fade can help a new surface read as an entrance, but it is optional. Avoid motion that obscures content, delays task completion, or makes the result hard to predict. Choose exit behavior to match the action and give control back promptly.
 
-## Spring physics
+## Springs and gesture physics
 
-For anything the user grabs, drags, or toggles, springs feel more alive than fixed-duration curves because they carry momentum and settle naturally. A spring is defined by stiffness, damping, and mass, not a duration. Slight overshoot on a spring (a toggle that nudges just past and settles) reads as physical and satisfying. Keep overshoot subtle; a bouncy castle is not the goal. Use springs for drag, swipe, toggle, and gestural motion; use eased durations for discrete transitions like a fade or a color change.
+Springs can suit continuous movement, dragging, or snapping between positions when they preserve the user's momentum and make the destination clear. A toggle or discrete control may need a simple state change instead. Match stiffness and settling to the input and platform; avoid bounce that distracts from the task.
 
-## Gesture physics: handoff and interruption
+For a draggable surface, continue from its current position and release velocity when the motion model supports it. Decide dismissal or snap-back from the gesture, the surface's purpose, and a clear threshold; there is no universal projection formula. If interrupted, continue from the element's current visible state so it does not jump.
 
-For anything the user drags, swipes, or throws, the animation after they let go must continue from where the finger was, not restart from zero. This is the gap between a native sheet or Vaul and a cheap web modal.
+## Timing and response
 
-- **Velocity handoff.** Hand the pointer's release velocity to the spring's initial velocity, so there is no seam between the drag and the animation that finishes it. A fast flick keeps moving fast; a slow release settles gently.
-- **Momentum projection.** Where the throw would land decides the outcome (dismiss or snap back), not just where the finger left off. Project the landing point from the release velocity, roughly `projected = position + velocity / 1000 * d / (1 - d)` with a decay `d` near 0.998, and pick the target the projection lands closest to.
-- **Interrupt from the live value.** If the user grabs an element mid-animation, retarget from its current on-screen value, never from the original start, or it visibly jumps. A CSS transition retargets in flight; a keyframe animation restarts from zero, which is why keyframes feel broken under interruption. Blend the velocity on reversal instead of hard-cutting it, so there is no brick wall.
+Tune duration to distance, task urgency, platform conventions, and whether users are waiting or following a change. Short feedback often feels responsive, but 100 to 400ms ranges are examples, not pass criteria. A longer transition may suit orientation; a frequent keyboard action may need none. Acknowledge input promptly, preserve control, and show honest progress for longer work.
 
-## Duration budgets by distance
-
-Duration scales with how far and how big the motion is. A small element moving a short distance should be quick; a full-screen transition can take longer without feeling slow.
-
-- Micro feedback (hover, small state changes): 100 to 150ms.
-- Standard transitions (dropdowns, toggles, small moves): 150 to 250ms.
-- Larger moves (modals, drawers, page-level): 250 to 400ms.
-- Rarely past 400ms for anything the user is waiting on. Past the Doherty threshold, motion stops feeling responsive and starts feeling like a wait.
-- Exits are often a touch faster than entrances; the user has decided, so get out of the way.
-- More broadly, breathe where the user is deciding and snap where the system is responding. A hold-to-confirm can take a deliberate second; the release should resolve in around 200ms. Slow is reassuring during a choice and sluggish after one.
 
 ## Hover, done with care
 
@@ -94,20 +77,20 @@ Hover is a reward for attention on pointer devices. It must never exist alone (t
 
 ## Press and active feedback
 
-- The press state fires the instant the finger or mouse goes down, under 100ms, so the interface feels directly connected to the input. Waiting until release to react feels laggy.
-- A small compression on press (a slight scale down to around 0.97, or a downward nudge) reads as a physical button taking the push. Release springs it back.
+- A visible press state can acknowledge touch or pointer input. Keep feedback prompt and proportional; the exact delay depends on platform and interaction.
+- A small compression or color change can make a press legible. Choose feedback that fits the control and does not cause unwanted movement or ambiguity.
 - On touch, the press state doubles as the hover affordance, since there is no hover. Make sure pressed styling exists and is visible under a fingertip.
 
 ## Feedback timing and perceived speed
 
-- Every action gets acknowledged immediately, even if the result takes time. A button that does nothing for 300ms feels broken; a button that shows a pressed or loading state instantly feels fast even if the network is slow.
+- Acknowledge actions promptly, especially while waiting on a server. Use a clear pressed, pending, or loading state when useful; do not imply completion before it is known.
 - Optimistic UI: show the successful result immediately and reconcile when the server confirms. The like fills the moment it is tapped. Roll back gracefully if it fails.
 - Reserve space for content that is loading so nothing jumps when it arrives. Layout shift is the opposite of polish. Use skeletons that match the real content's shape, or a calm spinner for short waits, and prefer showing partial real content over a full-screen loader.
-- Under the 400ms Doherty threshold, an interaction feels instant. Design to stay under it, and where you cannot, fill the wait with honest progress.
+- Acknowledge input promptly. Treat 400ms as a rough guideline, not a universal threshold. When work takes longer, show honest progress and preserve control.
 
 ## Choreography and continuity
 
-- When several elements appear together, stagger them by a small delay (around 30 to 60ms each) so they cascade instead of popping as a block. Restraint matters; a long stagger becomes a wait.
+- A short stagger can help users follow a coordinated reveal, but immediate display is often better for dense or repeated work. Avoid making users wait for content to appear.
 - Maintain spatial continuity. When a card opens into a detail view, the shared element should move and grow into place rather than the old view vanishing and a new one fading in. Continuity tells the user where they are and where they came from.
 - Motion should have a consistent direction logic across the product: forward navigation moves one way, back moves the other, so the space feels coherent.
 - Anchor a popover or menu to its trigger: it should scale and fade from the `transform-origin` of the control that opened it, not from its own center, so it visibly grows out of the thing you clicked. Modals and full sheets are exempt; they own the screen.

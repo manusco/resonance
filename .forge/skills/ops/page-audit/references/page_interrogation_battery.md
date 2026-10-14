@@ -21,9 +21,9 @@ For each dimension, the deep lens belongs to the skill named in **Lens**. This b
 
 **Lens: this skill.** No other skill frames the page's reason to exist.
 
-- What is the single job this page exists to do? State it in one sentence. If you cannot, the page has no focus, and that is finding number one.
+- What job does this page serve, and what task path does the user follow? State what evidence supports the answer and what remains unknown.
 - Who is the user standing on this page, and what were they doing one second before they arrived? What is their intent, their fear, their question?
-- What is the one action this page should produce? Is everything on the page serving that action, or competing with it?
+- What actions serve the user's task or commercial decision? Are there valid comparison, navigation, or parallel paths?
 - What can be removed entirely without hurting the job? Removal is a feature.
 
 ## 2. Value: promise and delivery
@@ -32,7 +32,7 @@ For each dimension, the deep lens belongs to the skill named in **Lens**. This b
 
 - What value does the page promise, above the fold, explicitly and implicitly?
 - Does it deliver that value, and how fast? Measure time-to-value in seconds and in scroll depth.
-- Where is the gap between promise and delivery? That gap is the most important fix on the page.
+- Where is the gap between promise and delivery, when the page makes a promise? For task workspaces, examine whether users can find the information, status, and actions their task requires.
 - Could the same value land in fewer steps, with less thinking, more proof, a sharper demonstration, an interactive instead of a paragraph?
 
 ## 3. Copy
@@ -49,19 +49,19 @@ For each dimension, the deep lens belongs to the skill named in **Lens**. This b
 
 **Lens: /design and /friction.**
 
-- Can a first-time visitor understand what this is, who it is for, and what to do next, in five seconds, without scrolling?
-- Is there a clear visual hierarchy that leads the eye to the one action, or does everything shout at once? Run the squint test.
+- Can the intended user find enough context to understand the page's job and next task at the decision point? Verify with the relevant audience and task.
+- Does hierarchy help users find the information and action they need, including valid parallel or comparison paths? Delegate detailed craft judgment to `/design`.
 - Is any label, icon, or step ambiguous? Would a non-expert know what happens when they click?
 - Count the decisions the page forces on the user. Cut the ones that do not need to exist.
 
 ## 5. Call to action and conversion
 
-**Lens: /friction.** The Friction Collider and the LIFT audit live there.
+**Lens: /friction for commercial pages. Product-workspace task hierarchy remains with this audit and `/design`.** The Friction Collider and LIFT review live in `/friction`.
 
-- Is there one primary CTA, unmistakable, above the fold and repeated at the natural decision points?
+- What next step fits the audience and decision stage? A focused acquisition page may need one dominant CTA; comparison and product surfaces may support several legitimate actions.
 - Does the CTA label state the outcome ("Get my valuation"), not the mechanism ("Submit")?
 - What friction sits between intent and action: too many fields, an unclear next step, no trust signal at the moment of commitment, a dead end?
-- Is there an honest reason to act now?
+- Is there a verified reason to act now, if urgency is used?
 - For every form or tool: what happens on empty, on error, on a slow network, on mobile, on hostile input? Walk the unhappy paths.
 
 ## 6. Design and craft

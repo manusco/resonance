@@ -21,8 +21,8 @@ Include the tough calls. The bet you are not sure of. The thing you would not do
 
 A page counts as audited-to-standard only when:
 
-- Its job is clear in five seconds, to a first-time visitor, without scrolling.
-- There is one unmistakable primary action.
+- Its job and next task are clear to the intended user at the relevant decision point.
+- Its action hierarchy supports the task; comparison or product workflows may have multiple valid actions.
 - Every claim has proof next to it.
 - Zero console errors, and the page holds on a phone.
 - The single most important change for that page is named, and it is in the plan.

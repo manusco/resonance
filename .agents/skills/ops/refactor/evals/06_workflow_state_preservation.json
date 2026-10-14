@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-ops-refactor",
+  "query": "Review this proposed change and its callers. `POST /imports` is called by the web client, which retries a timeout with the same Idempotency-Key. Before: states are RECEIVED, VALIDATING, WRITING, PARTIAL, COMPLETE, FAILED. After: the diff removes PARTIAL and writes all rows in one transaction; the batch API still permits partial commits, but resumeOffset and the retry lookup by Idempotency-Key were deleted. The status endpoint now reports only COMPLETE or FAILED. Happy-path tests pass. The operator currently resumes failed imports from the recorded offset and users inspect row counts in status. Identify concrete findings and a behavior-preserving reduction if one is safe.",
+  "files": [],
+  "expected_behavior": [
+    "Finds the lost idempotency and partial-failure recovery contracts despite passing happy-path tests",
+    "Connects each finding to the named caller or operator behavior and explains the failure consequence",
+    "Does not equate fewer states with a safe refactor or recommend the supplied diff as complete",
+    "Allows redundant state names to be merged only if retry deduplication, resumable offset, and useful status remain owned and verified",
+    "Recommends focused failure-path checks before accepting the reduction"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

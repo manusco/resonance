@@ -1,18 +1,18 @@
 {
   "skill": "resonance-design-designer",
-  "query": "Our app's data table component looks boring and generic. Can you audit it and suggest improvements?",
+  "query": "Our app has a daily operations table that operators scan and act on repeatedly. It shows account, payment status, due time, amount, owner, and four valid dispositions. The table feels visually flat. Audit it and recommend task-fit improvements without replacing it with cards or disrupting established workflows.",
   "files": [],
   "expected_behavior": [
-    "Produces a critique that names specific generic patterns (e.g. 'standard Bootstrap border, no hover state, no Entrance animation')",
-    "Applies Topological Betrayal: suggests at least one layout disruption to break the generic pattern",
-    "Specifies the Motion Trinity for the table (Entrance, Hover, Click states)",
-    "Recommends specific HSL or mathematical adjustments, not vague 'make it darker' advice",
-    "Does not output implementation CSS - stays at the specification level"
+    "Names the operator task and preserves fields needed to compare cases and choose among valid dispositions",
+    "Recommends visual hierarchy and craft details that improve scanning without treating layout disruption as a goal",
+    "Keeps legitimate actions findable and weights them by task frequency and consequence rather than forcing one action to dominate",
+    "Suggests a way to assess the recommendation using a task outcome such as missed status, wrong disposition, or completion time",
+    "Stays at the specification level and does not invent product facts"
   ],
   "checks": [
     {
       "kind": "regex_absent",
-      "value": "[\u2014\u2013]"
+      "value": "[\\u2014\\u2013]"
     },
     {
       "kind": "regex_absent",

@@ -5,7 +5,7 @@
   "expected_behavior": [
     "The agent checks if the request is ambiguous",
     "It delegates to the researcher and venture agents",
-    "It writes a PRD because this is a New Feature, follows the 4-Pass Methodology, and creates an atomic implementation_plan.md"
+    "It writes a PRD because this is a New Feature and creates an implementation_plan.md with executable actions, useful architecture artifacts, and verification sized to this feature"
   ],
   "checks": [
     {

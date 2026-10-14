@@ -28,7 +28,7 @@
 
 - A button describes its outcome, not a generic verb. "Save changes", "Send invite", "Delete project", not "OK" or "Submit". The user should know what happens before they click.
 - Labels name the thing in the user's language, not the system's. "Members", not "User entities". Match the words your user already uses.
-- One primary action per view, worded as the outcome the user wants. Secondary and destructive actions are worded and weighted to match their risk. Watch two failure modes: a secondary button styled too light-grey reads as disabled, and a filled-red destructive button competes with the primary. Give the secondary real but quieter weight, and prefer a text-weighted destructive action over a loud filled one.
+- Make the next useful action easy to find and word it as the user's outcome. A workflow with several legitimate outcomes may need several visible actions. Weight actions by their role and risk; avoid making a quieter action look disabled or a destructive action look like the routine choice. State the affected object and consequence where needed.
 
 ## Error messages help, they do not scold
 

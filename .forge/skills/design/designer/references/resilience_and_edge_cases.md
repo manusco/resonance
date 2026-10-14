@@ -17,9 +17,9 @@ Design the empty, loading, and error states before the happy path, not after. If
 
 ## The full state matrix
 
-Every interactive element and every data view has states. Name each one on purpose:
+Identify the interaction and data states a user can reach in this task. Specify the relevant ones, including:
 
-- **Interactive element**: rest, hover, focus, active/pressed, disabled, loading, selected, error. Missing any of these is a visible gap in use. A disabled button must look unclickable (reduced, `not-allowed` cursor, no hover), not just slightly faded.
+- **Interactive element**: identify the states that apply to this control and task, such as rest, hover, focus, active/pressed, disabled, loading, selected, or error. Design reachable states and make unavailable actions clear; do not invent states a control does not have. A disabled button must look unavailable, not just slightly faded.
 - **Data view**: empty (nothing yet), loading, partial (some loaded), loaded, error (failed to load), and stale (loaded but refreshing). Each needs a designed treatment.
 - Do not conflate empty and loading. A spinner is not an empty state, and an empty state shown while data is still loading tells the user a lie.
 
@@ -55,3 +55,12 @@ Every interactive element and every data view has states. Name each one on purpo
 - Accessibility is not a separate compliance pass; it is the same discipline as handling edge cases. The user with a screen reader, the user at 200 percent zoom, and the user on a keyboard are the same category as the user on a slow network: real, common, and worth designing for.
 - Contrast that meets the target, focus order that follows the visual order, targets large enough to hit, motion that respects the reduced-motion preference, and meaning never carried by color alone. See color_and_contrast, motion_and_feel, responsive_canvas.
 - Get these right and the design is more resilient for everyone, the curb-cut effect: captions help in a loud room, large targets help on a train, high contrast helps in sunlight.
+
+
+## Controls, surfaces, and recovery
+
+Choose a control that matches the decision: radios for a small mutually exclusive set, checkboxes for independent choices, segmented controls for a few immediate modes, tabs for peer sections, and a select when inline scanning or comparison is not needed. Keep choices visible when users compare them together. Label overflow menus; do not hide frequent or consequential actions there.
+
+Choose the editing surface by scope and context: inline for a small local edit, dialog for a short focused decision, drawer when surrounding context matters, and a page for substantial work or a task that needs its own URL and navigation. Use native semantics and labels. A drawer may be modal when the task should interrupt, or nonmodal when users need background reference. For a modal dialog, move focus into it, keep keyboard focus within it, support Escape when safe, provide a visible close or cancel action, and return focus to the opener. For a nonmodal panel, leave the background operable and keep focus order coherent. For route changes, move focus to the new page heading or main region and announce the change appropriately.
+
+On validation or save failure, explain the field or action and next step, associate errors with their controls, announce dynamic status to assistive technology, retain entered values, and keep a safe way to cancel or recover. For destructive work, show the exact target and consequence. Use confirmation when recovery cost is high and undo is unavailable or insufficient; prefer a timely undo when it safely covers likely mistakes.

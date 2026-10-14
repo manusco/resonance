@@ -3,15 +3,15 @@
   "query": "Design the hero section for our new product's marketing landing page.",
   "files": [],
   "expected_behavior": [
-    "Names the register first and identifies this as a Brand-register surface where distinctiveness matters",
-    "Refuses the AI default reflexes: does not propose a purple-to-blue gradient, gradient text, default sans for everything, or an identical three-card grid",
-    "Justifies typography and color as deliberate choices tied to the brand, not model defaults",
-    "Runs the design against the AI slop test before presenting it"
+    "Identifies whether the landing page primarily serves brand expression, product work, or both, using the supplied context",
+    "Recommends a distinctive direction and explains how typography, color, and layout serve the brand and page task",
+    "Questions familiar defaults only when they are unsupported by the supplied brand or task, without treating a font, gradient, or card grid as automatically wrong",
+    "Gives a concrete way to assess whether the page communicates its offer and next step to its intended audience"
   ],
   "checks": [
     {
       "kind": "regex_absent",
-      "value": "[\u2014\u2013]"
+      "value": "[\\u2014\\u2013]"
     },
     {
       "kind": "regex_absent",

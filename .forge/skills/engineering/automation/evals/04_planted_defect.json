@@ -7,7 +7,7 @@
     "Identifies that the script does more than one job (fetch, transform, write-to-sheet, Slack, email) and recommends splitting it into composable steps",
     "Points out that append_to_google_sheet is not idempotent: running it again on a schedule will duplicate rows, and requires a fix before scheduling",
     "Requires typed or validated input for the script's parameters instead of accepting anything blindly",
-    "Requires a --dry-run flag before this touches a schedule, since the script has side effects it cannot currently preview"
+    "Requires a dry-run or equivalent safe preview for the append and outbound messages, or explains how an existing preview safely covers those side effects before scheduling"
   ],
   "checks": [
     {"kind": "contains_any", "value": ["idempotent", "idempotency"]},

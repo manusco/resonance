@@ -1,6 +1,6 @@
 # Optical Craft: the subconscious detail layer
 
-> What measures equal often looks wrong. The eye, not the ruler, is the final judge. This is the single clearest mark of a designer who cares, and the layer AI design skips because it is invisible in a screenshot and only felt in use.
+> Optical review can refine visual balance after accessibility, platform, and geometric constraints are met. It complements measurements; it does not replace them.
 
 ## Contents
 - Optical over mechanical
@@ -14,7 +14,7 @@
 
 ## Optical over mechanical
 
-Mechanical is what the numbers say. Optical is what the eye sees. When they disagree, the eye wins, every time. A layout can be perfectly measured and still feel off, and a layout can be mathematically "wrong" by a pixel or two and feel perfectly balanced. Train yourself to trust the discomfort and hunt the cause.
+Measurements protect legibility, alignment systems, target sizes, and accessibility. Within those constraints, optical review can correct perceived balance. A small visual adjustment may help when it does not break the layout grid, text flow, hit area, or platform behavior. Check at supported sizes and zoom.
 
 ## Optical alignment
 
@@ -24,7 +24,7 @@ Mechanical is what the numbers say. Optical is what the eye sees. When they disa
 
 ## Optical sizing and overshoot
 
-- **Circles and triangles overshoot squares.** A circle that is mathematically the same height as a square next to it looks smaller, because the eye measures area at the widest point. Make circular and triangular elements roughly 2 to 5 percent larger so they read as equal weight. This is why a well-drawn icon set does not sit on a rigid grid.
+- **Curved shapes may need visual balancing.** A circle or triangle can appear smaller than a square at the same dimensions. Inspect the actual icon set and adjust only when the weight difference is visible; do not use a fixed overshoot percentage.
 - **The play button is nudged right.** A triangle centered by its bounding box looks left-heavy because its visual mass sits toward the point. Shift it right by a few percent so it looks centered inside its circle. The same logic applies to any asymmetric glyph.
 - **Type overshoots the baseline.** Round and pointed letters (o, e, v, w) extend slightly past the baseline and cap height of flat letters. Correct fonts build this in. It is why text set in a font with no overshoot looks stiff.
 
@@ -36,19 +36,19 @@ Mechanical is what the numbers say. Optical is what the eye sees. When they disa
 
 ## Concentric border radius
 
-When a rounded element sits inside another rounded element, the radii must be concentric or the corners look pinched. The rule:
+When rounded elements nest, related corner shapes often look coherent when the inner radius accounts for the available padding. Use the relationship below as a starting point, then check the actual components and product style. It is not a universal requirement:
 
 ```
 inner-radius = outer-radius - padding
 ```
 
-A card with a 16px radius and 8px of padding around an inner element wants an 8px radius on that inner element, not 16px and not 4px. Nested radii that ignore this are a quiet tell that no one tuned the corners. Matched concentric corners are a quiet signal that someone did.
+A card with a 16px radius and 8px of padding could use an 8px inner radius. Square or differently shaped nested surfaces may better fit other systems.
 
 ## Hairlines and sub-pixel borders
 
-- A hard 1px `#ccc` border is a blunt instrument. Elite separators are hairlines: a border at low opacity (a semi-transparent black or white, around 8 to 12 percent) that suggests an edge without drawing a hard line.
-- On high-density displays, a true hairline is thinner than one CSS pixel. Use a translucent border or a subtle shadow rather than a solid rule.
-- Prefer separation by space over separation by line. Reach for a border only when proximity and background cannot do the job.
+- Use a separator only when grouping or edge definition needs it. Hairlines, solid borders, surface changes, and whitespace can all work when visible and legible.
+- Check rendering at the target density and contrast; do not assume a sub-pixel or low-opacity line remains visible.
+- Use proximity, surfaces, and lines according to the content relationship and visual language.
 
 ## Spacing that looks equal
 
@@ -59,15 +59,15 @@ A card with a 16px radius and 8px of padding around an inner element wants an 8p
 
 ## The details that read as expensive
 
-Run this list on anything meant to feel high-class. Each is invisible alone. Together they are the entire difference.
+Use the relevant checks for the chosen style and task. These are craft options, not requirements for every interface.
 
-- Consistent light source, so every shadow falls the same way.
-- Concentric radii on every nested corner.
-- Hairline separators, not hard gray lines.
+- Coherent direction for shadows and highlights, when the style uses directional light.
+- Related geometry for nested corners, when rounded surfaces are used.
+- Separators with enough contrast to read at target sizes.
 - Real punctuation: curly quotes, proper apostrophes, a real ellipsis, and a clear range separator (the word "to", or an en dash only where the brand's house style permits it).
 - No orphans or widows in headlines; balanced multi-line titles.
 - Tabular numerals in tables and anywhere numbers change in place.
-- Easing on every state change, nothing snaps.
+- Motion is tuned where it improves orientation or feedback; immediate changes remain appropriate for frequent work and reduced-motion settings.
 - Focus states that look designed, not the browser default outline.
-- Optical, not mechanical, centering on every icon and glyph.
-- One or two pixels of tuning wherever the eye says something is off, even when the ruler disagrees.
+- Optical centering where it improves balance without reducing hit areas or breaking alignment.
+- Small visual adjustments only after checking text, contrast, touch targets, zoom, and layout constraints.

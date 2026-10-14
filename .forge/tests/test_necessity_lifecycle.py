@@ -29,11 +29,23 @@ class NecessityLifecycleTests(unittest.TestCase):
         positions = [protocol.index(term) for term in terms]
         self.assertEqual(sorted(positions), positions)
 
+    def test_root_lock_links_to_canonical_protocol_and_matches_resolver(self):
+        root_lock = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        resolver = (ROOT / ".forge/resolvers/locks.md").read_text(encoding="utf-8")
+        link = ".agents/skills/ops/core/references/necessity_protocol.md"
+        self.assertTrue((ROOT / link).is_file())
+        self.assertNotIn(".forge/skills/ops/core/references/necessity_protocol.md", root_lock)
+        self.assertIn(f"]({link})", root_lock)
+        root_rule = next(line for line in root_lock.splitlines() if line.startswith("- **Simplicity.**"))
+        resolver_rule = next(line for line in resolver.splitlines() if line.startswith("- **Simplicity.**"))
+        root_rule = root_rule.replace(f"[shared Necessity Protocol]({link})", "shared Necessity Protocol")
+        self.assertEqual(root_rule.lower(), resolver_rule.lower())
+
     def test_safety_and_canonical_severity_survive_simplification(self):
         protocol = (ROOT / ".forge/skills/ops/core/references/necessity_protocol.md").read_text(encoding="utf-8")
-        for protected in ("validation", "authorization", "Accessibility", "data loss", "Observability", "Tests"):
+        for protected in ("validation", "authorization", "accessibility", "data loss", "observability", "tests"):
             with self.subTest(protected=protected):
-                self.assertIn(protected, protocol)
+                self.assertIn(protected.lower(), protocol.lower())
         reviewer = self.source("ops/reviewer")
         self.assertIn("canonical taxonomy", reviewer)
         self.assertIn("P0-P3", reviewer)
