@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-engineering-automation",
+  "query": "I want to streamline our deployment workflow. A speaker says that if you do not add back at least 10% of the items removed, you did not delete enough. Should we use this as a target? The release checklist includes a rollback check and a recovery owner. What should I cut?",
+  "files": [],
+  "expected_behavior": [
+    "Rejects both a deletion quota and an add-back target; if it explains the remark, says it is a personal heuristic about some removed items needing restoration, not an empirically grounded threshold",
+    "Inspects what each candidate step protects and who owns it before proposing removal",
+    "Preserves rollback verification and a named recovery owner unless equivalent recovery is evidenced",
+    "Suggests reversible candidates and a falsifiable check instead of deleting steps to satisfy a quota"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["rollback", "recovery"]}
+  ]
+}

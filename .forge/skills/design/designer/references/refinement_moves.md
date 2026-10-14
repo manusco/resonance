@@ -19,7 +19,7 @@ Each move is a single directional intent. State which one you are making and why
 ## Direction: resilience
 
 - **Harden**: the design only survives the demo. Design the states it will actually meet: long text that overflows, empty data, error and loading, the translated string that is 40% longer, the edge that breaks the layout.
-- **Adapt**: the design assumes one screen. Make it hold across sizes and contexts: breakpoints, fluid spacing, touch targets no smaller than 44 by 44, and no forced horizontal scroll on mobile.
+- **Adapt**: the design assumes one screen. Make it hold across sizes and contexts: breakpoints, fluid spacing, applicable WCAG target-size guidance, and reflow that preserves required content and function.
 - **Clarify**: the interface is understood only by its author. Fix labels, error messages, and instructions so a first-time user knows what each control does and what went wrong.
 
 ## Direction: character

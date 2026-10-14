@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-productivity",
+  "query": "Our issue tracker has a queue of 80 items. Twenty are more than 90 days old, six have no assignee, and several may be duplicates. The queue grew from 50 to 80 over the last month. Give me a forecast and clean it up.",
+  "files": [],
+  "expected_behavior": [
+    "Does not delete or archive items based only on age or missing assignee; asks for item-level ownership, status, dependency, and retention evidence and presents candidates for authorized owner review",
+    "States that growth alone does not disprove Little's relation; checks that queue counts, arrivals/completions, population, and bypass work cover a matched boundary and window, and accounts for finite-window effects",
+    "Does not treat an aggregate average as an individual completion promise or call an estimate invalidated without evidence",
+    "Defines the queue boundary, time window, and comparable arrivals/completions before using throughput or lead-time estimates",
+    "States when available data is insufficient for a defensible forecast and, if useful, gives a qualified range for planning rather than a promised date",
+    "Does not claim an arbitrary number of removed items equals a measured reduction in context switching"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["owner", "assignee"]}
+  ]
+}

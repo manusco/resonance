@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-engineering-build",
+  "query": "Implement the approved plan for a CSV import: `POST /imports` stores the submitted file, validates rows, and returns an import id. The existing caller retries a timed-out POST with the same Idempotency-Key. Rows are written in batches; a failed batch records its offset so the operator can resume, and the status endpoint reports accepted, rejected, and pending rows. The plan asks to consolidate three internal states but explicitly preserves repeat submission, resume after partial failure, row validation, and visible status. The current runtime already retries transient storage errors. Suggestion in review: replace the flow with a single insert and drop the status endpoint. Implement the approved plan without adding a new queue platform.",
+  "files": [],
+  "expected_behavior": [
+    "Preserves every approved behavior and safeguard rather than accepting the proposed status and recovery cuts",
+    "Keeps the idempotency key tied to the current caller contract and preserves validation and partial-batch resume ownership",
+    "Allows internal state consolidation only if retries, resume, and visible outcomes remain observable",
+    "Uses the existing runtime retry and does not introduce a separate queue or retry service without a present need",
+    "Stops and routes a proposed plan change if the approved contract cannot be implemented as written; does not silently rewrite scope or architecture"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

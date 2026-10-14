@@ -1,5 +1,18 @@
 # Changelog
 
+## v2.5.43
+
+The task-first UX, evidence-led simplicity, and workflow sequencing release.
+
+### Changed
+- **Task-fit UX guidance.** Design, frontend, mobile, conversion, and page-audit guidance now choose hierarchy, interactions, offline behavior, and experiments from the user's task, product contract, platform, and available evidence.
+- **Evidence-led simplicity.** The shared Necessity Protocol and implementation, research, and architecture guidance compare options against the full requested outcome and safeguards, without fixed cuts or unsupported defaults.
+- **First-principles and research checks.** Guidance distinguishes physical constraints, institutional obligations, measured estimates, and conventions, and checks their source, fit, uncertainty, and reversal conditions.
+- **Workflow sequencing.** Build, automation, DevOps, performance, productivity, and planning guidance distinguish queue wait, execution, dependency, quality, and recovery constraints before changing the workflow.
+
+### Added
+- **Boundary evals.** New cases cover products that require a live network, conversion audits with a rate but no page evidence, and workflow, design, research, and planning edge cases. These fixtures add structural coverage; they do not claim measured behavior lift.
+
 ## v2.5.42
 
 Document GitHub repository governance, Actions security, release provenance, and cost controls in the DevOps skill.

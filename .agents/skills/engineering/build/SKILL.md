@@ -87,7 +87,7 @@ Copy this checklist and tick items as you go.
 3. **The Build Loop**: For each logical component in the plan:
    - **Test First**: Delegate to `resonance-engineering-backend` or `resonance-engineering-frontend` to create a failing test (Unit or E2E). → verify: test fails as expected.
    - **Implementation**: Write the code to satisfy the test.
-   - **Simplicity Gate**: Before running tests, ask: "Would a senior engineer say this is overcomplicated? Did I add anything not in the spec?" If yes, simplify first.
+   - **Simplicity Gate**: Before running tests, use the [Necessity Protocol](../../ops/core/references/necessity_protocol.md) to choose the least owned implementation that satisfies the entire approved plan and its safeguards. Keep justified boundaries and required behavior. If the plan itself conflicts with evidence or cannot meet a requirement, stop and route a proposed plan change; never rewrite approved architecture or shrink scope during implementation.
    - **Verification**: Run the test again. → verify: test passes.
    - **Visual Check**: If UI, open browser and verify.
    - **Parallel safety**: the loop is serial by default. Run components concurrently only when they are independent in fact: no shared types, API contracts, migrations, lockfiles, generated files, or config and schema surfaces, and no contended runtime singleton (one dev server or port, one database, one browser session, a package install, a rate limit). File overlap is necessary but not sufficient. Cap the batch at three to five, decline on uncertainty, and re-inspect the real tree afterward, because a clean merge is not proof of semantic compatibility.
@@ -113,7 +113,7 @@ Copy this checklist and tick items as you go.
 Test → Code → Refactor. The test proves the requirement. The code satisfies the test. The refactor cleans the code. Skipping the failing test means you cannot prove the code actually solved the problem.
 
 ### Simplicity Gate
-Engineers love to over-engineer. Before committing, run the Simplicity Gate: is this the absolute minimum code required to satisfy the failing test and the plan? Apply the implementation selection ladder in Karpathy Rules, stopping at the first sufficient option before adding a dependency or custom abstraction. Delete speculative abstractions.
+Before committing, apply the implementation selection ladder in Karpathy Rules and stop at the first sufficient option for the full approved outcome. Keep an abstraction or boundary when its present contract, caller, or material risk justifies it; remove speculative additions. This gate does not authorize changing the approved architecture or dropping plan requirements.
 
 ## Reference Library
 

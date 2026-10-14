@@ -1,35 +1,37 @@
 # The Design Register: is design the product, or does it serve the product?
 
-> Before you choose a font or a color, decide which register you are in. The same decision that is right for a landing page is wrong for a dashboard, and the reason is register, not taste.
+> Before choosing type or color, identify the surface's job and audience. Brand expression and repeated product work create different constraints, but neither dictates a fixed visual style.
 
-Every surface sits in one of two registers. Naming it first prevents the most common design mistake: applying brand rules to product surfaces, or product rules to brand surfaces.
+Surfaces can lean toward brand expression, repeated product work, or a mix. Name the dominant job for this screen and moment so visual choices fit its audience and task.
 
-## Brand register: design IS the product
+## Brand-led: expression carries the message
 
-Marketing sites, landing pages, launch campaigns, pitch decks, anything whose job is to make someone feel something and remember it. Here the design carries the message. Distinctiveness is the point.
+Marketing sites, landing pages, launch campaigns, pitch decks, anything whose job is to make someone feel something and remember it. Here design carries much of the message. Distinctiveness matters when it serves the brief.
 
-- **Optimize for**: memorability, emotional resonance, a point of view. If it looks like every other site in the category, it has failed even if it is "clean".
-- **Earned risk**: break the grid, use an unexpected type pairing, commit to one strong color idea. A brand surface that plays it safe is invisible.
-- **The test**: could a competitor paste their logo onto this and have it still work? If yes, it is too generic to be brand.
+- **Optimize for**: memorability, emotional resonance, and a point of view where they serve the audience and brief.
+- **Possible choices**: expressive or restrained color, type, layout, and motion. Choose what fits the identity and content; a distinctive direction does not require breaking a grid.
+- **The test**: does the design communicate the intended identity and message, rather than relying on novelty alone?
 
-## Product register: design SERVES the product
+## Product-led: the interface supports work
 
-App UI, dashboards, admin panels, settings, tools people use every day to get work done. Here the design gets out of the way. Familiarity is a feature, not a failure.
+App UI, dashboards, admin panels, settings, tools people use every day to get work done. Here the interface supports repeated work. Familiarity often helps, while clarity and task fit guide the details.
 
-- **Optimize for**: fluency, low cognitive load, predictable patterns. A user who has to relearn where the save button went has been failed by novelty.
-- **Earned restraint**: use conventional patterns, standard controls, quiet color. The interest lives in the data and the flow, not in the chrome.
-- **The test**: can a returning user do the frequent task without thinking? Surprise in a tool is a cost, not a delight.
+- **Optimize for**: fluency, clear state, and patterns that fit repeated tasks. Stable conventions can reduce relearning when they match the workflow.
+- **Possible choices**: standard or custom controls, restrained or expressive color, dense or spacious layouts, according to task, brand, content, and platform. The user should still recognize controls and state.
+- **The test**: can a returning user complete the frequent task, compare what matters, and recover from mistakes? Surprise in a tool is a cost unless it serves the workflow.
 
-## Why the register decides everything downstream
+## How the register informs downstream choices
 
-| Decision | Brand register | Product register |
+The register helps frame decisions; it does not dictate a palette, typeface, corner radius, motion style, or layout.
+
+| Decision | Brand-led possibility | Product-led possibility |
 | :-- | :-- | :-- |
-| Typography | Expressive, a pairing with a voice | Legible, a familiar system face |
-| Color | One committed idea, high emotion | Semantic tokens, quiet by default |
-| Layout | Break expectation on purpose | Meet expectation on purpose |
-| Motion | Set a mood, reward attention | Confirm an action, never delay it |
-| Density | Generous, room to breathe | Efficient, information-dense where the user is fluent |
+| Typography | Expressive or restrained, according to identity and content | Familiar or distinctive, while meeting reading and task needs |
+| Color | Any palette that supports the identity and message | Semantic roles and status clarity, using the product's visual language |
+| Layout | Familiar or unexpected, when it serves the story | Predictable or novel, when it serves the workflow |
+| Motion | May set tone or direct attention when appropriate | May confirm a change; should preserve control and not delay frequent work |
+| Density | Airy or information-rich, according to the brief | Dense or spacious, according to the task and content |
 
 ## Mixed surfaces
 
-Some surfaces are both: an onboarding flow, an empty state, a pricing page inside the app. Decide which register dominates for that specific screen and its moment. A first-run empty state leans brand (it is selling the next action). A tenth-visit settings page leans product. When unsure, ask which one failure hurts more: forgettable, or confusing. Optimize against the worse failure.
+Some surfaces are both: an onboarding flow, an empty state, a pricing page inside the app. Decide which register dominates for that specific screen and its moment. A first-run empty state leans brand (it is selling the next action). A tenth-visit settings page leans product. When both jobs matter, assign them to the parts and moments where each helps. For example, brand character may shape an onboarding introduction while familiar controls carry the task itself. The chosen colors, type, shapes, spacing, and layout still come from that product's own system and brief.

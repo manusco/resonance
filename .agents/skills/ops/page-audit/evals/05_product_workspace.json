@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-ops-page-audit",
+  "query": "Audit a product workspace page with persistent navigation, a daily queue, and a multi-field case form. Operators compare account, payment, and refund status before choosing among four valid dispositions. The page source is supplied, but you cannot run it in a browser. Separate the product job from a marketing conversion goal and propose the highest-impact check or change.",
+  "files": [],
+  "expected_behavior": [
+    "Distinguishes source-observed facts from behavior that cannot be verified without running the page",
+    "Preserves simultaneous information needed to compare records and multiple valid actions in the workflow",
+    "Does not impose a singular CTA or landing-page conversion model on the product workspace",
+    "Delegates detailed hierarchy to design and commercial intervention to conversion while retaining page-job framing",
+    "Proposes a falsifiable task measure such as correct disposition time or wrong-action rate"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

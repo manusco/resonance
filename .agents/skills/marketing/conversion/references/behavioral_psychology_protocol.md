@@ -16,7 +16,7 @@ We do not "persuade"; we align with existing cognitive architecture. A user will
 
 ### A. Decision Heuristics (Quick Thinking)
 1.  **Social Proof & Bandwagon Effect**: "Others are doing it, so it's safe."
-    *   *Implementation*: Use numbers aggressively ("Joined by 10,000 teams", recent purchaser popups).
+    *   *Implementation*: Use relevant, verifiable numbers with clear attribution. Do not create activity popups or claims without evidence.
 2.  **Scarcity & The Urgency Heuristic**: "If I don't act, I lose."
     *   *Implementation*: 🔴 **Must be ethical**. Use definite limits ("3 seats left"). Never use fake countdown timers.
 3.  **Authority Bias**: "The expert says it's good."
@@ -33,7 +33,7 @@ We do not "persuade"; we align with existing cognitive architecture. A user will
 1.  **IKEA Effect**: Users disproportionately value what they build.
     *   *Implementation*: Let them configure their dashboard or select their goals during onboarding.
 2.  **Paradox of Choice**: Too many options paralyze action.
-    *   *Implementation*: Limit options. Three pricing tiers beat seven. One primary CTA beats three.
+    *   *Implementation*: Group choices around user goals. Reduce irrelevant choices, but keep alternatives visible when users need to compare or act in parallel.
 3.  **Status-Quo Bias**: Change requires extreme effort.
     *   *Implementation*: Radically reduce switching friction. Offer "One-click CSV imports" from competitors.
 
@@ -48,7 +48,7 @@ We do not "persuade"; we align with existing cognitive architecture. A user will
 ## 4. Engineering "The Nudge"
 A Nudge is a default choice architecture that alters behavior without forbidding options.
 *   **Defaults**: The Default Effect is the most powerful force. Checkboxes should be pre-selected (if ethical). The target pricing tier should be marked "Recommended".
-*   **Visual Hierarchy**: The "Primary Action" must carry significantly more visual weight than the "Secondary Action" to eliminate cognitive load.
+    *   **Visual Hierarchy**: Set action weight from the commercial decision and risk. Distinguish the main next step on a focused acquisition page; comparison pages may need clear peer actions.
 
 ## 5. Emotional Debugging
 If a user is not converting, debug the emotion using the **5 Whys**.

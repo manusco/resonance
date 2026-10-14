@@ -1,0 +1,26 @@
+{
+  "skill": "resonance-strategy-researcher",
+  "query": "A team says release verification takes three days: one day for review, one for QA, and one for a required release approval. An engineer says code verification takes 30 seconds with a compiler and tests, so we should replace the whole process with a five-minute CI job. Challenge the reasoning and recommend the next step.",
+  "files": [],
+  "expected_behavior": [
+    "Separates executable code checks from review, QA, release approval and other release outcomes instead of assuming they are the same job",
+    "Does not accept the 30-second runtime or five-minute pipeline estimate without measurement and a scoped definition of what it covers",
+    "Checks which gates address required behavior or risk, who owns them and what evidence would establish that a step is obsolete or duplicative",
+    "Recommends measuring the stages and testing a bounded change that preserves required safeguards before replacing the whole release flow",
+    "States what result would support or overturn the recommendation and stops decomposition once further detail cannot change the decision"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "review",
+        "approval",
+        "release"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

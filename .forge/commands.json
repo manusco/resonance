@@ -19,7 +19,7 @@
   "commands": [
     { "alias": "init",            "skill": "ops/core",                 "manual": true,  "desc": "Bootstrap the .resonance/ project memory (soul, state, docs scaffold). Run once per new project." },
     { "alias": "venture-model",   "skill": "strategy/venture",         "desc": "Model the business, offer stack, and revenue math before planning." },
-    { "alias": "plan",            "skill": "strategy/plan",            "desc": "Turn a feature or idea into an atomic, approved implementation plan. Deep research, 4-pass spec." },
+    { "alias": "plan",            "skill": "strategy/plan",            "desc": "Turn a feature or idea into an approved implementation plan sized to the decision, with executable steps and verification." },
     { "alias": "grill",           "skill": "strategy/grill",           "desc": "Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding." },
     { "alias": "goal",            "skill": "ops/goal",                 "manual": true,  "desc": "The autonomous goal loop: frame, decompose, then build and verify each slice against real checks, bounded, never auto-ship." },
     { "alias": "brief",          "skill": "strategy/brief",           "desc": "Turn a rough request into an intent-faithful execution brief, then run or route it within the user's authority." },

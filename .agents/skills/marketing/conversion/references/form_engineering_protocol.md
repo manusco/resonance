@@ -53,7 +53,7 @@ Show fields only when relevant. Every hidden field is friction removed.
 ## 5. Mobile Form Physics
 - **Input Types**: Use `type="email"` and `type="tel"` to trigger the correct native keyboard.
 - **Auto-Capitalization**: Turn OFF for email/username fields.
-- **Hit Area**: Minimum 44px height for touch targets.
+- **Hit Area**: Follow the target platform guidance and applicable accessibility criteria. WCAG 2.2 AA uses 24×24 CSS px or spacing with exceptions; platform recommendations may call for larger native targets.
 - **Field Ordering**: Most critical field first. On mobile, every scroll is a dropout.
 - **Sticky CTA**: Keep submit button visible during scroll on long forms.
 

@@ -1,6 +1,6 @@
 {
   "skill": "resonance-engineering-automation",
-  "query": "Build an MCP server that lets agents search our internal Confluence wiki.",
+  "query": "In this existing TypeScript service, Zod is already installed and is the input-validation convention. Build an MCP server that lets agents search our internal Confluence wiki.",
   "files": [],
   "expected_behavior": [
     "Defines the MCP tool schema with typed arguments (query string, max_results, space_key) using Zod",

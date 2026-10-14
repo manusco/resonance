@@ -45,10 +45,6 @@ Chosen option: "[Option 1]", because [justification. e.g., only option, which me
 
 ## 3. The Mandate
 
-**You MUST write an ADR when:**
-1.  Adding a new database.
-2.  Changing a major framework.
-3.  Adding a third-party service (SaaS).
-4.  Structuring a monorepo.
+Create an ADR when the choice changes a durable cross-system boundary or carries material, long-lived trade-offs. Typical examples include adding a system-of-record database, changing a major framework, adding an external service dependency, or defining a monorepo structure. For a local or reversible choice, use the project's existing decision record or the plan instead of creating an ADR solely to satisfy this template.
 
-> 🔴 **Rule**: "We discussed it on Slack" is NOT documentation. If it's not an ADR, it didn't happen.
+Record the decision, alternatives, and consequences in a discoverable project artifact. A consequential architecture decision must not live only in an ephemeral conversation; use the ADR format when the choice meets the criteria above.

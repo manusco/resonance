@@ -4,9 +4,9 @@
   "files": [],
   "expected_behavior": [
     "Produces a store compliance checklist with Apple-specific requirements (privacy manifest, NSUsageDescription keys, export compliance)",
-    "Checks that the app does not crash in Airplane Mode before submission",
-    "Checks that all primary actions are reachable with one thumb in the bottom 40% of the screen",
-    "Verifies the app launch time is under 200ms to interactive UI",
+    "Checks offline behavior against the product contract, including appropriate failure and recovery when network access is required",
+    "Checks that frequent and consequential actions are reachable for the expected posture and platform without assuming a fixed screen percentage",
+    "Identifies the agreed launch-time target and recommends measuring time to interactive on supported devices",
     "Does not produce a generic 'test your app' checklist - produces specific, actionable items"
   ],
   "checks": [

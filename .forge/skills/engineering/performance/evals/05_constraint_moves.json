@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-engineering-performance",
+  "query": "A CI pipeline takes 24 minutes end to end. Measurement shows 13 minutes waiting for a hosted runner, 7 minutes executing the required integration suite, and 4 minutes for the other jobs. After adding runner capacity, the queue wait falls to 1 minute and the integration suite becomes the longest stage. Security and release checks are required. What should we optimize next?",
+  "files": [],
+  "expected_behavior": [
+    "Separates queue wait from execution time and reports the original measured contributors to end-to-end duration",
+    "Treats the integration suite as a candidate for investigation after queue wait falls, and checks whether it is on the dependency critical path and whether the system target still needs improvement before recommending a change",
+    "Distinguishes dependency critical path from capacity bottleneck, queue delay, and rework/quality effects",
+    "Does not infer that the longest job alone is the next system constraint; keeps required security and release checks while comparing system throughput or end-to-end time with runner cost and failure/recovery risk",
+    "Frames the next step as diagnosis and a measured recommendation, with implementation owned by the appropriate team"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["queue", "wait"]}
+  ]
+}

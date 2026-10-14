@@ -54,9 +54,9 @@ The chart's credibility lives here. Break these and the design lies, whether or 
 
 ## Perceptual color for data
 
-Color in a chart is data, not decoration, so the same perceptual discipline from `color_and_contrast.md` applies: think in OKLCH lightness, because the eye reads lightness far more reliably than hue, and HSL will lie to you about which steps look even. Three scale types, three different jobs:
+Color in a chart is data, not decoration. Choose a scale that preserves the intended comparisons. Perceptual spaces such as OKLCH can help construct even steps; evaluate the resulting colors and contrast in the supported system. Three scale types, three different jobs:
 
-- **Sequential** (low to high of one quantity): a single hue ramped in even OKLCH lightness steps from light to dark. Even lightness spacing is what makes the steps *look* evenly spaced; ramps built in HSL clump and gap. Dark reads as "more" on a light background.
+- **Sequential** (low to high of one quantity): a single hue ramped from light to dark. Perceptual lightness spacing can help make steps look even; inspect the result in context. Dark reads as "more" on a light background.
 - **Diverging** (deviation from a meaningful center, like zero or a target): two sequential ramps meeting at a light, low-chroma midpoint. The center must sit at the value that matters, or the color misstates where neutral is. Keep the two arms balanced in lightness so neither side falsely dominates.
 - **Categorical** (unordered groups): distinct hues held at roughly *equal* lightness and chroma, so no category looks heavier or more important than another. Unequal lightness in a categorical palette silently ranks things that have no rank. Cap it near seven or eight colors; beyond that, hues stop being distinguishable and you should group, facet, or directly label instead.
 
@@ -118,7 +118,7 @@ A chart lives at many sizes, and it must degrade with intent rather than by acci
 - **Reflow, do not just shrink.** A dense multi-series line chart squeezed onto a 360px phone becomes unreadable. Show fewer series, thin the ticks, rotate or truncate labels sensibly, or switch to a form that fits the width. The mobile chart is a redesign, not a scale transform.
 - **Preserve the axis and the labels.** When space is tight, the first instinct is to drop labels; resist it. A chart with no readable axis is decoration. Cut data series or aggregate the time buckets before you cut the reader's ability to read the scale.
 - **Interaction must add, never gate.** Tooltips, zoom, and filters are enhancements over a chart that already communicates its main point statically. If the core message only appears after the reader hovers or clicks, the default view has failed.
-- **Motion clarifies transitions, it does not perform.** When data updates or a filter changes the view, animate marks from old position to new so the eye can track what moved, using real easing under 400ms as in `motion_and_feel.md`. Do not animate bars growing from zero on every load as a flourish; that is decoration that delays the read.
+- **Motion may clarify transitions.** When a change is hard to follow, motion can help users track what moved. For frequent updates or reduced-motion settings, update immediately or use a restrained transition. Avoid animation that delays reading or suggests a value the data does not support.
 - **Respect reduced-motion and touch.** Honor the reduced-motion preference by cutting transition animation. Give touch its own affordances (tap to reveal, larger hit areas) rather than assuming a hoverable pointer.
 
 ## The tells of a generated chart

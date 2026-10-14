@@ -1,6 +1,6 @@
 {
   "skill": "resonance-engineering-automation",
-  "query": "Build a tool that syncs our user data from Stripe to our Postgres database.",
+  "query": "Build a tool that syncs user data from Stripe to Postgres. The nightly job's existing dashboard consumes a machine-readable summary of synced, skipped, and failed records. Stripe responses are external input; the destination table has a unique provider id and syncs may be retried after timeouts.",
   "files": [],
   "expected_behavior": [
     "Runs check_guards.py on the target database tables before writing any sync logic",

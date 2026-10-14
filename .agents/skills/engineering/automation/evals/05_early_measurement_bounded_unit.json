@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-automation",
+  "query": "Our nightly KYC reconciliation takes 40 minutes and sometimes duplicates review cases. We need to decide whether to automate it. Preserve identity verification, sanctions escalation, and a human stop when source records conflict. A lead says we should automate nothing until the whole workflow is finalized. We can add automated timestamps and duplicate counters around the current manual run while leaving the reconciliation decisions manual. What should we do?",
+  "files": [],
+  "expected_behavior": [
+    "Allows automated instrumentation and validation of a bounded part before deciding whether to mechanize reconciliation decisions",
+    "Defines a bounded reconciliation unit with inputs, outputs, completion condition, and a stop/escalation path for conflicting records",
+    "Preserves KYC identity verification, sanctions escalation, and human review for conflicting records",
+    "Compares output quality, duplicate/error rate, runtime, and ongoing ownership/recovery cost before recommending automation",
+    "Rejects the blanket requirement to wait until the whole workflow is finalized when bounded instrumentation can safely measure it now"
+  ]
+}
