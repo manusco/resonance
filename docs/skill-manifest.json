@@ -1897,7 +1897,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The Maintainer. Upgrades the Resonance framework kernel with a preflight plan, backup, scoped replacement, rollback path, and verification. Use when migrating a project to a new version of Resonance."
+      "The Maintainer. Upgrades the Resonance framework kernel with a preflight plan, scoped replacement, recoverable transaction, rollback path, and verification. Use when migrating a project to a new version of Resonance."
     ],
     "negative_triggers": [],
     "inputs": [

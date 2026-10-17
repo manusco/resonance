@@ -8,8 +8,8 @@ that could not exist there.
 
 ## Ownership contract
 
-The framework manifest records `profile`, version, and hashes for every path the
-updater owns.
+The framework manifest records `profile`, version, source revision, and hashes
+for every path the updater owns. Older manifests remain readable.
 
 - `source` owns the framework compiler, `.forge`, generated skills, host
   adapters, bridges, and launchers.
@@ -52,25 +52,37 @@ meaningful verification without installing source tooling into the project.
 Source targets use the verifier in their own `.forge` tree. Neither profile
 regenerates a project-owned lock during an update.
 
-Both profiles use the same staged backup, hash comparison, atomic replacement,
-manifest write, and rollback journal. Profile migration is unsupported. Once a
-manifest records a profile, every requested profile must match it. Run an
-explicit dry run first:
+Both profiles use the same staged apply and per-path recovery journal. A live
+file can be reconciled when it matches the selected source, its recorded
+ownership hash, or the verified installed release commit or exact local version
+tag available in the pinned source checkout's local history. The updater does
+not fetch tags or history. The consumer's Git status never proves framework
+ownership. Profile migration is unsupported. Once a manifest records a
+profile, every requested profile must match it. Run an explicit summary
+preview first, or use `--json` for the complete machine-readable plan.
 
-Before creating a backup, apply probes reversible file creation and deletion in
-each existing managed destination directory. This catches denied `.agents`,
+Before changing managed files, apply pins target `HEAD` and records each
+preimage in `.resonance/updates/<id>/journal.json`. It uses a Git blob only when
+the path is an ordinary tracked file and its raw bytes and executable mode
+match `HEAD`; it copies only preimages that Git cannot recover. A Git-only
+transaction creates no `.resonance/backups/` directory. Older
+`.resonance/backups/.../journal.json` transactions remain supported by rollback
+and doctor.
+
+Before creating the receipt or staging files, apply probes reversible file
+creation and deletion in each existing managed destination directory. This catches denied `.agents`,
 `.forge`, adapter, launcher, or ownership-manifest directories before the
-transaction begins. It cannot predict a later permission change or every
-file-specific ACL. Those failures still trigger rollback. If apply and rollback
-both fail, the error reports both causes and the exact journal path needed for
-manual recovery.
+transaction begins. A source-profile or compiled consumer can preview with:
 
 ```text
-python .forge/update.py --source <pinned-resonance-checkout> --target <project> --profile compiled
+python resonance_update.py --source <pinned-resonance-checkout> --target <project> --profile compiled --summary
 ```
 
-The first pilot should cover one real compiled consumer and one real source
-installation before any fleet update. Never replace an existing release tag.
+If apply or validation fails, the updater attempts rollback before returning.
+If rollback also fails, the error reports both causes and the exact recovery
+journal path. Profile migration is unsupported. The first pilot should cover a
+synthetic compiled consumer and a synthetic source installation. Never replace
+an existing release tag.
 
 ## Optional release notices
 
@@ -85,5 +97,5 @@ does not block startup, and no notice command can apply an update.
 The installed `resonance_update.py` runtime performs preview and apply for both
 profiles. `.forge/update.py` is a compatibility entrypoint for source installs.
 Apply requires the exact version, full source commit, and plan digest printed by
-the reviewed preview. It copies released files from the pinned checkout and
+the reviewed preview. It stages released files from the pinned checkout and
 never imports or executes Python fetched during the notice request.

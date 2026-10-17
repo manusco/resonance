@@ -114,7 +114,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/explain** -> `ops/explain` - Teach the operator, not the repo: a dense explainer of a concept, diff, or recent work, with an optional predict-then-reveal check-in.
 - **/handover** -> `ops/handover` - Write an end-of-session handover doc: what was done, decisions, open TODOs, backlog.
 - **/retro** -> `ops/retro` - Git-driven retrospective: shipping streak, focus score, complexity delta.
-- **/update-resonance** -> `ops/update-resonance` - Upgrade the Resonance framework with backup and restore safety. Preserves .resonance/.
+- **/update-resonance** -> `ops/update-resonance` - Upgrade the Resonance framework with provenance checks and journal-based recovery. Preserves project memory.
 - **/skill-author** -> `ops/skill-author/resonance-skill-author` - Author, validate, and eval a new Resonance skill with the Forge.
 
 ### Choosing between nearby commands
