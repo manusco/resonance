@@ -1,4 +1,6 @@
 import importlib.util
+import contextlib
+import io
 import json
 import shutil
 import subprocess
@@ -19,6 +21,15 @@ class UpdateTests(unittest.TestCase):
     def commit(self, source):
         subprocess.run(["git", "add", "."], cwd=source, check=True, capture_output=True)
         subprocess.run(["git", "commit", "-m", "fixture"], cwd=source, check=True, capture_output=True)
+
+    def init_git(self, root):
+        subprocess.run(["git", "init"], cwd=root, check=True, capture_output=True)
+        subprocess.run(["git", "config", "user.email", "test@example.test"], cwd=root, check=True)
+        subprocess.run(["git", "config", "user.name", "Test"], cwd=root, check=True)
+
+    def commit_target(self, target):
+        subprocess.run(["git", "add", "."], cwd=target, check=True, capture_output=True)
+        subprocess.run(["git", "commit", "-m", "installed framework"], cwd=target, check=True, capture_output=True)
 
     def fixture(self):
         td = tempfile.TemporaryDirectory()
@@ -190,6 +201,312 @@ class UpdateTests(unittest.TestCase):
         self.assertIn(".forge/tool.py", manifest["files"])
         (target / ".forge" / "tool.py").write_text("user edit", encoding="utf-8")
         self.assertIn(".forge/tool.py", update.plan(source, target)["conflicts"])
+
+    def test_incoming_byte_equality_repairs_stale_ownership_without_conflict(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        update.apply(source, target, "9.9.9")
+        manifest_path = target / update.MANIFEST
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["files"][".forge/tool.py"] = "0" * 64
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+        work = update.plan(source, target)
+
+        self.assertNotIn(".forge/tool.py", work["conflicts"])
+        self.assertNotIn(".forge/tool.py", work["writes"])
+
+    def test_committed_customization_is_still_a_conflict(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        update.apply(source, target, "9.9.9")
+        self.init_git(target)
+        self.commit_target(target)
+        (target / ".forge" / "tool.py").write_text("committed local change\n", encoding="utf-8")
+        self.commit_target(target)
+
+        work = update.plan(source, target)
+
+        self.assertIn(".forge/tool.py", work["conflicts"])
+
+    def test_stale_hash_matching_verified_old_release_can_upgrade(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        branch = subprocess.run(
+            ["git", "branch", "--show-current"], cwd=source, check=True,
+            capture_output=True, text=True,
+        ).stdout.strip()
+        old_tool = source / ".forge" / "tool.py"
+        old_tool.write_text("released old tool\n", encoding="utf-8")
+        package = source / "package.json"
+        package.write_text('{"version":"9.9.8"}', encoding="utf-8")
+        self.commit(source)
+        subprocess.run(["git", "tag", "v9.9.8"], cwd=source, check=True, capture_output=True)
+        old_revision = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=source, check=True,
+            capture_output=True, text=True,
+        ).stdout.strip()
+
+        self.init_git(target)
+        subprocess.run(["git", "checkout", "--detach", "v9.9.8"], cwd=source, check=True, capture_output=True)
+        update.apply(source, target, "9.9.8")
+        self.commit_target(target)
+
+        subprocess.run(["git", "switch", branch], cwd=source, check=True, capture_output=True)
+        old_tool.write_text("released new tool\n", encoding="utf-8")
+        package.write_text('{"version":"9.9.9"}', encoding="utf-8")
+        self.commit(source)
+        manifest_path = target / update.MANIFEST
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["files"][".forge/tool.py"] = "0" * 64
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+        self.commit_target(target)
+
+        work = update.plan(source, target)
+
+        self.assertNotIn(".forge/tool.py", work["conflicts"])
+        self.assertIn(".forge/tool.py", work["writes"])
+        self.assertEqual(old_revision, manifest.get("source_revision"))
+
+    def test_second_identical_apply_does_not_create_transaction(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        first = update.apply(source, target, "9.9.9")
+        second = update.apply(source, target, "9.9.9")
+
+        self.assertIsNotNone(first)
+        self.assertIsNone(second)
+        transactions = list((target / ".resonance").glob("updates/*/journal.json"))
+        backups = list((target / ".resonance").glob("backups/resonance-update-*/journal.json"))
+        self.assertEqual(1, len(transactions))
+        self.assertEqual([], backups)
+
+        work = update.plan(source, target)
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            self.assertEqual(0, update.main([
+                "--source", str(source), "--target", str(target), "--apply", "--json",
+                "--version", work["version"], "--revision", work["revision"],
+                "--plan-digest", work["plan_digest"],
+            ]))
+        self.assertEqual("already_current", json.loads(stdout.getvalue())["status"])
+        self.assertEqual("", stderr.getvalue())
+
+    def test_git_preimages_use_journal_without_copied_payload_and_restore_modes(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        repo = target
+        target = repo / "consumer"
+        target.mkdir()
+        update.apply(source, target, "9.9.9")
+        self.init_git(repo)
+        tool = target / ".forge" / "tool.py"
+        tool.chmod(0o640)
+        self.commit_target(repo)
+        old_bytes = tool.read_bytes()
+
+        tool_source = source / ".forge" / "tool.py"
+        tool_source.write_text("updated tool\n", encoding="utf-8")
+        (source / ".forge" / "new.py").write_text("new file\n", encoding="utf-8")
+        (source / "package.json").write_text('{"version":"9.9.10"}', encoding="utf-8")
+        self.commit(source)
+        transaction = update.apply(source, target, "9.9.10")
+        journal = json.loads((transaction / "journal.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(2, journal["schema"])
+        self.assertEqual(repo.resolve(), Path(journal["git_root"]).resolve())
+        self.assertEqual("consumer", journal["git_prefix"])
+        self.assertEqual("git", next(e for e in journal["entries"] if e["path"] == ".forge/tool.py")["source"])
+        self.assertFalse((transaction / "files").exists())
+        self.assertFalse((target / ".resonance" / "backups").exists())
+
+        journaled_commit = journal["git_commit"]
+        branch = subprocess.run(["git", "symbolic-ref", "--short", "HEAD"], cwd=repo,
+                                check=True, capture_output=True, text=True).stdout.strip()
+        empty_tree = subprocess.run(["git", "mktree"], cwd=repo, input=b"", check=True,
+                                    capture_output=True).stdout.decode().strip()
+        unrelated = subprocess.run(["git", "commit-tree", empty_tree, "-m", "unrelated head"],
+                                   cwd=repo, check=True, capture_output=True, text=True).stdout.strip()
+        subprocess.run(["git", "update-ref", f"refs/heads/{branch}", unrelated], cwd=repo, check=True)
+        subprocess.run(["git", "reflog", "expire", "--expire=now", "--all"], cwd=repo, check=True)
+        subprocess.run(["git", "gc", "--prune=now"], cwd=repo, check=True, capture_output=True)
+        subprocess.run(["git", "cat-file", "-e", journaled_commit], cwd=repo, check=True)
+        update.rollback(transaction)
+
+        self.assertEqual(old_bytes, tool.read_bytes())
+        self.assertEqual(0o640, tool.stat().st_mode & 0o777)
+        self.assertFalse((target / ".forge" / "new.py").exists())
+
+    def test_manifest_only_reconciliation_copies_only_dirty_manifest_preimage(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        update.apply(source, target, "9.9.9")
+        self.init_git(target)
+        self.commit_target(target)
+        manifest_path = target / update.MANIFEST
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["files"][".forge/tool.py"] = "0" * 64
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+        prior_manifest = manifest_path.read_bytes()
+        work = update.plan(source, target)
+
+        self.assertEqual([], work["writes"])
+        self.assertEqual([], work["conflicts"])
+        self.assertTrue(work["manifest_write"])
+        transaction = update.apply(source, target, "9.9.9")
+        journal = json.loads((transaction / "journal.json").read_text(encoding="utf-8"))
+        self.assertEqual([update.MANIFEST], [entry["path"] for entry in journal["entries"]])
+        self.assertEqual("file", journal["entries"][0]["source"])
+        self.assertEqual(prior_manifest, (transaction / "files" / update.MANIFEST).read_bytes())
+        self.assertFalse((target / ".resonance" / "backups").exists())
+        update.rollback(transaction)
+        self.assertEqual(prior_manifest, manifest_path.read_bytes())
+
+    def test_clean_git_stale_hash_reconciliation_uses_manifest_blob_without_file_copies(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        update.apply(source, target, "9.9.9")
+        manifest_path = target / update.MANIFEST
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["files"][".forge/tool.py"] = "0" * 64
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+        self.init_git(target)
+        self.commit_target(target)
+        work = update.plan(source, target)
+
+        self.assertEqual([], work["conflicts"])
+        self.assertEqual([], work["writes"])
+        transaction = update.apply(source, target, "9.9.9")
+        journal = json.loads((transaction / "journal.json").read_text(encoding="utf-8"))
+
+        self.assertEqual([update.MANIFEST], [entry["path"] for entry in journal["entries"]])
+        self.assertEqual("git", journal["entries"][0]["source"])
+        self.assertFalse((transaction / "files").exists())
+        self.assertFalse((target / ".resonance" / "backups").exists())
+
+    def test_rollback_validates_every_preimage_before_restoring_any(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        one = target / ".forge" / "one.py"
+        two = target / ".forge" / "two.py"
+        one.parent.mkdir(parents=True)
+        one.write_text("changed", encoding="utf-8")
+        two.write_text("changed", encoding="utf-8")
+        transaction = target / ".resonance" / "updates" / "broken"
+        saved = transaction / "files" / ".forge" / "one.py"
+        saved.parent.mkdir(parents=True)
+        saved.write_text("original", encoding="utf-8")
+        journal = {"schema": 2, "status": "applying", "transaction_id": "broken",
+                   "target": str(target), "entries": [
+            {"path": ".forge/one.py", "existed": True, "source": "file",
+             "sha256": update.digest(saved), "mode": 0o644},
+            {"path": ".forge/two.py", "existed": True, "source": "file",
+             "sha256": "0" * 64, "mode": 0o644},
+        ]}
+        (transaction / "journal.json").write_text(json.dumps(journal), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "preimage is missing"):
+            update.rollback(transaction)
+
+        self.assertEqual("changed", one.read_text(encoding="utf-8"))
+
+    def test_rollback_rejects_invalid_mode_before_restoring_any(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        one = target / ".forge" / "one.py"
+        two = target / ".forge" / "two.py"
+        one.parent.mkdir(parents=True)
+        one.write_text("changed", encoding="utf-8")
+        two.write_text("changed", encoding="utf-8")
+        transaction = target / ".resonance" / "updates" / "bad-mode"
+        for rel in ("one.py", "two.py"):
+            saved = transaction / "files" / ".forge" / rel
+            saved.parent.mkdir(parents=True, exist_ok=True)
+            saved.write_text("original", encoding="utf-8")
+        entries = []
+        for rel in ("one.py", "two.py"):
+            saved = transaction / "files" / ".forge" / rel
+            entries.append({"path": f".forge/{rel}", "existed": True, "source": "file",
+                            "sha256": update.digest(saved), "mode": 0o644})
+        entries[1]["mode"] = True
+        journal = {"schema": 2, "status": "applying", "transaction_id": "bad-mode",
+                   "target": str(target), "entries": entries}
+        (transaction / "journal.json").write_text(json.dumps(journal), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "invalid saved mode"):
+            update.rollback(transaction)
+
+        self.assertEqual("changed", one.read_text(encoding="utf-8"))
+
+    def test_cli_summary_and_apply_errors_are_concise(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        update.apply(source, target, "9.9.9")
+        (target / ".forge" / "tool.py").write_text("local change", encoding="utf-8")
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            self.assertEqual(1, update.main([
+                "--source", str(source), "--target", str(target), "--summary",
+            ]))
+        self.assertIn("Plan: blocked", stdout.getvalue())
+        self.assertIn(".forge/tool.py", stdout.getvalue())
+        self.assertNotIn('"files"', stdout.getvalue())
+        self.assertEqual("", stderr.getvalue())
+
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            self.assertEqual(1, update.main([
+                "--source", str(source), "--target", str(target), "--apply",
+                "--version", "9.9.9", "--revision", update.source_revision(source),
+                "--plan-digest", "0" * 64,
+            ]))
+        self.assertIn("update blocked:", stderr.getvalue())
+        self.assertNotIn("Traceback", stderr.getvalue())
+
+    def test_invalid_project_skill_lock_fails_closed(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        lock = target / ".resonance" / "project-skills.lock.json"
+        lock.parent.mkdir(parents=True)
+        lock.write_text('{"schema_version":0,"skills":[]}', encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "project skill lock"):
+            update.plan(source, target)
+
+        self.assertFalse((target / ".forge").exists())
+
+    def test_apply_rejects_symlinked_staging_or_recovery_parent(self):
+        for name in ("tmp", "updates"):
+            with self.subTest(parent=name):
+                td, source, target = self.fixture()
+                self.addCleanup(td.cleanup)
+                outside = Path(td.name) / "outside"
+                outside.mkdir()
+                resonance = target / ".resonance"
+                resonance.mkdir()
+                (resonance / name).symlink_to(outside, target_is_directory=True)
+
+                with self.assertRaisesRegex(ValueError, "path escapes target|symlink"):
+                    update.apply(source, target, "9.9.9")
+
+                self.assertEqual([], list(outside.iterdir()))
+
+    def test_manifest_cannot_remove_application_code_outside_profile(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        update.apply(source, target, "9.9.9")
+        app = target / "application.py"
+        app.write_text("application data\n", encoding="utf-8")
+        manifest_path = target / update.MANIFEST
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["files"]["application.py"] = update.digest(app)
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+        work = update.plan(source, target)
+
+        self.assertIn("application.py", work["conflicts"])
+        self.assertNotIn("application.py", work["removes"])
+        self.assertEqual("application data\n", app.read_text(encoding="utf-8"))
 
     def test_user_owned_agents_file_is_never_overwritten(self):
         td, source, target = self.fixture()

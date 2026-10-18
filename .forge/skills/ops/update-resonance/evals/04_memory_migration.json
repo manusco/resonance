@@ -3,7 +3,8 @@
   "query": "Upgrade this project to the latest Resonance version. Note: the repo still has .resonance/learnings.jsonl with 12 lessons from months of work in it.",
   "files": [],
   "expected_behavior": [
-    "Runs preflight and creates a backup before touching framework or memory files",
+    "Runs the framework preflight and prepares a recovery journal before changing managed framework files",
+    "If legacy memory migration is approved, preserves a recoverable copy of the legacy input and destination memory file first",
     "Asks for or confirms approval before migrating legacy learnings.jsonl into the loaded memory index",
     "Appends the learnings.jsonl entries into the Lessons section of .resonance/02_memory.md without losing content",
     "Deletes learnings.jsonl only after verifying the lessons now appear in .resonance/02_memory.md",

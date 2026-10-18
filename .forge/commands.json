@@ -53,7 +53,7 @@
     { "alias": "seo",             "skill": "marketing/seo",            "desc": "SEO and GEO audit: structured data, canonical, schema, AI-citation optimization." },
     { "alias": "search-cycle",    "skill": "marketing/run-search-operating-cycle", "manual": true, "desc": "Run a private-first search evidence cycle and produce a governed P0-P3 audit report." },
     { "alias": "update-roadmap",  "skill": "ops/update-roadmap",       "manual": true,  "desc": "Sync .resonance/01_state.md with the git log so the map matches the territory." },
-    { "alias": "update-resonance","skill": "ops/update-resonance",     "manual": true,  "desc": "Upgrade the Resonance framework with backup and restore safety. Preserves .resonance/." },
+    { "alias": "update-resonance","skill": "ops/update-resonance",     "manual": true,  "desc": "Upgrade the Resonance framework with provenance checks and journal-based recovery. Preserves project memory." },
     { "alias": "skill-author",    "skill": "ops/skill-author/resonance-skill-author", "desc": "Author, validate, and eval a new Resonance skill with the Forge." }
   ]
 }
