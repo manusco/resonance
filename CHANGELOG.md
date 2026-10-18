@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.5.44
+
+The updater recovery and ownership release.
+
+### Fixed
+- **Updater ownership and recovery.** Stale ownership hashes reconcile when live files match the selected source or a verified installed release. Genuine customizations remain protected. Recovery uses exact pinned Git blobs and copies only unrecoverable preimages. No-op previews leave recovery data untouched and explain that no files will change.
+
 ## v2.5.43
 
 The task-first UX, evidence-led simplicity, and workflow sequencing release.
