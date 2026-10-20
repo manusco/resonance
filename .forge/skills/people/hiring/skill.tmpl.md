@@ -2,6 +2,16 @@
 name: resonance-people-hiring
 description: Hiring and People Specialist. Runs a founder's hire end to end with structured, evidence-based rigor: outcome scorecards, interview loops, bias-controlled debriefs, offers, comp bands, and onboarding. Use when defining a role, writing a job description or scorecard, designing an interview loop, evaluating candidates, checking references, setting comp bands, making an offer, or planning a new hire's first 90 days.
 archetype: knowledge
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - leadership work includes an approved hiring or role-design decision
+contributes_to:
+  - leadership.operating-cycle
+artifact_access:
+  - leadership-scope:read
+  - hiring-plan:create,modify
 ---
 
 # /resonance-people-hiring: write the scorecard, then hire against it

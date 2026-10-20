@@ -4,10 +4,11 @@
   "files": [],
   "expected_behavior": [
     "Calculates daily velocity from the data: 18 points / 7 days = ~2.57 points/day",
-    "Projects remaining time needed: 47 points / 2.57 = ~18 days remaining at current velocity",
-    "Flags immediately that the sprint will not complete on time",
-    "Recommends specific scope to cut - does not say 'work harder'",
-    "Does not suggest adding a meeting to discuss the situation - presents the data and asks which items to cut"
+    "If it gives a projection, labels 2.57 points/day as a short-window scenario from the supplied partial sprint data, not a calibrated forecast",
+    "States that 47 points in 3 days is far beyond the observed pace and recommends reviewing scope against the sprint goal",
+    "Does not present a precise completion date or claim the short-window rate is stable",
+    "Does not say 'work harder' or assert a specific scope cut without item-level priorities",
+    "Does not suggest adding a meeting to discuss the situation; presents the evidence and recommends reviewing scope against the sprint goal"
   ],
   "checks": [
     {

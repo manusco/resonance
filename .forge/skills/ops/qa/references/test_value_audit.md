@@ -23,10 +23,10 @@ Treat these as deletion or rewrite candidates:
 - private predicate, call-shape, or mock-interaction tests duplicated by a public behavior test;
 - mocks that implement the behavior being asserted;
 - duplicate tests for the same contract at weaker layers;
-- production exports, globals, wrappers, flags, or injection hooks used only by tests;
+- production exports, globals, wrappers, flags, or injection hooks added only to inspect private internals;
 - negative controls that pass because of a different guard than the one under review.
 
-A pattern match is not automatic deletion. Keep a test when it independently guards a public API, plugin SDK, protocol, storage contract, security rule, migration, release artifact, generated output, or known regression with a credible failure mode.
+A pattern match is not automatic deletion. Keep a test when it independently guards a public API, plugin SDK, protocol, storage contract, security rule, migration, release artifact, generated output, or known regression with a credible failure mode. A narrow control for a nondeterministic dependency such as a clock, network response, or temporary filesystem may be the simplest way to prove observable behavior, even when tests are its only callers.
 
 ## Audit Workflow
 

@@ -2,6 +2,16 @@
 name: resonance-sales-outbound-sequence
 description: Builds source-backed outbound sequences from CRM data, trigger signals, and campaign context. Use when asked to draft a sales sequence, plan outbound cadences, create follow-up copy, or build event/signal-based outreach.
 archetype: procedure
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - revenue-motion work calls for a source-backed outbound sequence
+contributes_to:
+  - sales.revenue-motion
+artifact_access:
+  - revenue-motion-scope:read
+  - outbound-sequence:create,modify
 ---
 
 # /resonance-sales-outbound-sequence: draft sequences that sell, not spam

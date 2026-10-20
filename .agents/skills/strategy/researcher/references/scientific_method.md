@@ -1,26 +1,17 @@
 # Scientific Method Protocol
 
-> "Nullius in verba" (Take nobody's word for it).
-> - Royal Society Motto
+Use the scientific method when the question can be answered by a test. For other research, use evidence suited to the claim.
 
-## 1. The Cycle
+## Frame and test
 
-1.  **Observation**: "The system is slow." (Vague).
-2.  **Hypothesis**: "The DB query on the dashboard is missing an index." (Specific, Falsifiable).
-3.  **Prediction**: "If I add an index to `user_id`, latency will drop < 100ms."
-4.  **Experiment**: Add the index. Measure.
-5.  **Conclusion**: "Latency dropped to 50ms. Hypothesis confirmed."
+1. **Observe**: State the gap or behavior without assuming its cause.
+2. **Hypothesize when testable**: Name a possible cause and a result that would count against it. Exploratory and factual questions may begin open-ended.
+3. **Choose evidence**: Predict what a test should show. Use a controlled comparison, reproduction, measurement, authoritative source, or owner confirmation as the claim requires.
+4. **Check the result**: Record the environment, scope, and relevant limits. A changed metric alone may not show that the proposed change caused it.
+5. **Conclude proportionally**: Say what the evidence supports, what remains uncertain, and what observation would change the conclusion.
 
-## 2. The Mandate
+## Example
 
-**You MUST define the Hypothesis BEFORE you research.**
+If adding an index is followed by dashboard latency falling from 150 ms to 50 ms, record the database, query, workload, measurement window, and comparison method. That result describes the tested conditions. It does not by itself prove the index caused the change or that every dashboard request will remain under 100 ms.
 
-*   ❌ "I'm looking into libraries." (Wandering).
-*   ✅ "I hypothesize that `shadcn/ui` is superior to `MUI` because it allows direct code ownership."
-
-## 3. Verification
-
-*   If you cannot **measure** the result, you didn't do science. You did art.
-*   Research without a conclusion is just noise.
-
-> 🔴 **Rule**: Start every investigation with a Hypothesis. End with a Verdict.
+Start with a question or hypothesis. End with an evidence-backed finding or a clear known unknown. Do not call an estimate a measurement or a single observation universal proof.

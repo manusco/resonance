@@ -1,16 +1,16 @@
 # Mobile Audit Protocol
 
-> "Thumbs are fat. Screens are small."
+Check reach, posture, screen size, input precision, and platform behavior in the actual task.
 
 ## 1. The Thumb Zone
 
-*   **Bottom Navigation**: Critical actions (Home, Search) within easy reach.
-*   **Top Left**: The "Zone of Death". Only put Back buttons or Logos there.
+*   **Reach**: Place frequent actions where the intended posture can reach them; do not assume one universal safe zone.
+*   **Placement**: Keep navigation consistent with the target platform and user expectation. Test important actions with one-hand use when that is a supported scenario.
 
 ## 2. The Touch Target
 
-*   **Size**: Minimum 44x44px (iOS Standard) / 48x48px (Material).
-*   **Spacing**: 8px between tappable elements.
+*   **Size**: Follow target platform guidance and applicable accessibility criteria. WCAG 2.2 AA target size (minimum) is 24×24 CSS px or spacing, with exceptions; native platform recommendations can be larger.
+*   **Spacing**: Provide enough separation to avoid accidental activation for the actual controls and context.
 *   **Audit**: Turn on "Show Taps" in Developer Settings. Do you miss?
 
 ## 3. The Keyboard

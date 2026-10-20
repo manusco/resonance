@@ -46,6 +46,26 @@ class CompositionCompatibilityTest(unittest.TestCase):
     def test_v1_contract_is_clean(self):
         self.assertEqual([], composition_warnings([entry()], {CANARY}))
 
+    def test_v1_participant_profile_is_valid_without_invented_job_or_stage(self):
+        lead = entry(job_id="test.job")
+        participant = entry(
+            id="resonance-test-specialist", contract_role="participant", job_id="",
+            stage="", contributes_to=["test.job"], finalizes=[],
+            artifact_access=["specialist-note:create"], dispatch_conditions=["a lead needs this specialist's work"],
+        )
+        self.assertEqual([], composition_warnings([lead, participant], {CANARY}))
+
+    def test_v1_participant_must_have_relationship_and_cannot_finalize(self):
+        lead = entry(job_id="test.job")
+        participant = entry(
+            id="resonance-test-specialist", contract_role="participant", job_id="",
+            stage="", contributes_to=[], finalizes=["specialist-note"],
+            artifact_access=["specialist-note:create"], dispatch_conditions=["a lead needs this specialist's work"],
+        )
+        warnings = composition_warnings([lead, participant], {CANARY})
+        self.assertTrue(any("cannot declare a job_id or finalizes" in item for item in warnings))
+        self.assertTrue(any("must contribute to or review a job" in item for item in warnings))
+
     def test_unknown_version_fails_closed_in_warning_mode(self):
         warnings = composition_warnings([entry(contract_version=2)], {CANARY})
         self.assertTrue(any("unknown contract_version" in item and "fail closed" in item
@@ -88,21 +108,37 @@ class CompositionConsistencyTest(unittest.TestCase):
 
     def test_alias_requires_one_canonical_target(self):
         warnings = composition_warnings([entry(compatibility="alias")], {CANARY})
-        self.assertTrue(any("exactly one canonical job" in item for item in warnings))
+        self.assertTrue(any("one canonical job" in item for item in warnings))
+
+    def test_alias_can_invoke_its_canonical_job_without_being_a_participant(self):
+        canonical = entry()
+        alias = entry(
+            id="resonance-software-deliver-change",
+            job_id="delivery.compatibility-intake",
+            stage="FRAME",
+            contributes_to=[],
+            reviews=[],
+            finalizes=["goal-handoff"],
+            artifact_access=["goal-handoff:create,modify"],
+            compatibility="alias",
+            invokes=[CANARY],
+        )
+        warnings = composition_warnings([canonical, alias], {CANARY, alias["id"]})
+        self.assertFalse(any("alias 'resonance-software-deliver-change'" in item for item in warnings))
 
 
 class ManifestAndValidatorTest(unittest.TestCase):
     def test_real_canary_templates_are_consistent(self):
         root = FORGE / "skills"
         paths = [
-            "ops/goal", "software/deliver-change", "ops/audit", "ops/security",
+            "ops/goal", "software/deliver-change", "engineering/build", "ops/audit", "ops/security",
             "ops/reviewer", "ops/qa", "strategy/architect", "engineering/performance",
             "engineering/backend", "engineering/frontend", "engineering/database",
             "engineering/ai-engineering", "strategy/brief", "strategy/grill", "strategy/plan",
         ]
         entries = [normalize_entry(root / path / "skill.tmpl.md", root) for path in paths]
         warnings = composition_warnings([item for item in entries if item], {
-            "resonance-ops-goal", "resonance-software-deliver-change", "resonance-ops-audit",
+            "resonance-ops-goal", "resonance-software-deliver-change", "resonance-engineering-build", "resonance-ops-audit",
             "resonance-ops-security", "resonance-ops-reviewer", "resonance-ops-qa",
             "resonance-strategy-architect", "resonance-engineering-performance",
             "resonance-engineering-backend", "resonance-engineering-frontend",

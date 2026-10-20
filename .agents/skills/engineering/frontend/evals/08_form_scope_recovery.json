@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "Implement the requested vendor onboarding workflow: legal name, tax id, billing contact, and payout account are required before submission. The current form has all four fields and preserves entries when server validation fails. A redesign proposal shows only legal name and tax id on the first screen, drops the other fields from the workflow, and clears entered values after a network error. The current flow also has an optional company biography that is rarely used; no evidence establishes whether vendors or downstream reviewers still need it. Recommend the smallest usable flow for desktop and narrow mobile. The requester asked for the complete onboarding workflow, including retry after failure.",
+  "files": [],
+  "expected_behavior": [
+    "Preserves all four required fields and the complete requested workflow; reports any scope reduction as a recommendation, never completed work",
+    "Retains field values and context after validation or network failure and provides a clear retry or correction path",
+    "Uses accessible labels, associated errors, focus behavior, and responsive access to required fields",
+    "Does not silently remove the existing optional biography based only on rarity; keeps it discoverable or recommends a scoped removal with the affected users and trade-off when use is unknown",
+    "Judges simplification by completion, missing information, error recovery, and operator or user burden rather than field count"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

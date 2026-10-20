@@ -17,7 +17,7 @@ MANIFEST = ROOT / "docs" / "skill-manifest.json"
 OUTPUT = ROOT / "docs" / "job-compositions.json"
 
 
-def validate_invariants(contract: dict[str, Any]) -> None:
+def validate_invariants(contract: dict[str, Any], manifest: list[dict[str, Any]] | None = None) -> None:
     participants = [contract["lead"], *contract["contributors"], *contract["reviewers"]]
     if len(participants) != len(set(participants)):
         raise ValueError(f"{contract['job_id']}: a skill has conflicting composition roles")
@@ -30,6 +30,40 @@ def validate_invariants(contract: dict[str, Any]) -> None:
         )
     if contract["finalizer"] != contract["lead"]:
         raise ValueError(f"{contract['job_id']}: only the declared lead may finalize v1 jobs")
+    lead = contract["lead"]
+    source = next((item for item in manifest or [] if item["id"] == lead), None)
+    if source:
+        access = {
+            row["artifact"]: set(row["rights"])
+            for row in contract["artifact_access"]
+            if row["actor"] == lead
+        }
+        for artifact in source.get("finalizes", []):
+            if not (access.get(artifact, set()) & {"CREATE", "MODIFY", "APPROVE", "PUBLISH"}):
+                raise ValueError(
+                    f"{contract['job_id']}: lead cannot finalize '{artifact}' with declared artifact rights"
+                )
+    if manifest is not None:
+        by_id = {entry["id"]: entry for entry in manifest}
+        # Job participants may be invoked through nested orchestrators. Walk the
+        # declared graph with a visited set; conditional edges authorize a
+        # possible participant but do not require every invoked skill to join.
+        reached = {lead}
+        pending = [lead]
+        while pending:
+            actor = pending.pop()
+            for target in by_id.get(actor, {}).get("invokes", []):
+                if target not in by_id:
+                    raise ValueError(f"{contract['job_id']}: '{actor}' invokes unknown skill '{target}'")
+                if target not in reached:
+                    reached.add(target)
+                    pending.append(target)
+        unauthorized = sorted(set(participants) - reached)
+        if unauthorized:
+            raise ValueError(
+                f"{contract['job_id']}: participants are not reachable through invokes: "
+                + ", ".join(unauthorized)
+            )
     semantic = set(contract["authority_split"]["frontmatter_owns"])
     presentation = set(contract["authority_split"]["command_registry_owns"])
     if semantic & presentation:
@@ -96,7 +130,7 @@ def compile_contracts(manifest: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "authority_split": authority_split,
         }
         validate(contract, load_schema("composition-contract.schema.json"))
-        validate_invariants(contract)
+        validate_invariants(contract, manifest)
         contracts.append(contract)
     return contracts
 

@@ -23,7 +23,7 @@ Banned vocabulary (AI tells): delve, crucial, robust, comprehensive, nuanced, mu
 Constraints on every task, regardless of domain. Not preferences. Locks.
 
 - **Think First.** State assumptions before acting. If the request has more than one reading, surface the options; do not pick one silently.
-- **Simplicity.** The minimum that solves the problem. No speculative abstractions, no features nobody asked for. A senior reviewer should not call it overbuilt. Simplicity governs the *how*, never the *how-much*: the scope the user asked for is the floor, and shrinking it is an explicit Recommendation-First decision, never a silent one.
+- **Simplicity.** For material complexity choices, apply the [shared Necessity Protocol](.agents/skills/ops/core/references/necessity_protocol.md) to show the current benefit, simplest sufficient owner, and evidence that the choice preserves requested scope and safeguards. Keep complexity when a simpler option would fail a real requirement or material risk check; routine edits need no extra analysis, and scope is never silently reduced.
 - **Surgical.** Touch only what the task asks for. Match the surrounding style. Do not reformat or improve adjacent code in passing.
 - **Verify.** Define success before starting. Loop until proven, not until it looks right. No commit without evidence. Deliver the whole of what was asked: no placeholder stubs (`// ... rest`, `TODO`, "for brevity"), no silent truncation, and the delivered count matches the requested count. If you cannot finish it all, name the parts that remain rather than quietly shipping a fraction.
 
@@ -77,7 +77,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/venture-model** -> `strategy/venture` - Model the business, offer stack, and revenue math before planning.
 - **/brief** -> `strategy/brief` - Turn a rough request into an intent-faithful execution brief, then run or route it within the user's authority.
 - **/blueprint** -> `strategy/blueprint` - Create or revise a durable architecture constitution, or check a plan, change, PR, or release for architectural drift.
-- **/plan** -> `strategy/plan` - Turn a feature or idea into an atomic, approved implementation plan. Deep research, 4-pass spec.
+- **/plan** -> `strategy/plan` - Turn a feature or idea into an approved implementation plan sized to the decision, with executable steps and verification.
 - **/grill** -> `strategy/grill` - Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding.
 - **/council** -> `strategy/council` - Challenge an analysis or high-risk decision through relevant specialist reviews, debate, scenarios, and reconciliation.
 - **/gtm-thinker** -> `strategy/gtm-thinker` - Stress-test and expand a go-to-market campaign concept into a strategic blueprint with kill criteria.
@@ -114,7 +114,7 @@ Every command is a structured procedure with prerequisites, a Definition of Done
 - **/explain** -> `ops/explain` - Teach the operator, not the repo: a dense explainer of a concept, diff, or recent work, with an optional predict-then-reveal check-in.
 - **/handover** -> `ops/handover` - Write an end-of-session handover doc: what was done, decisions, open TODOs, backlog.
 - **/retro** -> `ops/retro` - Git-driven retrospective: shipping streak, focus score, complexity delta.
-- **/update-resonance** -> `ops/update-resonance` - Upgrade the Resonance framework with backup and restore safety. Preserves .resonance/.
+- **/update-resonance** -> `ops/update-resonance` - Upgrade the Resonance framework with provenance checks and journal-based recovery. Preserves project memory.
 - **/skill-author** -> `ops/skill-author/resonance-skill-author` - Author, validate, and eval a new Resonance skill with the Forge.
 
 ### Choosing between nearby commands

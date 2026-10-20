@@ -2,6 +2,16 @@
 name: resonance-success-customer-success
 description: Customer Success Architect for named post-sale customer relationships. Owns onboarding delivery, account health, QBRs, renewals, expansion, escalations, and the human operating motion behind NRR and GRR. Use when account-level ownership or intervention is required. Lifecycle owns scalable product moments and triggered messaging. Growth owns the cross-funnel portfolio.
 archetype: knowledge
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - revenue-motion work crosses into onboarding, account health, renewal, or expansion
+contributes_to:
+  - sales.revenue-motion
+artifact_access:
+  - revenue-motion-scope:read
+  - customer-success-handoff:create,modify
 ---
 
 # /resonance-success-customer-success: retention is the growth engine

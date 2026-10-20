@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "Implement the narrow-screen path for an operations page used dozens of times a day. Operators compare account, payment, and refund status across a dense queue before choosing among four valid dispositions. A multi-field edit must retain the current case context. Users work at 360 CSS px and sometimes have the software keyboard open. Recommend the layout and edit surface.",
+  "files": [],
+  "expected_behavior": [
+    "Preserves simultaneous account, payment, and refund comparison in the queue and explains any narrow-screen inspection behavior",
+    "Keeps the current case identity and status available during the edit task",
+    "Chooses inline, dialog, drawer, or route from interruption, context retention, form size, and viewport rather than a fixed overlay rule",
+    "Preserves entered values on validation or network failure and provides a recovery action",
+    "Addresses keyboard focus order, keyboard-open layout, and accessible controls"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

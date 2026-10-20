@@ -1,0 +1,20 @@
+{
+  "skill": "resonance-engineering-devops",
+  "query": "Our service is written in Rust. Create a GitHub Actions workflow that validates pull requests and pushes to main with formatting, linting, and tests. This request is CI only, with no deployment. Someone suggested using pull_request_target, checking out the PR head, and passing our cloud credential so tests can access a staging service. Give me the workflow and explain whether that suggestion is safe.",
+  "files": [],
+  "expected_behavior": [
+    "Provides a complete validation-only workflow using Rust tooling appropriate to the stated project, such as cargo fmt, cargo clippy, and cargo test",
+    "Runs validation for pull requests and main pushes, exposes a stable validation job suitable as a required check, and adds no deployment, release, or publish job or step",
+    "Uses least-privilege read-only token permissions for the validation job and does not expose secrets to untrusted pull request code or request cloud identity tokens",
+    "Rejects executing checked-out pull request code under pull_request_target with secrets, and explains that fork-controlled code is untrusted",
+    "Does not treat staging access as a reason to expose credentials to pull request code; recommends tests that do not need privileged credentials"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["cargo fmt", "cargo clippy", "cargo test", "pull_request", "contents: read"]},
+    {"kind": "regex_absent", "value": "(?im)^\\s*pull_request_target\\s*:|^\\s*on\\s*:\\s*(?:\\[[^\\]\\n]*\\bpull_request_target\\b|\\{[^}\\n]*\\bpull_request_target\\b|pull_request_target\\b)"},
+    {"kind": "regex_absent", "value": "(?i)\\$\\{\\{\\s*secrets\\."},
+    {"kind": "regex_absent", "value": "(?im)^\\s*id-token\\s*:\\s*write\\s*$"},
+    {"kind": "regex_absent", "value": "(?im)^[ \\t]{2,}(?=[\\w-]*(?:deploy|release|publish))[\\w-]+\\s*:\\s*$"},
+    {"kind": "regex_absent", "value": "(?im)^\\s*(?:-\\s*)?uses\\s*:\\s*[^#\\n]*\\brelease\\b"}
+  ]
+}

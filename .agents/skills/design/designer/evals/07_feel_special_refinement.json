@@ -3,16 +3,16 @@
   "query": "This dashboard works but feels flat and generic. Make it feel premium and human without a redesign.",
   "files": [],
   "expected_behavior": [
-    "Improves feel through the subconscious craft layer (tuned shadows, hairlines, easing, optical tuning, micro-typography) rather than adding decoration",
-    "Sharpens hierarchy with contrast in size, weight, color, and space; applies the squint test",
-    "Proposes one committed idea (a type pairing, an accent, a motion signature) instead of many competing flourishes",
-    "Explicitly refuses to add AI-slop tells (gradient text, glassmorphism, grid backgrounds, an eyebrow on every section) in the name of looking premium",
-    "Names refinement moves and applies them one at a time so each change is legible"
+    "Improves the existing dashboard with craft details that support its actual tasks rather than adding decoration by default",
+    "Adjusts salience so task status and the useful next action are easy to find, allowing multiple legitimate actions to remain visible",
+    "Proposes a small number of specific changes tied to the product and brief, without requiring one accent or motion idea",
+    "Avoids recognizable generic patterns when they do not serve the page, and explains the task-based reason",
+    "Orders refinements so task fit, states, and accessibility remain intact"
   ],
   "checks": [
     {
       "kind": "regex_absent",
-      "value": "[\u2014\u2013]"
+      "value": "[\\u2014\\u2013]"
     },
     {
       "kind": "regex_absent",

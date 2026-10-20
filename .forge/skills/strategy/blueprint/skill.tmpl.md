@@ -6,6 +6,7 @@ contract_version: 1
 job_id: architecture.blueprint
 stage: APPROVE
 contributes_to:
+  - delivery.build
 reviews:
   - delivery.plan
 finalizes:
@@ -71,7 +72,6 @@ invokes:
   - resonance-ops-security
   - resonance-ops-observability
   - resonance-ops-qa
-  - resonance-strategy-plan
   - resonance-ops-reviewer
 ---
 
@@ -105,14 +105,14 @@ for checks.
 1. **Frame the contract.** State the system purpose, quality attributes, scope, evidence sources, assumptions, and unresolved decisions. Separate facts from proposals. -> gate: the audit scope and approval owner are explicit.
 2. **Map reality.** Invoke `resonance-strategy-architect` to trace context, containers, trust zones, dependencies, data ownership, decisions, state transitions, side effects, and failure paths. Invoke product, security, observability, or QA only when their domain can change the result. -> gate: the observed current state cites evidence and does not claim intent.
 3. **Choose the mode.** Run the matching path:
-   - `create`: derive principles and a target from system purpose and required qualities, then define safe transition seams.
+   - `create`: derive principles and a target from system purpose and required qualities, then define safe transition seams. When a principle rests on a questioned premise, use the [First Principles Protocol](../researcher/references/first_principles.md) to check its source and applicability; keep the check proportional to its effect on the rule.
    - `revise`: classify the new evidence as clarification, exception, decision, or principle change. Preserve stable principles unless the evidence invalidates them.
    - `check`: trace the artifact against each applicable rule and contract. Do not rewrite the baseline to make the artifact pass.
 4. **Control evolution.** Keep current state, target state, and transition state separate. For every gap, select keep, constrain, migrate, replace, or remove. Prefer the smallest reversible slice that reduces risk while preserving behavior. -> gate: no total rewrite is proposed without evidence that incremental paths cannot meet the required qualities.
 5. **Record decisions and exceptions.** Write an architecture decision for a durable choice. Record a controlled exception for a temporary violation. Never hide debt in prose or label it temporary without an exit condition. Keep the exception `PROPOSED` until the declared human approval role accepts it. -> gate: each exception has scope, rationale, owner, risk, compensating controls, review trigger, evidence, removal condition, and approval evidence when active.
 6. **Verify.** Invoke `resonance-ops-qa` for testability and failure paths, `resonance-ops-security` for trust or authorization boundaries, and `resonance-ops-observability` for runtime proof when applicable. -> gate: every claimed invariant has a verification method or is labeled unverified.
 7. **Decide.** For a blueprint, return `PROPOSED` until a human approves it, then `APPROVED`. For a check, return `CONFORMING`, `CONFORMING_WITH_EXCEPTIONS`, or `NON_CONFORMING`, with blocking findings first and the smallest safe next action. -> gate: accepted debt never appears as clean conformance.
-8. **Route.** Send approved migration work to `resonance-strategy-plan` and concrete code review to `resonance-ops-reviewer`. Do not implement, deploy, merge, or change production state.
+8. **Route.** Return the approved migration scope as a plan-ready handoff to the caller. When `/plan` invoked this governance check, return the scope into that active Plan job so it can produce the implementation plan; do not start a second Plan job. For a standalone `/blueprint` request, return the handoff to the user and let them authorize a separate Plan run. This boundary prevents a governance review from recursively re-entering planning while preserving the actionable migration path. Invoke `resonance-ops-reviewer` only when a concrete code review is in scope. Do not implement, deploy, merge, or change production state.
 
 ## Guardrails
 

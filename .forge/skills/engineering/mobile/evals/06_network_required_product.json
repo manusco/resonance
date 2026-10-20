@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-engineering-mobile",
+  "query": "We are building a live market trading app. The order screen must use the current server quote and cannot safely accept offline orders. Should every new mobile app get a SQLite database and background sync by default?",
+  "files": [],
+  "expected_behavior": [
+    "Does not prescribe a local database or sync engine for every mobile app",
+    "Checks offline requirements against the product contract before choosing storage or synchronization",
+    "Keeps current-quote and order submission requirements explicit and explains that stale or queued offline orders are unsafe for this product",
+    "Defines clear unavailable, pending, failed, and retry behavior while preserving any user-entered work where safe"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\\u2014\\u2013]"
+    }
+  ]
+}

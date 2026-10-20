@@ -1,0 +1,59 @@
+{
+  "name": "build_contract_builds_and_checks",
+  "skill": "engineering/build",
+  "task": "Treat this fixture as the clean checkout and execute the accepted plan in PLAN.md. Fix the function so every test passes, do not weaken tests, and return with the change and executed test result. Do not ship.",
+  "fixture": {
+    "files": {
+      "PLAN.md": "Approved implementation plan: normalize each whitespace run to one hyphen in slugify; strip punctuation; preserve the existing API.\n",
+      "package.json": "{\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n",
+      "slug.mjs": "export function slugify(s) { return s.toLowerCase(); }\n",
+      "slug.test.mjs": "import {test} from 'node:test'; import assert from 'node:assert/strict'; import {slugify} from './slug.mjs'; test('normalizes spaces and punctuation',()=>assert.equal(slugify('Hello,   World!'),'hello-world'));\n"
+    }
+  },
+  "assert": {
+    "type": "command",
+    "cmd": "node -e \"require('child_process').execSync('node --test',{stdio:'inherit'})\"",
+    "expect_exit": 0
+  },
+  "trace_assert": {
+    "minimum_assurance": 3,
+    "ordered_subsequence": [
+      {
+        "event": "INVOKE",
+        "target": "engineering/backend"
+      },
+      {
+        "event": "INVOKE",
+        "target": "ops/audit"
+      }
+    ],
+    "allowed_skills": [
+      "strategy/blueprint",
+      "engineering/backend",
+      "engineering/frontend",
+      "engineering/ai-engineering",
+      "engineering/database",
+      "engineering/debugger",
+      "ops/security",
+      "ops/audit",
+      "ops/qa",
+      "ops/reviewer",
+      "strategy/architect"
+    ],
+    "forbidden_skills": [
+      "ops/ship"
+    ],
+    "max_fan_out": 10,
+    "artifact_access": [
+      {
+        "artifact": "slug.mjs",
+        "owner": "engineering/backend",
+        "allowed_mutations": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "correlate_world_state": true
+  }
+}

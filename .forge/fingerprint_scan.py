@@ -33,7 +33,7 @@ SOURCE_MARKERS = re.compile(
     r"(packaged source note|source note|provenance:|attribution:|"
     r"inspired by\s+https?://|adapted from\s+https?://|ported from\s+https?://|"
     r"forked from\s+https?://|based on\s+https?://|"
-    r"github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+|commit\s+[0-9a-f]{7,40})",
+    r"(?<![\w.-])(?:(?:https?|ssh)://)?github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+|commit\s+[0-9a-f]{7,40})",
     re.I,
 )
 ALLOWED_MARKERS = (

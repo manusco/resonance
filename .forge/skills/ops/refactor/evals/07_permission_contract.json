@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-ops-refactor",
+  "query": "Review these callers and proposed helper. `invoice.py` and `export.py` each duplicate checks for `actor.tenant_id == record.tenant_id`, whether the actor has the requested action, and whether the record is active. `audit_replay.py` already uses the single-implementation `AccessPolicy.allows(actor, tenant, resource, action)` contract, and all three callers depend on its stable signature. The API boundary validates actor, tenant, record, and action before these functions run. The current policy denies when actor, tenant, resource, action, or policy result is missing, unknown, or errors. Denials emit the existing `access_denied` event with actor, tenant, resource, and action. The proposed diff deletes AccessPolicy to reduce component count and leaves invoice/export local checks with a new `can_access(record)` helper that does not accept tenant or action. Recommend the smallest safe change.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies duplicated permission truth in the two callers and supports centralizing that shared rule",
+    "Moves duplicated invoice and export permission truth to AccessPolicy and retains it for all three callers because its stable contract already has a real consumer",
+    "Rejects can_access(record) because it drops tenant and action scope",
+    "Preserves default-deny behavior, boundary validation, and the existing denial audit fields",
+    "Does not recommend abstraction removal based only on component count and names the needed authorization checks"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

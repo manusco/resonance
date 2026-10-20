@@ -2,6 +2,16 @@
 name: resonance-sales-revops
 description: Revenue Operations system owner. Defines funnel stages and exit criteria, coverage policy, sales capacity, territories, quotas, compensation, forecast governance, and deal-desk rules. Use when the durable revenue operating system must be designed or changed. Pipeline owns deal-level ingestion, dashboards, velocity analysis, and a current forecast view.
 archetype: knowledge
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - revenue-motion work needs funnel definitions, capacity, or territory policy
+contributes_to:
+  - sales.revenue-motion
+artifact_access:
+  - revenue-motion-scope:read
+  - revops-plan:create,modify
 ---
 
 # /resonance-sales-revops: run the revenue system, do not just report on it

@@ -8,7 +8,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Design Director with a craftsman's eye. Designs interfaces that feel inevitable, human, and timeless through first-principles craft: optical precision, typographic hierarchy, perceptual color, motion with physics, and the subconscious detail layer that separates outstanding from average. Use when starting a design system, specifying UI, auditing a design that feels generic or AI-made, modeling the objects, names, and states users perceive, refining an interface toward high polish, designing across canvases (phone, tablet, laptop, TV), or planning all states (empty, loading, error, success)."
+      "Design Director who starts with the user's task and evidence, then applies precise visual craft. Specifies interfaces that fit real workflows across content, controls, reachable states, and supported canvases. Use when starting a design system, specifying UI, auditing a design that feels generic or AI-made, modeling the objects, names, and states users perceive, refining an interface toward high polish, designing across canvases (phone, tablet, laptop, TV), or planning applicable empty, loading, error, and success states."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -74,6 +74,7 @@
     "entrypoints": [],
     "failure_policy": "degrade",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "implementation.ai-system",
     "stage": "EXECUTE",
     "contributes_to": [
@@ -143,10 +144,12 @@
     "entrypoints": [],
     "failure_policy": "degrade",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "implementation.backend",
     "stage": "EXECUTE",
     "contributes_to": [
-      "delivery.goal"
+      "delivery.goal",
+      "delivery.build"
     ],
     "reviews": [],
     "finalizes": [
@@ -189,6 +192,8 @@
       "blueprint_scope",
       "backend_scope",
       "frontend_scope",
+      "ai_engineering_scope",
+      "database_scope",
       "debugger_scope",
       "security_scope",
       "audit_scope"
@@ -197,6 +202,8 @@
       "resonance-strategy-blueprint",
       "resonance-engineering-backend",
       "resonance-engineering-frontend",
+      "resonance-engineering-ai-engineering",
+      "resonance-engineering-database",
       "resonance-engineering-debugger",
       "resonance-ops-security",
       "resonance-ops-audit"
@@ -211,7 +218,26 @@
     "entrypoints": [
       "/build"
     ],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "lead",
+    "job_id": "delivery.build",
+    "stage": "EXECUTE",
+    "contributes_to": [],
+    "reviews": [],
+    "finalizes": [
+      "build-result"
+    ],
+    "artifact_access": [
+      "implementation-plan:read,review",
+      "implementation-artifact:create,modify,execute",
+      "build-result:create,modify",
+      "build-evidence:create,append_evidence"
+    ],
+    "dispatch_conditions": [
+      "an approved implementation plan is ready for an execution slice"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -237,6 +263,7 @@
     "entrypoints": [],
     "failure_policy": "degrade",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "implementation.database",
     "stage": "EXECUTE",
     "contributes_to": [
@@ -280,7 +307,25 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "delivery.build"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "implementation-plan:read",
+      "implementation-artifact:read,review",
+      "debug-evidence:create,modify"
+    ],
+    "dispatch_conditions": [
+      "the approved build slice needs a reproduced failure traced to its root cause"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -330,10 +375,12 @@
     "entrypoints": [],
     "failure_policy": "degrade",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "implementation.frontend",
     "stage": "EXECUTE",
     "contributes_to": [
-      "delivery.goal"
+      "delivery.goal",
+      "delivery.build"
     ],
     "reviews": [],
     "finalizes": [
@@ -381,7 +428,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Mobile Architect Specialist. Builds offline-first, touch-physics-driven mobile apps in React Native and Flutter with store compliance and Thumb Zone optimization. Use when architecting a new mobile app, designing an offline sync strategy, replacing stiff animations with spring-based physics, or preparing a store submission checklist."
+      "Mobile Architect Specialist. Builds offline-capable mobile apps in React Native and Flutter with platform-appropriate touch interaction and store compliance. Use when architecting a new mobile app, designing an offline sync strategy, adapting interactions to touch, or preparing a store submission checklist."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -423,6 +470,7 @@
     "entrypoints": [],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "verification.performance",
     "stage": "VERIFY",
     "contributes_to": [
@@ -487,7 +535,27 @@
     "entrypoints": [
       "skill:finance-run-operating-cycle"
     ],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "lead",
+    "job_id": "finance.operating-cycle",
+    "stage": "PLAN",
+    "contributes_to": [],
+    "reviews": [],
+    "finalizes": [
+      "finance-decision-brief"
+    ],
+    "artifact_access": [
+      "finance-scope:create,modify",
+      "finance-model:read",
+      "finance-metric-brief:read",
+      "finance-risk-review:read",
+      "finance-decision-brief:create,modify"
+    ],
+    "dispatch_conditions": [
+      "source actuals or assumptions must be reconciled before a finance decision is proposed"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -537,7 +605,29 @@
     "entrypoints": [
       "skill:leadership-run-operating-cycle"
     ],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "lead",
+    "job_id": "leadership.operating-cycle",
+    "stage": "PLAN",
+    "contributes_to": [],
+    "reviews": [],
+    "finalizes": [
+      "leadership-decision-brief"
+    ],
+    "artifact_access": [
+      "leadership-scope:create,modify",
+      "operating-cadence-plan:read",
+      "hiring-plan:read",
+      "productivity-analysis:read",
+      "retrospective-report:read",
+      "leadership-risk-review:read",
+      "leadership-decision-brief:create,modify"
+    ],
+    "dispatch_conditions": [
+      "a leadership cycle needs an explicit recommendation, decision owner, and follow-up"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -561,7 +651,28 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "finance.operating-cycle",
+      "marketing.campaign"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "campaign-brief:read",
+      "campaign-measurement-plan:create,modify",
+      "finance-scope:read",
+      "finance-metric-brief:create,modify"
+    ],
+    "dispatch_conditions": [
+      "campaign work needs a measurement plan, instrumentation, or experiment verdict",
+      "finance work needs defensible metric definitions or attribution"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -636,7 +747,24 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "marketing.campaign"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "campaign-brief:read",
+      "campaign-assets:create,modify"
+    ],
+    "dispatch_conditions": [
+      "campaign work needs customer-facing copy for an approved audience and offer"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -748,7 +876,28 @@
     "entrypoints": [
       "skill:marketing-run-campaign"
     ],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "lead",
+    "job_id": "marketing.campaign",
+    "stage": "PLAN",
+    "contributes_to": [],
+    "reviews": [],
+    "finalizes": [
+      "campaign-launch-proposal"
+    ],
+    "artifact_access": [
+      "campaign-brief:create,modify",
+      "gtm-hypothesis-packet:read",
+      "campaign-assets:read",
+      "campaign-measurement-plan:read",
+      "campaign-compliance-review:read",
+      "campaign-launch-proposal:create,modify"
+    ],
+    "dispatch_conditions": [
+      "a defined campaign needs a governed brief, assets, measurement, and launch proposal"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -849,14 +998,16 @@
       "reviewer_scope",
       "architecture_scope",
       "architect_scope",
-      "blueprint_scope"
+      "blueprint_scope",
+      "performance_scope"
     ],
     "invokes": [
       "resonance-ops-security",
       "resonance-ops-reviewer",
       "resonance-ops-qa",
       "resonance-strategy-architect",
-      "resonance-strategy-blueprint"
+      "resonance-strategy-blueprint",
+      "resonance-engineering-performance"
     ],
     "side_effects": [
       "may_coordinate_work",
@@ -870,9 +1021,12 @@
     ],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "verification.audit",
     "stage": "VERIFY",
-    "contributes_to": [],
+    "contributes_to": [
+      "delivery.build"
+    ],
     "reviews": [
       "delivery.goal"
     ],
@@ -983,7 +1137,24 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "leadership.operating-cycle"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "leadership-scope:read",
+      "operating-cadence-plan:create,modify"
+    ],
+    "dispatch_conditions": [
+      "leadership work needs company priorities, goals, or operating scorecards"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1040,6 +1211,7 @@
     ],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "delivery.goal",
     "stage": "EXECUTE",
     "contributes_to": [],
@@ -1176,7 +1348,32 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "leadership.operating-cycle",
+      "marketing.campaign",
+      "finance.operating-cycle"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "finance-risk-review:create,modify,review",
+      "finance-scope:read",
+      "campaign-compliance-review:create,modify,review",
+      "campaign-brief:read",
+      "leadership-scope:read",
+      "leadership-risk-review:create,modify,review"
+    ],
+    "dispatch_conditions": [
+      "leadership decisions carry material legal or compliance exposure",
+      "campaign assets require a legal or claims review",
+      "finance decisions depend on a legal or compliance risk assessment"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1329,7 +1526,24 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "leadership.operating-cycle"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "leadership-scope:read",
+      "productivity-analysis:create,modify"
+    ],
+    "dispatch_conditions": [
+      "leadership work needs ownership, coordination, or operating cadence clarified"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1358,6 +1572,7 @@
     "entrypoints": [],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "verification.qa",
     "stage": "VERIFY",
     "contributes_to": [
@@ -1431,7 +1646,24 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "leadership.operating-cycle"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "leadership-scope:read",
+      "retrospective-report:create,modify"
+    ],
+    "dispatch_conditions": [
+      "leadership work needs evidence from completed cycles to inform the next decision"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1460,6 +1692,7 @@
     "entrypoints": [],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "verification.code-review",
     "stage": "VERIFY",
     "contributes_to": [
@@ -1535,10 +1768,12 @@
     "entrypoints": [],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "verification.security",
     "stage": "VERIFY",
     "contributes_to": [
-      "verification.audit"
+      "verification.audit",
+      "delivery.build"
     ],
     "reviews": [
       "delivery.goal"
@@ -1662,7 +1897,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "The Maintainer. Upgrades the Resonance framework kernel with a preflight plan, backup, scoped replacement, rollback path, and verification. Use when migrating a project to a new version of Resonance."
+      "The Maintainer. Upgrades the Resonance framework kernel with a preflight plan, scoped replacement, recoverable transaction, rollback path, and verification. Use when migrating a project to a new version of Resonance."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1756,7 +1991,24 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "leadership.operating-cycle"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "leadership-scope:read",
+      "hiring-plan:create,modify"
+    ],
+    "dispatch_conditions": [
+      "leadership work includes an approved hiring or role-design decision"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1810,7 +2062,24 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "sales.revenue-motion"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "revenue-motion-scope:read",
+      "account-intelligence-brief:create,modify"
+    ],
+    "dispatch_conditions": [
+      "revenue-motion work needs evidence-backed account prioritization or briefs"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1837,7 +2106,24 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "sales.revenue-motion"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "revenue-motion-scope:read",
+      "call-intelligence-report:create,modify"
+    ],
+    "dispatch_conditions": [
+      "revenue-motion work includes a call transcript that needs structured analysis"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1891,7 +2177,24 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "sales.revenue-motion"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "revenue-motion-scope:read",
+      "lead-treatment-report:create,modify"
+    ],
+    "dispatch_conditions": [
+      "revenue-motion work depends on lead lifecycle quality or ownership"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1918,7 +2221,24 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "sales.revenue-motion"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "revenue-motion-scope:read",
+      "outbound-sequence:create,modify"
+    ],
+    "dispatch_conditions": [
+      "revenue-motion work calls for a source-backed outbound sequence"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1945,7 +2265,24 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "sales.revenue-motion"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "revenue-motion-scope:read",
+      "pipeline-report:create,modify"
+    ],
+    "dispatch_conditions": [
+      "revenue-motion work needs deal-level pipeline inspection or forecasting"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -1969,7 +2306,24 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "sales.revenue-motion"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "revenue-motion-scope:read",
+      "revops-plan:create,modify"
+    ],
+    "dispatch_conditions": [
+      "revenue-motion work needs funnel definitions, capacity, or territory policy"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -2028,7 +2382,32 @@
     "entrypoints": [
       "skill:sales-run-revenue-motion"
     ],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "lead",
+    "job_id": "sales.revenue-motion",
+    "stage": "PLAN",
+    "contributes_to": [],
+    "reviews": [],
+    "finalizes": [
+      "revenue-motion-proposal"
+    ],
+    "artifact_access": [
+      "revenue-motion-scope:create,modify",
+      "account-intelligence-brief:read",
+      "lead-treatment-report:read",
+      "outbound-sequence:read",
+      "call-intelligence-report:read",
+      "pipeline-report:read",
+      "revops-plan:read",
+      "customer-success-handoff:read",
+      "revenue-compliance-review:read",
+      "revenue-motion-proposal:create,modify"
+    ],
+    "dispatch_conditions": [
+      "a governed revenue motion spans account work, outreach, pipeline, forecast, or post-sale handoff"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -2068,11 +2447,10 @@
     ],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "delivery.compatibility-intake",
     "stage": "FRAME",
-    "contributes_to": [
-      "delivery.goal"
-    ],
+    "contributes_to": [],
     "reviews": [],
     "finalizes": [
       "goal-handoff"
@@ -2111,6 +2489,7 @@
     "entrypoints": [],
     "failure_policy": "degrade",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "design.system-architecture",
     "stage": "PLAN",
     "contributes_to": [
@@ -2178,7 +2557,6 @@
       "resonance-ops-security",
       "resonance-ops-observability",
       "resonance-ops-qa",
-      "resonance-strategy-plan",
       "resonance-ops-reviewer"
     ],
     "side_effects": [
@@ -2193,9 +2571,12 @@
     ],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "architecture.blueprint",
     "stage": "APPROVE",
-    "contributes_to": [],
+    "contributes_to": [
+      "delivery.build"
+    ],
     "reviews": [
       "delivery.plan"
     ],
@@ -2272,6 +2653,7 @@
     ],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "intent.execution-brief",
     "stage": "FRAME",
     "contributes_to": [],
@@ -2367,7 +2749,24 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "finance.operating-cycle"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "finance-scope:read",
+      "finance-model:create,modify"
+    ],
+    "dispatch_conditions": [
+      "finance-cycle work needs driver-based modeling or scenario analysis"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -2396,10 +2795,11 @@
     "entrypoints": [],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "design.plan-challenge",
     "stage": "FRAME",
     "contributes_to": [
-      "delivery.plan"
+      "delivery.goal"
     ],
     "reviews": [],
     "finalizes": [
@@ -2463,7 +2863,24 @@
     ],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "stop"
+    "failure_policy": "stop",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "marketing.campaign"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "campaign-brief:read",
+      "gtm-hypothesis-packet:create,modify"
+    ],
+    "dispatch_conditions": [
+      "campaign work needs its audience, offer, channel, or hypothesis stress-tested"
+    ],
+    "compatibility": "active"
   },
   {
     "schema_version": 1,
@@ -2495,12 +2912,15 @@
       "research_scope",
       "researcher_scope",
       "venture_scope",
+      "architect_scope",
       "blueprint_scope"
     ],
     "invokes": [
       "resonance-ops-product",
       "resonance-strategy-researcher",
-      "resonance-strategy-venture"
+      "resonance-strategy-venture",
+      "resonance-strategy-architect",
+      "resonance-strategy-blueprint"
     ],
     "side_effects": [
       "may_coordinate_work"
@@ -2513,6 +2933,7 @@
     ],
     "failure_policy": "stop",
     "contract_version": 1,
+    "contract_role": "lead",
     "job_id": "delivery.plan",
     "stage": "PLAN",
     "contributes_to": [
@@ -2608,6 +3029,23 @@
     "side_effects": [],
     "write_sets": [],
     "entrypoints": [],
-    "failure_policy": "degrade"
+    "failure_policy": "degrade",
+    "contract_version": 1,
+    "contract_role": "participant",
+    "job_id": "",
+    "stage": "",
+    "contributes_to": [
+      "sales.revenue-motion"
+    ],
+    "reviews": [],
+    "finalizes": [],
+    "artifact_access": [
+      "revenue-motion-scope:read",
+      "customer-success-handoff:create,modify"
+    ],
+    "dispatch_conditions": [
+      "revenue-motion work crosses into onboarding, account health, renewal, or expansion"
+    ],
+    "compatibility": "active"
   }
 ]

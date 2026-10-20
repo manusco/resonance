@@ -1,6 +1,6 @@
 # Responsive Canvas
 
-> A phone is not a small laptop, and a TV is not a big one. Each canvas has its own input, viewing distance, and posture. The design must be right for the surface it lands on, from a 360px phone in one hand to a wall-sized display across the room. Fluid, input-appropriate, and tested at the edges.
+> A phone is not a small laptop, and a TV is not a big one. Each canvas has its own input, viewing distance, and posture. Adapt the design to supported surfaces, inputs, and viewing conditions. Use a narrow viewport such as 320 CSS px to expose reflow problems where applicable. Fluid, input-appropriate, and tested at the edges.
 
 ## Contents
 - Design for input, not just width
@@ -36,7 +36,7 @@ Screen width is the crude signal. The real question is how the user points at th
 
 ## Touch: targets, thumbs, and gestures
 
-- Minimum touch target 44 by 44px (iOS) or 48 by 48dp (Android), even when the visible icon is smaller; expand the hit area beyond the glyph. Space targets apart so fat fingers do not hit the wrong one.
+- Meet WCAG 2.2 AA 2.5.8 target-size (minimum): generally 24 by 24 CSS px or sufficient spacing, subject to the criterion’s exceptions. Also follow applicable platform guidance, such as Apple’s 44 pt or Android’s 48 dp recommendations; these use different units and contexts. Expand a small icon’s hit area when space permits and avoid adjacent targets that invite errors.
 - Respect the thumb. On a large phone, the top corners are hard to reach one-handed. Put primary actions within thumb reach, often a bottom bar, not a top-right corner.
 - Support the platform gestures (swipe back, pull to refresh, swipe to dismiss) and do not collide with them. A horizontal carousel inside a swipe-to-dismiss sheet fights the user.
 - Provide press feedback, since there is no hover. Every tappable thing needs a visible pressed state. See motion_and_feel.
@@ -66,7 +66,7 @@ Screen width is the crude signal. The real question is how the user points at th
 
 ## Zoom, reflow, and orientation
 
-- The layout must survive 200 percent browser zoom and reflow to a single column at 400 percent without horizontal scrolling or clipped content. This is both an accessibility requirement and a stress test that exposes brittle fixed layouts.
+- At 320 CSS px viewport width (or equivalent 400 percent zoom from a 1280 CSS px viewport), content must reflow without loss of information or functionality, except for content that requires two-dimensional layout. Verify zoom and text resizing against WCAG 2.2 AA 1.4.4 and 1.4.10; do not require every layout to become a single column.
 - Support both orientations where the device rotates. A form that only works in portrait, or a video tool that assumes landscape, fails half its users. Reflow, do not letterbox, unless the content genuinely demands one orientation.
 - Account for foldables and split-screen: the viewport can be unusually narrow or tall, or change mid-session. Fluid layouts handle this for free; fixed ones break.
 
@@ -74,7 +74,7 @@ Screen width is the crude signal. The real question is how the user points at th
 
 Before calling a responsive design done, verify it on each real canvas, not just by dragging the window:
 
-- 360px phone, portrait and landscape, touch, with the on-screen keyboard open.
+- Smallest supported phone width, including 320 CSS px reflow where applicable, portrait and landscape, touch, with the on-screen keyboard open.
 - Tablet, both orientations, touch and pointer.
 - Laptop and a large desktop display, pointer and keyboard.
 - 200 percent zoom and a screen reader pass.

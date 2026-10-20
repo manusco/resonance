@@ -1,0 +1,56 @@
+{
+  "name": "campaign_brief_assets_measurement_proposal",
+  "skill": "marketing/run-campaign",
+  "task": "Prepare a campaign proposal for the supplied offer and evidence. Produce campaign-launch-proposal.md with audience, one primary outcome, a sourced claim, channel asset, measurement plan, and approval still required. Do not publish, send, or spend.",
+  "fixture": {
+    "files": {
+      "offer.md": "Offer: free 14-day trial of the team dashboard. Verified product fact: teams can see project status in one dashboard. Audience: operations leads at 20-100 person software companies. Goal: qualified trial starts. Budget: $0 until approval.\n",
+      "campaign-check.py": "from pathlib import Path\ns=Path('campaign-launch-proposal.md').read_text().lower()\nfor term in ['audience','trial starts','source','measure','approval']:\n assert term in s, term\n"
+    }
+  },
+  "assert": {
+    "type": "command",
+    "cmd": "python3 campaign-check.py",
+    "expect_exit": 0
+  },
+  "trace_assert": {
+    "minimum_assurance": 3,
+    "ordered_subsequence": [
+      {
+        "event": "INVOKE",
+        "target": "marketing/copywriter"
+      },
+      {
+        "event": "INVOKE",
+        "target": "marketing/analytics"
+      }
+    ],
+    "allowed_skills": [
+      "strategy/gtm-thinker",
+      "strategy/growth",
+      "strategy/grill",
+      "marketing/copywriter",
+      "marketing/content-distribution",
+      "marketing/lifecycle",
+      "marketing/paid-acquisition",
+      "marketing/analytics",
+      "design/studio",
+      "ops/legal"
+    ],
+    "forbidden_skills": [
+      "ops/ship"
+    ],
+    "max_fan_out": 10,
+    "artifact_access": [
+      {
+        "artifact": "campaign-launch-proposal.md",
+        "owner": "marketing/run-campaign",
+        "allowed_mutations": [
+          "CREATE",
+          "MODIFY"
+        ]
+      }
+    ],
+    "correlate_world_state": true
+  }
+}

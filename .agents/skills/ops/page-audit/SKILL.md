@@ -50,11 +50,11 @@ invokes:
 > **Invoked as:** `/page-audit` (to run the experience swarm across a page or a site).
 > **Input:** A live URL, a local site repo, or a set of properties.
 > **Output:** A per-page findings sheet (add / change / rearrange / remove), a `FUTURE_IMPROVEMENTS.md` forward backlog, and for a multi-site run a cross-site master report.
-> **Definition of Done:** Every page and meaningful state is inventoried and interrogated. Each finding names the lens that owns the fix. The single most important change per page is named and in the plan. The forward backlog is written and ranked.
+> **Definition of Done:** Every in-scope page and relevant state is inventoried. Findings distinguish observed evidence from assumptions, name the owning lens, and rank changes by the page's user task and risk. The forward backlog is written and ranked.
 
-`/audit` hunts the code for what is broken. This is its twin for the experience. You do not lead with a list of tweaks. You ask, for every page, what job it does, whether the value is real and lands fast, and whether a first-time visitor gets it without thinking. The current page is evidence, not the target. Derive the answer from the job to be done, then decide: add, change, rearrange, remove, or leave.
+`/audit` hunts the code for what is broken. This is its twin for the experience. You do not lead with a list of tweaks. You ask, for every page, what job it does, whether the value is real, and whether the intended user can complete the relevant task. Use above-the-fold promise and time-to-value checks where the page serves a marketing or acquisition job. The current page is evidence, not the target. Derive the answer from the job to be done, then decide: add, change, rearrange, remove, or leave.
 
-You do not run every lens yourself. You orchestrate the skills that already own each one, and you add the frame none of them have: the page's reason to exist, the gap between promise and delivery, and the one change that would actually move a real user.
+You do not run every lens yourself. You orchestrate the skills that already own each one, and you add the frame none of them have: the page's reason to exist, the gap between promise and delivery where relevant, and the highest-priority change for the user or business. Include other necessary findings in the ranked plan.
 
 ## Prerequisites (fail fast)
 
@@ -69,15 +69,15 @@ Copy this checklist and tick items as you go. Run it per site, page by page. Do 
 2. **Inventory.** Enumerate every page and every meaningful state from `src/pages`, `app/`, the router, and the rendered output. No page gets skipped. Produce the page list before auditing.
 3. **Baseline.** Run `/system-health` for the score and flags, and `/audit` for code, security, and function findings (P0-P3). This is the safety net a page-by-page pass misses.
 4. **Interrogate each page.** Run the first-principles battery (see Page Interrogation Battery). For each dimension, delegate the deep lens to the skill that owns it, and add the frames only this skill carries. Produce a per-page findings sheet.
-   - Purpose, job to be done, and what to remove: this skill's frame.
+   - Purpose, user job, task path, and useful or missing information: this skill's frame.
    - Value promise vs delivery, and the gap: this skill's frame, with `/friction` for the value-proposition mechanics.
    - Copy, idiomatic and proof-backed: delegate to `/copywriter`.
-   - Clarity and "don't make me think": `/design` and `/friction`.
-   - CTA and conversion: `/friction`.
+   - Clarity and task hierarchy: `/design`, with `/friction` for commercial friction.
+   - Commercial action and conversion: `/friction`; preserve product-workspace actions that serve distinct tasks.
    - Design and craft: `/design`.
    - Function and correctness: `/audit` and `/test`. Click it, submit it, break it.
    - Performance, SEO, accessibility, trust: `/seo` and `/audit`.
-5. **Anti-theater pass.** For each page, name the single change that will matter most to a real user. That one goes in the plan, not just the ten easy ones around it.
+5. **Anti-theater pass.** For each page, name the highest-priority change that will matter most to a real user. Put it first in the plan alongside any other necessary findings.
 6. **Synthesize.** Rank each page's findings as add, change, rearrange, or remove, most important first. For a multi-site run, extract the patterns that repeat across sites.
 7. **Forward backlog.** Write `FUTURE_IMPROVEMENTS.md` per site (see Forward Backlog Protocol). For a multi-site run, write the cross-site master report.
 8. **Hand off.** Implementation goes to `/goal`, deploy to `/ship`. You produce the plan and the backlog. You do not implement or ship in this skill.
@@ -98,16 +98,16 @@ Copy this checklist and tick items as you go. Run it per site, page by page. Do 
 ## Cognitive Frameworks
 
 ### First Principles
-The current page is evidence, not the target. For every page, derive the answer from the job it exists to do, not from what is currently on it. State that job in one sentence. If you cannot, the page has no focus, and that is finding number one.
+The current page is evidence, not the target. State the page's job and the user's task path from available evidence. If the job is unclear, record the uncertainty and its impact; do not declare the page unfocused without evidence.
 
 ### The Value Gap
-Every page makes a promise above the fold, explicit or implied. The distance between that promise and what the page actually delivers, and how fast, is the most important fix on the page. Measure time-to-value in seconds and in scroll depth. Close the gap before polishing anything else.
+For marketing pages, compare the promise at the decision point with what the page delivers and how quickly. For task workspaces, measure the task information, status, and action path users need. Record the evidence and choose a task-appropriate measure; do not require an above-the-fold marketing model for every surface.
 
 ### Anti-Theater (Substantial or Nothing)
-A page is not "done" because a button got renamed. Done means the job is measurably clearer, the value lands faster, the copy is real, and the action is easier. If a change would not move a real user, it is theater. For each page, write the one change that matters most, and make sure you actually do that one.
+A page is not "done" because a button got renamed. The audit should identify an evidence-backed priority and a way to judge it. If a change would not help a real user or the stated business goal, it is theater. Rank the priority first and include all other necessary findings in the plan; implementation belongs to the handoff owner.
 
 ### Removal is a Feature
-What can be cut from this page without hurting its job? Every element that does not serve the one action competes with it. Count the decisions the page forces on the user, and delete the ones that do not need to exist.
+Find what users need to notice, understand, compare, decide, and do. Derive hierarchy and action staging from task frequency, consequence, uncertainty, and recovery cost. Multiple actions may be valid on product workspaces or comparison pages. Delegate detailed visual hierarchy to `/design` and commercial action choices to `/friction`.
 
 ## Deliverables
 

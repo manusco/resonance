@@ -1,0 +1,27 @@
+{
+  "skill": "resonance-strategy-researcher",
+  "query": "We need signed session tokens. Should we write our own signing algorithm to avoid a dependency, or use the language standard library? Recommend an approach and say what evidence could change it.",
+  "files": [],
+  "expected_behavior": [
+    "States the required token behavior and checks the language/runtime and existing dependencies before proposing new code",
+    "Recommends a vetted existing cryptographic implementation when it meets the token format and security requirements",
+    "Preserves signature verification, key handling, expiry and authorization checks at the relevant trust boundary",
+    "Names concrete compatibility or security evidence that could change the implementation choice",
+    "Does not treat minimum dependency count or an analogy as proof that custom cryptography is simpler or safe"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "standard library",
+        "standard-library",
+        "existing implementation",
+        "vetted"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

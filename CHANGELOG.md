@@ -1,12 +1,59 @@
 # Changelog
 
-## v2.5.41
+## v2.5.45
 
-The audit validation-gates release.
+The security evidence and test value release.
 
 ### Changed
-- **Security source visibility.** Security review now keeps source-visible proof separate from deployment or provider facts, marks source-grounded but externally blocked leads as needs validation, and requires independent validation before confirming findings.
-- **Test value audit.** QA now rejects low-value tests that only preserve source shape, duplicate stronger proof, or demand test-only production seams, with a new eval covering the owner-boundary gate.
+- **Security evidence boundaries.** Security guidance separates source-visible proof from deployment and provider facts, and requires independent validation before confirming vulnerabilities.
+- **QA test value.** QA guidance rejects tests that preserve private source shape or rely on test-only production seams, while retaining narrow controls for nondeterministic dependencies when they prove observable behavior.
+- **Eval coverage.** Added cases for security source visibility, low-value tests, and legitimate deterministic dependency seams.
+
+## v2.5.44
+
+The updater recovery and ownership release.
+
+### Fixed
+- **Updater ownership and recovery.** Stale ownership hashes reconcile when live files match the selected source or a verified installed release. Genuine customizations remain protected. Recovery uses exact pinned Git blobs and copies only unrecoverable preimages. No-op previews leave recovery data untouched and explain that no files will change.
+
+## v2.5.43
+
+The task-first UX, evidence-led simplicity, and workflow sequencing release.
+
+### Changed
+- **Task-fit UX guidance.** Design, frontend, mobile, conversion, and page-audit guidance now choose hierarchy, interactions, offline behavior, and experiments from the user's task, product contract, platform, and available evidence.
+- **Evidence-led simplicity.** The shared Necessity Protocol and implementation, research, and architecture guidance compare options against the full requested outcome and safeguards, without fixed cuts or unsupported defaults.
+- **First-principles and research checks.** Guidance distinguishes physical constraints, institutional obligations, measured estimates, and conventions, and checks their source, fit, uncertainty, and reversal conditions.
+- **Workflow sequencing.** Build, automation, DevOps, performance, productivity, and planning guidance distinguish queue wait, execution, dependency, quality, and recovery constraints before changing the workflow.
+
+### Added
+- **Boundary evals.** New cases cover products that require a live network, conversion audits with a rate but no page evidence, and workflow, design, research, and planning edge cases. These fixtures add structural coverage; they do not claim measured behavior lift.
+
+## v2.5.42
+
+Document GitHub repository governance, Actions security, release provenance, and cost controls in the DevOps skill.
+
+### Added
+- **GitHub repository and Actions reference** (`engineering/devops`): covers repository rules, untrusted pull request workflows, permissions, required checks, workflow reliability and cost, and release provenance.
+- **Validation-only Rust CI eval.** Adds a deterministic case for safe pull request and `main` validation, with no deployment, release, or publish behavior.
+
+### Fixed
+- **Fingerprint scan false positive.** Official `docs.github.com` links no longer match the repository-source marker; direct GitHub repository links remain detectable.
+
+## v2.5.41
+
+The evaluation integrity and bounded workflow release.
+
+### Added
+- **Architecture boundary.** `docs/ARCHITECTURE_BOUNDARY.md` defines what the portable Resonance framework supplies and what host adapters and adopters must prove or operate.
+- **Governed field reports.** Reports can carry run, artifact, sensitivity, owner, and delayed-outcome metadata. Restricted reports are rejected before proposal output; accepted reports remain review proposals and do not self-promote into skills or evals.
+- **Selective job contracts.** Build, campaign, revenue motion, finance cycle, and leadership cycle now have formal workflow contracts, with invocation reachability and handoffs checked against declared participants.
+- **Baseline protocol.** `docs/evals/private-behavioral-baseline.md` defines private holdout handling, human-gold judge calibration, model identity, spend limits, and reporting requirements. No behavioral lift is claimed by this release.
+
+### Fixed
+- **Eval path containment.** Orchestration fixtures and staged skill paths are validated before writes, including traversal and symlink escapes.
+- **Scoring setup.** Scored evals require external holdout and evidence roots, distinct answerer and judge identities, and a baseline identity.
+- **Honest cost gates.** Unknown cost is represented as `null`; it cannot pass a gate that requires measured cost.
 
 ## v2.5.40
 

@@ -19,7 +19,7 @@
   "commands": [
     { "alias": "init",            "skill": "ops/core",                 "manual": true,  "desc": "Bootstrap the .resonance/ project memory (soul, state, docs scaffold). Run once per new project." },
     { "alias": "venture-model",   "skill": "strategy/venture",         "desc": "Model the business, offer stack, and revenue math before planning." },
-    { "alias": "plan",            "skill": "strategy/plan",            "desc": "Turn a feature or idea into an atomic, approved implementation plan. Deep research, 4-pass spec." },
+    { "alias": "plan",            "skill": "strategy/plan",            "desc": "Turn a feature or idea into an approved implementation plan sized to the decision, with executable steps and verification." },
     { "alias": "grill",           "skill": "strategy/grill",           "desc": "Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding." },
     { "alias": "goal",            "skill": "ops/goal",                 "manual": true,  "desc": "The autonomous goal loop: frame, decompose, then build and verify each slice against real checks, bounded, never auto-ship." },
     { "alias": "brief",          "skill": "strategy/brief",           "desc": "Turn a rough request into an intent-faithful execution brief, then run or route it within the user's authority." },
@@ -53,7 +53,7 @@
     { "alias": "seo",             "skill": "marketing/seo",            "desc": "SEO and GEO audit: structured data, canonical, schema, AI-citation optimization." },
     { "alias": "search-cycle",    "skill": "marketing/run-search-operating-cycle", "manual": true, "desc": "Run a private-first search evidence cycle and produce a governed P0-P3 audit report." },
     { "alias": "update-roadmap",  "skill": "ops/update-roadmap",       "manual": true,  "desc": "Sync .resonance/01_state.md with the git log so the map matches the territory." },
-    { "alias": "update-resonance","skill": "ops/update-resonance",     "manual": true,  "desc": "Upgrade the Resonance framework with backup and restore safety. Preserves .resonance/." },
+    { "alias": "update-resonance","skill": "ops/update-resonance",     "manual": true,  "desc": "Upgrade the Resonance framework with provenance checks and journal-based recovery. Preserves project memory." },
     { "alias": "skill-author",    "skill": "ops/skill-author/resonance-skill-author", "desc": "Author, validate, and eval a new Resonance skill with the Forge." }
   ]
 }

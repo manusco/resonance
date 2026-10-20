@@ -13,9 +13,9 @@
 ## 2. Touch/UX Sins
 | ❌ NEVER DO | Why It's Wrong | ✅ ALWAYS DO |
 |-------------|----------------|--------------|
-| **Touch target < 44px** | Impossible to tap | Minimum 44pt (iOS) / 48dp (Android) |
-| **Spacing < 8px** | Accidental taps | Minimum 8-12px gap |
-| **No loading state** | User thinks app crashed | ALWAYS show loading feedback |
+| **Target below the applicable platform or accessibility criterion** | May be hard to activate in the actual context | Use target platform guidance and applicable accessibility criteria. WCAG 2.2 AA is 24×24 CSS px or spacing, with exceptions; iOS and Android guidance uses platform-specific point/dp units and may recommend larger targets |
+| **Insufficient separation for the controls and context** | Accidental taps become more likely | Test spacing with realistic content and target devices; do not treat one gap value as universal |
+| **Missing feedback for a meaningful pending operation** | The user cannot tell whether the action registered | Show status when waiting affects understanding or recovery; avoid redundant or disruptive loading UI for work that completes immediately |
 | **No offline handling** | Crash on signal loss | Graceful degradation |
 
 ## 3. Security Sins

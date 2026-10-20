@@ -1,10 +1,10 @@
 # System Design Checklist
 
-> **Objective**: Ensure architecture is simple, justified, and viable.
+> **Objective**: Ensure architecture is simple, justified, and viable. Apply the checks relevant to the changed boundary; this list is not a requirement to produce every artifact or model every system concern for every task.
 
 ## 1. Requirements Validation
 - [ ] **Constraints Identified**: Budget, Timeline, Compliance, Team Skills.
-- [ ] **Simplicity Check**: Is there a simpler way? (e.g., Monolith vs Microservices).
+- [ ] **Boundary Evidence**: For each proposed boundary, name its current owner and the present scaling, deployment, failure, security, or data-ownership need. Would the simplest single-deploy topology meet the contract? Do not use hypothetical future growth alone as evidence.
 - [ ] **Buy vs Build**: Evaluated SaaS alternatives before building custom.
 
 ## 2. Trade-Off Analysis
@@ -21,5 +21,5 @@
 - [ ] **Data Ownership**: Single source of truth defined for every entity.
 
 ## 4. Documentation
-- [ ] **ADR**: Key decisions recorded.
-- [ ] **C4**: System Context and Containers visualized.
+- [ ] **Decision Record**: Record durable boundary, contract, and material operating-cost choices.
+- [ ] **C4**: Visualize context and containers when the topology decision needs them.

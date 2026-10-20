@@ -5,10 +5,12 @@
 
 ## 1. Fundamentals
 *   **SLI (Indicator)**: What we measure (Latency).
-*   **SLO (Objective)**: The target (Latency < 200ms).
-*   **SLA (Agreement)**: The consequence (Refund if > 500ms).
+*   **SLO (Objective)**: The service target chosen for the product and workload, such as a latency threshold.
+*   **SLA (Agreement)**: The consequence defined by an applicable agreement, such as a refund threshold.
 
-## 2. The Hierarchy of Needs (Tiered SLOs)
+## 2. Example tiers, not defaults
+
+The values below are examples only. Set targets from the product's user promise, risk, and observed workload; do not assign a tier or inherit a target without that context.
 
 ### Tier 1: Critical Path (Login, Checkout)
 *   **Latency**: p95 < 200ms
@@ -25,8 +27,9 @@
 *   **Availability**: 99%
 *   **Rationale**: Can be retried later.
 
-## 3. Performance Budgets (The Ceiling)
-Don't just measure speed. Measure weight.
+## 3. Example performance budgets
+
+These sample values are not defaults. Set budgets only when the product's user promise, workload, and operating policy support them. Measure weight as well as speed when it affects those goals.
 
 ```json
 {
@@ -37,10 +40,11 @@ Don't just measure speed. Measure weight.
 }
 ```
 
-## 4. Implementation Checklist
-When optimizing a service:
+## 4. Checks when they apply
 
-- [ ] **Define the Tier**: Is this Critical, Important, or Background?
-- [ ] **Set the SLO**: What is the "Happy" threshold? (e.g., 200ms).
-- [ ] **Measure p95**: Ignore the average. Look at the 95th percentile.
-- [ ] **Error Budget**: If we have budget left, we can ship risky features. If not, we freeze.
+When optimizing a service without an established project target, agree the relevant objective and percentile with its owner. Apply an error budget only when an active service policy defines one.
+
+- Consider a criticality tier when it is part of the product's service policy.
+- Set or use the SLO that applies to this service and decision.
+- Choose a percentile and population that fit the user promise and workload.
+- Apply the error budget and release policy defined by the service owner.

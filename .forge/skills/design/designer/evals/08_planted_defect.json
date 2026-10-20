@@ -6,7 +6,7 @@
     "Names the specific AI-slop tells in the draft: the purple-to-blue gradient background, the gradient-clipped headline text, the default sans-serif, and the three visually identical cards",
     "Refuses to sign off on the draft as-is and states it should not ship in its current form",
     "Replaces the gradient with a deliberate, register-justified color choice instead of a different default",
-    "Specifies the missing hover and focus states for the cards, since only the rest state currently exists",
+    "Determines whether the feature cards are interactive and specifies hover/focus feedback only if they are actionable controls or links",
     "Runs the revised design through the AI-slop check before presenting it as ready"
   ],
   "checks": [

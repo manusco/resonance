@@ -17,6 +17,6 @@
 
 ## 3. Layout & Mobile Anti-Patterns
 *   **Ignoring Safe Areas**: ❌ Don't place fixed headers or footers in the device notch or gesture bar areas. Respect `safe-area-inset-bottom`.
-*   **Tiny Touch Targets**: ❌ Do not make mobile buttons smaller than `44x44px` (iOS) or `48x48dp` (Android). If the visual icon is smaller, expand the hit area.
+*   **Hard-to-activate controls**: ❌ Check touch targets against the applicable platform guidance and accessibility criterion. WCAG 2.2 AA uses 24×24 CSS px or spacing with exceptions; native iOS points and Android dp recommendations use platform-specific units and may call for larger targets. Expand the hit area when the visible icon is smaller.
 *   **Horizontal Scroll Traps**: ❌ Ensure no main content forces a horizontal scroll on mobile viewport settings. Use `max-w-full` and `overflow-x-hidden` on roots if necessary.
 *   **Gesture Conflicts**: ❌ Do not put a horizontal swipe carousel inside a drawer that is dismissed via a horizontal swipe.

@@ -34,22 +34,25 @@ Rams' ten principles are not decoration on the wall of a design studio. They are
 
 Points 7, 8, and 10 are where most AI design fails. It chases the fashionable (point 7), leaves the details to defaults (point 8), and adds decoration to look designed (point 10).
 
-## The perception laws that actually change decisions
+## Task fit and bounded evidence
 
-Do not cite these to sound smart. Use them to make choices.
+Start with the user's task, not a law or a preferred composition. Record the user, trigger, goal, information needed at the decision point, and what counts as success. For consequential choices, describe frequency, urgency, uncertainty, error consequence, and recovery cost separately. These questions structure judgment; they are not inputs to a validated universal score.
 
-- **Gestalt: proximity.** Things close together are read as a group. Control grouping with space before you reach for a border or a box. Most dividers are proximity failures.
-- **Gestalt: common region and similarity.** A shared background or a shared shape binds elements. Use one grouping cue, not three stacked on the same group.
-- **Figure and ground.** The eye needs a clear subject and a clear background. Low figure-ground contrast is why a design feels muddy even when nothing is obviously wrong.
-- **Fitts's Law.** Time to hit a target grows with distance and shrinks with size. Primary actions are big and close. Destructive actions are not placed next to common ones. On touch, nothing important is smaller than 44px.
-- **Hick's Law.** More choices, slower decisions. A screen with one obvious next step beats a screen with nine equal options. Reduce, group, and default.
-- **Miller's Law.** Working memory holds a handful of chunks. Break long numbers, forms, and lists into groups. Progressive disclosure over a wall of everything.
-- **Jakob's Law.** Users spend most of their time on other products, so they expect yours to work like those. Convention is a gift to the user in the product register. Spend your novelty budget where it differentiates, not on the checkout flow.
-- **Von Restorff (isolation).** The thing that differs is the thing remembered. This is why one accent color works and five do not. Emphasis is a scarce resource.
-- **Aesthetic-usability effect.** People perceive good-looking design as easier to use, and forgive minor friction. Craft buys goodwill. It does not excuse broken flows.
-- **Doherty threshold.** Interaction under 400ms feels immediate and keeps people engaged. Above it, attention leaks. Design for the feeling of speed: instant feedback, optimistic updates, reserved space.
-- **Peak-end rule.** People judge an experience by its most intense moment and its end, not its average. Invest craft in the peak moments and the finish: the successful submit, the completed task, the empty-to-first-item transition.
-- **Tesler's Law.** Complexity is conserved. Every flow has an irreducible amount. The only question is who absorbs it, the user or the design. Elite design eats the complexity so the user does not.
+Then make a concrete choice and say what evidence could prove it wrong. Prefer task completion, first-action success, missed information, wrong-action rate, and recovery success over claims that a screen feels simpler. Separate observed product facts from assumptions.
+
+Use perception research as a bounded explanation, not a layout recipe:
+
+- **Proximity and common region** can help show which labels, values, and actions belong together. Use the lightest grouping cue that makes the relationship clear.
+- **Fitts' law** describes aimed movement under studied conditions. Keep relevant controls close to the content they affect and make targets forgiving. It does not set one universal pixel size. Meet WCAG 2.2 AA target-size criteria where applicable, and follow platform guidance such as 44 pt or 48 dp only for its named platform and context.
+- **Hick-Hyman law** models choice reaction time in studied choice tasks. It does not mean fewer options are always faster. Group by user goal and reduce irrelevant choices, but preserve legitimate alternatives users need to compare.
+- **Miller's 7±2** is not a cap on fields, tabs, or menu items. Group by task structure; keep status and context visible when users must compare them.
+- **Jakob's law** supports familiar patterns in familiar product tasks. Use convention to reduce relearning, while respecting the product's actual workflow.
+- **Visual hierarchy** is a set of salience cues, not a guaranteed eye path. Emphasize the useful next action and status, then check first-action success with representative users or tasks.
+- **Aesthetic-usability findings** do not excuse broken flows. Craft earns its place when it supports legibility, orientation, trust, or the intended brand.
+- **Response feedback** should acknowledge an action promptly. A 400ms figure is a rough historical guideline, not a universal pass line; perceived wait depends on task, feedback, and system response. Give honest progress when work takes longer.
+- **Progressive disclosure** helps when detail is advanced or rare and can be found before it is needed. It harms comparison, discovery, or urgent action when the hidden choice matters now.
+
+Do not apply a “one primary CTA,” fixed chrome ratio, card grid, or color allocation formula across all surfaces. A marketing page may benefit from a clear next step; an operations workspace may need several equally valid dispositions. Choose based on task and evidence. For deeper evidence limits, see the UX research note and the operational sequence in the skill.
 
 ## Clarity over cleverness
 

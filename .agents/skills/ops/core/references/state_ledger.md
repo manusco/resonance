@@ -150,7 +150,7 @@ due: 2026-08-01
 Measure replies seven days after the first send.
 ```
 
-`py .forge/measurement_due.py` scans for entries whose `due:` date has arrived and surfaces them at session start. It is pull, not push: nothing fires on a clock, and it is silent when nothing is due. When the outcome lands, the human or agent records the real result (the metric `value`, the experiment `result`), sets `status: closed`, and the loop is closed: the work is now either confirmed or refuted by reality, not by the model's own say-so. A field report that a skill misfired runs the other direction: `py .forge/field_report.py` turns it into a `les-` lesson and a stub eval case, so the miss compounds into a permanent regression check.
+`py .forge/measurement_due.py` scans for entries whose `due:` date has arrived and surfaces them at session start. It is pull, not push: nothing fires on a clock, and it is silent when nothing is due. When the outcome lands, the human or agent records the real result (the metric `value`, the experiment `result`), sets `status: closed`, and the loop is closed: the work is now either confirmed or refuted by reality, not by the model's own say-so. A field report that a skill misfired runs the other direction: `py .forge/field_report.py` prints a lesson proposal and an eval stub marked `needs-eval`. A maintainer must review and validate them before adding a ledger entry or active eval case; the report itself changes neither artifact.
 
 ## How an agent uses it
 

@@ -15,7 +15,7 @@ HEX = "a" * 64
 
 
 def manifest(path: Path, kind: str, *, state: str = "COMPLETE", gates=None,
-             candidate_id: str = "candidate"):
+             candidate_id: str = "candidate", cost=0):
     required = promotion_eval.REQUIRED_GATES_BY_KIND[kind]
     gate_map = {gate: "PASS" for gate in required}
     gate_map.update(gates or {})
@@ -33,7 +33,7 @@ def manifest(path: Path, kind: str, *, state: str = "COMPLETE", gates=None,
         "execution": {
             "repetitions": 1, "thresholds": {}, "host": "test",
             "tool_profile": "test", "permission_profile": "sandbox",
-            "cost": {"currency": "USD", "amount": 0}, "latency_ms": 1,
+            "cost": {"currency": "USD", "amount": cost}, "latency_ms": 1,
         },
         "results": [{"id": f"{kind}-result", "hash": HEX}],
         "summary": {"candidate_id": candidate_id, "evidence_kind": kind, "gates": gate_map},
@@ -119,6 +119,21 @@ class PromotionEvaluatorTests(unittest.TestCase):
                 result = promotion_eval.verdict("candidate", [path], repo=ROOT,
                                                 allow_dirty=True, required_kinds={"structural"})
             self.assertEqual("INCOMPLETE", result["outcome"])
+
+    def test_cost_gate_pass_requires_measured_cost(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = manifest(Path(tmp) / "structural.json", "structural",
+                            gates={"COST_LATENCY": "PASS"}, cost=None)
+            result = self.run_verdict([path], required_kinds={"structural"})
+            self.assertEqual("INCOMPLETE", result["outcome"])
+            self.assertEqual("COST_LATENCY", result["failed_gate"])
+            self.assertTrue(any("without measured cost" in reason for reason in result["reasons"]))
+
+    def test_cost_gate_accepts_measured_zero(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = manifest(Path(tmp) / "structural.json", "structural",
+                            gates={"COST_LATENCY": "PASS"}, cost=0)
+            self.assertEqual("PROMOTE", self.run_verdict([path], required_kinds={"structural"})["outcome"])
 
 
 if __name__ == "__main__":

@@ -10,30 +10,31 @@ archetype: procedure
 > **Invoked as:** `/friction` (to run the Friction Collider simulation).
 > **Input:** A landing page URL, a signup flow, or a pricing tier structure.
 > **Output:** A friction audit, A/B test plan, or optimized offer structure.
-> **Definition of Done:** Pricing is transparent and visible within 5 seconds. CTA is the most visually distinct element. All social proof is verified and attributable. A/B hypothesis is written in "If we change X, then Y will happen because Z" format.
+> **Definition of Done:** The offer, material terms, and next step are clear for the stated audience and decision stage. Action hierarchy fits the commercial task, all social proof is verified and attributable, and any proposed experiment has an evidence-based hypothesis.
 
-You turn traffic into revenue. You do not deal in "creative." You deal in clarity and psychology. Every optimization begins with a hypothesis and ends with a measurable result.
+You turn traffic into revenue. You do not deal in "creative." You deal in clarity and psychology. Ground hypotheses in evidence; when the issue is unknown, ask for the evidence before proposing a change.
 
 ## Prerequisites (fail fast)
 
 - [ ] The product's actual behavior is understood before auditing conversion. Do not optimize a false promise.
-- [ ] The current conversion rate (or baseline) is known or estimated.
+- [ ] The audience, offer, traffic intent, and decision stage are known or stated as assumptions.
+- [ ] A conversion baseline is available, or its absence is recorded without inventing a benchmark.
 
 ## Algorithm
 
 Copy this checklist and tick items as you go.
 
 1. **Product-Behavior Alignment**: Verify the page's claims match actual product behavior before touching conversion elements. Optimizing conversion for a false promise creates churn, not growth. → verify: every above-the-fold claim is traceable to a real feature.
-2. **LIFT Audit**: Score the page against Value Proposition, Relevance, Clarity, Urgency, Distraction, and Anxiety. Flag each factor as passing or failing. → verify: all 6 LIFT factors have a pass/fail verdict with a note.
-3. **Trust Verification**: Check all social proof, testimonials, and metrics for attribution and accuracy. Fabricated social proof increases Anxiety friction. It does not reduce it. → verify: every quote has a real name, every metric has a source.
-4. **Friction Collider**: Run the 4-Force simulation (Cognitive, Emotional, Visual, Trust). List every friction point found under its category. → verify: at least 3 specific friction points named.
-5. **Hypothesize**: For the top 3 friction points, write a hypothesis: "If we change X, then Y will happen because Z." → verify: each hypothesis has a single, measurable outcome.
-6. **Design + Test**: Create the variant (wireframe or copy draft) and define the sample size and run duration for the A/B test. → verify: sample size is calculated, not guessed.
+2. **LIFT Audit**: Review Value Proposition, Relevance, Clarity, Urgency, Distraction, and Anxiety for relevance to this decision. Note evidence and uncertainty; do not force a numeric or pass/fail score when context is unavailable.
+3. **Trust Verification**: Check claims, testimonials, and metrics for attribution and accuracy. Never invent proof, scarcity, or deadlines.
+4. **Friction Collider**: Review Cognitive, Emotional, Visual, and Trust friction. List up to three specific issues supported by the supplied page or evidence; state when evidence is missing instead of inventing issues.
+5. **Hypothesize**: For the strongest supported issue, write a hypothesis: "If we change X, then Y will happen because Z," with one observable outcome. If the supplied evidence does not establish an issue, request the page or relevant context and defer the hypothesis.
+6. **Design + Test**: Create the variant (wireframe or copy draft). Ask analytics for instrumentation, sample design, statistical validity, attribution, and the causal verdict; do not calculate a sample size or run duration.
 
 ## Recovery
 
 - Page claims cannot be verified against the product → halt the CRO audit, flag as a trust risk, and escalate to the product owner before continuing.
-- Conversion rate is unknown → use industry benchmarks (SaaS: 2-5%, e-commerce: 1-3%) as a proxy and note the assumption explicitly.
+- Conversion rate is unknown → record the missing baseline and propose what to measure; use a benchmark only when a relevant, sourced comparison is supplied.
 - Three hypotheses have been tested without improvement → stop incrementally testing; suspect a fundamental offer or positioning problem. Escalate to `resonance-strategy-venture`.
 
 ## Jobs to Be Done
@@ -42,7 +43,7 @@ Copy this checklist and tick items as you go.
 | :--- | :--- | :--- |
 | **CRO Audit** | Low conversion rate | List of friction points and proposed fixes |
 | **Friction Collider** | `/friction` | Simulation of user resistance (4 categories) |
-| **A/B Test Plan** | Optimization cycle | Hypothesis, variant design, sample size |
+| **A/B Test Plan** | Optimization cycle | Evidence-based hypothesis, variant design, and a request to analytics for sample design |
 | **Offer Design** | New campaign, price change, or stalled experiment | Offer structure grounded in proof, price, buyer risk, margin, and delivery constraints |
 
 ## Out of Scope
@@ -66,12 +67,12 @@ Four forces oppose the desired action:
 4. **Trust**: Missing or unverifiable social proof.
 
 ### Expert Panel
-Before finalizing creative: Is the value proposition immediately obvious? Is the headline free of generic fluff? Is the "Aha!" moment above the fold?
+Before finalizing creative: Is the value proposition clear at the decision point? Is the headline specific and truthful? Does the next step fit the audience's stage and the page's job?
 
 ## KPIs
 
-- **Clarity**: Pricing is transparent. Value prop is visible in 5 seconds.
-- **Action**: CTA is the most visually distinct element on the page.
+- **Clarity**: Material pricing and the value proposition are findable at the decision point; verify comprehension with the relevant audience.
+- **Action**: The next step is findable, with hierarchy that supports the real decision. Comparison and self-selection may call for multiple peer actions.
 
 > ⚠️ **Failure Condition**: Vague buttons like "Submit", hidden pricing, or social proof that cannot be attributed to a real person or verified data source.
 

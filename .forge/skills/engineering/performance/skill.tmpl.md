@@ -25,31 +25,31 @@ compatibility: active
 
 > **Role:** engineer of speed and efficiency.
 > **Input:** A performance complaint, SLA violation, or release readiness check.
-> **Output:** A profiling report with bottleneck identified, optimization plan, and before/after measurement.
-> **Definition of Done:** Baseline metrics captured before any change. Optimization is applied to the profiled bottleneck, not a guess. After-measurement proves improvement. LCP < 2.5s, INP < 200ms, API P99 < 300ms.
+> **Output:** A diagnostic report with baseline, measured constraint, implementation owner, and verification plan; before/after evidence when a change is made.
+> **Definition of Done:** A diagnostic report names the relevant baseline, evidence-backed constraint, implementation owner, and verification plan. When a change is made, compare after-measurement with the system goal, quality, and cost. Use an applicable project SLO or recognized target when one governs; there is no universal target for every workload.
 
 Fast is a feature. If you did not measure it, you are guessing. Prioritize Real User Monitoring (RUM) over lab scores. The profiler tells you where time is actually spent, not where you think it is.
 
 ## Prerequisites (fail fast)
 
-- [ ] Baseline metrics are captured before any optimization work begins.
-- [ ] The type of performance problem is classified: structural debt or syntax-level micro-optimization.
+- [ ] The system goal and measurement boundary are clear enough to interpret the issue.
+- [ ] A baseline source is available, or the report names how to measure before choosing an optimization.
 
 ## Algorithm
 
 Copy this checklist and tick items as you go.
 
 1. **Measure (Baseline)**: Capture current metrics using RUM, profiler, or `EXPLAIN ANALYZE`. Record the exact numbers. → verify: baseline is written down before any code changes.
-2. **Classify**: Is this structural performance debt (N+1 query, serving static assets through a heavy pipeline, synchronous work on an interactive request) or syntax-level optimization (loop unrolling, memoization, V8 hacks)? Report structural debt first. Syntax optimization is P3. → verify: classification is documented.
-3. **Identify Bottleneck**: Find the critical path: the sequence of tasks that determines total duration. Profile CPU vs. IO vs. Network separately. → verify: single bottleneck named with evidence.
-4. **Plan**: Design the optimization targeting the identified bottleneck only. → verify: change targets the measured bottleneck, not a related-but-different problem.
-5. **Implement**: Apply the optimization. Touch only what is needed. → verify: change is surgical, not a rewrite.
-6. **Measure (After)**: Capture the same metrics from step 1. → verify: improvement is measurable, not just "feels faster."
+2. **Classify**: Identify whether the limiting factor is capacity against a system goal, a dependency critical path, queue wait, or quality/rework. Structural and syntax-level changes are hypotheses, not priority classes; rank them by measured effect on the relevant outcome. → verify: the limiting factor and evidence are documented.
+3. **Identify Bottleneck**: Find the measured constraint on the outcome. A project critical path, service-capacity limit, and queue delay are different; they can interact, but evidence for one does not establish another. Profile CPU vs. IO vs. Network where it can change the decision. → verify: the chosen constraint is named with evidence.
+4. **Plan**: For a material workflow or process change, use the [Necessity Protocol](../../ops/core/references/necessity_protocol.md) to check the purpose of retained requirements and compare local speed with end-to-end outcome, quality, and cost. → verify: expected tradeoff and check are named.
+5. **Handoff**: Name the implementation owner and the verification needed to test the diagnosis. → verify: the owner and plan are in the report.
+6. **Measure (After, when a change is made)**: Capture the same relevant measures and re-identify the constraint; stop optimizing a constraint that moved. → verify: outcome, quality, and relevant cost are compared when available.
 7. **Self-Improvement**: Log the profiling technique, the bottleneck type, and the fix to `02_memory.md`.
 
 ## Recovery
 
-- Bottleneck is in a third-party library → document the constraint, implement caching at the boundary, and raise the issue upstream.
+- Bottleneck is in a third-party library → document the constraint, compare an upstream fix, upgrade, or safe boundary change, and choose from measured correctness, cost, and recovery effects; do not assume caching is the right fix.
 - Optimization improves the metric but increases code complexity significantly → weigh the tradeoff explicitly. Present both options to the user. Do not pick silently.
 - After 3 optimization attempts, the metric has not improved → suspect the bottleneck is elsewhere. Re-profile from scratch.
 
@@ -68,24 +68,22 @@ Copy this checklist and tick items as you go.
 
 ## Cognitive Frameworks
 
-### The Critical Path
-The sequence of tasks that determines total duration. Optimize the critical path. Parallelize everything else. Optimizing a step that is not on the critical path has no impact on total time.
+### Constraint, Critical Path, and Queue
+A dependency critical path determines a project's earliest finish. A capacity bottleneck limits system throughput against its goal. Queue wait is time items spend awaiting service. Quality failures and rework can constrain flow too. Diagnose the one that applies, since parallelizing work outside a dependency path may still increase load or WIP without improving the system goal.
 
 ### Structural vs. Syntax Performance Debt
-Structural: N+1 queries, synchronous blocking work on interactive requests, serving static assets through heavyweight pipelines. Fix these first. They deliver order-of-magnitude improvements.
+Examples include N+1 queries, synchronous blocking work on interactive requests, and serving static assets through heavyweight pipelines. Measure their impact on the current system goal before prioritizing them.
 
-Syntax: Loop unrolling, memoization, V8-specific hacks. P3. Worth mentioning, not worth prioritizing over structural issues.
+Loop unrolling, memoization, and runtime-specific changes may be useful when evidence shows they address the current constraint. Complexity and maintenance cost belong in the comparison.
 
 ### Big O Notation
 O(n^2) loops masquerading as O(n). An ORM that issues one query per item in a list. A sort on an un-indexed column. These are structural bugs that compound with data growth.
 
 ## KPIs
 
-- **LCP**: < 2.5s (P75 real users).
-- **INP**: < 200ms.
-- **API P99**: < 300ms.
+- Use project SLOs or applicable recognized user-experience targets. Report the population, percentile, boundary, and time window with each measure.
 
-> ⚠️ **Failure Condition**: Optimizing micro-loops (V8 hacks) while ignoring N+1 database queries, or applying an optimization without capturing a before-measurement to prove it worked.
+> ⚠️ **Failure Condition**: Choosing an optimization by category alone, or recommending a performance change without evidence for the affected outcome and a suitable verification plan.
 
 ## Reference Library
 

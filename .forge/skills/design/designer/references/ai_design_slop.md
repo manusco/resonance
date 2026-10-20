@@ -1,26 +1,26 @@
-# AI Design Slop: the visual tells to refuse
+# AI Design Slop: defaults to question
 
-> Every model trained on the same screenshots reaches for the same defaults. The result is instantly recognizable as machine-made. This is the catalog of those reflexes, so you can refuse them on sight.
+> Familiar patterns become generic when chosen without regard to the product, brand, and task. Use this catalog to spot unexamined defaults, then keep or replace each one for a stated reason.
 
-Run this as a checklist against any generated UI. Each item is a concrete pattern, not a vibe. If the design trips one, it is not "modern", it is the median. Name a reason to keep it or replace it.
+Use this as a review prompt, not a ban list. Each item describes a common reflex. Check the actual context before deciding whether it fits.
 
 ## Typography tells
 
-- **Default sans everywhere**: reaching for the same neutral system sans (Inter and its lookalikes) for every project regardless of brand. A font choice that expresses nothing is a decision skipped. Choose a face that fits the register.
+- **Unexamined defaults**: reaching for a neutral system sans (including Inter), a purple gradient, or familiar component patterns without checking the product, brand, and task. These are not forbidden choices; they become slop when they are automatic and unsupported. Choose and explain what fits.
 - **One weight, one size, no hierarchy**: body text and headings a hair apart, so nothing leads the eye. Set a real typographic scale.
 - **Center-aligned everything**: long paragraphs and multi-item lists centered, which destroys the reading edge. Left-align body content.
 
 ## Color tells
 
-- **The purple-to-blue gradient**: the reflex hero background and button fill. Instantly reads as AI default. Commit to a real palette instead.
-- **Gradient text**: headline text filled with a color gradient. Almost always a tell, rarely legible, never necessary.
-- **Rainbow of accent colors**: five unrelated bright colors because each felt nice alone. Pick one accent and earn any second.
-- **Pure black on pure white, or pure black in dark mode**: `#000` on `#fff` strains the eye; `#000` dark-mode surfaces crush depth. Use near-black and layered near-dark surfaces.
+- **The purple-to-blue gradient**: a familiar hero background or button fill. Keep it only when it fits an established palette or a clear brand purpose; otherwise choose color from the product system.
+- **Gradient text**: headline text filled with a color gradient. Check legibility and whether the effect serves the brand; do not use it just to make a generic headline look designed.
+- **Unrelated accent colors**: bright colors with no distinct role compete. Give each color a semantic job; preserve the colors needed to compare categories and status.
+- **Black-and-white pairings without context checks**: `#000` on `#fff` or a pure-black dark surface can fit the product, device, brand, and contrast target. Test the actual hierarchy and surface separation; do not reject these values by default.
 - **The premium-consumer default palette**: reaching for beige and cream with a brass, clay, or oxblood accent and espresso text the moment a brief says wellness, artisan, or cookware. It is a real and tasteful palette, which is exactly why the model overuses it. Earn it, or rotate off it.
 
 ## Layout and surface tells
 
-- **Identical card grids**: every piece of content forced into the same rounded rectangle, three across, forever. Vary weight and rhythm; not everything is a card.
+- **Card grid by reflex**: unrelated content forced into identical cards because the template suggests it. Cards and grids are valid when items are independent summaries; preserve a table or aligned rows when the task depends on comparison.
 - **Glassmorphism by default**: frosted translucent panels applied with no reason, hurting contrast and legibility. Use only when depth genuinely helps.
 - **The side-stripe accent border**: a colored left border glued onto every callout and card. A dated template signature.
 - **Over-rounded corners**: pill-shaped everything, giant radii on containers that should feel structural. Match radius to the surface's job.
@@ -40,8 +40,8 @@ Run this as a checklist against any generated UI. Each item is a concrete patter
 
 ## The AI slop test
 
-Ask three questions of any generated screen. If the honest answer to any is yes, iterate before shipping.
+Ask three questions of any generated screen. If the answer points to an unexamined choice, explain it or iterate.
 
 1. Could I swap in any competitor's content and have this still look right? (Too generic.)
-2. Does it lean on a default the model reaches for by reflex (default sans, purple gradient, card grid)? (Unexamined.)
+2. Does it use a familiar font, gradient, or card grid without evidence that it fits this product and task? (Unexamined.)
 3. If I removed every decorative flourish, would anything of the design remain? (Decoration standing in for structure.)

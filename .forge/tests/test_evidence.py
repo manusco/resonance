@@ -72,6 +72,7 @@ class EvidenceTests(unittest.TestCase):
             self.assertIn("environment", replay)
             self.assertEqual(manifest["repository"]["dirty"],
                              bool(manifest["repository"]["changed_paths"]))
+            self.assertIsNone(manifest["execution"]["cost"]["amount"])
             self.assertEqual(set(replay["changed_path_hashes"]),
                              set(manifest["repository"]["changed_paths"]))
 
@@ -82,6 +83,23 @@ class EvidenceTests(unittest.TestCase):
             path = run.write(**self.manifest_args(exit_state="FAILED"))
             manifest = json.loads(path.read_text(encoding="utf-8"))
             self.assertEqual(manifest["exit_state"], "FAILED")
+
+    def test_measured_zero_cost_stays_distinct_from_unknown(self):
+        with tempfile.TemporaryDirectory() as directory:
+            run = evidence.EvidenceRun(root=Path(directory), repo=ROOT,
+                                       runner=FORGE / "evidence.py", runner_id="zero-cost")
+            path = run.write(**self.manifest_args(), cost_amount=0)
+            value = json.loads(path.read_text(encoding="utf-8"))
+            self.assertEqual(value["execution"]["cost"]["amount"], 0)
+
+    def test_invalid_measured_cost_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            run = evidence.EvidenceRun(root=Path(directory), repo=ROOT,
+                                       runner=FORGE / "evidence.py", runner_id="bad-cost")
+            for amount in (-1, float("nan"), True, 10 ** 1000):
+                with self.subTest(amount=amount), self.assertRaisesRegex(ValueError, "measured cost"):
+                    run.write(**self.manifest_args(), cost_amount=amount)
+            self.assertFalse((Path(directory) / "runs").exists())
 
     def test_promotion_requires_complete_provenance(self):
         with self.assertRaisesRegex(ValueError, "baseline ID"):

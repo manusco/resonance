@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-strategy-architect",
+  "query": "Choose a topology for this requirement. The existing app is a single-deploy booking service. Booking, accounts, and email notifications share one release and one operator. There is no independent scaling, deployment, failure-containment, security, or data-ownership need. The only suggested reason to split is 'we might grow later.' A separate image-resize workload is also in scope: it has measured CPU spikes that delay booking requests, needs independent scaling, and must fail without taking booking writes down. Compare the simplest topology for both cases. Preserve booking, account, notification, and image-resize behavior in the requested design.",
+  "files": [],
+  "expected_behavior": [
+    "States the full requested behavior and distinguishes current evidence from the speculative future-growth argument",
+    "Keeps booking, accounts, and notifications together because the prompt gives them no present reason for a separate boundary",
+    "Recommends separating image resizing because measured contention, independent scaling, and failure isolation establish a current boundary need",
+    "Names the owner and any operating or recovery burden introduced by that separation",
+    "Does not treat monolith or microservices as a universal answer, and sizes diagrams or decision records to the topology decision"
+  ],
+  "checks": [
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

@@ -3,7 +3,7 @@
 > Operator-grade AI agent skills for builders. A cross-tool skill library and slash-command system for Claude Code, Cursor, Codex, and opencode, covering strategy, design, engineering, marketing, sales, and ops.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance/releases/latest"><img src="https://img.shields.io/badge/Resonance-v2.5.40-7025eb?style=for-the-badge&logo=github" alt="Resonance v2.5.40" /></a>
+    <a href="https://github.com/manusco/resonance/releases/latest"><img src="https://img.shields.io/badge/Resonance-v2.5.45-7025eb?style=for-the-badge&logo=github" alt="Resonance v2.5.45" /></a>
     <a href="https://github.com/manusco/resonance/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/manusco/resonance/ci.yml?branch=main&style=for-the-badge&label=CI" alt="CI status" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
 <!-- RESONANCE-GENERATED:SKILL_COUNT_BADGE:START -->
@@ -84,7 +84,7 @@ The registry contains **38 commands**.
 `/goal`: The autonomous goal loop: frame, decompose, then build and verify each slice against real checks, bounded, never auto-ship.
 
 **Inception**
-`/init`: Bootstrap the .resonance/ project memory (soul, state, docs scaffold). Run once per new project. · `/venture-model`: Model the business, offer stack, and revenue math before planning. · `/brief`: Turn a rough request into an intent-faithful execution brief, then run or route it within the user's authority. · `/blueprint`: Create or revise a durable architecture constitution, or check a plan, change, PR, or release for architectural drift. · `/plan`: Turn a feature or idea into an atomic, approved implementation plan. Deep research, 4-pass spec. · `/grill`: Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding. · `/council`: Challenge an analysis or high-risk decision through relevant specialist reviews, debate, scenarios, and reconciliation. · `/gtm-thinker`: Stress-test and expand a go-to-market campaign concept into a strategic blueprint with kill criteria. · `/market-research`: Discover Existential Data Points in a B2B SaaS vertical. Positioning from nice-to-have to must-have. · `/update-roadmap`: Sync .resonance/01_state.md with the git log so the map matches the territory.
+`/init`: Bootstrap the .resonance/ project memory (soul, state, docs scaffold). Run once per new project. · `/venture-model`: Model the business, offer stack, and revenue math before planning. · `/brief`: Turn a rough request into an intent-faithful execution brief, then run or route it within the user's authority. · `/blueprint`: Create or revise a durable architecture constitution, or check a plan, change, PR, or release for architectural drift. · `/plan`: Turn a feature or idea into an approved implementation plan sized to the decision, with executable steps and verification. · `/grill`: Stress-test a plan or design before any code: relentless one-question-at-a-time interrogation to shared understanding. · `/council`: Challenge an analysis or high-risk decision through relevant specialist reviews, debate, scenarios, and reconciliation. · `/gtm-thinker`: Stress-test and expand a go-to-market campaign concept into a strategic blueprint with kill criteria. · `/market-research`: Discover Existential Data Points in a B2B SaaS vertical. Positioning from nice-to-have to must-have. · `/update-roadmap`: Sync .resonance/01_state.md with the git log so the map matches the territory.
 
 **Execution**
 `/build`: Execute the implementation plan with a TDD loop (test, code, verify). · `/debug`: Root-cause a bug via the Scientific Method. Reproduction script required, no fix without a proven cause. · `/refactor`: Atomic, behavior-preserving cleanup. Mikado method, safe sequence, SOLID. · `/design`: Design or audit UI with elite craft: hierarchy, perceptual color, motion, and the subconscious detail layer. · `/studio`: Produce production-ready visual assets with structured prompt engineering. · `/friction`: Friction Collider: simulate the anti-persona to find and remove conversion drag.
@@ -93,7 +93,7 @@ The registry contains **38 commands**.
 `/test`: Write or audit tests against the 8-Path Matrix. Destructive and property-based coverage. · `/audit`: Run the audit swarm (security, review, QA, architect) and output P0-P3 classified findings. · `/page-audit`: First-principles experience audit of a page or whole site: job, value promise, clarity, CTA, craft, function, trust, plus a forward backlog. · `/review-pr`: Audit a PR or diff against the Blocking Registry. Findings ranked by user harm, not by file order. · `/second-opinion`: Independent second-model review of a diff, reconciled with the primary review. · `/improve`: Work the eval scorecard: sharpen the weakest skills or their rubrics and keep only changes that raise the measured lift. · `/system-health`: Score system health 0-100 with qualitative flags (auth, env, test depth).
 
 **Delivery and maintenance**
-`/ship`: Release protocol: pre-flight checks, changelog, semantic version, tag, deploy. · `/incident`: Drive a live production incident: triage, severity, mitigate, comms, blameless postmortem. · `/seo`: SEO and GEO audit: structured data, canonical, schema, AI-citation optimization. · `/search-cycle`: Run a private-first search evidence cycle and produce a governed P0-P3 audit report. · `/voice-profile`: Extract a portable behavioral voice profile from a corpus (person, brand, or character). · `/call-intelligence`: Analyze a call transcript for persona insights, objection patterns, and feature requests. · `/cold-call`: Generate a B2B cold-call script using the 6-part permission-based framework. · `/sales-pipeline`: Render a pipeline analytics dashboard with velocity and forecasting from CRM data. · `/capture`: Document a solved problem in the correct Diataxis quadrant so it is never re-discovered. · `/explain`: Teach the operator, not the repo: a dense explainer of a concept, diff, or recent work, with an optional predict-then-reveal check-in. · `/handover`: Write an end-of-session handover doc: what was done, decisions, open TODOs, backlog. · `/retro`: Git-driven retrospective: shipping streak, focus score, complexity delta. · `/update-resonance`: Upgrade the Resonance framework with backup and restore safety. Preserves .resonance/. · `/skill-author`: Author, validate, and eval a new Resonance skill with the Forge.
+`/ship`: Release protocol: pre-flight checks, changelog, semantic version, tag, deploy. · `/incident`: Drive a live production incident: triage, severity, mitigate, comms, blameless postmortem. · `/seo`: SEO and GEO audit: structured data, canonical, schema, AI-citation optimization. · `/search-cycle`: Run a private-first search evidence cycle and produce a governed P0-P3 audit report. · `/voice-profile`: Extract a portable behavioral voice profile from a corpus (person, brand, or character). · `/call-intelligence`: Analyze a call transcript for persona insights, objection patterns, and feature requests. · `/cold-call`: Generate a B2B cold-call script using the 6-part permission-based framework. · `/sales-pipeline`: Render a pipeline analytics dashboard with velocity and forecasting from CRM data. · `/capture`: Document a solved problem in the correct Diataxis quadrant so it is never re-discovered. · `/explain`: Teach the operator, not the repo: a dense explainer of a concept, diff, or recent work, with an optional predict-then-reveal check-in. · `/handover`: Write an end-of-session handover doc: what was done, decisions, open TODOs, backlog. · `/retro`: Git-driven retrospective: shipping streak, focus score, complexity delta. · `/update-resonance`: Upgrade the Resonance framework with provenance checks and journal-based recovery. Preserves project memory. · `/skill-author`: Author, validate, and eval a new Resonance skill with the Forge.
 
 **Which command should I use?**
 - Use `/brief` to recover intent and route unclear work. Use `/plan` when the intended outcome is already clear and needs an implementation plan.
@@ -159,16 +159,16 @@ Working in the Resonance repo directly is the simplest path. For another project
 
 **macOS / Linux**
 ```bash
-gh repo clone manusco/resonance ~/resonance-source -- --branch v2.5.40
-python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version 2.5.40
-python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version 2.5.40 --revision <preview-revision> --plan-digest <preview-plan-digest> --apply
+gh repo clone manusco/resonance ~/resonance-source -- --branch v2.5.43
+python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version 2.5.43
+python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version 2.5.43 --revision <preview-revision> --plan-digest <preview-plan-digest> --apply
 ```
 
 **Windows (PowerShell)**
 ```powershell
-gh repo clone manusco/resonance "$env:TEMP\resonance-source" -- --branch v2.5.40
-py "$env:TEMP\resonance-source\resonance_update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.40
-py "$env:TEMP\resonance-source\resonance_update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.40 --revision <preview-revision> --plan-digest <preview-plan-digest> --apply
+gh repo clone manusco/resonance "$env:TEMP\resonance-source" -- --branch v2.5.43
+py "$env:TEMP\resonance-source\resonance_update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.43
+py "$env:TEMP\resonance-source\resonance_update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.43 --revision <preview-revision> --plan-digest <preview-plan-digest> --apply
 ```
 
 The first command is a dry run. Review its JSON plan, then copy its full `revision` and `plan_digest` into the apply command. For an older installation with no ownership manifest, check out its installed Resonance version and pass that checkout as `--source` to the new updater with `--adopt`. Adoption claims only byte-identical released files and changes no framework file. Then use the new version checkout for the dry run and apply. A project-owned `AGENTS.md` or modified framework file remains a conflict until you review and resolve it. Optional release notices stay disabled until `python3 resonance_update.py notice enable`; they never apply updates.
@@ -210,11 +210,11 @@ Use the source checkout's transactional updater. It removes stale framework-owne
 
 ```bash
 gh repo clone manusco/resonance ~/resonance-source -- --branch <version-tag>
-python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version <version>
+python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version <version> --summary
 python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version <version> --revision <preview-revision> --plan-digest <preview-plan-digest> --apply
 ```
 
-The first command previews the transaction. Installations created before ownership manifests must run `--adopt` from a clean checkout of their installed version first. Adoption accepts only byte-identical released files. Recovery uses `resonance_update.py --rollback <backup-directory>`.
+The first command previews the transaction. Use `--json` for the complete machine-readable plan. Installations created before ownership manifests must first run `python3 <installed-release>/resonance_update.py --source <installed-release> --target . --profile <source|compiled> --adopt` from a clean checkout of their installed version. Adoption accepts only byte-identical released files and records the selected source commit. Recovery uses `resonance_update.py --rollback <transaction-directory>`; the receipt uses pinned Git blobs where exact and copies only preimages Git cannot recover. An unchanged plan reports that no files or recovery data changed.
 
 Verify with `/system-health`.
 

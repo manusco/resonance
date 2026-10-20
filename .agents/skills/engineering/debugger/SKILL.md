@@ -2,6 +2,17 @@
 name: resonance-engineering-debugger
 description: Debugger Specialist. Finds root causes through the Scientific Method. No fixes without reproduction. Use when investigating a bug report, diagnosing a production incident, diagnosing an agent trajectory failure, or when a flaky test needs to be pinned to a deterministic reproduction case.
 archetype: procedure
+contract_version: 1
+contract_role: participant
+compatibility: active
+dispatch_conditions:
+  - the approved build slice needs a reproduced failure traced to its root cause
+contributes_to:
+  - delivery.build
+artifact_access:
+  - implementation-plan:read
+  - implementation-artifact:read,review
+  - debug-evidence:create,modify
 ---
 
 # /resonance-engineering-debugger: find the truth, not just a patch

@@ -163,10 +163,10 @@ def check_frontmatter(fm: dict, r: Report) -> str:
     return archetype if archetype in ARCHETYPES else ""
 
 
-def check_composition_contract(fm: dict, r: Report) -> None:
+def check_composition_contract(fm: dict, path: Path, r: Report) -> None:
     """Enforce the frozen v1 contract for the accepted composition cohort."""
     try:
-        from kernel.manifest import composition_warnings
+        from kernel.manifest import composition_warnings, manifest
     except Exception as exc:
         r.err(f"composition contract: validator unavailable: {exc}")
         return
@@ -179,19 +179,31 @@ def check_composition_contract(fm: dict, r: Report) -> None:
         "id": name,
         "authority": str(fm.get("authority", "advisory")),
         "entrypoints": fm.get("entrypoints", []) if isinstance(fm.get("entrypoints", []), list) else [],
+        "invokes": fm.get("invokes", []) if isinstance(fm.get("invokes", []), list) else [],
     }
     list_fields = ("contributes_to", "reviews", "finalizes", "artifact_access", "dispatch_conditions")
     for key in list_fields:
         if key in fm:
             value = fm.get(key, [])
             entry[key] = value if isinstance(value, list) else ([value] if value else [])
-    for key in ("job_id", "stage", "compatibility"):
+    for key in ("job_id", "stage", "contract_role", "compatibility"):
         if key in fm:
             entry[key] = str(fm.get(key, ""))
     if "contract_version" in fm:
         raw_version = str(fm.get("contract_version", "")).strip()
         entry["contract_version"] = int(raw_version) if raw_version.isdigit() else raw_version
-    for warning in composition_warnings([entry], {name}):
+    # Alias validity depends on its canonical target's job metadata, so validate
+    # the local declaration against the complete compiled manifest.
+    skills_root = next(
+        (parent for parent in path.resolve().parents
+         if parent.name == "skills" and parent.parent.name == ".agents"),
+        Path(__file__).resolve().parents[1] / ".agents" / "skills",
+    )
+    known = [item for item in manifest(skills_root) if item["id"] != name]
+    known.append(entry)
+    for warning in composition_warnings(known, {name}):
+        if f"'{name}'" not in warning:
+            continue
         if "references unknown job" not in warning:
             r.err(warning.replace("composition canary:", "composition contract:", 1))
 
@@ -269,7 +281,7 @@ def validate(path: Path, r: Report, composition_canary: bool = False) -> Report:
         r.err("no YAML frontmatter found (file must open with a '---' block)")
         return r
     archetype = check_frontmatter(fm, r)
-    check_composition_contract(fm, r)
+    check_composition_contract(fm, path, r)
     check_body(body, archetype, r)
     check_references(path.parent, body, r)
     check_evals(path.parent, r)

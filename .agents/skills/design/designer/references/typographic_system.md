@@ -31,9 +31,9 @@ Line height is not a fixed number, it is a relationship. Longer lines need more 
 
 ## The modular scale
 
-Sizes come from a ratio, not from picking numbers that feel nice. A scale creates harmony the way a musical key does.
+A scale keeps related text sizes coherent. A ratio is a useful starting point, not a requirement; tune sizes to hierarchy, platform, content, and legibility.
 
-- Pick a base (commonly 16px for body) and a ratio. Useful ratios: 1.2 (minor third, calm), 1.25 (major third), 1.333 (perfect fourth, strong hierarchy), 1.5 (perfect fifth, dramatic).
+- If useful, start with a base and a ratio such as 1.2, 1.25, or 1.333, then adjust where the content or hierarchy needs it.
 - Each step multiplies the last. A 1.25 scale from 16: 16, 20, 25, 31, 39, 49, 61.
 - Round to sensible pixels. Do not invent off-scale sizes for one-off headings; if you need a new size, question whether the hierarchy is right.
 - Fluid type: interpolate size between viewport widths with `clamp()`, for example `clamp(2rem, 1.2rem + 3vw, 3.5rem)`, so headings scale smoothly instead of jumping at breakpoints.

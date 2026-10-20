@@ -7,6 +7,7 @@ job_id: implementation.backend
 stage: EXECUTE
 contributes_to:
   - delivery.goal
+  - delivery.build
 reviews:
 finalizes:
   - backend-artifact

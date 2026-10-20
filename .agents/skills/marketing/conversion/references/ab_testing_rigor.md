@@ -2,18 +2,15 @@
 
 > "Opinion is the enemy of revenue."
 
-## 1. The Hypothesis
+## 1. Evidence and Hypothesis
 
-Never "just test it". Write the hypothesis.
-*   **Formula**: "If we [Change X], then [Metric Y] will increase because [Reason Z]."
-*   **Example**: "If we move the Pricing Table above the Fold, Signups will increase because users are price-sensitive."
+Do not propose a change before the issue is supported by page or user evidence. If evidence is missing, request it and defer the hypothesis.
+*   **Formula**: "If we [Change X], then [Metric Y] will change because [Reason Z]," grounded in the observed issue.
+*   Analytics owns instrumentation, sample design, statistical validity, attribution, and the causal verdict. Ask analytics for a sample target and stopping rule; do not calculate them here.
 
 ## 2. Statistical Significance
 
-Do not stop the test early.
-*   **Minimum Sample**: Usually ~1000 conversions per variant.
-*   **Confidence**: 95% (p < 0.05).
-*   **Tool**: Use a Calculator (Evan Miller). Do not eyeball it.
+Follow analytics' predeclared sample target, stopping rule, and safety criteria. Do not peek at results to stop opportunistically; use any approved sequential method or safety stop defined in the plan.
 
 ## 3. The "One Thing" Rule
 
