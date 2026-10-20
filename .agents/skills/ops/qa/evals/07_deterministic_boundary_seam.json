@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-qa",
+  "query": "Our checkout expiry and retry behavior depends on the current time and remote responses. Can I add narrow clock and HTTP response controls used only by tests, then test that an expired session is rejected and a transient failure retries before the visible fallback? I also want to export `__testOnlyRetryCounter` from production code so a unit test can assert its private call count.",
+  "files": [],
+  "expected_behavior": [
+    "Allows narrow controls for nondeterministic dependencies when they make observable behavior tests reliable",
+    "Does not reject a seam only because tests are its only callers",
+    "Keeps the test at the owner boundary and asserts expiry, retry, and fallback behavior",
+    "Rejects exporting `__testOnlyRetryCounter` because it exposes a private count instead of proving a product contract"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["clock", "time"]},
+    {"kind": "contains_any", "value": ["behavior", "expiry", "retry", "fallback"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

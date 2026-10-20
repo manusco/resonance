@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-ops-security",
+  "query": "Audit this repository summary. The app is behind an unspecified CDN and reverse proxy. Source shows a route that returns private invoices only after `requireInvoiceOwner(req.user, invoiceId)`. A scanner claims this is HIGH because the CDN might cache private invoice pages if the proxy ignores cookies. Write the security finding.",
+  "files": [],
+  "expected_behavior": [
+    "Does not confirm a vulnerability from missing CDN or proxy facts that are not visible in source",
+    "Recognizes the source-visible owner check and does not ignore it",
+    "Marks the cache claim as needs validation, incomplete, or unconfirmed rather than assigning HIGH severity",
+    "Names the exact missing fact: deployed cache key or cache policy for authenticated invoice responses",
+    "Gives a safe owner-observed validation step instead of probing production"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["needs validation", "incomplete", "unconfirmed", "cannot confirm"]},
+    {"kind": "contains_any", "value": ["cache key", "cache policy", "CDN", "proxy"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

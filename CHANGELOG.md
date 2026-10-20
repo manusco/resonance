@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.5.45
+
+The security evidence and test value release.
+
+### Changed
+- **Security evidence boundaries.** Security guidance separates source-visible proof from deployment and provider facts, and requires independent validation before confirming vulnerabilities.
+- **QA test value.** QA guidance rejects tests that preserve private source shape or rely on test-only production seams, while retaining narrow controls for nondeterministic dependencies when they prove observable behavior.
+- **Eval coverage.** Added cases for security source visibility, low-value tests, and legitimate deterministic dependency seams.
+
 ## v2.5.44
 
 The updater recovery and ownership release.
