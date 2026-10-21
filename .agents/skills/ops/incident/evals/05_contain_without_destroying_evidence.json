@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-ops-incident",
+  "query": "The payment API is returning duplicate charges for about 8% of checkout attempts, starting 12 minutes ago. The incident channel is active, and the proposed mitigation is to disable payment writes globally, which could interrupt all new orders. Triage this now.",
+  "files": [],
+  "expected_behavior": [
+    "Confirms and records the affected path, start time, user impact, and trend before naming severity",
+    "Rounds severity up under uncertainty and states the matching SEV criterion",
+    "Names exactly one Incident Commander and delegates investigation or containment separately",
+    "Prioritizes a reversible, scoped containment and preserves evidence for diagnosis",
+    "Does not disable all payment writes without assessing the blast radius and receiving any required owner approval"
+  ],
+  "checks": []
+}

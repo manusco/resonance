@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-ops-explain",
+  "query": "I know you offered a quiz about the attached cache invalidation change, but I do not want to predict anything. Just explain what changed and the evidence for its safety.",
+  "files": [
+    ".forge/fixtures/ops-explain/cache_invalidation.diff",
+    ".forge/fixtures/ops-explain/cache_invalidation.test.ts"
+  ],
+  "expected_behavior": [
+    "Honors the explicit choice and gives the plain explanation without forcing a quiz",
+    "Explains that the profile cache key is deleted after save and before the subsequent profile read",
+    "Limits the safety claim to the supplied immediate-read test and does not claim broader cache correctness without evidence",
+    "Does not expose a prediction question and answer together as a fake check-in"
+  ],
+  "checks": []
+}

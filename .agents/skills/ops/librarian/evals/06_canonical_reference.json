@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-ops-librarian",
+  "query": "Using the attached canonical decisions ledger and onboarding runbook, capture the supported payment-provider list for onboarding docs. The runbook lists three providers, so resolve the conflict from the supplied decision record and cite its ID.",
+  "files": [
+    ".forge/fixtures/librarian/decisions.md",
+    ".forge/fixtures/librarian/runbook.md"
+  ],
+  "expected_behavior": [
+    "Uses the supplied active decision `dec-payment-provider-support` as the source of truth for the supported provider list",
+    "Names Northstar Pay and Meridian Checkout as supported and does not repeat LegacyPay from the stale runbook",
+    "Preserves provenance by citing the decision ID and marks the runbook list for correction or archival",
+    "Chooses a Reference for the stable provider facts, or a Guide only if it also gives a concrete onboarding procedure"
+  ],
+  "checks": []
+}

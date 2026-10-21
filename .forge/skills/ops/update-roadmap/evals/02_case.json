@@ -3,7 +3,9 @@
   "query": "Run /update-roadmap, but state.md doesn't exist",
   "files": [],
   "expected_behavior": [
-    "The agent stops immediately at the Prerequisites check and aborts, potentially suggesting to run /init"
+    "The agent stops before modifying project state because .resonance/01_state.md is missing",
+    "It reports the missing prerequisite and suggests initializing the project with /init",
+    "It does not create a partial state file or claim to have reconciled roadmap items"
   ],
   "checks": [
     {

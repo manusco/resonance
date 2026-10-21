@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-ops-retro",
+  "query": "Run a retrospective for yesterday's incident. The service recovered today, the git history contains two mitigation commits, and the incident timeline has confirmed customer impact and timestamps.",
+  "files": [],
+  "expected_behavior": [
+    "Uses the incident timeline for impact and chronology and git history for concrete shipped changes",
+    "Separates response facts from hypotheses about why the incident happened",
+    "Includes the required objective metrics and balances system-focused growth opportunities with credit for effective work",
+    "Does not assign individual blame or infer causation from commit order alone",
+    "Writes the report only after gathering the source evidence and asks which action items should enter the planning queue"
+  ],
+  "checks": []
+}

@@ -4,7 +4,7 @@
   "files": [],
   "expected_behavior": [
     "Identifies that critical context is missing (developer persona specifics, goal, or product offer)",
-    "Hhalts analysis and asks ONE focused clarifying question",
+    "Halts analysis and asks ONE focused clarifying question",
     "Does not output a generic yes-response or proceed silently on major guesses"
   ],
   "checks": [

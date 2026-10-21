@@ -9,10 +9,45 @@ import os
 import subprocess
 import sys
 from pathlib import Path
+from pathlib import PureWindowsPath
 
 FORGE = Path(__file__).resolve().parent
 REPO = FORGE.parent
 MANIFEST = FORGE / "eval_fixture_manifest.json"
+SENSITIVE_NAMES = {".env", ".npmrc", ".pypirc", "credentials", "credentials.json"}
+SENSITIVE_SUFFIXES = {".key", ".pem", ".p12", ".pfx"}
+ALLOWED_FIXTURE_ROOTS = {"src", "docs", "tests", "fixtures", "examples"}
+
+
+def contained_fixture(relpath: str, repo_root: Path = REPO) -> Path:
+    """Resolve a public eval input under an approved repository fixture root."""
+    if not isinstance(relpath, str) or not relpath.strip():
+        raise ValueError("eval file path must be a non-empty repository-relative path")
+    candidate = Path(relpath)
+    windows = PureWindowsPath(relpath)
+    if (candidate.is_absolute() or windows.is_absolute() or windows.drive
+            or ".." in candidate.parts or "\\" in relpath):
+        raise ValueError(f"eval file escapes repository: {relpath}")
+    framework_fixture = len(candidate.parts) >= 3 and candidate.parts[:2] == (".forge", "fixtures")
+    if not candidate.parts or (candidate.parts[0] not in ALLOWED_FIXTURE_ROOTS and not framework_fixture):
+        raise ValueError(f"eval file is outside approved fixture roots: {relpath}")
+    repo_root = Path(repo_root).resolve()
+    resolved = (repo_root / candidate).resolve(strict=False)
+    try:
+        resolved.relative_to(repo_root)
+    except ValueError as exc:
+        raise ValueError(f"eval file escapes repository: {relpath}") from exc
+    if framework_fixture:
+        fixture_root = repo_root / ".forge" / "fixtures"
+        if (repo_root / ".forge").is_symlink() or fixture_root.is_symlink():
+            raise ValueError(f"eval fixture namespace traverses a symlink: {relpath}")
+        try:
+            resolved.relative_to(fixture_root)
+        except ValueError as exc:
+            raise ValueError(f"eval fixture escapes framework fixture namespace: {relpath}") from exc
+    if resolved.name.lower() in SENSITIVE_NAMES or resolved.suffix.lower() in SENSITIVE_SUFFIXES:
+        raise ValueError(f"eval file is sensitive and cannot be sent to a model: {relpath}")
+    return resolved
 
 
 def repository_candidate_files() -> list[Path]:
@@ -40,7 +75,41 @@ def oracle_files() -> list[Path]:
     files += list((FORGE / "routing_evals").glob("*.json"))
     files += [FORGE / "run_evals.py", FORGE / "eval_integrity.py", FORGE / "orch_eval.py",
               FORGE / "routing_eval.py"]
-    return sorted(p for p in files if p.is_file())
+    result = {p.resolve() for p in files if p.is_file()}
+    problems = []
+    for case_path in (FORGE / "skills").glob("**/evals/*.json"):
+        try:
+            case = json.loads(case_path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            problems.append(f"invalid eval case {case_path.relative_to(REPO).as_posix()}: {exc}")
+            continue
+        if not isinstance(case, dict):
+            problems.append(f"invalid eval case {case_path.relative_to(REPO).as_posix()}: expected object")
+            continue
+        dependencies = case.get("files", [])
+        if dependencies is None:
+            dependencies = []
+        if not isinstance(dependencies, list):
+            problems.append(f"invalid eval files list: {case_path.relative_to(REPO).as_posix()}")
+            continue
+        for relpath in dependencies:
+            try:
+                fixture = contained_fixture(relpath, REPO)
+            except (OSError, ValueError) as exc:
+                problems.append(f"invalid eval fixture in {case_path.relative_to(REPO).as_posix()}: {exc}")
+                continue
+            if not fixture.is_file():
+                if case.get("fixture_optional") is True:
+                    continue
+                problems.append(
+                    f"missing required eval fixture {relpath} referenced by "
+                    f"{case_path.relative_to(REPO).as_posix()}"
+                )
+                continue
+            result.add(fixture)
+    if problems:
+        raise ValueError("; ".join(problems))
+    return sorted(result)
 
 
 def snapshot() -> dict[str, str]:
@@ -125,7 +194,10 @@ def repository_private_eval_artifact_problems() -> list[str]:
 
 def verify(expected: dict[str, str] | None = None) -> list[str]:
     expected = load() if expected is None else expected
-    actual = snapshot()
+    try:
+        actual = snapshot()
+    except (OSError, ValueError) as exc:
+        return [f"invalid eval oracle: {exc}"]
     problems = []
     for path in sorted(set(expected) | set(actual)):
         if path not in actual:
@@ -151,7 +223,11 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--update", action="store_true", help="record an intentional fixture change")
     args = ap.parse_args(argv)
     if args.update:
-        write()
+        try:
+            write()
+        except (OSError, ValueError) as exc:
+            print(f"ERROR cannot update eval oracle: {exc}")
+            return 1
         print(f"wrote {MANIFEST.relative_to(REPO)}")
         return 0
     problems = verify()

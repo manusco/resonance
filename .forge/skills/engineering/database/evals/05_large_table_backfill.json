@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-database",
+  "query": "We need to add a required normalized_email column to a 90-million-row users table. Signup and login must remain available during rollout, and some rows have invalid email values. Propose the migration sequence.",
+  "files": [],
+  "expected_behavior": [
+    "Uses an expand, deploy, backfill, validate, constrain sequence that keeps old and new application versions compatible during rollout",
+    "Backfills in bounded resumable batches and tracks progress instead of running one unbounded table update",
+    "Defines how invalid or missing legacy values are handled before adding the constraint, without inventing replacement addresses",
+    "Checks lock, write amplification, and replication lag risks and names a pause or rollback condition",
+    "Provides a down or forward-recovery plan that preserves data written during the transition"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-revops",
+  "query": "Set next year's AE headcount from a 6M ARR target. The CEO expects one rep to close 3M, but our last two reps produced 700K and 900K and ramp took nine months.",
+  "files": [],
+  "expected_behavior": [
+    "Does not use the unsupported 3M-per-rep expectation as the capacity baseline",
+    "Uses observed productivity as limited evidence and labels the small two-rep sample rather than treating it as a stable rate",
+    "Models ramp timing and distinguishes required capacity from a hiring plan that can actually arrive in time",
+    "Shows the assumption range or key sensitivities and identifies what evidence would change the hiring decision"
+  ]
+}

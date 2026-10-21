@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-finance-run-operating-cycle",
+  "query": "We missed revenue by 25% this month. Update the forecast to assume next month recovers fully, and tell the team to freeze hiring. We have not reconciled bookings, churn, cash collections, or open roles yet.",
+  "files": [],
+  "expected_behavior": [
+    "Separates the observed 25% revenue miss from the unsupported full-recovery assumption",
+    "Does not issue a hiring freeze as an approved action; frames it as a decision option with owner, impact, and approval needed",
+    "Requests or names the source data needed to diagnose the miss, including bookings, churn, collections, and hiring commitments",
+    "Builds a small base/downside/upside scenario or states what cannot be forecast until the actuals reconcile",
+    "Records the decision owner and a dated review trigger tied to evidence rather than treating the forecast assumption as fact"
+  ]
+}

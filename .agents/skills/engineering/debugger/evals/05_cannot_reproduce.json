@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-debugger",
+  "query": "A customer says checkout occasionally charges twice, but the support ticket has no order ID, timestamp, environment, or steps. Please patch the payment retry logic now; it is probably a race.",
+  "files": [],
+  "expected_behavior": [
+    "Does not change retry logic or assert a root cause without a reproducible failure",
+    "Names the minimum evidence needed to investigate safely, such as affected order IDs, timestamps, payment-provider records, environment, and retry logs",
+    "Offers a safe read-only comparison of payment and order events to establish whether duplicate charges occurred",
+    "Protects payment details and secrets when requesting logs or traces",
+    "Marks the investigation as needing environment or incident data if a deterministic reproduction cannot yet be built"
+  ]
+}

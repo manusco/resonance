@@ -1,15 +1,14 @@
 {
   "skill": "resonance-strategy-grill",
-  "query": "Grill this plan: add a rate limiter to the public API. The repo already has a Redis client and an existing middleware layer.",
+  "query": "Using only the attached middleware and Redis excerpts, grill this plan: add a rate limiter to the public API. Treat the excerpts as supplied evidence, not proof that you inspected the full repository. Ask me one real business constraint at a time, and do not implement until I confirm the decisions.",
   "files": [
-    "src/middleware/auth.ts",
-    "src/lib/redis.ts"
+    ".forge/fixtures/grill/auth_middleware.ts",
+    ".forge/fixtures/grill/redis_client.ts"
   ],
-  "fixture_optional": true,
   "expected_behavior": [
-    "Explores the codebase to answer discoverable questions (existing middleware pattern, Redis availability) instead of asking the user",
-    "Reserves questions for what only the user knows: the limit values, the scope, the behavior on limit breach",
-    "Orders questions by dependency, resolving the limiting strategy before the response format",
+    "Uses the supplied excerpts to state the existing middleware and Redis interfaces, without claiming to have inspected other repository files",
+    "Asks one decision-relevant question about a business constraint the excerpts cannot answer, such as the rate-limit scope or acceptable request volume",
+    "Includes a recommendation and a concrete reason with that question, and leaves other unresolved questions for later turns",
     "Does not begin implementing the middleware until the user confirms the resolved decisions"
   ],
   "checks": [

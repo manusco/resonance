@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-marketing-run-campaign",
+  "query": "The launch campaign is over. LinkedIn engagement rose and paid clicks were cheap, so write that it generated pipeline and close out the experiment.",
+  "files": [],
+  "expected_behavior": [
+    "Does not infer pipeline generation from engagement or cheap clicks without linked, qualified pipeline evidence",
+    "Routes attribution and causal verdict to analytics and supplies the campaign window, source data, and relevant control or baseline",
+    "Separates observed reach/click metrics from pipeline outcomes and labels unsupported conclusions as unknown",
+    "Records a dated follow-up with an owner for delayed pipeline or revenue outcomes"
+  ]
+}

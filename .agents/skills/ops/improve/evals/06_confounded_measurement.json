@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-improve",
+  "query": "The with-skill score rose from 0.4 to 0.9 after we changed both the skill body and the rubric, and used a different model for the second run. Mark the skill improved.",
+  "files": [],
+  "expected_behavior": [
+    "Rejects the lift claim because the body, rubric, and model changed together",
+    "Names the comparison as confounded and does not record an improved verdict",
+    "Restores a comparable harness with the same cases, rubric, model, and permissions for both arms",
+    "Records no measured lift until the controlled remeasurement finishes"
+  ],
+  "checks": []
+}

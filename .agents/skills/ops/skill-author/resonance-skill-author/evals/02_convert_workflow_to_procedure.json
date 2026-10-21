@@ -1,15 +1,15 @@
 {
   "skill": "resonance-ops-skill-author",
-  "query": "Turn our old /ship workflow file into a proper procedure skill.",
+  "query": "Turn the attached legacy /ship workflow into a proper procedure skill. Keep delivery within GitHub branches and pull requests; the deploy step remains operator-owned and outside this procedure.",
   "files": [
-    "docs/workflows/ship.md"
+    ".forge/fixtures/skill-author/legacy_ship_workflow.md"
   ],
-  "fixture_optional": true,
   "expected_behavior": [
     "Chooses the 'procedure' archetype",
     "Carries Input, Output, Definition of Done, and Recovery sections (validator requires them)",
-    "Marks the skill manual-only because deploy has side effects",
+    "Marks the skill manual-only because pushing a branch or opening a pull request changes GitHub state",
     "Preserves the existing Definition-of-Done discipline rather than discarding it",
+    "Preserves the workflow's required checks and approval gate while excluding the operator-owned deploy step",
     "Does not hand-copy voice/decision/completion boilerplate; relies on Forge resolvers"
   ],
   "checks": [

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-founder-os",
+  "query": "Our scorecard shows onboarding completion up from 41% to 58%, while paid conversion is unchanged at 9% for six weeks. Run the weekly review. The metric owners and targets are listed in the ledger.",
+  "files": [],
+  "expected_behavior": [
+    "Starts from the target-backed scorecard and identifies the unchanged paid conversion as the stuck lagging result",
+    "Treats onboarding completion as a leading signal and the unchanged paid conversion as evidence the link may be weak or delayed, not proof of causation",
+    "Checks the metric definition, cohort, and timeframe before recommending a change",
+    "Produces a concrete decision with one owner and logs or proposes a dec- entry; does not claim the leading metric is success"
+  ],
+  "checks": []
+}

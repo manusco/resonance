@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-page-audit",
+  "query": "Audit our public pricing page for conversion. You have the URL, but browser access is unavailable, and the repository has no screenshot, page source, analytics, or approved offer details.",
+  "files": [],
+  "expected_behavior": [
+    "States that page-specific findings cannot be verified with the available evidence",
+    "Does not invent layout, copy, trust, or conversion problems from the URL alone",
+    "Lists the minimum evidence needed to continue, such as rendered capture, source, offer facts, and relevant funnel data",
+    "Keeps recommendations conditional and does not claim an audit is complete"
+  ],
+  "checks": []
+}

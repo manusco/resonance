@@ -1,11 +1,13 @@
 {
   "skill": "resonance-strategy-plan",
-  "query": "Run /plan for a new Dark Mode feature",
+  "query": "Run /plan for a new Dark Mode setting in our web app. The current code has theme tokens and a settings page; the requested behavior is a user-controlled light or dark theme. No market or external technical assumption is unresolved.",
   "files": [],
   "expected_behavior": [
-    "The agent checks if the request is ambiguous",
-    "It delegates to the researcher and venture agents",
-    "It writes a PRD because this is a New Feature and creates an implementation_plan.md with executable actions, useful architecture artifacts, and verification sized to this feature"
+    "Uses repository evidence to confirm the existing theme-token and settings-page constraints before planning",
+    "Does not send a settled, local feature to venture validation or external research without a business-model assumption or unresolved evidence that could change the implementation choice",
+    "Checks whether the request is sufficiently clear and states any remaining assumption instead of silently broadening the feature",
+    "Creates a proportionate feature PRD and executable implementation plan with verification for the theme toggle and contrast behavior, checking persistence only if the existing product contract requires it",
+    "Presents the completed standalone plan for approval and does not begin implementation"
   ],
   "checks": [
     {

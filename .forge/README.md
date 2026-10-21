@@ -12,7 +12,7 @@ template.skill.md   x   portable profile   ->   .agents/skills/<name>/SKILL.md
 - **Cross-tool.** Antigravity (Google), Codex (OpenAI), Cursor, OpenCode, and Claude Code all read `AGENTS.md` + `.agents/skills`. Tool differences (tool names, paths) live in one host config, not in every skill.
 - **Cross-model.** Canonical skills use one portable execution profile. Model selection and independent review happen at runtime, so a model choice cannot rewrite shared skill files.
 - **DRY.** Shared sections (voice, decision format, completion protocol, the operating locks, the Ratchet) live once in `resolvers/` and are injected into every skill. Fix the voice in one place, recompile, every skill updates.
-- **Verifiable.** Every skill is checked by `validate_skill.py` (free, deterministic) and backed by `>= 3` golden evals before it ships.
+- **Verifiable.** Every framework skill is checked by `validate_skill.py` (free, deterministic) and backed by `>= 6` distinct golden evals before it ships. Add more when the skill owns additional independently gradeable behaviors; do not split one behavior into several cases to meet the floor. Installed project-owned skills retain the legacy three-case validation floor for compatibility.
 
 ## Layout
 
@@ -33,7 +33,7 @@ template.skill.md   x   portable profile   ->   .agents/skills/<name>/SKILL.md
         ├── skill.tmpl.md    # YOU EDIT THIS
         ├── references/       # copied next to the generated SKILL.md
         ├── scripts/
-        └── evals/            # >= 3 golden cases
+        └── evals/            # >= 6 distinct golden cases
 ```
 
 The generated `.agents/skills/<name>/SKILL.md` is **build output**. Do not edit it;
@@ -80,7 +80,7 @@ archetype. One format, three kinds, one compiler.
 ## Authoring loop
 
 1. Prove the gap: run the task with no skill, record the failure.
-2. Write `>= 3` evals in `skills/<name>/evals/`.
+2. Write `>= 6` distinct evals in `skills/<name>/evals/`. Cover happy path, edge cases, and failures the skill must prevent; add more when separate high-risk behaviors need independent evidence. Put public evidence files under `.forge/fixtures/<skill-or-suite>/` and reference them with repository-relative paths. Keep framework evals hermetic: do not depend on app source, project docs, or optional files from a consumer checkout, because source-profile installs ship `.forge/` but not those trees.
 3. Copy the matching archetype template to `skills/<name>/skill.tmpl.md`, write the minimum.
 4. `forge build <name>` then `validate_skill.py` until clean.
 5. Eval against the golden cases; beat the baseline.

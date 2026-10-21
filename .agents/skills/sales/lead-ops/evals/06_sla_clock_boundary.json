@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-lead-ops",
+  "query": "A demo request arrived Friday at 11:55 p.m. in the prospect's timezone. Our dashboard says a rep replied Monday at 9 a.m. Mark this within SLA using our office timezone.",
+  "files": [],
+  "expected_behavior": [
+    "Does not choose the office timezone silently; asks for the SLA's documented timezone, business calendar, and start/stop rules",
+    "Uses the prospect's event timestamp and reply timestamp as observed, flagging any timezone conversion uncertainty",
+    "Does not mark SLA met until the agreed clock and business-hour policy are applied",
+    "Identifies the exact data needed to recalculate the breach and keeps the audit trail intact"
+  ]
+}

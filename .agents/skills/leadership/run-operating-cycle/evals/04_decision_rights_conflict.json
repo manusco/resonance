@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-leadership-run-operating-cycle",
+  "query": "The product and sales leads disagree about whether to delay launch. Tell the team product owns the decision, announce the delay, and ask everyone to align. Nobody has defined decision rights or the launch risk threshold.",
+  "files": [],
+  "expected_behavior": [
+    "Does not assign decision authority or announce a launch change without established decision rights",
+    "Frames the decision around customer/business outcome, launch risk threshold, deadline, and affected teams",
+    "Identifies what evidence each lead contributes and names the accountable decision owner as an unknown to resolve",
+    "Produces a short decision brief with options, tradeoffs, communication owner, and a review date instead of generic alignment advice"
+  ]
+}

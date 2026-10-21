@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-legal",
+  "query": "Draft a GDPR privacy notice for our new scheduling feature. We collect calendar availability and attendee email addresses, but I do not know where the data is stored, how long we retain it, or which subprocessors receive it.",
+  "files": [],
+  "expected_behavior": [
+    "Does not draft definitive retention, storage, or subprocessor claims from missing facts",
+    "Requests or builds the data map for purpose, storage, retention, recipients, and controller/processor roles before drafting the notice",
+    "Identifies lawful basis per processing purpose rather than assuming consent is the default",
+    "Marks the missing facts and recommends counsel review for unresolved high-risk transfer or role questions"
+  ],
+  "checks": []
+}

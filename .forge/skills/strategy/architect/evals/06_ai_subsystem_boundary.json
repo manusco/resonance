@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-architect",
+  "query": "We are adding an AI assistant to an existing support platform. It reads customer account data, answers questions from internal docs, and can change subscription settings. Define the architecture questions and handoff before anyone designs prompts.",
+  "files": [],
+  "expected_behavior": [
+    "Defines the AI subsystem’s placement, caller contract, data ownership, trust zones, and relationships to the existing support and account services",
+    "Separates read-only retrieval from subscription-changing tool actions and requires authorization at the owning service boundary",
+    "Maps material failures such as stale retrieval, provider timeout, malformed model output, and partial account writes to named owners and safe outcomes",
+    "Identifies which unresolved model, retrieval, prompt, or agent details belong to AI Engineering",
+    "Uses only the diagrams and decision records needed to communicate the boundary and durable trade-offs"
+  ]
+}

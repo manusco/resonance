@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-ops-productivity",
+  "query": "We need 16 engineer-hours of work completed within the next 10 working days. Alice has 8 uncommitted calendar hours available. Bob has 10 hours showing as free, including a 4-hour support rotation that may be interrupted. Is there enough capacity, and what should we do next?",
+  "files": [],
+  "expected_behavior": [
+    "Distinguishes 18 hours of calendar availability from the 14 hours of protected availability if Bob\u2019s support rotation is not usable for planned work",
+    "States that the task is not yet safely covered by protected capacity and identifies the 2-hour gap under that assumption",
+    "Checks or asks whether the support rotation can be protected or whether the task can be split around interruptions before treating the 4 hours as usable",
+    "Checks existing commitments and dependencies that could affect the 10-day window instead of inferring capacity from headcount alone",
+    "Gives a conditional capacity estimate and a concrete next step without promising completion or forcing a minimum block size"
+  ],
+  "checks": []
+}

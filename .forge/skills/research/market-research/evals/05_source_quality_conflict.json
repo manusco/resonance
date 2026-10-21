@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-research-market-research",
+  "query": "Estimate the market size for AI procurement software. A vendor blog says $18B, a government dataset covers only federal procurement, and two research reports use different category definitions.",
+  "files": [],
+  "expected_behavior": [
+    "Does not present the $18B vendor figure as a settled total market without checking scope and method",
+    "Compares definitions, populations, dates, and incentives across the sources and explains why they are not directly comparable",
+    "Separates verified source claims, estimates, and inference, with a confidence level for each",
+    "Builds a transparent bottom-up proxy or bounded range from a defined buyer and spend base if a defensible top-down figure is unavailable",
+    "Names the next evidence that would most reduce uncertainty and does not invent a single precise answer"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-ops-skill-author",
+  "query": "A new payment-safety skill has four evals: happy path, invalid amount, missing account, and a planted defect that repeats the invalid-amount case. The skill also owns refund authorization, idempotency, and partial-provider-failure behavior. Finish the eval suite before writing the body.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies that the repeated invalid-amount planted defect does not add an independent behavior",
+    "Adds distinct cases for refund authorization, idempotency, and partial provider failure, with observable gradeable rubrics",
+    "Keeps the required happy path, edge case, and failure prevention represented and reaches at least six cases",
+    "Adds more than six only if another independent behavior or material risk needs separate evidence",
+    "Does not write the skill body until the eval coverage is defined"
+  ],
+  "checks": []
+}

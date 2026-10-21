@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-finance",
+  "query": "We have $300,000 in cash and spend $45,000 per month. Revenue is seasonal, but I do not have the last six months of collections or committed invoices. Tell the board we have seven months of runway and recommend a raise size.",
+  "files": [],
+  "expected_behavior": [
+    "Computes only gross cash coverage from the supplied cash and spend, about 6.7 months before receipts or other cash flows",
+    "Does not call gross cash coverage net runway without revenue and collection data",
+    "Names the missing cash-flow inputs needed to calculate a runway date and raise amount, including actual collections, committed receipts, and planned burn changes",
+    "Does not invent a raise amount or present a seasonal revenue forecast as fact",
+    "Provides a bounded next step to build a cash forecast once the missing inputs are available"
+  ]
+}

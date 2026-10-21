@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-update-roadmap",
+  "query": "Run /update-roadmap. The latest commit is titled 'Finish OAuth migration', but it only changes a README and the current code still uses the old authentication flow. The state file says the migration is complete.",
+  "files": [],
+  "expected_behavior": [
+    "Checks the current code or other primary evidence before treating the commit message as proof that OAuth shipped",
+    "Does not mark the migration complete while the implementation still uses the old flow",
+    "Corrects stale state to reflect verified repository behavior and names the mismatch",
+    "Recalculates the next step from the implementation evidence rather than the commit title"
+  ],
+  "checks": []
+}

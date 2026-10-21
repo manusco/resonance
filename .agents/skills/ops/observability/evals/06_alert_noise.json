@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-observability",
+  "query": "The dashboard has 42 alerts, including one for every customer_id and one for each transient retry. The on-call team ignores most notifications. Reduce alert noise without hiding a real checkout outage.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies customer_id and retry-level alert dimensions as high-cardinality or noisy signals that belong in diagnostic detail rather than paging metrics",
+    "Groups alerts around user-visible symptoms and actionable SLO burn or golden-signal thresholds",
+    "Defines routing, ownership, and a response action for each retained page",
+    "Keeps a dashboard or log query for diagnosis and does not silence the checkout outage signal"
+  ],
+  "checks": []
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-gtm-thinker",
+  "query": "We tested the proposed executive webinar with 20 target buyers. Zero attended after registering, and follow-up interviews say the topic is irrelevant to their current work. The team wants another six-week webinar calendar. Decide what to recommend.",
+  "files": [],
+  "expected_behavior": [
+    "Uses the observed attendance and interview evidence to challenge the current hypothesis rather than continuing by default",
+    "Compares revise and reject options against the stated signal and identifies what new evidence could change the decision",
+    "Defines a new test only if it can test a changed, explicit hypothesis with a decision-grade signal",
+    "Recommends reject when no evidence-backed revision is available and returns no execution plan for the rejected idea",
+    "Names the appropriate next owner or explains why no campaign handoff is warranted"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-marketing-run-campaign",
+  "query": "Run a campaign next month to build awareness. We have no target audience, budget, launch date, or definition of success yet.",
+  "files": [],
+  "expected_behavior": [
+    "Returns NEEDS_CONTEXT or a concise brief request naming the audience, offer, launch window, budget authority, and success decision needed",
+    "Does not invent a campaign plan, channel mix, or forecast before the campaign objective is operational",
+    "Distinguishes awareness activity metrics from the business outcome or decision the campaign should inform",
+    "States what can be drafted once the missing inputs are supplied and keeps publishing/spend behind approval"
+  ]
+}

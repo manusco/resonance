@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-growth",
+  "query": "A referral campaign produced 900 signups last month, and the team wants to triple the incentive budget. We have no holdout, and referral signups may have replaced organic signups. How should we decide?",
+  "files": [],
+  "expected_behavior": [
+    "Does not treat attributed referral signups as incremental growth without a counterfactual",
+    "Designs a bounded holdout or comparable experiment to estimate incremental retained or active users",
+    "Chooses a primary metric and decision window tied to the intended AARRR stage rather than total signups alone",
+    "Defines a success and stop threshold before expanding incentive spend",
+    "Keeps campaign execution and statistical measurement implementation with their owner skills while owning the growth hypothesis and priority"
+  ]
+}

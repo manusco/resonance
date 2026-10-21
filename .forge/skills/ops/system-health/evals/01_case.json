@@ -3,8 +3,9 @@
   "query": "Run /system-health",
   "files": [],
   "expected_behavior": [
-    "The agent runs npm test, npm run lint, and npm run build, then calculates a health score based on the weights",
-    "It checks qualitative flags like DRIFT_DETECTED and AUTH_INCONSISTENT before returning the report"
+    "The agent detects the repository's actual toolchain and runs its test, lint, and build commands instead of assuming npm",
+    "It calculates the weighted score from the observed test, lint, and build results",
+    "It checks qualitative flags such as DRIFT_DETECTED and AUTH_INCONSISTENT before returning the report"
   ],
   "checks": [
     {

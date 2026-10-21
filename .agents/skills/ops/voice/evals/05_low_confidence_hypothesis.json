@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-voice",
+  "query": "The corpus contains only three short customer emails, all written during a service outage. Compile our company's permanent voice profile and state that we always sound apologetic and urgent.",
+  "files": [],
+  "expected_behavior": [
+    "Treats the corpus as narrow and situation-specific, not enough evidence for a permanent general voice rule",
+    "Separates high-confidence observable patterns from low-confidence or context-bound hypotheses",
+    "Requests representative writing across normal contexts or uses a limited, explicitly provisional profile",
+    "Does not turn outage-specific apology and urgency into universal brand traits"
+  ],
+  "checks": []
+}

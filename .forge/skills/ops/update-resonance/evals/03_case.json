@@ -3,7 +3,10 @@
   "query": "Run /update-resonance. After the merge, /system-health scores 40/100.",
   "files": [],
   "expected_behavior": [
-    "The agent identifies the failed update from its recovery journal and confirms that automatic rollback restored the touched paths"
+    "The agent reads the recovery journal and identifies which update step failed",
+    "It verifies the journal's rollback receipt or compares restored touched paths with the pinned preimages before claiming recovery succeeded",
+    "If restoration is incomplete, it reports the exact paths and stops before attempting another update",
+    "It recommends the validation needed after restoration and does not treat a 40/100 health score alone as proof of rollback"
   ],
   "checks": [
     {

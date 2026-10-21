@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-marketing-lifecycle",
+  "query": "A user completed activation yesterday, unsubscribed from product emails last week, and is still in our onboarding automation. Should we keep sending the remaining activation messages?",
+  "files": [],
+  "expected_behavior": [
+    "Suppresses marketing email after unsubscribe and checks the applicable consent and message-purpose rules before any further email",
+    "Stops already-irrelevant onboarding messages after activation rather than continuing a fixed sequence",
+    "Separates permitted service messages from promotional lifecycle messages without treating that distinction as a blanket exception",
+    "Recommends updating trigger/suppression logic and verifying the user's channel preference before re-entry"
+  ]
+}

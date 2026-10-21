@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-product",
+  "query": "Rank these roadmap requests with RICE: export to CSV, SSO, and a redesigned dashboard. We have no reach data, confidence estimates, or effort estimates, and the team is asking for a numeric ranking today.",
+  "files": [],
+  "expected_behavior": [
+    "Does not fabricate RICE inputs or present an unsupported numeric ranking as evidence",
+    "Names the missing reach, impact, confidence, and effort evidence and asks focused questions to obtain it",
+    "Uses user or business evidence to distinguish urgent constraints such as SSO requirements from preference",
+    "Recommends the next decision or low-cost discovery step while preserving uncertainty"
+  ],
+  "checks": []
+}

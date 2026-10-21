@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-update-roadmap",
+  "query": "Run /update-roadmap. The state file includes a planned database migration that has not landed, and the last commit adds a design document describing how the migration will work.",
+  "files": [],
+  "expected_behavior": [
+    "Distinguishes a documented plan from a completed implementation",
+    "Leaves the migration unchecked or explicitly in progress until code or execution evidence confirms it landed",
+    "Updates context from the design document without treating it as a completed task",
+    "Names the concrete evidence needed to mark the migration done"
+  ],
+  "checks": []
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-product",
+  "query": "Write a Working Backwards press release for an AI dashboard that summarizes every metric. Customers have not asked for this, and we have no evidence that they struggle to interpret the current dashboard.",
+  "files": [],
+  "expected_behavior": [
+    "Challenges the feature premise and looks for an evidenced customer problem before presenting the press release as validated",
+    "Uses the interview or PMF diagnostic to clarify the user, job, and unmet need rather than inventing enthusiasm",
+    "Labels any draft as a hypothesis if the user still wants a concept artifact",
+    "Does not treat a polished announcement as proof of demand or readiness to build"
+  ],
+  "checks": []
+}

@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-finance-run-operating-cycle",
+  "query": "Our EU subsidiary reports 120K EUR revenue and 40K EUR costs, while the US report has 90K USD revenue and 35K USD costs. Combine them and tell the board our USD cash burn for September. The reports are accrual revenue and booked expenses, and no exchange rates or cash movements are provided.",
+  "files": [],
+  "expected_behavior": [
+    "Does not combine EUR and USD or convert accrual revenue/expenses into cash burn without an exchange-rate date and cash activity",
+    "Keeps the supplied EUR and USD amounts in separate currency and accounting-basis subtotals",
+    "Names the exchange-rate convention, cash receipts/payments, and period cut needed for a cash-burn figure",
+    "Does not present a board conclusion from accounting revenue and expenses as if they were cash balances or movements"
+  ]
+}

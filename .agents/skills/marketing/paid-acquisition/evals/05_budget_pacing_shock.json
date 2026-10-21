@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-marketing-paid-acquisition",
+  "query": "Our paid search campaign spent 70% of its monthly budget in the first three days after a platform change. CPL looks low, so double the budget now.",
+  "files": [],
+  "expected_behavior": [
+    "Does not scale on early CPL alone while spend pacing and conversion quality may be distorted",
+    "Checks attribution lag, lead qualification or downstream value, budget limits, and the platform change before judging efficiency",
+    "Recommends containing or capping spend until the anomaly is understood, with a specific monitoring window and owner",
+    "Separates a temporary pacing incident from evidence that the channel's unit economics support a higher budget"
+  ]
+}

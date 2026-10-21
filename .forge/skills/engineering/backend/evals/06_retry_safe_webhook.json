@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-backend",
+  "query": "Our invoice endpoint sends a customer webhook after committing the invoice. The receiver sometimes times out after processing the event, and our job retries delivery. Design the backend behavior so retries do not lose or duplicate invoice events.",
+  "files": [],
+  "expected_behavior": [
+    "Keeps the invoice write and durable event record consistent, using a transaction plus outbox or an equivalent proven pattern",
+    "Assigns a stable event or idempotency identifier so a receiver can safely deduplicate retries",
+    "Distinguishes delivery failure from invoice-creation failure and does not undo a committed invoice because notification failed",
+    "Validates the configured destination and protects the server from unsafe webhook targets at the trust boundary",
+    "Defines bounded retry, observability, and a terminal recovery path for events that remain undelivered"
+  ]
+}

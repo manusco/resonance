@@ -1,0 +1,1456 @@
+{
+  "date": "2026-10-21",
+  "baseline_commit": "5a5fcc4e10b1dbc43d42e1924421b62af07d65d6",
+  "scope": "canonical .forge/skills/ops eval fixtures and shared eval-count policy/tooling",
+  "baseline": {
+    "skills": 26,
+    "cases": 131,
+    "below_six": 19,
+    "cases_needed_for_six": 35
+  },
+  "final": {
+    "skills": 26,
+    "cases": 166,
+    "new_cases": 35,
+    "skills_at_or_above_six": 26,
+    "invalid_or_misbound_fixtures": 0
+  },
+  "review_limits": [
+    "No live model or paid API scoring was run. Counts, JSON parsing, query/rubric presence, and skill ID ownership were inspected. Fixture presence is not evidence of measured skill lift."
+  ],
+  "shape_issues": [],
+  "skills": [
+    {
+      "skill_path": "ops/audit",
+      "skill_id": "resonance-ops-audit",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 2,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_earned_scope.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_candidate_evidence.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/core",
+      "skill_id": "resonance-ops-core",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_initialization.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_orchestration.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_state_retrieval.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_ledger_precedence.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_small_request_no_plan.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/explain",
+      "skill_id": "resonance-ops-explain",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_concept_explainer.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true,
+          "fixture_paths_exist": true
+        },
+        {
+          "file": "02_diff_predict_then_reveal.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true,
+          "fixture_paths_exist": true
+        },
+        {
+          "file": "03_no_leak_before_prediction.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true,
+          "fixture_paths_exist": true
+        },
+        {
+          "file": "04_visual_form_selection.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true,
+          "fixture_paths_exist": true
+        },
+        {
+          "file": "05_reader_unknown.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true,
+          "fixture_paths_exist": true
+        },
+        {
+          "file": "06_answer_requested.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true,
+          "fixture_paths_exist": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/founder-os",
+      "skill_id": "resonance-ops-founder-os",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_okr_cascade.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_weekly_business_review.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_authority_budget_defense.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_sandbagging_defense.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_leading_lagging_break.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_cadence_without_daemon.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/goal",
+      "skill_id": "resonance-ops-goal",
+      "baseline_cases_at_head": 8,
+      "final_cases": 8,
+      "new_cases": 0,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_happy_path.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_ambiguous_goal.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_no_runaway.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_mixed_request_contract.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_tactic_conflict.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "07_deferred_outcome.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "08_admin_metadata_not_done.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/handover",
+      "skill_id": "resonance-ops-handover",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_fresh_handover.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 11,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_same_day_append.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 8,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true,
+          "fixture_paths_exist": true
+        },
+        {
+          "file": "03_cold_run_no_context.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 8,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_unmerged_work.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_conflicting_sources.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/improve",
+      "skill_id": "resonance-ops-improve",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_weak_body.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_coarse_rubric.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_refuse_to_game.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_dead_case.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_confounded_measurement.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/incident",
+      "skill_id": "resonance-ops-incident",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_outage.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_severity_ambiguity.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_skips_mitigation.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_contain_without_destroying_evidence.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 5,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_vendor_outage_boundary.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/legal",
+      "skill_id": "resonance-ops-legal",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_privacy_policy_from_data_flows.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_risky_contract_clause.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_gdpr_data_processing_question.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_missing_data_map.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_contract_redline_authority.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/librarian",
+      "skill_id": "resonance-ops-librarian",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_happy_path.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_deprecation_archival.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_forbidden_phrases.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_unresolved_bug_capture.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_canonical_reference.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true,
+          "fixture_paths_exist": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/observability",
+      "skill_id": "resonance-ops-observability",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_golden_signals_instrumentation.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_slo_error_budget_design.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_alert_noise_and_vanity_dashboards.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_slo_from_service_boundary.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_alert_noise.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/page-audit",
+      "skill_id": "resonance-ops-page-audit",
+      "baseline_cases_at_head": 5,
+      "final_cases": 6,
+      "new_cases": 1,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_happy_path.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_site_multi_page.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_reject_theater.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_product_workspace.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_no_evidence_no_findings.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/product",
+      "skill_id": "resonance-ops-product",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_validation_first.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_pmf_diagnostics.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_rice_prioritization.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_rice_inputs_missing.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_press_release_reveals_weak_value.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/productivity",
+      "skill_id": "resonance-ops-productivity",
+      "baseline_cases_at_head": 5,
+      "final_cases": 6,
+      "new_cases": 1,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_burndown.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_async_default.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_backlog_grooming.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_queue_flow_and_item_safety.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_capacity_planning.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 5,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/qa",
+      "skill_id": "resonance-ops-qa",
+      "baseline_cases_at_head": 7,
+      "final_cases": 7,
+      "new_cases": 0,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_8path_matrix.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_stale_test.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_llm_eval_suite.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_benchmark_integrity.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 4,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_low_value_test_audit.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 3,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "07_deterministic_boundary_seam.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 3,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/refactor",
+      "skill_id": "resonance-ops-refactor",
+      "baseline_cases_at_head": 7,
+      "final_cases": 7,
+      "new_cases": 0,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_god_class.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_big_bang.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_truth_centralization.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_necessity_ladder.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_workflow_state_preservation.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "07_permission_contract.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/retro",
+      "skill_id": "resonance-ops-retro",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_recovered_incident.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 5,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_timeframe_boundary.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/reviewer",
+      "skill_id": "resonance-ops-reviewer",
+      "baseline_cases_at_head": 5,
+      "final_cases": 6,
+      "new_cases": 1,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_pr_audit.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_lgtm_rejection.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_ai_pr_audit.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_necessity_review.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_authoritative_api_boundary.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/second-opinion",
+      "skill_id": "resonance-ops-second-opinion",
+      "baseline_cases_at_head": 8,
+      "final_cases": 8,
+      "new_cases": 0,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_happy_path.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_no_model_configured.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_no_blind_trust.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_decision_mode.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_identity_unverified.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "07_manual_or_empty_not_complete.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "08_sensitive_or_oversize_input.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/security",
+      "skill_id": "resonance-ops-security",
+      "baseline_cases_at_head": 7,
+      "final_cases": 7,
+      "new_cases": 0,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_pr_audit.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_ai_threat_model.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_permission_drift.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_safe_sink_false_positive.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_candidate_not_finding.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "07_source_visibility_gate.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 3,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/ship",
+      "skill_id": "resonance-ops-ship",
+      "baseline_cases_at_head": 6,
+      "final_cases": 6,
+      "new_cases": 0,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_verify_deploy.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_necessity_release_gate.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/skill-author/resonance-skill-author",
+      "skill_id": "resonance-ops-skill-author",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_new_knowledge_skill.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_convert_workflow_to_procedure.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true,
+          "fixture_paths_exist": true
+        },
+        {
+          "file": "03_reject_unmeasured_skill.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_independent_case_coverage.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 5,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_deterministic_check_choice.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/system-health",
+      "skill_id": "resonance-ops-system-health",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_partial_failure_score.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_stale_test_contract.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/update-resonance",
+      "skill_id": "resonance-ops-update-resonance",
+      "baseline_cases_at_head": 9,
+      "final_cases": 9,
+      "new_cases": 0,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 6,
+          "deterministic_checks": 4,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 3,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_memory_migration.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 7,
+          "deterministic_checks": 3,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_conflict_in_managed_path.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 3,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "07_project_agents_preserved.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 3,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "08_source_resolution_no_upstream.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 3,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "09_notice_cannot_apply.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 4,
+          "deterministic_checks": 3,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/update-roadmap",
+      "skill_id": "resonance-ops-update-roadmap",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true,
+          "fixture_paths_exist": true
+        },
+        {
+          "file": "02_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_case.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 3,
+          "deterministic_checks": 1,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_commit_message_not_proof.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_plan_not_implementation.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    },
+    {
+      "skill_path": "ops/voice",
+      "skill_id": "resonance-ops-voice",
+      "baseline_cases_at_head": 4,
+      "final_cases": 6,
+      "new_cases": 2,
+      "at_least_six": true,
+      "cases": [
+        {
+          "file": "01_personal_extraction.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "02_self_description_rejection.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "03_compression.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "04_planted_defect.json",
+          "is_new_since_baseline": false,
+          "rubric_items": 5,
+          "deterministic_checks": 2,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "05_low_confidence_hypothesis.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        },
+        {
+          "file": "06_character_voice_boundary.json",
+          "is_new_since_baseline": true,
+          "rubric_items": 4,
+          "deterministic_checks": 0,
+          "skill_id_matches_template": true
+        }
+      ]
+    }
+  ]
+}

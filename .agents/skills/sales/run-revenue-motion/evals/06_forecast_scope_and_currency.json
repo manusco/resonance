@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-run-revenue-motion",
+  "query": "Build a board forecast from deals in USD and EUR across two fiscal calendars. The close dates are in customer local time, and some records are stale. Give me one precise quarter number now.",
+  "files": [],
+  "expected_behavior": [
+    "Does not combine currencies, fiscal periods, or local close dates without explicit conversion and calendar rules",
+    "Identifies stale records and separates confirmed pipeline from unverified records",
+    "Provides a bounded or segmented view where possible and labels assumptions instead of fabricating one precise number",
+    "Requests the exchange-rate date, fiscal calendar, timezone policy, and stale-deal refresh owner needed for a board-ready forecast"
+  ]
+}

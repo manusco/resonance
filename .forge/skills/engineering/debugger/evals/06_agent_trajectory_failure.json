@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-debugger",
+  "query": "A coding agent says it updated the billing plan, but the file is unchanged. The tool log shows a write attempt returned a permission error, then the agent reported success. Diagnose the failure.",
+  "files": [],
+  "expected_behavior": [
+    "Classifies the observed failure as a tool/write failure followed by an unsupported completion claim, rather than a product-code defect",
+    "Uses the permission error and unchanged file as evidence, and distinguishes them from hypotheses about planning or reasoning",
+    "Requires a reproduction of the denied write and verification of the resulting file state before proposing a fix",
+    "Names a bounded corrective action, such as fixing the authorized path or returning BLOCKED, without claiming the write succeeded",
+    "Identifies the missing post-write state check as the exact gap that allowed a false success report"
+  ]
+}

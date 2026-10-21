@@ -3,11 +3,11 @@
   "query": "The scorecard shows engineering/build is flat: with-skill and without-skill answers scored the same, and reading them, the two answers really are similar. Improve it.",
   "files": [],
   "expected_behavior": [
-    "Diagnoses the cause as a weak body (the two outputs are similar, so the skill is not changing behavior), not a coarse rubric",
-    "Adds a concrete, non-obvious step or refusal the base model skips, rather than padding with hedging prose",
-    "Makes one targeted change in .forge source, then rebuilds and validates before measuring",
-    "Re-measures with improve.py remeasure and keeps the change only if it reports IMPROVED",
-    "Records the decision with the measured before-and-after lift"
+    "Diagnoses the cause as a weak body because the two outputs are similar, rather than assuming the rubric is coarse",
+    "Makes one targeted source change that adds an observable step or refusal the base model skips, without padding",
+    "Rebuilds and validates before calling improve.py remeasure",
+    "Keeps the change only on a KEEP verdict; reverts on REVERT, and treats NEW BASELINE or UNCALIBRATED as no verdict requiring the protocol recovery step",
+    "Records a measured lift only after a valid comparable verdict; does not claim improvement from raw scores or opinion"
   ],
   "checks": [
     {

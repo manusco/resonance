@@ -1,0 +1,11 @@
+Snapshot: main, last ten commits, newest first
+c10a001 docs: note retry dashboard proposal
+c09b112 feat(queue): add bounded transient retry policy
+c08a223 test(queue): cover retry exhaustion
+c07b334 feat(webhooks): deduplicate payment events
+c06c445 test(webhooks): cover repeated delivery
+c05d556 feat(auth): rotate JWT refresh tokens
+c04e667 test(auth): cover consumed refresh token
+c03f778 chore: update API examples
+c02a889 fix(ui): clarify checkout error message
+c01b990 chore: update contributor guide

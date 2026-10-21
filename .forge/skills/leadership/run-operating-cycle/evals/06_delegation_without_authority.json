@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-leadership-run-operating-cycle",
+  "query": "Delegate the incident response, customer update, and any production fix to whoever is free, then mark the leadership action complete. We have not named an incident lead or the decision authority for a rollback.",
+  "files": [],
+  "expected_behavior": [
+    "Does not assign an unbounded production decision to whoever is free or mark it complete before an owner accepts it",
+    "Names separate accountable owners for incident command, technical mitigation, and customer communication where needed",
+    "Keeps rollback authority explicit and routes an active incident through the incident process",
+    "Defines a concrete acknowledgment, escalation point, and next review time so delegation is verifiable"
+  ]
+}

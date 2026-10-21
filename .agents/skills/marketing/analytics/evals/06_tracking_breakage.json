@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-marketing-analytics",
+  "query": "During a pricing experiment, the variant's new checkout event suddenly doubled while billing records show completed purchases are flat. Can I call the variant a winner from the event dashboard?",
+  "files": [],
+  "expected_behavior": [
+    "Treats the event spike and billing mismatch as a data-quality issue that invalidates the conversion verdict until reconciled",
+    "Checks event definition, deduplication, identity assignment, and release timing for a tracking change before attributing the spike to behavior",
+    "Uses billing or another named source of truth to reconcile completed purchases and reports the metric with its denominator and window",
+    "Keeps the experiment inconclusive or partial until the mismatch is resolved, and names the owner and next check"
+  ]
+}

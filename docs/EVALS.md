@@ -1,6 +1,6 @@
 # Measuring skills: the eval toolkit
 
-Every Resonance skill ships golden eval cases. This repo ships the MEASURING TOOLS and the CASES; it ships no results. Your scorecards, baselines, and calibration numbers are yours: they land in your own results directory when configured, or in local scratch, never in the repo.
+Every framework skill ships at least six distinct golden eval cases. Each case should cover an independently gradeable behavior; add more when the skill owns separate high-risk contracts, and do not split one behavior into near-duplicates to meet the floor. Installed project-owned skills retain the legacy three-case validation floor for compatibility. This repo ships the MEASURING TOOLS and the CASES; it ships no results. Your scorecards, baselines, and calibration numbers are yours: they land in your own results directory when configured, or in local scratch, never in the repo.
 
 ## Versioned contracts
 
@@ -56,6 +56,13 @@ Data has four custody classes:
 - Reserve cases replace contaminated or retired protected material.
 
 Each dataset record names its owner, external path, creation time, access log, hash manifest, permitted use, reuse count, contamination events, rotation rule, and retirement state. Protected content does not enter this repository.
+
+Public framework evals must be hermetic. Store evidence files under
+`.forge/fixtures/<skill-or-suite>/` and list their repository-relative paths in
+the case. The source installation profile ships `.forge/`; it does not own
+consumer application trees such as `src/`, `docs/`, or root `fixtures/`.
+Fixtures therefore must not rely on those trees or mark missing consumer files
+optional. Copy the smallest relevant evidence into framework-owned fixtures.
 
 ### Promotion precedence
 

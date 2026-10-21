@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-venture",
+  "query": "I have an idea for a tool that uses AI to save companies time. Build the Lean Canvas and interview plan.",
+  "files": [],
+  "expected_behavior": [
+    "Stops because the customer segment and specific job are too vague to form a useful canvas or test",
+    "Asks one focused question about who loses time or money and what they do today",
+    "Does not fill the nine canvas boxes with invented customer, problem, or channel assumptions",
+    "Does not generate a generic interview script until the target segment is identified",
+    "Preserves the option to continue the canvas and risk-ranked test after the missing answer is supplied"
+  ]
+}

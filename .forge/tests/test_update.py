@@ -16,6 +16,13 @@ update = importlib.util.module_from_spec(spec)
 sys.modules[spec.name] = update
 spec.loader.exec_module(update)
 
+integrity_spec = importlib.util.spec_from_file_location(
+    "eval_integrity_for_source_profile_test", ROOT / ".forge" / "eval_integrity.py"
+)
+integrity = importlib.util.module_from_spec(integrity_spec)
+sys.modules[integrity_spec.name] = integrity
+integrity_spec.loader.exec_module(integrity)
+
 
 class UpdateTests(unittest.TestCase):
     def commit(self, source):
@@ -699,6 +706,42 @@ class UpdateTests(unittest.TestCase):
         tool.unlink()
         with self.assertRaises(ValueError):
             update.source_files(source)
+
+    def test_source_profile_packages_required_eval_fixtures_and_oracle(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+
+        oracle_paths = integrity.oracle_files()
+        for original in oracle_paths:
+            relative = original.relative_to(ROOT)
+            destination = source / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(original, destination)
+        shutil.copy2(ROOT / ".forge" / "eval_fixture_manifest.json",
+                     source / ".forge" / "eval_fixture_manifest.json")
+        self.commit(source)
+
+        source_package = update.source_files(source, profile="source")
+        required_fixtures = {
+            dependency
+            for case_path in (ROOT / ".forge" / "skills").glob("**/evals/*.json")
+            for dependency in json.loads(case_path.read_text(encoding="utf-8")).get("files", [])
+            if not json.loads(case_path.read_text(encoding="utf-8")).get("fixture_optional", False)
+        }
+        self.assertTrue(required_fixtures)
+        self.assertTrue(all(path.startswith(".forge/fixtures/") for path in required_fixtures))
+        self.assertTrue(required_fixtures.issubset(source_package))
+
+        for relative, original in source_package.items():
+            destination = target / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(original, destination)
+        checked = subprocess.run(
+            [sys.executable, str(target / ".forge" / "eval_integrity.py")],
+            cwd=target, capture_output=True, text=True,
+        )
+        self.assertEqual(0, checked.returncode, checked.stdout + checked.stderr)
+        self.assertIn("0 problem(s)", checked.stdout)
 
     def test_source_clean_check_ignores_git_stderr_warnings(self):
         td, source, target = self.fixture()

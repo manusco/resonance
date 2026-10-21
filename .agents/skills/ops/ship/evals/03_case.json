@@ -3,7 +3,9 @@
   "query": "Run /ship with 40 modified files in the working directory",
   "files": [],
   "expected_behavior": [
-    "The agent separates the changes into logical commits (chore, feat, docs) instead of one massive WIP commit before tagging"
+    "The agent reviews the changed paths and groups related work into coherent commits instead of one 40-file WIP commit",
+    "It keeps each commit tied to a verifiable change area and does not stage unrelated user work together",
+    "It completes the project's required build, test, changelog, and version checks before tagging"
   ],
   "checks": [
     {

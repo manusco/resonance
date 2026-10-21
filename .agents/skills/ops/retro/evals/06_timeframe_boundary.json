@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-retro",
+  "query": "Run /retro for the last 7 days. There are commits in the repository, but none fall in that timeframe; the most recent commit is 10 days old.",
+  "files": [],
+  "expected_behavior": [
+    "Reports that no commits exist in the requested timeframe and does not import older work into the seven-day metrics",
+    "Does not invent a Shipping Streak, Focus Score, or Test Ratio from an empty sample",
+    "Uses the documented recovery path to stop the quantitative retro and explains the limitation",
+    "May offer to rerun for a timeframe that includes available history"
+  ],
+  "checks": []
+}

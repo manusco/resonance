@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-audit",
+  "query": "/audit a change that adds a cache header to authenticated invoice responses. A scanner claims private data may be shared across users, but the diff does not show the deployed cache key or proxy policy. The author says it is a blocker; the reviewer says the application source is safe.",
+  "files": [],
+  "expected_behavior": [
+    "Keeps the cache concern as an unconfirmed candidate while the deployed cache key and proxy policy are unknown",
+    "Names the missing evidence and assigns an owner-observed validation step without probing production",
+    "Separates confidence from severity and does not assert a confirmed P0 from the scanner claim alone",
+    "Reports the reviewer and scanner evidence together and makes a disposition that states the unresolved limitation"
+  ],
+  "checks": []
+}
