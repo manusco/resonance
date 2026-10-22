@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- **Security execution boundary.** Security reviews now require host-enforced isolation before running repository-controlled code and trusted checks before retaining its output.
+- **Security eval coverage.** Added a case for missing network and write isolation, with source-only review and untrusted-output handling.
+
 ## v2.5.45
 
 The security evidence and test value release.
