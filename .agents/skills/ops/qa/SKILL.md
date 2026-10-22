@@ -55,7 +55,7 @@ Copy this checklist and tick items as you go.
 
 ### Exploratory First-Run Journeys
 
-When QA needs to find usability friction, select a few perspectives that fit the target users and the risk being tested. Use a real browser to follow the critical journey from entry to first meaningful success. Record reproducible steps and evidence for material friction, combine duplicate findings, and rank them by observed frequency and user impact. Report how many people or runs were observed; a small exploratory sample does not establish population prevalence. Fix findings through the normal review process, then rerun the affected journeys. Do not require a fixed persona count, parallel agents, a screenshot for every reaction, or one-pass fixes.
+When QA needs to find usability friction, select a few perspectives that fit the target users and the risk being tested. Use the real target application and a platform-appropriate surface: a browser for web, a device or simulator for native mobile, and the application's native UI for desktop. Follow the critical journey from entry to first meaningful success. Record reproducible steps and platform-appropriate evidence for material friction, combine duplicate findings, and rank them by observed frequency and user impact. Report how many people or runs were observed; a small exploratory sample does not establish population prevalence. If the target runtime is unavailable, mark the journey unverified and state what evidence is needed. Fix findings through the normal review process, then rerun the affected journeys. Do not require a fixed persona count, parallel agents, a screenshot for every reaction, or one-pass fixes.
 
 ## Recovery
 

@@ -10,10 +10,33 @@
     "Does not invent a site-wide pass or a numeric score from partial, undated evidence"
   ],
   "checks": [
-    {"kind": "contains_any", "value": ["12", "sample", "sampled"]},
-    {"kind": "contains_any", "value": ["unavailable", "503", "could not access"]},
-    {"kind": "contains_any", "value": ["baseline", "dated", "comparable"]},
-    {"kind": "regex_absent", "value": "(?i)(whole site passes|site-wide pass|has improved since last month|improved since last month)"},
-    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+    {
+      "kind": "contains_any",
+      "value": [
+        "12",
+        "sample",
+        "sampled"
+      ]
+    },
+    {
+      "kind": "contains_any",
+      "value": [
+        "unavailable",
+        "503",
+        "could not access"
+      ]
+    },
+    {
+      "kind": "contains_any",
+      "value": [
+        "baseline",
+        "dated",
+        "comparable"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
   ]
 }

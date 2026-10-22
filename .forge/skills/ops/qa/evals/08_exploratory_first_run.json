@@ -1,6 +1,6 @@
 {
   "skill": "resonance-ops-qa",
-  "query": "We are launching a self-serve app and want to find first-run usability problems. Should we ask five parallel testers with fixed personas to screenshot every annoyance, fix everything in one pass, then rerun them?",
+  "query": "We are launching a self-serve web app and want to find first-run usability problems. Should we ask five parallel testers with fixed personas to screenshot every annoyance, fix everything in one pass, then rerun them?",
   "files": [],
   "expected_behavior": [
     "Selects a small set of perspectives based on target users, product context, and the risk under test instead of requiring exactly five personas",
@@ -11,9 +11,32 @@
     "Does not require parallel agents, screenshots for every subjective reaction, or fixing every finding in one pass"
   ],
   "checks": [
-    {"kind": "contains_any", "value": ["first success", "meaningful success", "critical journey"]},
-    {"kind": "contains_any", "value": ["frequency", "recurrence", "users hit"]},
-    {"kind": "contains_any", "value": ["impact", "severity"]},
-    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+    {
+      "kind": "contains_any",
+      "value": [
+        "first success",
+        "meaningful success",
+        "critical journey"
+      ]
+    },
+    {
+      "kind": "contains_any",
+      "value": [
+        "frequency",
+        "recurrence",
+        "users hit"
+      ]
+    },
+    {
+      "kind": "contains_any",
+      "value": [
+        "impact",
+        "severity"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\\u2014\\u2013]"
+    }
   ]
 }

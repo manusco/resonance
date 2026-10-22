@@ -7,7 +7,7 @@ The design contract, eval coverage, and operator workflow release.
 ### Added
 - **Project design contract.** UI work now discovers the declared design source, applies approved guidance to the affected app, and keeps proposals separate from approved rules. New projects with visible UI receive a bounded proposal, while headless work stays free of design setup.
 - **Automatic design population.** Direct UI tasks can create or resume a proposal from maintained project evidence while preserving source pointers and existing approved content.
-- **Eval fixture coverage.** All 73 framework skills now meet the six-case floor across 494 structurally valid fixtures; legacy project-owned skills retain their compatibility floor. New cases cover design source authority, app identity, routine reuse, automatic population, and project initialization, while fixture integrity checks protect referenced evidence.
+- **Eval fixture coverage.** All 73 framework skills now meet the six-case floor across 499 structurally valid fixtures; legacy project-owned skills retain their compatibility floor. New cases cover design source authority, app identity, routine reuse, automatic population, project initialization, and the combined QA, security, product, and SEO guidance, while fixture integrity checks protect referenced evidence.
 
 - **Exploratory first-run QA.** Choose audience-relevant perspectives, test a critical journey through first success, and rank reproducible findings by observed frequency and user impact without imposing fixed personas or one-pass fixes.
 
