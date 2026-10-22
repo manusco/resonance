@@ -3,7 +3,7 @@
 > Operator-grade AI agent skills for builders. A cross-tool skill library and slash-command system for Claude Code, Cursor, Codex, and opencode, covering strategy, design, engineering, marketing, sales, and ops.
 
 <div align="center">
-    <a href="https://github.com/manusco/resonance/releases/latest"><img src="https://img.shields.io/badge/Resonance-v2.5.46-7025eb?style=for-the-badge&logo=github" alt="Resonance v2.5.46" /></a>
+    <a href="https://github.com/manusco/resonance/releases/latest"><img src="https://img.shields.io/badge/Resonance-v2.5.47-7025eb?style=for-the-badge&logo=github" alt="Resonance v2.5.47" /></a>
     <a href="https://github.com/manusco/resonance/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/manusco/resonance/ci.yml?branch=main&style=for-the-badge&label=CI" alt="CI status" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="License" /></a>
 <!-- RESONANCE-GENERATED:SKILL_COUNT_BADGE:START -->
@@ -155,23 +155,23 @@ py .forge/validate_skill.py --all .agents/skills
 
 ## Use it inside your own project
 
-Working in the Resonance repo directly is the simplest path. For another project, use the transactional installer. It previews every write, refuses user-owned conflicts, records ownership hashes, stages outside the target, backs up replaced files, and rolls back a failed apply.
+Use the transactional installer to add Resonance to your project. It previews every write, refuses user-owned conflicts, records ownership hashes, stages files before applying them, journals exact Git preimages, copies only preimages Git cannot recover, and rolls back a failed apply.
 
 **macOS / Linux**
 ```bash
-gh repo clone manusco/resonance ~/resonance-source -- --branch v2.5.43
-python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version 2.5.43
-python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version 2.5.43 --revision <preview-revision> --plan-digest <preview-plan-digest> --apply
+gh repo clone manusco/resonance ~/resonance-source -- --branch <version-tag>
+python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version <version> --summary
+python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version <version> --revision <preview-revision> --plan-digest <preview-plan-digest> --apply
 ```
 
 **Windows (PowerShell)**
 ```powershell
-gh repo clone manusco/resonance "$env:TEMP\resonance-source" -- --branch v2.5.43
-py "$env:TEMP\resonance-source\resonance_update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.43
-py "$env:TEMP\resonance-source\resonance_update.py" --source "$env:TEMP\resonance-source" --target . --version 2.5.43 --revision <preview-revision> --plan-digest <preview-plan-digest> --apply
+gh repo clone manusco/resonance "$env:TEMP\resonance-source" -- --branch <version-tag>
+py "$env:TEMP\resonance-source\resonance_update.py" --source "$env:TEMP\resonance-source" --target . --version <version> --summary
+py "$env:TEMP\resonance-source\resonance_update.py" --source "$env:TEMP\resonance-source" --target . --version <version> --revision <preview-revision> --plan-digest <preview-plan-digest> --apply
 ```
 
-The first command is a dry run. Review its JSON plan, then copy its full `revision` and `plan_digest` into the apply command. For an older installation with no ownership manifest, check out its installed Resonance version and pass that checkout as `--source` to the new updater with `--adopt`. Adoption claims only byte-identical released files and changes no framework file. Then use the new version checkout for the dry run and apply. A project-owned `AGENTS.md` or modified framework file remains a conflict until you review and resolve it. Optional release notices stay disabled until `python3 resonance_update.py notice enable`; they never apply updates.
+The preview command prints a plan. Review it, then copy its full `revision` and `plan_digest` into the apply command. The default installs the complete framework, including Forge and generated host files. `--profile source` and `--profile compiled` remain accepted aliases for old scripts. For an older installation with no ownership manifest, check out its installed Resonance version and pass that checkout as `--source` to the new updater with `--adopt`. Adoption claims only byte-identical released files and changes no framework file. Then use the new version checkout for the dry run and apply. Unowned project bridges such as `AGENTS.md` are preserved and reported; a modified framework file remains a conflict until you review and resolve it. Optional release notices stay disabled until `python3 resonance_update.py notice enable`; they never apply updates.
 
 Then open your AI tool and type `/init`. It writes your project's vision to `.resonance/00_soul.md` and sets up the memory structure.
 
@@ -206,7 +206,7 @@ The `.resonance/` folder is what makes the agent persistent across sessions. Its
 
 ## Upgrading
 
-Use the source checkout's transactional updater. It removes stale framework-owned files, but it never overwrites modified or project-owned files without review. Your project memory remains outside the managed write set.
+Use the source checkout's transactional updater. It removes stale framework-owned files, but it never overwrites modified or project-owned files without review. Project memory stays outside the managed write set; the only exception is an explicitly approved migration from legacy `.resonance/learnings.jsonl` into `.resonance/02_memory.md`.
 
 ```bash
 gh repo clone manusco/resonance ~/resonance-source -- --branch <version-tag>
@@ -214,7 +214,7 @@ python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --tar
 python3 ~/resonance-source/resonance_update.py --source ~/resonance-source --target . --version <version> --revision <preview-revision> --plan-digest <preview-plan-digest> --apply
 ```
 
-The first command previews the transaction. Use `--json` for the complete machine-readable plan. Installations created before ownership manifests must first run `python3 <installed-release>/resonance_update.py --source <installed-release> --target . --profile <source|compiled> --adopt` from a clean checkout of their installed version. Adoption accepts only byte-identical released files and records the selected source commit. Recovery uses `resonance_update.py --rollback <transaction-directory>`; the receipt uses pinned Git blobs where exact and copies only preimages Git cannot recover. An unchanged plan reports that no files or recovery data changed.
+The first command previews the transaction. Use `--json` for the complete machine-readable plan. A normal install includes the complete framework, including Forge and generated host files, and records the `source` profile. `--profile source` and `--profile compiled` remain accepted as compatibility aliases for that same complete install. For a pre-manifest installation, run `python3 <new-checkout>/resonance_update.py --source <installed-release-checkout> --target . --adopt`; adoption records ownership without rewriting framework files. Existing files whose ownership cannot be proved remain conflicts for review. Recovery uses `resonance_update.py --rollback <transaction-directory>`; the receipt uses pinned Git blobs where exact and copies only preimages Git cannot recover. An unchanged plan reports that no files or recovery data changed.
 
 Verify with `/system-health`.
 

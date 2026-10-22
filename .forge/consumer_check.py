@@ -85,7 +85,7 @@ def check(root: Path) -> dict:
     if profile not in ("source", "compiled"):
         raise ValueError(f"unknown consumer profile: {profile}")
     checks = [owned_files(root)]
-    if profile == "source":
+    if (root / ".forge" / "forge.py").is_file():
         checks.extend([
             run_check(
                 "forge_dry_run",
@@ -100,14 +100,15 @@ def check(root: Path) -> dict:
             run_check("eval_integrity", [sys.executable, str(root / ".forge/eval_integrity.py")], root),
         ])
     else:
-        checks.append({"name": "source_validators", "status": "skipped", "reason": "compiled profile"})
+        checks.append({"name": "forge_runtime", "status": "fail", "reason": "required Forge runtime is missing"})
     lock = root / ".resonance/project-skills.lock.json"
-    if lock.is_file() and profile == "source":
-        checks.append(run_check(
-            "project_skills",
-            [sys.executable, str(root / ".forge/project_skills.py"), "--check", "--root", str(root)],
-            root,
-        ))
+    if lock.is_file():
+        verifier = root / ".forge" / "project_skills.py"
+        checks.append(
+            run_check("project_skills", [sys.executable, str(verifier), "--check", "--root", str(root)], root)
+            if verifier.is_file() else
+            {"name": "project_skills", "status": "fail", "reason": "project skill verifier is missing"}
+        )
     shell = root / "resonance.sh"
     bash = shutil.which("bash")
     checks.append(

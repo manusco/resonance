@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.5.47
+
+The complete installation release.
+
+### Fixed
+- **Complete default installs.** The default installer now includes the runtime. Legacy `source` and `compiled` arguments now select the same complete installation without asking the user to choose a profile. Missing-profile ownership reconciles from recorded hashes and verified release history instead of blindly rehashing files. Project files and local customizations stay protected; missing-runtime and private-verifier health checks fail clearly. Existing Git-backed recovery remains in place.
+
+### Added
+- **Installation guidance and regression coverage.** Updated installation documentation, added two updater eval cases, and added a regression against the real installed runtime.
+
 ## v2.5.46
 
 The design contract, eval coverage, and operator workflow release.

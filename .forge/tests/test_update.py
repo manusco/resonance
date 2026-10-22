@@ -44,6 +44,7 @@ class UpdateTests(unittest.TestCase):
         source, target = root / "source", root / "target"
         (source / ".forge").mkdir(parents=True)
         target.mkdir()
+        (source / "AGENTS.md").write_text("framework instructions\n", encoding="utf-8")
         (source / "package.json").write_text('{"version":"9.9.9"}', encoding="utf-8")
         for name in ("tool.py", "forge.py", "validate_skill.py", "eval_integrity.py"):
             (source / ".forge" / name).write_text("raise SystemExit(0)\n", encoding="utf-8")
@@ -84,26 +85,27 @@ class UpdateTests(unittest.TestCase):
         self.assertIn("journal.json", message)
         self.assertTrue(raised.exception.backup.joinpath("journal.json").is_file())
 
-    def test_compiled_profile_excludes_source_tooling(self):
+    def test_compiled_profile_alias_installs_complete_runtime(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
         (source / ".agents" / "skills" / "demo").mkdir(parents=True)
         (source / ".agents" / "skills" / "demo" / "SKILL.md").write_text("demo", encoding="utf-8")
         self.commit(source)
         work = update.plan(source, target, "compiled")
-        self.assertEqual(work["profile"], "compiled")
+        self.assertEqual(work["profile"], "source")
         self.assertIn(".agents/skills/demo/SKILL.md", work["writes"])
-        self.assertNotIn(".forge/forge.py", work["writes"])
-        self.assertNotIn("AGENTS.md", work["writes"])
+        self.assertIn(".forge/forge.py", work["writes"])
+        self.assertIn("AGENTS.md", work["writes"])
 
-    def test_legacy_compiled_looking_target_requires_profile(self):
+    def test_legacy_compiled_looking_target_defaults_to_complete_install(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
         (target / ".agents" / "skills").mkdir(parents=True)
-        with self.assertRaisesRegex(ValueError, "profile is required"):
-            update.plan(source, target)
+        work = update.plan(source, target)
+        self.assertEqual("source", work["profile"])
+        self.assertIn(".forge/forge.py", work["writes"])
 
-    def test_legacy_manifest_keeps_profile_unknown_until_explicit_choice(self):
+    def test_legacy_manifest_without_profile_defaults_to_complete_install(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
         (source / ".agents" / "skills" / "demo").mkdir(parents=True)
@@ -114,11 +116,110 @@ class UpdateTests(unittest.TestCase):
         manifest.parent.mkdir(parents=True)
         manifest.write_text(json.dumps({"schema": 1, "version": "2.5.1", "files": {}}), encoding="utf-8")
         self.assertNotIn("profile", update.load_manifest(target))
-        with self.assertRaisesRegex(ValueError, "profile is required"):
-            update.plan(source, target)
-        self.assertEqual("compiled", update.plan(source, target, "compiled")["profile"])
+        self.assertEqual("source", update.plan(source, target)["profile"])
+        self.assertEqual("source", update.plan(source, target, "compiled")["profile"])
 
-    def test_recorded_profile_migration_is_unsupported(self):
+    def test_legacy_compiled_manifest_upgrades_to_complete_install_without_profile(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        (source / ".agents" / "skills" / "demo").mkdir(parents=True)
+        (source / ".agents" / "skills" / "demo" / "SKILL.md").write_text("demo\n", encoding="utf-8")
+        self.commit(source)
+        old_skill = source / ".agents" / "skills" / "demo" / "SKILL.md"
+        target_skill = target / ".agents" / "skills" / "demo" / "SKILL.md"
+        target_skill.parent.mkdir(parents=True)
+        target_skill.write_bytes(old_skill.read_bytes())
+        manifest = target / update.MANIFEST
+        manifest.parent.mkdir(parents=True)
+        manifest.write_text(json.dumps({
+            "schema": 1, "version": "9.9.8", "profile": "compiled",
+            "files": {".agents/skills/demo/SKILL.md": update.digest(old_skill)},
+        }), encoding="utf-8")
+
+        update.apply(source, target)
+
+        installed = json.loads(manifest.read_text(encoding="utf-8"))
+        self.assertEqual("source", installed["profile"])
+        self.assertIn(".forge/forge.py", installed["files"])
+        self.assertTrue((target / ".forge/forge.py").is_file())
+
+    def test_unknown_new_forge_path_collision_is_blocked_and_preserved(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        collision = source / ".forge" / "new_tool.py"
+        collision.write_text("framework tool\n", encoding="utf-8")
+        self.commit(source)
+        user_file = target / ".forge" / "new_tool.py"
+        user_file.parent.mkdir(parents=True)
+        user_file.write_text("user file\n", encoding="utf-8")
+
+        work = update.plan(source, target)
+
+        self.assertIn(".forge/new_tool.py", work["conflicts"])
+        self.assertEqual("user file\n", user_file.read_text(encoding="utf-8"))
+        with self.assertRaisesRegex(ValueError, "block update"):
+            update.apply(source, target)
+        self.assertEqual("user file\n", user_file.read_text(encoding="utf-8"))
+
+    def test_missing_profile_stale_hash_reconciles_only_from_exact_tag_baseline(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        old_tool = source / ".forge" / "tool.py"
+        old_tool.write_text("released old tool\n", encoding="utf-8")
+        (source / "package.json").write_text('{"version":"9.9.8"}', encoding="utf-8")
+        self.commit(source)
+        subprocess.run(["git", "tag", "v9.9.8"], cwd=source, check=True, capture_output=True)
+        old_revision = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=source, check=True,
+            capture_output=True, text=True,
+        ).stdout.strip()
+        installed_tool = target / ".forge" / "tool.py"
+        installed_tool.parent.mkdir(parents=True)
+        installed_tool.write_bytes(old_tool.read_bytes())
+        manifest = target / update.MANIFEST
+        manifest.parent.mkdir(parents=True)
+        manifest.write_text(json.dumps({
+            "schema": 1, "version": "9.9.8",
+            "files": {".forge/tool.py": "0" * 64},
+        }), encoding="utf-8")
+        old_tool.write_text("released new tool\n", encoding="utf-8")
+        (source / "package.json").write_text('{"version":"9.9.9"}', encoding="utf-8")
+        self.commit(source)
+
+        work = update.plan(source, target)
+
+        self.assertEqual(old_revision, work["baseline_revision"])
+        self.assertNotIn(".forge/tool.py", work["conflicts"])
+        self.assertIn(".forge/tool.py", work["writes"])
+        self.assertEqual("matches_installed_release", work["reasons"][".forge/tool.py"]["code"])
+
+    def test_compiled_historical_scope_cannot_authorize_forge_overwrite(self):
+        td, source, target = self.fixture()
+        self.addCleanup(td.cleanup)
+        old_tool = source / ".forge" / "tool.py"
+        old_tool.write_text("old forge tool\n", encoding="utf-8")
+        (source / "package.json").write_text('{"version":"9.9.8"}', encoding="utf-8")
+        self.commit(source)
+        subprocess.run(["git", "tag", "v9.9.8"], cwd=source, check=True, capture_output=True)
+        old_tool.write_text("new forge tool\n", encoding="utf-8")
+        (source / "package.json").write_text('{"version":"9.9.9"}', encoding="utf-8")
+        self.commit(source)
+        installed_tool = target / ".forge" / "tool.py"
+        installed_tool.parent.mkdir(parents=True)
+        installed_tool.write_text("old forge tool\n", encoding="utf-8")
+        manifest = target / update.MANIFEST
+        manifest.parent.mkdir(parents=True)
+        manifest.write_text(json.dumps({
+            "schema": 1, "version": "9.9.8", "profile": "compiled",
+            "files": {".forge/tool.py": "0" * 64},
+        }), encoding="utf-8")
+
+        work = update.plan(source, target)
+
+        self.assertIn(".forge/tool.py", work["conflicts"])
+        self.assertEqual("old forge tool\n", installed_tool.read_text(encoding="utf-8"))
+
+    def test_recorded_profile_aliases_normalize_to_complete_install(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
         manifest = target / update.MANIFEST
@@ -129,10 +230,9 @@ class UpdateTests(unittest.TestCase):
                 encoding="utf-8",
             )
             with self.subTest(recorded=recorded, requested=requested):
-                with self.assertRaisesRegex(ValueError, "profile migration is unsupported"):
-                    update.plan(source, target, requested)
+                self.assertEqual("source", update.plan(source, target, requested)["profile"])
 
-    def test_compiled_apply_validates_from_pinned_source(self):
+    def test_compiled_apply_installs_and_validates_complete_runtime(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
         (source / ".agents" / "skills" / "demo").mkdir(parents=True)
@@ -140,9 +240,9 @@ class UpdateTests(unittest.TestCase):
         self.commit(source)
         update.apply(source, target, "9.9.9", "compiled")
         manifest = json.loads((target / update.MANIFEST).read_text(encoding="utf-8"))
-        self.assertEqual(manifest["profile"], "compiled")
+        self.assertEqual(manifest["profile"], "source")
         self.assertTrue((target / ".agents" / "skills" / "demo" / "SKILL.md").exists())
-        self.assertFalse((target / ".forge").exists())
+        self.assertTrue((target / ".forge" / "forge.py").exists())
 
     def test_compiled_apply_checks_private_lock_in_target(self):
         td, source, target = self.fixture()
@@ -189,7 +289,7 @@ class UpdateTests(unittest.TestCase):
             update.apply(source, target, "9.9.9", "compiled")
         self.assertEqual("demo v1", (target / ".agents" / "skills" / "demo" / "SKILL.md").read_text(encoding="utf-8"))
 
-    def test_adopt_requires_profile_for_target_without_source_tree(self):
+    def test_adopt_defaults_to_complete_install_without_source_tree(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
         (source / ".agents" / "skills" / "demo").mkdir(parents=True)
@@ -197,8 +297,10 @@ class UpdateTests(unittest.TestCase):
         self.commit(source)
         (target / ".agents" / "skills" / "demo").mkdir(parents=True)
         (target / ".agents" / "skills" / "demo" / "SKILL.md").write_text("demo", encoding="utf-8")
-        with self.assertRaisesRegex(ValueError, "profile is required"):
-            update.adopt(source, target)
+        manifest_path = update.adopt(source, target)
+        adopted = json.loads(manifest_path.read_text())
+        self.assertEqual("source", adopted["profile"])
+        self.assertIn(".agents/skills/demo/SKILL.md", adopted["files"])
 
     def test_apply_records_ownership_and_blocks_user_change(self):
         td, source, target = self.fixture()

@@ -43,13 +43,28 @@ class ConsumerCheckTests(unittest.TestCase):
         }), encoding="utf-8")
         return root, managed, manifest
 
-    def test_compiled_consumer_hash_check_is_read_only(self):
+    def test_legacy_compiled_consumer_missing_runtime_fails_read_only(self):
         root, managed, manifest = self.fixture()
         before = {managed: managed.read_bytes(), manifest: manifest.read_bytes()}
         result = consumer.check(root)
-        self.assertTrue(result["ok"])
+        self.assertFalse(result["ok"])
         self.assertEqual("pass", result["checks"][0]["status"])
+        self.assertIn("forge_runtime", result["failed"])
         self.assertEqual(before, {managed: managed.read_bytes(), manifest: manifest.read_bytes()})
+
+    def test_project_lock_without_verifier_fails(self):
+        root, _, _ = self.fixture()
+        forge = root / ".forge"
+        forge.mkdir()
+        for name in ("forge.py", "validate_skill.py", "eval_integrity.py"):
+            (forge / name).write_text("raise SystemExit(0)\n", encoding="utf-8")
+        lock = root / ".resonance/project-skills.lock.json"
+        lock.write_text('{"schema_version":1,"skills":[]}\n', encoding="utf-8")
+        result = consumer.check(root)
+        self.assertIn("project_skills", result["failed"])
+        verifier_check = next(check for check in result["checks"] if check["name"] == "project_skills")
+        self.assertEqual("fail", verifier_check["status"])
+        self.assertIn("missing", verifier_check["reason"])
 
     def test_owned_hash_mismatch_fails(self):
         root, managed, _ = self.fixture()
