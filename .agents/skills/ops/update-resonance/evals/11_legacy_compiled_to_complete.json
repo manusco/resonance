@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-update-resonance",
+  "query": "This project has a Resonance ownership manifest from an older compiled installation. A new release adds .forge, but the project already has an unowned .forge/forge.py with local tooling. Update it. Do I need to choose a profile or delete the local file?",
+  "files": [],
+  "expected_behavior": [
+    "Uses the complete installation without asking the owner to choose a profile",
+    "Treats the old compiled manifest value only as evidence for the old release's ownership scope",
+    "Preserves an unowned existing .forge/forge.py and reports that exact path as a conflict rather than overwriting or deleting it",
+    "Allows newly included paths only when absent or when their bytes match the incoming release",
+    "Keeps the historical manifest profile available only while proving old release ownership"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": [".forge/forge.py"]},
+    {"kind": "contains_any", "value": ["conflict", "blocked"]}
+  ]
+}

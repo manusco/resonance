@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-ops-update-resonance",
+  "query": "Install Resonance into this empty project using the normal command. Do I need to choose source or compiled, and what happens if an old script still passes --profile compiled?",
+  "files": [],
+  "expected_behavior": [
+    "Uses the complete installation by default, including .forge, generated skills, host adapters, bridges, and launchers",
+    "States that a new ownership manifest records the source profile",
+    "Does not ask the user to choose between source and compiled profiles",
+    "Explains that --profile source and --profile compiled remain compatibility aliases for the complete installation"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["complete installation", "complete framework"]},
+    {"kind": "contains_any", "value": ["source profile", "profile `source`", "profile source"]},
+    {"kind": "contains_any", "value": ["compatibility alias", "compatibility aliases"]},
+    {"kind": "regex_absent", "value": "[\u2014\u2013]"}
+  ]
+}

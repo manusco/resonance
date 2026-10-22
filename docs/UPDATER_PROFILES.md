@@ -1,30 +1,27 @@
-# Resonance updater profiles
+# Resonance installation and updater
 
-Resonance has two different installation shapes. A source installation contains
-the compiler and validation tools. A compiled installation contains generated
-skills and host adapters only. Treating both shapes as one installation caused
-the old updater to copy `.forge` into compiled consumers and then run validators
-that could not exist there.
+A normal Resonance installation contains the complete framework, including
+`.forge`, generated skills, host adapters, bridges, and launchers. It records
+the `source` profile. The old `source` and `compiled` profile arguments remain
+accepted as compatibility aliases for this complete installation.
 
 ## Ownership contract
 
-The framework manifest records `profile`, version, source revision, and hashes
-for every path the updater owns. Older manifests remain readable.
+The framework manifest records the complete `source` profile, version, source
+revision, and hashes for every path the updater owns. Manifests with either old
+profile remain readable. Their recorded profile is used only to prove which
+paths belonged to the installed release. Newly included paths are treated as
+additions: absent paths can be installed, matching bytes are adopted, and
+unknown existing bytes are preserved as conflicts. Missing-profile legacy
+manifests are reconciled from recorded hashes or a verified installed release
+revision or exact version tag. The updater never guesses ownership from a clean
+worktree and never regenerates a private project-skill lock to make an upgrade
+pass.
 
-- `source` owns the framework compiler, `.forge`, generated skills, host
-  adapters, bridges, and launchers.
-- `compiled` owns generated skills, host adapters, and launchers. It does not
-  own `.forge`, project `AGENTS.md`, project `CLAUDE.md`, or project memory.
-
-The updater preserves an absent profile as unknown. It fails closed when a
-legacy target looks compiled but has no profile, while a legacy source target
-can continue in source mode when its `.forge` tree is present. A legacy target
-without a profile can be upgraded only after the operator explicitly chooses a
-profile.
-Adoption accepts only byte-identical released files and requires an explicit
-profile for a target without `.forge`. A modified or unowned file remains a
-conflict. The updater never regenerates a private project-skill lock to make an
-upgrade pass.
+For an installation without a manifest, use the new updater with a verified
+checkout of the installed release and `--adopt`. Adoption records ownership
+without rewriting framework files and accepts only byte-identical released
+files. A modified or unowned file remains a conflict.
 
 Framework validation never reads project-owned generated documentation as
 runtime authority. Command targets and skill metadata come from the
@@ -37,29 +34,27 @@ bridges are preserved byte-for-byte, excluded from framework ownership, and
 reported as non-blocking integration notes. Framework-repository builds remain
 strict about Resonance's own generated documents.
 
-For a source-profile consumer, use `python3 .forge/consumer_check.py --root .`.
-It verifies owned hashes, generated output, skills, eval integrity, project-skill
-locks, and available launcher parsers without comparing project-owned docs to
-the Resonance repository scaffold. `.forge/tests/run.py` is source-repository
-test infrastructure and refuses to run in an installed consumer.
+Use `python3 .forge/consumer_check.py --root .`. It verifies owned hashes,
+generated output, skills, eval integrity, project-skill locks, and available
+launcher parsers without comparing project-owned docs to the Resonance
+repository scaffold. `.forge/tests/run.py` is source-repository test
+infrastructure and refuses to run in an installed consumer.
 
 ## Validation and transaction
 
-Compiled targets are validated from the pinned source checkout. The source
-checkout runs its Forge dry run and integrity checks, while the source validator
-checks the target's generated skills and any project-skill lock. This keeps
-meaningful verification without installing source tooling into the project.
-Source targets use the verifier in their own `.forge` tree. Neither profile
-regenerates a project-owned lock during an update.
+During apply, the installed Forge runs in consumer dry-run mode, strict skill
+validation, eval integrity, and project-skill lock verification when a lock is
+present. Afterward, run `python3 .forge/consumer_check.py --root .` for the
+broader ownership and generated-output check. These checks never regenerate a
+project-owned lock.
 
-Both profiles use the same staged apply and per-path recovery journal. A live
+Updates use staged apply and a per-path recovery journal. A live
 file can be reconciled when it matches the selected source, its recorded
 ownership hash, or the verified installed release commit or exact local version
 tag available in the pinned source checkout's local history. The updater does
 not fetch tags or history. The consumer's Git status never proves framework
-ownership. Profile migration is unsupported. Once a manifest records a
-profile, every requested profile must match it. Run an explicit summary
-preview first, or use `--json` for the complete machine-readable plan.
+ownership. Run an explicit summary preview first, or use `--json` for the
+complete machine-readable plan.
 
 Before changing managed files, apply pins target `HEAD` and records each
 preimage in `.resonance/updates/<id>/journal.json`. It uses a Git blob only when
@@ -70,19 +65,18 @@ transaction creates no `.resonance/backups/` directory. Older
 and doctor.
 
 Before creating the receipt or staging files, apply probes reversible file
-creation and deletion in each existing managed destination directory. This catches denied `.agents`,
-`.forge`, adapter, launcher, or ownership-manifest directories before the
-transaction begins. A source-profile or compiled consumer can preview with:
+creation and deletion in each existing managed destination directory. This
+catches denied `.agents`, `.forge`, adapter, launcher, or ownership-manifest
+directories before the transaction begins. Preview with:
 
 ```text
-python resonance_update.py --source <pinned-resonance-checkout> --target <project> --profile compiled --summary
+python3 resonance_update.py --source <pinned-resonance-checkout> --target <project> --summary
 ```
 
 If apply or validation fails, the updater attempts rollback before returning.
 If rollback also fails, the error reports both causes and the exact recovery
-journal path. Profile migration is unsupported. The first pilot should cover a
-synthetic compiled consumer and a synthetic source installation. Never replace
-an existing release tag.
+journal path. Legacy profile values remain historical provenance only. Never
+replace an existing release tag.
 
 ## Optional release notices
 
@@ -94,8 +88,8 @@ rejects redirects, drafts, and prereleases, and never sends project paths or
 project data. Launchers only run the quiet check when enabled. A failed check
 does not block startup, and no notice command can apply an update.
 
-The installed `resonance_update.py` runtime performs preview and apply for both
-profiles. `.forge/update.py` is a compatibility entrypoint for source installs.
+The installed `resonance_update.py` runtime performs preview and apply.
+`.forge/update.py` remains a compatibility entrypoint.
 Apply requires the exact version, full source commit, and plan digest printed by
 the reviewed preview. It stages released files from the pinned checkout and
 never imports or executes Python fetched during the notice request.

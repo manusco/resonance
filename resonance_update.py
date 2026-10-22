@@ -25,18 +25,18 @@ MANAGED_ROOTS = (".agents", ".forge", ".claude/skills", ".cursor/skills",
 PROFILE_ROOTS = {
     # A source checkout owns the compiler, documentation, and host bridges.
     "source": MANAGED_ROOTS,
-    # A compiled consumer owns only generated skills and host adapters. The
-    # validator is run from the pinned source checkout, never from the target.
+    # Legacy compiled ownership scope, used only to prove historical file ownership.
     "compiled": (".agents/skills", ".claude/skills", ".cursor/skills",
                   ".cursor/rules/resonance.mdc", ".opencode/commands",
                   "resonance.ps1", "resonance.sh", "resonance_update.py"),
 }
+COMPLETE_PROFILE = "source"
 LEGACY_ROOTS = (".codex/prompts", ".opencode/command")
 RELEASE_API = "https://api.github.com/repos/manusco/resonance/releases/latest"
 NOTICE_SCHEMA = 1
 MAX_NOTICE_BYTES = 64 * 1024
 NOTICE_TTL_SECONDS = 24 * 60 * 60
-FRAMEWORK_VERSION = "2.5.46"
+FRAMEWORK_VERSION = "2.5.47"
 
 
 class SourceDirtyError(ValueError):
@@ -167,21 +167,9 @@ def load_manifest(target: Path) -> dict:
 
 
 def resolve_profile(target: Path, requested: str | None, manifest: dict) -> str:
-    recorded = manifest.get("profile")
     if requested and requested not in PROFILE_ROOTS:
         raise ValueError(f"unknown installation profile: {requested}")
-    if recorded and requested and recorded != requested:
-        raise ValueError(f"target is recorded as {recorded}; profile migration is unsupported")
-    if recorded:
-        return recorded
-    if requested:
-        return requested
-    # Existing source consumers are backwards compatible. A target that has
-    # generated skills but no compiler is ambiguous, so require an explicit
-    # profile instead of silently claiming the consumer as source mode.
-    if (target / ".agents" / "skills").exists() and not (target / ".forge").exists():
-        raise ValueError("profile is required for a legacy compiled-looking target; choose source or compiled")
-    return "source"
+    return COMPLETE_PROFILE
 
 
 def version(source: Path) -> str:
@@ -226,7 +214,7 @@ def release_baseline(source: Path, manifest: dict, profile: str, paths: set[str]
     if installed_version == "adopted" and not manifest.get("source_revision"):
         return None, {}, "adopted installation has no verified historical release"
     recorded_profile = manifest.get("profile")
-    if recorded_profile != profile:
+    if recorded_profile not in (None, "source", "compiled"):
         return None, {}, "installed profile does not match the selected profile"
     try:
         current_revision = git_commit(source, "HEAD")
@@ -255,7 +243,7 @@ def release_baseline(source: Path, manifest: dict, profile: str, paths: set[str]
         package = json.loads(git_output(source, "show", f"{baseline_revision}:package.json").decode("utf-8"))
         if stable_version(installed_version) and str(package.get("version", "")) != installed_version:
             raise ValueError("installed source revision version does not match the manifest")
-        allowed = PROFILE_ROOTS[profile]
+        allowed = PROFILE_ROOTS.get(recorded_profile, PROFILE_ROOTS[profile])
         tree = git_output(source, "ls-tree", "-r", "-z", "--full-tree", baseline_revision)
         blob_refs = {}
         for record in tree.split(b"\0"):
@@ -488,9 +476,9 @@ def adopt(source: Path, target: Path, profile: str | None = None) -> Path:
     target = target.resolve()
     if (target / MANIFEST).exists():
         raise ValueError("ownership manifest already exists")
-    if profile is None and not (target / ".forge").exists():
-        raise ValueError("profile is required when adopting a target without .forge; choose source or compiled")
-    profile = profile or "source"
+    if profile and profile not in PROFILE_ROOTS:
+        raise ValueError(f"unknown installation profile: {profile}")
+    profile = COMPLETE_PROFILE
     incoming = source_files(source, include_legacy=True, profile=profile)
     for rel in PRESERVE_IF_UNOWNED:
         incoming.pop(rel, None)
@@ -522,7 +510,7 @@ def plan(source: Path, target: Path, profile: str | None = None) -> dict:
             incoming.pop(rel)
             preserved.append(rel)
     baseline_revision, baseline, baseline_error = release_baseline(
-        source, current, profile, set(current["files"])
+        source, current, current.get("profile") or profile, set(current["files"])
     )
     locked = project_locked_paths(target)
     conflicts, writes, removes, reasons = [], [], [], {}
@@ -636,10 +624,9 @@ def apply(source: Path, target: Path, expected_version: str | None = None,
             details += f"; {len(work['conflicts']) - 10} more paths, use --json for the complete list"
         raise ValueError("user-owned or modified managed files block update: " + details)
     required = (".forge/forge.py", ".forge/validate_skill.py", ".forge/eval_integrity.py")
-    if work["profile"] == "source":
-        missing = [rel for rel in required if rel not in work["files"]]
-        if missing:
-            raise ValueError("source is incomplete; missing required validators: " + ", ".join(missing))
+    missing = [rel for rel in required if rel not in work["files"]]
+    if missing:
+        raise ValueError("source is incomplete; missing required validators: " + ", ".join(missing))
     if not work["writes"] and not work["removes"] and not work["manifest_write"]:
         return None
     touched = list(dict.fromkeys(work["writes"] + work["removes"] + ([MANIFEST] if work["manifest_write"] else [])))
@@ -731,24 +718,13 @@ def apply(source: Path, target: Path, expected_version: str | None = None,
             os.replace(stage / rel, dst)
         for rel in work["removes"]:
             inside(target, target / rel).unlink(missing_ok=True)
-        if work["profile"] == "source":
-            checks = [target / ".forge" / "forge.py", target / ".forge" / "validate_skill.py",
-                      target / ".forge" / "eval_integrity.py"]
-            commands = [
-                [sys.executable, str(checks[0]), "build", "--all", "--host", "all", "--dry-run", "--consumer"],
-                [sys.executable, str(checks[1]), "--all", "--strict", str(target / ".agents" / "skills")],
-                [sys.executable, str(checks[2])],
-            ]
-        else:
-            # Compiled targets do not contain .forge. Validate their generated
-            # files with the pinned source checkout instead.
-            checks = [source / ".forge" / "forge.py", source / ".forge" / "validate_skill.py",
-                      source / ".forge" / "eval_integrity.py"]
-            commands = [
-                [sys.executable, str(checks[0]), "build", "--all", "--host", "all", "--dry-run"],
-                [sys.executable, str(checks[1]), "--all", "--strict", str(target / ".agents" / "skills")],
-                [sys.executable, str(checks[2])],
-            ]
+        checks = [target / ".forge" / "forge.py", target / ".forge" / "validate_skill.py",
+                  target / ".forge" / "eval_integrity.py"]
+        commands = [
+            [sys.executable, str(checks[0]), "build", "--all", "--host", "all", "--dry-run", "--consumer"],
+            [sys.executable, str(checks[1]), "--all", "--strict", str(target / ".agents" / "skills")],
+            [sys.executable, str(checks[2])],
+        ]
         for tool, command in zip(checks, commands):
             if not tool.is_file():
                 raise RuntimeError(f"post-update validator missing: {tool}")
@@ -765,7 +741,7 @@ def apply(source: Path, target: Path, expected_version: str | None = None,
             os.replace(tmp, mp)
         project_lock = target / ".resonance" / "project-skills.lock.json"
         if project_lock.is_file():
-            project_check = (target if work["profile"] == "source" else source) / ".forge" / "project_skills.py"
+            project_check = target / ".forge" / "project_skills.py"
             if not project_check.is_file():
                 raise RuntimeError("project skill lock exists but its verifier is missing")
             result = subprocess.run(
@@ -1001,7 +977,7 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--revision", help="full source commit printed by the reviewed preview")
     ap.add_argument("--plan-digest", help="digest printed by the reviewed preview")
     ap.add_argument("--profile", choices=sorted(PROFILE_ROOTS),
-                    help="installation ownership profile; compiled targets omit .forge")
+                    help="legacy compatibility alias; both choices install the complete framework")
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--doctor", action="store_true")
     ap.add_argument("--adopt", action="store_true",
@@ -1056,7 +1032,7 @@ def main(argv: list[str]) -> int:
         if args.json:
             print(json.dumps({**result, "status": "updated", "recovery_journal": str(transaction / "journal.json")}, indent=2))
         else:
-            print(f"updated to {version(args.source)} ({args.profile or 'recorded profile'}); recovery journal: {transaction / 'journal.json'}")
+            print(f"complete Resonance installation updated to {version(args.source)}; recovery journal: {transaction / 'journal.json'}")
     return 0
 
 

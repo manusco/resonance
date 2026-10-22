@@ -59,8 +59,8 @@ Each dataset record names its owner, external path, creation time, access log, h
 
 Public framework evals must be hermetic. Store evidence files under
 `.forge/fixtures/<skill-or-suite>/` and list their repository-relative paths in
-the case. The source installation profile ships `.forge/`; it does not own
-consumer application trees such as `src/`, `docs/`, or root `fixtures/`.
+the case. The complete installation ships `.forge/`; it does not own consumer
+application trees such as `src/`, `docs/`, or root `fixtures/`.
 Fixtures therefore must not rely on those trees or mark missing consumer files
 optional. Copy the smallest relevant evidence into framework-owned fixtures.
 
