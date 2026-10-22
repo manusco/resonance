@@ -14,6 +14,9 @@ The design contract, eval coverage, and operator workflow release.
 - **Security execution boundary.** Security reviews now require host-enforced isolation before running repository-controlled code and trusted checks before retaining its output.
 - **Security eval coverage.** Added a case for missing network and write isolation, with source-only review and untrusted-output handling.
 
+- **Product decision rigor.** Match discovery and validation depth to consequence, reversibility, uncertainty, and delay cost. Treat RICE and the Sean Ellis benchmark as decision aids, not objective or universal gates. Keep unsupported customer evidence explicitly labeled.
+- **Product evals.** Cover risk-scaled validation, uncertainty handling, and non-binary PMF interpretation.
+
 ## v2.5.45
 
 The security evidence and test value release.

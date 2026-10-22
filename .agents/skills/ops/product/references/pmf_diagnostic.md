@@ -1,9 +1,9 @@
 # Product-Market Fit (PMF) Diagnostics
 
-This protocol provides the framework to determine whether a product has achieved Product-Market Fit (PMF) and, if not, what strategic pivot is required. PMF is not binary-it is a spectrum, and it can be lost.
+This protocol helps assess product-market fit (PMF) and decide what to investigate next. PMF is not binary; it varies by segment and can change over time. No single survey or metric proves it.
 
-## 1. The Sean Ellis Test (The 40% Rule)
-The most objective measure of PMF is the Sean Ellis survey.
+## 1. The Sean Ellis Survey
+The Sean Ellis question is a useful stated-preference signal, not an objective or standalone PMF measure. Check who answered, whether they have experienced the product's core value, how the sample was recruited, and whether results differ across meaningful segments.
 
 **The Core Question:**
 *"How would you feel if you could no longer use [Product]?"*
@@ -13,7 +13,9 @@ The most objective measure of PMF is the Sean Ellis survey.
 - N/A - I no longer use it
 
 **The Benchmark:**
-If **40% or more** of respondents answer "Very disappointed", you have strong signal for Product-Market Fit. If it is below 40%, you do not have PMF and should focus on product iterations before scaling acquisition.
+If **40% or more** of eligible respondents answer "Very disappointed", treat it as a potentially useful signal to investigate alongside other evidence. If it is below 40%, investigate what differs across the sample and segments before deciding what to do next.
+
+The often-cited 40% "Very disappointed" benchmark is a heuristic, not a universal cutoff. A result below it calls for investigation, not an automatic pivot or freeze on growth spending; a result above it does not establish fit on its own.
 
 ## 2. Signal Assessment
 
@@ -43,5 +45,6 @@ If PMF is not achieved, evaluate these strategic pivots rather than blindly buil
 
 ## 4. Execution Rules
 - Do not declare PMF based on vanity metrics (signups, downloads, raw traffic).
-- Be ruthlessly honest. If the data suggests a pivot is needed, present that recommendation clearly.
-- PMF is a prerequisite for scaling. Do not recommend growth marketing spend until the Sean Ellis test benchmark is met.
+- Read survey responses alongside cohort retention, repeat usage, organic pull, acquisition channel, support burden, and unit economics where relevant. Separate observed evidence from interpretation.
+- State the strongest supported decision: investigate, run a focused test, iterate, cautiously scale, or pivot. Explain what evidence would change that recommendation.
+- Do not use one benchmark as a universal prerequisite for growth spending. Match the scale and reversibility of the investment to the strength of the combined evidence, and define guardrails.

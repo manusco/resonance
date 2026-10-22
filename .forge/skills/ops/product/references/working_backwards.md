@@ -11,7 +11,7 @@
 *   **Summary**: 2-3 sentences. What is it? Why do we need it?
 *   **Problem**: Describe the current pain.
 *   **Solution**: Describe how this product fixes the pain.
-*   **Quote**: A fake quote from a user. "I used to struggle with X, now Y makes it easy."
+*   **Quote**: Use a real, attributable customer quote only when evidence supports it. Otherwise label the line as illustrative or omit it; never present invented words as customer evidence.
 *   **Call to Action**: "Available today at..."
 
 ## 2. The FAQ

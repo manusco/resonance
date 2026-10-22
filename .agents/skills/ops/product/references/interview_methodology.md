@@ -5,7 +5,9 @@
 ## 1. The Core Philosophy
 The interview process builds understanding progressively, from rough shape to a complete mental model. Each pass establishes the foundation for the next. Do not ask about edge cases before you understand the flow.
 
-## 2. The 4-Pass Methodology
+## 2. A 4-Pass Guide
+
+Use the passes to uncover what this decision needs, not as a mandatory script. Scale depth to the consequence, reversibility, uncertainty, and cost of delay. A small reversible test may need only a brief problem and outcome check; a high-impact or hard-to-reverse commitment needs stronger evidence and fuller failure analysis.
 
 ### Pass 1: The Shape (Establish the Rough Goal)
 *   **Purpose**: Understand WHAT we're building and WHY.
@@ -35,16 +37,16 @@ The interview process builds understanding progressively, from rough shape to a 
 
 ### Pass 4: The Completeness (Edge Cases & Resilience)
 *   **Purpose**: Ensure the system is robust and failure-aware.
-*   **Checkpoint**: Every failure path has a defined recovery strategy. No "TBD" allowed.
+*   **Checkpoint**: Important failure paths have a defined recovery strategy, or remain explicit assumptions with an owner and validation step.
 *   **Questions**:
     *   "What happens if a dependency is unavailable?"
     *   "What if the input is malformed?"
     *   "How do we know if this is working in production (Observability)?"
 
-## 3. Decision Forcing (The "No TBD" Rule)
-*   **Ambiguity is a bug**. If the user says "it depends," force a default.
-*   **Default Selection**: "Let's pick a default. What should it be? Under what circumstances would someone change it?"
-*   **Guess and Verify**: "What's your best guess? We can mark it as an assumption for now."
+## 3. Handle Uncertainty
+*   Resolve ambiguity when it changes a consequential decision or creates material implementation risk.
+*   If a decision is low-risk and reversible, choose a provisional default only when useful, and state what would change it.
+*   If evidence is missing or the choice is premature, record the assumption, confidence, owner, and cheapest useful validation step. Do not turn an unknown into a requirement.
 
 ## 4. The Clarifying Question Test
-Before finishing, read your internal notes. **If a developer would have to ask a clarifying question to implement this, the interview has failed.**
+Before handing work to engineering, distinguish blocking unknowns from details that can safely remain provisional. A blocking unknown needs an answer or an explicit validation gate; non-blocking uncertainty can remain documented with an owner and next step.
