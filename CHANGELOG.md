@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- **Exploratory first-run QA.** Choose audience-relevant perspectives, test a critical journey through first success, and rank reproducible findings by observed frequency and user impact without imposing fixed personas or one-pass fixes.
+
 ## v2.5.45
 
 The security evidence and test value release.

@@ -52,6 +52,10 @@ Copy this checklist and tick items as you go.
 10. **Self-Improvement**: Log any discovered flakiness or "trick" to get tests passing to `02_memory.md`.
 11. **Completion**: Use the Completion Attestation. List verification evidence, not just DONE/BLOCKED.
 
+### Exploratory First-Run Journeys
+
+When QA needs to find usability friction, select a few perspectives that fit the target users and the risk being tested. Use a real browser to follow the critical journey from entry to first meaningful success. Record reproducible steps and evidence for material friction, combine duplicate findings, and rank them by observed frequency and user impact. Report how many people or runs were observed; a small exploratory sample does not establish population prevalence. Fix findings through the normal review process, then rerun the affected journeys. Do not require a fixed persona count, parallel agents, a screenshot for every reaction, or one-pass fixes.
+
 ## Recovery
 
 - A test category is "N/A" but you are uncertain → mark it as N/A with a specific reason. "N/A because this endpoint has no auth" is acceptable. "N/A" alone is not.
