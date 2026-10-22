@@ -72,3 +72,15 @@ The parent reports the full 354-test local suite passed before the final one-JSO
 Only this review report was authored by the reviewer. No source edit, Git mutation, merge, deployment, infrastructure access, or production action was performed.
 
 **Status: DONE_WITH_CONCERNS.** Review complete with no unresolved source finding. Four new response cases pass their semantic rubrics; SEO remains partial. No full model evaluation, no-skill comparison, calibrated judge run, live application/browser/native execution, or causal quality-lift measurement was performed. Structural counts and source freshness prove consistency, not future model behavior.
+
+## Bounded CodeQL follow-up before publishing
+
+**Disposition: ACCEPT.** Reviewed only the pending correction after PR #41 head `de86e6c074e04b4e0ffa9cf56e9bf7f130b4733b`, its oracle update, and [the CodeQL evidence report](2026-10-22-codeql-release-evidence.md). This does not reopen the accepted release scope or change its behavioral-evidence limits.
+
+The `.forge/tests/test_eval_integrity.py` diff renames two local path variables from `secret` to `outside_fixture`. Independently normalized those `ast.Name` identifiers and compared the complete old/new Python ASTs: they are identical. Filenames, synthetic contents, traversal payload, symlink target, mocks, exception handling, and assertions are unchanged. The manifest changes exactly one file-hash value, matching the corrected test file's SHA-256 `d2089801757a6b32eb539724b3b6e49015efdceff5c879cc39ce16438b2f934c`. Those two files supersede their entries in the earlier source digest; the remaining accepted source scope is unchanged.
+
+The evidence report's false-positive classification is supported by source inspection. At the reported helper JSON sink, `files` contains public fixture-path metadata. All five helper call sites supply synthetic paths. The flagged traversal input contains the basename `outside.txt`, not the external fixture's content or complete temporary path. The symlink test likewise serializes only `fixtures/external.md`. No sensitive bytes flow into this fixture JSON. The rename does not conceal a real secret or weaken a containment test.
+
+Independently reran all 8 eval-integrity tests successfully, the 662-file oracle check with zero problems, and `git diff --check`. The release owner separately reports the source-profile package/oracle test and all 499 structural eval cases passed. No CodeQL workflow, rule, suppression, or coverage control changes in this delta; no alert dismissal is part of the correction.
+
+**DONE_WITH_CONCERNS:** the bounded source correction is accepted with no finding. The subsequent CodeQL check on the corrected commit must still establish whether alert #6 clears. This reviewer has not observed that future CI result and does not claim it passed. No implementation or Git mutation was performed by this reviewer.

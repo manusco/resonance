@@ -63,9 +63,9 @@ class EvalIntegrityTests(unittest.TestCase):
     def test_snapshot_rejects_traversal_without_reading_outside_repository(self):
         with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as outside:
             root = Path(td).resolve()
-            secret = Path(outside) / "outside.txt"
-            secret.write_text("must not be read", encoding="utf-8")
-            forge, _ = self._isolated_repository(root, files=[f"../{secret.name}"])
+            outside_fixture = Path(outside) / "outside.txt"
+            outside_fixture.write_text("must not be read", encoding="utf-8")
+            forge, _ = self._isolated_repository(root, files=[f"../{outside_fixture.name}"])
             with mock.patch.object(integrity, "REPO", root), mock.patch.object(integrity, "FORGE", forge):
                 problems = integrity.verify({})
             self.assertTrue(any("eval file escapes repository" in problem for problem in problems))
@@ -73,12 +73,12 @@ class EvalIntegrityTests(unittest.TestCase):
     def test_snapshot_rejects_symlinked_fixture_escape(self):
         with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as outside:
             root = Path(td).resolve()
-            secret = Path(outside) / "secret.md"
-            secret.write_text("external content", encoding="utf-8")
+            outside_fixture = Path(outside) / "secret.md"
+            outside_fixture.write_text("external content", encoding="utf-8")
             link = root / "fixtures/external.md"
             link.parent.mkdir()
             try:
-                link.symlink_to(secret)
+                link.symlink_to(outside_fixture)
             except OSError:
                 self.skipTest("symlinks are unavailable")
             forge, _ = self._isolated_repository(root, files=["fixtures/external.md"])
