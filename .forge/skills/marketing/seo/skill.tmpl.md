@@ -69,6 +69,14 @@ missing detail would change the diagnosis, such as ambiguous URL-prefix vs
 domain properties, mixed date ranges, preliminary data used for comparisons, or
 truncated exports.
 
+Apply the same evidence boundary to every audit source. Distinguish a confirmed
+absence from an unavailable source, an unchecked item, or partial coverage;
+state the reason and scope conclusions to the pages, sample, conditions, and
+time window actually reviewed. Do not turn unknown or uninspected evidence into
+a pass, failure, or zero. Claim a change over time only when dated observations
+are comparable; without a baseline, report the current state and say the change
+is unverified.
+
 ### Step 2: Industry Detection
 Auto-detect from page signals:
 
@@ -138,6 +146,9 @@ A page can rank at position 1 and never be cited by an AI answer engine. GEO rea
 | GSC property ambiguous | Ask for the exact property before comparing, segmenting, or prescribing. |
 | GSC export truncated | Disclose row limits and avoid treating missing rows as zero. |
 | Preliminary GSC data | Label it clearly and prefer finalized data for before/after comparisons. |
+| Crawl or source coverage partial | List what was and was not reviewed; scope findings to the inspected coverage. |
+| Audit item not tested or source unavailable | Mark it unknown or unverified, not pass, fail, absent, or zero. |
+| Change over time has no comparable dated baseline | Report current observations only; say the change is unverified. |
 | Mixed industry signals | Ask user to clarify primary business type. |
 | Contradictory signals | Report both signals, recommend investigation. |
 | Page behind authentication | Note limitation, analyze publicly available metadata only. |

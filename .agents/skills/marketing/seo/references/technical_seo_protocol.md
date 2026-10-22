@@ -168,17 +168,26 @@ Allow: /
 
 ## Audit Output
 
-| Category | Status | Score |
-|----------|--------|-------|
-| Crawlability | pass/warn/fail | XX/100 |
-| Indexability | pass/warn/fail | XX/100 |
-| Security | pass/warn/fail | XX/100 |
-| URL Structure | pass/warn/fail | XX/100 |
-| Mobile | pass/warn/fail | XX/100 |
-| Core Web Vitals | pass/warn/fail | XX/100 |
-| Structured Data | pass/warn/fail | XX/100 |
-| JS Rendering | pass/warn/fail | XX/100 |
-| IndexNow | pass/warn/fail | XX/100 |
+| Category | Evidence status | Evidence and coverage |
+|----------|-----------------|-----------------------|
+| Crawlability | verified pass / verified issue / partial / unavailable / not tested | Pages, source, and conditions checked |
+| Indexability | verified pass / verified issue / partial / unavailable / not tested | Pages, source, and conditions checked |
+| Security | verified pass / verified issue / partial / unavailable / not tested | Pages, source, and conditions checked |
+| URL Structure | verified pass / verified issue / partial / unavailable / not tested | Pages, source, and conditions checked |
+| Mobile | verified pass / verified issue / partial / unavailable / not tested | Device and pages checked |
+| Core Web Vitals | verified pass / verified issue / partial / unavailable / not tested | Field or lab source, period, and sample |
+| Structured Data | verified pass / verified issue / partial / unavailable / not tested | Pages, source, and conditions checked |
+| JS Rendering | verified pass / verified issue / partial / unavailable / not tested | Rendering mode, pages, and conditions checked |
+| IndexNow | verified pass / verified issue / partial / unavailable / not tested | Endpoint and verification performed |
+
+Use `verified pass` or `verified issue` only when evidence covers the stated
+scope. Treat absence as an issue only when the requirement applies and the
+relevant source and pages were checked. `Partial`, `unavailable`, and `not
+tested` are not passes or failures. Do not
+assign a numeric score unless a defined, validated method and representative
+coverage support it. A before/after claim requires dated, comparable
+observations; otherwise report the current state and leave the change
+unverified.
 
 ### Priority Levels
 - **Critical**: Blocks indexing or causes penalties (fix immediately)

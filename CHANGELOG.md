@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- **SEO evidence coverage.** Technical audits now distinguish verified findings from partial, unavailable, or untested evidence, scope conclusions to observed coverage, and require comparable dated observations before claiming change over time. Added a regression eval for incomplete and undated audits.
+
 ## v2.5.45
 
 The security evidence and test value release.
