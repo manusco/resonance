@@ -11,6 +11,9 @@ The design contract, eval coverage, and operator workflow release.
 
 - **Exploratory first-run QA.** Choose audience-relevant perspectives, test a critical journey through first success, and rank reproducible findings by observed frequency and user impact without imposing fixed personas or one-pass fixes.
 
+- **Security execution boundary.** Security reviews now require host-enforced isolation before running repository-controlled code and trusted checks before retaining its output.
+- **Security eval coverage.** Added a case for missing network and write isolation, with source-only review and untrusted-output handling.
+
 ## v2.5.45
 
 The security evidence and test value release.
