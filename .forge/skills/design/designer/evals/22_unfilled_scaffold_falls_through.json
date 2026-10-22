@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Design a workspace table using the available project sources. State which source governs the recurring table pattern.",
+  "files": [
+    ".forge/fixtures/design-contract/lookup/unfilled/.resonance/05_design.md",
+    ".forge/fixtures/design-contract/lookup/unfilled/DESIGN.md"
+  ],
+  "expected_behavior": [
+    "Recognizes that 05_design.md contains only the untouched optional scaffold and placeholder values, so it is not an authored contract",
+    "Continues local discovery and identifies the maintained existing DESIGN.md as the applicable source",
+    "Uses the explicit approval provenance in DESIGN.md rather than treating the empty framework scaffold as higher authority",
+    "Does not copy its product decisions into the public scaffold or invent global Resonance styling"
+  ]
+}

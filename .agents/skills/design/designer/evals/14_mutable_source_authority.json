@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "The approved contract says the primary action uses the established semantic action role and cites the shared theme file. A proposed change to that theme file makes primary actions low contrast across the app, without changing the contract. Review the change.",
+  "files": [],
+  "expected_behavior": [
+    "Assesses the theme diff by its effect on the approved action treatment",
+    "Does not let the modified theme file certify its own conformance merely because it owns token values",
+    "Identifies the contract conflict and distinguishes current implementation from approved intent",
+    "Requests or uses existing approval for a material design decision while preserving applicable accessibility constraints"
+  ]
+}

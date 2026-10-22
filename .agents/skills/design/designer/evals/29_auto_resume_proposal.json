@@ -1,0 +1,10 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Implement the reconciliation workspace filter-panel behavior using the supplied application sources.",
+  "files": [".forge/fixtures/design-contract/auto-population/proposed-resume/.resonance/05_design.md"],
+  "expected_behavior": [
+    "Resumes the existing PROPOSED entry and leaves its supported batch-filter proposal and unknown approval provenance intact",
+    "Replaces only the unfinished placeholder for the task at hand with evidence-grounded content or a clearly stated unknown",
+    "Does not promote the proposal to APPROVED or rewrite completed choices on each coding task"
+  ]
+}

@@ -71,6 +71,7 @@ Backend state for complex workflows must persist predictably. Use persistent dae
 1. **Search + Learn**: Check `02_memory.md` for prior project-specific backend patterns or DB quirks.
 2. **Contract**: Define the API interface (Schema First). Verify: schema reviewed.
 3. **Shadow Path Audit**: Map Nil/Empty/Error paths for every new flow.
+3a. **Visible Product Effects**: If a backend change affects user-visible behavior, names, status, or interaction, consult [Project Design Contract](../../design/designer/references/project_design_contract.md) and keep its applicable product intent. Skip internal changes with no visible effect.
 4. **Implementation**: Implement logic with strict types. Match existing style exactly.
 5. **Surgical Fix**: Only touch the lines required. No drive-by refactors.
 6. **Self-Verify**: Run `py .forge/exec/run_checks.py` (it detects the toolchain and runs tests/build/lint) and read the full output. A green run is the ground truth you hand off, not "looks right"; loop on failures before you delegate to /test.

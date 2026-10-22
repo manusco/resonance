@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-ops-core",
+  "query": "Run /init for a headless CLI project. It has no screens, browser UI, or user-visible design source. Set up the project memory, tell me whether we need a design contract, and when this should be reconsidered.",
+  "files": [],
+  "expected_behavior": [
+    "Initializes the requested project memory using the existing canonical templates",
+    "Does not invent a screen contract, palette, UI patterns, or browser verification for the headless project",
+    "States that design-contract discovery can be revisited if user-visible interface behavior is introduced"
+  ],
+  "checks": []
+}

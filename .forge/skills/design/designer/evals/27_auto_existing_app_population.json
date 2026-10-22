@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Implement the selected-ticket archive action for Support Desk using the brief and existing app files.",
+  "files": [
+    ".forge/fixtures/design-contract/auto-population/existing-app/brief.md",
+    ".forge/fixtures/design-contract/auto-population/existing-app/current-source.md"
+  ],
+  "expected_behavior": [
+    "Uses selected-count, visible status, and per-ticket failures as evidence for a concrete archive proposal",
+    "Labels source-derived patterns as observations and makes no unsupported claim of approval",
+    "Bounds the entry to the selected-ticket action and preserves unrelated existing patterns",
+    "Automatically creates the proposal during UI coding without adding a whole-app audit or approval gate"
+  ]
+}

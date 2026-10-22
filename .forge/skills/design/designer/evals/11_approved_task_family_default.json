@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Implement the Suppliers detail inspection using the project references. Explain whether the proposed route fits the approved pattern and what evidence should be checked.",
+  "files": [
+    ".forge/fixtures/design-contract/approved/.resonance/05_design.md",
+    ".forge/fixtures/design-contract/approved/CustomersDetail.tsx",
+    ".forge/fixtures/design-contract/approved/SuppliersProposal.md"
+  ],
+  "expected_behavior": [
+    "Detects that an equivalent task family already has an approved drawer default and that the proposed Suppliers route diverges",
+    "Requires alignment or an explicitly approved applicable variant, rather than treating usability or task context alone as sufficient",
+    "Uses the actual supported layout rule and Customers implementation as references rather than inventing a breakpoint",
+    "Keeps review proportional and compares equivalent state and viewport"
+  ]
+}

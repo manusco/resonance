@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-engineering-mobile",
+  "query": "Implement the native iOS inspection screen for the product's workspace records. `.resonance/05_design.md` points to the approved workspace pattern: use the shared contextual drawer on wide layouts, and use the existing native sheet when its documented compact-width condition applies. A second app shares some components but has a different brand. Browser screenshots are unavailable.",
+  "files": [],
+  "expected_behavior": [
+    "Reads the same applicable product intent through `.resonance/05_design.md` and its cited native source",
+    "Uses the documented native sheet condition as the bounded platform variant and otherwise preserves the approved default",
+    "Looks up the second app's own source rather than copying visual treatment from the shared component package",
+    "Uses native rendering and interaction evidence; does not require CSS token tooling or browser screenshots",
+    "Marks visual conformance unverified if the relevant native comparison evidence is unavailable"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["native", "variant"]},
+    {"kind": "contains_any", "value": ["unverified", "not verified"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "No design contract or maintained design source exists. One existing screen has a small label-alignment bug. Fix it using nearby conventions and the user's instruction to align the label with its field.",
+  "files": [],
+  "expected_behavior": [
+    "Uses local observed conventions and the supplied intent to make the narrow repair",
+    "Does not stall the bug fix pending a design baseline",
+    "Does not call observed conventions approved or infer product-wide policy from one screen",
+    "Names a focused check and avoids an unnecessary full-system design effort"
+  ]
+}

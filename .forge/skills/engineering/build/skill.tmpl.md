@@ -18,6 +18,7 @@ inputs:
   - architecture_blueprint
 outputs:
   - user_request
+  - design_scope
   - artifact
   - evidence
   - architecture_conformance_report
@@ -44,6 +45,7 @@ invokes:
   - resonance-engineering-debugger
   - resonance-ops-security
   - resonance-ops-audit
+  - resonance-design-designer
 contract_version: 1
 job_id: delivery.build
 stage: EXECUTE
@@ -54,6 +56,7 @@ finalizes:
 artifact_access:
   - implementation-plan:read,review
   - implementation-artifact:create,modify,execute
+  - project-design-contract:read
   - build-result:create,modify
   - build-evidence:create,append_evidence
 dispatch_conditions:
@@ -84,12 +87,13 @@ Copy this checklist and tick items as you go.
 
 1. **Context Loading**: Read `implementation_plan.md` and `task.md`. If anything is ambiguous, explicitly state what is unclear and ask the user before proceeding. → verify: plan is clear.
 2. **Architecture Gate**: Screen the plan against the conformance triggers in `.resonance/04_systems.md`. If none apply, record `not applicable` and the reason. If any apply, invoke `/blueprint check` before writing code. Stop on `NEEDS_CONTEXT` or `NON_CONFORMING`; do not weaken the baseline or improvise around the finding. Reject a verdict for an older plan revision. → verify: the applicability decision cites the plan and, when required, the pinned approved architecture version, approval evidence, exact plan revision or digest, and conformance verdict.
+2a. **Design Contract**: Before implementation that changes user-visible behavior, names, status, or interaction, resolve the application's design entry point and rules using [Project Design Contract](../../design/designer/references/project_design_contract.md). During normal UI implementation, if the app has no filled entry point after source lookup, or the work adds a shared pattern with no applicable approved rule, activate Designer to discover and create or resume a bounded PROPOSED baseline or addendum from the brief and available evidence. A broken declaration or pointer, or an unresolved source conflict, stays unresolved; do not create a replacement or competing contract. Preserve pointers and approved content; keep unknowns explicit. Apply approved defaults and explicit variants for supported platforms. Routine reuse needs no new handoff or approval; without an applicable rule, use observed conventions without calling them approved. Skip work with no visible effect. → verify: implementation follows the applicable rule, or records a needed proposal, conflict, or unverified proof.
 3. **The Build Loop**: For each logical component in the plan:
    - **Test First**: Delegate to `resonance-engineering-backend` or `resonance-engineering-frontend` to create a failing test (Unit or E2E). → verify: test fails as expected.
    - **Implementation**: Write the code to satisfy the test.
    - **Simplicity Gate**: Before running tests, use the [Necessity Protocol](../../ops/core/references/necessity_protocol.md) to choose the least owned implementation that satisfies the entire approved plan and its safeguards. Keep justified boundaries and required behavior. If the plan itself conflicts with evidence or cannot meet a requirement, stop and route a proposed plan change; never rewrite approved architecture or shrink scope during implementation.
    - **Verification**: Run the test again. → verify: test passes.
-   - **Visual Check**: If UI, open browser and verify.
+   - **Visual Check**: Verify rendered web UI in a browser and native UI on the applicable device or simulator. Compare the same task and state against an applicable maintained reference or approved sibling. Native work may use only approved platform variants. If rendered or comparison evidence is unavailable, report visual conformance as unverified.
    - **Parallel safety**: the loop is serial by default. Run components concurrently only when they are independent in fact: no shared types, API contracts, migrations, lockfiles, generated files, or config and schema surfaces, and no contended runtime singleton (one dev server or port, one database, one browser session, a package install, a rate limit). File overlap is necessary but not sufficient. Cap the batch at three to five, decline on uncertainty, and re-inspect the real tree afterward, because a clean merge is not proof of semantic compatibility.
 4. **The Quality Gate**: Run `npm run lint` and `tsc`.
 5. **Security Check**: Delegate to `resonance-ops-security` for a quick Sharp Edges check.

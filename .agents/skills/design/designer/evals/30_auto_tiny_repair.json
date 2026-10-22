@@ -1,0 +1,10 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Fix the one-line account label alignment bug in the supplied profile screen.",
+  "files": [".forge/fixtures/design-contract/auto-population/tiny-repair.md"],
+  "expected_behavior": [
+    "Repairs the label using the nearby MetadataRow pattern and does not stall on missing design documentation",
+    "Does not require a whole-app audit, additional approval gate, or product-wide rule from this single defect",
+    "Does not treat a tiny repair alone as a reason to create a broad app baseline; any optional note stays screen-scoped and labels the component convention observed rather than approved"
+  ]
+}

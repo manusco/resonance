@@ -1,62 +1,7 @@
-# Protocol: Design Tokens (Semantic Layering)
-> **Objective**: Decouple design decisions from code values.
-> **Philosophy**: "Developers shouldn't know hex codes."
+# Protocol: project-owned design values
 
-## 1. The Token Hierarchy
+> **Objective**: Keep shared UI values at the source that already owns them.
 
-### Level 1: Primitives (The Palette)
-*Raw values. Do not use these directly in components.*
+Use the project's existing theme, tokens, component API, or platform value owner when one applies. Add a semantic token when multiple current callers need the same meaning or an existing contract requires it. A three-layer token system, CSS variables, or a theme provider is not a universal prerequisite.
 
-```typescript
-const primitives = {
-  blue: {
-    500: '#3b82f6',
-    600: '#2563eb', // Brand Primary
-  },
-  gray: {
-    900: '#111827', // Text Primary
-    100: '#f3f4f6', // Background
-  }
-}
-```
-
-### Level 2: Semantic (The Meaning)
-*Contextual aliases. Use these.*
-
-```typescript
-const semantic = {
-  text: {
-    primary: primitives.gray[900],
-    secondary: primitives.gray[500],
-    inverse: primitives.white,
-  },
-  bg: {
-    surface: primitives.white,
-    canvas: primitives.gray[100],
-  },
-  action: {
-    primary: primitives.blue[600],
-    primaryHover: primitives.blue[700],
-  }
-}
-```
-
----
-
-## 2. Naming Convention
-*   **Scale**: `xs, sm, md, lg, xl` (T-Shirt sizing for spacing/radius).
-*   **Intent**: `success, warning, error, info` (Feedback colors).
-*   **Interactive**: `default, hover, active, disabled` (States).
-
-## 3. Dark Mode Strategy
-tokens should be implemented via CSS Variables or a Theme Provider that swaps the *Semantic* layer, not the *Primitive* layer.
-
-```css
-:root {
-  --text-primary: #111827;
-}
-
-[data-theme="dark"] {
-  --text-primary: #f9fafb;
-}
-```
+Do not copy values into a second source of truth. A linked value file does not approve a material change to the treatment recorded in the project design contract; assess that change against the approved intent and existing authorization. For native UI, use the project's native value owner and platform conventions without CSS tooling.

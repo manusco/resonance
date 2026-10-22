@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-strategy-plan",
+  "query": "Plan a Suppliers detail screen. The loaded project instructions declare `.resonance/apps/console-design.md` as the console app source. Its approved default says equivalent workspace record inspection uses the existing contextual drawer; a route is approved for the named full-record editor. Customers uses the drawer. An internal query-index change is also in the request and has no visible effect. The project has a second marketing app with its own design source.",
+  "files": [],
+  "expected_behavior": [
+    "Uses the explicit console app declaration before `.resonance/05_design.md` or local discovery and reads only applicable rules and references",
+    "Plans Suppliers inspection using the approved drawer default or names an explicitly approved variant; does not treat the editor route as a general exception",
+    "Keeps the marketing app's separate design source scoped to that app",
+    "Skips design-contract work for the internal query-index change because it has no user-visible effect",
+    "Does not require a new approval for ordinary reuse or invent a new product-wide rule"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["drawer", "marketing"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

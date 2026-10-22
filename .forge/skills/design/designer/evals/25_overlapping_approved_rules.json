@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Implement record inspection at a compact width using the supplied approved contract. State the applicable rule, whether the choice is clear, and what should happen next.",
+  "files": [
+    ".forge/fixtures/design-contract/overlap/contradictory_contract.md"
+  ],
+  "expected_behavior": [
+    "Identifies that the same approved contract gives conflicting narrow-layout instructions for the same workspace record-inspection scope",
+    "Names both the scope-and-variants instruction and the approved-pattern table instruction as the conflicting rules",
+    "Does not invent a more-specific-wins or document-order priority and does not claim a conformance decision",
+    "Leaves the narrow-layout choice unresolved for the existing design owner and names the exact decision needed"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["drawer", "route", "unresolved"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

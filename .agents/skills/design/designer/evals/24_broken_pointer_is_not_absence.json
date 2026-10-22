@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Specify the new workspace table using the project sources. Report whether the approved pattern is known and what should happen next.",
+  "files": [
+    ".forge/fixtures/design-contract/lookup/broken/.resonance/05_design.md",
+    ".forge/fixtures/design-contract/lookup/broken/DESIGN.md"
+  ],
+  "expected_behavior": [
+    "Recognizes that 05_design.md is authored as a pointer and that its exact target is missing",
+    "Cites the pointer's supplied approval evidence as DEC-252 and its exact missing target as docs/design/workspace-contract.md",
+    "Reports the source as broken and authority unresolved rather than treating it as an absent entry point",
+    "Does not substitute root DESIGN.md as the contract merely because that file is available",
+    "May use the alternate file as observed evidence while naming the missing target or authority decision needed"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["DEC-252", "docs/design/workspace-contract.md"]}
+  ]
+}

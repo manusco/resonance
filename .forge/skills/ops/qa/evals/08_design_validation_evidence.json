@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-ops-qa",
+  "query": "Validate two workspace record screens against the approved contract: equivalent inspection tasks default to the existing contextual drawer; Customers uses it, but Suppliers uses a route. A separate full-record editor uses a route as an explicitly named exception. Source review passes, but there are no comparable rendered captures. The team asks for a visual conformance pass and wants to use the old Figma exploration as the only reference, though it is marked draft.",
+  "files": [],
+  "expected_behavior": [
+    "Uses the declared approved contract and its task-family default, not the draft Figma exploration as authority",
+    "Detects a route on an equivalent inspection task as a divergence unless an approved observable variant applies",
+    "Applies the route only to the explicitly named full-record editor and does not import an unprovided narrow-layout variant or approval into inspection",
+    "Checks comparable task state and viewport against a relevant sibling or maintained project reference",
+    "Marks visual conformance unverified because rendered comparison evidence is unavailable",
+    "Keeps the check focused and does not demand a full app inventory or a new approval for routine pattern reuse"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["drawer", "unverified"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

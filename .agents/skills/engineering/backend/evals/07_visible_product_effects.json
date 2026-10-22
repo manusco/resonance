@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-engineering-backend",
+  "query": "Review these two backend changes: one renames the lifecycle value `processing` to `in review`, which is displayed throughout the product; the other adds an internal query index without changing API output, labels, or behavior. The app has an approved status vocabulary in its project design source.",
+  "files": [],
+  "expected_behavior": [
+    "Consults the applicable project design source for the displayed lifecycle rename despite the backend file path",
+    "Preserves or explicitly reconciles the approved visible status vocabulary",
+    "Skips the internal index change because it has no user-visible effect",
+    "Does not expand design review to unrelated backend work"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["design contract", "design source", "approved status"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

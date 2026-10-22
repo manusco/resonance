@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Specify the new workspace screen using the project references and state what is approved, observed, or unresolved.",
+  "files": [
+    ".forge/fixtures/design-contract/unapproved/project_instructions.md",
+    ".forge/fixtures/design-contract/unapproved/DESIGN.md",
+    ".forge/fixtures/design-contract/unapproved/figma_exploration.md"
+  ],
+  "expected_behavior": [
+    "Follows the deterministic project design-source lookup and treats discovered materials as evidence, not automatic authority",
+    "Classifies the draft and Figma exploration as proposed or observed absent approval provenance",
+    "Surfaces the conflict as unresolved rather than selecting the newer source or claiming an approved baseline",
+    "Uses supplied intent and observed conventions proportionally without inventing approval"
+  ]
+}

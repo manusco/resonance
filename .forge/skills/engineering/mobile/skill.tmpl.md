@@ -43,9 +43,10 @@ For direct manipulation, keep the visual object attached to the gesture and sett
 ## Operational Sequence
 
 1. **Platform + Data Strategy**: Define the target platform (iOS/Android/both) and the product's offline requirements before choosing storage or sync.
-2. **Scaffold**: Set up navigation and only the storage or sync components required by that contract.
-3. **Build**: Place frequent and consequential controls where they are reachable in the relevant posture; inspect keyboard-open layouts and safe alternatives for high-risk actions.
-4. **Polish**: Match animation to direct manipulation or discrete feedback, platform convention, and motion preference.
+2. **Design Contract Lookup**: For changes to user-visible behavior, names, status, or interaction, consult [Project Design Contract](../../design/designer/references/project_design_contract.md) and apply product intent with explicitly scoped native variants and native evidence. During normal UI coding, if the app has no filled entry point after source lookup, or the work adds a shared pattern with no applicable approved rule, activate Designer to discover and create or resume a bounded PROPOSED baseline or addendum from the brief and available evidence before implementation. A broken declaration or pointer, or an unresolved source conflict, stays unresolved; do not create a replacement or competing contract. Preserve pointers and approved content; keep unknowns explicit. Routine reuse needs no new handoff or approval. Small repairs may follow observed conventions without creating policy. Skip work with no visible effect. → verify: name the source and rule, any needed proposed baseline/addendum, or why this does not apply.
+3. **Scaffold**: Set up navigation and only the storage or sync components required by that contract.
+4. **Build**: Place frequent and consequential controls where they are reachable in the relevant posture; inspect keyboard-open layouts and safe alternatives for high-risk actions.
+5. **Polish**: Match animation to direct manipulation or discrete feedback, platform convention, and motion preference.
 
 ## KPIs
 

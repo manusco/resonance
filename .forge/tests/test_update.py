@@ -546,6 +546,37 @@ class UpdateTests(unittest.TestCase):
         self.assertNotIn("AGENTS.md", installed["files"])
         self.assertNotIn("CLAUDE.md", installed["files"])
 
+    def test_consumer_design_entry_survives_source_upgrade(self):
+        for design_entry in (
+            "# Product design contract\n\nApproved workspace patterns.\n",
+            "# Design source\n\nCanonical: `DESIGN.md` (approved by product owner).\n",
+        ):
+            with self.subTest(design_entry=design_entry):
+                td, source, target = self.fixture()
+                self.addCleanup(td.cleanup)
+                source_template = source / ".resonance" / "05_design.md"
+                source_template.parent.mkdir(parents=True)
+                source_template.write_text("# Optional consumer design contract\n", encoding="utf-8")
+                self.commit(source)
+                design = target / ".resonance" / "05_design.md"
+                design.parent.mkdir(parents=True)
+                design.write_text(design_entry, encoding="utf-8")
+
+                initial_plan = update.plan(source, target, "source")
+                self.assertNotIn(".resonance/05_design.md", initial_plan["files"])
+                self.assertNotIn(".resonance/05_design.md", initial_plan["writes"])
+                update.apply(source, target, "9.9.9", "source")
+                (source / ".forge" / "tool.py").write_text("raise SystemExit('v2')\n", encoding="utf-8")
+                self.commit(source)
+
+                work = update.plan(source, target, "source")
+                self.assertNotIn(".resonance/05_design.md", work["writes"])
+                self.assertNotIn(".resonance/05_design.md", work["removes"])
+                self.assertNotIn(".resonance/05_design.md", work["conflicts"])
+                update.apply(source, target, "9.9.9", "source")
+
+                self.assertEqual(design_entry, design.read_text(encoding="utf-8"))
+
     def test_adopt_records_existing_bytes_without_changing_them(self):
         td, source, target = self.fixture()
         self.addCleanup(td.cleanup)
