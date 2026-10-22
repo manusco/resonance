@@ -3,8 +3,10 @@
   "query": "Run /plan to add billing",
   "files": [],
   "expected_behavior": [
-    "The input is too vague",
-    "The agent runs the Ambiguity Check, delegates to the product agent for Socratic Interrogation, and presents interpretations with tradeoffs instead of silently guessing"
+    "Identifies that “add billing” does not specify the user outcome or billing scope well enough to plan safely",
+    "Asks one focused clarification or routes to Product discovery, and presents distinct interpretations only if they change the plan materially",
+    "Does not choose a billing provider, data model, migration, or implementation sequence from unstated assumptions",
+    "Does not produce a final PRD or implementation plan until the missing scope is resolved"
   ],
   "checks": [
     {

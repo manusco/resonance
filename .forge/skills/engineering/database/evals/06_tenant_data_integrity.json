@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-database",
+  "query": "We store invoices for many organizations. The application filters every query by organization_id, but invoice_items only references invoice_id, and customer_id is globally unique only by accident. What database constraints should enforce tenant ownership?",
+  "files": [],
+  "expected_behavior": [
+    "Identifies tenant ownership as an integrity boundary that should not depend only on application query discipline",
+    "Recommends tenant-scoped keys or composite foreign keys that prevent an invoice item or invoice from referencing another tenant’s records",
+    "Explains the required parent uniqueness and index support for the chosen constraints",
+    "Plans a pre-migration audit and staged cleanup for existing cross-tenant or duplicate rows before enforcement",
+    "Does not prescribe row-level security as a substitute for valid relational constraints or claim one mechanism is sufficient without checking access paths"
+  ]
+}

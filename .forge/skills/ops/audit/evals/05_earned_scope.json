@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-ops-audit",
+  "query": "Run /audit on a one-file change to a public FAQ copy block. The approved brief says password reset links expire after 30 minutes and makes no promise about delivery speed. The old copy says 'Reset links expire in 24 hours.' The new copy says 'Reset links expire after 30 minutes. Request another if the link expires.' The page has no account controls, form, data handling, or architecture change; the build and CI pass. Does the changed copy match the approved brief?",
+  "files": [],
+  "expected_behavior": [
+    "Audits the actual text and its evidence against the approved brief rather than spawning every specialist by default",
+    "Dispatches only a reviewer or product check needed for this scope, and records why security, architecture, backend, performance, or QA checks are not applicable",
+    "States the scope limitation and does not imply a full-system audit from this narrow review",
+    "Gives an explicit APPROVE or REJECT decision tied to the evidence"
+  ],
+  "checks": [
+    {
+      "kind": "regex_present",
+      "value": "\\b(APPROVE|REJECT)\\b"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-plan",
+  "query": "The approved goal contract says to add an export button to the existing customer table, preserve its current filters and permissions, and support CSV only. Run /plan. The repository contains the current table component and API route.",
+  "files": [],
+  "expected_behavior": [
+    "Preserves the approved outcome, CSV-only scope, filters, permissions, and provenance without reopening settled choices absent contradictory code evidence",
+    "Uses the existing component and API route as primary evidence before adding external research or new architecture artifacts",
+    "Checks blueprint applicability and records a justified not-applicable decision if no governed boundary changes",
+    "Creates executable actions and verification for export content, permission enforcement, and existing table behavior",
+    "Presents the standalone plan for approval and does not begin implementation"
+  ]
+}

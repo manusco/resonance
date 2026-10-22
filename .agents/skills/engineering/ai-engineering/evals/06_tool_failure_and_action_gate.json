@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-ai-engineering",
+  "query": "An agent can look up a customer and issue refunds. The refund API times out after the request is sent, so the agent cannot tell whether the refund happened. Design the safe behavior.",
+  "files": [],
+  "expected_behavior": [
+    "Does not retry a potentially completed refund blindly; first checks transaction status with an idempotency key or equivalent reconciliation path",
+    "Does not tell the customer the refund succeeded until the system confirms the outcome",
+    "Escalates for human review when the result remains ambiguous or the customer impact is consequential",
+    "Sets a bounded retry or stop rule and records the tool result needed to diagnose the attempt",
+    "Includes timeout-after-commit and timeout-before-commit cases in the eval set"
+  ]
+}

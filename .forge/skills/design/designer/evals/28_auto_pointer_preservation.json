@@ -1,0 +1,13 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Add a bulk archive action to Orchard Admin. Resolve the app design source first, then advise and implement the UI behavior using its applicable rules. Do not create a duplicate contract.",
+  "files": [
+    ".forge/fixtures/design-contract/auto-population/pointer/.resonance/05_design.md",
+    ".forge/fixtures/design-contract/auto-population/pointer/product/design-system.md"
+  ],
+  "expected_behavior": [
+    "Follows the exact POINTER target and uses its approved drawer and bulk-action rules",
+    "Preserves the pointer and canonical source without generating a duplicate proposal or copying canonical rules",
+    "Does not treat the coding task as authorization to rewrite or re-approve existing choices"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "Implement the requested bulk archive action in the existing Support Desk ticket table. `/init` was skipped. Inspect the current screen and service files, retain the existing selection and status behavior, and keep the change scoped to this action.",
+  "files": [
+    ".forge/fixtures/design-contract/auto-population/existing-app/brief.md",
+    ".forge/fixtures/design-contract/auto-population/existing-app/current-source.md"
+  ],
+  "expected_behavior": [
+    "Discovers and uses the maintained Support Desk table implementation as evidence despite `/init` being skipped",
+    "Automatically activates Designer and populates a bounded PROPOSED addendum for the new archive-selection task using the brief and source evidence",
+    "Keeps existing search and status-filter patterns unchanged and does not present observed patterns as approved rules",
+    "Uses only supported behavior and leaves approval ownership unknown when no approval evidence exists",
+    "Does not block implementation or require a separate approval for the proposed addendum; any durable default remains pending owner approval"
+  ],
+  "checks": []
+}

@@ -14,6 +14,7 @@ artifact_access:
   - user-request:read
   - research-evidence:read
   - implementation-plan:create,modify,approve
+  - project-design-contract:read
 dispatch_conditions:
   - a clear intended outcome needs an atomic implementation plan
 compatibility: active
@@ -34,6 +35,7 @@ inputs:
   - venture_scope
 outputs:
   - user_request
+  - design_scope
   - plan
   - decision
   - implementation_plan
@@ -54,6 +56,7 @@ invokes:
   - resonance-strategy-venture
   - resonance-strategy-architect
   - resonance-strategy-blueprint
+  - resonance-design-designer
 ---
 
 # /resonance-strategy-plan: convert ambiguity into a world-class spec
@@ -79,9 +82,10 @@ Copy this checklist and tick items as you go.
 2. **Blueprint Applicability**: Read `.resonance/04_systems.md` when it contains an approved blueprint. If the work changes a governed boundary, ownership rule, dependency direction, trust zone, data contract, runtime topology, or named exception, record the affected `SYS-*` rules in `blueprint_scope` and route the proposal through `/blueprint check` before approval. If no approved baseline exists, record that fact without inventing one. Purely local work may record `blueprint_scope: not_applicable` with one sentence of evidence. → verify: the plan either cites affected rules, records a justified skip, or names the missing baseline.
 3. **Research**: Use existing codebase evidence first. Delegate to `resonance-strategy-researcher` when unresolved external or technical evidence could change the choice; use venture validation only when a business-model assumption is in scope. Do not add research handoffs for settled, local choices.
 4. **Working Backwards**: State the user outcome and relevant context; use a Feature PRD, Refactor RFC, or Evolution artifact when it helps define or assess the work.
-5. **Constraints**: Define scale, performance, security, or other usage constraints that affect this outcome.
-6. **Plan Generation**: Include the phases, architecture artifacts, rationales, and verification commands needed to implement and assess the full outcome. Keep actions independently executable; split them when doing so clarifies ownership or dependencies. Add diagrams and file stubs only when they help execute the work. Verify each material behavior at its owner, not by an arbitrary percentage of actions.
-7. **Approval**: When running standalone, present the completed plan for the required user approval before execution. When invoked by `/goal`, return the plan for the one combined goal-contract approval.
+5. **Design Contract Applicability**: For changes to user-visible behavior, names, status, or interaction, consult [Project Design Contract](../../design/designer/references/project_design_contract.md) and plan against applicable approved defaults and explicit variants. During normal UI planning, if the app has no filled entry point after source lookup, or the work adds a shared pattern with no applicable approved rule, activate Designer to discover and create or resume a bounded PROPOSED baseline or addendum from the brief and available evidence before planning. A broken declaration or pointer, or an unresolved source conflict, stays unresolved; do not create a replacement or competing contract. Preserve pointers and approved content; keep unknowns explicit. Routine reuse needs no new handoff or approval. A small repair may follow observed conventions without inventing policy. Skip work with no visible effect. → verify: the plan records its applicable source/rules, any needed proposed baseline/addendum, or a concise reason this does not apply.
+6. **Constraints**: Define scale, performance, security, or other usage constraints that affect this outcome.
+7. **Plan Generation**: Include the phases, architecture artifacts, rationales, and verification commands needed to implement and assess the full outcome. Keep actions independently executable; split them when doing so clarifies ownership or dependencies. Add diagrams and file stubs only when they help execute the work. Verify each material behavior at its owner, not by an arbitrary percentage of actions.
+8. **Approval**: When running standalone, present the completed plan for the required user approval before execution. When invoked by `/goal`, return the plan for the one combined goal-contract approval.
 
 ### Proportionality gate
 

@@ -1,17 +1,20 @@
 {
   "skill": "resonance-ops-explain",
-  "query": "Walk me through what changed in the auth refactor we just did, and quiz me on it so it actually sticks.",
+  "query": "Walk me through the attached auth refactor and quiz me so it sticks. Show only the raw change and ask one specific prediction question first.",
   "expected_behavior": [
-    "Recognizes the request for retention (quiz) and uses the predict-then-reveal check-in",
-    "Shows only the raw change and asks one specific prediction question",
-    "Ends the turn after asking, leaking no explanation, hint, or answer in the same message as the question",
-    "Commits to revealing the explanation only after the prediction, in a later turn; the first message carries the raw change and the question, with no explanation content",
-    "Grounds the walk-through in the actual diff, not a generic description of auth"
+    "Recognizes the request for retention and uses predict-then-reveal",
+    "Shows the supplied raw diff and asks one specific prediction question about replaying a refresh token after its JTI was consumed",
+    "Ends the turn after the question, with no explanation, hint, or answer in that message",
+    "Commits to revealing the explanation after the prediction in a later turn",
+    "Grounds the later walk-through in the supplied `verifyRefreshToken`, `consume`, and `issueTokenPair` changes"
   ],
   "checks": [
     {
       "kind": "regex_absent",
       "value": "[\u2014\u2013]"
     }
+  ],
+  "files": [
+    ".forge/fixtures/ops-explain/auth_refactor.diff"
   ]
 }

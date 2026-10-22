@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-pipeline",
+  "query": "Use the stage probabilities below for a weighted forecast: Discovery 80%, Qualification 90%, Proposal 95%. Our CRM admin typed these in yesterday, but there is no historical conversion analysis.",
+  "files": [],
+  "expected_behavior": [
+    "Does not treat recently entered stage percentages as empirically calibrated probabilities",
+    "Labels the weighted forecast as assumption-driven or presents an unweighted view until cohort conversion data exists",
+    "Requests stage definitions, historical cohorts, period, and closed-won outcomes needed to calibrate probabilities",
+    "Preserves the requested figures as supplied inputs without presenting them as validated forecast truth"
+  ]
+}

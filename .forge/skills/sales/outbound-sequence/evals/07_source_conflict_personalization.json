@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-outbound-sequence",
+  "query": "Draft an email saying the prospect is hiring 40 SDRs: an old CRM note says 40, but their current careers page shows no SDR roles and the note has no date.",
+  "files": [],
+  "expected_behavior": [
+    "Does not repeat the 40-SDR claim as fact because the source is undated and conflicts with current evidence",
+    "Names the source conflict and requests verification or uses a modest hypothesis clearly labeled as an assumption",
+    "Avoids pretending the careers page proves no hiring is occurring, since it may be incomplete",
+    "Keeps any draft personalized to verified role/company context and flags the claim for operator review"
+  ]
+}

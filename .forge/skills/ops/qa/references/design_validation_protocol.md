@@ -1,33 +1,23 @@
-# Protocol: Design Validation (Figma vs Code)
-> **Objective**: Ensure pixel-perfect implementation of the design.
-> **Philosophy**: "If it doesn't look like Figma, it's a bug."
+# Protocol: UI design validation
 
-## 1. The Validation Checklist
+> **Objective**: Verify changed UI against applicable project intent and real rendered behavior.
 
-### A. Layout & Spacing (The Box Model)
-*   [ ] **Padding**: Open DevTools. Hover. Does the green padding match Figma?
-*   [ ] **Margins**: Check element spacing. Are we using the defined variables (e.g., `gap-4`)?
-*   [ ] **Alignment**: Is the content centered/aligned exactly as specified?
+## 1. Resolve the reference
 
-### B. Typography (The Font Stack)
-*   [ ] **Line Height**: This is the #1 missed detail. Check `line-height` against Figma.
-*   [ ] **Letter Spacing**: Check for `tracking-tight` or `wide`.
-*   [ ] **Weight**: Is it `500` (Medium) or `600` (SemiBold)? Don't guess.
+Use the app's declared design source, then `.resonance/05_design.md`, then maintained local discovery. Discovery identifies evidence; it does not make a draft or exploration approved. Read only the rules and sources relevant to the changed UI.
 
-### C. Visuals (Colors & Radius)
-*   [ ] **Shadows**: Do the `box-shadow` values align? (e.g., `shadow-lg` vs `shadow-xl`).
-*   [ ] **Border Radius**: Is it `rounded-md` (6px) or `rounded-lg` (8px)?
-*   [ ] **Hex Codes**: Sample the color. Is it exact?
+## 2. Compare like with like
 
----
+- Compare the changed screen or state with the approved default for its task family and a relevant sibling or reference.
+- Use a comparable viewport and state. Check layout, content hierarchy, interaction, focus, and reachable states that the change affects.
+- Follow explicit approved variant conditions. Do not infer a variant from the page name or register.
+- A focused check is enough for routine reuse; do not require a full product inventory.
+- Use a project-appropriate reference such as a maintained design file, implementation source, or sibling screen. Figma is optional.
 
-## 2. Bug Reporting Standard (Visuals)
+## 3. Report evidence honestly
 
-**Title**: `[UI] Button padding mismatch on Login`
+Cite the applicable rule, reference, viewport/state, and observed result. Missing rendered or comparison evidence means visual conformance is **unverified**. Source inspection alone cannot prove rendered consistency. A linked component or token file is the value owner, not approval for a material change to the approved treatment.
 
-| Field | Value |
-| :--- | :--- |
-| **Component** | PrimaryButton |
-| **Expected (Figma)** | `px-4 py-2` (16px / 8px) |
-| **Actual (Code)** | `p-3` (12px) |
-| **Fix** | Update classes to match tokens. |
+## 4. Report a mismatch
+
+Name the component, expected approved pattern, actual behavior, and smallest correction. Preserve keyboard focus, accessibility, safety, and user data even when an approved rule conflicts; identify the conflict and do not claim conformance. Keep a material taste change proposed until authorized through existing project approval.

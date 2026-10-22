@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-success-customer-success",
+  "query": "The customer health dashboard is green because no support tickets, usage warnings, or negative survey responses are recorded. We have not collected telemetry or spoken with the admin in six months. Put them in the committed renewal forecast.",
+  "files": [],
+  "expected_behavior": [
+    "Treats missing telemetry and stale customer contact as unknown health evidence, not proof of good health",
+    "Does not mark the renewal committed without current outcome, budget, champion, and renewal evidence",
+    "Recommends verifying data coverage and contacting the appropriate customer stakeholders before assigning a health or forecast category",
+    "Labels the account's confidence and names a dated next action and owner"
+  ]
+}

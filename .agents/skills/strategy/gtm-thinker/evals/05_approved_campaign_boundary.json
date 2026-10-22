@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-gtm-thinker",
+  "query": "The CEO approved testing a short outbound message to 40 operations leaders at named logistics firms. The hypothesis and audience are fixed. Write the full email sequence, schedule the sends, set the budget, and decide whether the test worked.",
+  "files": [],
+  "expected_behavior": [
+    "Recognizes the hypothesis and audience as already approved and does not reopen settled assumptions without contradictory evidence",
+    "Keeps its own output to a proportionate handoff of the accepted hypothesis and decision criteria",
+    "Routes email sequence and campaign preparation to Run Campaign, while leaving send scheduling and external actions with that owner’s approval flow",
+    "Routes competing investment priority to Growth only if the request introduces an unresolved portfolio choice",
+    "Does not write campaign assets, schedule sends, set spend, or claim a measurement verdict"
+  ]
+}

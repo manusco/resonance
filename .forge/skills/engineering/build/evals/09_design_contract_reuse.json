@@ -1,0 +1,18 @@
+{
+  "skill": "resonance-engineering-build",
+  "query": "Build the approved plan for the Northstar product's workspace record screen in both web and native clients. The plan names the approved contextual drawer default, the existing drawer component, and a narrow-layout variant supported by that component. A linked theme file was changed in this same diff and lowers primary-action contrast. The plan also includes a backend status rename visible to users and an internal index optimization.",
+  "files": [],
+  "expected_behavior": [
+    "Resolves the app's design source and reads only applicable rules and cited sources before implementing affected UI",
+    "Keeps both clients on the approved drawer default and uses only the named narrow-layout variant",
+    "Checks the changed theme treatment against approved intent instead of treating its current values as self-approval",
+    "Checks the backend status rename because it changes visible vocabulary, while skipping the internal index optimization",
+    "Uses native evidence for the native client and does not require CSS tooling or browser-only proof there",
+    "Does not require a new approval for routine pattern reuse; reports any missing visual proof as unverified"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["approved", "native"]},
+    {"kind": "contains_any", "value": ["unverified", "missing evidence"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

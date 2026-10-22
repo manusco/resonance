@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-core",
+  "query": "Please rename the label on the settings button from 'Preferences' to 'Settings'. It is a one-file copy change, has no data or architecture effect, and the repo already has the relevant component. What should we do next?",
+  "files": [],
+  "expected_behavior": [
+    "Recognizes this as a small bounded implementation request, not an autonomous multi-slice goal that needs a separate planning artifact",
+    "States any necessary assumption and keeps the requested scope to the label change",
+    "Routes to the frontend specialist or existing component owner and asks for no unrelated refactor",
+    "Does not create a placeholder multi-step checklist or rewrite project memory before useful work"
+  ],
+  "checks": []
+}

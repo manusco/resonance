@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-finance",
+  "query": "Paid spend was $60,000 in March and produced 30 new customers in March. The sales cycle is about 90 days, and most March signups came from organic referrals. The team reports paid CAC of $2,000 and wants to double spend. Assess the evidence needed before scaling.",
+  "files": [],
+  "expected_behavior": [
+    "Flags that dividing March spend by March signups misattributes cohorts when the sales cycle is about 90 days",
+    "Distinguishes paid-acquired customers from organic referrals before computing paid CAC",
+    "Recommends aligning spend and customer cohorts across the actual conversion window and including fully loaded acquisition cost",
+    "Withholds a scale recommendation until a comparable paid cohort and payback evidence are available",
+    "Does not substitute blended CAC or signups for the paid-channel economics"
+  ]
+}

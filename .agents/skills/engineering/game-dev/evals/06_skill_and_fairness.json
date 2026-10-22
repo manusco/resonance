@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-game-dev",
+  "query": "A level is hard, so the team wants to randomize enemy damage and spawn timing on every attempt. Players currently learn a dodge pattern and improve across retries. How should we tune the challenge?",
+  "files": [],
+  "expected_behavior": [
+    "Preserves learnable rules so player skill can explain improvement across attempts",
+    "Uses controlled variation in reward or challenge without changing the core mechanic unpredictably",
+    "Defines a measurable signal for whether the level teaches and rewards mastery, such as retry completion or time to learn the pattern",
+    "Avoids recommending randomness that makes outcomes feel arbitrary or invalidates learned timing",
+    "Proposes a bounded playtest comparing the current pattern with a specific variation before broad rollout"
+  ]
+}

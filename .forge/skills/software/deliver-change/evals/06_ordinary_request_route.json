@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-software-deliver-change",
+  "query": "A user asks in normal language: “Can you add CSV export to the customer table and take it through review?” They did not invoke resonance-software-deliver-change or identify a workflow targeting it. What route should handle this request?",
+  "files": [],
+  "expected_behavior": [
+    "Routes the new end-to-end outcome directly to resonance-ops-goal rather than selecting the compatibility entrypoint",
+    "Distinguishes natural-language software intent from explicit compatibility-skill invocation",
+    "Does not start or reproduce a goal loop inside resonance-software-deliver-change",
+    "Preserves the requested CSV export and review outcome for the Goal intake",
+    "Does not claim that route selection authorizes merge, release, or deployment"
+  ]
+}

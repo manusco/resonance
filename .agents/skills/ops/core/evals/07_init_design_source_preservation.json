@@ -1,0 +1,17 @@
+{
+  "skill": "resonance-ops-core",
+  "query": "Initialize the existing Kontor workspace in the attached project. Determine whether the discovered visual direction is approved and how /init should preserve it.",
+  "files": [
+    ".forge/fixtures/design-contract/unapproved/project_instructions.md",
+    ".forge/fixtures/design-contract/unapproved/DESIGN.md",
+    ".forge/fixtures/design-contract/unapproved/figma_exploration.md"
+  ],
+  "expected_behavior": [
+    "Discovers maintained local design references because no explicit application declaration or existing 05_design entry is present",
+    "Does not treat the draft DESIGN.md or older Figma exploration as approved without approval evidence",
+    "Preserves existing files and content; does not rewrite, approve, migrate, or duplicate design rules",
+    "Names the unresolved authority conflict and asks for the existing approval evidence or owner decision only if a durable choice is needed",
+    "Keeps the design discovery scoped to the affected application and its relevant sources"
+  ],
+  "checks": []
+}

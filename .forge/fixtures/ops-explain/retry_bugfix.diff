@@ -1,0 +1,6 @@
+diff --git a/src/jobs/retry.ts b/src/jobs/retry.ts
+@@
+-  if (attempts <= MAX_ATTEMPTS) return enqueue(job);
++  if (attempts < MAX_ATTEMPTS) return enqueue(job);
+   return markFailed(job.id, error);
+ }

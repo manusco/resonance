@@ -3,11 +3,11 @@
   "query": "Refactor the entire authentication system and also update the database schema and redesign the login UI - all in this session.",
   "files": [],
   "expected_behavior": [
-    "Breaks the request into at least 3 separate checklist items in .resonance/01_state.md before starting any work",
-    "Does not attempt all three in parallel in the same context",
-    "Presents the breakdown to the user and asks which to tackle first",
-    "Does not execute a destructive or architectural change (schema refactor) without presenting it first and waiting for confirmation",
-    "Updates 01_state.md with the broken-down checklist before any implementation begins"
+    "Breaks the request into checkable work across authentication, schema, and login UI, with dependencies and a sequence recorded in project state before implementation",
+    "Coordinates work in sequence or across specialists only where dependencies and ownership make that safe; does not require parallel execution",
+    "Begins the authorized work in this session where safe, and identifies concrete decision or evidence gates as they arise",
+    "Pauses before an architectural or destructive schema change that lacks a confirmed plan or required approval, naming the specific decision needed",
+    "Does not ask the user to choose an arbitrary first item when the requested outcome and safe sequence are clear"
   ],
   "checks": [
     {

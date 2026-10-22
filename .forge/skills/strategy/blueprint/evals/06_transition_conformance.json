@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-blueprint",
+  "query": "The approved blueprint requires all writes to customer state to go through the Account Service. A release candidate adds a new billing service that temporarily writes the customer table directly while the Account Service API is being extended. The exception has no owner or exit condition. Check conformance and give the next safe step.",
+  "files": [],
+  "expected_behavior": [
+    "Traces the release candidate to the exact approved ownership rule and identifies the direct write as non-conforming",
+    "Distinguishes the approved target rule from the temporary transition state instead of rewriting the baseline to fit the candidate",
+    "Does not treat “temporary” as an accepted exception without scope, owner, risk, compensating controls, review trigger, removal condition, and human approval",
+    "Returns a non-conforming verdict or an explicitly proposed exception, never clean conformance",
+    "Names the smallest safe next step, such as routing writes through the Account Service or submitting a complete exception for approval"
+  ]
+}

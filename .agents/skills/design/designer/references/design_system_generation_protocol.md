@@ -2,6 +2,8 @@
 
 > **Objective**: Define only the shared design foundations this project or task needs. Reuse an existing system when it fits; a design-system document is not a prerequisite for every UI change.
 
+Keep approved shared decisions in Project Design Contract or its single canonical source; use generated system notes as implementation guidance, not a competing policy. Local exceptions must follow the contract's approved selectors and change process.
+
 ## 1. The Reasoning Engine (Pre-Design)
 Before choosing styles, analyze the product context via these dimensions:
 1.  **Product Type**: Is this a SaaS Dashboard, a Luxury E-commerce, or a Productivity Tool?
@@ -12,7 +14,7 @@ Before choosing styles, analyze the product context via these dimensions:
 Document shared decisions when the scope spans a system or when implementation needs a durable reference. Keep local styling consistent with the product's existing conventions without requiring a new system document for a scoped screen or component.
 
 ### Step 1: Record shared foundations when useful
-If the work needs a shared reference, record the decisions that recur across the product. Include only foundations relevant to the scope:
+If the work needs a shared reference, record the decisions that recur across the product in the canonical contract or point to its maintained source. Include only foundations relevant to the scope:
 *   **Color roles**: Define reusable semantic tokens where repeated roles need coordination. Choose the palette and representation from the product system and brief.
 *   **Typography**: Choose one or more typefaces, sizes, and line-height relationships that fit the content, brand, platform, and legibility needs.
 *   **Spacing and shape**: Define reusable values where they help related components feel coherent. Choose a scale for this product; Base-4, Base-8, fluid values, and deliberate exceptions can all fit.

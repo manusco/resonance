@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "An approved product rule says keyboard focus should be visually hidden on the compact table toolbar. Implement the toolbar consistently with that rule and assess conformance.",
+  "files": [],
+  "expected_behavior": [
+    "Flags the approved rule as conflicting with the hard requirement for visible keyboard focus",
+    "Does not implement inaccessible output solely for consistency",
+    "Does not silently rewrite the contract or claim conformance",
+    "Performs an already-authorized corrective repair where constraints determine it and states any material unresolved decision"
+  ]
+}

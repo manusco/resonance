@@ -1,14 +1,14 @@
 {
   "skill": "resonance-engineering-build",
-  "query": "Run /build to execute the approved implementation plan.",
+  "query": "Run /build to execute the approved implementation plan below. Plan status: approved. Goal: add `GET /healthz` returning HTTP 200 with `{\"status\":\"ok\"}`. Scope: add one route in the existing HTTP app and one focused route test. Acceptance checks: the route returns the exact JSON body and status; existing tests pass. Constraints: do not add dependencies, change other routes, or alter deployment configuration.",
   "files": [],
   "expected_behavior": [
-    "Reads implementation_plan.md and works through it one component at a time, not all at once",
+    "Uses the supplied approved plan and works through it one component at a time; if the procedure requires implementation_plan.md, records the supplied plan there instead of claiming to have read a missing file",
     "For each component, writes a failing test first, then the minimal code to make it pass (red then green)",
     "Runs the linter and a security check after each component before moving to the next",
     "Does not write code beyond what the current test requires (no speculative abstraction)",
     "Routes to /debug after 2 consecutive failures on the same component instead of thrashing",
-    "Stops and reports when every component in the plan is implemented and its tests pass"
+    "Reports completion only after repository-backed code and test runs confirm the acceptance checks; if repository or execution access is missing, names that blocker and does not claim tests passed"
   ],
   "checks": [
     {

@@ -3,7 +3,9 @@
   "query": "Check system health. The tests are green but only check the happy path.",
   "files": [],
   "expected_behavior": [
-    "The agent calculates a high numerical score for the tests, but correctly flags the system with TEST_SHALLOW after reviewing the 8-Path Matrix"
+    "The agent scores the passing test command according to the documented weight without treating test pass rate as test depth",
+    "It reviews failure and unauthorized-path coverage against the 8-Path Matrix and flags TEST_SHALLOW",
+    "It reports the qualitative flag alongside the numerical score so the score does not conceal the coverage gap"
   ],
   "checks": [
     {

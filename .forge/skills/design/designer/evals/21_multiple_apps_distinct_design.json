@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Two applications share a component package but have distinct approved brands and separate design contracts. The shared package proposes changing the card surface treatment. Advise how each application should evaluate it.",
+  "files": [],
+  "expected_behavior": [
+    "Resolves each application's approved intent independently",
+    "Evaluates the shared implementation change against both contracts and existing approval evidence",
+    "Does not treat shared package ownership as authorization to copy one app's treatment into the other",
+    "Identifies any conflict or required app-specific variant explicitly"
+  ]
+}

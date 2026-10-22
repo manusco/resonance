@@ -1,0 +1,37 @@
+{
+  "skill": "resonance-ops-qa",
+  "query": "We are preparing the first-run flow for our native iOS app. How should exploratory QA evaluate it if the app can be installed on an iPhone or simulator, and what should we report if no runnable build is available?",
+  "files": [],
+  "expected_behavior": [
+    "Tests the representative native onboarding journey from app launch through first meaningful success using the actual app on a device or simulator; browser testing is not evidence for the shipped native flow",
+    "Records reproducible steps and platform-appropriate evidence such as screen state, interactions, and available logs, and combines duplicate findings by observed frequency and impact",
+    "Reports the number of people or runs and states that a small exploratory sample does not establish population prevalence",
+    "If no runnable native build or device/simulator is available, marks the journey unverified and names the build or runtime evidence needed instead of claiming it was exercised"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "device",
+        "simulator",
+        "native app"
+      ]
+    },
+    {
+      "kind": "contains_any",
+      "value": [
+        "first success",
+        "meaningful success",
+        "onboarding journey"
+      ]
+    },
+    {
+      "kind": "contains_any",
+      "value": [
+        "unverified",
+        "not verified",
+        "cannot verify"
+      ]
+    }
+  ]
+}

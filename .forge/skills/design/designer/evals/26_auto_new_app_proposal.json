@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Implement the first inspection list and capture UI slice for Field Notes using the supplied brief.",
+  "files": [".forge/fixtures/design-contract/auto-population/new-app/brief.md"],
+  "expected_behavior": [
+    "Writes a filled PROPOSED entry with application, surface, task patterns, supported defaults, explicit unknowns, and evidence paths rather than copying the blank scaffold",
+    "Uses explicit task reasoning to recommend proposed list and capture defaults, while distinguishing those recommendations from observed facts and assumptions",
+    "Uses the offline field constraint while leaving unspecified sync conflict behavior and visual identity open",
+    "Does not call proposed decisions approved or invent an approval owner",
+    "Does the bounded proposal automatically as part of normal UI coding without requiring a separate /design request"
+  ]
+}

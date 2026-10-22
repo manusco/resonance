@@ -29,7 +29,9 @@ Visualizing the path from Outcome to Code.
 *   Always ask: "What Opportunity does this address?"
 *   Always ask: "What Outcome does that Opportunity drive?"
 
-## 3. RICE Scoring (Prioritization)
+## 3. Compare Solutions
+
+Choose a comparison method that fits the decision. RICE can help when candidates share a clear outcome, comparable reach and impact estimates, and credible effort estimates. It is not mandatory or objective. When the data is thin, show the main trade-offs and uncertainty qualitatively rather than inventing scores. Include strategy fit, risk, and dependencies when they could change the order.
 
 When choosing between Solutions:
 
@@ -37,5 +39,5 @@ When choosing between Solutions:
 
 *   **Reach**: How many people will verify this?
 *   **Impact**: 3 (Massive), 2 (High), 1 (Medium), 0.5 (Low).
-*   **Confidence**: 100% (High), 80% (Medium), 50% (Low).
-*   **Effort**: Person-Weeks.
+*   **Confidence**: State the evidence and uncertainty behind the estimate; do not imply a fixed confidence scale is calibrated.
+*   **Effort**: Use a consistent unit for the comparison, and state important dependencies or risks that the score hides.

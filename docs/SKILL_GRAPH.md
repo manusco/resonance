@@ -14,6 +14,7 @@ graph LR
   resonance-engineering-build --> resonance-engineering-debugger
   resonance-engineering-build --> resonance-ops-security
   resonance-engineering-build --> resonance-ops-audit
+  resonance-engineering-build --> resonance-design-designer
   resonance-finance-run-operating-cycle --> resonance-strategy-finance
   resonance-finance-run-operating-cycle --> resonance-marketing-analytics
   resonance-finance-run-operating-cycle --> resonance-ops-legal
@@ -91,13 +92,14 @@ graph LR
   resonance-strategy-plan --> resonance-strategy-venture
   resonance-strategy-plan --> resonance-strategy-architect
   resonance-strategy-plan --> resonance-strategy-blueprint
+  resonance-strategy-plan --> resonance-design-designer
 ```
 
 ## Edges
 
 | Orchestrator | Invokes |
 | --- | --- |
-| resonance-engineering-build | resonance-strategy-blueprint, resonance-engineering-backend, resonance-engineering-frontend, resonance-engineering-ai-engineering, resonance-engineering-database, resonance-engineering-debugger, resonance-ops-security, resonance-ops-audit |
+| resonance-engineering-build | resonance-strategy-blueprint, resonance-engineering-backend, resonance-engineering-frontend, resonance-engineering-ai-engineering, resonance-engineering-database, resonance-engineering-debugger, resonance-ops-security, resonance-ops-audit, resonance-design-designer |
 | resonance-finance-run-operating-cycle | resonance-strategy-finance, resonance-marketing-analytics, resonance-ops-legal |
 | resonance-leadership-run-operating-cycle | resonance-ops-founder-os, resonance-people-hiring, resonance-ops-productivity, resonance-ops-retro, resonance-ops-legal |
 | resonance-marketing-run-campaign | resonance-strategy-gtm-thinker, resonance-strategy-growth, resonance-strategy-grill, resonance-marketing-copywriter, resonance-marketing-content-distribution, resonance-marketing-lifecycle, resonance-marketing-paid-acquisition, resonance-marketing-analytics, resonance-design-studio, resonance-ops-legal |
@@ -113,13 +115,13 @@ graph LR
 | resonance-strategy-blueprint | resonance-strategy-architect, resonance-ops-product, resonance-ops-security, resonance-ops-observability, resonance-ops-qa, resonance-ops-reviewer |
 | resonance-strategy-brief | resonance-strategy-grill, resonance-strategy-plan, resonance-engineering-build, resonance-ops-product, resonance-strategy-researcher |
 | resonance-strategy-council | resonance-strategy-brief, resonance-strategy-grill, resonance-strategy-plan, resonance-ops-goal, resonance-ops-second-opinion |
-| resonance-strategy-plan | resonance-ops-product, resonance-strategy-researcher, resonance-strategy-venture, resonance-strategy-architect, resonance-strategy-blueprint |
+| resonance-strategy-plan | resonance-ops-product, resonance-strategy-researcher, resonance-strategy-venture, resonance-strategy-architect, resonance-strategy-blueprint, resonance-design-designer |
 
 ## Ownership Contracts
 
 | Skill | Archetype | Authority | Failure | Side effects |
 | --- | --- | --- | --- | --- |
-| resonance-design-designer | knowledge | advisory | degrade | none |
+| resonance-design-designer | knowledge | consequential | degrade | may_write_files |
 | resonance-design-studio | procedure | consequential | stop | may_write_files |
 | resonance-engineering-ai-engineering | knowledge | advisory | degrade | none |
 | resonance-engineering-automation | procedure | consequential | stop | may_write_files |

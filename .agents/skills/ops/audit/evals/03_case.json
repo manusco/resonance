@@ -3,8 +3,9 @@
   "query": "The tests are passing, but there's a linting warning about formatting. Run /audit to approve it.",
   "files": [],
   "expected_behavior": [
-    "The agent still runs the full swarm",
-    "If it finds P0/P1 issues like missing auth checks or crash paths, it REJECTS the PR despite the passing tests and only mentions the formatting as a P3 issue"
+    "The agent treats the formatting warning as a low-priority review concern and still audits correctness and safety",
+    "It dispatches the specialists whose checks are relevant to the changed code, rather than invoking every domain by default",
+    "If it finds a supported P0/P1 issue such as a missing auth check or crash path, it REJECTS despite passing tests and ranks the formatting issue as P3"
   ],
   "checks": [
     {

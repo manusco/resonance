@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-founder-os",
+  "query": "We keep forgetting to check renewal risk. Set up a recurring process that reviews the customer ledger every Monday and reminds the owner to act on accounts due for renewal.",
+  "files": [],
+  "expected_behavior": [
+    "Defines the cadence, owner, input ledger, decision, and follow-up due date as a pull-based operating process",
+    "Uses an available host scheduler only when the user has specified or approved the scheduling surface",
+    "Does not invent a background daemon or write customer records without evidence",
+    "Records the operating cadence and authority boundary as a decision or documented process"
+  ],
+  "checks": []
+}

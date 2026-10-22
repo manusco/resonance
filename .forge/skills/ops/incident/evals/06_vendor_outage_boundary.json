@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-incident",
+  "query": "Our payment processor reports elevated latency, but our checkout error rate is still within its SLO and there are no customer reports. The vendor asks us to announce a SEV1 and send an all-customer email. Run incident triage.",
+  "files": [],
+  "expected_behavior": [
+    "Verifies the local impact signal and blast radius instead of adopting the vendor's severity label",
+    "Declares a severity based on the local incident matrix and states what evidence would change it",
+    "Keeps external customer communications separate from internal incident updates and requires the proper owner for an all-customer announcement",
+    "Does not claim an active outage or send a message based only on the vendor's request"
+  ],
+  "checks": []
+}

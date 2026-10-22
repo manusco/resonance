@@ -1,5 +1,24 @@
 # Changelog
 
+## v2.5.46
+
+The design contract, eval coverage, and operator workflow release.
+
+### Added
+- **Project design contract.** UI work now discovers the declared design source, applies approved guidance to the affected app, and keeps proposals separate from approved rules. New projects with visible UI receive a bounded proposal, while headless work stays free of design setup.
+- **Automatic design population.** Direct UI tasks can create or resume a proposal from maintained project evidence while preserving source pointers and existing approved content.
+- **Eval fixture coverage.** All 73 framework skills now meet the six-case floor across 499 structurally valid fixtures; legacy project-owned skills retain their compatibility floor. New cases cover design source authority, app identity, routine reuse, automatic population, project initialization, and the combined QA, security, product, and SEO guidance, while fixture integrity checks protect referenced evidence.
+
+- **Exploratory first-run QA.** Choose audience-relevant perspectives, test a critical journey through first success, and rank reproducible findings by observed frequency and user impact without imposing fixed personas or one-pass fixes.
+
+- **Security execution boundary.** Security reviews now require host-enforced isolation before running repository-controlled code and trusted checks before retaining its output.
+- **Security eval coverage.** Added a case for missing network and write isolation, with source-only review and untrusted-output handling.
+
+- **Product decision rigor.** Match discovery and validation depth to consequence, reversibility, uncertainty, and delay cost. Treat RICE and the Sean Ellis benchmark as decision aids, not objective or universal gates. Keep unsupported customer evidence explicitly labeled.
+- **Product evals.** Cover risk-scaled validation, uncertainty handling, and non-binary PMF interpretation.
+
+- **SEO evidence coverage.** Technical audits now distinguish verified findings from partial, unavailable, or untested evidence, scope conclusions to observed coverage, and require comparable dated observations before claiming change over time. Added a regression eval for incomplete and undated audits.
+
 ## v2.5.45
 
 The security evidence and test value release.

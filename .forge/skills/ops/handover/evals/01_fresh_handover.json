@@ -8,9 +8,9 @@
     "Creates docs/handovers/ directory if it does not exist",
     "Creates a new handover file (not appending) since none exists for today",
     "Status Snapshot section reflects current project phase",
-    "What Was Done lists 'JWT auth flow in auth.service.ts' specifically - not vague",
+    "What Was Done lists 'JWT auth flow in auth.service.ts' specifically, not vaguely",
     "Decisions Made table records Supabase vs Auth0 with the cost rationale",
-    "Open TODOs lists the two failing tests in auth.test.ts as P0 or P1 with line numbers",
+    "Open TODOs lists both failing tests in auth.test.ts with their supplied line numbers and states their impact or uncertainty without inventing severity",
     "Password reset email appears in Open TODOs or Backlog",
     "Updates .resonance/01_state.md Next Session section to reference the handover path"
   ],

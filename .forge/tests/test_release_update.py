@@ -27,9 +27,13 @@ class _Response(io.BytesIO):
 class ReleaseUpdateTests(unittest.TestCase):
     def test_stable_version_rejects_prerelease_and_partial_versions(self):
         self.assertEqual((2, 5, 3), update.stable_version("v2.5.3"))
-        self.assertEqual("2.5.45", update.FRAMEWORK_VERSION)
         self.assertIsNone(update.stable_version("2.5"))
         self.assertIsNone(update.stable_version("2.5.3-rc.1"))
+
+    def test_framework_version_matches_package(self):
+        expected = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))["version"]
+        self.assertEqual(expected, update.FRAMEWORK_VERSION)
+        self.assertIsNotNone(update.stable_version(update.FRAMEWORK_VERSION))
 
     def test_disabled_notice_does_not_depend_on_host_package_json(self):
         with mock.patch.object(update, "notice_state", return_value={"schema": 1, "enabled": False}):

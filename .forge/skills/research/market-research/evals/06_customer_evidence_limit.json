@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-research-market-research",
+  "query": "We interviewed three friendly design partners who already use our prototype. Conclude whether the market has existential demand and write the positioning claim for our website.",
+  "files": [],
+  "expected_behavior": [
+    "Treats three friendly prototype users as a small, selected sample that can generate hypotheses but cannot establish market-wide demand",
+    "Separates observed evidence from inference and calls out selection, confirmation, and willingness-to-pay limits",
+    "Proposes the next validation sample or behavior-based test, including what result would falsify the demand hypothesis",
+    "Does not turn the interviews into a broad market claim or website proof without independent evidence",
+    "Routes final positioning and public copy to the relevant owners after the evidence is sufficient"
+  ]
+}

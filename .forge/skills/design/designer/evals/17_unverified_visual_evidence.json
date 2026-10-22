@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "A screen implements the approved drawer pattern and linked tokens. Source review is complete, but browser capture and a comparable sibling screenshot are unavailable. Report visual conformance.",
+  "files": [],
+  "expected_behavior": [
+    "Cites the applicable binding rule and current source evidence",
+    "Reports visual conformance as unverified rather than passing based on source inspection alone",
+    "Names the missing comparable state and viewport evidence needed to verify consistency",
+    "Keeps the report concise and does not demand a full product inventory"
+  ]
+}

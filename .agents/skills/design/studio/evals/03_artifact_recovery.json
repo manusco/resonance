@@ -1,9 +1,9 @@
 {
   "skill": "resonance-design-studio",
-  "query": "The last image you generated had an AI look: too smooth, plastic skin, dead eyes. Fix it.",
+  "query": "The last image you generated had an AI look: too smooth, plastic skin, dead eyes. Fix it. The image itself is not attached or available in this conversation.",
   "files": [],
   "expected_behavior": [
-    "Adds specific photography parameters to counter the AI look (film grain, specific lens, color grading)",
+    "Recognizes that the source image is unavailable and asks the user to attach it before attempting an edit; does not claim to have edited or regenerated it",
     "Adds a negative prompt listing the specific artifacts to remove (smooth skin, plastic texture, dead eyes)",
     "Does not simply regenerate the same prompt again; makes targeted changes to the camera and post-processing sections",
     "Documents what was changed and why so the fix is repeatable",

@@ -2,8 +2,8 @@
   "skill": "resonance-engineering-build",
   "query": "Run /build for the attached approved implementation plan. The repository has the attached approved .resonance/04_systems.md baseline.",
   "files": [
-    "fixtures/blueprint/approved_systems.md",
-    "fixtures/blueprint/implementation_plan.md"
+    ".forge/fixtures/blueprint/approved_systems.md",
+    ".forge/fixtures/blueprint/implementation_plan.md"
   ],
   "expected_behavior": [
     "Screens the plan against the conformance triggers before writing tests or implementation code",

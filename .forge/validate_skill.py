@@ -18,6 +18,7 @@ Exit codes:
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from dataclasses import dataclass, field
@@ -28,6 +29,8 @@ NAME_RE = re.compile(r"^[a-z0-9-]{1,64}$")
 MAX_DESC = 1024
 BODY_SOFT_LINES = 500          # warn beyond this
 REF_TOC_LINES = 100            # reference files longer than this need a TOC
+MIN_EVAL_CASES = 6
+LEGACY_PROJECT_MIN_EVAL_CASES = 3
 ARCHETYPES = {"knowledge", "procedure", "orchestration"}
 PORTABILITY_RESERVED = ("anthropic", "claude")  # warn: hurts cross-tool naming
 
@@ -263,12 +266,45 @@ def check_references(skill_dir: Path, body: str, r: Report) -> None:
                    f"Keep references one level deep from SKILL.md")
 
 
-def check_evals(skill_dir: Path, r: Report) -> None:
+def eval_floor(skill_path: Path, report: Report) -> int:
+    """Keep the framework floor on owned skills without breaking private packs."""
+    skill_path = skill_path.resolve()
+    for root in skill_path.parents:
+        relative = skill_path.relative_to(root).as_posix()
+        if not relative.startswith(".agents/skills/"):
+            continue
+        resonance_dir = root / ".resonance"
+        manifest = resonance_dir / "framework-manifest.json"
+        if resonance_dir.is_symlink() or manifest.is_symlink():
+            report.err(f"ownership: invalid framework manifest: {manifest}")
+            return MIN_EVAL_CASES
+        if not manifest.is_file():
+            continue
+        try:
+            data = json.loads(manifest.read_text(encoding="utf-8"))
+            files = data.get("files")
+        except (OSError, UnicodeError, json.JSONDecodeError, AttributeError):
+            report.err(f"ownership: invalid framework manifest: {manifest}")
+            return MIN_EVAL_CASES
+        if (data.get("schema") != 1 or not isinstance(files, dict) or not files
+                or any(not isinstance(name, str) or name.startswith("/")
+                       or re.match(r"^[A-Za-z]:", name) or "\\" in name
+                       or name != Path(name).as_posix() or ".." in Path(name).parts
+                       or not isinstance(digest, str) or len(digest) != 64
+                       or any(c not in "0123456789abcdef" for c in digest)
+                       for name, digest in files.items())):
+            report.err(f"ownership: invalid framework manifest: {manifest}")
+            return MIN_EVAL_CASES
+        return MIN_EVAL_CASES if relative in files else LEGACY_PROJECT_MIN_EVAL_CASES
+    return MIN_EVAL_CASES
+
+
+def check_evals(skill_dir: Path, r: Report, minimum: int = MIN_EVAL_CASES) -> None:
     eval_dir = skill_dir / "evals"
     cases = list(eval_dir.glob("*.json")) if eval_dir.exists() else []
-    if len(cases) < 3:
-        r.err(f"evals: found {len(cases)} case(s) in evals/. A skill ships with >= 3 golden "
-              f"cases (query + expected_behavior); fewer cannot carry any measurement")
+    if len(cases) < minimum:
+        r.err(f"evals: found {len(cases)} case(s) in evals/. A skill ships with >= {minimum} golden "
+              f"cases (query + expected_behavior); fewer cannot carry a useful coverage sample")
 
 
 def validate(path: Path, r: Report, composition_canary: bool = False) -> Report:
@@ -284,7 +320,7 @@ def validate(path: Path, r: Report, composition_canary: bool = False) -> Report:
     check_composition_contract(fm, path, r)
     check_body(body, archetype, r)
     check_references(path.parent, body, r)
-    check_evals(path.parent, r)
+    check_evals(path.parent, r, eval_floor(path, r))
     return r
 
 

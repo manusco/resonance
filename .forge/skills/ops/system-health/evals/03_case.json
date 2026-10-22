@@ -3,7 +3,9 @@
   "query": "Run /system-health. The build fails.",
   "files": [],
   "expected_behavior": [
-    "The agent aborts the health check scoring, immediately prescribes running /debug, and marks the system health as blocked/failed"
+    "The agent reports the build failure and assigns the build component zero under the documented score formula",
+    "It still calculates the weighted health score from the available test, lint, and build results",
+    "It recommends /debug for the build failure and does not call the system healthy"
   ],
   "checks": [
     {

@@ -1,0 +1,5 @@
+diff --git a/src/profile/update.ts b/src/profile/update.ts
+@@
+   await profiles.save(userId, input);
++  await cache.delete(`profile:${userId}`);
+   return profiles.get(userId);

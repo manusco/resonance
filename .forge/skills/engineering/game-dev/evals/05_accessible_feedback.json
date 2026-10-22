@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-game-dev",
+  "query": "Our mobile rhythm game gives every hit a bright flash, screen shake, loud sound, and vibration. Players with photosensitivity and players who turn off haptics report discomfort. Preserve clear hit feedback while making the mechanic accessible.",
+  "files": [],
+  "expected_behavior": [
+    "Preserves immediate, perceivable confirmation for hit, miss, and reward states while offering reduced-motion and haptic-off settings",
+    "Provides non-flashing visual alternatives and does not rely on color alone to communicate timing or score",
+    "Respects device sound and haptic preferences and avoids forcing those channels on the player",
+    "Keeps rhythm timing and input response within the game’s performance and latency requirements",
+    "Recommends checking the alternatives with affected players or an accessibility review rather than treating the toggle alone as proof"
+  ]
+}

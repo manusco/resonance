@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-handover",
+  "query": "Run /handover. The conversation says the release is blocked on a security review, but 01_state.md still says 'ready to release' and git log shows no review commit.",
+  "files": [],
+  "expected_behavior": [
+    "Reports the current-session blocker and marks the state file as stale instead of silently choosing the older statement",
+    "Uses git history as evidence of landed work without treating the absence of a commit as proof the review was not done",
+    "Names the contradiction and leaves the release status unclaimed until the security review evidence is checked",
+    "Updates the Next Session section with a concrete verification step"
+  ],
+  "checks": []
+}

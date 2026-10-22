@@ -1,0 +1,10 @@
+diff --git a/src/auth/session.ts b/src/auth/session.ts
+@@
+-export function refresh(token: string) {
+-  return issueAccessToken(decode(token).userId);
+-}
++export async function refresh(token: string) {
++  const claims = verifyRefreshToken(token);
++  await refreshTokens.consume(claims.jti);
++  return issueTokenPair(claims.userId);
++}

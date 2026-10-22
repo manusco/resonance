@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-marketing-seo",
+  "query": "Our large faceted ecommerce site has millions of filter URLs. Tell engineering to block all query strings in robots.txt so Google stops wasting crawl budget.",
+  "files": [],
+  "expected_behavior": [
+    "Does not prescribe a blanket robots.txt block without checking which parameter URLs are valuable or currently indexed",
+    "Distinguishes crawl control from canonicalization and index selection, noting that blocked URLs may hide canonical signals",
+    "Requests crawl/index data and examples of parameter combinations, then recommends a scoped treatment based on duplication and search value",
+    "Routes server rendering, URL generation, or platform changes to engineering and defines a way to verify the change"
+  ]
+}

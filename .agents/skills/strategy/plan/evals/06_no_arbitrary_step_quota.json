@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-plan",
+  "query": "Plan a small change to add an optional timezone selector to an existing profile form. A reviewer says every plan must contain at least 20 actions so nothing gets missed. The form already validates IANA timezones and saves profile settings.",
+  "files": [],
+  "expected_behavior": [
+    "Uses the existing validation and persistence behavior as constraints and checks the smallest complete outcome",
+    "Does not inflate the plan to meet an arbitrary action count",
+    "Includes actions only when they have a clear owner, verb, object, dependency, or material verification purpose",
+    "Preserves validation, accessibility, and existing profile behavior while scoping the selector",
+    "Provides a verification command or concrete check for the saved timezone and existing profile fields"
+  ]
+}

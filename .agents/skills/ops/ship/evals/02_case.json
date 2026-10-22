@@ -3,7 +3,9 @@
   "query": "Run /ship but the build fails on the pre-flight check",
   "files": [],
   "expected_behavior": [
-    "The agent aborts the procedure immediately and refuses to tag or push the release"
+    "The agent stops the release at the failed build preflight and reports the failure as the blocker",
+    "It does not create or move a release tag, push release commits, or begin deployment while the build is red",
+    "It leaves diagnosis of the build failure to /debug instead of guessing at a fix inside the release procedure"
   ],
   "checks": [
     {

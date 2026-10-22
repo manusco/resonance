@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-ops-explain",
+  "query": "Explain the attached payment retry implementation. I know the app well but have not worked on the job system, and I did not specify how much detail I want.",
+  "files": [
+    ".forge/fixtures/ops-explain/payment_retry.ts"
+  ],
+  "expected_behavior": [
+    "Names the concept mode and assumes a competent developer new to the job system, stating the reader-level assumption without stalling",
+    "Explains the supplied `charge` implementation: at most three attempts, retries only transient errors, and uses the same idempotency key for each attempt",
+    "Describes exponential delays from the code and the main failure consequence without touring the whole payments system",
+    "Offers an optional prediction check without revealing its answer in the question turn"
+  ],
+  "checks": []
+}

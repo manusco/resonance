@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-call-intelligence",
+  "query": "Analyze this call transcript. It is a rough auto-caption with overlapping speakers, missing the last ten minutes, and several inaudible sections. Give me exact objection rates and decide whether the rep handled every objection well.",
+  "files": [],
+  "expected_behavior": [
+    "States that speaker overlap, inaudible sections, and a missing ending limit attribution and completeness",
+    "Does not calculate precise objection rates or claim every objection was reviewed from partial, noisy text",
+    "Extracts only supported verbatims and labels uncertain speaker or interpretation instead of silently repairing the transcript",
+    "Offers a transcript cleanup or recording review step and limits any findings to the available portion"
+  ]
+}

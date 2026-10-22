@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-run-revenue-motion",
+  "query": "A new customer has signed, but the CRM record has no agreed outcome, implementation owner, or success contact. Mark the deal closed-won and send the handoff to customer success anyway.",
+  "files": [],
+  "expected_behavior": [
+    "Separates the verified signature event from any unverified CRM stage or downstream handoff action",
+    "Flags the missing customer outcome, implementation owner, and success contact as handoff blockers or explicit unknowns",
+    "Does not invent ownership or claim the CRM was changed without approval",
+    "Produces a handoff checklist with named fields and an owner/date to resolve each gap before or during a clearly labeled provisional handoff"
+  ]
+}

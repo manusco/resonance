@@ -7,7 +7,8 @@ without evals is unfalsifiable, and unfalsifiable skills rot.
 ## The loop
 
 1. **Identify the gap.** Run the task with no skill. Write down the exact failure.
-2. **Write >= 3 cases** in `evals/`. Cover happy path, an edge case, and a failure the skill must prevent.
+2. **Write >= 6 distinct cases** in `evals/`. Cover the happy path, separate edge cases, and distinct failures the skill must prevent. Give each case its own observable behavior and grading rationale. Add more when a skill owns additional independently gradeable behaviors or high-risk boundaries. Do not split one behavior into near-duplicate cases just to meet the floor.
+   Keep public framework cases hermetic: store evidence under `.forge/fixtures/<skill-or-suite>/`, reference it with a repository-relative path, and do not depend on consumer application files under `src/`, `docs/`, or root `fixtures/`. Source-profile installs ship `.forge/` only, so consumer files can disappear after install.
 3. **Baseline.** Measure the no-skill result against the cases.
 4. **Write the minimum skill** that passes.
 5. **Iterate.** Re-run, compare to baseline. Keep only what moves the score.

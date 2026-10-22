@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-handover",
+  "query": "Run /handover. This session changed src/payments/retry.ts and added tests, but the changes are still uncommitted. The last commit is from yesterday, and the state file lists a payment retry release as in progress.",
+  "files": [],
+  "expected_behavior": [
+    "Uses the session context and current worktree to report the implementation as uncommitted work, not as a landed commit",
+    "Uses git log only for committed history and keeps it distinct from current working-tree changes",
+    "Preserves the payment retry item as in progress instead of marking it complete",
+    "Names the test and source paths only if confirmed from the session or repository"
+  ],
+  "checks": []
+}

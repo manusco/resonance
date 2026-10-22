@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Recommend a filter pattern for the next ordinary workspace record table based on the supplied current patterns and usage evidence. Name the proposed default, any justified workflow variant and its observable selector, and the decision needed before it is approved. Do not silently change existing screens.",
+  "files": [
+    ".forge/fixtures/design-contract/brownfield/current_patterns.md",
+    ".forge/fixtures/design-contract/brownfield/task_usage.md"
+  ],
+  "expected_behavior": [
+    "Shows the observed variation and proposes one concrete default for ordinary workspace record lookup, justified by the supplied task evidence",
+    "Names the representative screen/component and restricts the sidebar variant to the evidence-backed invoice reconciliation workflow",
+    "Routes the proposal to the named design owner for durable approval and does not call it approved",
+    "Does not silently canonize one screen or mass-change older screens"
+  ]
+}

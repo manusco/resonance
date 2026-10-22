@@ -3,11 +3,11 @@
   "query": "We have 23 features on our backlog. The team can ship about 3 per quarter. What should we do first?",
   "files": [],
   "expected_behavior": [
-    "Applies RICE scoring to rank the features: requests Reach, Impact, Confidence, and Effort estimates for each",
-    "Does not pick based on gut feel or which features 'seem most important'",
-    "Presents the RICE formula and scoring assumptions explicitly so the user can challenge the inputs",
-    "Recommends the top 3 for the current quarter with the RICE rationale",
-    "Flags if any of the top 3 lack evidenced customer demand - recommends validating before building"
+    "Uses RICE as a useful comparison method for this substantial backlog when estimates can be made comparably",
+    "States the formula, key evidence, uncertainty, and assumptions behind scores rather than presenting scores as objective truth",
+    "Includes strategic fit, dependencies, and material risks if they could change the ranking",
+    "Recommends a small number of next priorities with the rationale and meaningful trade-offs",
+    "Flags major unsupported assumptions and proposes validation proportionate to the commitment"
   ],
   "checks": [
     {

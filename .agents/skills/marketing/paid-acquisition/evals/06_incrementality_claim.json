@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-marketing-paid-acquisition",
+  "query": "Retargeting reports a 6x ROAS. We plan to move all prospecting spend into retargeting because it is clearly more profitable.",
+  "files": [],
+  "expected_behavior": [
+    "Explains that attributed ROAS does not establish incremental return and retargeting may harvest demand created elsewhere",
+    "Requests or proposes a holdout or other incrementality read before transferring the full budget",
+    "Checks frequency, audience size, conversion window, margin, and blended CAC as constraints on scaling",
+    "Keeps prospecting and retargeting economics separately labeled and gives a reversible test allocation rather than an unsupported full shift"
+  ]
+}

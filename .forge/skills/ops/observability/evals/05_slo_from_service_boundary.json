@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-observability",
+  "query": "Design observability for a checkout service with a synchronous API and an asynchronous receipt worker. We have no agreed latency target or customer error budget yet.",
+  "files": [],
+  "expected_behavior": [
+    "Separates API request RED signals from worker queue or job health and traces the handoff with a shared correlation identifier",
+    "Proposes candidate SLIs and explicitly labels any SLO target as needing owner agreement rather than inventing a contractual target",
+    "Uses low-cardinality metrics and puts request or user identifiers in logs or traces with privacy controls",
+    "Makes alerts symptom-based and actionable with an owner and response"
+  ],
+  "checks": []
+}

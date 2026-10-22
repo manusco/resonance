@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "A product has desktop web and native mobile clients. A backend change renames a user-visible lifecycle status, while a separate backend change only adds an internal query index. Explain which changes need design-contract review and how to approach a native screen that uses the shared product workflow.",
+  "files": [],
+  "expected_behavior": [
+    "Checks design intent for the user-visible lifecycle rename despite the backend file path",
+    "Skips design-contract review for the internal query index when it has no user-visible effect",
+    "Applies the same product intent to native mobile with explicitly scoped platform variants and suitable native evidence",
+    "Does not impose CSS token tooling or browser-only checks on native code"
+  ]
+}

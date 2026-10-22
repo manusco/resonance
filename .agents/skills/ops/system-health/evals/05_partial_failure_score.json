@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-system-health",
+  "query": "Run /system-health. Tests pass, lint passes, and the build fails because the staging configuration references a missing generated asset.",
+  "files": [],
+  "expected_behavior": [
+    "Reports the test and lint results and assigns the build component a zero under the documented scoring formula",
+    "Calculates the weighted health score from the observed results instead of aborting scoring",
+    "Records the build failure and recommends /debug as the next step",
+    "Does not label the system healthy based only on two passing checks"
+  ],
+  "checks": []
+}

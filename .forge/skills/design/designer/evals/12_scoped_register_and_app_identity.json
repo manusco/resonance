@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "One app contract approves a vivid editorial marketing surface and compact workspace tables with neutral surfaces and top filters. A second app shares the component package but has a different brand. Design a marketing page, a workspace table, and one shared-package screen for the second app.",
+  "files": [],
+  "expected_behavior": [
+    "Applies only the approved marketing and workspace scopes for the first app",
+    "Does not use the marketing register to waive workspace patterns",
+    "Looks up the second app's own contract and does not copy the first app's palette or visual treatment based on shared code",
+    "Does not invent new product-wide rules from the request"
+  ]
+}

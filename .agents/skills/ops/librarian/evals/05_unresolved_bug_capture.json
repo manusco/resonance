@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-librarian",
+  "query": "Capture this incident for the docs: login sometimes fails after password reset. We have not reproduced it, and we do not know whether the token or email link is responsible.",
+  "files": [],
+  "expected_behavior": [
+    "Does not record the cause or a fix as established fact when the bug is unresolved",
+    "Asks for the missing evidence needed to capture a solved problem, or documents the item explicitly as an open investigation rather than a solved guide",
+    "Chooses a documentation type that matches the actual artifact and keeps diagnosis separate from hypothesis",
+    "Does not publish a fabricated Problem-Diagnosis-Solution story"
+  ],
+  "checks": []
+}

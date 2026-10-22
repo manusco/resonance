@@ -1,0 +1,20 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Design the workspace table from the project evidence. Identify the governing design source and any conflicting material.",
+  "files": [
+    ".forge/fixtures/design-contract/lookup/declared/AGENTS.md",
+    ".forge/fixtures/design-contract/lookup/declared/.resonance/05_design.md",
+    ".forge/fixtures/design-contract/lookup/declared/DESIGN.md",
+    ".forge/fixtures/design-contract/lookup/declared/product/design-approved.md"
+  ],
+  "expected_behavior": [
+    "Follows the explicit application design-source declaration in AGENTS.md before consulting 05_design.md or root DESIGN.md",
+    "Uses the exact declared product/design-approved.md source for the application",
+    "Cites the declared source's supplied approval evidence as DEC-244 and names the conflicting authored 05_design source's supplied evidence as DEC-199",
+    "Names disagreement with the alternate source without promoting it or silently resolving it by age or format",
+    "Does not infer that the unfilled 05_design scaffold overrides the explicit declaration"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["DEC-244", "DEC-199"]}
+  ]
+}

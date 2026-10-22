@@ -6,9 +6,9 @@
     "archetype": "knowledge",
     "owner": "design.designer",
     "activation": "automatic",
-    "authority": "advisory",
+    "authority": "consequential",
     "triggers": [
-      "Design Director who starts with the user's task and evidence, then applies precise visual craft. Specifies interfaces that fit real workflows across content, controls, reachable states, and supported canvases. Use when starting a design system, specifying UI, auditing a design that feels generic or AI-made, modeling the objects, names, and states users perceive, refining an interface toward high polish, designing across canvases (phone, tablet, laptop, TV), or planning applicable empty, loading, error, and success states."
+      "Design Director who discovers the applicable project design contract, then applies precise visual craft to real workflows, content, controls, states, and supported canvases. Use when a user-visible change needs project pattern lookup, a shared design system, UI specification or audit, interaction and state design, or responsive and native surface guidance. Also use for visual refinement, accessibility-aware design, and user-facing vocabulary or status changes, regardless of which code layer causes them."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -18,8 +18,12 @@
       "guidance"
     ],
     "invokes": [],
-    "side_effects": [],
-    "write_sets": [],
+    "side_effects": [
+      "may_write_files"
+    ],
+    "write_sets": [
+      "project:design-contract"
+    ],
     "entrypoints": [],
     "failure_policy": "degrade"
   },
@@ -186,6 +190,7 @@
     ],
     "outputs": [
       "user_request",
+      "design_scope",
       "artifact",
       "evidence",
       "architecture_conformance_report",
@@ -206,7 +211,8 @@
       "resonance-engineering-database",
       "resonance-engineering-debugger",
       "resonance-ops-security",
-      "resonance-ops-audit"
+      "resonance-ops-audit",
+      "resonance-design-designer"
     ],
     "side_effects": [
       "may_coordinate_work",
@@ -231,6 +237,7 @@
     "artifact_access": [
       "implementation-plan:read,review",
       "implementation-artifact:create,modify,execute",
+      "project-design-contract:read",
       "build-result:create,modify",
       "build-evidence:create,append_evidence"
     ],
@@ -1489,7 +1496,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Product Manager Specialist. Defines what to build and why through discovery, Working Backwards PRDs, RICE prioritization, and PMF diagnostics. Use when a feature needs scoping, a roadmap needs product prioritization, or product-market fit needs testing. Company OKRs, scorecards, weekly reviews, L10/EOS, IDS, delegation, and authority budgets belong to Founder OS."
+      "Product Manager Specialist. Defines what to build and why through discovery, Working Backwards PRDs, context-fit prioritization, and PMF diagnostics. Use when a feature needs scoping, a roadmap needs product prioritization, or product-market fit needs testing. Company OKRs, scorecards, weekly reviews, L10/EOS, IDS, delegation, and authority budgets belong to Founder OS."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -1554,7 +1561,7 @@
     "activation": "manual",
     "authority": "consequential",
     "triggers": [
-      "Quality Assurance Specialist. Proves that the system works, or breaks it trying. Use when writing a test plan, auditing test coverage against the 8-Path Matrix, writing destructive test cases, building an LLM eval suite, or performing a verification audit before a release."
+      "Quality Assurance Specialist. Proves that the system works, or breaks it trying. Use when writing a test plan, auditing test coverage against the 8-Path Matrix, writing destructive test cases, building an LLM eval suite, or performing a verification audit before a release, including visual checks of UI changes."
     ],
     "negative_triggers": [],
     "inputs": [
@@ -2905,6 +2912,7 @@
     ],
     "outputs": [
       "user_request",
+      "design_scope",
       "plan",
       "decision",
       "implementation_plan",
@@ -2920,7 +2928,8 @@
       "resonance-strategy-researcher",
       "resonance-strategy-venture",
       "resonance-strategy-architect",
-      "resonance-strategy-blueprint"
+      "resonance-strategy-blueprint",
+      "resonance-design-designer"
     ],
     "side_effects": [
       "may_coordinate_work"
@@ -2946,7 +2955,8 @@
     "artifact_access": [
       "user-request:read",
       "research-evidence:read",
-      "implementation-plan:create,modify,approve"
+      "implementation-plan:create,modify,approve",
+      "project-design-contract:read"
     ],
     "dispatch_conditions": [
       "a clear intended outcome needs an atomic implementation plan"

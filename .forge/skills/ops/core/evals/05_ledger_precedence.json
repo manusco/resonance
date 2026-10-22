@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-core",
+  "query": "What did we decide about the trial limit, and is the launch still blocked? This project has a typed decisions ledger, a short 02_memory.md index, and 01_state.md with a current checklist.",
+  "files": [],
+  "expected_behavior": [
+    "Reads 01_state.md and 02_memory.md before answering, then uses recall or ledger search for the settled decision",
+    "Cites the typed ledger entry as the system of record for the decision instead of treating the brief memory index as authoritative detail",
+    "Uses the active checklist in 01_state.md to determine whether launch is blocked",
+    "If either answer is absent from the files, says what is missing instead of inferring it"
+  ],
+  "checks": []
+}

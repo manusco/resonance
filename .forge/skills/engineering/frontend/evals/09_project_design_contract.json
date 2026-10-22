@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "Fix a 2px icon alignment issue in the approved workspace toolbar. The explicit app declaration points to `.resonance/apps/workspace-design.md`, which links the toolbar component and says toolbar actions use the compact icon-button pattern. A marketing app shares the component package but has a separate brand source. No wider redesign is requested.",
+  "files": [],
+  "expected_behavior": [
+    "Uses the workspace app's declared source and relevant toolbar component rule without reading unrelated references",
+    "Makes the local correction within the approved compact icon-button pattern and checks the affected toolbar",
+    "Does not require a new baseline, full conformance report, Designer handoff, or extra approval for routine reuse",
+    "Does not copy the workspace brand treatment into the marketing app because the package is shared",
+    "Does not impose new token layers where the existing component and value owner already suffice"
+  ],
+  "checks": [
+    {"kind": "contains_any", "value": ["workspace", "declared source"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

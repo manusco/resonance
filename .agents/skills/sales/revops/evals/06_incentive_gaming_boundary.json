@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-revops",
+  "query": "Our reps are sandbagging. Add a large bonus for commits that close, and let managers upgrade any deal they like before quarter end.",
+  "files": [],
+  "expected_behavior": [
+    "Identifies that paying a commit bonus can reward category gaming and weaken forecast honesty",
+    "Separates forecast definitions from compensation design and avoids creating an unreviewed discretionary upgrade rule",
+    "Offers a calibrated alternative using forecast accuracy and evidence-based stage exits, with controls for managers and reps",
+    "Surfaces the tradeoff and asks for the intended behavior, current comp constraints, and approval owner before proposing binding plan terms"
+  ]
+}

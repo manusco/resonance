@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-reviewer",
+  "query": "Review this PR that adds a call to the current authentication provider. The diff is small and tests pass, but the provider's token refresh API changed last week and the PR uses an example copied from an old blog post.",
+  "files": [],
+  "expected_behavior": [
+    "Checks current official provider documentation or repository-owned API types before approving the token refresh call",
+    "Names the exact compatibility evidence and version assumptions that are missing",
+    "Does not treat green tests as sufficient evidence when the changed integration surface is time-sensitive",
+    "Ranks any finding by user harm and blocks approval only when a concrete compatibility or security defect is supported"
+  ],
+  "checks": []
+}

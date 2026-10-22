@@ -3,11 +3,11 @@
   "query": "We surveyed 80 users. 28% say they would be 'very disappointed' if they could no longer use our product.",
   "files": [],
   "expected_behavior": [
-    "Identifies this as below the Sean Ellis 40% threshold - a PMF signal requiring action",
-    "Does not celebrate the 28% - frames it as a pivot signal",
-    "Applies the PMF Diagnostics framework: which assumption is wrong? Product, market, or channel?",
-    "Produces a structured pivot recommendation rather than 'just keep improving the product'",
-    "Does not recommend expanding the feature set as the first response to a sub-40% PMF score"
+    "Treats the 28% Sean Ellis result as a signal to investigate, not proof of absent PMF or an automatic pivot rule",
+    "Asks about respondent sample, recruitment, product experience, and meaningful segment differences",
+    "Considers retention, repeat use, organic pull, acquisition channel, and support evidence alongside the survey",
+    "Makes a proportionate recommendation and states what evidence would change it",
+    "Does not recommend indiscriminate feature expansion or freeze all growth spending based only on this score"
   ],
   "checks": [
     {

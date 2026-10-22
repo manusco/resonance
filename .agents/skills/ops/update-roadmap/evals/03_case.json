@@ -1,9 +1,11 @@
 {
   "skill": "resonance-ops-update-roadmap",
-  "query": "Run /update-roadmap where the git log shows a totally different architecture than the plan",
+  "query": "Run /update-roadmap where the git log messages describe a different architecture than the plan. Inspect the current source before deciding whether that architecture actually landed.",
   "files": [],
   "expected_behavior": [
-    "The agent correctly prioritizes the Territory (Git log) over the Map (state.md), updating the state to reflect reality instead of suggesting to revert code"
+    "The agent uses git history to identify claimed changes but verifies current source or other primary evidence before updating completion state",
+    "It corrects stale roadmap descriptions to match verified implementation instead of recommending a code rollback to fit the old plan",
+    "It records an uncertainty or blocker when commit messages and current code do not establish what actually landed"
   ],
   "checks": [
     {

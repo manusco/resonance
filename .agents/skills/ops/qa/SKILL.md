@@ -1,6 +1,6 @@
 ---
 name: resonance-ops-qa
-description: Quality Assurance Specialist. Proves that the system works, or breaks it trying. Use when writing a test plan, auditing test coverage against the 8-Path Matrix, writing destructive test cases, building an LLM eval suite, or performing a verification audit before a release.
+description: Quality Assurance Specialist. Proves that the system works, or breaks it trying. Use when writing a test plan, auditing test coverage against the 8-Path Matrix, writing destructive test cases, building an LLM eval suite, or performing a verification audit before a release, including visual checks of UI changes.
 archetype: procedure
 authority: consequential
 contract_version: 1
@@ -44,6 +44,7 @@ Copy this checklist and tick items as you go.
 2. **Gap Analysis (If invoked via /test)**: Run the project's tests via `.forge/exec/run_checks.py` (it detects the toolchain, so no assuming npm) to identify "Dark Matter" (uncovered lines). Prioritize Business Logic > Utilities > UI.
 3. **Goal-Driven Setup**: Transform the task into verifiable criteria. "QA the checkout flow" becomes "Verify: add item → enter payment → order confirmation appears." Weak criteria require constant clarification. Strong criteria let you loop autonomously. → verify: assertions are written as specific, observable outcomes.
 4. **8-Path Walk**: For each feature, walk the matrix and mark Covered, N/A, or Gap for all 8 categories. Write tests for every "Gap". Do not skip silently. → verify: every user-facing flow has a category verdict.
+4a. **Design Contract Applicability**: For changes to user-visible behavior, names, status, or interaction, consult [Project Design Contract](../../design/designer/references/project_design_contract.md). Compare equivalent tasks/states against the approved default and a relevant sibling at a comparable viewport; use the project's maintained reference, including code or Figma where applicable. Mark missing visual proof unverified. Routine reuse needs no new approval; skip work with no visible effect. → verify: cite the rule and comparison evidence, or name the missing proof.
 5. **Strategy Selection**: Pick Unit (pure logic), Integration (routes/DB), E2E (user journeys), Property (fuzzing), or SAST (static analysis).
 6. **Test Value Gate**: Before adding or preserving a test, name the observable behavior, invariant, or independent contract it protects; the credible regression that would fail; why existing coverage does not already own that failure; and whether a seam exposes private internals without serving a product contract. Rewrite tests that only repeat source shape, import lists, mocks, or private call order at the owning boundary. Keep narrow controls for nondeterministic dependencies when they let a behavior test prove a real contract. -> verify: the test protects behavior or a real contract at its strongest practical boundary.
 7. **Automate (AAA)**: Write tests using Arrange/Act/Assert. Use the correct Assertion Layer (Source vs. Rendered vs. Visible-Text vs. Behavior). → verify: tests fail first, then pass (Red-Green).
@@ -51,6 +52,10 @@ Copy this checklist and tick items as you go.
 9. **Stale Test Check**: If any test fails, check whether the test or the product is wrong. A stale test that contradicts current product intent must be flagged, not silently updated. → verify: divergences are explicit.
 10. **Self-Improvement**: Log any discovered flakiness or "trick" to get tests passing to `02_memory.md`.
 11. **Completion**: Use the Completion Attestation. List verification evidence, not just DONE/BLOCKED.
+
+### Exploratory First-Run Journeys
+
+When QA needs to find usability friction, select a few perspectives that fit the target users and the risk being tested. Use the real target application and a platform-appropriate surface: a browser for web, a device or simulator for native mobile, and the application's native UI for desktop. Follow the critical journey from entry to first meaningful success. Record reproducible steps and platform-appropriate evidence for material friction, combine duplicate findings, and rank them by observed frequency and user impact. Report how many people or runs were observed; a small exploratory sample does not establish population prevalence. If the target runtime is unavailable, mark the journey unverified and state what evidence is needed. Fix findings through the normal review process, then rerun the affected journeys. Do not require a fixed persona count, parallel agents, a screenshot for every reaction, or one-pass fixes.
 
 ## Recovery
 
@@ -118,7 +123,7 @@ A flaky test is an unnamed race, not bad luck. Never `sleep(n)` and hope the wor
 - **[Destructive Testing](references/destructive_testing.md)**: How to break things.
 - **[Property Based Testing](references/property_based_testing_protocol.md)**: Fuzzing guide.
 - **[Contract Testing](references/contract_testing.md)**: API verification.
-- **[Design Validation](references/design_validation_protocol.md)**: Pixel-perfect Figma vs. Code checklist.
+- **[Design Validation](references/design_validation_protocol.md)**: Compare UI evidence against applicable project intent.
 - **[QA Health Rubric](references/qa_health_rubric.md)**: Full, Quick, and Regression modes.
 - **[Assertion Layers](references/assertion_layers.md)**: Source vs. Rendered decision flowchart.
 - **[Async Test Stability](references/async_test_stability.md)**: Kill flakiness by waiting on conditions, not the clock.

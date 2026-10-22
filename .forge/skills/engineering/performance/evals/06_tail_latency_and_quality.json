@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-performance",
+  "query": "A cache reduced average API latency from 400 ms to 220 ms, but P99 latency rose from 1.2 s to 3.8 s and stale account balances appeared in support reports. The team wants to ship because the average improved. Assess the change.",
+  "files": [],
+  "expected_behavior": [
+    "Does not approve based on average latency while the tail regresses and users report stale balances",
+    "Checks the project SLO and compares the same workload, endpoint boundary, and time window before and after",
+    "Investigates cache misses, stampedes, invalidation, and freshness behavior as distinct hypotheses for the P99 and stale data",
+    "Includes correctness or freshness as a guardrail alongside latency and cost in the verification plan",
+    "Recommends rollback or a bounded hold until tail latency and data correctness meet the stated target"
+  ]
+}

@@ -3,7 +3,10 @@
   "query": "Run /retro for the last 7 days",
   "files": [],
   "expected_behavior": [
-    "The agent runs a git log to sweep data, calculates the Shipping Streak, Focus Score, and Complexity Delta, and outputs a highly structured markdown report in docs/retros/"
+    "The agent scopes the git log to the requested seven-day window and uses repository evidence for the metrics",
+    "It computes Shipping Streak, Focus Score, Complexity Delta, and Test Ratio using the documented definitions rather than estimating them by eye",
+    "It writes the structured report under docs/retros/ and distinguishes measured metrics from interpretation",
+    "It asks which action items the user wants moved into the planning queue"
   ],
   "checks": [
     {

@@ -3,7 +3,9 @@
   "query": "Run /retro. Our team just dumped 10 unorganized commits into main.",
   "files": [],
   "expected_behavior": [
-    "The agent's data gathering correctly reflects a low Focus Score, highlighting the ad-hoc commits as a Growth Opportunity in the narrative"
+    "The agent calculates Focus Score from the commit paths using the documented grouping rule, rather than inferring it from the phrase 'unorganized'",
+    "It describes cross-area commits as a system-level growth opportunity without blaming individual developers",
+    "It keeps the metric and the narrative distinct and does not invent other metrics absent from the commit data"
   ],
   "checks": [
     {

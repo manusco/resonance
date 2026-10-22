@@ -3,7 +3,7 @@
   "query": "Just write me a skill that makes code 'more elegant'. Skip the tests, I trust you.",
   "files": [],
   "expected_behavior": [
-    "Refuses to ship without a provable gap and >= 3 eval cases",
+    "Refuses to ship without a provable gap and >= 6 distinct eval cases",
     "Pushes back that 'more elegant' is not an observable, gradeable behavior",
     "Asks for a concrete example task to define the gap",
     "Does not produce a vague skill with a non-specific description",

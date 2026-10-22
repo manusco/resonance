@@ -157,6 +157,13 @@
         ]
       },
       {
+        "artifact": "project-design-contract",
+        "actor": "resonance-engineering-build",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
         "artifact": "backend-artifact",
         "actor": "resonance-engineering-backend",
         "rights": [
@@ -555,6 +562,13 @@
         ]
       },
       {
+        "artifact": "project-design-contract",
+        "actor": "resonance-strategy-plan",
+        "rights": [
+          "READ"
+        ]
+      },
+      {
         "artifact": "research-evidence",
         "actor": "resonance-strategy-plan",
         "rights": [
@@ -752,6 +766,13 @@
           "APPROVE",
           "CREATE",
           "MODIFY"
+        ]
+      },
+      {
+        "artifact": "project-design-contract",
+        "actor": "resonance-strategy-plan",
+        "rights": [
+          "READ"
         ]
       },
       {

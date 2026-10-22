@@ -1,0 +1,42 @@
+{
+  "skill": "resonance-marketing-seo",
+  "query": "A crawler checked 12 of 100 product pages. Three sampled pages returned 503, and the export has no date or comparable baseline. Can we report that the whole site passes technical SEO and has improved since last month?",
+  "files": [],
+  "expected_behavior": [
+    "Limits the audit conclusion to the 12 pages actually checked and discloses that 88 pages were not reviewed",
+    "Marks the three 503 responses as unavailable for content inspection rather than treating them as passing, failing, or absent content",
+    "Identifies the missing date and baseline as a limit on comparison and refuses to claim improvement over time",
+    "Reports current observations and recommends a comparable, dated follow-up if a change claim is needed",
+    "Does not invent a site-wide pass or a numeric score from partial, undated evidence"
+  ],
+  "checks": [
+    {
+      "kind": "contains_any",
+      "value": [
+        "12",
+        "sample",
+        "sampled"
+      ]
+    },
+    {
+      "kind": "contains_any",
+      "value": [
+        "unavailable",
+        "503",
+        "could not access"
+      ]
+    },
+    {
+      "kind": "contains_any",
+      "value": [
+        "baseline",
+        "dated",
+        "comparable"
+      ]
+    },
+    {
+      "kind": "regex_absent",
+      "value": "[\u2014\u2013]"
+    }
+  ]
+}

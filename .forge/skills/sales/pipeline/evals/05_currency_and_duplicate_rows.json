@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-pipeline",
+  "query": "Here is the export: Deal A, 100,000 USD, 2026-11-15; Deal A, 100,000 EUR, 2026-11-15; Deal B, 50,000 USD, 2026-12-01. Sum it and give me a weighted total in USD. No exchange rates are provided.",
+  "files": [],
+  "expected_behavior": [
+    "Does not combine USD and EUR into one USD total without an exchange rate and conversion date",
+    "Flags the repeated Deal A as a possible duplicate and avoids double counting pending a unique deal identifier or confirmation",
+    "Reports only a USD subtotal that is safe to compute if the two Deal A rows are confirmed to be distinct; otherwise marks that subtotal as provisional and leaves the duplicate unresolved",
+    "Does not invent the missing stage weights; requests the stage-probability mapping or reports unweighted subtotals and identifies what is needed for a defensible weighted total"
+  ]
+}

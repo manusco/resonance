@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-improve",
+  "query": "The scorecard says /ops/voice is flat. On inspection, all current eval cases already pass without the skill, and the with-skill answers add no measurable behavior. Improve it by adding more instructions.",
+  "files": [],
+  "expected_behavior": [
+    "Recognizes that the current evals do not discriminate the skill from the baseline and are dead cases",
+    "Does not add skill prose to game a non-discriminating rubric",
+    "Replaces or revises the cases to target observed capability gaps only after establishing a no-skill failure",
+    "Re-measures the same baseline and candidate with isolated arms and records the actual result"
+  ],
+  "checks": []
+}

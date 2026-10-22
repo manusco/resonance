@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "A local icon-spacing bug affects one approved shared toolbar button. The contract links its component and spacing tokens, and a sibling screen shows the same pattern. Fix only this control. No product-wide design work is requested.",
+  "files": [],
+  "expected_behavior": [
+    "Uses the relevant linked component or token source and approved sibling pattern",
+    "Keeps the repair local and preserves the established component behavior",
+    "Does not require a new baseline, full product audit, contract revision, or additional approval for routine reuse",
+    "Names an appropriate focused verification check"
+  ]
+}

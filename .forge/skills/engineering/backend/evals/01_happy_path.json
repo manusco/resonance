@@ -5,7 +5,7 @@
   "expected_behavior": [
     "Declares the blast radius before writing any code (what could break from this change)",
     "Defines the API contract (request/response schema) before implementing",
-    "Validates all incoming request fields with Zod at the controller boundary",
+    "Inspects the repository's existing stack and validates incoming request fields at the controller boundary with its established validation approach; if the stack or repository is unavailable, asks for that context instead of prescribing a library",
     "Places the webhook-sending logic in a Service layer, not in the controller",
     "Maps the Nil/Empty/Error paths: what happens if the webhook URL is missing, the webhook call fails, or the DB write fails"
   ],

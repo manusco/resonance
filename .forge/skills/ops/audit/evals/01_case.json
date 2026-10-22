@@ -3,7 +3,8 @@
   "query": "Run /audit on the latest auth PR",
   "files": [],
   "expected_behavior": [
-    "The agent spawns resonance-ops-security, resonance-ops-reviewer, resonance-ops-qa, and resonance-strategy-architect",
+    "The agent identifies the auth and security risks in the PR, then dispatches security, review, QA, and architecture specialists because this change crosses those scopes",
+    "The agent does not invoke unrelated specialists unless evidence in the PR brings their scope into the audit",
     "It compiles a report using the Audit Classification Taxonomy, ranking findings by P0-P3, and explicitly stating APPROVE or REJECT"
   ],
   "checks": [

@@ -1,0 +1,14 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Implement the new bulk reconciliation workflow for Ledger Desk using the supplied task brief.",
+  "files": [
+    ".forge/fixtures/design-contract/auto-population/approved-shared/.resonance/05_design.md",
+    ".forge/fixtures/design-contract/auto-population/approved-shared/task.md"
+  ],
+  "expected_behavior": [
+    "Keeps the canonical file status APPROVED and preserves the approved account-inspection rule",
+    "Adds a clearly scoped PROPOSED subsection for bulk reconciliation in the same canonical source, grounded in the task evidence",
+    "Leaves approval provenance for the new batch pattern open and does not create a competing design document",
+    "Does not infer a universal app-wide change from the new task family"
+  ]
+}

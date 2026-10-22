@@ -1,0 +1,15 @@
+{
+  "skill": "resonance-ops-core",
+  "query": "Initialize Field Notes from the supplied brief and prepare the first usable inspection workflow. It is a new web app for urban tree inspectors, with an inspection list and field capture flow. The brief is the only product evidence, and no design source, brand direction, or approval owner exists. Create the project memory and plan the first UI slice.",
+  "files": [
+    ".forge/fixtures/design-contract/auto-population/new-app/brief.md"
+  ],
+  "expected_behavior": [
+    "Automatically activates Designer synthesis for the real UI needs in the brief rather than creating only an empty design template",
+    "Produces a populated, scoped PROPOSED baseline for inspection lookup and field capture from the brief evidence",
+    "Keeps offline conflict handling, visual foundations, approval owner, and other unspecified facts explicit rather than fabricating them",
+    "Preserves owner approval for adopting durable defaults and does not claim the proposal is approved",
+    "Would skip design-baseline creation for a project with no user-visible interface"
+  ],
+  "checks": []
+}

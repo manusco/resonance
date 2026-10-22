@@ -74,9 +74,6 @@ FORGE = Path(__file__).resolve().parent
 REPO = FORGE.parent
 SKILLS = REPO / ".agents" / "skills"
 NAME_RE = re.compile(r"(?m)^name:\s*(.+?)\s*$")
-SENSITIVE_NAMES = {".env", ".npmrc", ".pypirc", "credentials", "credentials.json"}
-SENSITIVE_SUFFIXES = {".key", ".pem", ".p12", ".pfx"}
-ALLOWED_FIXTURE_ROOTS = {"src", "docs", "tests", "fixtures", "examples"}
 
 
 @dataclass
@@ -91,21 +88,7 @@ class ModelFailure(RuntimeError):
 
 
 def contained_fixture(relpath: str) -> Path:
-    if not isinstance(relpath, str) or not relpath.strip():
-        raise ValueError("eval file path must be a non-empty repository-relative path")
-    candidate = Path(relpath)
-    if candidate.is_absolute() or ".." in candidate.parts:
-        raise ValueError(f"eval file escapes repository: {relpath}")
-    if not candidate.parts or candidate.parts[0] not in ALLOWED_FIXTURE_ROOTS:
-        raise ValueError(f"eval file is outside approved fixture roots: {relpath}")
-    resolved = (REPO / candidate).resolve(strict=False)
-    try:
-        resolved.relative_to(REPO.resolve())
-    except ValueError as exc:
-        raise ValueError(f"eval file escapes repository: {relpath}") from exc
-    if resolved.name.lower() in SENSITIVE_NAMES or resolved.suffix.lower() in SENSITIVE_SUFFIXES:
-        raise ValueError(f"eval file is sensitive and cannot be sent to a model: {relpath}")
-    return resolved
+    return eval_integrity.contained_fixture(relpath, REPO)
 
 
 def skill_name(skill_md: Path) -> str:

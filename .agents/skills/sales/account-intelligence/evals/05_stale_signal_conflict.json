@@ -1,0 +1,11 @@
+{
+  "skill": "resonance-sales-account-intelligence",
+  "query": "Prioritize this account: the CRM says the champion left six months ago, but a public hiring announcement from yesterday shows the company is expanding its data team.",
+  "files": [],
+  "expected_behavior": [
+    "Surfaces the conflict and dates both signals rather than treating either as decisive",
+    "Uses the recent hiring event as a possible trigger but does not assume it proves budget, intent, or that the old champion remains",
+    "Recommends verifying the current buyer or team owner and states what evidence would move the account up",
+    "Keeps a concrete next step tied to the signal and avoids fabricating contacts or urgency"
+  ]
+}

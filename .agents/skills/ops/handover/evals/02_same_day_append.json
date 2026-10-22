@@ -1,19 +1,17 @@
 {
   "skill": "resonance-ops-handover",
-  "query": "Run /handover again. We just fixed the two failing tests in auth.test.ts. We also discovered that the JWT_SECRET env var is not set in the staging .env file - this must be fixed before the next deploy.",
+  "query": "Using the attached read-only snapshots dated 2026-10-21, draft the exact append block for today's existing handover and proposed Next Session text. The two failing tests in auth.test.ts have now been fixed. Staging is missing JWT_SECRET, which must be set before the next deploy. Do not edit files or claim that any write was completed.",
   "files": [
-    "docs/handovers/<today>_handover.md"
+    ".forge/fixtures/handover/2026-10-21_handover.md",
+    ".forge/fixtures/handover/01_state.md"
   ],
-  "fixture_optional": true,
   "expected_behavior": [
-    "Detects that a handover file for today already exists",
-    "Appends to the existing file - does not create a new file or overwrite",
-    "Uses a --- divider followed by a ### Session HH:MM heading",
-    "Does not re-copy or duplicate content from the earlier session",
-    "What Was Done (append section) mentions fixing the auth.test.ts tests",
-    "Gotchas section in the append mentions the missing JWT_SECRET in staging .env",
-    "The original handover content from the earlier session is preserved intact",
-    "Updates .resonance/01_state.md Next Session to reflect the now-resolved test failures"
+    "Recognizes from the dated fixture that today's handover already exists and drafts an append block beginning with a `---` divider and a session heading",
+    "Uses the provided snapshots as evidence and does not claim repository-wide search or file writes",
+    "Drafts a delta-only append that records the user-reported auth.test.ts fixes and the staging JWT_SECRET setup prerequisite without exposing or inventing a secret value",
+    "Preserves prior handover sections by proposing an append rather than replacement, and does not duplicate the prior session's work",
+    "Proposes Next Session text that removes the resolved test failures, preserves the planned password-reset work, and keeps staging secret setup as a pre-deploy prerequisite",
+    "Does not claim .resonance/01_state.md or the handover file was actually changed"
   ],
   "checks": [
     {

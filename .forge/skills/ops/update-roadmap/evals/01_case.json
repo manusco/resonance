@@ -1,14 +1,19 @@
 {
   "skill": "resonance-ops-update-roadmap",
-  "query": "Run /update-roadmap",
-  "files": [],
-  "expected_behavior": [
-    "The agent reads the git log and 01_state.md, identifies that 3 new commits were merged that weren't marked in state.md, updates state.md to check them off, and saves the file"
+  "query": "Using only the attached state snapshot, commit log, and implementation excerpts, reconcile the roadmap from the supplied evidence. Return proposed replacement state text; do not claim to have run tests, inspected files beyond these artifacts, or saved a change.",
+  "files": [
+    ".forge/fixtures/update-roadmap/01_state.md",
+    ".forge/fixtures/update-roadmap/git_log.txt",
+    ".forge/fixtures/update-roadmap/src_auth.ts",
+    ".forge/fixtures/update-roadmap/src_webhooks.ts",
+    ".forge/fixtures/update-roadmap/src_queue.ts"
   ],
-  "checks": [
-    {
-      "kind": "regex_absent",
-      "value": "[\u2014\u2013]"
-    }
-  ]
+  "expected_behavior": [
+    "Uses the supplied commit log to identify claimed changes, then checks the matching implementation excerpt rather than trusting commit or test titles",
+    "Marks only JWT refresh rotation and bounded queue retry complete: their excerpts support the behaviors claimed in the state snapshot",
+    "Leaves payment webhook idempotency open because the handler records the event before applying it, so a failed apply makes redelivery look like a duplicate; also notes the separate check-then-record race is not shown to be atomic",
+    "Leaves the retry dashboard open because the commit log contains only a proposal and no implementation evidence",
+    "Returns proposed replacement state text and a next step to fix and verify webhook deduplication; does not claim tests were run or the state file was saved"
+  ],
+  "checks": []
 }

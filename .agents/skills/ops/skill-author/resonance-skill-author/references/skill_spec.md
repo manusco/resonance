@@ -50,9 +50,9 @@ Procedure and orchestration skills MUST carry the operating contract sections
 
 ## Evals
 
-- >= 3 golden cases in `evals/*.json` before the skill is "done".
+- >= 6 distinct golden cases in `evals/*.json` before the skill is "done". Each case covers an independently gradeable behavior; add more for separate high-risk contracts, and do not pad with near-duplicates.
 - Each case: `query`, optional `files`, `expected_behavior` (a list of observable, gradeable statements), and an optional `checks` array of deterministic assertions (`regex_absent`, `contains_any`, `section_present`, `max_lines`, and more; see `eval_protocol.md` and `docs/EVALS.md`). A `regex_absent` dash pattern must be stored ASCII-escaped, never typed.
-- Cover happy path, an edge case, and a failure the skill must prevent.
+- Cover the happy path, separate edge cases, and distinct failures the skill must prevent. Match additional cases to independent skill behaviors and material risks.
 
 ## What the Forge injects (never hand-copy these)
 

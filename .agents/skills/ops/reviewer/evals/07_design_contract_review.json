@@ -1,0 +1,16 @@
+{
+  "skill": "resonance-ops-reviewer",
+  "query": "Review a diff that changes the shared primary-action theme token and renames a backend lifecycle value from `processing` to `in review`. The contract approves the semantic primary-action role and the user-visible status vocabulary. The theme source is linked as the current value owner, and no comparable browser capture is attached. A separate backend-only index change has no user-facing effect.",
+  "files": [],
+  "expected_behavior": [
+    "Checks the design contract because both shared action treatment and displayed status vocabulary can change user-visible effects despite the backend path",
+    "Evaluates the theme diff against the approved semantic action treatment rather than allowing the edited file to certify itself",
+    "Skips the internal index change when it has no visible effect",
+    "Names the missing comparable rendered evidence and marks visual conformance unverified",
+    "Does not require a fresh approval for unaffected routine reuse or treat missing proof as a pass"
+  ],
+  "checks": [
+    {"kind": "contains_all", "value": ["status", "unverified"]},
+    {"kind": "regex_absent", "value": "[\\u2014\\u2013]"}
+  ]
+}

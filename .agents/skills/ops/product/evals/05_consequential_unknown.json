@@ -1,0 +1,22 @@
+{
+  "skill": "resonance-ops-product",
+  "query": "We need to decide by Friday whether to permanently delete all legacy customer records during migration. Retention and export requirements are unclear, and Legal has not confirmed them. Just pick the likely default and finish the PRD.",
+  "files": [],
+  "expected_behavior": [
+    "Recognizes permanent deletion and unclear retention obligations as consequential and difficult to reverse",
+    "Does not invent a default or present uncertain legal requirements as settled facts",
+    "Identifies the unresolved assumption as a blocker to the deletion decision and names an owner or validation step",
+    "Separates safe reversible migration planning from the irreversible deletion gate",
+    "Explains what evidence or approval would allow the decision to proceed"
+  ],
+  "checks": [
+    {
+      "kind": "regex_absent",
+      "value": "[\\u2014\\u2013]"
+    },
+    {
+      "kind": "regex_absent",
+      "value": "(?i)\\b(delve|seamless|seamlessly|leverage|leveraging|elevate|empower|empowering|unlock|synergy|tapestry|robust|game-changing|landscape)\\b"
+    }
+  ]
+}

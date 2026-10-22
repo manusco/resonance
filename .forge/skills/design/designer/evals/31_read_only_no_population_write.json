@@ -1,0 +1,10 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Perform the supplied read-only checkout address form audit. Report findings and show a concrete proposed contract paragraph if needed, but do not create or edit any project file.",
+  "files": [".forge/fixtures/design-contract/auto-population/read-only-audit.md"],
+  "expected_behavior": [
+    "Audits keyboard use and narrow-width overflow within the requested scope",
+    "May include usable proposed contract text in the report while making no filesystem write",
+    "Does not confuse automatic proposal population during coding with permission to write during a read-only audit"
+  ]
+}

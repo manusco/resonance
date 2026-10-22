@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-ops-skill-author",
+  "query": "Create a new knowledge skill for enforcing that every outbound customer email uses a verified customer name and never includes an unsupported claim. Which eval checks should be deterministic, and which need model judgment?",
+  "files": [],
+  "expected_behavior": [
+    "Uses deterministic checks for machine-verifiable requirements such as required fields or banned literal phrases when the output format makes them exact",
+    "Keeps semantic support for claims and correct name use tied to supplied customer evidence in the behavior rubric",
+    "Creates at least six distinct cases spanning normal, missing-evidence, ambiguous, and adversarial requests",
+    "Does not claim static fixture checks prove the skill beats a no-skill baseline"
+  ],
+  "checks": []
+}

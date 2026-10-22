@@ -1,0 +1,20 @@
+{
+  "skill": "resonance-ops-system-health",
+  "query": "Tests, lint, and build are green. The current payment authorization tests only cover successful payments and assert that every payment is authorized without step-up authentication. A settled product decision now requires step-up authentication for payments above €500, but that test assertion still encodes the old rule. Run /system-health.",
+  "files": [],
+  "expected_behavior": [
+    "Reports the automated results separately from qualitative test-depth findings",
+    "Flags TEST_SHALLOW because unauthorized and failure paths for the changed critical behavior are uncovered",
+    "Flags STALE_TESTS when existing tests encode an outdated payment contract, and names the evidence to confirm it",
+    "Does not convert green automation into an unqualified high-confidence health verdict"
+  ],
+  "checks": [
+    {
+      "kind": "contains_all",
+      "value": [
+        "TEST_SHALLOW",
+        "STALE_TESTS"
+      ]
+    }
+  ]
+}

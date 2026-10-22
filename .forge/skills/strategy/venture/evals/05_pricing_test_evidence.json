@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-strategy-venture",
+  "query": "Twenty interviewees say our proposed $49/month plan sounds fair. We want to set pricing and forecast revenue from that result. What should we test next?",
+  "files": [],
+  "expected_behavior": [
+    "Treats stated willingness to pay as weak evidence and does not treat “sounds fair” as a purchase commitment",
+    "Identifies the pricing assumption that most threatens viability and proposes a real behavior test, such as a paid pilot, deposit, or checkout test",
+    "Defines the target segment, offer, price point, and pass/fail threshold before collecting test data",
+    "Keeps price sensitivity and value metric questions distinct from market-size or growth-channel questions",
+    "Does not create a revenue forecast or recommend scaling from interview opinions alone"
+  ]
+}
