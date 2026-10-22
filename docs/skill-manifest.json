@@ -1489,7 +1489,7 @@
     "activation": "automatic",
     "authority": "advisory",
     "triggers": [
-      "Product Manager Specialist. Defines what to build and why through discovery, Working Backwards PRDs, RICE prioritization, and PMF diagnostics. Use when a feature needs scoping, a roadmap needs product prioritization, or product-market fit needs testing. Company OKRs, scorecards, weekly reviews, L10/EOS, IDS, delegation, and authority budgets belong to Founder OS."
+      "Product Manager Specialist. Defines what to build and why through discovery, Working Backwards PRDs, context-fit prioritization, and PMF diagnostics. Use when a feature needs scoping, a roadmap needs product prioritization, or product-market fit needs testing. Company OKRs, scorecards, weekly reviews, L10/EOS, IDS, delegation, and authority budgets belong to Founder OS."
     ],
     "negative_triggers": [],
     "inputs": [

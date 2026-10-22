@@ -6,7 +6,7 @@
 
 ## 1. The Press Release (Working Backwards)
 *   **Headline**: [Bold, concrete headline]
-*   **Customer Quote**: "[Specific user title] says: 'I can finally [action] without [pain]...'"
+*   **Customer evidence**: [Link or attribution for a real quote or observation. If none exists, write "No direct customer quote yet" or label any illustrative copy clearly.]
 *   **The Change**: [How the world is different now]
 
 ## 2. Foundational Premises
