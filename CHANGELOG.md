@@ -17,6 +17,8 @@ The design contract, eval coverage, and operator workflow release.
 - **Product decision rigor.** Match discovery and validation depth to consequence, reversibility, uncertainty, and delay cost. Treat RICE and the Sean Ellis benchmark as decision aids, not objective or universal gates. Keep unsupported customer evidence explicitly labeled.
 - **Product evals.** Cover risk-scaled validation, uncertainty handling, and non-binary PMF interpretation.
 
+- **SEO evidence coverage.** Technical audits now distinguish verified findings from partial, unavailable, or untested evidence, scope conclusions to observed coverage, and require comparable dated observations before claiming change over time. Added a regression eval for incomplete and undated audits.
+
 ## v2.5.45
 
 The security evidence and test value release.
