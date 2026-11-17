@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-engineering-frontend",
+  "query": "Review the checkout flow after a hero image change. The desktop screenshot looks correct, but the first render briefly shifts the form, the browser console reports a failed font request, and the narrow layout may overflow. Browser access is available. Report what to verify and what evidence is needed before calling the UI complete.",
+  "files": [],
+  "expected_behavior": [
+    "Checks the initial and settled browser states at representative supported widths, including the narrowest supported layout",
+    "Inspects available console and request failures, critical font or media loading, and horizontal overflow",
+    "Captures relevant browser evidence, fixes confirmed defects, and repeats the same checks",
+    "Does not treat a good desktop screenshot as proof that loading shift or narrow layout is correct",
+    "Does not impose a universal visual score, exact viewport, or fixed number of review rounds"
+  ]
+}
