@@ -20,7 +20,11 @@ Every action has a reaction.
 *   **Layout**: is the padding consistent?
 *   **Language**: Do you mix "Sign In" and "Log In"? (Pick one).
 
-## 4. The Task Path
+## 4. Browser evidence
+
+When rendered browser behavior is in scope and a browser is available, inspect the initial and settled states at representative supported widths, including the narrowest supported layout. Capture the relevant states and check available console and request failures, critical fonts and media, and horizontal overflow. Fix observed defects and repeat the same checks. If browser evidence is unavailable, name the unverified states and limits; do not claim visual conformance from source review alone. Use project-supported tooling and task-relevant viewports, not a universal score or a fixed number of review rounds.
+
+## 5. The Task Path
 
 Before shipping UI, squint at the screen and name what the user sees first, second, and third. The implemented interface must preserve the intended job, not only match component props.
 
