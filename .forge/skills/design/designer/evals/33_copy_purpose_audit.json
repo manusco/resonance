@@ -1,0 +1,12 @@
+{
+  "skill": "resonance-design-designer",
+  "query": "Simplify an invoice-creation screen. It has a page title, the tagline 'Create and send a professional invoice in minutes', a visible section heading 'Invoice details', fields labelled Customer, Amount, Due date, and Notes, helper text under Amount saying 'Enter the amount you want to charge', a warning that sent invoices cannot be edited, an error that explains an invalid tax ID, and a first-use explanation of when tax is calculated. The screen feels wordy. Specify what to remove, retain, merge, or solve through layout.",
+  "files": [],
+  "expected_behavior": [
+    "Removes or merges the generic tagline and redundant amount helper when visible controls already explain their purpose",
+    "Keeps field labels and accessible names, the sent-invoice warning, invalid-tax-ID recovery guidance, and necessary first-use tax information",
+    "Explains retained, moved, merged, or removed copy by its user-task purpose",
+    "Improves hierarchy, grouping, or proximity where weak layout caused explanatory copy to accumulate",
+    "Does not replace necessary copy with tooltips, icons, placeholders, or color alone"
+  ]
+}
