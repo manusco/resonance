@@ -24,6 +24,10 @@
 - Write for scanning, not reading. Front-load the important word. People scan interfaces; they do not read them start to finish.
 - Cut words until it breaks. "In order to get started, please go ahead and click the button below" is "Get started". Concise copy is faster to parse and looks more confident.
 
+## Copy-purpose audit
+
+For each visible line, identify its job: name a control, orient the user, explain an action or status, prevent an error, support recovery or first use, or disclose a material consequence. Remove or combine text that only repeats nearby content. If copy is compensating for weak hierarchy, grouping, proximity, control choice, or layout, fix that design problem first. Keep the labels, accessible names, error and recovery guidance, material disclosures, irreversible-action warnings, and first-use instructions needed to complete the task safely.
+
 ## Buttons and labels say what happens
 
 - A button describes its outcome, not a generic verb. "Save changes", "Send invite", "Delete project", not "OK" or "Submit". The user should know what happens before they click.
